@@ -7,8 +7,8 @@ interface AuthUserStore {
   isLoggedIn: boolean
   user: User
   token: string
-  setAuth: (user: User, token: string) => void
-  setUnAuth: () => void
+  setLogin: (user: User, token: string) => void
+  setLogout: () => void
 }
 
 const authUserStore = create<AuthUserStore>()(
@@ -16,13 +16,13 @@ const authUserStore = create<AuthUserStore>()(
     isLoggedIn: false,
     user: AUTH_USER_INITIAL_USER_DATA,
     token: "",
-    setAuth: (user, token) =>
+    setLogin: (user, token) =>
       set(() => ({
         isLoggedIn: true,
         user: user,
         token: token,
       })),
-    setUnAuth: () =>
+    setLogout: () =>
       set(() => ({
         isLoggedIn: false,
         user: AUTH_USER_INITIAL_USER_DATA,
