@@ -11,7 +11,7 @@ interface AuthUserStore {
   setLogout: () => void
 }
 
-const authUserStore = create<AuthUserStore>()(
+const useAuthUserStore = create<AuthUserStore>()(
   devtools((set) => ({
     isLoggedIn: false,
     user: AUTH_USER_INITIAL_USER_DATA,
@@ -31,4 +31,4 @@ const authUserStore = create<AuthUserStore>()(
   })),
 )
 
-export default authUserStore
+export default useAuthUserStore
