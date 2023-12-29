@@ -1,11 +1,7 @@
-import GlobalStyles from "./GlobalStyles"
+import YAPRoute from "./Routes"
 
 const App = () => {
-  return (
-    <>
-      <GlobalStyles />
-    </>
-  )
+  return <YAPRoute />
 }
 
 export default App
