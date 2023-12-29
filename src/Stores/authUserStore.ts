@@ -3,32 +3,32 @@ import { devtools } from "zustand/middleware"
 import { User } from "../Types"
 import { AUTH_USER_INITIAL_USER_DATA } from "../Constants/Stores"
 
-interface AuthUser {
-  isLogin: boolean
+interface AuthUserStore {
+  isLoggedIn: boolean
   user: User
   token: string
   setAuth: (user: User, token: string) => void
   setUnAuth: () => void
 }
 
-const authUser = create<AuthUser>()(
+const authUserStore = create<AuthUserStore>()(
   devtools((set) => ({
-    isLogin: false,
+    isLoggedIn: false,
     user: AUTH_USER_INITIAL_USER_DATA,
     token: "",
     setAuth: (user, token) =>
       set(() => ({
-        isLogin: true,
+        isLoggedIn: true,
         user: user,
         token: token,
       })),
     setUnAuth: () =>
       set(() => ({
-        isLogin: false,
+        isLoggedIn: false,
         user: AUTH_USER_INITIAL_USER_DATA,
         token: "",
       })),
   })),
 )
 
-export default authUser
+export default authUserStore
