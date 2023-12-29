@@ -37,9 +37,9 @@ export const DUMMY_USER_DATA: User = {
   following: [],
   notifications: [],
   messages: [],
-  _id: "",
+  _id: "thisIsDummyID1231421312",
   fullName: "잔액부족",
-  email: "",
-  createdAt: "",
-  updatedAt: "",
+  email: "leey153@naver.com",
+  createdAt: "2023-12-23T15:46:25.798Z",
+  updatedAt: "2023-12-26T09:14:30.397Z",
 }
