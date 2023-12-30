@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import * as S from "./CategoryBar.Styles"
 import { Category } from "./CategoryBar.Types"
 const DUMMY_CATEGORY_LIST: Category[] = [
@@ -11,6 +12,10 @@ const DUMMY_CATEGORY_LIST: Category[] = [
 ]
 
 const CategoryBar = () => {
+  const [categoryList, setCategoryList] = useState<Category[]>([
+    { name: "전체", id: "all" },
+  ])
+
   return <S.CategoryBarLayout></S.CategoryBarLayout>
 }
 
