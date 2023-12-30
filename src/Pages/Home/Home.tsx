@@ -1,5 +1,10 @@
-import React from "react"
+import { useState } from "react"
+import * as S from "./Home.Styles"
 
-export default function Home() {
-  return <div>Home</div>
+const Home = () => {
+  const [category, setCategory] = useState("ALL")
+
+  return <S.HomeLayout></S.HomeLayout>
 }
+
+export default Home
