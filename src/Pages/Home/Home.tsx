@@ -1,10 +1,29 @@
 import { useState } from "react"
 import * as S from "./Home.Styles"
+import CategoryBar from "./components/CategoryBar/CategoryBar"
+import {
+  Category,
+  OnSelectCategory,
+} from "./components/CategoryBar/CategoryBar.Types"
 
 const Home = () => {
-  const [category, setCategory] = useState("ALL")
+  const [selectedCategory, setSelectedCategory] = useState<Category>({
+    name: "전체",
+    id: "all",
+  })
 
-  return <S.HomeLayout></S.HomeLayout>
+  const onSelectedCategory: OnSelectCategory = (newCategory) => {
+    setSelectedCategory(newCategory)
+  }
+
+  return (
+    <S.HomeLayout>
+      <CategoryBar
+        selectedCategory={selectedCategory}
+        onSelected={onSelectedCategory}
+      />
+    </S.HomeLayout>
+  )
 }
 
 export default Home
