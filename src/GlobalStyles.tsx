@@ -28,6 +28,7 @@ ol, ul{
 button {
   border: 0;
   background: transparent;
+    font-family: 'Noto Sans KR', sans-serif;
   cursor: pointer;
 }
 html{
@@ -37,6 +38,7 @@ input{
   border : none;
   outline: none;
   background-color: #e9e9e9;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 `
