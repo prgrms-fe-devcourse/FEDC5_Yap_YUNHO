@@ -19,7 +19,10 @@ const CategoryBar = ({
       <S.CategoryBarList>
         {categoryList &&
           categoryList.map((item) => (
-            <S.CategoryBarListItem key={item.id}>
+            <S.CategoryBarListItem
+              key={item.id}
+              isSelect={selectedCategory.id === item.id}
+            >
               <p>{item.name}</p>
             </S.CategoryBarListItem>
           ))}
