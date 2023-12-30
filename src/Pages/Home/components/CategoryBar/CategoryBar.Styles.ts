@@ -21,7 +21,6 @@ export const CategoryBarList = styled.ul`
 
   /* 이후 변수 관리 */
   font-size: 1.6rem;
-  border: 1px solid blue;
 `
 
 export const CategoryBarListItem = styled.li<{ isSelect: boolean }>`
