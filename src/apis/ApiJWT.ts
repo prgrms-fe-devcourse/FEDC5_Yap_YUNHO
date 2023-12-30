@@ -34,3 +34,19 @@ export const POST_API = async (path: string, data: object) => {
     console.error(e)
   }
 }
+
+export const DELETE_API = async (path: string, data: object) => {
+  try {
+    if (data instanceof Array) {
+      return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
+    }
+
+    const res = await API_JWT.delete(path, {
+      data,
+    })
+
+    return res
+  } catch (e) {
+    console.error(e)
+  }
+}
