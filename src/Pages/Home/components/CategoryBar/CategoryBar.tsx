@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import useCategoryListStore from "../../../../Stores/useCategoryListStore"
 import * as S from "./CategoryBar.Styles"
-import { Category } from "./CategoryBar.Types"
-const DUMMY_CATEGORY_LIST: Category[] = [
-  { name: "전체", id: "ALL" },
-  { name: "휴식", id: "11" },
-  { name: "출근길", id: "22" },
-  { name: "퇴근길", id: "33" },
-  { name: "잠들때", id: "44" },
-  { name: "에너지 충전", id: "55" },
-  { name: "로맨스", id: "66" },
-]
 
 const CategoryBar = () => {
-  const [categoryList, setCategoryList] = useState<Category[]>([
-    { name: "전체", id: "all" },
-  ])
+  const { categoryList, fetchCategoryList } = useCategoryListStore()
 
+  useEffect(() => {
+    fetchCategoryList()
+  }, [fetchCategoryList])
+
+  console.log(categoryList)
   return <S.CategoryBarLayout></S.CategoryBarLayout>
 }
 
