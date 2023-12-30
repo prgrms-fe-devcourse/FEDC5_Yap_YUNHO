@@ -12,7 +12,7 @@ const API_JWT = axios.create({
   },
 })
 
-export const GET_API = async (path: string) => {
+export const GET_API_JWT = async (path: string) => {
   try {
     const res = await API_JWT.get(path)
 
@@ -22,7 +22,7 @@ export const GET_API = async (path: string) => {
   }
 }
 
-export const POST_API = async (path: string, data: object) => {
+export const POST_API_JWT = async (path: string, data: object) => {
   try {
     if (data instanceof Array) {
       return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
@@ -35,7 +35,7 @@ export const POST_API = async (path: string, data: object) => {
   }
 }
 
-export const DELETE_API = async (path: string, data: object) => {
+export const DELETE_API_JWT = async (path: string, data: object) => {
   try {
     if (data instanceof Array) {
       return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
