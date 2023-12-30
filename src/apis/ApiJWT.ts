@@ -50,3 +50,17 @@ export const DELETE_API_JWT = async (path: string, data: object) => {
     console.error(e)
   }
 }
+
+export const PUT_API_JWT = async (path: string, data: object) => {
+  try {
+    if (data instanceof Array) {
+      return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
+    }
+
+    const res = await API_JWT.put(path, data)
+
+    return res
+  } catch (e) {
+    console.error(e)
+  }
+}
