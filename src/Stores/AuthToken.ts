@@ -35,4 +35,3 @@ class AuthToken {
 const authToken = new AuthToken()
 
 export default authToken
-authToken.setToken("Test")
