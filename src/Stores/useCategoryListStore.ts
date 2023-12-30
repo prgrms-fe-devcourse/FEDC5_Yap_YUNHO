@@ -11,15 +11,19 @@ const DUMMY_CATEGORY_LIST: Category[] = [
   { name: "로맨스", id: "66" },
 ]
 
+const INITIAL_CATEGORY = { name: "전체", id: "all" }
+
 interface UseCategoryList {
   categoryList: Category[]
   fetchCategoryList: () => void
 }
 
 const useCategoryList = create<UseCategoryList>((set) => ({
-  categoryList: [{ name: "전체", id: "all" }],
+  categoryList: [INITIAL_CATEGORY],
+
   // 이후 API 와 연결 예정
-  fetchCategoryList: () => set({ categoryList: [...DUMMY_CATEGORY_LIST] }),
+  fetchCategoryList: () =>
+    set({ categoryList: [INITIAL_CATEGORY, ...DUMMY_CATEGORY_LIST] }),
 }))
 
 export default useCategoryList
