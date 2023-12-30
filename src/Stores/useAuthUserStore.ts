@@ -2,11 +2,11 @@ import { create } from "zustand"
 import { devtools } from "zustand/middleware"
 import { User } from "../Types"
 import { AUTH_USER_INITIAL_USER_DATA } from "../Constants/Stores"
+import authToken from "./AuthToken"
 
 interface AuthUserStore {
   isLoggedIn: boolean
   user: User
-  token: string
   setLogin: (user: User, token: string) => void
   setLogout: () => void
 }
@@ -15,19 +15,21 @@ const useAuthUserStore = create<AuthUserStore>()(
   devtools((set) => ({
     isLoggedIn: false,
     user: AUTH_USER_INITIAL_USER_DATA,
-    token: "",
-    setLogin: (user, token) =>
+
+    setLogin: (user, token) => {
+      authToken.setToken(token)
       set(() => ({
         isLoggedIn: true,
         user: user,
-        token: token,
-      })),
-    setLogout: () =>
+      }))
+    },
+    setLogout: () => {
+      authToken.setToken("")
       set(() => ({
         isLoggedIn: false,
         user: AUTH_USER_INITIAL_USER_DATA,
-        token: "",
-      })),
+      }))
+    },
   })),
 )
 
