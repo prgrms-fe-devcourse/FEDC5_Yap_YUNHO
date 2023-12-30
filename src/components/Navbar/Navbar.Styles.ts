@@ -6,30 +6,32 @@ export const NavbarLayout = styled.section`
   width: 100%;
   justify-content: space-between;
   height: 12rem;
-  padding: 20px;
-  border-bottom: 1px solid #000;
+  padding: 2rem;
+  border-bottom: 0.1rem solid #000;
 `
 
 export const NavbarLeftList = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 2rem;
 `
 
 export const NavbarSearchButton = styled.button``
 
-export const NavbarButton = styled.button``
+export const NavbarButton = styled.button`
+  font-size: fontSize;
+`
 export const NavbarLogo = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 6rem;
+  height: 6rem;
 `
 
 export const NavbarRightList = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 2rem;
 `
 export const NavbarProfile = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 6rem;
+  height: 6rem;
 `
