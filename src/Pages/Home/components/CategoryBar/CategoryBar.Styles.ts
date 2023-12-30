@@ -6,3 +6,7 @@ export const CategoryBarLayout = styled.div`
 
   border: 1px solid red;
 `
+
+export const CategoryBarList = styled.ul``
+
+export const CategoryBarListItem = styled.li``
