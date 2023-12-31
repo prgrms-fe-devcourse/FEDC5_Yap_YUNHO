@@ -24,16 +24,14 @@ const Navbar = () => {
         </S.NavbarButton>
       </S.NavbarLeftList>
       <S.NavbarRightList>
-        {navMenu.map((menu) => {
-          return (
-            <Button
-              height="4.5rem"
-              fontSize="2rem"
-            >
-              {menu}
-            </Button>
-          )
-        })}
+        {navMenu.map((menu) => (
+          <Button
+            height="4.5rem"
+            fontSize="2rem"
+          >
+            {menu}
+          </Button>
+        ))}
 
         <S.NavbarProfile src={profile} />
       </S.NavbarRightList>
