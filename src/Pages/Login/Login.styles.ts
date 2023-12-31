@@ -23,7 +23,7 @@ export const ServiceLogo = styled.img`
   border-radius: 50%;
 `
 
-export const LoginInfoContainer = styled.div`
+export const LoginFormContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -39,6 +39,7 @@ export const ServiceInfoComponent = styled.div`
 `
 export const LoginComponent = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 50%;

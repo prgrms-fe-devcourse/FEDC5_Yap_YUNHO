@@ -1,3 +1,5 @@
+import LoginComponent from "./Components/LoginComponent"
+
 import * as S from "./Login.styles"
 import { Link } from "react-router-dom"
 import logo from "@/assets/logo.png"
@@ -13,10 +15,11 @@ export default function Login() {
           />
         </S.ServiceLogoContainer>
       </Link>
-      <S.LoginInfoContainer>
+      <S.LoginFormContainer>
         <S.ServiceInfoComponent>Service Info Component</S.ServiceInfoComponent>
-        <S.LoginComponent>Login Component</S.LoginComponent>
-      </S.LoginInfoContainer>
+
+        <LoginComponent></LoginComponent>
+      </S.LoginFormContainer>
     </S.LoginLayout>
   )
 }
