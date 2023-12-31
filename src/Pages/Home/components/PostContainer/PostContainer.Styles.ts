@@ -22,6 +22,7 @@ export const PostMainItem = styled.div`
   top: calc(50% - 30rem);
   left: calc(50% - 24rem);
 
+  // 이후 변수 관리
   background-color: blue;
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
@@ -39,6 +40,7 @@ export const PostSubItem = styled.div<{ $isLeft: boolean }>`
   left: ${({ $isLeft }) => $isLeft && `calc(28% - 19.2rem)`};
   right: ${({ $isLeft }) => !$isLeft && `calc(28% - 19.2rem)`};
 
+  // 이후 변수 관리
   background-color: red;
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
@@ -56,9 +58,23 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
   left: ${({ $isLeft }) => $isLeft && `calc(11% - 14.4rem)`};
   right: ${({ $isLeft }) => !$isLeft && `calc(11% - 14.4rem)`};
 
+  // 이후 변수 관리
   background-color: orange;
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
   opacity: 0.5;
   z-index: 1;
+`
+
+export const ArrowIcon = styled.span<{ $isLeft: boolean }>`
+  position: absolute;
+  left: ${({ $isLeft }) => $isLeft && "3rem"};
+  right: ${({ $isLeft }) => !$isLeft && "3rem"};
+
+  // 이후 변수 관리
+  font-size: 6rem;
+
+  user-select: none;
+  cursor: pointer;
+  z-index: 4;
 `
