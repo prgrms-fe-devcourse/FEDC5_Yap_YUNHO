@@ -13,17 +13,19 @@ export const NavbarLayout = styled.section`
 export const NavbarLeftList = styled.div`
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 `
-
-export const NavbarSearchButton = styled.button``
 
 export const NavbarButton = styled.button`
-  font-size: fontSize;
+  svg {
+    font-size: 3rem;
+  }
 `
 export const NavbarLogo = styled.img`
-  width: 6rem;
-  height: 6rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  cursor: pointer;
 `
 
 export const NavbarRightList = styled.div`
@@ -34,4 +36,6 @@ export const NavbarRightList = styled.div`
 export const NavbarProfile = styled.img`
   width: 6rem;
   height: 6rem;
+  border-radius: 50%;
+  cursor: pointer;
 `

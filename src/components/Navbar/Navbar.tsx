@@ -1,26 +1,41 @@
 import * as S from "./Navbar.Styles"
 import logo from "../../assets/logo.png"
-import profile from "../../assets/logo.png"
+import profile from "../../assets/profile.png"
+import Button from "../Button/Button"
+import { useNavigate } from "react-router-dom"
+import SearchIcon from "@mui/icons-material/Search"
+
+const navMenu = ["게시물 생성", "DM", "알림", "로그인"]
 
 const Navbar = () => {
+  const navigate = useNavigate()
   return (
     <S.NavbarLayout>
       <S.NavbarLeftList>
-        <S.NavbarLogo
-          src={logo}
-          alt="로고"
-        />
-        <S.NavbarSearchButton>검색</S.NavbarSearchButton>
+        <S.NavbarButton onClick={() => navigate("/")}>
+          <S.NavbarLogo
+            src={logo}
+            alt="로고"
+          />
+        </S.NavbarButton>
+        {/* 나중에 SearchModal과 연결 */}
+        <S.NavbarButton>
+          <SearchIcon />
+        </S.NavbarButton>
       </S.NavbarLeftList>
       <S.NavbarRightList>
-        <S.NavbarButton>게시물 생성</S.NavbarButton>
-        <S.NavbarButton>DM</S.NavbarButton>
-        <S.NavbarButton>알림</S.NavbarButton>
-        <S.NavbarButton>로그인</S.NavbarButton>
-        <S.NavbarProfile
-          src={profile}
-          alt="프로필"
-        />
+        {navMenu.map((menu) => {
+          return (
+            <Button
+              height="4.5rem"
+              fontSize="2rem"
+            >
+              {menu}
+            </Button>
+          )
+        })}
+
+        <S.NavbarProfile src={profile} />
       </S.NavbarRightList>
     </S.NavbarLayout>
   )
