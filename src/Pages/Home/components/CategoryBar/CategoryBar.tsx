@@ -18,12 +18,12 @@ const CategoryBar = ({
     <S.CategoryBarLayout>
       <S.CategoryBarList>
         {categoryList &&
-          categoryList.map((item) => (
+          categoryList.map((category) => (
             <S.CategoryBarListItem
-              key={item.id}
-              isSelect={selectedCategory.id === item.id}
+              key={category.id}
+              isSelect={selectedCategory.id === category.id}
             >
-              <p>{item.name}</p>
+              <p>{category.name}</p>
             </S.CategoryBarListItem>
           ))}
       </S.CategoryBarList>
