@@ -33,7 +33,12 @@ const Navbar = () => {
           </Button>
         ))}
 
-        <S.NavbarProfile src={profile} />
+        <S.NavbarButton>
+          <S.NavbarProfile
+            src={profile}
+            alt="프로필"
+          />
+        </S.NavbarButton>
       </S.NavbarRightList>
     </S.NavbarLayout>
   )
