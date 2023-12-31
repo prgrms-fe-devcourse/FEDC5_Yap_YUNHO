@@ -1,24 +1,36 @@
-import { useState } from "react"
-import LoginEmailInput from "./LoginEmailInput"
-import LoginPasswordInput from "./LoginPasswordInput"
+import { useRef } from "react"
+import LoginInput from "./LoginInput"
 
-const LoginComponent = () => {
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" })
+const LoginComponent2 = () => {
+  const userInfoRef = useRef({ Email: "", Password: "" })
 
-  const updateEmail = (email: string) => {
-    setUserInfo((userInfo) => ({ ...userInfo, email }))
+  const updateUserInfo = (value: string, type: string) => {
+    if (type === "Email") {
+      userInfoRef.current.Email = value
+    } else if (type === "Password") {
+      userInfoRef.current.Password = value
+    }
   }
-  const updatePassword = (password: string) => {
-    setUserInfo((userInfo) => ({ ...userInfo, password }))
+
+  const loginAction = () => {
+    /** validation 통과한 Email, Password 일 경우에만 로그인 가능하도록 */
+    const { Email, Password } = userInfoRef.current
+    console.log(Email, Password)
   }
 
   return (
     <div>
-      <LoginEmailInput updateEmail={updateEmail}></LoginEmailInput>
-      <LoginPasswordInput updatePassword={updatePassword}></LoginPasswordInput>
-      <button onClick={() => console.log(userInfo)}> Login</button>
+      <LoginInput
+        updateUserInfo={updateUserInfo}
+        type="Email"
+      ></LoginInput>
+      <LoginInput
+        updateUserInfo={updateUserInfo}
+        type="Password"
+      ></LoginInput>
+      <button onClick={loginAction}> Login</button>
     </div>
   )
 }
 
-export default LoginComponent
+export default LoginComponent2

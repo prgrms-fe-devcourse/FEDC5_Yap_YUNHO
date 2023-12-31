@@ -37,12 +37,3 @@ export const ServiceInfoComponent = styled.div`
   justify-content: center;
   align-items: center;
 `
-export const LoginComponent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-
-  text-align: center;
-`
