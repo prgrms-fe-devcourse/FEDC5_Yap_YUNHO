@@ -25,7 +25,6 @@ export const NavbarLogo = styled.img`
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-  cursor: pointer;
 `
 
 export const NavbarRightList = styled.div`
@@ -37,5 +36,4 @@ export const NavbarProfile = styled.img`
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
-  cursor: pointer;
 `
