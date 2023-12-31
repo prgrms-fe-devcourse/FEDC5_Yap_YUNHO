@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import useCategoryListStore from "../../../../Stores/useCategoryListStore"
 import * as S from "./CategoryBar.Styles"
 import { CategoryBarProps } from "./CategoryBar.Types"
@@ -6,7 +6,7 @@ import { CategoryBarProps } from "./CategoryBar.Types"
 const CategoryBar = ({
   selectedCategory,
   onSelected,
-}: CategoryBarProps): JSX.Element => {
+}: CategoryBarProps): React.ReactNode => {
   const { categoryList, fetchCategoryList } = useCategoryListStore()
 
   useEffect(() => {
