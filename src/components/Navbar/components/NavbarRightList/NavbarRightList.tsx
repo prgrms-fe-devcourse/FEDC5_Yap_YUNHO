@@ -2,12 +2,12 @@ import Button from "../../../Button/Button"
 import { NavbarButton } from "../../Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import profile from "../../../../assets/profile.png"
-const navMenu = ["게시물 생성", "DM", "알림", "로그인"]
+import { NAV_MENU_LIST } from "../../../../constants/Stores"
 
 const NavbarRightList = () => {
   return (
     <S.NavbarRightListlayout>
-      {navMenu.map((menu) => (
+      {NAV_MENU_LIST.map((menu) => (
         <Button
           height="4.5rem"
           fontSize="2rem"
