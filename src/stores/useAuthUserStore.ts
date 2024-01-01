@@ -4,6 +4,7 @@ import { User } from "../types"
 import { AUTH_USER_INITIAL_USER_DATA } from "../constants/stores"
 import authToken from "./AuthToken"
 
+
 interface AuthUserStore {
   isLoggedIn: boolean
   user: User
@@ -15,7 +16,6 @@ const useAuthUserStore = create<AuthUserStore>()(
   devtools((set) => ({
     isLoggedIn: false,
     user: AUTH_USER_INITIAL_USER_DATA,
-
     setLogin: (user, token) => {
       authToken.setToken(token)
       set(() => ({
@@ -30,6 +30,7 @@ const useAuthUserStore = create<AuthUserStore>()(
         user: AUTH_USER_INITIAL_USER_DATA,
       }))
     },
+
   })),
 )
 
