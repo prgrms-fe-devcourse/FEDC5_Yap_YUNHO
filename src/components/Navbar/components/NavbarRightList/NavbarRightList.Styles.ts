@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const NavbarRightListlayout = styled.div`
+export const NavbarRightListLayout = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;

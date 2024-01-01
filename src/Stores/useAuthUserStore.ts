@@ -1,9 +1,8 @@
 import { create } from "zustand"
 import { devtools } from "zustand/middleware"
-import { User } from "../Types"
+import { User } from "../types"
 import { AUTH_USER_INITIAL_USER_DATA } from "../constants/stores"
 import authToken from "./AuthToken"
-
 
 interface AuthUserStore {
   isLoggedIn: boolean

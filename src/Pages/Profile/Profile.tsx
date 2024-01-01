@@ -1,9 +1,9 @@
-import UserAction from "./Components/UserAction/UserAction"
-import UserFollowInfo from "./Components/UserFollowInfo"
-import UserNickname from "./Components/UserNickname"
-import UserPostFilter from "./Components/UserPostFilter/UserPostFilter"
-import UserPostList from "./Components/UserPostList"
-import UserProfileImage from "./Components/UserProfileImage"
+import UserAction from "./components/UserAction/UserAction"
+import UserFollowInfo from "./components/UserFollowInfo"
+import UserNickname from "./components/UserNickname"
+import UserPostFilter from "./components/UserPostFilter/UserPostFilter"
+import UserPostList from "./components/UserPostList"
+import UserProfileImage from "./components/UserProfileImage"
 
 const Profile = () => {
   return (
