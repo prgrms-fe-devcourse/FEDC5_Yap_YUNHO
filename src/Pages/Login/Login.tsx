@@ -15,7 +15,7 @@ export default function Login() {
         </S.ServiceLogoContainer>
       </Link>
       <S.LoginFormContainer>
-        <S.ServiceInfoComponent>Service Info Component</S.ServiceInfoComponent>
+        <S.ServiceInfoContainer>Service Info Component</S.ServiceInfoContainer>
 
         <LoginComponent></LoginComponent>
       </S.LoginFormContainer>

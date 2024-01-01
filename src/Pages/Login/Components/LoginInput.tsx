@@ -1,4 +1,5 @@
 import React from "react"
+import * as S from "./LoginInput.Styles"
 
 interface LoginInputPropType {
   updateUserInfo: Function
@@ -7,12 +8,13 @@ interface LoginInputPropType {
 
 const LoginInput: React.FC<LoginInputPropType> = ({ updateUserInfo, type }) => {
   return (
-    <div style={{ margin: "2rem" }}>
-      <input
+    <S.LoginInputLayout>
+      <S.Input
         type={type === "Password" ? "password" : "text"}
+        placeholder={type === "Password" ? "비밀번호" : "이메일"}
         onChange={(event) => updateUserInfo(event.target.value, type)}
-      ></input>
-    </div>
+      ></S.Input>
+    </S.LoginInputLayout>
   )
 }
 

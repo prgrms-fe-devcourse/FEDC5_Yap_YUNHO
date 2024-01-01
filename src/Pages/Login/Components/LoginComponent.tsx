@@ -1,7 +1,8 @@
 import { useRef } from "react"
 import LoginInput from "./LoginInput"
+import * as S from "./LoginComponent.Styles"
 
-const LoginComponent2 = () => {
+const LoginComponent = () => {
   const userInfoRef = useRef({ Email: "", Password: "" })
 
   const updateUserInfo = (value: string, type: string) => {
@@ -19,7 +20,8 @@ const LoginComponent2 = () => {
   }
 
   return (
-    <div>
+    <S.LoginComponentLayout>
+      <S.LoginComponentTitle>로그인</S.LoginComponentTitle>
       <LoginInput
         updateUserInfo={updateUserInfo}
         type="Email"
@@ -28,9 +30,17 @@ const LoginComponent2 = () => {
         updateUserInfo={updateUserInfo}
         type="Password"
       ></LoginInput>
-      <button onClick={loginAction}> Login</button>
-    </div>
+      <S.ButtonContainer>
+        <S.Button
+          onClick={loginAction}
+          style={{ backgroundColor: "#F9B17A" }}
+        >
+          Login
+        </S.Button>
+        <S.Button style={{ backgroundColor: "#676F9D" }}>Cancel</S.Button>
+      </S.ButtonContainer>
+    </S.LoginComponentLayout>
   )
 }
 
-export default LoginComponent2
+export default LoginComponent

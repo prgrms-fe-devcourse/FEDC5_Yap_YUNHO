@@ -26,11 +26,19 @@ export const ServiceLogo = styled.img`
 export const LoginFormContainer = styled.div`
   display: flex;
   flex-direction: row;
+  color: white;
   width: 100%;
   height: calc(100% - 12rem);
 `
-export const ServiceInfoComponent = styled.div`
+
+export const ServiceLogoTitle = styled.h1`
+  padding: 1rem;
+  font-size: 3rem;
+`
+
+export const ServiceInfoContainer = styled.div`
   display: flex;
+  min-width: 50%;
   width: 50%;
 
   border-right: 0.1rem solid black;
