@@ -16,6 +16,7 @@ const useAuthUserStore = create<AuthUserStore>()(
   devtools((set) => ({
     isLoggedIn: false,
     user: AUTH_USER_INITIAL_USER_DATA,
+
     setLogin: (user, token) => {
       authToken.setToken(token)
       set(() => ({
@@ -30,7 +31,6 @@ const useAuthUserStore = create<AuthUserStore>()(
         user: AUTH_USER_INITIAL_USER_DATA,
       }))
     },
-
   })),
 )
 
