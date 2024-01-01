@@ -1,6 +1,6 @@
 import axios from "axios"
 import authToken from "../stores/AuthToken"
-import { API_ERROR_MESSAGE } from "../constants/ErrorMessage"
+import { API_ERROR_MESSAGE } from "../constants/errorMessage"
 
 const { VITE_API_BASE_URL } = import.meta.env
 
@@ -11,6 +11,7 @@ const API_JWT = axios.create({
     Authorization: authToken.getToken(),
   },
 })
+const typeCheck = Object.prototype.toString
 
 export const GET_API_JWT = async (path: string) => {
   try {
@@ -24,8 +25,8 @@ export const GET_API_JWT = async (path: string) => {
 
 export const POST_API_JWT = async (path: string, data: object) => {
   try {
-    if (!(data instanceof Object)) {
-      return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
+    if (typeCheck.call(data) !== "[object Object]") {
+      return console.error(API_ERROR_MESSAGE.CHECK_IS_OBJECT)
     }
 
     const res = await API_JWT.post(path, data)
@@ -37,8 +38,8 @@ export const POST_API_JWT = async (path: string, data: object) => {
 
 export const DELETE_API_JWT = async (path: string, data: object) => {
   try {
-    if (!(data instanceof Object)) {
-      return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
+    if (typeCheck.call(data) !== "[object Object]") {
+      return console.error(API_ERROR_MESSAGE.CHECK_IS_OBJECT)
     }
 
     const res = await API_JWT.delete(path, {
@@ -53,8 +54,8 @@ export const DELETE_API_JWT = async (path: string, data: object) => {
 
 export const PUT_API_JWT = async (path: string, data: object) => {
   try {
-    if (!(data instanceof Object)) {
-      return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
+    if (typeCheck.call(data) !== "[object Object]") {
+      return console.error(API_ERROR_MESSAGE.CHECK_IS_OBJECT)
     }
 
     const res = await API_JWT.put(path, data)
