@@ -1,3 +1,4 @@
 export const API_ERROR_MESSAGE = {
-  CHECK_ARRAY: "is Array ❌",
+  CHECK_ARRAY: "Array is not available. ❌",
+  CHECK_FUNCTION: "Function is not available.",
 }
