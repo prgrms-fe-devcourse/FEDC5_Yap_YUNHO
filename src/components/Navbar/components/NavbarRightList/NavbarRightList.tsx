@@ -6,7 +6,7 @@ import { NAV_MENU_LIST } from "@/constants/stores"
 
 const NavbarRightList = () => {
   return (
-    <S.NavbarRightListlayout>
+    <S.NavbarRightListLayout>
       {NAV_MENU_LIST.map((menu) => (
         <Button
           height="4.5rem"
@@ -22,7 +22,7 @@ const NavbarRightList = () => {
           alt="프로필"
         />
       </NavbarButton>
-    </S.NavbarRightListlayout>
+    </S.NavbarRightListLayout>
   )
 }
 
