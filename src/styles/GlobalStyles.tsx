@@ -25,6 +25,7 @@ body{
   line-height: 1;
   font-family: 'Noto Sans KR', sans-serif;
 
+
   background-color: ${({ theme }) => theme.colors.main};
 
 }
@@ -44,7 +45,6 @@ button {
   background: transparent;
   cursor: pointer;
 }
-
 
 
 input{
