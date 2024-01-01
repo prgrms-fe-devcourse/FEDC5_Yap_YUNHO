@@ -22,6 +22,7 @@ const CategoryBar = ({
             <S.CategoryBarListItem
               key={category.id}
               $isSelect={selectedCategory.id === category.id}
+              onClick={() => onSelected(category)}
             >
               <p>{category.name}</p>
             </S.CategoryBarListItem>
