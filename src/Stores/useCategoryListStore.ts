@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { Category } from "../Pages/Home/components/CategoryBar/CategoryBar.Types"
+import { Category } from "@/Pages/Home/components/CategoryBar/CategoryBar.Types"
 
 // API 구현 이전까지 테스트 값
 const DUMMY_CATEGORY_LIST: Category[] = [
