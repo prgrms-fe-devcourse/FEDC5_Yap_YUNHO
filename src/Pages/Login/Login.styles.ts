@@ -1,4 +1,3 @@
-import { theme } from "@/styles/Theme"
 import styled from "styled-components"
 
 export const LoginLayout = styled.div`
