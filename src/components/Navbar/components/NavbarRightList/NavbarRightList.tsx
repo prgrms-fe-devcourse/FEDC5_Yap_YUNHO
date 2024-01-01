@@ -2,7 +2,7 @@ import Button from "../../../Button/Button"
 import { NavbarButton } from "../../Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import profile from "../../../../assets/profile.png"
-import { NAV_MENU_LIST } from "@/constants/Stores"
+import { NAV_MENU_LIST } from "@/constants/stores"
 
 const NavbarRightList = () => {
   return (
