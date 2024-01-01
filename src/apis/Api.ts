@@ -24,7 +24,6 @@ export const POST_API = async (path: string, data: object) => {
     if (typeCheck.call(data) !== "[object Object]") {
       return console.error(API_ERROR_MESSAGE.CHECK_IS_OBJECT)
     }
-
     const res = await API.post(path, data)
     return res
   } catch (e) {

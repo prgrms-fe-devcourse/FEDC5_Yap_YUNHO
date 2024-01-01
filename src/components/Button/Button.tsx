@@ -6,7 +6,7 @@ interface ButtonProps {
   height: string
   color?: string
   fontSize: string
-  fontColor?: string
+  $fontColor?: string
   children: ReactNode
   onClick?: () => void
 }
@@ -15,7 +15,7 @@ const Button = ({
   height = "4.5rem",
   color = "#F6F9F0",
   fontSize = "2rem",
-  fontColor = "#000",
+  $fontColor = "#000",
   children,
   ...rest
 }: ButtonProps) => {
@@ -24,7 +24,7 @@ const Button = ({
       height={height}
       color={color}
       fontSize={fontSize}
-      fontColor={fontColor}
+      $fontColor={$fontColor}
       {...rest}
     >
       {children}

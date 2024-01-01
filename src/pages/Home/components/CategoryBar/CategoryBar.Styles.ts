@@ -23,7 +23,7 @@ export const CategoryBarList = styled.ul`
   font-size: 1.6rem;
 `
 
-export const CategoryBarListItem = styled.li<{ isSelect: boolean }>`
+export const CategoryBarListItem = styled.li<{ $isSelect: boolean }>`
   height: 3.2rem;
   padding: 0 1rem;
   margin: 0 1rem;
@@ -33,7 +33,7 @@ export const CategoryBarListItem = styled.li<{ isSelect: boolean }>`
   justify-content: center;
 
   /* 이후 변수 관리 */
-  background-color: ${(props) => (props.isSelect ? "#fff" : "#e9e9e9")};
+  background-color: ${(props) => (props.$isSelect ? "#fff" : "#e9e9e9")};
   border-radius: 8px;
 
   user-select: none;
