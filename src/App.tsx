@@ -1,4 +1,4 @@
-import YAPRoute from "./Routes"
+import YAPRoute from "@/Routes"
 
 const App = () => {
   return <YAPRoute />

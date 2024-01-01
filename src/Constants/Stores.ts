@@ -1,4 +1,4 @@
-import { User } from "../Types"
+import { User } from "@/types"
 
 export const AUTH_USER_INITIAL_USER_DATA: User = {
   coverImage: "",

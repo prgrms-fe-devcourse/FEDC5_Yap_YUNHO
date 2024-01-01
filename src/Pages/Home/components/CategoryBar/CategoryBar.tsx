@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import useCategoryListStore from "../../../../Stores/useCategoryListStore"
+import useCategoryListStore from "../../../../stores/useCategoryListStore"
 import * as S from "./CategoryBar.Styles"
 import { CategoryBarProps } from "./CategoryBar.Types"
 
