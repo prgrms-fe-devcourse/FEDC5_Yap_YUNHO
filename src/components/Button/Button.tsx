@@ -8,6 +8,7 @@ interface ButtonProps {
   fontSize: string
   fontColor?: string
   children: ReactNode
+  onClick?: () => void
 }
 
 const Button = ({
