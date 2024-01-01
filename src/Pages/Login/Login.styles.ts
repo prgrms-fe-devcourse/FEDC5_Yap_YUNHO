@@ -1,3 +1,4 @@
+import { theme } from "@/styles/Theme"
 import styled from "styled-components"
 
 export const LoginLayout = styled.div`
@@ -6,11 +7,22 @@ export const LoginLayout = styled.div`
 `
 
 export const ServiceLogoContainer = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 12rem;
   border-bottom: 0.1rem solid black;
   font-size: 3rem;
+  background-color: ${({ theme }) => theme.colors.sub};
 `
+
+export const ServiceLogo = styled.img`
+  width: 6rem;
+  height: 6rem;
+  background-color: ${({ theme }) => theme.colors.point};
+  border-radius: 50%;
+`
+
 export const LoginInfoContainer = styled.div`
   display: flex;
   flex-direction: row;
