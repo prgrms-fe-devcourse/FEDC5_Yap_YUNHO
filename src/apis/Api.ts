@@ -1,11 +1,10 @@
 import axios from "axios"
-import { API_ERROR_MESSAGE } from "../constants/errorMessage"
+import { API_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const { VITE_API_BASE_URL } = import.meta.env
 
 const API = axios.create({
   baseURL: VITE_API_BASE_URL,
-  // 요청이 `timeout`보다 오래 걸리면 요청이 중단됩니다.
   timeout: 2000,
 })
 const typeCheck = Object.prototype.toString

@@ -1,6 +1,6 @@
 import axios from "axios"
-import authToken from "../stores/AuthToken"
-import { API_ERROR_MESSAGE } from "../constants/errorMessage"
+import authToken from "@/stores/AuthToken"
+import { API_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const { VITE_API_BASE_URL } = import.meta.env
 
