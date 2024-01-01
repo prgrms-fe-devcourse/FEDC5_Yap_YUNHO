@@ -9,7 +9,7 @@ export const Input = styled.input`
   min-width: 20rem;
   min-height: 3rem;
   border: 0.1rem solid gray;
-  border-radius: 0.4rem;
+  border-radius: ${({ theme }) => theme.radius.size4};
   &::placeholder {
     font-size: 1rem;
   }

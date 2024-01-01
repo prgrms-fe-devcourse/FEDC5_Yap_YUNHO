@@ -11,10 +11,10 @@ export const LoginComponentLayout = styled.div`
   height: 50%;
   position: relative;
   top: 20%;
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
 `
 export const LoginComponentTitle = styled.h1`
-  font-size: 2rem;
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
 export const ButtonContainer = styled.div`
@@ -34,7 +34,9 @@ export const Button = styled.div`
   min-height: 3rem;
 
   border: 0.1rem solid gray;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
+  border-radius: ${({ theme }) => theme.radius.size4};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
   font-weight: bold;
+
+  cursor: pointer;
 `
