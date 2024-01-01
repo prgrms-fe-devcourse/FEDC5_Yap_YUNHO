@@ -1,11 +1,6 @@
-
-import React from "react"
-import Navbar from "../../components/Navbar/Navbar"
-
-export default function Home() {
-  return <Navbar />
 import { useState } from "react"
 import * as S from "./Home.Styles"
+import Navbar from "../../components/Navbar/Navbar"
 import CategoryBar from "./components/CategoryBar/CategoryBar"
 import {
   Category,
@@ -24,6 +19,7 @@ const Home = () => {
 
   return (
     <S.HomeLayout>
+      <Navbar />
       <CategoryBar
         selectedCategory={selectedCategory}
         onSelected={onSelectedCategory}
