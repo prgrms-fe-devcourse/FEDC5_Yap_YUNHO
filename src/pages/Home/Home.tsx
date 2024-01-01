@@ -6,12 +6,11 @@ import {
   Category,
   OnSelectCategory,
 } from "./components/CategoryBar/CategoryBar.Types"
+import { INITIAL_CATEGORY } from "@/stores/useCategoryListStore"
 
 const Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState<Category>({
-    name: "전체",
-    id: "all",
-  })
+  const [selectedCategory, setSelectedCategory] =
+    useState<Category>(INITIAL_CATEGORY)
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)

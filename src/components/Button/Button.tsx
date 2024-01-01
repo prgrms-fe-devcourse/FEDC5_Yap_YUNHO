@@ -20,10 +20,10 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <S.ButtonLayout
-      height={height}
+      $height={height}
       color={color}
-      fontSize={fontSize}
-      fontColor={fontColor}
+      $fontSize={fontSize}
+      $fontColor={fontColor}
       {...rest}
     >
       {children}
