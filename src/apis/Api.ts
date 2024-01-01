@@ -21,7 +21,7 @@ export const GET_API = async (path: string) => {
 
 export const POST_API = async (path: string, data: object) => {
   try {
-    if (data instanceof Array) {
+    if (!(data instanceof Object)) {
       return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
     }
 

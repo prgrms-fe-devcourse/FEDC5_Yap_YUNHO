@@ -24,7 +24,7 @@ export const GET_API_JWT = async (path: string) => {
 
 export const POST_API_JWT = async (path: string, data: object) => {
   try {
-    if (data instanceof Array) {
+    if (!(data instanceof Object)) {
       return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
     }
 
@@ -37,7 +37,7 @@ export const POST_API_JWT = async (path: string, data: object) => {
 
 export const DELETE_API_JWT = async (path: string, data: object) => {
   try {
-    if (data instanceof Array) {
+    if (!(data instanceof Object)) {
       return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
     }
 
@@ -53,7 +53,7 @@ export const DELETE_API_JWT = async (path: string, data: object) => {
 
 export const PUT_API_JWT = async (path: string, data: object) => {
   try {
-    if (data instanceof Array) {
+    if (!(data instanceof Object)) {
       return console.error(API_ERROR_MESSAGE.CHECK_ARRAY)
     }
 
