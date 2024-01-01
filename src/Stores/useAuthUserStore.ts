@@ -4,6 +4,7 @@ import { User } from "../Types"
 import { AUTH_USER_INITIAL_USER_DATA } from "../Constants/Stores"
 import authToken from "./AuthToken"
 
+
 interface AuthUserStore {
   isLoggedIn: boolean
   user: User
