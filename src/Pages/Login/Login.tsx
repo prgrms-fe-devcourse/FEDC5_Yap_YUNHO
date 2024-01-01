@@ -3,14 +3,14 @@ import { Link } from "react-router-dom"
 
 export default function Login() {
   return (
-    <S.MainContainer>
+    <S.LoginLayout>
       <Link to="/">
-        <S.HeaderComponent>Service Logo</S.HeaderComponent>
+        <S.ServiceLogoContainer>Service Logo</S.ServiceLogoContainer>
       </Link>
-      <S.SubContainer>
+      <S.LoginInfoContainer>
         <S.ServiceInfoComponent>Service Info Component</S.ServiceInfoComponent>
         <S.LoginComponent>Login Component</S.LoginComponent>
-      </S.SubContainer>
-    </S.MainContainer>
+      </S.LoginInfoContainer>
+    </S.LoginLayout>
   )
 }

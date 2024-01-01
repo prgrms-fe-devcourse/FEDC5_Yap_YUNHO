@@ -21,6 +21,7 @@ body{
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #F6F9F0;
   margin-bottom: 100px;
+  height:100%
 }
 ol, ul{
   list-style: none;
@@ -30,8 +31,14 @@ button {
   background: transparent;
   cursor: pointer;
 }
+#root{
+  width: 100%;
+  height:100%
+
+}
 html{
   font-size : 62.5%;
+  height:100%
 }
 input{
   border : none;

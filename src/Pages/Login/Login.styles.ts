@@ -1,21 +1,21 @@
 import styled from "styled-components"
 
-export const MainContainer = styled.div`
+export const LoginLayout = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `
 
-export const HeaderComponent = styled.div`
+export const ServiceLogoContainer = styled.div`
   width: 100%;
-  height: 5vh;
+  height: 12rem;
   border-bottom: 0.1rem solid black;
   font-size: 3rem;
 `
-export const SubContainer = styled.div`
+export const LoginInfoContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 12rem);
 `
 export const ServiceInfoComponent = styled.div`
   display: flex;
