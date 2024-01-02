@@ -5,7 +5,7 @@ export const PostCardContentLayout = styled.div`
   height: 18%;
   margin-top: 3%;
   margin-left: 15%;
-  padding: 2%;
+  padding: 4%;
 
   border-radius: ${({ theme }) => theme.radius.size8};
   background-color: rgba(255, 255, 255, 0.7);
@@ -23,7 +23,8 @@ export const PostCardContentText = styled.h4<{ $textPercentage?: string }>`
   display: flex;
 
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
   font-size: ${({ $textPercentage }) =>
     $textPercentage ? $textPercentage : "100%"};
 
