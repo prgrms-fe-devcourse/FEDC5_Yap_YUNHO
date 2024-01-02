@@ -4,8 +4,8 @@ import { UseMediaPlayerStore } from "./useMediaPlayerStore.Types"
 
 const useMediaPlayerStore = create<UseMediaPlayerStore>()(
   devtools((set) => ({
-    playUrl: "https://www.youtube.com/watch?v=gwcw5S9HSUE",
-    isPlaying: false,
+    playUrl: "",
+    isPlaying: true,
     isMute: false,
     playRange: 0,
     volume: 0.2,
@@ -42,7 +42,7 @@ const useMediaPlayerStore = create<UseMediaPlayerStore>()(
       }
     },
 
-    changeUrl: ({ url }) => {
+    changeUrl: (url) => {
       set((store) => ({ ...store, playUrl: url }))
     },
   })),
