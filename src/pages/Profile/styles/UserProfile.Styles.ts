@@ -6,15 +6,23 @@ export const UserProfileSection = styled.section`
   align-items: center;
   margin: 4rem 0 2rem;
   padding: 4rem 0 0;
-  border-bottom: 1px solid;
+  border-bottom: 0.1rem solid;
 `
 export const UserProfileImageContainer = styled.div`
   height: 16rem;
   width: 16rem;
-  border-radius: 50%;
-  background-color: gray; //TODO: 컬러 변수로 등록하기?
+  border-radius: ${({ theme }) => theme.radius.circle};
+  background-color: ${({ theme }) => theme.colors.sub};
   overflow: hidden;
   margin-bottom: 2rem;
+`
+
+export const UserNicknameContainer = styled.div`
+  display: flex;
+  margin-bottom: 0.1rem;
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  color: ${({ theme }) => theme.colors.white};
 `
 
 export const UserActionSection = styled.section`
