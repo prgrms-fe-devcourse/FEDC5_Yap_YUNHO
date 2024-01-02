@@ -5,7 +5,7 @@ const colors = {
   sub: "#424769",
   sub_alt: "#676F9D",
   point: "#F9B17A",
-  point_alt: "FF7F50",
+  point_alt: "#FF7F50",
   black: "#000000",
   white: "#ffffff",
 }
