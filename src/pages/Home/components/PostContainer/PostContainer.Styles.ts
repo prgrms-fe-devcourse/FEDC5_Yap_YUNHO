@@ -4,6 +4,9 @@ export const PostContainerLayout = styled.div`
   width: 100%;
   flex-grow: 1;
 
+  display: flex;
+  align-items: center;
+
   position: relative;
   overflow-x: hidden;
 `
@@ -21,12 +24,15 @@ export const PostMainCard = styled.div`
   width: 48rem;
   min-width: 48rem;
 
-  top: calc(40% - 30rem);
   left: calc(50% - 24rem);
 
   border-radius: ${({ theme }) => theme.radius.size16};
 
   z-index: 3;
+
+  @media (max-height: 900px) {
+    align-self: flex-start;
+  }
 `
 
 export const PostSubCard = styled.div<{ $isLeft: boolean }>`
@@ -35,13 +41,15 @@ export const PostSubCard = styled.div<{ $isLeft: boolean }>`
   width: 38.4rem;
   min-width: 38.4rem;
 
-  top: calc(40% - 24rem);
   left: ${({ $isLeft }) => $isLeft && `calc(28% - 19.2rem)`};
   right: ${({ $isLeft }) => !$isLeft && `calc(28% - 19.2rem)`};
 
   border-radius: ${({ theme }) => theme.radius.size12};
 
   z-index: 2;
+  @media (max-height: 750px) {
+    align-self: flex-start;
+  }
 `
 
 export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
@@ -50,13 +58,15 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
   width: 28.8rem;
   min-width: 28.8rem;
 
-  top: calc(40% - 18rem);
   left: ${({ $isLeft }) => $isLeft && `calc(11% - 14.4rem)`};
   right: ${({ $isLeft }) => !$isLeft && `calc(11% - 14.4rem)`};
 
   border-radius: ${({ theme }) => theme.radius.size8};
 
   z-index: 1;
+  @media (max-height: 600px) {
+    align-self: flex-start;
+  }
 `
 
 export const ArrowIcon = styled.button<{ $isLeft: boolean }>`
