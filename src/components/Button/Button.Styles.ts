@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const ButtonLayout = styled.button<{
   height: string
+  color: string
   fontSize: string
   $fontColor: string
 }>`
@@ -18,7 +19,7 @@ export const ButtonLayout = styled.button<{
     opacity: 0.5;
     p {
       padding-bottom: 0.5rem;
-      border-bottom: 5px solid #f9b17a;
+      border-bottom: ${({ theme }) => `5px solid ${theme.colors.point}`};
     }
   }
 `

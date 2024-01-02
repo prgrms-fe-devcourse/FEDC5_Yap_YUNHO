@@ -1,4 +1,4 @@
-// NavButton.js
+import { theme } from "./../../styles/theme"
 import { ReactNode } from "react"
 import * as S from "./Button.Styles"
 
@@ -15,7 +15,7 @@ const Button = ({
   height = "4.5rem",
   color = "",
   fontSize = "2rem",
-  $fontColor = "#000",
+  $fontColor = `${theme.colors.white}`,
   children,
   ...rest
 }: ButtonProps) => {

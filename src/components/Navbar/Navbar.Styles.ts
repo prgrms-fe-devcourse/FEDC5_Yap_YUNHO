@@ -7,13 +7,13 @@ export const NavbarLayout = styled.section`
   justify-content: space-between;
   height: 12rem;
   padding: 2rem;
-  border-bottom: 0.1rem solid #000;
-  background-color: #676f9d;
+  border-bottom: ${({ theme }) => `0.1rem solid ${theme.colors.black}`};
+  background-color: ${({ theme }) => theme.colors.sub_alt};
 `
 
 export const NavbarButton = styled.button`
   svg {
     font-size: 3rem;
-    color: #f9b17a;
+    color: ${({ theme }) => theme.colors.point};
   }
 `

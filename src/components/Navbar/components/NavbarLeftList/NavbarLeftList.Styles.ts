@@ -7,7 +7,7 @@ export const NavbarLeftListLayout = styled.div`
 `
 
 export const NavbarLogo = styled.img`
-  background: #f9b17a;
+  background-color: ${({ theme }) => theme.colors.point};
   width: 9rem;
   height: 9rem;
   border-radius: 50%;
