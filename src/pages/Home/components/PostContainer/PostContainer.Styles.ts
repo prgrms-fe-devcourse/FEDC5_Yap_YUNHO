@@ -5,10 +5,6 @@ export const PostContainerLayout = styled.div`
   flex-grow: 1;
 
   position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `
 
 export const PostMainItem = styled.div`
