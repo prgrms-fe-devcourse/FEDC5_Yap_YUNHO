@@ -7,7 +7,6 @@ const postCardUserProfileStyle = css`
 export const PostCardUserProfileLayout = styled.div`
   ${postCardUserProfileStyle}
   height: 10%;
-  margin-top: 2%;
   margin-left: 5%;
 `
 
