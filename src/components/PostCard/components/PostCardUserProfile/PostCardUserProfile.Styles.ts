@@ -1,16 +1,20 @@
 import styled, { css } from "styled-components"
 
 const postCardUserProfileStyle = css`
-  width: 6rem;
-  height: 6rem;
   border-radius: ${({ theme }) => theme.radius.circle};
 `
 
 export const PostCardUserProfileLayout = styled.div`
   ${postCardUserProfileStyle}
-  margin-bottom: 1rem;
+  height: 10%;
+  margin-top: 2%;
+  margin-left: 5%;
 `
 
 export const PostCardUserProfileImg = styled.img`
   ${postCardUserProfileStyle}
+  height: 100%;
+  object-fit: cover;
+
+  border-radius: ${({ theme }) => theme.radius.circle};
 `
