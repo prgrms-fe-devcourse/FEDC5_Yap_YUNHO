@@ -25,6 +25,7 @@ const DUMMY_POST = {
 const PostCard = ({ textPercentage }: PostCardProps): React.ReactNode => {
   return (
     <S.PostCardLayout>
+      {/* 이후 Profile은 조건부 렌더링 적용 예정 */}
       <PostCardUserProfile imgUrl={DUMMY_POST.author.image} />
       <PostCardThumbnail imgUrl={DUMMY_POST.image} />
       <PostCardContent

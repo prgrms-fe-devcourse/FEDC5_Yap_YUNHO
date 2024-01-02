@@ -8,6 +8,8 @@ export const PostCardUserProfileLayout = styled.div`
   ${postCardUserProfileStyle}
   height: 10%;
   margin-left: 5%;
+
+  user-select: none;
 `
 
 export const PostCardUserProfileImg = styled.img`

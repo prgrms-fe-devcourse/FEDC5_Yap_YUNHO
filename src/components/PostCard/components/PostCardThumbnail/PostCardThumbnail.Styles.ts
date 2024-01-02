@@ -5,6 +5,8 @@ export const PostCardThumbnailLayout = styled.div`
   height: 38%;
   margin-top: 3%;
   margin-left: 5%;
+
+  user-select: none;
 `
 
 export const PostCardThumbnailImg = styled.img`
