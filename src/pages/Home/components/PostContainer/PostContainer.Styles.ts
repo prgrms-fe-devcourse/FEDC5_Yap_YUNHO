@@ -21,6 +21,7 @@ export const PostMainCard = styled.div`
   left: calc(50% - 24rem);
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
+  border-radius: ${({ theme }) => theme.radius.size16};
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
   z-index: 3;
@@ -37,6 +38,7 @@ export const PostSubCard = styled.div<{ $isLeft: boolean }>`
   right: ${({ $isLeft }) => !$isLeft && `calc(28% - 19.2rem)`};
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
+  border-radius: ${({ theme }) => theme.radius.size12};
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
   z-index: 2;
@@ -53,6 +55,7 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
   right: ${({ $isLeft }) => !$isLeft && `calc(11% - 14.4rem)`};
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
+  border-radius: ${({ theme }) => theme.radius.size8};
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
   z-index: 1;
