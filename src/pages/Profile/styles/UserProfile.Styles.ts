@@ -61,7 +61,7 @@ export const UserInfoButton = styled.button<{ mb?: number }>`
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.size8};
   margin-bottom: 0.5rem;
-  margin-bottom: ${(props) => props.mb ?? 0};
+  margin-bottom: 0;
   user-select: none;
   &:hover {
     background-color: ${({ theme }) => theme.colors.point_alt};
