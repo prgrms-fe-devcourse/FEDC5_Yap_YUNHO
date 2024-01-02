@@ -14,7 +14,7 @@ const postCardStyled = css`
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 `
 
-export const PostMainItem = styled.div`
+export const PostMainCard = styled.div`
   ${postCardStyled}
   height: 60rem;
   width: 48rem;
@@ -28,7 +28,7 @@ export const PostMainItem = styled.div`
   z-index: 3;
 `
 
-export const PostSubItem = styled.div<{ $isLeft: boolean }>`
+export const PostSubCard = styled.div<{ $isLeft: boolean }>`
   ${postCardStyled}
   height: 48rem;
   width: 38.4rem;
