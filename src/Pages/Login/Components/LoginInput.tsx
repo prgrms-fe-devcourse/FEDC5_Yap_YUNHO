@@ -1,4 +1,3 @@
-import React from "react"
 import * as S from "./LoginInput.Styles"
 
 type UpdateUserInfo = (value: string, type: string) => void
@@ -8,7 +7,7 @@ interface LoginInputPropType {
   type: string
 }
 
-const LoginInput: React.FC<LoginInputPropType> = ({ updateUserInfo, type }) => {
+const LoginInput = ({ updateUserInfo, type }: LoginInputPropType) => {
   return (
     <S.LoginInputLayout>
       <S.Input
