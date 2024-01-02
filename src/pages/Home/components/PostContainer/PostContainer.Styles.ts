@@ -52,7 +52,7 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
   z-index: 1;
 `
 
-export const ArrowIcon = styled.span<{ $isLeft: boolean }>`
+export const ArrowIcon = styled.button<{ $isLeft: boolean }>`
   position: absolute;
   left: ${({ $isLeft }) => $isLeft && "3rem"};
   right: ${({ $isLeft }) => !$isLeft && "3rem"};
