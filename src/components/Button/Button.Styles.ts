@@ -9,9 +9,9 @@ export const ButtonLayout = styled.button<{
   align-items: center;
   justify-content: center;
   padding: 1rem 1.4rem;
-  background-color: ${(props) => props.$color};
-  font-size: ${(props) => props.$fontSize};
-  color: ${(props) => props.$fontColor};
+  background-color: ${({ $color }) => $color};
+  font-size: ${({ $fontSize }) => $fontSize};
+  color: ${({ $fontColor }) => $fontColor};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   &:hover {
     opacity: 0.5;

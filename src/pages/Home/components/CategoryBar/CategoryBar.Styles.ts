@@ -20,7 +20,7 @@ export const CategoryBarList = styled.ul`
   justify-content: center;
 
   /* 이후 변수 관리 */
-  font-size: 1.6rem;
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 `
 
 export const CategoryBarListItem = styled.li<{ $isSelect: boolean }>`
