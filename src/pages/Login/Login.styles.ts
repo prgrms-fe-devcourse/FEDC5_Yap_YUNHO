@@ -34,11 +34,6 @@ export const LoginFormContainer = styled.div`
   min-width: 30rem;
 `
 
-export const ServiceLogoTitle = styled.h1`
-  padding: 1rem;
-  font-size: 3rem;
-`
-
 export const ServiceInfoContainer = styled.div`
   display: flex;
   min-width: 50%;
