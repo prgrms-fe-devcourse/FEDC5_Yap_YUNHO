@@ -15,11 +15,16 @@ const NavbarRightList = () => {
     // 로그인 일때
     if (menuTitle === "로그인") {
       handleLogin()
+    } else if (menuTitle === "로그아웃") {
+      handleLogout()
     }
   }
 
   const handleLogin = (): void => {
     setIsLoggedIn(true)
+  }
+  const handleLogout = (): void => {
+    setIsLoggedIn(false)
   }
 
   return (
