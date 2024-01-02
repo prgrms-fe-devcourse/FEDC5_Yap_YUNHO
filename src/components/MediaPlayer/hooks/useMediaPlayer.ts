@@ -51,6 +51,7 @@ const useMediaPlayer = () => {
   }
 
   const onChangeUrl: ChangeUrl = (url) => {
+    // 이후 EditPage 에서의 player의 초기화를 위한 조건 - 해당 주석 다음 PR에서 제거 예정
     if (url === MEDIA_PLAYER_EMPTY_URL_KEYWORD) {
       changeUrl("")
       return
