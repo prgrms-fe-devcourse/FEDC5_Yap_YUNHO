@@ -10,5 +10,5 @@ export const NavbarLogo = styled.img`
   background-color: ${({ theme }) => theme.colors.point};
   width: 9rem;
   height: 9rem;
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.radius.circle};
 `

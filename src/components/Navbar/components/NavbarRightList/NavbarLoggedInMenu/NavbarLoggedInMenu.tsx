@@ -1,16 +1,16 @@
 import Button from "@/components/Button/Button"
 import { HandleMenuClickProps } from "../NavbarRightList"
+import { theme } from "@/styles/theme"
 
 interface NavbarNotLoggedInMenuProps {
   handleMenuClick: HandleMenuClickProps
 }
-
 const NavbarLoggedInMenu = ({
   handleMenuClick,
 }: NavbarNotLoggedInMenuProps) => {
   return (
     <Button
-      $fontColor="#fff"
+      $fontColor={theme.colors.white}
       onClick={() => {
         handleMenuClick("로그아웃")
       }}
