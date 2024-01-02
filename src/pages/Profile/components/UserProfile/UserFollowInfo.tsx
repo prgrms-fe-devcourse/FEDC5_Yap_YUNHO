@@ -1,11 +1,12 @@
-import * as S from "@/pages/Profile/styles/UserProfile.styles"
+import * as PS from "../../styles/UserProfile.Styles"
+import * as S from "./UserProfile.Styles"
 
 const UserFollowInfo = () => {
   return (
     <S.UserFollowInfoSection>
-      <S.UserInfoContainer>팔로잉 500</S.UserInfoContainer>
+      <PS.UserInfoContainer>팔로잉 500</PS.UserInfoContainer>
       <S.UserFollowInfoDividerText>﹒</S.UserFollowInfoDividerText>
-      <S.UserInfoContainer>팔로워 123</S.UserInfoContainer>
+      <PS.UserInfoContainer>팔로워 123</PS.UserInfoContainer>
     </S.UserFollowInfoSection>
   )
 }
