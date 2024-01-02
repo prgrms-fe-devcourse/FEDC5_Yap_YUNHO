@@ -1,8 +1,11 @@
 import Button from "@/components/Button/Button"
 import { NAV_MENU_LIST } from "@/constants/stores"
-import { hanldleMenuClickProps } from "../NavbarRightList"
+import { HandleMenuClickProps } from "../NavbarRightList"
+interface NavbarLoggedInMenuProps {
+  handleMenuClick: HandleMenuClickProps
+}
 
-const NavbarLoggedInMenu = ({ handleMenuClick }: hanldleMenuClickProps) => {
+const NavbarLoggedInMenu = ({ handleMenuClick }: NavbarLoggedInMenuProps) => {
   return (
     <>
       {NAV_MENU_LIST.map((menu) => (

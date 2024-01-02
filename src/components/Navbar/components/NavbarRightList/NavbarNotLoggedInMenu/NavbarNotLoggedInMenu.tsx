@@ -1,6 +1,13 @@
 import Button from "@/components/Button/Button"
-import { hanldleMenuClickProps } from "../NavbarRightList"
-const NavbarNotLoggedInMenu = ({ handleMenuClick }: hanldleMenuClickProps) => {
+import { HandleMenuClickProps } from "../NavbarRightList"
+
+interface NavbarNotLoggedInMenuProps {
+  handleMenuClick: HandleMenuClickProps
+}
+
+const NavbarNotLoggedInMenu = ({
+  handleMenuClick,
+}: NavbarNotLoggedInMenuProps) => {
   return (
     <Button
       height="4.5rem"
