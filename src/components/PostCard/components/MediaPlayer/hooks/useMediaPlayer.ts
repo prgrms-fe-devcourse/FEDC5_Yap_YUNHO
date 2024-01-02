@@ -1,4 +1,4 @@
-import useMediaPlayerStore from "@/components/MediaPlayer/store/useMediaPlayerStore"
+import useMediaPlayerStore from "@/components/PostCard/components/MediaPlayer/store/useMediaPlayerStore"
 import { useRef } from "react"
 import ReactPlayer from "react-player"
 import {
