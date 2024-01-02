@@ -5,7 +5,7 @@ export type ChangePlayer = (params: {
   percentage: number
 }) => void
 
-export type ChangeUrl = (params: { url: string }) => void
+export type ChangeUrl = (url: string) => void
 
 export interface UseMediaPlayerStore {
   playUrl: string
