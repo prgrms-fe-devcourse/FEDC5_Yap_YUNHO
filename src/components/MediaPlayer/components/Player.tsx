@@ -1,8 +1,14 @@
-import { ChangeEvent, MouseEvent } from "react"
+import { ChangeEvent, MouseEvent, useEffect } from "react"
 import useMediaPlayer from "../hooks/useMediaPlayer"
 import ReactPlayer from "react-player"
 
-const Player = ({ isPending = true }: { isPending?: boolean }) => {
+const Player = ({
+  isBlock = false,
+  url,
+}: {
+  isBlock?: boolean
+  url: string
+}) => {
   const {
     playUrl,
     playerRef,
@@ -15,8 +21,12 @@ const Player = ({ isPending = true }: { isPending?: boolean }) => {
     onChangeUrl,
   } = useMediaPlayer()
 
+  useEffect(() => {
+    onChangeUrl(url)
+  }, [onChangeUrl, url])
+
   const handleClickPlayer = ({ target }: MouseEvent) => {
-    if (isPending) {
+    if (isBlock) {
       return
     }
 
@@ -32,7 +42,7 @@ const Player = ({ isPending = true }: { isPending?: boolean }) => {
   }
 
   const onChangeRangeInput = ({ target }: ChangeEvent) => {
-    if (isPending) {
+    if (isBlock) {
       return
     }
 
@@ -58,9 +68,9 @@ const Player = ({ isPending = true }: { isPending?: boolean }) => {
         <ReactPlayer
           url={playUrl}
           ref={playerRef}
-          playing={isPending ? false : isPlaying}
-          muted={isPending ? true : isMute}
-          volume={isPending ? 0 : volume}
+          playing={isBlock ? false : isPlaying}
+          muted={isBlock ? true : isMute}
+          volume={isBlock ? 0 : volume}
           config={{
             youtube: {
               playerVars: {
@@ -68,6 +78,7 @@ const Player = ({ isPending = true }: { isPending?: boolean }) => {
               },
             },
           }}
+          style={{ display: "none" }}
         />
       </li>
       <li>
@@ -90,7 +101,7 @@ const Player = ({ isPending = true }: { isPending?: boolean }) => {
         <input
           type={"range"}
           data-change-type="play"
-          value={playRange}
+          value={isBlock ? 0 : playRange}
           step="any"
           min={0}
           max={1}
@@ -102,7 +113,7 @@ const Player = ({ isPending = true }: { isPending?: boolean }) => {
         <input
           type={"range"}
           data-change-type="volume"
-          value={volume}
+          value={isBlock ? 0 : volume}
           step="any"
           min={0}
           max={1}
