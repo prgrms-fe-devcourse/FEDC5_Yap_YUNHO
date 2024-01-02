@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import "@/font/font.css"
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -23,7 +24,7 @@ body{
   width: 100%;
   height: 100%;
   line-height: 1;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "BMJUA",'Noto Sans KR', sans-serif;
 
 
   background-color: ${({ theme }) => theme.colors.main};
