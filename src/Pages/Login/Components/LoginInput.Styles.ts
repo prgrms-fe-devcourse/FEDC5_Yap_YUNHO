@@ -5,9 +5,10 @@ export const LoginInputLayout = styled.div`
 `
 export const Input = styled.input`
   padding: 0.5rem;
+  box-sizing: border-box;
   display: inline-block;
-  min-width: 20rem;
-  min-height: 3rem;
+  width: 100%;
+  min-height: 100%;
   border: 0.1rem solid gray;
   border-radius: ${({ theme }) => theme.radius.size4};
   &::placeholder {

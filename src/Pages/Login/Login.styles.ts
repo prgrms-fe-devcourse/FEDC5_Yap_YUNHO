@@ -5,13 +5,15 @@ export const LoginLayout = styled.div`
   height: 100%;
 `
 
-export const ServiceLogoContainer = styled.div`
+export const ServiceLogoContainer = styled.button`
   display: flex;
   align-items: center;
   width: 100%;
   height: 12rem;
   border-bottom: 0.1rem solid black;
   background-color: ${({ theme }) => theme.colors.sub};
+  position: relative;
+  z-index: 1;
 `
 
 export const ServiceLogo = styled.img`
@@ -19,7 +21,6 @@ export const ServiceLogo = styled.img`
   height: 6rem;
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.circle};
-  margin-left: 2rem;
 `
 
 export const LoginFormContainer = styled.div`
@@ -28,6 +29,8 @@ export const LoginFormContainer = styled.div`
   color: ${({ theme }) => theme.colors.white};
   width: 100%;
   height: calc(100% - 12rem);
+  min-height: 20rem;
+  min-width: 30rem;
 `
 
 export const ServiceLogoTitle = styled.h1`
@@ -38,8 +41,6 @@ export const ServiceLogoTitle = styled.h1`
 export const ServiceInfoContainer = styled.div`
   display: flex;
   min-width: 50%;
-  width: 50%;
-
   border-right: 0.1rem solid black;
   justify-content: center;
   align-items: center;
