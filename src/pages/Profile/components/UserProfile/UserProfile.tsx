@@ -1,4 +1,4 @@
-import * as S from "../../styles/UserProfile.styles"
+import * as S from "@/pages/Profile/styles/UserProfile.styles"
 import UserAction from "./UserAction/UserAction"
 import UserFollowInfo from "./UserFollowInfo"
 import UserNickname from "./UserNickname"
