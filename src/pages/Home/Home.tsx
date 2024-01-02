@@ -6,7 +6,7 @@ import {
   Category,
   OnSelectCategory,
 } from "./components/CategoryBar/CategoryBar.Types"
-import { INITIAL_CATEGORY } from "@/stores/useCategoryListStore"
+import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] =
