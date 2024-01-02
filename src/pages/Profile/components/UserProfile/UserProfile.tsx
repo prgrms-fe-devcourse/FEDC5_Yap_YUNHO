@@ -1,15 +1,15 @@
 import * as S from "@/pages/Profile/styles/UserProfile.styles"
-import UserAction from "./UserAction/UserAction"
 import UserFollowInfo from "./UserFollowInfo"
 import UserNickname from "./UserNickname"
 import UserProfileImage from "./UserProfileImage"
+import UserActions from "./UserAction/UserActions"
 
 const UserProfile = () => {
   return (
     <S.UserProfileSection>
       <UserProfileImage />
       <UserNickname />
-      <UserAction />
+      <UserActions />
       <UserFollowInfo />
     </S.UserProfileSection>
   )

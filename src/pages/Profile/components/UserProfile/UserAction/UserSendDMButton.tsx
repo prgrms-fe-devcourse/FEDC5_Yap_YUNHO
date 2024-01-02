@@ -1,7 +1,7 @@
 import * as S from "@/pages/Profile/styles/UserProfile.styles"
 
-const SendDirectMessageButton = () => {
+const UserSendDMButton = () => {
   return <S.UserInfoButton>DM 보내기</S.UserInfoButton>
 }
 
-export default SendDirectMessageButton
+export default UserSendDMButton
