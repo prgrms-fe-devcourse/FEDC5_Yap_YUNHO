@@ -17,6 +17,13 @@ export const UserProfileImageContainer = styled.div`
   margin-bottom: 2rem;
 `
 
+export const UserNickNameContainer = styled.div`
+  display: flex;
+  margin-bottom: 1.5rem;
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  color: ${({ theme }) => theme.colors.white};
+`
+
 export const UserActionSection = styled.section`
   margin-bottom: 2rem;
   display: flex;
@@ -27,7 +34,7 @@ export const UserActionSection = styled.section`
 export const UserFollowInfoSection = styled.section`
   display: flex;
   justify-content: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3.5rem;
 `
 
 export const UserFollowInfoDividerText = styled.span`
@@ -37,7 +44,7 @@ export const UserFollowInfoDividerText = styled.span`
 
 export const UserInfoContainer = styled.div`
   display: flex;
-  margin-bottom: 0.1rem;
+  margin-bottom: 1.5rem;
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   color: ${({ theme }) => theme.colors.white};
 `
@@ -46,12 +53,10 @@ export const UserInfoButton = styled.button<{ mb?: number }>`
   padding: 0.8rem 1.2rem;
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  letter-spacing: -0.032rem;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.radius.size8};
   border: 0.1rem solid ${({ theme }) => theme.colors.white};
   margin-bottom: 0.5rem;
-  color: 
   margin-bottom: ${(props) => props.mb ?? 0};
-  display: flex;
-  align-items: center;
 `
