@@ -5,7 +5,7 @@ export const LoginLayout = styled.div`
   height: 100%;
 `
 
-export const ServiceLogoContainer = styled.button`
+export const ServiceLogoContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -21,6 +21,7 @@ export const ServiceLogo = styled.img`
   height: 6rem;
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.circle};
+  margin: 0 2rem;
 `
 
 export const LoginFormContainer = styled.div`

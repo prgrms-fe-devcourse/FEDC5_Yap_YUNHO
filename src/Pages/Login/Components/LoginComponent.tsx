@@ -1,5 +1,5 @@
 import { useRef, useState, FormEvent } from "react"
-import LoginInput from "./LoginInput"
+import LoginInput from "./Input/LoginInput"
 import * as S from "./LoginComponent.Styles"
 import validateInputs from "../utils/validateInputs"
 
@@ -27,6 +27,7 @@ const LoginComponent = () => {
     setErrorMessage({ Email: "", Password: "" })
 
     console.log("로그인 시도!")
+    /** 추후 API 연결 */
     // 로그인 성공시 -> 홈화면으로 이동
     // 로그인 실패시 -> 없는 아이디면 잘못된 아이디 혹은 잘못된 비밀번호 입니다.
   }
@@ -58,9 +59,15 @@ const LoginComponent = () => {
             type="submit"
             action="login"
           >
-            Login
+            로그인
           </S.Button>
-          <S.Button action="cancel">Cancel</S.Button>
+          <S.Button
+            type="button"
+            action="cancel"
+            onClick={() => console.log("회원가입 창으로 이동")}
+          >
+            회원가입
+          </S.Button>
         </S.ButtonContainer>
       </S.LoginForm>
     </S.LoginComponentLayout>

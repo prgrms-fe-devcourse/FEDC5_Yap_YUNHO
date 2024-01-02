@@ -22,14 +22,14 @@ export const LoginForm = styled.form`
 `
 
 export const LoginInputContainer = styled.div`
-  height: 25%;
+  height: 28%;
   position: relative;
 `
 
 export const ErrorMessage = styled.div`
   position: absolute;
   bottom: 0;
-
+  font-size: ${({ theme }) => theme.fontSizes.semiSmall};
   color: red;
 `
 

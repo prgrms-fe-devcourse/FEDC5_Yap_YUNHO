@@ -18,6 +18,7 @@ const validateInputs = (Email: string, Password: string) => {
     isValid.Email = false
     errorMessage.Email = "유효한 이메일을 입력해주세요."
   }
+
   // 비밀번호 유효성 검사
   if (!validatePassword(Password)) {
     isValid.Password = false
