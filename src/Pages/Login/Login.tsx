@@ -5,14 +5,14 @@ import logo from "@/assets/logo.png"
 export default function Login() {
   return (
     <S.LoginLayout>
-      <Link to="/">
-        <S.ServiceLogoContainer>
+      <S.ServiceLogoContainer>
+        <Link to="/">
           <S.ServiceLogo
             src={logo}
             alt="로고"
           />
-        </S.ServiceLogoContainer>
-      </Link>
+        </Link>
+      </S.ServiceLogoContainer>
       <S.LoginInfoContainer>
         <S.ServiceInfoComponent>Service Info Component</S.ServiceInfoComponent>
         <S.LoginComponent>Login Component</S.LoginComponent>

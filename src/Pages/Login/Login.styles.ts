@@ -5,11 +5,12 @@ export const LoginLayout = styled.div`
   height: 100%;
 `
 
-export const ServiceLogoContainer = styled.div`
+export const ServiceLogoContainer = styled.button`
   display: flex;
   align-items: center;
   width: 100%;
   height: 12rem;
+
   border-bottom: 0.1rem solid black;
   font-size: 3rem;
   background-color: ${({ theme }) => theme.colors.sub};
