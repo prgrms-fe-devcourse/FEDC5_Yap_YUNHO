@@ -13,7 +13,7 @@ interface ButtonProps {
 
 const Button = ({
   height = "4.5rem",
-  color = "#F6F9F0",
+  color = "none",
   fontSize = "2rem",
   $fontColor = "#000",
   children,

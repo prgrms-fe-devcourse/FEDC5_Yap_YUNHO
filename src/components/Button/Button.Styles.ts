@@ -13,9 +13,12 @@ export const ButtonLayout = styled.button<{
   background-color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
   color: ${(props) => props.$fontColor};
-  border-radius: 1rem;
   font-weight: 600;
   &:hover {
-    background-color: #e9ecef;
+    opacity: 0.5;
+    p {
+      padding-bottom: 0.5rem;
+      border-bottom: 5px solid #f9b17a;
+    }
   }
 `

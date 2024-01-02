@@ -15,11 +15,12 @@ const NavbarNotLoggedInMenuProps = ({
           height="4.5rem"
           fontSize="2rem"
           key={menu.title}
+          $fontColor="#fff"
           onClick={() => {
             handleMenuClick(menu.title)
           }}
         >
-          {menu.title}
+          <p>{menu.title}</p>
         </Button>
       ))}
     </>
