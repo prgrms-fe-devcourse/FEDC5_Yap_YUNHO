@@ -24,7 +24,7 @@ const useAuthUserStore = create<AuthUserStore>()(
       }))
     },
     setLogout: () => {
-      authToken.setToken("")
+      authToken.removeToken("")
       set(() => ({
         isLoggedIn: false,
         user: AUTH_USER_INITIAL_USER_DATA,

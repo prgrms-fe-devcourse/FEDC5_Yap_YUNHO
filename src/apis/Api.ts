@@ -21,12 +21,21 @@ export const GET_API = async (path: string) => {
 
 export const POST_API = async (path: string, data: object) => {
   try {
-    if (typeCheck.call(data) !== "[object Object]") {
+    if (data && typeCheck.call(data) !== "[object Object]") {
       return console.error(API_ERROR_MESSAGE.CHECK_IS_OBJECT)
     }
     const res = await API.post(path, data)
     return res
   } catch (e) {
     console.error(e)
+  }
+}
+
+export const LogoutAPI = async (path: string) => {
+  try {
+    const res = await API.post(path)
+    return res
+  } catch (e) {
+    console.log(e)
   }
 }

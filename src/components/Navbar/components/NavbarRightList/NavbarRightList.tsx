@@ -4,34 +4,58 @@ import {
 } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import profile from "@/assets/profile.png"
-import { useState } from "react"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
 import MenuIcon from "@mui/icons-material/Menu"
+import { LogoutAPI, POST_API } from "@/apis/Api"
+import { AxiosResponse } from "axios"
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import { useEffect } from "react"
 
 export type HandleMenuClickProps = (menuTitle: string) => void
 
 const NavbarRightList = () => {
-  // 나중에 전역 로그인 상태를 받아오도록 변경 예정
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { isLoggedIn, user, setLogin, setLogout } = useAuthUserStore()
 
   const handleMenuClick: HandleMenuClickProps = (menuTitle) => {
     if (menuTitle === "로그인") {
-      // navigate("/login")
       handleLogin()
     } else if (menuTitle === "로그아웃") {
-      // navigate("/")
-      // 전역에서 받은 로그인 상태가 true이면 로그아웃하고 홈으로 이동
       handleLogout()
     }
   }
 
-  const handleLogin = (): void => {
-    setIsLoggedIn(true)
+  const handleLogin = async () => {
+    const submission = {
+      email: "admin@programmers.co.kr",
+      password: "programmers",
+    }
+    try {
+      // Axios 응답 타입을 타입단언이 사용하지 않고 어떻게 정하면 좋을까?
+      const res = (await POST_API("login", submission)) as AxiosResponse
+      // 로그인 성공
+      if (res.status === 200) {
+        const { user, token } = res.data
+        setLogin(user, token)
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
-  const handleLogout = (): void => {
-    setIsLoggedIn(false)
+
+  const handleLogout = async () => {
+    try {
+      const res = (await LogoutAPI("/logout")) as AxiosResponse
+      // 로그아웃 성공
+      if (res.status === 200) {
+        setLogout()
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
+
+  useEffect(() => {}, [isLoggedIn, user, setLogin, setLogout])
 
   return (
     <S.NavbarRightListLayout>
