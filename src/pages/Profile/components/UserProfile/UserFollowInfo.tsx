@@ -1,11 +1,11 @@
 import * as S from "@/pages/Profile/styles/UserProfile.styles"
-import * as GS from "@/styles/Profile.styles"
 
 const UserFollowInfo = () => {
   return (
     <S.UserFollowInfoSection>
-      <GS.UserInfoContainer>팔로잉: 1억</GS.UserInfoContainer>
-      <GS.UserInfoContainer>팔로워: 1억</GS.UserInfoContainer>
+      <S.UserInfoContainer>팔로잉 500</S.UserInfoContainer>
+      <S.UserFollowInfoDividerText>．</S.UserFollowInfoDividerText>
+      <S.UserInfoContainer>팔로워 123</S.UserInfoContainer>
     </S.UserFollowInfoSection>
   )
 }
