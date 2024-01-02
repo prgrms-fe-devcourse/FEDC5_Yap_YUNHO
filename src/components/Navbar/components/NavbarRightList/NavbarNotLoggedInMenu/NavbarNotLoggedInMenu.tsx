@@ -12,8 +12,6 @@ const NavbarNotLoggedInMenuProps = ({
     <>
       {NAV_MENU_LIST.map((menu) => (
         <Button
-          height="4.5rem"
-          fontSize="2rem"
           key={menu.title}
           $fontColor="#fff"
           onClick={() => {

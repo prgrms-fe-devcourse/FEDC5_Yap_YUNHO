@@ -3,9 +3,9 @@ import { ReactNode } from "react"
 import * as S from "./Button.Styles"
 
 interface ButtonProps {
-  height: string
+  height?: string
   color?: string
-  fontSize: string
+  fontSize?: string
   $fontColor?: string
   children: ReactNode
   onClick?: () => void
@@ -13,7 +13,7 @@ interface ButtonProps {
 
 const Button = ({
   height = "4.5rem",
-  color = "none",
+  color = "",
   fontSize = "2rem",
   $fontColor = "#000",
   children,

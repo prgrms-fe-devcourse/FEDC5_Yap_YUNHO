@@ -10,13 +10,12 @@ const NavbarLoggedInMenu = ({
 }: NavbarNotLoggedInMenuProps) => {
   return (
     <Button
-      height="4.5rem"
-      fontSize="2rem"
+      $fontColor="#fff"
       onClick={() => {
         handleMenuClick("로그아웃")
       }}
     >
-      로그아웃
+      <p>로그아웃</p>
     </Button>
   )
 }
