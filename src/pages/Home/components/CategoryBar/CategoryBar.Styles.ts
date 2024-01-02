@@ -19,12 +19,11 @@ export const CategoryBarList = styled.ul`
   align-items: center;
   justify-content: center;
 
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
 export const CategoryBarListItem = styled.li<{ $isSelect: boolean }>`
-  height: 3.2rem;
-  padding: 0 1rem;
+  padding: 1rem 1.2rem;
   margin: 0 1rem;
 
   display: flex;
@@ -37,4 +36,6 @@ export const CategoryBarListItem = styled.li<{ $isSelect: boolean }>`
 
   user-select: none;
   cursor: pointer;
+
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
 `
