@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const PostContainerLayout = styled.div`
   width: 100%;
@@ -7,49 +7,47 @@ export const PostContainerLayout = styled.div`
   position: relative;
 `
 
+const postCardStyled = css`
+  position: absolute;
+
+  background-color: ${({ theme }) => theme.colors.sub_alt};
+  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
+`
+
 export const PostMainItem = styled.div`
+  ${postCardStyled}
   height: 60rem;
   width: 48rem;
   min-width: 48rem;
 
-  position: absolute;
   top: calc(40% - 30rem);
   left: calc(50% - 24rem);
-
-  background-color: ${({ theme }) => theme.colors.sub_alt};
-  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
   z-index: 3;
 `
 
 export const PostSubItem = styled.div<{ $isLeft: boolean }>`
+  ${postCardStyled}
   height: 48rem;
   width: 38.4rem;
   min-width: 38.4rem;
 
-  position: absolute;
   top: calc(40% - 24rem);
   left: ${({ $isLeft }) => $isLeft && `calc(28% - 19.2rem)`};
   right: ${({ $isLeft }) => !$isLeft && `calc(28% - 19.2rem)`};
-
-  background-color: ${({ theme }) => theme.colors.sub_alt};
-  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
   z-index: 2;
 `
 
 export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
+  ${postCardStyled}
   height: 36rem;
   width: 28.8rem;
   min-width: 28.8rem;
 
-  position: absolute;
   top: calc(40% - 18rem);
   left: ${({ $isLeft }) => $isLeft && `calc(11% - 14.4rem)`};
   right: ${({ $isLeft }) => !$isLeft && `calc(11% - 14.4rem)`};
-
-  background-color: ${({ theme }) => theme.colors.sub_alt};
-  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.8);
 
   z-index: 1;
 `
