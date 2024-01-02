@@ -1,4 +1,6 @@
 import * as S from "./PostCard.Styles"
+import { PostCardProps } from "./PostCard.Types"
+import { PostCardContent } from "./components/PostCardContent/PostCardContent"
 import PostCardThumbnail from "./components/PostCardThumbnail/PostCardThumbnail"
 import PostCardUserProfile from "./components/PostCardUserProfile/PostCardUserProfile"
 
@@ -20,11 +22,16 @@ const DUMMY_POST = {
   updatedAt: "떠미더미",
 }
 
-const PostCard = () => {
+const PostCard = ({ textPercentage }: PostCardProps): React.ReactNode => {
   return (
     <S.PostCardLayout>
       <PostCardUserProfile imgUrl={DUMMY_POST.author.image} />
       <PostCardThumbnail imgUrl={DUMMY_POST.image} />
+      <PostCardContent
+        content={DUMMY_POST.title}
+        textPercentage={textPercentage}
+      />
+      <S.PostCardPlayerLayout />
     </S.PostCardLayout>
   )
 }
