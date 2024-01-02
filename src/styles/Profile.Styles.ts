@@ -2,11 +2,11 @@ import styled from "styled-components"
 
 export const UserInfoContainer = styled.div<{ mb?: number }>`
   padding: 0.8rem 1.2rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  background-color: var(--gray-20, #f2f4f6); //TODO: 컬러 변수로 등록하기
-  border-radius: 8px;
-  border: 1px solid var(--gray-20, #f2f4f6); //TODO: 컬러 변수로 등록하기
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.radius.size8};
+  border: 0.1rem solid ${({ theme }) => theme.colors.white};
   margin-bottom: 0.5rem;
   color: 
   margin-bottom: ${(props) => props.mb ?? 0};

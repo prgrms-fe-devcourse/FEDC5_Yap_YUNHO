@@ -1,7 +1,7 @@
-import * as GS from "@/styles/Profile.styles"
+import * as S from "@/pages/Profile/styles/UserProfile.styles"
 
 const UserNickname = () => {
-  return <GS.UserInfoContainer mb={1}>UserNickname</GS.UserInfoContainer>
+  return <S.UserNicknameContainer>UserNickname</S.UserNicknameContainer>
 }
 
 export default UserNickname
