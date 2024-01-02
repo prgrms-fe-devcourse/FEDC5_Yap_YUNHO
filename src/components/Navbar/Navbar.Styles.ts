@@ -13,7 +13,17 @@ export const NavbarLayout = styled.section`
 
 export const NavbarButton = styled.button`
   svg {
-    font-size: 3rem;
+    font-size: 4rem;
+    color: ${({ theme }) => theme.colors.point};
+  }
+`
+
+export const NavbarToggleButton = styled.button`
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+  svg {
+    font-size: 4rem;
     color: ${({ theme }) => theme.colors.point};
   }
 `

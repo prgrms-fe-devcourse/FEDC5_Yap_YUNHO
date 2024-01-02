@@ -5,12 +5,13 @@ import { theme } from "@/styles/theme"
 interface NavbarNotLoggedInMenuProps {
   handleMenuClick: HandleMenuClickProps
 }
+import * as S from "./NavbarNotLoggedInMenu.Styles"
 
 const NavbarNotLoggedInMenuProps = ({
   handleMenuClick,
 }: NavbarNotLoggedInMenuProps) => {
   return (
-    <>
+    <S.NavbarNotLoggedInMenuLayout>
       {NAV_MENU_LIST.map((menu) => (
         <Button
           key={menu.title}
@@ -22,7 +23,7 @@ const NavbarNotLoggedInMenuProps = ({
           <p>{menu.title}</p>
         </Button>
       ))}
-    </>
+    </S.NavbarNotLoggedInMenuLayout>
   )
 }
 
