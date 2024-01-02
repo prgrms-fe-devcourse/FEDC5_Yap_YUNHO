@@ -20,7 +20,7 @@ export const ServiceLogo = styled.img`
   width: 6rem;
   height: 6rem;
   background-color: ${({ theme }) => theme.colors.point};
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.radius.circle};
 `
 
 export const LoginInfoContainer = styled.div`
