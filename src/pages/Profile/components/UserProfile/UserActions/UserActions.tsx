@@ -3,12 +3,21 @@ import UserUpdateInfoButton from "./UserUpdateInfoButton"
 import UserSendDMButton from "./UserSendDMButton"
 import * as S from "./UserActions.Styles"
 
-const UserActions = () => {
+interface UserActionsProps {
+  isMyPage: boolean
+}
+
+const UserActions = ({ isMyPage }: UserActionsProps) => {
   return (
     <S.UserActionSection>
-      <UserFollowButton />
-      <UserSendDMButton />
-      <UserUpdateInfoButton />
+      {isMyPage ? (
+        <UserUpdateInfoButton />
+      ) : (
+        <>
+          <UserFollowButton />
+          <UserSendDMButton />
+        </>
+      )}
     </S.UserActionSection>
   )
 }
