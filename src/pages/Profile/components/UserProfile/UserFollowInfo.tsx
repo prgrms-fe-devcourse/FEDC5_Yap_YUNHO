@@ -1,4 +1,4 @@
-import * as PS from "../../styles/UserProfile.Styles"
+import * as PS from "../../Profile.Styles"
 import * as S from "./UserProfile.Styles"
 
 const UserFollowInfo = () => {
