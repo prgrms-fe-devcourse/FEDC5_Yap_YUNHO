@@ -19,7 +19,7 @@ export const ButtonLayout = styled.button<{
     opacity: 0.5;
     p {
       padding-bottom: 0.5rem;
-      border-bottom: ${({ theme }) => `5px solid ${theme.colors.point}`};
+      border-bottom: ${({ theme }) => `0.5rem solid ${theme.colors.point}`};
     }
   }
 `
