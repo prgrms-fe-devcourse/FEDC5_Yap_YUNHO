@@ -1,6 +1,6 @@
-import { NavbarButton } from "../../Navbar.Styles"
+import { NavbarButton } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
-import profile from "../../../../assets/profile.png"
+import profile from "@/assets/profile.png"
 import { useState } from "react"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"

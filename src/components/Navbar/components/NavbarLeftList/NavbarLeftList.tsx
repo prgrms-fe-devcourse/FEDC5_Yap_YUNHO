@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { NavbarButton } from "../../Navbar.Styles"
+import { NavbarButton } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarLeftList.Styles"
 import SearchIcon from "@mui/icons-material/Search"
 

@@ -1,6 +1,6 @@
 import * as S from "./Navbar.Styles"
-import NavbarRightList from "./components/NavbarRightList/NavbarRightList"
 import NavbarLeftList from "./components/NavbarLeftList/NavbarLeftList"
+import NavbarRightList from "./components/NavbarRightList/NavbarRightList"
 
 const Navbar = () => {
   return (
