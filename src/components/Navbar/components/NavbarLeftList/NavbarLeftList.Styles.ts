@@ -7,7 +7,8 @@ export const NavbarLeftListLayout = styled.div`
 `
 
 export const NavbarLogo = styled.img`
-  width: 10rem;
-  height: 10rem;
+  background: #f9b17a;
+  width: 9rem;
+  height: 9rem;
   border-radius: 50%;
 `
