@@ -9,9 +9,9 @@ const PostContainer = () => {
         <ArrowBackIos className="arrow_icon" />
       </S.ArrowIcon>
       <S.PostSmallCard $isLeft={true} />
-      <S.PostSubItem $isLeft={true} />
-      <S.PostMainItem />
-      <S.PostSubItem $isLeft={false} />
+      <S.PostSubCard $isLeft={true} />
+      <S.PostMainCard />
+      <S.PostSubCard $isLeft={false} />
       <S.PostSmallCard $isLeft={false} />
       <S.ArrowIcon $isLeft={false}>
         <ArrowForwardIos className="arrow_icon" />

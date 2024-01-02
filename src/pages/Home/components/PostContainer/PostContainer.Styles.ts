@@ -11,7 +11,7 @@ export const PostContainerLayout = styled.div`
   justify-content: space-between;
 `
 
-export const PostMainItem = styled.div`
+export const PostMainCard = styled.div`
   height: 60rem;
   width: 48rem;
   min-width: 48rem;
@@ -26,7 +26,7 @@ export const PostMainItem = styled.div`
   z-index: 3;
 `
 
-export const PostSubItem = styled.div<{ $isLeft: boolean }>`
+export const PostSubCard = styled.div<{ $isLeft: boolean }>`
   height: 48rem;
   width: 38.4rem;
   min-width: 38.4rem;
