@@ -2,9 +2,7 @@ import styled from "styled-components"
 
 export const CategoryBarLayout = styled.div`
   width: 100%;
-
   height: 20%;
-
   min-height: 6rem;
 
   display: flex;

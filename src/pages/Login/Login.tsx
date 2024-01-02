@@ -1,4 +1,3 @@
-
 import LoginComponent from "./Components/LoginComponent"
 
 import * as S from "./Login.styles"
@@ -18,10 +17,8 @@ export default function Login() {
       </S.ServiceLogoContainer>
       <S.LoginFormContainer>
         <S.ServiceInfoContainer>Service Info Component</S.ServiceInfoContainer>
-
         <LoginComponent></LoginComponent>
       </S.LoginFormContainer>
-
     </S.LoginLayout>
   )
 }
