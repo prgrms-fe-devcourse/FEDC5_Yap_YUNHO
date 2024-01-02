@@ -8,7 +8,7 @@ export const UserInfoContainer = styled.div<{ mb?: number }>`
   border-radius: 8px;
   border: 1px solid var(--gray-20, #f2f4f6); //TODO: 컬러 변수로 등록하기
   margin-bottom: 0.5rem;
-  color: #4e5968; //TODO: 컬러 변수로 등록하기
+  color: 
   margin-bottom: ${(props) => props.mb ?? 0};
   display: flex;
   align-items: center;

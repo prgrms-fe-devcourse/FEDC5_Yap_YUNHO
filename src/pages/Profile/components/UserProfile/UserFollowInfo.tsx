@@ -1,5 +1,5 @@
-import * as S from "../../styles/UserProfile.styles"
-import * as GS from "../../../../Styles/Profile.styles"
+import * as S from "@/pages/Profile/styles/UserProfile.styles"
+import * as GS from "@/styles/Profile.styles"
 
 const UserFollowInfo = () => {
   return (
