@@ -21,6 +21,7 @@ export const ServiceLogo = styled.img`
   height: 6rem;
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.circle};
+
   margin: 0 2rem;
 `
 
