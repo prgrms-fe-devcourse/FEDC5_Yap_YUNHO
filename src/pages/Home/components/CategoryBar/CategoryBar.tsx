@@ -1,19 +1,14 @@
-import React, { useEffect } from "react"
-import useCategoryListStore from "../../../../stores/useCategoryListStore"
+import React from "react"
 import * as S from "./CategoryBar.Styles"
 import { CategoryBarProps } from "./CategoryBar.Types"
+import useCategoryList from "@/hooks/useCategoryList"
 
 const CategoryBar = ({
   selectedCategory,
   onSelected,
 }: CategoryBarProps): React.ReactNode => {
-  const { categoryList, fetchCategoryList } = useCategoryListStore()
+  const categoryList = useCategoryList()
 
-  useEffect(() => {
-    fetchCategoryList()
-  }, [fetchCategoryList])
-
-  console.log(categoryList)
   return (
     <S.CategoryBarLayout>
       <S.CategoryBarList>
@@ -21,7 +16,8 @@ const CategoryBar = ({
           categoryList.map((category) => (
             <S.CategoryBarListItem
               key={category.id}
-              isSelect={selectedCategory.id === category.id}
+              $isSelect={selectedCategory.id === category.id}
+              onClick={() => onSelected(category)}
             >
               <p>{category.name}</p>
             </S.CategoryBarListItem>

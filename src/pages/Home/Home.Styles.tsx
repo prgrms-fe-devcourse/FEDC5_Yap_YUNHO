@@ -2,7 +2,8 @@ import styled from "styled-components"
 
 export const HomeLayout = styled.section`
   width: 100%;
-  height: calc(100% - 12rem);
+
+  height: 100%;
 
   display: flex;
   flex-direction: column;

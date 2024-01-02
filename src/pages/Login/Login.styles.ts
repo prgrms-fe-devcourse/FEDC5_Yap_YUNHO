@@ -10,10 +10,10 @@ export const ServiceLogoContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 12rem;
+
   border-bottom: 0.1rem solid black;
   background-color: ${({ theme }) => theme.colors.sub};
   position: relative;
-  z-index: 1;
 `
 
 export const ServiceLogo = styled.img`
