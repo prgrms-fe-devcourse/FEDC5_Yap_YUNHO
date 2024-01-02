@@ -9,6 +9,7 @@ const NavbarRightList = () => {
     <S.NavbarRightListLayout>
       {NAV_MENU_LIST.map((menu) => (
         <Button
+          key={menu}
           height="4.5rem"
           fontSize="2rem"
         >
