@@ -1,11 +1,18 @@
-import Button from "../../../Button/Button"
 import { NavbarButton } from "../../Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import profile from "../../../../assets/profile.png"
-import { NAV_MENU_LIST } from "@/constants/stores"
-import { POST_API } from "@/apis/Api"
+import { useState } from "react"
+import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
+import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
+
+export type hanldleMenuClickProps = {
+  handleMenuClick: (title: string) => void
+}
 
 const NavbarRightList = () => {
+  // 나중에 전역 로그인 상태를 받아오도록 변경 예정
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   const handleMenuClick = (menuTitle: string): void => {
     // 로그인 일때
     if (menuTitle === "로그인") {
@@ -13,34 +20,17 @@ const NavbarRightList = () => {
     }
   }
 
-  const handleLogin = async () => {
-    const submission = {
-      email: "gnsdh8616@naver.com",
-      password: "220874",
-    }
-    try {
-      const res = await POST_API("/login", submission)
-      console.log(res)
-    } catch (e) {
-      console.log(e)
-    }
+  const handleLogin = (): void => {
+    setIsLoggedIn(true)
   }
 
   return (
     <S.NavbarRightListLayout>
-      {NAV_MENU_LIST.map((menu) => (
-        <Button
-          height="4.5rem"
-          fontSize="2rem"
-          key={menu.title}
-          onClick={() => {
-            handleMenuClick(menu.title)
-          }}
-        >
-          {menu.title}
-        </Button>
-      ))}
-
+      {isLoggedIn ? (
+        <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
+      ) : (
+        <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
+      )}
       <NavbarButton>
         <S.NavbarProfile
           src={profile}
