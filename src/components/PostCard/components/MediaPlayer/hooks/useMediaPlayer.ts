@@ -8,7 +8,7 @@ import {
 } from "../store/useMediaPlayerStore.Types"
 import {
   MEDIA_PLAYER_EMPTY_URL_KEYWORD,
-  PROGRESS_BAR_RANGE_PERCENTAGE,
+  MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE,
 } from "../constants/MediaPlayer"
 
 const useMediaPlayer = () => {
@@ -35,9 +35,9 @@ const useMediaPlayer = () => {
       const { current } = playerRef
 
       if (
-        !current &&
-        percentage < PROGRESS_BAR_RANGE_PERCENTAGE.MIN &&
-        percentage > PROGRESS_BAR_RANGE_PERCENTAGE.MAX
+        !current ||
+        percentage < MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE.MIN ||
+        percentage > MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE.MAX
       ) {
         return
       }
