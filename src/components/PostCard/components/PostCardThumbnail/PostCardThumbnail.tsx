@@ -4,7 +4,7 @@ import { PostCardThumbnailProps } from "../../PostCard.Types"
 
 const PostCardThumbnail = ({
   imgUrl,
-}: PostCardThumbnailProps): React.ReactElement => {
+}: PostCardThumbnailProps): React.ReactNode => {
   return (
     <S.PostCardThumbnailLayout>
       <S.PostCardThumbnailImg src={imgUrl} />

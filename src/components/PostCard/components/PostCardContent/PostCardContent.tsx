@@ -5,7 +5,7 @@ import { PostCardContentProps } from "../../PostCard.Types"
 export const PostCardContent = ({
   content,
   textPercentage,
-}: PostCardContentProps): React.ReactElement => {
+}: PostCardContentProps): React.ReactNode => {
   return (
     <S.PostCardContentLayout>
       <S.PostCardContentText $textPercentage={textPercentage}>

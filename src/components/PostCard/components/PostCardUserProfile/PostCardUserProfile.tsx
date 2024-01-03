@@ -6,7 +6,7 @@ const POST_CARD_USER_PROFILE_ALT_TEXT = "post card posting user profile"
 
 const PostCardUserProfile = ({
   imgUrl,
-}: PostCardUserProfileProps): React.ReactElement => {
+}: PostCardUserProfileProps): React.ReactNode => {
   return (
     <S.PostCardUserProfileLayout>
       <S.PostCardUserProfileImg
