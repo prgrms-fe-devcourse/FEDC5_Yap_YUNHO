@@ -1,12 +1,26 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 const useSlider = ({ initialValue }: { initialValue: number }) => {
   const sliderRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [value, setValue] = useState(initialValue)
 
-  const handleMouseDown = () => {
+  const handleMouseDown = ({ clientX }: React.MouseEvent) => {
     setIsDragging(true)
+
+    const { current } = sliderRef
+    if (!current) {
+      return
+    }
+
+    const rect = current.getBoundingClientRect()
+    const handlerOffset = clientX - rect.left
+
+    const calcValue = handlerOffset / current.offsetWidth
+    let checkedValue = Math.max(0, calcValue)
+    checkedValue = Math.min(1, checkedValue)
+
+    setValue(checkedValue)
   }
 
   const handleMouseUp = () => {
