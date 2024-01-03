@@ -4,18 +4,18 @@ import { HandleMenuClickProps } from "../NavbarRightList"
 
 interface NavbarNotLoggedInMenuProps {
   handleMenuClick: HandleMenuClickProps
-  isToggle?: boolean
+  $isToggle?: boolean
 }
 
 const NavbarToggleMenu = ({
-  isToggle = false,
+  $isToggle = false,
   handleMenuClick,
 }: NavbarNotLoggedInMenuProps) => {
   return (
     <S.NavbarToggleMenuLayout>
       <NavbarNotLoggedInMenu
         handleMenuClick={handleMenuClick}
-        isToggle={isToggle}
+        $isToggle={$isToggle}
       />
     </S.NavbarToggleMenuLayout>
   )

@@ -94,7 +94,7 @@ const NavbarRightList = () => {
         <MenuIcon />
         {isToggle && (
           <NavbarToggleMenu
-            isToggle={isToggle}
+            $isToggle={isToggle}
             handleMenuClick={handleMenuClick}
           />
         )}

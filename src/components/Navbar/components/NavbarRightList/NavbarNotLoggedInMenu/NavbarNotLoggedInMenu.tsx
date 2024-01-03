@@ -4,15 +4,15 @@ import { HandleMenuClickProps } from "../NavbarRightList"
 
 interface NavbarNotLoggedInMenuProps {
   handleMenuClick: HandleMenuClickProps
-  isToggle?: boolean
+  $isToggle?: boolean
 }
 
 const NavbarNotLoggedInMenu = ({
   handleMenuClick,
-  isToggle = false,
+  $isToggle = false,
 }: NavbarNotLoggedInMenuProps) => {
   return (
-    <S.NavbarNotLoggedInMenuList isToggle={isToggle}>
+    <S.NavbarNotLoggedInMenuList $isToggle={$isToggle}>
       <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
         게시물 생성
       </NavbarNotLoggedInMenuItem>
