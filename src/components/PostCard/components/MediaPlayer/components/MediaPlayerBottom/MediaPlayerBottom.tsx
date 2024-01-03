@@ -37,7 +37,7 @@ export const MediaPlayerBottom = ({
           data-click-type="play"
           onClick={onClick}
         >
-          {isPlaying ? <PlayCircleFilledIcon /> : <PauseCircleFilledIcon />}
+          {isPlaying ? <PauseCircleFilledIcon /> : <PlayCircleFilledIcon />}
         </S.PlayButton>
       </S.PlayButtonContainer>
       <S.VolumeSliderContainer>

@@ -6,7 +6,10 @@ const flexCenter = css`
   justify-content: center;
 `
 
-const iconBaseStyle = css`
+const buttonBaseStyle = css`
+  border-radius: ${({ theme }) => theme.radius.circle};
+
+  cursor: pointer;
   svg {
     width: 100%;
     height: 100%;
@@ -14,6 +17,16 @@ const iconBaseStyle = css`
     pointer-events: none;
   }
 `
+
+const buttonHover = css`
+  &:hover {
+    svg {
+      transition: all 0.5s;
+      color: ${({ theme }) => theme.colors.point_alt};
+    }
+  }
+`
+
 export const MediaPlayerBottomLayout = styled.div`
   width: 100%;
   height: 50%;
@@ -29,7 +42,8 @@ export const MuteButtonContainer = styled.div`
 `
 
 export const MuteButton = styled.button`
-  ${iconBaseStyle}
+  ${buttonBaseStyle}
+  ${buttonHover}
   height: 60%;
   margin-left: 30%;
 `
@@ -42,7 +56,8 @@ export const PlayButtonContainer = styled.div`
 `
 
 export const PlayButton = styled.button`
-  ${iconBaseStyle}
+  ${buttonBaseStyle}
+  ${buttonHover}
   height: 100%;
 
   ${flexCenter}
@@ -50,6 +65,12 @@ export const PlayButton = styled.button`
   svg {
     background-color: ${({ theme }) => theme.colors.main};
     border-radius: ${({ theme }) => theme.radius.circle};
+  }
+
+  &:hover {
+    svg {
+      background-color: ${({ theme }) => theme.colors.sub};
+    }
   }
 `
 
