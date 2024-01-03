@@ -5,20 +5,22 @@ import { ChangePlayer } from "../../store/useMediaPlayerStore.Types"
 
 interface MediaPlayerSliderProps {
   isBlock: boolean
-  initialValue: number
-  value: number
+  initialPercent: number
+  percent: number
   changeType: "play" | "volume"
   onChange: ChangePlayer
 }
 
 const MediaPlayerSlider = ({
   isBlock,
-  initialValue,
-  value,
+  initialPercent,
+  percent,
   changeType,
   onChange,
 }: MediaPlayerSliderProps): ReactNode => {
-  const { sliderRef, newValue, handleMouseDown } = useSlider({ initialValue })
+  const { sliderRef, newPercent, handleMouseDown } = useSlider({
+    initialPercent,
+  })
 
   useEffect(() => {
     if (!onChange) {
@@ -26,9 +28,9 @@ const MediaPlayerSlider = ({
     }
     onChange({
       type: changeType,
-      percentage: newValue,
+      percent: newPercent,
     })
-  }, [changeType, onChange, newValue])
+  }, [changeType, onChange, newPercent])
 
   return (
     <S.MediaPlayerPlaySliderLayout>
@@ -38,10 +40,10 @@ const MediaPlayerSlider = ({
       >
         <S.PlaySliderRail />
         <S.PlaySliderTrack
-          $widthPercentage={isBlock ? initialValue * 100 : value * 100}
+          $widthPercentage={isBlock ? initialPercent * 100 : percent * 100}
         />
         <S.PlaySliderHandle
-          $leftPercentage={isBlock ? initialValue * 100 : value * 100}
+          $leftPercentage={isBlock ? initialPercent * 100 : percent * 100}
         />
       </S.playSliderContainer>
     </S.MediaPlayerPlaySliderLayout>

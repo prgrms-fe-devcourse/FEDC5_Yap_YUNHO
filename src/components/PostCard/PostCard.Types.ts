@@ -1,5 +1,5 @@
 export interface PostCardProps {
-  textPercentage?: "60%" | "80%" | "100%"
+  textPercent?: "60%" | "80%" | "100%"
   isBlock?: boolean
 }
 
@@ -13,5 +13,5 @@ export interface PostCardThumbnailProps {
 
 export interface PostCardContentProps {
   content: string
-  textPercentage?: string
+  textPercent?: string
 }

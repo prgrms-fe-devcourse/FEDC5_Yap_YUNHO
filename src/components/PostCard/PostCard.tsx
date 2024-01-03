@@ -19,15 +19,15 @@ const DUMMY_POST = {
   },
   channel: {},
   author: {
-    image:
-      "https://res.cloudinary.com/dalxgxu2o/image/upload/v1699980818/IMG_0508_mke9kp.gif",
+    image: "",
+    // "https://res.cloudinary.com/dalxgxu2o/image/upload/v1699980818/IMG_0508_mke9kp.gif",
   },
   createdAt: "아마도 2일에 생성함",
   updatedAt: "떠미더미",
 }
 
 const PostCard = ({
-  textPercentage,
+  textPercent,
   isBlock = false,
 }: PostCardProps): React.ReactNode => {
   return (
@@ -37,7 +37,7 @@ const PostCard = ({
       <PostCardThumbnail imgUrl={DUMMY_POST.image} />
       <PostCardContent
         content={DUMMY_POST.title.content}
-        textPercentage={textPercentage}
+        textPercent={textPercent}
       />
       <MediaPlayer
         isBlock={isBlock}

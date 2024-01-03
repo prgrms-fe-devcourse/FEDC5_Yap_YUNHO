@@ -12,14 +12,14 @@ const PostContainer = () => {
       {/* small - left */}
       <S.PostSmallCard $isLeft={true}>
         <PostCard
-          textPercentage={"60%"}
+          textPercent={"60%"}
           isBlock={true}
         />
       </S.PostSmallCard>
       {/* sub - left */}
       <S.PostSubCard $isLeft={true}>
         <PostCard
-          textPercentage={"80%"}
+          textPercent={"80%"}
           isBlock={true}
         />
       </S.PostSubCard>
@@ -29,13 +29,13 @@ const PostContainer = () => {
       </S.PostMainCard>
       <S.PostSubCard $isLeft={false}>
         <PostCard
-          textPercentage={"80%"}
+          textPercent={"80%"}
           isBlock={true}
         />
       </S.PostSubCard>
       <S.PostSmallCard $isLeft={false}>
         <PostCard
-          textPercentage={"60%"}
+          textPercent={"60%"}
           isBlock={true}
         />
       </S.PostSmallCard>

@@ -8,7 +8,7 @@ const useMediaPlayerStore = create<UseMediaPlayerStore>()(
     playUrl: "",
     isPlaying: true,
     isMute: false,
-    playRange: 0,
+    playPercent: 0,
     volume: MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE,
 
     togglePlayer: ({ type }) => {
@@ -27,18 +27,18 @@ const useMediaPlayerStore = create<UseMediaPlayerStore>()(
       }
     },
 
-    changeRange: ({ type, percentage }) => {
+    changeRange: ({ type, percent }) => {
       if (type === "play" || type === "onProgress") {
         set((store) => ({
           ...store,
-          playRange: percentage,
+          playPercent: percent,
         }))
       }
 
       if (type === "volume") {
         set((store) => ({
           ...store,
-          volume: percentage,
+          volume: percent,
         }))
       }
     },
