@@ -19,7 +19,6 @@ const Home = () => {
 
   return (
     <S.HomeLayout>
-      <Navbar />
       <CategoryBar
         selectedCategory={selectedCategory}
         onSelected={onSelectedCategory}
