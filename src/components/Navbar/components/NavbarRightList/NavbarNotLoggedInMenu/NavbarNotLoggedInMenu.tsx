@@ -1,4 +1,4 @@
-import NavbarNotLoggedInMenuItem from "./NavbarNotLoggedInMenuItem"
+import NavbarMenuItem from "../NavbarMenuItem"
 import { NavbarMenuList } from "./../NavbarRightList.Styles"
 import { NavbarMenuProps } from "@/components/Navbar/types"
 
@@ -8,18 +8,12 @@ const NavbarNotLoggedInMenu = ({
 }: NavbarMenuProps) => {
   return (
     <NavbarMenuList $isToggle={$isToggle}>
-      <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>
         게시물 생성
-      </NavbarNotLoggedInMenuItem>
-      <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
-        DM
-      </NavbarNotLoggedInMenuItem>
-      <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
-        알림
-      </NavbarNotLoggedInMenuItem>
-      <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
-        로그인
-      </NavbarNotLoggedInMenuItem>
+      </NavbarMenuItem>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>DM</NavbarMenuItem>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>알림</NavbarMenuItem>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>로그인</NavbarMenuItem>
     </NavbarMenuList>
   )
 }
