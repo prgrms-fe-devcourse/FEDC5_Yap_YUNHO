@@ -47,7 +47,7 @@ const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
   )
 
   return (
-    <S.MediaPlayerLayout>
+    <>
       <S.MediaPlayerHidden>
         <ReactPlayer
           ref={playerRef}
@@ -64,19 +64,22 @@ const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
           }}
         />
       </S.MediaPlayerHidden>
-      <MediaPlayerSlider
-        changeType="play"
-        isBlock={false}
-        initialValue={0.2}
-        onChange={handleChangePlayer}
-      />
-      <button
-        onClick={handleClickPlayer}
-        data-click-type="play"
-      >
-        asdasdas
-      </button>
-    </S.MediaPlayerLayout>
+
+      <S.MediaPlayerLayout>
+        <MediaPlayerSlider
+          changeType="play"
+          isBlock={false}
+          initialValue={0.2}
+          onChange={handleChangePlayer}
+        />
+        <button
+          onClick={handleClickPlayer}
+          data-click-type="play"
+        >
+          asdasdas
+        </button>
+      </S.MediaPlayerLayout>
+    </>
   )
 }
 
