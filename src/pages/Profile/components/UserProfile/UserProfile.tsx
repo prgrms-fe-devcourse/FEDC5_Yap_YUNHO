@@ -3,17 +3,12 @@ import UserNickname from "./UserNickname"
 import UserProfileImage from "./UserProfileImage"
 import UserActions from "./UserActions/UserActions"
 import * as S from "./UserProfile.Styles"
-import useAuthUserStore from "@/stores/useAuthUserStore"
-import { useMemo } from "react"
 
 interface UserProfileProps {
-  userId?: string
+  isMyPage: boolean
 }
 
-const UserProfile = ({ userId }: UserProfileProps) => {
-  const { user } = useAuthUserStore()
-  const isMyPage = useMemo(() => userId === user._id, [userId, user._id])
-
+const UserProfile = ({ isMyPage }: UserProfileProps) => {
   return (
     <S.UserProfileSection>
       <UserProfileImage />
