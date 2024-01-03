@@ -7,7 +7,7 @@ export const UserInfoContainer = styled.div`
   color: ${({ theme }) => theme.colors.white};
 `
 
-export const UserInfoButton = styled.button<{ mb?: number }>`
+export const UserInfoButton = styled.button`
   padding: 0.8rem 1.2rem;
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   letter-spacing: -0.032rem;
