@@ -1,4 +1,4 @@
-import { MouseEvent, useCallback } from "react"
+import { MouseEvent, useCallback, useEffect } from "react"
 import * as S from "./MediaPlayer.Styles"
 import useMediaPlayer from "./hooks/useMediaPlayer"
 import { MediaPlayerProps } from "./MediaPlayer.Types"
@@ -7,7 +7,7 @@ import ReactPlayer from "react-player"
 import { ChangePlayer } from "./store/useMediaPlayerStore.Types"
 import MediaPlayerBottom from "./components/MediaPlayerBottom/MediaPlayerBottom"
 
-const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
+const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
   const {
     playerRef,
     isPlaying,
@@ -16,7 +16,16 @@ const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
     volume,
     onClickPlayer,
     onChangeRange,
+    onChangeUrl,
   } = useMediaPlayer()
+
+  useEffect(() => {
+    if (isBlock) {
+      return
+    }
+
+    onChangeUrl(url)
+  }, [isBlock, onChangeUrl, url])
 
   const handleClickPlayer = useCallback(
     ({ target }: MouseEvent) => {
@@ -54,8 +63,8 @@ const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
           ref={playerRef}
           playing={isBlock ? false : isPlaying}
           muted={isBlock ? true : isMute}
-          volume={volume}
-          url={"https://www.youtube.com/watch?v=2gliGzb2_1I&t=2703s"}
+          volume={isBlock ? 0.2 : volume}
+          url={isBlock ? "" : playUrl}
           config={{
             youtube: {
               playerVars: {
@@ -70,7 +79,7 @@ const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
         <S.MediaPlayerTop>
           <MediaPlayerSlider
             changeType="play"
-            isBlock={false}
+            isBlock={isBlock}
             initialValue={0}
             onChange={handleChangePlayer}
           />

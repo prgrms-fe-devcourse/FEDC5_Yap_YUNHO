@@ -12,8 +12,11 @@ const DUMMY_POST = {
   _id: "dummyIdValue",
   image: "https://i1.ytimg.com/vi/2gliGzb2_1I/maxresdefault.jpg",
   imagePublicId: "모름",
-  title:
-    "아마도 추천하면 듣기는 좋겠지만 들을 타이밍이 생길지는 모르겟는 그런 추천 ㄴ어륜어ㅏ휸 ㄴㅇ ㄹㄴㅇㅎㄴㅇ ㅎㄴㅇ ㅎㄴㅇ ㅎ ㄴㅇㅎ ㅇㄴ ㅎㅇ ㄴㅎ ㅇㄴ ㅎㅇㄴㅎㅇㄴㅎ ㅇㄴㅎ ㄴㅇㅎ ㄴㅇㅎ ㄴㅇㅎㄴㅇㅎㄴㅇㅎ ㄴㅇㅎ ㄴㅇㅎ ㄴㅇㅎ ㄴㅇ ㅇㄴㄹㄴㅇㄹ ㄴㅇㄹ ㄴㅇㄹ ㄴㅇㄹ ㄴㅇ ㅎㄴㅇ ㅎㄴㅇ ㄹㅇㄴㄹ ㄴㅇ ㅎㄴㅇ ㅎㄴㅇ ㅎ ㄴㅇㅎ ㅇㄴㅎ ㄴㅇ ㅎ ㄴㅇ ㅎ  ㄴㅇㅎㄴㅇ ㅎ ㄴㅇ  ㄴㅇㅎ ㄴㅇㅎ ㄴㅇ ㅎ ㄴㅇㅎ  ㄴㅇㅎㄴㅇ ㅎ  ㄴㅇ ㅎ ㅇ ㅎ ㄴ  ㄴㅇ  ㄴㅇ    ㄴㅇ  ",
+  title: {
+    content:
+      "아마도 이건 테스트를 위한 값 그렇기 때문에 길게 길게 작성해보는 값",
+    musicUrl: "https://www.youtube.com/watch?v=2gliGzb2_1I&t=2703s",
+  },
   channel: {},
   author: {
     image:
@@ -30,10 +33,13 @@ const PostCard = ({ textPercentage }: PostCardProps): React.ReactNode => {
       <PostCardUserProfile imgUrl={DUMMY_POST.author.image} />
       <PostCardThumbnail imgUrl={DUMMY_POST.image} />
       <PostCardContent
-        content={DUMMY_POST.title}
+        content={DUMMY_POST.title.content}
         textPercentage={textPercentage}
       />
-      <MediaPlayer isBlock={false} />
+      <MediaPlayer
+        isBlock={true}
+        url={DUMMY_POST.title.musicUrl}
+      />
     </S.PostCardLayout>
   )
 }
