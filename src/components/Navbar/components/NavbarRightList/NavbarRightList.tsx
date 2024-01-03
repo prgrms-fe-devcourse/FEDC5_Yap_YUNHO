@@ -39,7 +39,7 @@ const NavbarRightList = () => {
         console.log("게시물 생성 모달창")
         break
       case "알림":
-        console.log("알림 드롭다운")
+        console.log("알림 드롭다운 or 모달창")
         break
       default:
         break
@@ -104,6 +104,9 @@ const NavbarRightList = () => {
         <S.NavbarProfile
           src={profile}
           alt="프로필"
+          onClick={() => {
+            navigate("/profile")
+          }}
         />
       </NavbarButton>
     </S.NavbarRightListLayout>

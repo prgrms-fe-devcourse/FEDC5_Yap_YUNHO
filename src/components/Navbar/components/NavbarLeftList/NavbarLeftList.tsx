@@ -15,8 +15,11 @@ const NavbarLeftList = () => {
           alt="로고"
         />
       </NavbarButton>
-      {/* 나중에 SearchModal과 연결 */}
-      <NavbarButton>
+      <NavbarButton
+        onClick={() => {
+          console.log("서치 모달")
+        }}
+      >
         <SearchIcon />
       </NavbarButton>
     </S.NavbarLeftListLayout>
