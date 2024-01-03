@@ -1,5 +1,5 @@
 import useMediaPlayerStore from "@/components/PostCard/components/MediaPlayer/store/useMediaPlayerStore"
-import { useRef } from "react"
+import { useCallback, useRef } from "react"
 import ReactPlayer from "react-player"
 import {
   ChangePlayer,
@@ -17,58 +17,64 @@ const useMediaPlayer = () => {
     playUrl,
     isMute,
     isPlaying,
-    playRange,
     volume,
     togglePlayer,
     changeRange,
     changeUrl,
   } = useMediaPlayerStore()
 
-  const onClickPlayer: TogglePlayer = (toggleType) => {
-    togglePlayer(toggleType)
-  }
+  const onClickPlayer: TogglePlayer = useCallback(
+    (toggleType) => {
+      togglePlayer(toggleType)
+    },
+    [togglePlayer],
+  )
 
-  const onChangeRange: ChangePlayer = ({ type, percentage }) => {
-    const { current } = playerRef
+  const onChangeRange: ChangePlayer = useCallback(
+    ({ type, percentage }) => {
+      const { current } = playerRef
 
-    if (
-      !current &&
-      percentage < PROGRESS_BAR_RANGE_PERCENTAGE.MIN &&
-      percentage > PROGRESS_BAR_RANGE_PERCENTAGE.MAX
-    ) {
-      return
-    }
+      if (
+        !current &&
+        percentage < PROGRESS_BAR_RANGE_PERCENTAGE.MIN &&
+        percentage > PROGRESS_BAR_RANGE_PERCENTAGE.MAX
+      ) {
+        return
+      }
 
-    if (!(current instanceof ReactPlayer)) {
-      return
-    }
+      if (!(current instanceof ReactPlayer)) {
+        return
+      }
 
-    changeRange({ type, percentage })
+      changeRange({ type, percentage })
 
-    if (type === "play") {
-      current.seekTo(percentage)
-    }
-  }
+      if (type === "play") {
+        current.seekTo(percentage)
+      }
+    },
+    [changeRange],
+  )
 
-  const onChangeUrl: ChangeUrl = (url) => {
-    // 이후 EditPage 에서의 player의 초기화를 위한 조건 - 해당 주석 다음 PR에서 제거 예정
-    if (url === MEDIA_PLAYER_EMPTY_URL_KEYWORD) {
-      changeUrl("")
-      return
-    }
+  const onChangeUrl: ChangeUrl = useCallback(
+    (url) => {
+      if (url === MEDIA_PLAYER_EMPTY_URL_KEYWORD) {
+        changeUrl("")
+        return
+      }
 
-    const isCanPlay = ReactPlayer.canPlay(url)
-    if (isCanPlay) {
-      changeUrl(url)
-    }
-  }
+      const isCanPlay = ReactPlayer.canPlay(url)
+      if (isCanPlay) {
+        changeUrl(url)
+      }
+    },
+    [changeUrl],
+  )
 
   return {
     playUrl,
     isPlaying,
     isMute,
     playerRef,
-    playRange,
     volume,
     onClickPlayer,
     onChangeRange,
