@@ -18,7 +18,7 @@ import useNavbarToggle from "@/hooks/useNavbarToggle"
 export type HandleMenuClickProps = (menu: string) => void
 
 const NavbarRightList = () => {
-  const { isLoggedIn, user, setLogin, setLogout } = useAuthUserStore()
+  const { isLoggedIn, user, setLogin, setLogout, authUser } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useNavbarToggle()
 
   const navigate = useNavigate()
@@ -77,7 +77,18 @@ const NavbarRightList = () => {
     }
   }
 
-  useEffect(() => {}, [isLoggedIn, user, setLogin, setLogout])
+  const fetchUser = async () => {
+    const { user, token } = await authUser()
+    if (!user || !token) {
+      return
+    }
+    setLogin(user, token)
+  }
+
+  useEffect(() => {
+    // 새로고침 시 로그인 유지
+    fetchUser()
+  }, [])
 
   return (
     <S.NavbarRightListLayout>

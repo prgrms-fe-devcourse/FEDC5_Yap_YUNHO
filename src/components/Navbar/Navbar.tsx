@@ -7,6 +7,7 @@ const Navbar = () => {
   if (!handlePathName(useLocation().pathname)) {
     return
   }
+
   return (
     <S.NavbarLayout>
       <NavbarLeftList />
