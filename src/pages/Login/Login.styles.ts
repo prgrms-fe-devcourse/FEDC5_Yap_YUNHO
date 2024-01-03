@@ -13,7 +13,6 @@ export const ServiceLogoContainer = styled.div`
 
   border-bottom: 0.1rem solid black;
   background-color: ${({ theme }) => theme.colors.sub};
-  position: relative;
 `
 
 export const ServiceLogo = styled.img`
@@ -30,7 +29,7 @@ export const LoginFormContainer = styled.div`
   color: ${({ theme }) => theme.colors.white};
   width: 100%;
   height: calc(100% - 12rem);
-  min-height: 20rem;
+  min-height: 40rem;
   min-width: 30rem;
 `
 

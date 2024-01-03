@@ -15,48 +15,31 @@ export const LoginComponentLayout = styled.div`
 export const LoginComponentTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes.large};
   text-align: center;
+  margin-bottom: 1rem;
 `
 export const LoginForm = styled.form`
-  min-width: 50%;
-  max-width: 50%;
-`
-
-export const LoginInputContainer = styled.div`
-  height: 28%;
-  position: relative;
-`
-
-export const ErrorMessage = styled.div`
-  position: absolute;
-  bottom: 0;
-  font-size: ${({ theme }) => theme.fontSizes.semiSmall};
-  color: red;
+  min-width: 35%;
 `
 
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  margin-top: 2rem;
+  position: relative;
+  top: 0.5rem;
 `
 
-interface ButtonProps {
-  action: string
-}
-
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button<{ $color: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
   color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme, action }) =>
-    action === "login" ? theme.colors.point : theme.colors.sub_alt};
+  background-color: ${({ $color }) => $color};
 
   border: 0.1rem solid gray;
   border-radius: ${({ theme }) => theme.radius.size4};
   font-size: ${({ theme }) => theme.fontSizes.medium};
-  font-weight: bold;
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
   margin-bottom: 0.5rem;
 
   cursor: pointer;
