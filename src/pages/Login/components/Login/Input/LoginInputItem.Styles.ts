@@ -6,8 +6,8 @@ export const Input = styled.input`
   display: inline-block;
   width: 100%;
 
-  border: 0.1rem solid gray;
   border-radius: ${({ theme }) => theme.radius.size4};
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
   &::placeholder {
     font-size: 1rem;
   }

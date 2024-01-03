@@ -22,8 +22,13 @@ export const ServiceInfoContainer = styled.div`
 export const ServiceTitle = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
+
 export const ServiceInfoText = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.medium};
   text-align: center;
   line-height: 1.4;
+`
+export const Strong = styled.strong`
+  font-size: 3rem;
+  color: ${({ theme }) => theme.colors.point};
 `

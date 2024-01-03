@@ -36,11 +36,11 @@ export const Button = styled.button<{ $color: string }>`
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ $color }) => $color};
 
-  border: 0.1rem solid gray;
   border-radius: ${({ theme }) => theme.radius.size4};
   font-size: ${({ theme }) => theme.fontSizes.medium};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   margin-bottom: 0.5rem;
 
   cursor: pointer;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 `

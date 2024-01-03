@@ -4,7 +4,9 @@ const ServiceInfoComponent = () => {
   return (
     <S.ServiceInfoLayout>
       <S.ServiceInfoContainer>
-        <S.ServiceTitle>Yap!에 오신 여러분 환영합니다! </S.ServiceTitle>
+        <S.ServiceTitle>
+          <S.Strong>Yap!</S.Strong> 에 오신 여러분 환영합니다!{" "}
+        </S.ServiceTitle>
         <S.ServiceInfoText>
           얍! (Yap!)은 누구에게나 열려있는 가벼운 분위기의 음악 공유
           플랫폼입니다.🙌 <br></br>
