@@ -1,6 +1,7 @@
 import * as S from "./NavbarNotLoggedInMenu.Styles"
 import NavbarNotLoggedInMenuItem from "./NavbarNotLoggedInMenuItem"
 import { HandleMenuClickProps } from "../NavbarRightList"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 interface NavbarNotLoggedInMenuProps {
   handleMenuClick: HandleMenuClickProps
@@ -11,6 +12,8 @@ const NavbarNotLoggedInMenu = ({
   handleMenuClick,
   $isToggle = false,
 }: NavbarNotLoggedInMenuProps) => {
+  const { isLoggedIn } = useAuthUserStore()
+
   return (
     <S.NavbarNotLoggedInMenuList $isToggle={$isToggle}>
       <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
@@ -22,9 +25,15 @@ const NavbarNotLoggedInMenu = ({
       <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
         알림
       </NavbarNotLoggedInMenuItem>
-      <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
-        로그인
-      </NavbarNotLoggedInMenuItem>
+      {isLoggedIn ? (
+        <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
+          로그아웃
+        </NavbarNotLoggedInMenuItem>
+      ) : (
+        <NavbarNotLoggedInMenuItem handleMenuClick={handleMenuClick}>
+          로그인
+        </NavbarNotLoggedInMenuItem>
+      )}
     </S.NavbarNotLoggedInMenuList>
   )
 }
