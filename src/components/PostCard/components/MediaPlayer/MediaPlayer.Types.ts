@@ -1,3 +1,3 @@
 export interface MediaPlayerProps {
-  isBlock?: boolean
+  isBlock: boolean
 }

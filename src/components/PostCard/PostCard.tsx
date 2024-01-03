@@ -33,7 +33,7 @@ const PostCard = ({ textPercentage }: PostCardProps): React.ReactNode => {
         content={DUMMY_POST.title}
         textPercentage={textPercentage}
       />
-      <MediaPlayer />
+      <MediaPlayer isBlock={false} />
     </S.PostCardLayout>
   )
 }

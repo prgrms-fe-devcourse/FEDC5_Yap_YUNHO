@@ -5,6 +5,7 @@ import { MediaPlayerProps } from "./MediaPlayer.Types"
 import MediaPlayerSlider from "./components/MediaPlayerPlaySlider/MediaPlayerSlider"
 import ReactPlayer from "react-player"
 import { ChangePlayer } from "./store/useMediaPlayerStore.Types"
+import MediaPlayerBottom from "./components/MediaPlayerBottom/MediaPlayerBottom"
 
 const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
   const {
@@ -66,18 +67,21 @@ const MediaPlayer = ({ isBlock }: MediaPlayerProps): React.ReactNode => {
       </S.MediaPlayerHidden>
 
       <S.MediaPlayerLayout>
-        <MediaPlayerSlider
-          changeType="play"
-          isBlock={false}
-          initialValue={0.2}
+        <S.MediaPlayerTop>
+          <MediaPlayerSlider
+            changeType="play"
+            isBlock={false}
+            initialValue={0}
+            onChange={handleChangePlayer}
+          />
+        </S.MediaPlayerTop>
+        <MediaPlayerBottom
+          isBlock={isBlock}
+          isMute={isMute}
+          isPlaying={isPlaying}
+          onClick={handleClickPlayer}
           onChange={handleChangePlayer}
         />
-        <button
-          onClick={handleClickPlayer}
-          data-click-type="play"
-        >
-          asdasdas
-        </button>
       </S.MediaPlayerLayout>
     </>
   )
