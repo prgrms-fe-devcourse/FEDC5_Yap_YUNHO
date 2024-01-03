@@ -17,12 +17,29 @@ const Player = ({
     playRange,
     volume,
     onChangeRange,
+    onClickPlayer,
     onChangeUrl,
   } = useMediaPlayer()
 
   useEffect(() => {
     onChangeUrl(url)
   }, [onChangeUrl, url])
+
+  const handleClickPlayer = ({ target }: MouseEvent) => {
+    if (isBlock) {
+      return
+    }
+
+    if (!(target instanceof HTMLElement)) {
+      return
+    }
+
+    const { clickType } = target.dataset
+
+    if (clickType === "play" || clickType === "mute") {
+      onClickPlayer({ type: clickType })
+    }
+  }
 
   const onChangeRangeInput = ({ target }: ChangeEvent) => {
     if (isBlock) {
