@@ -1,5 +1,6 @@
 import * as S from "./PostCard.Styles"
 import { PostCardProps } from "./PostCard.Types"
+import MediaPlayer from "./components/MediaPlayer/MediaPlayer"
 import { PostCardContent } from "./components/PostCardContent/PostCardContent"
 import PostCardThumbnail from "./components/PostCardThumbnail/PostCardThumbnail"
 import PostCardUserProfile from "./components/PostCardUserProfile/PostCardUserProfile"
@@ -32,7 +33,7 @@ const PostCard = ({ textPercentage }: PostCardProps): React.ReactNode => {
         content={DUMMY_POST.title}
         textPercentage={textPercentage}
       />
-      <S.PostCardPlayerLayout />
+      <MediaPlayer />
     </S.PostCardLayout>
   )
 }
