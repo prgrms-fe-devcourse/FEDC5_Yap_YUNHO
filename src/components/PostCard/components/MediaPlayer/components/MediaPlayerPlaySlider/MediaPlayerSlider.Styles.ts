@@ -2,14 +2,12 @@ import styled from "styled-components"
 
 export const MediaPlayerPlaySliderLayout = styled.div`
   width: 100%;
-  height: 50%;
+  height: 100%;
 
   display: flex;
   align-items: center;
 
   position: relative;
-
-  border: 1px solid red;
 `
 
 export const PlaySliderRail = styled.div`

@@ -5,10 +5,13 @@ export const MediaPlayerLayout = styled.div`
   height: 20%;
   margin-top: 3%;
   margin-left: 5%;
-
-  border: 1px solid black;
 `
 
 export const MediaPlayerHidden = styled.div`
   display: none;
+`
+
+export const MediaPlayerTop = styled.div`
+  width: 100%;
+  height: 50%;
 `
