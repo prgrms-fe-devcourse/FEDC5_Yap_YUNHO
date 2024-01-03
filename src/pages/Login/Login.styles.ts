@@ -32,11 +32,3 @@ export const LoginFormContainer = styled.div`
   min-height: 40rem;
   min-width: 30rem;
 `
-
-export const ServiceInfoContainer = styled.div`
-  display: flex;
-  min-width: 50%;
-  border-right: 0.1rem solid black;
-  justify-content: center;
-  align-items: center;
-`

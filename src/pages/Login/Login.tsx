@@ -1,4 +1,5 @@
 import LoginComponent from "./components/Login/LoginComponent"
+import ServiceInfoComponent from "./components/ServiceInfo/ServiceInfoComponent"
 
 import * as S from "./Login.styles"
 import { Link } from "react-router-dom"
@@ -16,7 +17,7 @@ export default function Login() {
         </Link>
       </S.ServiceLogoContainer>
       <S.LoginFormContainer>
-        <S.ServiceInfoContainer>Service Info Component</S.ServiceInfoContainer>
+        <ServiceInfoComponent />
         <LoginComponent />
       </S.LoginFormContainer>
     </S.LoginLayout>
