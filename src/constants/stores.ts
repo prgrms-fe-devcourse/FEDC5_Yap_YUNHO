@@ -36,7 +36,7 @@ export const AUTH_USER_INITIAL_USER_DATA: User = {
   following: [],
   notifications: [],
   messages: [],
-  _id: "1",
+  _id: "",
   fullName: "",
   email: "",
   createdAt: "",
