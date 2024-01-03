@@ -28,14 +28,16 @@ const MediaPlayerSlider = ({
     })
   }, [changeType, onChange, value])
   return (
-    <S.MediaPlayerPlaySliderLayout ref={sliderRef}>
+    <S.MediaPlayerPlaySliderLayout
+      ref={sliderRef}
+      onMouseDown={handleMouseDown}
+    >
       <S.PlaySliderRail />
       <S.PlaySliderTrack
         $widthPercentage={isBlock ? initialValue * 100 : value * 100}
       />
       <S.PlaySliderHandle
         $leftPercentage={isBlock ? initialValue * 100 : value * 100}
-        onMouseDown={handleMouseDown}
       />
     </S.MediaPlayerPlaySliderLayout>
   )

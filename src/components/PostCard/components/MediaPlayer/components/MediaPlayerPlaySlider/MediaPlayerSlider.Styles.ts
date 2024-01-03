@@ -16,19 +16,19 @@ export const PlaySliderRail = styled.div`
 
   position: absolute;
 
-  background-color: #fff;
-  border-radius: 4px;
+  background-color: ${({ theme }) => theme.colors.main};
+  border-radius: ${({ theme }) => theme.radius.size8};
 `
 
 export const PlaySliderHandle = styled.div<{ $leftPercentage: number }>`
-  width: 5%;
-  height: 35%;
+  width: 2%;
+  height: 30%;
 
   position: absolute;
   left: ${({ $leftPercentage }) => `${$leftPercentage - 2}%`};
 
-  background-color: red;
-  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.point_alt};
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
 `
 
 export const PlaySliderTrack = styled.div<{ $widthPercentage: number }>`
@@ -37,5 +37,6 @@ export const PlaySliderTrack = styled.div<{ $widthPercentage: number }>`
 
   position: absolute;
 
-  background-color: green;
+  background-color: ${({ theme }) => theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size8};
 `
