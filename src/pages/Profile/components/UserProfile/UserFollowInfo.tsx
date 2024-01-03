@@ -5,7 +5,7 @@ const UserFollowInfo = () => {
   return (
     <S.UserFollowInfoSection>
       <PS.UserInfoContainer>팔로잉 500</PS.UserInfoContainer>
-      <S.UserFollowInfoDividerText>﹒</S.UserFollowInfoDividerText>
+      <S.UserFollowInfoDividerText>·</S.UserFollowInfoDividerText>
       <PS.UserInfoContainer>팔로워 123</PS.UserInfoContainer>
     </S.UserFollowInfoSection>
   )
