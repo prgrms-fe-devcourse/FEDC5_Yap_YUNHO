@@ -13,7 +13,8 @@ export const PostCardThumbnailImg = styled.img`
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
-
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
+
+  object-fit: cover;
 `

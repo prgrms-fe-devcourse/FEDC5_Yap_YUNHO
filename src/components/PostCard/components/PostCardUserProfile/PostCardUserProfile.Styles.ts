@@ -15,7 +15,9 @@ export const PostCardUserProfileLayout = styled.div`
 export const PostCardUserProfileImg = styled.img`
   ${postCardUserProfileStyle}
   height: 100%;
-  object-fit: cover;
 
   border-radius: ${({ theme }) => theme.radius.circle};
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
+
+  object-fit: cover;
 `

@@ -9,6 +9,7 @@ export const PostCardContentLayout = styled.div`
 
   border-radius: ${({ theme }) => theme.radius.size8};
   background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   text-align: center;

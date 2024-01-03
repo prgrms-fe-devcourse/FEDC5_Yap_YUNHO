@@ -62,6 +62,7 @@ export const PlayButton = styled.button`
 
   ${flexCenter}
 
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
   svg {
     background-color: ${({ theme }) => theme.colors.main};
     border-radius: ${({ theme }) => theme.radius.circle};
