@@ -1,46 +1,59 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-export const MediaPlayerBottomLayout = styled.div`
-  width: 100%;
-  height: 50%;
-
+const flexCenter = css`
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
-export const MuteButtonContainer = styled.div`
-  flex-grow: 1;
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-`
-
-export const MuteButton = styled.button`
+const iconBaseStyle = css`
   svg {
-    font-size: 4rem;
-
+    width: 100%;
+    height: 100%;
     color: ${({ theme }) => theme.colors.point};
     pointer-events: none;
   }
-  border: 1px solid red;
+`
+export const MediaPlayerBottomLayout = styled.div`
+  width: 100%;
+  height: 50%;
+
+  ${flexCenter}
+`
+
+export const MuteButtonContainer = styled.div`
+  width: 30%;
+  height: 100%;
+
+  ${flexCenter}
+`
+
+export const MuteButton = styled.button`
+  ${iconBaseStyle}
+  height: 60%;
+  margin-left: 30%;
 `
 
 export const PlayButtonContainer = styled.div`
-  flex-grow: 1;
+  width: 40%;
   height: 100%;
+
+  ${flexCenter}
 `
 
 export const PlayButton = styled.button`
+  ${iconBaseStyle}
   height: 100%;
 
+  ${flexCenter}
+
   svg {
-    pointer-events: none;
+    background-color: ${({ theme }) => theme.colors.main};
+    border-radius: ${({ theme }) => theme.radius.circle};
   }
 `
 
 export const VolumeSliderContainer = styled.div`
-  flex-grow: 1;
+  width: 30%;
   height: 80%;
 `
