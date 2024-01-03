@@ -6,6 +6,7 @@ import { ChangePlayer } from "../../store/useMediaPlayerStore.Types"
 interface MediaPlayerSliderProps {
   isBlock: boolean
   initialValue: number
+  value: number
   changeType: "play" | "volume"
   onChange: ChangePlayer
 }
@@ -13,10 +14,11 @@ interface MediaPlayerSliderProps {
 const MediaPlayerSlider = ({
   isBlock,
   initialValue,
+  value,
   changeType,
   onChange,
 }: MediaPlayerSliderProps): ReactNode => {
-  const { sliderRef, value, handleMouseDown } = useSlider({ initialValue })
+  const { sliderRef, newValue, handleMouseDown } = useSlider({ initialValue })
 
   useEffect(() => {
     if (!onChange) {
@@ -24,9 +26,9 @@ const MediaPlayerSlider = ({
     }
     onChange({
       type: changeType,
-      percentage: value,
+      percentage: newValue,
     })
-  }, [changeType, onChange, value])
+  }, [changeType, onChange, newValue])
 
   return (
     <S.MediaPlayerPlaySliderLayout>

@@ -15,7 +15,7 @@ const DUMMY_POST = {
   title: {
     content:
       "아마도 이건 테스트를 위한 값 그렇기 때문에 길게 길게 작성해보는 값",
-    musicUrl: "https://www.youtube.com/watch?v=2gliGzb2_1I&t=2703s",
+    musicUrl: "https://www.youtube.com/watch?v=U8v4A_zXhq4",
   },
   channel: {},
   author: {

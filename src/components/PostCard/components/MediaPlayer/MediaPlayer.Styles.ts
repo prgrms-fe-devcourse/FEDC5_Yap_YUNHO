@@ -8,7 +8,7 @@ export const MediaPlayerLayout = styled.div`
 `
 
 export const MediaPlayerHidden = styled.div`
-  display: none;
+  /* display: none; */
 `
 
 export const MediaPlayerTop = styled.div`

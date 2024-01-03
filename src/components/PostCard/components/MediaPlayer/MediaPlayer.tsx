@@ -13,6 +13,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
     isPlaying,
     isMute,
     playUrl,
+    playRange,
     volume,
     onClickPlayer,
     onChangeRange,
@@ -72,6 +73,9 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
               },
             },
           }}
+          onProgress={({ played }) => {
+            handleChangePlayer({ type: "onProgress", percentage: played })
+          }}
         />
       </S.MediaPlayerHidden>
 
@@ -81,6 +85,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
             changeType="play"
             isBlock={isBlock}
             initialValue={0}
+            value={playRange}
             onChange={handleChangePlayer}
           />
         </S.MediaPlayerTop>
@@ -88,6 +93,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
           isBlock={isBlock}
           isMute={isMute}
           isPlaying={isPlaying}
+          volume={volume}
           onClick={handleClickPlayer}
           onChange={handleChangePlayer}
         />

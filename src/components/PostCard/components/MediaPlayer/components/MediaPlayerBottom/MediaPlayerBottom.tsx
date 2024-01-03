@@ -12,6 +12,7 @@ interface MediaPlayerBottomProps {
   isBlock: boolean
   isMute: boolean
   isPlaying: boolean
+  volume: number
   onClick: (e: MouseEvent) => void
   onChange: ChangePlayer
 }
@@ -20,6 +21,7 @@ export const MediaPlayerBottom = ({
   isBlock,
   isMute,
   isPlaying,
+  volume,
   onChange,
   onClick,
 }: MediaPlayerBottomProps) => {
@@ -52,6 +54,7 @@ export const MediaPlayerBottom = ({
           isBlock={isBlock}
           onChange={onChange}
           initialValue={MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE}
+          value={volume}
           changeType="volume"
         />
       </S.VolumeSliderContainer>
