@@ -11,7 +11,6 @@ export interface UseMediaPlayerStore {
   playUrl: string
   isPlaying: boolean
   isMute: boolean
-  playRange: number
   volume: number
   togglePlayer: TogglePlayer
   changeRange: ChangePlayer

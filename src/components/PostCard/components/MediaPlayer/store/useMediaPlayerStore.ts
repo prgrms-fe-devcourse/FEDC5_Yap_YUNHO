@@ -7,7 +7,6 @@ const useMediaPlayerStore = create<UseMediaPlayerStore>()(
     playUrl: "",
     isPlaying: true,
     isMute: false,
-    playRange: 0,
     volume: 0.2,
 
     togglePlayer: ({ type }) => {
