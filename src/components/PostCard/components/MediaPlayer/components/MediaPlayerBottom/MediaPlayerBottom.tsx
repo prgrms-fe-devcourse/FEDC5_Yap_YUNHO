@@ -32,6 +32,7 @@ export const MediaPlayerBottom = ({
           {isMute ? <VolumeOffIcon /> : <VolumeUpIcon />}
         </S.MuteButton>
       </S.MuteButtonContainer>
+
       <S.PlayButtonContainer>
         <S.PlayButton
           data-click-type="play"
@@ -40,6 +41,7 @@ export const MediaPlayerBottom = ({
           {isPlaying ? <PauseCircleFilledIcon /> : <PlayCircleFilledIcon />}
         </S.PlayButton>
       </S.PlayButtonContainer>
+
       <S.VolumeSliderContainer>
         <MediaPlayerSlider
           isBlock={isBlock}
