@@ -34,6 +34,8 @@ export const PlaySliderHandle = styled.div.attrs<{ $leftPercentage: number }>(
 
   background-color: ${({ theme }) => theme.colors.point_alt};
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
+
+  opacity: 0;
 `
 
 export const PlaySliderTrack = styled.div.attrs<{ $widthPercentage: number }>(
@@ -69,6 +71,7 @@ export const playSliderContainer = styled.div`
 
     ${PlaySliderHandle} {
       background-color: ${({ theme }) => theme.colors.point};
+      opacity: 1;
     }
 
     ${PlaySliderTrack} {

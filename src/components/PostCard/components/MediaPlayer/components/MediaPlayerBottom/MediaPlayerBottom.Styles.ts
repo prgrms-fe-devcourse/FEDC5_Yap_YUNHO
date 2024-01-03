@@ -45,11 +45,11 @@ export const MuteButton = styled.button`
   ${buttonBaseStyle}
   ${buttonHover}
   height: 60%;
-  margin-left: 30%;
+  margin-left: 50%;
 `
 
 export const PlayButtonContainer = styled.div`
-  width: 40%;
+  flex-grow: 1;
   height: 100%;
 
   ${flexCenter}
@@ -76,5 +76,9 @@ export const PlayButton = styled.button`
 
 export const VolumeSliderContainer = styled.div`
   width: 30%;
-  height: 80%;
+  height: 90%;
+
+  div {
+    margin-right: 30%;
+  }
 `
