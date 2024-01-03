@@ -1,16 +1,11 @@
 import NavbarNotLoggedInMenu from "../NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
 import * as S from "./NavbarToggleMenu.Styles"
-import { HandleMenuClickProps } from "../NavbarRightList"
-
-interface NavbarNotLoggedInMenuProps {
-  handleMenuClick: HandleMenuClickProps
-  $isToggle?: boolean
-}
+import { NavbarMenuProps } from "@/components/Navbar/types"
 
 const NavbarToggleMenu = ({
   $isToggle = false,
   handleMenuClick,
-}: NavbarNotLoggedInMenuProps) => {
+}: NavbarMenuProps) => {
   return (
     <S.NavbarToggleMenuLayout>
       <NavbarNotLoggedInMenu

@@ -1,17 +1,12 @@
 import * as S from "./NavbarNotLoggedInMenu.Styles"
 import NavbarNotLoggedInMenuItem from "./NavbarNotLoggedInMenuItem"
-import { HandleMenuClickProps } from "../NavbarRightList"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-
-interface NavbarNotLoggedInMenuProps {
-  handleMenuClick: HandleMenuClickProps
-  $isToggle?: boolean
-}
+import { NavbarMenuProps } from "@/components/Navbar/types"
 
 const NavbarNotLoggedInMenu = ({
   handleMenuClick,
   $isToggle = false,
-}: NavbarNotLoggedInMenuProps) => {
+}: NavbarMenuProps) => {
   const { isLoggedIn } = useAuthUserStore()
 
   return (

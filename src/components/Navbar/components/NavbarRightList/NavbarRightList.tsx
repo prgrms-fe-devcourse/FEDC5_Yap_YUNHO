@@ -14,11 +14,10 @@ import { AxiosResponse } from "axios"
 import { useNavigate } from "react-router-dom"
 import NavbarToggleMenu from "./NavbarToggleMenu/NavbarToggleMenu"
 import useNavbarToggle from "@/hooks/useNavbarToggle"
-
-export type HandleMenuClickProps = (menu: string) => void
+import { HandleMenuClickProps } from "../../types"
 
 const NavbarRightList = () => {
-  const { isLoggedIn, user, setLogin, setLogout, authUser } = useAuthUserStore()
+  const { isLoggedIn, setLogin, setLogout, authUser } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useNavbarToggle()
 
   const navigate = useNavigate()
@@ -92,12 +91,15 @@ const NavbarRightList = () => {
 
   return (
     <S.NavbarRightListLayout>
+      {/* 메뉴들 */}
+
       {isLoggedIn ? (
         <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
       ) : (
         <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
       )}
 
+      {/* 햄버거 토글 버튼*/}
       <NavbarToggleButton
         onClick={handleToggle}
         ref={toggleRef}
@@ -111,13 +113,15 @@ const NavbarRightList = () => {
         )}
       </NavbarToggleButton>
 
-      <NavbarButton>
+      {/* 프로필 버튼*/}
+      <NavbarButton
+        onClick={() => {
+          navigate("/profile")
+        }}
+      >
         <S.NavbarProfile
           src={profile}
           alt="프로필"
-          onClick={() => {
-            navigate("/profile")
-          }}
         />
       </NavbarButton>
     </S.NavbarRightListLayout>

@@ -1,21 +1,17 @@
 import Button from "@/components/Button/Button"
 import { theme } from "@/styles/theme"
-import { HandleMenuClickProps } from "../NavbarRightList"
-
-interface NavbarNotLoggedInMenuProps {
-  children: string
-  handleMenuClick: HandleMenuClickProps
-}
+import { NavbarMenuProps } from "@/components/Navbar/types"
 
 const NavbarNotLoggedInMenuItem = ({
   children,
   handleMenuClick,
-}: NavbarNotLoggedInMenuProps) => {
+}: NavbarMenuProps) => {
   return (
     <Button
       $fontColor={theme.colors.white}
       onClick={() => {
-        handleMenuClick(children)
+        // string | undefined 문제..
+        handleMenuClick(children as string)
       }}
     >
       <p>{children}</p>
