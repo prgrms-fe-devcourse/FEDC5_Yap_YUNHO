@@ -26,7 +26,10 @@ const DUMMY_POST = {
   updatedAt: "떠미더미",
 }
 
-const PostCard = ({ textPercentage }: PostCardProps): React.ReactNode => {
+const PostCard = ({
+  textPercentage,
+  isBlock = false,
+}: PostCardProps): React.ReactNode => {
   return (
     <S.PostCardLayout>
       {/* 이후 Profile은 조건부 렌더링 적용 예정 */}
@@ -37,7 +40,7 @@ const PostCard = ({ textPercentage }: PostCardProps): React.ReactNode => {
         textPercentage={textPercentage}
       />
       <MediaPlayer
-        isBlock={true}
+        isBlock={isBlock}
         url={DUMMY_POST.title.musicUrl}
       />
     </S.PostCardLayout>
