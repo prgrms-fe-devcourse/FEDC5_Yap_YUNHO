@@ -12,15 +12,15 @@ import { AxiosResponse } from "axios"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useEffect } from "react"
 
-export type HandleMenuClickProps = (menuTitle: string) => void
+export type HandleMenuClickProps = (menu: string) => void
 
 const NavbarRightList = () => {
   const { isLoggedIn, user, setLogin, setLogout } = useAuthUserStore()
 
-  const handleMenuClick: HandleMenuClickProps = (menuTitle) => {
-    if (menuTitle === "로그인") {
+  const handleMenuClick: HandleMenuClickProps = (menu) => {
+    if (menu === "로그인") {
       handleLogin()
-    } else if (menuTitle === "로그아웃") {
+    } else if (menu === "로그아웃") {
       handleLogout()
     }
   }
