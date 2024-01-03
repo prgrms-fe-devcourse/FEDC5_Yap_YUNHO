@@ -1,11 +1,14 @@
 import Button from "@/components/Button/Button"
 import { theme } from "@/styles/theme"
-import * as S from "./NavbarLoggedInMenu.Styles"
 import { NavbarMenuProps } from "@/components/Navbar/types"
+import { NavbarMenuList } from "./../NavbarRightList.Styles"
 
-const NavbarLoggedInMenu = ({ handleMenuClick }: NavbarMenuProps) => {
+const NavbarLoggedInMenu = ({
+  handleMenuClick,
+  $isToggle,
+}: NavbarMenuProps) => {
   return (
-    <S.NavbarLoggedInMenuList>
+    <NavbarMenuList $isToggle={$isToggle}>
       <Button
         $fontColor={theme.colors.white}
         onClick={() => {
@@ -14,7 +17,7 @@ const NavbarLoggedInMenu = ({ handleMenuClick }: NavbarMenuProps) => {
       >
         <p>로그아웃</p>
       </Button>
-    </S.NavbarLoggedInMenuList>
+    </NavbarMenuList>
   )
 }
 

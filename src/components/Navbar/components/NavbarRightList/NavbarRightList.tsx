@@ -84,8 +84,8 @@ const NavbarRightList = () => {
     setLogin(user, token)
   }
 
+  // 새로고침 시 로그인 유지
   useEffect(() => {
-    // 새로고침 시 로그인 유지
     fetchUser()
   }, [])
 
