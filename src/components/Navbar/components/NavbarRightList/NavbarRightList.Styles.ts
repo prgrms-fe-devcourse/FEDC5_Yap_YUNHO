@@ -4,6 +4,7 @@ export const NavbarRightListLayout = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
+  user-select: none;
 `
 
 export const NavbarProfile = styled.img`
