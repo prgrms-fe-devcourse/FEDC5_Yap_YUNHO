@@ -4,16 +4,12 @@ import UserProfileImage from "./UserProfileImage"
 import UserActions from "./UserActions/UserActions"
 import * as S from "./UserProfile.Styles"
 
-interface UserProfileProps {
-  isMyPage: boolean
-}
-
-const UserProfile = ({ isMyPage }: UserProfileProps) => {
+const UserProfile = () => {
   return (
     <S.UserProfileLayout>
       <UserProfileImage />
       <UserNickname />
-      <UserActions isMyPage={isMyPage} />
+      <UserActions />
       <UserFollowInfo />
     </S.UserProfileLayout>
   )
