@@ -73,7 +73,7 @@ export const ArrowIcon = styled.button<{ $isLeft: boolean }>`
   position: absolute;
   left: ${({ $isLeft }) => $isLeft && "3rem"};
   right: ${({ $isLeft }) => !$isLeft && "3rem"};
-  top: calc(40% - 3rem);
+  top: 40%;
 
   color: ${({ theme }) => theme.colors.point};
 
