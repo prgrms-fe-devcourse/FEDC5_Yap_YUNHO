@@ -13,6 +13,13 @@ export const ModalBackground = styled.section`
 
   z-index: ${({ theme }) => theme.zIndex.modalBackground};
   background-color: rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 1000px) {
+    & {
+      align-items: flex-start;
+      overflow-y: scroll;
+    }
+  }
 `
 
 export const ModalSection = styled.section`
@@ -32,6 +39,9 @@ export const ModalSection = styled.section`
   @media (max-width: 1000px) {
     & {
       width: 50rem;
+      height: fit-content;
+
+      display: block;
     }
   }
 `
