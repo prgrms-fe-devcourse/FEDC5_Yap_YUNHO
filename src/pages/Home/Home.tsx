@@ -8,7 +8,6 @@ import {
 } from "./components/CategoryBar/CategoryBar.Types"
 import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
-import { Modal } from "@mui/material"
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] =
@@ -20,9 +19,6 @@ const Home = () => {
 
   return (
     <S.HomeLayout>
-      <Modal>
-        <div>dsfsdf</div>
-      </Modal>
       <Navbar />
       <CategoryBar
         selectedCategory={selectedCategory}
