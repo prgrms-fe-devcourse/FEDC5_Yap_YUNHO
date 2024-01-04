@@ -9,6 +9,7 @@ import {
 import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
 import Modal from "@/components/Modal/Modal"
+import useModal from "@/components/Modal/hooks/useModal"
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] =
@@ -18,6 +19,9 @@ const Home = () => {
     setSelectedCategory(newCategory)
   }
 
+  // 테스트 모달
+  const { isModalToggle, showModal, closeModal } = useModal()
+
   return (
     <S.HomeLayout>
       <Navbar />
@@ -26,9 +30,13 @@ const Home = () => {
         onSelected={onSelectedCategory}
       />
       <PostContainer />
-      <Modal>
+      <Modal
+        isShow={isModalToggle}
+        closeModal={closeModal}
+      >
         <div>모달 테스트 중입니다</div>
       </Modal>
+      <button onClick={showModal}>오픈 모달</button>
     </S.HomeLayout>
   )
 }
