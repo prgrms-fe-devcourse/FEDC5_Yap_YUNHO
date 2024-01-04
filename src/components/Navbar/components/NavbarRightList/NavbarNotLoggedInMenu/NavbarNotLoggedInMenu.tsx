@@ -1,4 +1,4 @@
-import NavbarMenuItem from "../NavbarMenuItem"
+import NavbarMenuItem from "../NavbarMenuItem/NavbarMenuItem"
 import { NavbarMenuList } from "./../NavbarRightList.Styles"
 import { NavbarMenuProps } from "@/components/Navbar/types"
 
