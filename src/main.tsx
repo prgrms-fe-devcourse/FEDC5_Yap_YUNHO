@@ -15,7 +15,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <S.ModalPlace id="modal" />
-
         <App />
       </ThemeProvider>
     </QueryClientProvider>
