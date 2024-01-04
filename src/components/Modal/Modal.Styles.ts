@@ -16,9 +16,9 @@ export const ModalBackground = styled.section`
 `
 
 export const ModalSection = styled.section`
-  width: 106rem;
+  width: 104rem;
   height: 80rem;
-  padding: 0 3rem 3rem 3rem;
+  padding: 0 2rem 2rem 2rem;
 
   display: flex;
   flex-direction: column;
@@ -28,6 +28,12 @@ export const ModalSection = styled.section`
   background-color: ${({ theme }) => theme.colors.sub};
   border-radius: ${({ theme }) => theme.radius.size12};
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 1000px) {
+    & {
+      width: 50rem;
+    }
+  }
 `
 
 export const ModalTop = styled.div`
