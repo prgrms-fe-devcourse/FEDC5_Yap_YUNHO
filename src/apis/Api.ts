@@ -1,32 +1,22 @@
 import axios from "axios"
-import { API_ERROR_MESSAGE } from "@/constants/errorMessage"
-
+import authToken from "@/stores/authToken"
 const { VITE_API_BASE_URL } = import.meta.env
 
-const API = axios.create({
+export const API = axios.create({
   baseURL: VITE_API_BASE_URL,
   timeout: 2000,
 })
-const typeCheck = Object.prototype.toString
 
-export const GET_API = async (path: string) => {
-  try {
-    const res = await API.get(path)
+export const AUTH_API = axios.create({
+  baseURL: VITE_API_BASE_URL,
+  timeout: 2000,
+})
 
-    return res
-  } catch (e) {
-    console.error(e)
-  }
-}
-
-export const POST_API = async (path: string, data: object) => {
-  try {
-    if (typeCheck.call(data) !== "[object Object]") {
-      return console.error(API_ERROR_MESSAGE.CHECK_IS_OBJECT)
-    }
-    const res = await API.post(path, data)
-    return res
-  } catch (e) {
-    console.error(e)
-  }
-}
+AUTH_API.interceptors.request.use(
+  (config) => {
+    const token = authToken.getToken()
+    config.headers.Authorization = token ? `bearer ${token}` : null
+    return config
+  },
+  (error) => Promise.reject(error.response),
+)
