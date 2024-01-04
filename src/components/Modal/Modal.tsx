@@ -1,15 +1,29 @@
 import * as S from "./Modal.Styles"
 import CloseIcon from "@mui/icons-material/Close"
 import ModalPortal from "./components/ModalPortal"
-import React from "react"
+import React, { MouseEvent } from "react"
 
-const Modal = ({ children }: { children: React.ReactNode }) => {
+interface ModalProps {
+  children: React.ReactNode
+  isShow: boolean
+  closeModal: () => void
+}
+
+const Modal = ({ children, isShow, closeModal }: ModalProps) => {
+  const handleOffModal = ({ target, currentTarget }: MouseEvent) => {
+    if (target !== currentTarget) {
+      return
+    }
+
+    closeModal()
+  }
+
   return (
-    <ModalPortal>
-      <S.ModalBackground>
+    <ModalPortal isShow={isShow}>
+      <S.ModalBackground onClick={handleOffModal}>
         <S.ModalSection>
           <S.ModalTop>
-            <CloseIcon />
+            <CloseIcon onClick={handleOffModal} />
           </S.ModalTop>
           <S.ModalContent>{children}</S.ModalContent>
         </S.ModalSection>
