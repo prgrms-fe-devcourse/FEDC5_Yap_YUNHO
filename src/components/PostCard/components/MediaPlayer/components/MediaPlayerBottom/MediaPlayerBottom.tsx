@@ -54,7 +54,7 @@ export const MediaPlayerBottom = ({
           isBlock={isBlock}
           onChange={onChange}
           initialPercent={MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE}
-          percent={volume}
+          percent={isMute ? 0 : volume}
           changeType="volume"
         />
       </S.VolumeSliderContainer>

@@ -6,7 +6,7 @@ import { MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE } from "../constants/MediaPlayer
 const useMediaPlayerStore = create<UseMediaPlayerStore>()(
   devtools((set) => ({
     playUrl: "",
-    isPlaying: true,
+    isPlaying: false,
     isMute: false,
     playPercent: 0,
     volume: MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE,
