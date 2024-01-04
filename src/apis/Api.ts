@@ -1,4 +1,5 @@
 import axios from "axios"
+import authToken from "@/stores/AuthToken"
 import { API_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const { VITE_API_BASE_URL } = import.meta.env
@@ -37,5 +38,27 @@ export const LogoutAPI = async (path: string) => {
     return res
   } catch (e) {
     console.log(e)
+  }
+}
+
+export const authUser = async () => {
+  try {
+    const res = await axios.get(
+      "https://kdt.frontend.5th.programmers.co.kr:5012/auth-user",
+      {
+        headers: {
+          Authorization: `bearer ${authToken.getToken()}`,
+        },
+      },
+    )
+    if (res.status === 200) {
+      const user = res.data
+      const token = authToken.getToken()
+      return { user, token }
+    }
+    return { user: null, token: null }
+  } catch (e) {
+    console.log("사용자 인증 실패")
+    return { user: null, token: null }
   }
 }
