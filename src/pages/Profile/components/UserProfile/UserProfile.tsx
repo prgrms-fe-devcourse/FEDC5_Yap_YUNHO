@@ -10,12 +10,12 @@ interface UserProfileProps {
 
 const UserProfile = ({ isMyPage }: UserProfileProps) => {
   return (
-    <S.UserProfileSection>
+    <S.UserProfileLayout>
       <UserProfileImage />
       <UserNickname />
       <UserActions isMyPage={isMyPage} />
       <UserFollowInfo />
-    </S.UserProfileSection>
+    </S.UserProfileLayout>
   )
 }
 
