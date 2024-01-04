@@ -11,7 +11,7 @@ const UserActions = () => {
   const isMyPage = user._id === id
 
   return (
-    <S.UserActionSection>
+    <S.UserActionLayout>
       {isMyPage ? (
         <UserUpdateInfoButton />
       ) : (
@@ -20,7 +20,7 @@ const UserActions = () => {
           <UserSendDMButton />
         </>
       )}
-    </S.UserActionSection>
+    </S.UserActionLayout>
   )
 }
 
