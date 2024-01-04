@@ -4,7 +4,7 @@ import NavbarLeftList from "./components/NavbarLeftList/NavbarLeftList"
 import NavbarRightList from "./components/NavbarRightList/NavbarRightList"
 
 const Navbar = () => {
-  if (!handlePathName(useLocation().pathname)) {
+  if (!checkPathName(useLocation().pathname)) {
     return
   }
 
@@ -16,7 +16,7 @@ const Navbar = () => {
   )
 }
 
-const handlePathName = (path: string) => {
+const checkPathName = (path: string) => {
   // 404페이지에서도 Navbar를 보여준다 가정
   switch (path) {
     case "useredit":
