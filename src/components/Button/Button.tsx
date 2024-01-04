@@ -12,7 +12,7 @@ interface ButtonProps {
 
 const Button = ({
   $color = "",
-  $fontSize = `${theme.fontSizes.large}`,
+  $fontSize = `${theme.fontSizes.semiLarge}`,
   $fontColor = `${theme.colors.white}`,
   children,
   ...rest

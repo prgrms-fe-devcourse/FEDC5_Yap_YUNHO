@@ -5,7 +5,7 @@ export const NavbarLayout = styled.section`
   align-items: center;
   width: 100%;
   justify-content: space-between;
-  height: 12rem;
+  height: 10rem;
   padding: 2rem;
   border-bottom: ${({ theme }) => `0.1rem solid ${theme.colors.black}`};
   background-color: ${({ theme }) => theme.colors.sub_alt};

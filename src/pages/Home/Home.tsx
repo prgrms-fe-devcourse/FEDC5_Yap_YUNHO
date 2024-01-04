@@ -1,6 +1,5 @@
 import { useState } from "react"
 import * as S from "./Home.Styles"
-import Navbar from "@/components/Navbar/Navbar"
 import CategoryBar from "./components/CategoryBar/CategoryBar"
 import {
   Category,
