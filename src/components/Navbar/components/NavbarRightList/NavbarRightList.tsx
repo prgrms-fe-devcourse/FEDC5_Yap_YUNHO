@@ -9,16 +9,17 @@ import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
 import MenuIcon from "@mui/icons-material/Menu"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { LogoutAPI, POST_API, authUser } from "@/apis/Api"
+import { POST_API, authUser } from "@/apis/Api"
+
 import { AxiosResponse } from "axios"
 import { useNavigate } from "react-router-dom"
 import NavbarToggleMenu from "./NavbarToggleMenu/NavbarToggleMenu"
-import useNavbarToggle from "@/hooks/useNavbarToggle"
+import useToggle from "@/hooks/useToggle"
 import { HandleMenuClickProps } from "../../types"
 
 const NavbarRightList = () => {
   const { isLoggedIn, setLogin, setLogout } = useAuthUserStore()
-  const { isToggle, toggleRef, handleToggle } = useNavbarToggle()
+  const { isToggle, toggleRef, handleToggle } = useToggle()
 
   const navigate = useNavigate()
 
