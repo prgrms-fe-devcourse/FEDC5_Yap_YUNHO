@@ -37,6 +37,8 @@ export const ServiceLogo = styled.div`
   background-size: cover;
   position: absolute;
   z-index: 1;
+
+  cursor: pointer;
 `
 
 export const LoginFormContainer = styled.div`

@@ -25,7 +25,6 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 0.5rem;
 `
 
 export const Button = styled.button<{ $color: string }>`
@@ -39,8 +38,13 @@ export const Button = styled.button<{ $color: string }>`
   border-radius: ${({ theme }) => theme.radius.size4};
   font-size: ${({ theme }) => theme.fontSizes.medium};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 
   cursor: pointer;
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+  }
 `

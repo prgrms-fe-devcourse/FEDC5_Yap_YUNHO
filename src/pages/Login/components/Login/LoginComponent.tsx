@@ -17,7 +17,7 @@ const LoginComponent = () => {
   const [errorMessage, setErrorMessage] = useState({ email: "", password: "" })
 
   const updateUserInfo = (value: string, type: string) => {
-    if (type === "email") {
+    if (type === "text") {
       userInfoRef.current.email = value
     } else if (type === "password") {
       userInfoRef.current.password = value
@@ -60,7 +60,7 @@ const LoginComponent = () => {
         <LoginInputContainer
           updateUserInfo={updateUserInfo}
           errorMessage={errorMessage.email}
-          type="email"
+          type="text"
           placeholder="이메일"
         />
         <LoginInputContainer
