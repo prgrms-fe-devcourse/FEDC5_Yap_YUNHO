@@ -3,9 +3,13 @@ import { createPortal } from "react-dom"
 
 interface ModalPortalProps {
   children: React.ReactNode
+  isShow: boolean
 }
 
-const ModalPortal = ({ children }: ModalPortalProps) => {
+const ModalPortal = ({ children, isShow }: ModalPortalProps) => {
+  if (!isShow) {
+    return
+  }
   const ModalBaseElement = document.querySelector("#modal")
   if (!(ModalBaseElement instanceof HTMLElement)) {
     return
