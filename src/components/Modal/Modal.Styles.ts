@@ -47,7 +47,6 @@ export const ModalTop = styled.div`
   svg {
     font-size: 3.2rem;
     font-weight: 900;
-    color: ${({ theme }) => theme.colors.point};
 
     cursor: pointer;
     transition: all 0.3s;
