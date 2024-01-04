@@ -1,6 +1,9 @@
 import styled from "styled-components"
 
-// 여러 곳에서 쓰이는 스타일 컴포넌트들
+export const UserProfileLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export const UserInfoContainer = styled.div`
   display: flex;
@@ -9,10 +12,9 @@ export const UserInfoContainer = styled.div`
   color: ${({ theme }) => theme.colors.white};
 `
 
-export const UserInfoButton = styled.button<{ mb?: number }>`
+export const UserInfoButton = styled.button`
   padding: 0.8rem 1.2rem;
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   letter-spacing: -0.032rem;
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.size8};

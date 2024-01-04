@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const UserProfileSection = styled.section`
+export const UserProfileLayout = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@ export const UserNickNameContainer = styled.div`
   color: ${({ theme }) => theme.colors.white};
 `
 
-export const UserFollowInfoSection = styled.section`
+export const UserFollowInfoLayout = styled.section`
   display: flex;
   justify-content: center;
   margin-bottom: 3.5rem;

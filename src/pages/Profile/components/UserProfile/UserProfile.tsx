@@ -6,12 +6,12 @@ import * as S from "./UserProfile.Styles"
 
 const UserProfile = () => {
   return (
-    <S.UserProfileSection>
+    <S.UserProfileLayout>
       <UserProfileImage />
       <UserNickname />
       <UserActions />
       <UserFollowInfo />
-    </S.UserProfileSection>
+    </S.UserProfileLayout>
   )
 }
 
