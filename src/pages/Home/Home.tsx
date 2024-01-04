@@ -8,6 +8,7 @@ import {
 } from "./components/CategoryBar/CategoryBar.Types"
 import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
+import Modal from "@/components/Modal/Modal"
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] =
@@ -25,6 +26,9 @@ const Home = () => {
         onSelected={onSelectedCategory}
       />
       <PostContainer />
+      <Modal>
+        <div>모달 테스트 중입니다</div>
+      </Modal>
     </S.HomeLayout>
   )
 }
