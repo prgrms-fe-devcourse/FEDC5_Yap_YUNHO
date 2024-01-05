@@ -1,9 +1,10 @@
 import styled from "styled-components"
 
-export const UserPostFilterLayout = styled.div`
+export const UserPostFilterLayout = styled.div<{ $isMyPage: boolean }>`
   position: absolute;
   left: 50%;
-  transform: translateX(-47%);
+  transform: ${({ $isMyPage }) =>
+    $isMyPage ? `translateX(-47%)` : `translateX(-50%)`};
 
   display: flex;
   gap: 2rem;
@@ -11,7 +12,6 @@ export const UserPostFilterLayout = styled.div`
 
 export const UserPostButton = styled.button<{
   $isSelected?: boolean
-  $isMyPage?: boolean
 }>`
   padding: 0.8rem 1.2rem;
 

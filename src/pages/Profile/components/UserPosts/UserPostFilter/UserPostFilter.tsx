@@ -16,11 +16,10 @@ const UserPostFilter = () => {
   )
 
   return (
-    <S.UserPostFilterLayout>
+    <S.UserPostFilterLayout $isMyPage={isMyPage}>
       <UserCreatePostButton
         $isSelected={selectedButton === USER_POST_FILTER_LIST.create}
         onClick={() => setSelectedButton(USER_POST_FILTER_LIST.create)}
-        $isMyPage={isMyPage}
       />
       {isMyPage && (
         <UserLikePostButton
