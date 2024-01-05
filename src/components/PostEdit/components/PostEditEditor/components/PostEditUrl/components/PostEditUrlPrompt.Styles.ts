@@ -6,7 +6,7 @@ const flexCenter = css`
   justify-content: center;
 `
 
-export const PostEditPromptLayout = styled.div`
+export const PostEditUrlPromptLayout = styled.div`
   width: 40rem;
   height: 30rem;
 
@@ -14,7 +14,7 @@ export const PostEditPromptLayout = styled.div`
   flex-direction: column;
 `
 
-export const PostEditPromptTitle = styled.h6`
+export const PostEditUrlPromptTitle = styled.h6`
   width: 30rem;
   height: 10rem;
 
@@ -39,7 +39,7 @@ export const PostEditUrlErrorMessage = styled.p`
   user-select: none;
 `
 
-export const PostEditPromptInput = styled.textarea`
+export const PostEditUrlPromptInput = styled.textarea`
   width: 36rem;
   height: 6rem;
   margin-bottom: 3rem;

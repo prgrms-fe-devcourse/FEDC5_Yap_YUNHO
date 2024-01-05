@@ -2,9 +2,12 @@ import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditUrl.Styles"
 import useModal from "@/components/Modal/hooks/useModal"
 import SmallModal from "@/components/Modal/SmallModal"
-import PostEditPrompt from "./components/PostEditPrompt"
+import PostEditUrlPrompt from "./components/PostEditUrlPrompt"
 import DeleteIcon from "@mui/icons-material/Delete"
-import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
+import {
+  POST_EDIT_EDITOR_PLACEHOLDER,
+  POST_EDIT_MODAL_MESSAGE,
+} from "@/components/PostEdit/constants/PostEdit.Constants"
 import ModalConfirm from "@/components/ModalConfirm/ModalConfirm"
 
 interface PostEditUrlProps {
@@ -62,7 +65,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         isShow={isPromptToggle}
         $height={30}
       >
-        <PostEditPrompt
+        <PostEditUrlPrompt
           onClose={closePrompt}
           onEdit={handleEditUrl}
           url={urlPath}
@@ -72,7 +75,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
       <ModalConfirm
         isShow={isConfirmToggle}
         onClose={handleRemoveUrl}
-        message="URL을 초기화 하시겠습니까?"
+        message={POST_EDIT_MODAL_MESSAGE.URL_CONFIRM}
       />
     </>
   )

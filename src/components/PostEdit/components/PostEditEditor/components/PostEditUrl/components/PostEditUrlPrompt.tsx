@@ -1,17 +1,24 @@
-import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
-import * as S from "./PostEditPrompt.Styles"
+import {
+  POST_EDIT_EDITOR_PLACEHOLDER,
+  POST_EDIT_MODAL_MESSAGE,
+} from "@/components/PostEdit/constants/PostEdit.Constants"
+import * as S from "./PostEditUrlPrompt.Styles"
 import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import { ChangeEvent, useEffect, useState } from "react"
 import ReactPlayer from "react-player"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
-interface PostEditPromptProps {
+interface PostEditUrlPromptProps {
   onClose: () => void
   onEdit: (newUrl: string) => void
   url: string
 }
 
-const PostEditPrompt = ({ onClose, onEdit, url }: PostEditPromptProps) => {
+const PostEditUrlPrompt = ({
+  onClose,
+  onEdit,
+  url,
+}: PostEditUrlPromptProps) => {
   const [newUrl, setNewUrl] = useState(url)
   const [isErrorUrl, setIsErrorUrl] = useState(true)
 
@@ -35,7 +42,6 @@ const PostEditPrompt = ({ onClose, onEdit, url }: PostEditPromptProps) => {
   }
 
   const handleSubmitUrl = () => {
-    // 혹시 모를 방어코드
     if (isErrorUrl) {
       return
     }
@@ -50,31 +56,31 @@ const PostEditPrompt = ({ onClose, onEdit, url }: PostEditPromptProps) => {
   }
 
   return (
-    <S.PostEditPromptLayout>
-      <S.PostEditPromptTitle>
-        등록하실 URL을 입력하신 후 등록 버튼을 눌러주세요!
-      </S.PostEditPromptTitle>
+    <S.PostEditUrlPromptLayout>
+      <S.PostEditUrlPromptTitle>
+        {POST_EDIT_MODAL_MESSAGE.URL_PROMPT}
+      </S.PostEditUrlPromptTitle>
 
       <S.PostEditUrlErrorMessage>
         {isErrorUrl ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL : ""}
       </S.PostEditUrlErrorMessage>
 
-      <S.PostEditPromptInput
+      <S.PostEditUrlPromptInput
         value={newUrl}
         placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
         onChange={handleChangeUrl}
       />
       <GS.ModalBottomActions>
-        <GS.ModalButton onClick={handleCloseModal}>취소</GS.ModalButton>
+        <GS.ModalButton onClick={handleCloseModal}>{"취소"}</GS.ModalButton>
         <GS.ModalButton
           onClick={handleSubmitUrl}
           disabled={isErrorUrl}
         >
-          등록
+          {"등록"}
         </GS.ModalButton>
       </GS.ModalBottomActions>
-    </S.PostEditPromptLayout>
+    </S.PostEditUrlPromptLayout>
   )
 }
 
-export default PostEditPrompt
+export default PostEditUrlPrompt
