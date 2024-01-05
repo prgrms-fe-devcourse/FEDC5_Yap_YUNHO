@@ -19,6 +19,7 @@ const PostEdit = () => {
     setEditPost(newEditPost)
   }
 
+  console.log(editPost)
   return (
     <S.PostEditLayout>
       <S.PostEditContainer>
@@ -26,7 +27,10 @@ const PostEdit = () => {
       </S.PostEditContainer>
       <S.PostEditBoundary />
       <S.PostEditContainer>
-        <PostEditEditor onEdit={handleEditPost} />
+        <PostEditEditor
+          onEdit={handleEditPost}
+          postData={editPost}
+        />
       </S.PostEditContainer>
     </S.PostEditLayout>
   )
