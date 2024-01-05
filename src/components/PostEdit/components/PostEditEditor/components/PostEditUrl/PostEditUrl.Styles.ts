@@ -13,6 +13,8 @@ export const PostEditUrlTitle = styled.h6`
 
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes.large};
+
+  user-select: none;
 `
 
 export const PostEditUrlInput = styled.textarea`
@@ -31,8 +33,38 @@ export const PostEditUrlInput = styled.textarea`
   cursor: pointer;
 
   ${({ theme }) => theme.scrollBarNone}
+`
 
-  &:disabled {
-    color: ${({ theme }) => theme.colors.black};
-  }
+export const PostEditPromptLayout = styled.div`
+  width: 40rem;
+  height: 40rem;
+
+  display: flex;
+  flex-direction: column;
+`
+
+export const PostEditPromptContainer = styled.div`
+  width: 100%;
+  height: 30rem;
+
+  background-color: black;
+`
+
+export const PostEditPromptActions = styled.div`
+  width: 100%;
+  height: 10rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+
+  background-color: white;
+`
+
+export const PostEditPromptButton = styled.button`
+  width: 10rem;
+  height: 4rem;
+
+  background-color: orange;
 `
