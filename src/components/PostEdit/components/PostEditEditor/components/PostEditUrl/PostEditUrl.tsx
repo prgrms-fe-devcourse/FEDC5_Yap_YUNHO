@@ -3,6 +3,7 @@ import * as S from "./PostEditUrl.Styles"
 import useModal from "@/components/Modal/hooks/useModal"
 import SmallModal from "@/components/Modal/SmallModal"
 import PostEditPrompt from "./components/PostEditPrompt"
+import DeleteIcon from "@mui/icons-material/Delete"
 import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
 
 interface PostEditUrlProps {
@@ -23,7 +24,10 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
   return (
     <>
       <S.PostEditUrlLayout>
-        <S.PostEditUrlTitle>영상 URL</S.PostEditUrlTitle>
+        <S.PostEditUrlTitle>
+          <S.PostEitUrlTitleText> 영상 URL</S.PostEitUrlTitleText>
+          <DeleteIcon />
+        </S.PostEditUrlTitle>
         <S.PostEditUrlInput
           readOnly
           value={urlPath}

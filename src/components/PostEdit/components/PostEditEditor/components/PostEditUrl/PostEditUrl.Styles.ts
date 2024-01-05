@@ -4,8 +4,32 @@ export const PostEditUrlLayout = styled.div`
   width: 40rem;
 `
 
-export const PostEditUrlTitle = styled.h6`
+export const PostEditUrlTitle = styled.div`
   width: 100%;
+  height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: ${({ theme }) => theme.colors.main};
+  font-size: ${({ theme }) => theme.fontSizes.large};
+
+  user-select: none;
+
+  svg {
+    font-size: 2.8rem;
+
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.point};
+    }
+  }
+`
+
+export const PostEitUrlTitleText = styled.h6`
   height: 4rem;
 
   display: flex;
@@ -13,8 +37,6 @@ export const PostEditUrlTitle = styled.h6`
 
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes.large};
-
-  user-select: none;
 `
 
 export const PostEditUrlInput = styled.textarea`
