@@ -14,7 +14,7 @@ const NavbarMenuItem = ({ children, handleMenuClick }: NavbarMenuProps) => {
             return
           }
 
-          handleMenuClick(children as string)
+          handleMenuClick(children)
         }}
       >
         <p>{children}</p>

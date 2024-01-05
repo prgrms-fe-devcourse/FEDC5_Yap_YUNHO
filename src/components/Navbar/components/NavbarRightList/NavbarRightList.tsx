@@ -8,50 +8,17 @@ import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
 import MenuIcon from "@mui/icons-material/Menu"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { API } from "@/apis/Api"
 import { useNavigate } from "react-router-dom"
 import NavbarToggleMenu from "./NavbarToggleMenu/NavbarToggleMenu"
 import useToggle from "@/hooks/useToggle"
-import { HandleMenuClickProps } from "../../types"
+import useMenuClick from "../../hooks/useNavMenuClick"
 
 const NavbarRightList = () => {
-  const { isLoggedIn, setLogout } = useAuthUserStore()
+  const { isLoggedIn } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
+  const { handleMenuClick } = useMenuClick()
 
   const navigate = useNavigate()
-
-  const handleMenuClick: HandleMenuClickProps = (menu) => {
-    switch (menu) {
-      case "로그인":
-        navigate("/login")
-        break
-      case "로그아웃":
-        handleLogout()
-        break
-      case "DM":
-        navigate("/directmessage")
-        break
-      case "게시물 생성":
-        // 게시물 생성 모달
-        break
-      case "알림":
-        // 알림 창(후순위)
-        break
-      default:
-        break
-    }
-  }
-
-  const handleLogout = async () => {
-    await API("/logout")
-      .then(() => {
-        setLogout()
-        navigate("/")
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
 
   return (
     <S.NavbarRightListLayout>
