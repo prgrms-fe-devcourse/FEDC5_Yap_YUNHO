@@ -6,14 +6,19 @@ import PostEditPrompt from "./components/PostEditPrompt"
 import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
 
 interface PostEditUrlProps {
-  text: string
+  urlPath: string
   onEdit: HandleEditPost
 }
 
-const PostEditUrl = ({ text, onEdit }: PostEditUrlProps) => {
+const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
   const { isModalToggle, showModal, closeModal } = useModal()
 
-  handleEditUrl
+  const handleEditUrl = (newUrl: string) => {
+    onEdit({
+      type: "mediaUrl",
+      value: newUrl,
+    })
+  }
 
   return (
     <>
@@ -21,7 +26,7 @@ const PostEditUrl = ({ text, onEdit }: PostEditUrlProps) => {
         <S.PostEditUrlTitle>영상 URL</S.PostEditUrlTitle>
         <S.PostEditUrlInput
           readOnly
-          value={text}
+          value={urlPath}
           placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_INPUT}
           onClick={() => showModal()}
         />
@@ -33,7 +38,7 @@ const PostEditUrl = ({ text, onEdit }: PostEditUrlProps) => {
       >
         <PostEditPrompt
           onClose={closeModal}
-          text={text}
+          text={urlPath}
         />
       </SmallModal>
     </>
