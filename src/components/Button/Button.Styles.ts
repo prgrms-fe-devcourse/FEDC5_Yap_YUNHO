@@ -7,7 +7,7 @@ export const ButtonLayout = styled.button<{
 }>`
   padding: 1rem 1.4rem;
   border-radius: ${({ theme }) => theme.radius.size20};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 
   background-color: ${({ $color }) => $color};
   font-size: ${({ $fontSize }) => $fontSize};
