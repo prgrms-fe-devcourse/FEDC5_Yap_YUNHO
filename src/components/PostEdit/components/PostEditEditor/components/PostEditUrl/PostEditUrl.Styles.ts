@@ -29,10 +29,10 @@ export const PostEditUrlInput = styled.textarea`
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
   border-radius: ${({ theme }) => theme.radius.size8};
 
-  opacity: 1;
   cursor: pointer;
 
   ${({ theme }) => theme.scrollBarNone}
+  resize: none;
 `
 
 // -------------------------------- Prompt
@@ -61,8 +61,13 @@ export const PostEditPromptInput = styled.textarea`
   width: 36rem;
   height: 6rem;
 
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
+  border-radius: ${({ theme }) => theme.radius.size8};
+
   font-size: ${({ theme }) => theme.fontSizes.large};
   text-align: center;
+
+  resize: none;
 `
 
 export const PostEditPromptActions = styled.div`

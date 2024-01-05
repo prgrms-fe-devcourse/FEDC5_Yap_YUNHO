@@ -29,4 +29,5 @@ export const PostEditInput = styled.textarea`
   border-radius: ${({ theme }) => theme.radius.size8};
 
   ${({ theme }) => theme.scrollBarNone}
+  resize: none;
 `
