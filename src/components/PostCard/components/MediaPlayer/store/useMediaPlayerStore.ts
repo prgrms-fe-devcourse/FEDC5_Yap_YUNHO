@@ -1,6 +1,7 @@
 import { create } from "zustand"
 import { devtools } from "zustand/middleware"
 import { UseMediaPlayerStore } from "./useMediaPlayerStore.Types"
+import { MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE } from "../constants/MediaPlayer"
 
 const useMediaPlayerStore = create<UseMediaPlayerStore>()(
   devtools((set) => ({
@@ -8,7 +9,7 @@ const useMediaPlayerStore = create<UseMediaPlayerStore>()(
     isPlaying: true,
     isMute: false,
     playRange: 0,
-    volume: 0.2,
+    volume: MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE,
 
     togglePlayer: ({ type }) => {
       if (type === "play") {
@@ -27,7 +28,7 @@ const useMediaPlayerStore = create<UseMediaPlayerStore>()(
     },
 
     changeRange: ({ type, percentage }) => {
-      if (type === "play") {
+      if (type === "play" || type === "onProgress") {
         set((store) => ({
           ...store,
           playRange: percentage,

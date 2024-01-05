@@ -11,21 +11,33 @@ const PostContainer = () => {
       </S.ArrowIcon>
       {/* small - left */}
       <S.PostSmallCard $isLeft={true}>
-        <PostCard textPercentage={"60%"} />
+        <PostCard
+          textPercentage={"60%"}
+          isBlock={true}
+        />
       </S.PostSmallCard>
       {/* sub - left */}
       <S.PostSubCard $isLeft={true}>
-        <PostCard textPercentage={"80%"} />
+        <PostCard
+          textPercentage={"80%"}
+          isBlock={true}
+        />
       </S.PostSubCard>
       {/* main */}
       <S.PostMainCard>
         <PostCard />
       </S.PostMainCard>
       <S.PostSubCard $isLeft={false}>
-        <PostCard textPercentage={"80%"} />
+        <PostCard
+          textPercentage={"80%"}
+          isBlock={true}
+        />
       </S.PostSubCard>
       <S.PostSmallCard $isLeft={false}>
-        <PostCard textPercentage={"60%"} />
+        <PostCard
+          textPercentage={"60%"}
+          isBlock={true}
+        />
       </S.PostSmallCard>
       <S.ArrowIcon $isLeft={false}>
         <ArrowForwardIos className="arrow_icon" />

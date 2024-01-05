@@ -1,7 +1,7 @@
 export type TogglePlayer = (params: { type: "play" | "mute" }) => void
 
 export type ChangePlayer = (params: {
-  type: "play" | "volume"
+  type: "play" | "volume" | "onProgress"
   percentage: number
 }) => void
 
@@ -11,8 +11,8 @@ export interface UseMediaPlayerStore {
   playUrl: string
   isPlaying: boolean
   isMute: boolean
-  playRange: number
   volume: number
+  playRange: number
   togglePlayer: TogglePlayer
   changeRange: ChangePlayer
   changeUrl: ChangeUrl

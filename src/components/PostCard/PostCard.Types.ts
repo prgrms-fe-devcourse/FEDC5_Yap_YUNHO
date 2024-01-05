@@ -1,5 +1,6 @@
 export interface PostCardProps {
   textPercentage?: "60%" | "80%" | "100%"
+  isBlock?: boolean
 }
 
 export interface PostCardUserProfileProps {
