@@ -13,7 +13,7 @@ export const PostEditInputTitle = styled.h6`
   align-items: center;
 
   color: ${({ theme }) => theme.colors.main};
-  font-size: 2.4rem;
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
 export const PostEditInput = styled.textarea`
@@ -21,7 +21,7 @@ export const PostEditInput = styled.textarea`
   height: 10rem;
   padding: 1rem;
 
-  font-size: ${({ theme }) => theme.fontSizes.large};
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   text-align: center;
 
   background-color: rgba(255, 255, 255, 0.7);
