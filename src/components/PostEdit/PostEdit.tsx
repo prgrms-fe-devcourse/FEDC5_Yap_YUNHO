@@ -5,13 +5,13 @@ import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 const PostEdit = () => {
   return (
     <S.PostEditLayout>
-      <S.PostEditViewerContainer>
+      <S.PostEditContainer>
         <PostEditViewer />
-      </S.PostEditViewerContainer>
+      </S.PostEditContainer>
       <S.PostEditBoundary />
-      <S.PostEditEditorContainer>
+      <S.PostEditContainer>
         <PostEditEditor />
-      </S.PostEditEditorContainer>
+      </S.PostEditContainer>
     </S.PostEditLayout>
   )
 }

@@ -15,7 +15,7 @@ export const PostEditLayout = styled.div`
   }
 `
 
-export const PostEditViewerContainer = styled.div`
+export const PostEditContainer = styled.div`
   width: 46rem;
   height: 70rem;
 
@@ -37,13 +37,4 @@ export const PostEditBoundary = styled.div`
     width: 42rem;
     margin: 0;
   }
-`
-
-export const PostEditEditorContainer = styled.div`
-  width: 46rem;
-  height: 70rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `
