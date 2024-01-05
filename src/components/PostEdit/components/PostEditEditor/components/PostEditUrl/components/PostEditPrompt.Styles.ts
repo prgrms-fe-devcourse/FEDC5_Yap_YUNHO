@@ -11,13 +11,27 @@ export const PostEditPromptLayout = styled.div`
 
 export const PostEditPromptTitle = styled.h6`
   width: 30rem;
-  height: 14rem;
+  height: 10rem;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   font-size: 2.6rem;
   text-align: center;
+`
+
+export const PostEditUrlAlertMessage = styled.p`
+  width: 30rem;
+  height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  color: red;
 `
 
 export const PostEditPromptInput = styled.textarea`

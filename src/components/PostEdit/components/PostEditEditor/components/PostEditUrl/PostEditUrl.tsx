@@ -38,7 +38,8 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
       >
         <PostEditPrompt
           onClose={closeModal}
-          text={urlPath}
+          onEdit={handleEditUrl}
+          url={urlPath}
         />
       </SmallModal>
     </>

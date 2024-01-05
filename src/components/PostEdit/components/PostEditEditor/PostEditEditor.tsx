@@ -13,7 +13,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
   return (
     <S.PostEditEditorLayout>
       <PostEditUrl
-        text={postData.mediaUrl}
+        urlPath={postData.mediaUrl}
         onEdit={onEdit}
       />
       <PostEditInput
