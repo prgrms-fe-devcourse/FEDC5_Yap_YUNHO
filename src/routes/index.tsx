@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { DirectMessage, Home, Login, Profile, Signup, UserEdit } from "@/Pages"
+import { DirectMessage, Home, Login, Profile, Signup, UserEdit } from "@/pages"
+
 
 const YAPRoute = () => {
   return (

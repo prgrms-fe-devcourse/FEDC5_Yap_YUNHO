@@ -1,21 +1,49 @@
-import Button from "../../../Button/Button"
-import { NavbarButton } from "../../Navbar.Styles"
+import {
+  NavbarButton,
+  NavbarToggleButton,
+} from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
-import profile from "../../../../assets/profile.png"
-import { NAV_MENU_LIST } from "@/constants/stores"
+import profile from "@/assets/profile.png"
+import { useState } from "react"
+import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
+import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
+import MenuIcon from "@mui/icons-material/Menu"
+
+export type HandleMenuClickProps = (menuTitle: string) => void
 
 const NavbarRightList = () => {
+  // 나중에 전역 로그인 상태를 받아오도록 변경 예정
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleMenuClick: HandleMenuClickProps = (menuTitle) => {
+    if (menuTitle === "로그인") {
+      // navigate("/login")
+      handleLogin()
+    } else if (menuTitle === "로그아웃") {
+      // navigate("/")
+      // 전역에서 받은 로그인 상태가 true이면 로그아웃하고 홈으로 이동
+      handleLogout()
+    }
+  }
+
+  const handleLogin = (): void => {
+    setIsLoggedIn(true)
+  }
+  const handleLogout = (): void => {
+    setIsLoggedIn(false)
+  }
+
   return (
     <S.NavbarRightListLayout>
-      {NAV_MENU_LIST.map((menu) => (
-        <Button
-          key={menu}
-          height="4.5rem"
-          fontSize="2rem"
-        >
-          {menu}
-        </Button>
-      ))}
+      {isLoggedIn ? (
+        <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
+      ) : (
+        <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
+      )}
+
+      <NavbarToggleButton>
+        <MenuIcon />
+      </NavbarToggleButton>
 
       <NavbarButton>
         <S.NavbarProfile
