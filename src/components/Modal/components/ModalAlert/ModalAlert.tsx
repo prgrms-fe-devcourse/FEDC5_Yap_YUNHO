@@ -1,6 +1,6 @@
 import * as S from "./ModalAlert.Styles"
 import * as GS from "../../ModalGlobal.Styles"
-import SmallModal from "../CustomModal/CustomModal"
+import CustomModal from "../CustomModal/CustomModal"
 import { MouseEvent } from "react"
 
 interface ModalAlertProps {
@@ -18,7 +18,7 @@ const ModalAlert = ({ isShow, onClose, alertMessage }: ModalAlertProps) => {
     onClose()
   }
   return (
-    <SmallModal
+    <CustomModal
       isShow={isShow}
       $height={20}
       onClose={onClose}
@@ -29,7 +29,7 @@ const ModalAlert = ({ isShow, onClose, alertMessage }: ModalAlertProps) => {
           <GS.ModalButton onClick={handleCloseModal}>닫기</GS.ModalButton>
         </GS.ModalBottomActions>
       </S.ModalAlertLayout>
-    </SmallModal>
+    </CustomModal>
   )
 }
 

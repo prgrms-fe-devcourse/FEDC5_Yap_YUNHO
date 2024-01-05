@@ -1,6 +1,6 @@
 import * as S from "./ModalConfirm.Styles"
 import * as GS from "../../ModalGlobal.Styles"
-import SmallModal from "../CustomModal/CustomModal"
+import CustomModal from "../CustomModal/CustomModal"
 
 interface ModalConfirmProps {
   isShow: boolean
@@ -26,7 +26,7 @@ const ModalConfirm = ({
   }
 
   return (
-    <SmallModal
+    <CustomModal
       isShow={isShow}
       $height={20}
     >
@@ -41,7 +41,7 @@ const ModalConfirm = ({
           </GS.ModalButton>
         </GS.ModalBottomActions>
       </S.ModalConfirmLayout>
-    </SmallModal>
+    </CustomModal>
   )
 }
 

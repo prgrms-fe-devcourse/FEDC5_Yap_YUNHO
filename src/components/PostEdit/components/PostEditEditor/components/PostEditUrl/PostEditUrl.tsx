@@ -1,7 +1,7 @@
 import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditUrl.Styles"
 import useModal from "@/components/Modal/hooks/useModal"
-import SmallModal from "@/components/Modal/components/CustomModal/CustomModal"
+import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
 import PostEditUrlPrompt from "./components/PostEditUrlPrompt"
 import DeleteIcon from "@mui/icons-material/Delete"
 import {
@@ -61,7 +61,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         />
       </S.PostEditUrlLayout>
 
-      <SmallModal
+      <CustomModal
         isShow={isPromptToggle}
         $height={30}
       >
@@ -70,7 +70,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
           onEdit={handleEditUrl}
           url={urlPath}
         />
-      </SmallModal>
+      </CustomModal>
 
       <ModalConfirm
         isShow={isConfirmToggle}
