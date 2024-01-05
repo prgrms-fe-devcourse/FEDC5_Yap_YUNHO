@@ -23,7 +23,7 @@ const PostEditInput = ({ text, onEdit }: PostEditInputProps) => {
       <S.PostEditInputTitle>제목</S.PostEditInputTitle>
       <S.PostEditInput
         value={text}
-        placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_INPUT}
+        placeholder={POST_EDIT_EDITOR_PLACEHOLDER.CONTENT_INPUT}
         onChange={handleEditInput}
       />
     </S.PostEditInputLayout>
