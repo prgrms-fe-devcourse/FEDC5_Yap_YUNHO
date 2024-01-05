@@ -13,7 +13,11 @@ interface PostEditEditorProps {
 const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
   return (
     <S.PostEditEditorLayout>
-      <PostEditUrl />
+      <PostEditUrl
+        text={postData.mediaUrl}
+        onEdit={onEdit}
+        placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_INPUT}
+      />
       <PostEditInput
         text={postData.content}
         onEdit={onEdit}
