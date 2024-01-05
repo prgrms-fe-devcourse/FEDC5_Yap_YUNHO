@@ -13,7 +13,7 @@ const PostEdit = () => {
   return (
     <S.PostEditLayout>
       <S.PostEditContainer>
-        <PostEditViewer />
+        <PostEditViewer postData={editPost} />
       </S.PostEditContainer>
       <S.PostEditBoundary />
       <S.PostEditContainer>
