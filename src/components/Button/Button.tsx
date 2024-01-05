@@ -1,6 +1,6 @@
-import { theme } from "./../../styles/theme"
 import { ReactNode } from "react"
 import * as S from "./Button.Styles"
+import { theme } from "@/styles/theme"
 
 interface ButtonProps {
   $color?: string
@@ -11,9 +11,9 @@ interface ButtonProps {
 }
 
 const Button = ({
-  $color = "",
-  $fontSize = `${theme.fontSizes.large}`,
-  $fontColor = `${theme.colors.white}`,
+  $color = "none",
+  $fontSize = `${theme.fontSizes.medium}`,
+  $fontColor = `${theme.colors.black}`,
   children,
   ...rest
 }: ButtonProps) => {

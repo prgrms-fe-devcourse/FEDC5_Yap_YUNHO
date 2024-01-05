@@ -4,48 +4,52 @@ import {
 } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import profile from "@/assets/profile.png"
-import { useState } from "react"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
 import MenuIcon from "@mui/icons-material/Menu"
-
-export type HandleMenuClickProps = (menuTitle: string) => void
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import { useNavigate } from "react-router-dom"
+import NavbarToggleMenu from "./NavbarToggleMenu/NavbarToggleMenu"
+import useToggle from "@/hooks/useToggle"
+import useMenuClick from "../../hooks/useNavMenuClick"
 
 const NavbarRightList = () => {
-  // 나중에 전역 로그인 상태를 받아오도록 변경 예정
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { isLoggedIn } = useAuthUserStore()
+  const { isToggle, toggleRef, handleToggle } = useToggle()
+  const { handleMenuClick } = useMenuClick()
 
-  const handleMenuClick: HandleMenuClickProps = (menuTitle) => {
-    if (menuTitle === "로그인") {
-      // navigate("/login")
-      handleLogin()
-    } else if (menuTitle === "로그아웃") {
-      // navigate("/")
-      // 전역에서 받은 로그인 상태가 true이면 로그아웃하고 홈으로 이동
-      handleLogout()
-    }
-  }
-
-  const handleLogin = (): void => {
-    setIsLoggedIn(true)
-  }
-  const handleLogout = (): void => {
-    setIsLoggedIn(false)
-  }
+  const navigate = useNavigate()
 
   return (
     <S.NavbarRightListLayout>
+      {/* 메뉴들 */}
+
       {isLoggedIn ? (
         <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
       ) : (
         <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
       )}
 
-      <NavbarToggleButton>
+      {/* 햄버거 토글 버튼*/}
+      <NavbarToggleButton
+        onClick={handleToggle}
+        ref={toggleRef}
+      >
         <MenuIcon />
+        {isToggle && (
+          <NavbarToggleMenu
+            $isToggle={isToggle}
+            handleMenuClick={handleMenuClick}
+          />
+        )}
       </NavbarToggleButton>
 
-      <NavbarButton>
+      {/* 프로필 버튼*/}
+      <NavbarButton
+        onClick={() => {
+          navigate("/profile")
+        }}
+      >
         <S.NavbarProfile
           src={profile}
           alt="프로필"

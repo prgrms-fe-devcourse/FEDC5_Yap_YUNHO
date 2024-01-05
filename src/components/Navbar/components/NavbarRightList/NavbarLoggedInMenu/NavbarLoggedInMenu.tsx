@@ -1,22 +1,17 @@
-import Button from "@/components/Button/Button"
-import { HandleMenuClickProps } from "../NavbarRightList"
-import { theme } from "@/styles/theme"
+import { NavbarMenuProps } from "@/components/Navbar/types"
+import { NavbarMenuList } from "./../NavbarRightList.Styles"
+import NavbarMenuItem from "../NavbarMenuItem/NavbarMenuItem"
 
-interface NavbarNotLoggedInMenuProps {
-  handleMenuClick: HandleMenuClickProps
-}
 const NavbarLoggedInMenu = ({
   handleMenuClick,
-}: NavbarNotLoggedInMenuProps) => {
+  $isToggle,
+}: NavbarMenuProps) => {
   return (
-    <Button
-      $fontColor={theme.colors.white}
-      onClick={() => {
-        handleMenuClick("로그아웃")
-      }}
-    >
-      <p>로그아웃</p>
-    </Button>
+    <NavbarMenuList $isToggle={$isToggle}>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>
+        로그아웃
+      </NavbarMenuItem>
+    </NavbarMenuList>
   )
 }
 

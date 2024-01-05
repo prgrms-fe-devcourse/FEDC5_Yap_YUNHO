@@ -32,6 +32,14 @@ class AuthToken {
       return this.token
     }
   }
+
+  removeToken() {
+    const res = localStorage.getItem(this.KEY)
+    if (!res) {
+      return
+    }
+    localStorage.removeItem(this.KEY)
+  }
 }
 
 const authToken = new AuthToken()
