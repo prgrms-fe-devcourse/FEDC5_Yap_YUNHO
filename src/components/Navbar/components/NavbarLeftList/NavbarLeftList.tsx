@@ -13,7 +13,7 @@ const NavbarLeftList = () => {
       </S.NavbarLogoContainer>
       <NavbarButton
         onClick={() => {
-          console.log("서치 모달")
+          // 서치 모달
         }}
       >
         <SearchIcon />

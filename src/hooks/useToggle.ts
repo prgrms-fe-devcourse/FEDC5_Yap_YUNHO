@@ -7,7 +7,6 @@ const useToggle = () => {
   const handleOutSideClick = useCallback(
     (e: MouseEvent) => {
       const { current } = toggleRef
-      console.log(e.target)
 
       if (!isToggle) {
         return
@@ -25,7 +24,7 @@ const useToggle = () => {
   )
 
   const handleToggle = () => {
-    setIsToggle((prevIsToggle: boolean) => !prevIsToggle)
+    setIsToggle((prevIsToggle) => !prevIsToggle)
   }
 
   useEffect(() => {
