@@ -27,6 +27,7 @@ export const UserFolloActionwButton = styled(UserActionButton)`
 
 export const UserSendDMActionButton = styled(UserActionButton)`
   left: 50%;
+  transform: translateX(2%);
 `
 
 export const UserUpdateMyInfoButton = styled(UserActionButton)``
