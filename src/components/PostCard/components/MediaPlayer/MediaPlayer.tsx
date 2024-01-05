@@ -13,7 +13,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
     isPlaying,
     isMute,
     playUrl,
-    playRange,
+    playPercent,
     volume,
     onClickPlayer,
     onChangeRange,
@@ -66,6 +66,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
           muted={isBlock ? true : isMute}
           volume={isBlock ? 0.2 : volume}
           url={isBlock ? "" : playUrl}
+          progressInterval={10}
           config={{
             youtube: {
               playerVars: {
@@ -74,7 +75,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
             },
           }}
           onProgress={({ played }) => {
-            handleChangePlayer({ type: "onProgress", percentage: played })
+            handleChangePlayer({ type: "onProgress", percent: played })
           }}
         />
       </S.MediaPlayerHidden>
@@ -84,8 +85,8 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
           <MediaPlayerSlider
             changeType="play"
             isBlock={isBlock}
-            initialValue={0}
-            value={playRange}
+            initialPercent={0}
+            percent={playPercent}
             onChange={handleChangePlayer}
           />
         </S.MediaPlayerTop>

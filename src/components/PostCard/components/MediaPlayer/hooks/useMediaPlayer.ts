@@ -18,7 +18,7 @@ const useMediaPlayer = () => {
     isMute,
     isPlaying,
     volume,
-    playRange,
+    playPercent,
     togglePlayer,
     changeRange,
     changeUrl,
@@ -32,13 +32,13 @@ const useMediaPlayer = () => {
   )
 
   const onChangeRange: ChangePlayer = useCallback(
-    ({ type, percentage }) => {
+    ({ type, percent }) => {
       const { current } = playerRef
 
       if (
         !current ||
-        percentage < MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE.MIN ||
-        percentage > MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE.MAX
+        percent < MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE.MIN ||
+        percent > MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE.MAX
       ) {
         return
       }
@@ -46,11 +46,11 @@ const useMediaPlayer = () => {
       if (!(current instanceof ReactPlayer)) {
         return
       }
-
-      changeRange({ type, percentage })
+      
+      changeRange({ type, percent })
 
       if (type === "play") {
-        current.seekTo(percentage)
+        current.seekTo(percent)
       }
     },
     [changeRange],
@@ -76,7 +76,7 @@ const useMediaPlayer = () => {
     isPlaying,
     isMute,
     playerRef,
-    playRange,
+    playPercent,
     volume,
     onClickPlayer,
     onChangeRange,

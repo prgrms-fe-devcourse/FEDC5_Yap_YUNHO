@@ -27,7 +27,7 @@ const DUMMY_POST = {
 }
 
 const PostCard = ({
-  textPercentage,
+  textPercent,
   isBlock = false,
 }: PostCardProps): React.ReactNode => {
   return (
@@ -37,7 +37,7 @@ const PostCard = ({
       <PostCardThumbnail imgUrl={DUMMY_POST.image} />
       <PostCardContent
         content={DUMMY_POST.title.content}
-        textPercentage={textPercentage}
+        textPercent={textPercent}
       />
       <MediaPlayer
         isBlock={isBlock}

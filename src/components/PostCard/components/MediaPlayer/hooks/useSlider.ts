@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react"
 
-const useSlider = ({ initialValue }: { initialValue: number }) => {
+const useSlider = ({ initialPercent }: { initialPercent: number }) => {
   const sliderRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
-  const [newValue, setNewValue] = useState(initialValue)
+  const [newPercent, setNewPercent] = useState(initialPercent)
 
   const handleMouseDown = ({ clientX }: React.MouseEvent) => {
     setIsDragging(true)
@@ -20,7 +20,7 @@ const useSlider = ({ initialValue }: { initialValue: number }) => {
     let checkedValue = Math.max(0, calcValue)
     checkedValue = Math.min(1, checkedValue)
 
-    setNewValue(checkedValue)
+    setNewPercent(checkedValue)
   }
 
   const handleMouseUp = () => {
@@ -44,7 +44,7 @@ const useSlider = ({ initialValue }: { initialValue: number }) => {
       let checkedValue = Math.max(0, calcValue)
       checkedValue = Math.min(1, checkedValue)
 
-      setNewValue(checkedValue)
+      setNewPercent(checkedValue)
     }
 
     document.addEventListener("mouseup", handleMouseUp)
@@ -56,7 +56,7 @@ const useSlider = ({ initialValue }: { initialValue: number }) => {
     }
   }, [isDragging])
 
-  return { sliderRef, newValue, handleMouseDown }
+  return { sliderRef, newPercent, handleMouseDown }
 }
 
 export default useSlider
