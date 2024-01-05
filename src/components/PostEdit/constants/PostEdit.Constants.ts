@@ -1,8 +1,8 @@
-import { EditPost } from "../PostEdit.Types"
+import { UsePostData } from "@/types"
 
-export const POST_EDIT_INITIAL_EDIT_POST: EditPost = {
-  title: "",
-  url: "",
+export const POST_EDIT_INITIAL_EDIT_POST: UsePostData = {
+  authUserProfile: "",
   thumbnail: "",
-  channelId: "",
+  content: "",
+  mediaUrl: "",
 }
