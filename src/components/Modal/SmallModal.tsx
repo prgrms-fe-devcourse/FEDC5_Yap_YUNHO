@@ -1,4 +1,3 @@
-import * as GS from "./Modal.Styles"
 import * as S from "./SmallModal.Styles"
 import ModalPortal from "./components/ModalPortal"
 
@@ -10,11 +9,11 @@ interface SmallModalProps {
 export const SmallModal = ({ children, isShow }: SmallModalProps) => {
   return (
     <ModalPortal isShow={isShow}>
-      <GS.ModalBackground>
+      <S.SmallModalBackground>
         <S.SmallModalSection>
           <S.SmallModalContent>{children}</S.SmallModalContent>
         </S.SmallModalSection>
-      </GS.ModalBackground>
+      </S.SmallModalBackground>
     </ModalPortal>
   )
 }

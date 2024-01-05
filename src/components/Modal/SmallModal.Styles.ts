@@ -1,5 +1,20 @@
 import styled from "styled-components"
 
+export const SmallModalBackground = styled.section`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+
+  z-index: ${({ theme }) => theme.zIndex.smallModalBackground};
+  background-color: rgba(0, 0, 0, 0.5);
+`
+
 export const SmallModalSection = styled.section`
   width: 44rem;
   height: 44rem;
