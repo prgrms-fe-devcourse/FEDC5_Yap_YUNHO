@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 
 const useToggle = () => {
   const [isToggle, setIsToggle] = useState(false)
-  const toggleRef = useRef<HTMLButtonElement>(null)
+  const toggleRef = useRef<HTMLDivElement>(null)
 
   const handleOutSideClick = useCallback(
     (e: MouseEvent) => {
@@ -12,7 +12,7 @@ const useToggle = () => {
         return
       }
 
-      if (!current || !(e.target instanceof HTMLButtonElement)) {
+      if (!current || !(e.target instanceof HTMLDivElement)) {
         return
       }
 

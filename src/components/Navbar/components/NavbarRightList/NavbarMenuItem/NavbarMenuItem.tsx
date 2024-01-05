@@ -10,6 +10,10 @@ const NavbarMenuItem = ({ children, handleMenuClick }: NavbarMenuProps) => {
         $fontColor={theme.colors.white}
         onClick={() => {
           // string | undefined 문제..
+          if (!(typeof children === "string")) {
+            return
+          }
+
           handleMenuClick(children as string)
         }}
       >

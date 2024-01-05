@@ -6,11 +6,12 @@ export const ButtonLayout = styled.button<{
   $fontColor: string
 }>`
   padding: 1rem 1.4rem;
+  border-radius: ${({ theme }) => theme.radius.size20};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+
   background-color: ${({ $color }) => $color};
   font-size: ${({ $fontSize }) => $fontSize};
-  border-radius: ${({ theme }) => theme.radius.size20};
   color: ${({ $fontColor }) => $fontColor};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
 
   &:hover {
     opacity: 0.5;
