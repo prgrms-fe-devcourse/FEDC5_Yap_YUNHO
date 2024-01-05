@@ -1,4 +1,5 @@
 import * as S from "./ModalConfirm.Styles"
+import * as GS from "../Modal/ModalGlobal.Styles"
 import SmallModal from "../Modal/SmallModal"
 
 interface ModalConfirmProps {
@@ -31,14 +32,14 @@ const ModalConfirm = ({
     >
       <S.ModalConfirmLayout>
         <S.ModalConfirmMessage>{message}</S.ModalConfirmMessage>
-        <S.ModalConfirmActions>
-          <S.ModalConfirmButton onClick={handleClickCancel}>
+        <GS.ModalBottomActions>
+          <GS.ModalButton onClick={handleClickCancel}>
             {cancelButtonText}
-          </S.ModalConfirmButton>
-          <S.ModalConfirmButton onClick={handleClickAccept}>
+          </GS.ModalButton>
+          <GS.ModalButton onClick={handleClickAccept}>
             {acceptButtonText}
-          </S.ModalConfirmButton>
-        </S.ModalConfirmActions>
+          </GS.ModalButton>
+        </GS.ModalBottomActions>
       </S.ModalConfirmLayout>
     </SmallModal>
   )

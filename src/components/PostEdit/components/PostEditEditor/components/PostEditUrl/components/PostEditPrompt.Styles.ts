@@ -37,6 +37,7 @@ export const PostEditUrlAlertMessage = styled.p`
 export const PostEditPromptInput = styled.textarea`
   width: 36rem;
   height: 6rem;
+  margin-bottom: 3rem;
 
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
   border-radius: ${({ theme }) => theme.radius.size8};
@@ -45,30 +46,4 @@ export const PostEditPromptInput = styled.textarea`
   text-align: center;
 
   resize: none;
-`
-
-export const PostEditPromptActions = styled.div`
-  width: 100%;
-  height: 10rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-`
-
-export const PostEditPromptButton = styled.button`
-  width: 10rem;
-  height: 4rem;
-
-  background-color: ${({ theme }) => theme.colors.point};
-  border-radius: ${({ theme }) => theme.radius.size8};
-
-  font-size: ${({ theme }) => theme.fontSizes.large};
-
-  transition: all 0.3s;
-  user-select: none;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.point_alt};
-  }
 `

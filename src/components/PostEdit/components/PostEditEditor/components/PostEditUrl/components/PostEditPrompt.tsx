@@ -1,5 +1,6 @@
 import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
 import * as S from "./PostEditPrompt.Styles"
+import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import { ChangeEvent, useEffect, useState } from "react"
 import ReactPlayer from "react-player"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
@@ -63,17 +64,15 @@ const PostEditPrompt = ({ onClose, onEdit, url }: PostEditPromptProps) => {
         placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
         onChange={handleChangeUrl}
       />
-      <S.PostEditPromptActions>
-        <S.PostEditPromptButton onClick={handleCloseModal}>
-          취소
-        </S.PostEditPromptButton>
-        <S.PostEditPromptButton
+      <GS.ModalBottomActions>
+        <GS.ModalButton onClick={handleCloseModal}>취소</GS.ModalButton>
+        <GS.ModalButton
           onClick={handleSubmitUrl}
           disabled={isErrorUrl}
         >
           등록
-        </S.PostEditPromptButton>
-      </S.PostEditPromptActions>
+        </GS.ModalButton>
+      </GS.ModalBottomActions>
     </S.PostEditPromptLayout>
   )
 }
