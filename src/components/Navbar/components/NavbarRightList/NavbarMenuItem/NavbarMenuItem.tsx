@@ -1,5 +1,4 @@
 import Button from "@/components/Button/Button"
-import { theme } from "@/styles/theme"
 import { NavbarMenuProps } from "@/components/Navbar/types"
 import * as S from "./NavbarMenuItem.Styles"
 

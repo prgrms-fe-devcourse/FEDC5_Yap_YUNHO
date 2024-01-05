@@ -7,12 +7,11 @@ const useToggle = () => {
   const handleOutSideClick = useCallback(
     (e: MouseEvent) => {
       const { current } = toggleRef
-
       if (!isToggle) {
         return
       }
 
-      if (!current || !(e.target instanceof HTMLDivElement)) {
+      if (!current || !(e.target instanceof HTMLElement)) {
         return
       }
 
