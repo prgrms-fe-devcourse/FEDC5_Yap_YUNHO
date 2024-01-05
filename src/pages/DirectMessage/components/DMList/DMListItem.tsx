@@ -9,7 +9,9 @@ const DMListItem = () => {
       />
       <S.DMListChat>
         <S.DMListChatUserName>최훈오</S.DMListChatUserName>
-        <S.DMListChatContent>하하하</S.DMListChatContent>
+        <S.DMListChatContent>
+          하하하ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ
+        </S.DMListChatContent>
         <S.DMListChatDate>12월 2일</S.DMListChatDate>
       </S.DMListChat>
     </S.DMListItemLayout>

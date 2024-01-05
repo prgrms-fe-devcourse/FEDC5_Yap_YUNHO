@@ -70,6 +70,7 @@ export const DMListChatUserName = styled.span`
 export const DMListChatContent = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  text-align: left;
 `
 
 export const DMListChatDate = styled.span`
