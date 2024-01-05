@@ -39,14 +39,6 @@ export const PostEditUrlInput = styled.textarea`
 
 export const PostEditPromptLayout = styled.div`
   width: 40rem;
-  height: 40rem;
-
-  display: flex;
-  flex-direction: column;
-`
-
-export const PostEditPromptContainer = styled.div`
-  width: 100%;
   height: 30rem;
 
   display: flex;
@@ -55,19 +47,22 @@ export const PostEditPromptContainer = styled.div`
 `
 
 export const PostEditPromptTitle = styled.h6`
-  width: 36rem;
-  height: 20rem;
+  width: 30rem;
+  height: 14rem;
 
   display: flex;
   align-items: center;
 
-  font-size: 3.2rem;
+  font-size: 2.6rem;
   text-align: center;
 `
 
 export const PostEditPromptInput = styled.textarea`
-  width: 38rem;
-  height: 10rem;
+  width: 36rem;
+  height: 6rem;
+
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  text-align: center;
 `
 
 export const PostEditPromptActions = styled.div`

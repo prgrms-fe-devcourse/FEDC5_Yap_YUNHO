@@ -24,15 +24,15 @@ const PostEditUrl = ({ placeholder, text, onEdit }: PostEditUrlProps) => {
         />
       </S.PostEditUrlLayout>
 
-      <SmallModal isShow={isModalToggle}>
+      <SmallModal
+        isShow={isModalToggle}
+        $height={30}
+      >
         <S.PostEditPromptLayout>
-          <S.PostEditPromptContainer>
-            <S.PostEditPromptTitle>
-              {`등록하실 URL을 입력하신 후
-              등록 버튼을 눌러주세요!`}
-            </S.PostEditPromptTitle>
-            <S.PostEditPromptInput />
-          </S.PostEditPromptContainer>
+          <S.PostEditPromptTitle>
+            등록하실 URL을 입력하신 후 등록 버튼을 눌러주세요!
+          </S.PostEditPromptTitle>
+          <S.PostEditPromptInput />
           <S.PostEditPromptActions>
             <S.PostEditPromptButton>취소</S.PostEditPromptButton>
             <S.PostEditPromptButton>등록</S.PostEditPromptButton>
