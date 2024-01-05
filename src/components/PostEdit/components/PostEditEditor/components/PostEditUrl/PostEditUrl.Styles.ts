@@ -35,6 +35,8 @@ export const PostEditUrlInput = styled.textarea`
   ${({ theme }) => theme.scrollBarNone}
 `
 
+// -------------------------------- Prompt
+
 export const PostEditPromptLayout = styled.div`
   width: 40rem;
   height: 40rem;
@@ -47,7 +49,25 @@ export const PostEditPromptContainer = styled.div`
   width: 100%;
   height: 30rem;
 
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const PostEditPromptTitle = styled.h6`
+  width: 36rem;
+  height: 20rem;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 3.2rem;
+  text-align: center;
+`
+
+export const PostEditPromptInput = styled.textarea`
+  width: 38rem;
+  height: 10rem;
 `
 
 export const PostEditPromptActions = styled.div`

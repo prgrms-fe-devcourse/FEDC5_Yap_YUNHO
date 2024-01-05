@@ -26,7 +26,13 @@ const PostEditUrl = ({ placeholder, text, onEdit }: PostEditUrlProps) => {
 
       <SmallModal isShow={isModalToggle}>
         <S.PostEditPromptLayout>
-          <S.PostEditPromptContainer></S.PostEditPromptContainer>
+          <S.PostEditPromptContainer>
+            <S.PostEditPromptTitle>
+              {`등록하실 URL을 입력하신 후
+              등록 버튼을 눌러주세요!`}
+            </S.PostEditPromptTitle>
+            <S.PostEditPromptInput />
+          </S.PostEditPromptContainer>
           <S.PostEditPromptActions>
             <S.PostEditPromptButton>취소</S.PostEditPromptButton>
             <S.PostEditPromptButton>등록</S.PostEditPromptButton>
