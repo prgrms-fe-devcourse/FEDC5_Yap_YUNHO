@@ -9,11 +9,8 @@ const NavbarNotLoggedInMenu = ({
   return (
     <NavbarMenuList $isToggle={$isToggle}>
       <NavbarMenuItem handleMenuClick={handleMenuClick}>
-        게시물 생성
+        로그아웃
       </NavbarMenuItem>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>DM</NavbarMenuItem>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>알림</NavbarMenuItem>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>로그인</NavbarMenuItem>
     </NavbarMenuList>
   )
 }

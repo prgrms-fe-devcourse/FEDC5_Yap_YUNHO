@@ -16,11 +16,15 @@ export const NavbarProfile = styled.img`
 export const NavbarMenuList = styled.ul<{ $isToggle?: boolean }>`
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.4rem;
   @media screen and (max-width: 1024px) {
-    display: ${({ $isToggle }) => ($isToggle ? "flex" : "none")};
     flex-direction: column;
     top: 18rem;
     left: 12rem;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    opacity: ${({ $isToggle }) => ($isToggle ? "1" : "0")};
+    visibility: ${({ $isToggle }) => ($isToggle ? "visible" : "hidden")};
   }
 `

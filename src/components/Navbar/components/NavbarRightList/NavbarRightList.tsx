@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 import NavbarToggleMenu from "./NavbarToggleMenu/NavbarToggleMenu"
 import useToggle from "@/hooks/useToggle"
 import useMenuClick from "../../hooks/useNavMenuClick"
+import CloseIcon from "@mui/icons-material/Close"
 
 const NavbarRightList = () => {
   const { isLoggedIn } = useAuthUserStore()
@@ -35,13 +36,12 @@ const NavbarRightList = () => {
         onClick={handleToggle}
         ref={toggleRef}
       >
-        <MenuIcon />
-        {isToggle && (
-          <NavbarToggleMenu
-            $isToggle={isToggle}
-            handleMenuClick={handleMenuClick}
-          />
-        )}
+        {isToggle ? <CloseIcon /> : <MenuIcon />}
+
+        <NavbarToggleMenu
+          $isToggle={isToggle}
+          handleMenuClick={handleMenuClick}
+        />
       </NavbarToggleButton>
 
       {/* 프로필 버튼*/}

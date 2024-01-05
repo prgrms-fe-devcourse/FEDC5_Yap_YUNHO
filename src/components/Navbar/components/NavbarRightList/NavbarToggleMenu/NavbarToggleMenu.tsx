@@ -10,7 +10,7 @@ const NavbarToggleMenu = ({
 }: NavbarMenuProps) => {
   const { isLoggedIn } = useAuthUserStore()
   return (
-    <S.NavbarToggleMenuLayout>
+    <S.NavbarToggleMenuLayout $isToggle={$isToggle}>
       {isLoggedIn ? (
         <NavbarLoggedInMenu
           handleMenuClick={handleMenuClick}
