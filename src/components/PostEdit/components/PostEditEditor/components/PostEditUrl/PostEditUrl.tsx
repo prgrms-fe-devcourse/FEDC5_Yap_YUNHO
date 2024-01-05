@@ -1,14 +1,14 @@
 import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditUrl.Styles"
 import useModal from "@/components/Modal/hooks/useModal"
-import SmallModal from "@/components/Modal/SmallModal"
+import SmallModal from "@/components/Modal/components/CustomModal/CustomModal"
 import PostEditUrlPrompt from "./components/PostEditUrlPrompt"
 import DeleteIcon from "@mui/icons-material/Delete"
 import {
   POST_EDIT_EDITOR_PLACEHOLDER,
   POST_EDIT_MODAL_MESSAGE,
 } from "@/components/PostEdit/constants/PostEdit.Constants"
-import ModalConfirm from "@/components/ModalConfirm/ModalConfirm"
+import ModalConfirm from "@/components/Modal/components/ModalConfirm/ModalConfirm"
 
 interface PostEditUrlProps {
   urlPath: string

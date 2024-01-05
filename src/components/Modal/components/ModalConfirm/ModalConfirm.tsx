@@ -1,6 +1,6 @@
 import * as S from "./ModalConfirm.Styles"
-import * as GS from "../Modal/ModalGlobal.Styles"
-import SmallModal from "../Modal/SmallModal"
+import * as GS from "../../ModalGlobal.Styles"
+import SmallModal from "../CustomModal/CustomModal"
 
 interface ModalConfirmProps {
   isShow: boolean

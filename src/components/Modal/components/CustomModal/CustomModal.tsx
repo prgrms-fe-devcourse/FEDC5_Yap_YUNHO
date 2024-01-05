@@ -1,8 +1,8 @@
 import { MouseEvent } from "react"
-import * as S from "./SmallModal.Styles"
-import ModalPortal from "./components/ModalPortal"
+import * as S from "./CustomModal.Styles"
+import ModalPortal from "../ModalPortal"
 
-interface SmallModalProps {
+interface CustomModalProps {
   children: React.ReactNode
   isShow: boolean
   $width?: number
@@ -10,13 +10,13 @@ interface SmallModalProps {
   onClose?: () => void
 }
 
-export const SmallModal = ({
+export const CustomModal = ({
   children,
   isShow,
   $width = 40,
   $height = 40,
   onClose,
-}: SmallModalProps) => {
+}: CustomModalProps) => {
   const handleCloseModal = ({ target, currentTarget }: MouseEvent) => {
     if (!onClose) {
       return
@@ -30,21 +30,21 @@ export const SmallModal = ({
 
   return (
     <ModalPortal isShow={isShow}>
-      <S.SmallModalBackground onClick={handleCloseModal}>
-        <S.SmallModalSection
+      <S.CustomModalBackground onClick={handleCloseModal}>
+        <S.CustomModalSection
           $height={$height}
           $width={$width}
         >
-          <S.SmallModalContent
+          <S.CustomModalContent
             $height={$height}
             $width={$width}
           >
             {children}
-          </S.SmallModalContent>
-        </S.SmallModalSection>
-      </S.SmallModalBackground>
+          </S.CustomModalContent>
+        </S.CustomModalSection>
+      </S.CustomModalBackground>
     </ModalPortal>
   )
 }
 
-export default SmallModal
+export default CustomModal

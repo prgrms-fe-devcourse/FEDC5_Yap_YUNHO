@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const SmallModalBackground = styled.section`
+export const CustomModalBackground = styled.section`
   width: 100%;
   height: 100%;
 
@@ -11,11 +11,11 @@ export const SmallModalBackground = styled.section`
   position: absolute;
   top: 0;
 
-  z-index: ${({ theme }) => theme.zIndex.smallModalBackground};
+  z-index: ${({ theme }) => theme.zIndex.CustomModalBackground};
   background-color: rgba(0, 0, 0, 0.5);
 `
 
-export const SmallModalSection = styled.section<{
+export const CustomModalSection = styled.section<{
   $width: number
   $height: number
 }>`
@@ -28,7 +28,7 @@ export const SmallModalSection = styled.section<{
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
 `
 
-export const SmallModalContent = styled.div<{
+export const CustomModalContent = styled.div<{
   $width: number
   $height: number
 }>`
