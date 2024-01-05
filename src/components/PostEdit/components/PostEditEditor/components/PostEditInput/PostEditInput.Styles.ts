@@ -23,9 +23,6 @@ export const PostEditInput = styled.textarea`
 
   font-size: ${({ theme }) => theme.fontSizes.large};
   text-align: center;
-  white-space: pre-wrap;
-
-  overflow-x: auto;
 
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
