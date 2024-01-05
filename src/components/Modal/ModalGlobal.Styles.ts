@@ -1,12 +1,16 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+
+const flexCenter = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export const ModalButton = styled.button`
   width: 8rem;
   height: 4rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenter}
 
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.size8};
@@ -24,8 +28,6 @@ export const ModalBottomActions = styled.div`
   width: 100%;
   height: 6rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenter}
   gap: 4rem;
 `

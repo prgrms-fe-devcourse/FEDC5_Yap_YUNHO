@@ -1,22 +1,26 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+
+const flexCenter = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export const ModalAlertLayout = styled.div`
   width: 40rem;
   height: 20rem;
 
-  display: flex;
+  ${flexCenter}
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  user-select: none;
 `
 
 export const ModalAlertMessage = styled.h6`
   width: 32rem;
   height: 14rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenter}
 
   font-size: ${({ theme }) => theme.fontSizes.large};
 `

@@ -55,9 +55,9 @@ const PostEditPrompt = ({ onClose, onEdit, url }: PostEditPromptProps) => {
         등록하실 URL을 입력하신 후 등록 버튼을 눌러주세요!
       </S.PostEditPromptTitle>
 
-      <S.PostEditUrlAlertMessage>
+      <S.PostEditUrlErrorMessage>
         {isErrorUrl ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL : ""}
-      </S.PostEditUrlAlertMessage>
+      </S.PostEditUrlErrorMessage>
 
       <S.PostEditPromptInput
         value={newUrl}

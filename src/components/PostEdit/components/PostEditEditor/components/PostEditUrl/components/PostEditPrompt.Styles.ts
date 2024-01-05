@@ -1,37 +1,42 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+
+const flexCenter = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export const PostEditPromptLayout = styled.div`
   width: 40rem;
   height: 30rem;
 
-  display: flex;
+  ${flexCenter}
   flex-direction: column;
-  align-items: center;
 `
 
 export const PostEditPromptTitle = styled.h6`
   width: 30rem;
   height: 10rem;
 
-  display: flex;
+  ${flexCenter}
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   font-size: 2.6rem;
   text-align: center;
+
+  user-select: none;
 `
 
-export const PostEditUrlAlertMessage = styled.p`
+export const PostEditUrlErrorMessage = styled.p`
   width: 30rem;
   height: 4rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenter}
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   color: red;
+
+  user-select: none;
 `
 
 export const PostEditPromptInput = styled.textarea`
