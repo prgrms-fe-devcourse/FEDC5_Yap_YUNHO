@@ -2,15 +2,18 @@ import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditUrl.Styles"
 import useModal from "@/components/Modal/hooks/useModal"
 import SmallModal from "@/components/Modal/SmallModal"
+import PostEditPrompt from "./components/PostEditPrompt"
+import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
 
 interface PostEditUrlProps {
   text: string
-  placeholder?: string
   onEdit: HandleEditPost
 }
 
-const PostEditUrl = ({ placeholder, text, onEdit }: PostEditUrlProps) => {
+const PostEditUrl = ({ text, onEdit }: PostEditUrlProps) => {
   const { isModalToggle, showModal, closeModal } = useModal()
+
+  handleEditUrl
 
   return (
     <>
@@ -19,7 +22,7 @@ const PostEditUrl = ({ placeholder, text, onEdit }: PostEditUrlProps) => {
         <S.PostEditUrlInput
           readOnly
           value={text}
-          placeholder={placeholder}
+          placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_INPUT}
           onClick={() => showModal()}
         />
       </S.PostEditUrlLayout>
@@ -28,16 +31,10 @@ const PostEditUrl = ({ placeholder, text, onEdit }: PostEditUrlProps) => {
         isShow={isModalToggle}
         $height={30}
       >
-        <S.PostEditPromptLayout>
-          <S.PostEditPromptTitle>
-            등록하실 URL을 입력하신 후 등록 버튼을 눌러주세요!
-          </S.PostEditPromptTitle>
-          <S.PostEditPromptInput />
-          <S.PostEditPromptActions>
-            <S.PostEditPromptButton>취소</S.PostEditPromptButton>
-            <S.PostEditPromptButton>등록</S.PostEditPromptButton>
-          </S.PostEditPromptActions>
-        </S.PostEditPromptLayout>
+        <PostEditPrompt
+          onClose={closeModal}
+          text={text}
+        />
       </SmallModal>
     </>
   )
