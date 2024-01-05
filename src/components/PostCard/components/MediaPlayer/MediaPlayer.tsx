@@ -77,6 +77,9 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
           onProgress={({ played }) => {
             handleChangePlayer({ type: "onProgress", percent: played })
           }}
+          onReady={() => {
+            handleChangePlayer({ type: "play", percent: playPercent })
+          }}
         />
       </S.MediaPlayerHidden>
 
@@ -85,7 +88,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
           <MediaPlayerSlider
             changeType="play"
             isBlock={isBlock}
-            initialPercent={0}
+            initialPercent={playPercent}
             percent={playPercent}
             onChange={handleChangePlayer}
           />
