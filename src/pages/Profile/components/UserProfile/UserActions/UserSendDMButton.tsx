@@ -1,7 +1,7 @@
-import * as S from "@/pages/Profile/Profile.styles"
+import * as S from "./UserActions.Styles"
 
 const UserSendDMButton = () => {
-  return <S.UserInfoButton>DM 보내기</S.UserInfoButton>
+  return <S.UserSendDMActionButton>DM 보내기</S.UserSendDMActionButton>
 }
 
 export default UserSendDMButton

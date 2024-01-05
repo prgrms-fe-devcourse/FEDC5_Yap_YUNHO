@@ -1,7 +1,7 @@
-import * as S from "@/pages/Profile/Profile.styles"
+import * as S from "./UserActions.Styles"
 
 const UserFollowButton = () => {
-  return <S.UserInfoButton>팔로우</S.UserInfoButton>
+  return <S.UserFolloActionwButton>팔로우</S.UserFolloActionwButton>
 }
 
 export default UserFollowButton
