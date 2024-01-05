@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
+import * as S from "@/main.Styles"
 import App from "@/App.tsx"
 import GlobalStyles from "@/styles/GlobalStyles.tsx"
 import { theme } from "@/styles/Theme.ts"
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
+        <S.ModalPlace id="modal" />
         <App />
       </ThemeProvider>
     </QueryClientProvider>

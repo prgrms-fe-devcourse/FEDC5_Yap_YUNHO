@@ -33,14 +33,24 @@ const fontWeight = {
   bold: 700,
 }
 
+const zIndex = {
+  postSmallCard: 1,
+  postSubCard: 2,
+  postMainCard: 3,
+  homeArrowIcon: 4,
+  modalBackground: 5,
+}
+
 export type ColorsType = typeof colors
 export type FontWeightType = typeof fontWeight
 export type SizeType = typeof fontSizes
 export type Radius = typeof radius
+export type ZIndex = typeof zIndex
 
 export const theme: DefaultTheme = {
   colors,
   fontWeight,
   fontSizes,
   radius,
+  zIndex,
 }
