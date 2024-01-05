@@ -46,7 +46,7 @@ const useMediaPlayer = () => {
       if (!(current instanceof ReactPlayer)) {
         return
       }
-      
+
       changeRange({ type, percent })
 
       if (type === "play") {

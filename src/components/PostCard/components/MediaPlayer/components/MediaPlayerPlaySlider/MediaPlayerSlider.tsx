@@ -40,10 +40,10 @@ const MediaPlayerSlider = ({
       >
         <S.PlaySliderRail />
         <S.PlaySliderTrack
-          $widthPercentage={isBlock ? initialPercent * 100 : percent * 100}
+          $widthPercent={isBlock ? initialPercent * 100 : percent * 100}
         />
         <S.PlaySliderHandle
-          $leftPercentage={isBlock ? initialPercent * 100 : percent * 100}
+          $leftPercent={isBlock ? initialPercent * 100 : percent * 100}
         />
       </S.playSliderContainer>
     </S.MediaPlayerPlaySliderLayout>
