@@ -58,13 +58,20 @@ export const PostEditPromptActions = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4rem;
-
-  background-color: white;
 `
 
 export const PostEditPromptButton = styled.button`
   width: 10rem;
   height: 4rem;
 
-  background-color: orange;
+  background-color: ${({ theme }) => theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size8};
+
+  font-size: ${({ theme }) => theme.fontSizes.large};
+
+  transition: all 0.3s;
+  user-select: none;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.point_alt};
+  }
 `

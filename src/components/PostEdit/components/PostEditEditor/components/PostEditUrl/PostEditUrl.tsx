@@ -23,6 +23,7 @@ const PostEditUrl = ({ placeholder, text, onEdit }: PostEditUrlProps) => {
           onClick={() => showModal()}
         />
       </S.PostEditUrlLayout>
+
       <SmallModal isShow={isModalToggle}>
         <S.PostEditPromptLayout>
           <S.PostEditPromptContainer></S.PostEditPromptContainer>
