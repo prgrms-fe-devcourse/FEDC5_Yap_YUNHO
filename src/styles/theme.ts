@@ -39,7 +39,7 @@ const zIndex = {
   postMainCard: 3,
   homeArrowIcon: 4,
   modalBackground: 5,
-  smallModalBackground: 6,
+  customModalBackground: 6,
 }
 
 const scrollBarNone = css`
