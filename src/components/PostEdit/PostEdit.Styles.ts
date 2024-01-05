@@ -24,13 +24,6 @@ export const PostEditViewerContainer = styled.div`
   justify-content: center;
 `
 
-export const PostEditViewer = styled.div`
-  width: 42rem;
-  height: 63rem;
-
-  background-color: ${({ theme }) => theme.colors.sub_alt};
-`
-
 export const PostEditBoundary = styled.div`
   height: 63rem;
   width: 0.4rem;
@@ -49,6 +42,4 @@ export const PostEditBoundary = styled.div`
 export const PostEditEditorContainer = styled.div`
   width: 46rem;
   height: 70rem;
-
-  background-color: orange;
 `
