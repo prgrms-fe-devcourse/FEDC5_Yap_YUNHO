@@ -1,5 +1,19 @@
-import React from "react"
+import LoginComponent from "./components/Login/LoginComponent"
+import ServiceInfoComponent from "./components/ServiceInfo/ServiceInfoComponent"
+import * as S from "./Login.styles"
+import { useNavigate } from "react-router-dom"
 
 export default function Login() {
-  return <div>Login</div>
+  const navigate = useNavigate()
+  return (
+    <S.LoginLayout>
+      <S.ServiceLogoContainer>
+        <S.ServiceLogo onClick={() => navigate("/")} />
+      </S.ServiceLogoContainer>
+      <S.LoginFormContainer>
+        <ServiceInfoComponent />
+        <LoginComponent />
+      </S.LoginFormContainer>
+    </S.LoginLayout>
+  )
 }

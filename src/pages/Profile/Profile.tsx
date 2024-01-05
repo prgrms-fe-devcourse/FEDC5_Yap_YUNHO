@@ -1,20 +1,13 @@
-import UserAction from "./components/UserAction/UserAction"
-import UserFollowInfo from "./components/UserFollowInfo"
-import UserNickname from "./components/UserNickname"
-import UserPostFilter from "./components/UserPostFilter/UserPostFilter"
-import UserPostList from "./components/UserPostList"
-import UserProfileImage from "./components/UserProfileImage"
+import UserPosts from "@/pages/Profile/components/UserPosts/UserPosts"
+import UserProfile from "@/pages/Profile/components/UserProfile/UserProfile"
+import * as S from "./Profile.Styles"
 
 const Profile = () => {
   return (
-    <div>
-      <UserProfileImage />
-      <UserNickname />
-      <UserAction />
-      <UserFollowInfo />
-      <UserPostFilter />
-      <UserPostList />
-    </div>
+    <S.UserProfileLayout>
+      <UserProfile />
+      <UserPosts />
+    </S.UserProfileLayout>
   )
 }
 

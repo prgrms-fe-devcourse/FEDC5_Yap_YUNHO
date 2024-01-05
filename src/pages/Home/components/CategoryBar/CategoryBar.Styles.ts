@@ -2,8 +2,7 @@ import styled from "styled-components"
 
 export const CategoryBarLayout = styled.div`
   width: 100%;
-  height: 30%;
-  min-height: 6rem;
+  height: 20%;
 
   display: flex;
   flex-direction: column;
@@ -13,29 +12,31 @@ export const CategoryBarLayout = styled.div`
 
 export const CategoryBarList = styled.ul`
   width: 100%;
-  height: 6rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem 1rem;
 
-  /* 이후 변수 관리 */
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
 export const CategoryBarListItem = styled.li<{ $isSelect: boolean }>`
-  height: 3.2rem;
-  padding: 0 1rem;
-  margin: 0 1rem;
+  padding: 1rem 1.2rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 이후 변수 관리 */
-  background-color: ${(props) => (props.$isSelect ? "#fff" : "#e9e9e9")};
-  border-radius: 8px;
+  background-color: ${({ theme, $isSelect }) =>
+    $isSelect ? theme.colors.point_alt : theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size8};
+
+  white-space: nowrap;
 
   user-select: none;
   cursor: pointer;
+
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
 `
