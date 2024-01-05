@@ -5,4 +5,5 @@ export const PostEditViewerLayout = styled.div`
   height: 63rem;
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
+  border-radius: ${({ theme }) => theme.radius.size12};
 `
