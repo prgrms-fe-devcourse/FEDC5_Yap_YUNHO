@@ -9,7 +9,6 @@ const flexCenter = css`
 const buttonBaseStyle = css`
   border-radius: ${({ theme }) => theme.radius.circle};
 
-  cursor: pointer;
   svg {
     width: 100%;
     height: 100%;
@@ -59,8 +58,6 @@ export const PlayButton = styled.button`
   ${buttonBaseStyle}
   ${buttonHover}
   height: 100%;
-
-  ${flexCenter}
 
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
   svg {

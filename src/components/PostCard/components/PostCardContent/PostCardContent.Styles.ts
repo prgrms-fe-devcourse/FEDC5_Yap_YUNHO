@@ -12,7 +12,6 @@ export const PostCardContentLayout = styled.div`
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  text-align: center;
 
   user-select: none;
 `

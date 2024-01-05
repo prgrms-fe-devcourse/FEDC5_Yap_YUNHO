@@ -20,10 +20,10 @@ export const PlaySliderRail = styled.div`
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
 `
 
-export const PlaySliderHandle = styled.div.attrs<{ $leftPercentage: number }>(
+export const PlaySliderHandle = styled.div.attrs<{ $leftPercent: number }>(
   (props) => ({
     style: {
-      left: `${props.$leftPercentage - 2}%`,
+      left: `${props.$leftPercent - 2}%`,
     },
   }),
 )`
@@ -38,10 +38,10 @@ export const PlaySliderHandle = styled.div.attrs<{ $leftPercentage: number }>(
   opacity: 0;
 `
 
-export const PlaySliderTrack = styled.div.attrs<{ $widthPercentage: number }>(
+export const PlaySliderTrack = styled.div.attrs<{ $widthPercent: number }>(
   (props) => ({
     style: {
-      width: `${props.$widthPercentage}%`,
+      width: `${props.$widthPercent}%`,
     },
   }),
 )`

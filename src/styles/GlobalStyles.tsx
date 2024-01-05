@@ -14,18 +14,16 @@ a, dl, dt, dd, ol, ul, li, form, label, table,button{
 
   vertical-align: baseline;
 }
-
 html{
   width: 100%;
   height: 100%;
   
   font-size : 62.5%;
 }
-
 body{
   width: 100%;
   height: 100%;
-
+  
   line-height: 1;
   font-family: "BMJUA",'Noto Sans KR', sans-serif;
 
