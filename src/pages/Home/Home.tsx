@@ -13,7 +13,7 @@ import useModal from "@/components/Modal/hooks/useModal"
 import PostEdit from "@/components/PostEdit/PostEdit"
 
 const Home = () => {
-  const { closeModal } = useModal()
+  const { isModalToggle, showModal, closeModal } = useModal()
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(INITIAL_CATEGORY)
 
@@ -28,9 +28,10 @@ const Home = () => {
         selectedCategory={selectedCategory}
         onSelected={onSelectedCategory}
       />
+      <button onClick={showModal}>Modal Open</button>
       <PostContainer />
       <Modal
-        isShow={true}
+        isShow={isModalToggle}
         onClose={closeModal}
       >
         <PostEdit />
