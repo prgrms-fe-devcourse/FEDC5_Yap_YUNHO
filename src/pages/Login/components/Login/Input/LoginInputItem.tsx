@@ -8,15 +8,25 @@ interface LoginInputPropType {
   placeholder: string
 }
 
+interface TypeList {
+  [index: string]: string
+}
+
 const LoginInput = ({
   updateUserInfo,
   type,
   placeholder,
 }: LoginInputPropType) => {
+  const typeList: TypeList = {
+    email: "text",
+    text: "text",
+    password: "password",
+  }
+
   return (
     <S.LoginInputLayout>
       <S.Input
-        type={type}
+        type={typeList[type]}
         placeholder={placeholder}
         onChange={(event) => updateUserInfo(event.target.value, type)}
       />
