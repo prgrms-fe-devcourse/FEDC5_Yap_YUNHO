@@ -49,6 +49,7 @@ export const DMListItemLayout = styled.button`
   gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
+  font-family: "BMJUA", "Noto Sans KR", sans-serif;
 `
 
 export const DMListProfile = styled.img`

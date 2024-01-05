@@ -41,7 +41,7 @@ ol, ul{
 
 button {
   background: transparent;
-     font-family: "BMJUA",'Noto Sans KR', sans-serif;
+
   cursor: pointer;
 }
 
