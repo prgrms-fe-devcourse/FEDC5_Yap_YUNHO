@@ -42,4 +42,8 @@ export const PostEditBoundary = styled.div`
 export const PostEditEditorContainer = styled.div`
   width: 46rem;
   height: 70rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

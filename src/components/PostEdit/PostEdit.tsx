@@ -1,4 +1,5 @@
 import * as S from "./PostEdit.Styles"
+import PostEditEditor from "./components/PostEditEditor/PostEditEditor"
 import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 
 const PostEdit = () => {
@@ -8,7 +9,9 @@ const PostEdit = () => {
         <PostEditViewer />
       </S.PostEditViewerContainer>
       <S.PostEditBoundary />
-      <S.PostEditEditorContainer></S.PostEditEditorContainer>
+      <S.PostEditEditorContainer>
+        <PostEditEditor />
+      </S.PostEditEditorContainer>
     </S.PostEditLayout>
   )
 }
