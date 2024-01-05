@@ -9,6 +9,7 @@ import {
   POST_EDIT_MODAL_MESSAGE,
 } from "@/components/PostEdit/constants/PostEdit.Constants"
 import ModalConfirm from "@/components/Modal/components/ModalConfirm/ModalConfirm"
+import { MEDIA_PLAYER_EMPTY_URL_KEYWORD } from "@/components/PostCard/components/MediaPlayer/constants/MediaPlayer"
 
 interface PostEditUrlProps {
   urlPath: string
@@ -39,7 +40,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
     if (response) {
       onEdit({
         type: "mediaUrl",
-        value: "",
+        value: MEDIA_PLAYER_EMPTY_URL_KEYWORD,
       })
     }
 
