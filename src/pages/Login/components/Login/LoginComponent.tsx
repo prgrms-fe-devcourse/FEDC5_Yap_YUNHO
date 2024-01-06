@@ -13,18 +13,20 @@ import LoginInputContainer from "./Input/LoginInputContainer"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
+import type { AllowedInputType } from "./types"
 
-interface UserInfoRefIndex {
-  [index: string]: string
+interface UserInfoRef {
+  email: string
+  password: string
 }
 
 const LoginComponent = () => {
-  const userInfoRef = useRef<UserInfoRefIndex>({ email: "", password: "" })
+  const userInfoRef = useRef<UserInfoRef>({ email: "", password: "" })
   const [errorMessage, setErrorMessage] = useState({ email: "", password: "" })
   const { setLogin } = useAuthUserStore()
   const navigate = useNavigate()
 
-  const updateUserInfo = (value: string, type: string) => {
+  const updateUserInfo = (value: string, type: AllowedInputType) => {
     userInfoRef.current[type] = value
   }
 

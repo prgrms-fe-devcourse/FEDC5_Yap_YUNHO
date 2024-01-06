@@ -1,37 +1,36 @@
 import * as S from "./LoginInputItem.Styles"
 
-type UpdateUserInfo = (value: string, type: string) => void
+import type { UpdateUserInfo, AllowedInputType } from "../types"
 
-interface LoginInputPropType {
+interface LoginInputItemPropType {
   updateUserInfo: UpdateUserInfo
-  type: string
+  type: AllowedInputType
   placeholder: string
 }
 
-interface TypeList {
-  [index: string]: string
+type InputTypeList = {
+  [key in AllowedInputType]: string
 }
 
-const LoginInput = ({
+const LoginInputItem = ({
   updateUserInfo,
   type,
   placeholder,
-}: LoginInputPropType) => {
-  const typeList: TypeList = {
+}: LoginInputItemPropType) => {
+  const inputTypeList: InputTypeList = {
     email: "text",
-    text: "text",
     password: "password",
   }
 
   return (
-    <S.LoginInputLayout>
+    <S.LoginInputItemLayout>
       <S.Input
-        type={typeList[type]}
+        type={inputTypeList[type]}
         placeholder={placeholder}
         onChange={(event) => updateUserInfo(event.target.value, type)}
       />
-    </S.LoginInputLayout>
+    </S.LoginInputItemLayout>
   )
 }
 
-export default LoginInput
+export default LoginInputItem

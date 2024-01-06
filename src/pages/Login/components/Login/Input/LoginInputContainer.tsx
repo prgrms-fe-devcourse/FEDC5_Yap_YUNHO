@@ -1,11 +1,11 @@
 import * as S from "./LoginInputContainer.Styles"
 import LoginInput from "./LoginInputItem"
 
-type UpdateUserInfo = (value: string, type: string) => void
+import type { UpdateUserInfo, AllowedInputType } from "../types"
 interface LoginInputContainerProps {
   updateUserInfo: UpdateUserInfo
   errorMessage: string
-  type: string
+  type: AllowedInputType
   placeholder: string
 }
 
