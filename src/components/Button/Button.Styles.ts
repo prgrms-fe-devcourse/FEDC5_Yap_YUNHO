@@ -1,21 +1,20 @@
 import styled from "styled-components"
 
 export const ButtonLayout = styled.button<{
-  $height: string
+  $color: string
   $fontSize: string
   $fontColor: string
 }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 1rem 1.4rem;
-  height: ${(props) => props.$height};
-  background-color: ${(props) => props.color};
-  font-size: ${(props) => props.$fontSize};
-  color: ${(props) => props.$fontColor};
-  border-radius: 1rem;
-  font-weight: 600;
+  border-radius: ${({ theme }) => theme.radius.size20};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+
+  background-color: ${({ $color }) => $color};
+  font-size: ${({ $fontSize }) => $fontSize};
+  color: ${({ $fontColor }) => $fontColor};
+
   &:hover {
-    background-color: #e9ecef;
+    opacity: 0.5;
+    color: ${({ theme }) => theme.colors.gary};
   }
 `
