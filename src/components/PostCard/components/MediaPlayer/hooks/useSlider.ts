@@ -15,12 +15,11 @@ const useSlider = ({ initialPercent }: { initialPercent: number }) => {
 
     const rect = current.getBoundingClientRect()
     const handlerOffset = clientX - rect.left
+    const calcPercent = handlerOffset / current.offsetWidth
+    let checkedPercent = Math.max(0, calcPercent)
+    checkedPercent = Math.min(1, checkedPercent)
 
-    const calcValue = handlerOffset / current.offsetWidth
-    let checkedValue = Math.max(0, calcValue)
-    checkedValue = Math.min(1, checkedValue)
-
-    setNewPercent(checkedValue)
+    setNewPercent(checkedPercent)
   }
 
   const handleMouseUp = () => {
@@ -39,12 +38,11 @@ const useSlider = ({ initialPercent }: { initialPercent: number }) => {
 
       const rect = current.getBoundingClientRect()
       const handlerOffset = clientX - rect.left
+      const calcPercent = handlerOffset / current.offsetWidth
+      let checkedPercent = Math.max(0, calcPercent)
+      checkedPercent = Math.min(1, checkedPercent)
 
-      const calcValue = handlerOffset / current.offsetWidth
-      let checkedValue = Math.max(0, calcValue)
-      checkedValue = Math.min(1, checkedValue)
-
-      setNewPercent(checkedValue)
+      setNewPercent(checkedPercent)
     }
 
     document.addEventListener("mouseup", handleMouseUp)

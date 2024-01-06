@@ -66,7 +66,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
           muted={isBlock ? true : isMute}
           volume={isBlock ? 0.2 : volume}
           url={isBlock ? "" : playUrl}
-          progressInterval={1}
+          progressInterval={10}
           config={{
             youtube: {
               playerVars: {
