@@ -1,6 +1,13 @@
 import * as S from "./DMList.Styles"
 import avatar from "@/assets/avatar.png"
-const DMListItem = () => {
+import { DMUserListProps } from "./../../types"
+const DMListItem = ({
+  receiver,
+  sender,
+  message,
+  createdAt,
+  isSeen,
+}: DMUserListProps) => {
   return (
     <S.DMListItemLayout>
       <S.DMListProfile
@@ -8,14 +15,16 @@ const DMListItem = () => {
         alt="DMList Profile Image"
       />
       <S.DMListChat>
-        <S.DMListChatUserName>최훈오</S.DMListChatUserName>
-        <S.DMListChatContent>
-          하하하ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ
-        </S.DMListChatContent>
-        <S.DMListChatDate>12월 2일</S.DMListChatDate>
+        <S.DMListChatUserName>{receiver.fullName}</S.DMListChatUserName>
+        <S.DMListChatContent>{message}</S.DMListChatContent>
+        <S.DMListChatDate>{createdAt.slice(0, 10)}</S.DMListChatDate>
       </S.DMListChat>
     </S.DMListItemLayout>
   )
 }
 
 export default DMListItem
+
+// 메시지와 날짜, 읽음 처리는 그대로
+// 프로필과 상대방이름은 내가 최근에 메시지를 보낸 경우 Receiver의 정보를
+// 내가 최근에 메시지를 받은 경우 Sender의 정보를
