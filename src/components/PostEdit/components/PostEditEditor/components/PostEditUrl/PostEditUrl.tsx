@@ -9,7 +9,6 @@ import {
   POST_EDIT_MODAL_MESSAGE,
 } from "@/components/PostEdit/constants/PostEdit.Constants"
 import ModalConfirm from "@/components/Modal/components/ModalConfirm/ModalConfirm"
-import { MEDIA_PLAYER_EMPTY_URL_KEYWORD } from "@/components/PostCard/components/MediaPlayer/constants/MediaPlayer"
 
 interface PostEditUrlProps {
   urlPath: string
@@ -77,6 +76,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         isShow={isConfirmToggle}
         onClose={handleRemoveUrl}
         message={POST_EDIT_MODAL_MESSAGE.URL_CONFIRM}
+        acceptButtonText={"확인"}
       />
     </>
   )
