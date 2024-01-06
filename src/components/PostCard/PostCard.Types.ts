@@ -1,5 +1,3 @@
-import { UsePostData } from "@/types"
-
 export interface PostCardProps {
   textPercent?: "60%" | "80%" | "100%"
   isBlock?: boolean
