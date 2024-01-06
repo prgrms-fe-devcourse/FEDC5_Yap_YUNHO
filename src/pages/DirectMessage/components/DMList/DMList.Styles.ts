@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const DMListLayout = styled.div`
   width: 40%;
   height: 100%;
-  background: gray;
+  background: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size20};
   padding: 2.5rem;
   display: flex;
