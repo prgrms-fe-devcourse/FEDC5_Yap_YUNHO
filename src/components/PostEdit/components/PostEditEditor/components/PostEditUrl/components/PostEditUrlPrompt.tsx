@@ -7,8 +7,10 @@ import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import { ChangeEvent, useEffect, useState } from "react"
 import ReactPlayer from "react-player"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
+import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
 
 interface PostEditUrlPromptProps {
+  isShow: boolean
   onClose: () => void
   onEdit: (newUrl: string) => void
   url: string
@@ -17,6 +19,7 @@ interface PostEditUrlPromptProps {
 const PostEditUrlPrompt = ({
   onClose,
   onEdit,
+  isShow,
   url,
 }: PostEditUrlPromptProps) => {
   const [newUrl, setNewUrl] = useState(url)
@@ -56,30 +59,35 @@ const PostEditUrlPrompt = ({
   }
 
   return (
-    <S.PostEditUrlPromptLayout>
-      <S.PostEditUrlPromptTitle>
-        {POST_EDIT_MODAL_MESSAGE.URL_PROMPT}
-      </S.PostEditUrlPromptTitle>
+    <CustomModal
+      isShow={isShow}
+      $height={30}
+    >
+      <S.PostEditUrlPromptLayout>
+        <S.PostEditUrlPromptTitle>
+          {POST_EDIT_MODAL_MESSAGE.URL_PROMPT}
+        </S.PostEditUrlPromptTitle>
 
-      <S.PostEditUrlErrorMessage>
-        {isErrorUrl ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL : ""}
-      </S.PostEditUrlErrorMessage>
+        <S.PostEditUrlErrorMessage>
+          {isErrorUrl ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL : ""}
+        </S.PostEditUrlErrorMessage>
 
-      <S.PostEditUrlPromptInput
-        value={newUrl}
-        placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
-        onChange={handleChangeUrl}
-      />
-      <GS.ModalBottomActions>
-        <GS.ModalButton onClick={handleCloseModal}>{"취소"}</GS.ModalButton>
-        <GS.ModalButton
-          onClick={handleSubmitUrl}
-          disabled={isErrorUrl}
-        >
-          {"등록"}
-        </GS.ModalButton>
-      </GS.ModalBottomActions>
-    </S.PostEditUrlPromptLayout>
+        <S.PostEditUrlPromptInput
+          value={newUrl}
+          placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
+          onChange={handleChangeUrl}
+        />
+        <GS.ModalBottomActions>
+          <GS.ModalButton onClick={handleCloseModal}>{"취소"}</GS.ModalButton>
+          <GS.ModalButton
+            onClick={handleSubmitUrl}
+            disabled={isErrorUrl}
+          >
+            {"등록"}
+          </GS.ModalButton>
+        </GS.ModalBottomActions>
+      </S.PostEditUrlPromptLayout>
+    </CustomModal>
   )
 }
 
