@@ -2,7 +2,10 @@ import avatar from "@/assets/avatar.png"
 import * as S from "./DMList.Styles"
 import seenindicator from "@/assets/seenindicator.png"
 
-const DMListProfile = ({ isSeen }: boolean) => {
+interface DMListProfileProps {
+  isSeen: boolean
+}
+const DMListProfile = ({ isSeen }: DMListProfileProps) => {
   return (
     <S.DMUserProfileContainer>
       <S.DMUserProfileImg
