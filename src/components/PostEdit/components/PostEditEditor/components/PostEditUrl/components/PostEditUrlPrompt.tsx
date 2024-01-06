@@ -66,6 +66,10 @@ const PostEditUrlPrompt = ({
     return false
   }
 
+  const removeInput = () => {
+    setNewUrl("")
+  }
+
   return (
     <CustomModal
       isShow={isShow}
@@ -82,9 +86,11 @@ const PostEditUrlPrompt = ({
             : ""}
         </S.PostEditUrlErrorMessage>
 
+        {/* Url 제거 Button */}
         <S.PostEditRemoveInputLayout>
-          <HighlightOffIcon />
+          <HighlightOffIcon onClick={removeInput} />
         </S.PostEditRemoveInputLayout>
+
         <S.PostEditUrlPromptInput
           value={newUrl}
           placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
