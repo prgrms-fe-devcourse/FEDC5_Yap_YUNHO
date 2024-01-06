@@ -94,6 +94,11 @@ export const DMListChatContent = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   text-align: left;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `
 
 export const DMListChatDate = styled.span`
