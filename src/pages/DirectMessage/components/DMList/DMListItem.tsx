@@ -3,6 +3,7 @@ import { DMUserListProps } from "./../../types"
 import DMListProfile from "./DMListProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { User } from "@/types"
+import { useNavigate } from "react-router-dom"
 
 const DMListItem = ({
   receiver,
@@ -12,6 +13,7 @@ const DMListItem = ({
   seen,
 }: DMUserListProps) => {
   const { user } = useAuthUserStore()
+  const navigate = useNavigate()
 
   const decideChatUserName = (receiver: User, sender: User) => {
     if (receiver._id === user._id) {
@@ -23,7 +25,11 @@ const DMListItem = ({
   }
 
   return (
-    <S.DMListItemLayout>
+    <S.DMListItemLayout
+      onClick={() => {
+        navigate(user._id)
+      }}
+    >
       <DMListProfile seen={seen} />
 
       <S.DMListChat>
