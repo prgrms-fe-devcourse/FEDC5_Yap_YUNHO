@@ -1,14 +1,7 @@
-import { useRef, useState, FormEvent } from "react"
+import { useRef, FormEvent } from "react"
 import * as S from "./LoginComponent.Styles"
 import { theme } from "@/styles/theme"
-import {
-  validateEmailInput,
-  validatePasswordInput,
-} from "../../utils/validation/index"
-import {
-  EMAIL_ERROR_MESSAGE,
-  PASSWORD_ERROR_MESSAGE,
-} from "../../constants/errorMessage"
+
 import LoginInputContainer from "./Input/LoginInputContainer"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
@@ -22,7 +15,7 @@ interface UserInfoRef {
 
 const LoginComponent = () => {
   const userInfoRef = useRef<UserInfoRef>({ email: "", password: "" })
-  const [errorMessage, setErrorMessage] = useState({ email: "", password: "" })
+
   const { setLogin } = useAuthUserStore()
   const navigate = useNavigate()
 
@@ -30,24 +23,11 @@ const LoginComponent = () => {
     userInfoRef.current[type] = value
   }
 
-  const loginAction = (event: FormEvent<HTMLFormElement>) => {
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const { email, password } = userInfoRef.current
-    const _ErrorMessage = {
-      email: "",
-      password: "",
-    }
 
-    if (!validateEmailInput(email)) {
-      _ErrorMessage.email = EMAIL_ERROR_MESSAGE
-    }
-
-    if (!validatePasswordInput(password)) {
-      _ErrorMessage.password = PASSWORD_ERROR_MESSAGE
-    }
-
-    if (_ErrorMessage.email || _ErrorMessage.password) {
-      setErrorMessage(_ErrorMessage)
+    if (email === "" || password === "") {
       return
     }
 
@@ -61,26 +41,21 @@ const LoginComponent = () => {
         navigate("/")
       })
       .catch(() => {
-        setErrorMessage({
-          email: "잘못된 이메일이거나",
-          password: "잘못된 비밀번호의 조합입니다.",
-        })
+        alert("잘못된 이메일이거나 잘못된 비밀번호의 조합입니다.")
       })
   }
 
   return (
     <S.LoginComponentLayout>
       <S.LoginComponentTitle>로그인</S.LoginComponentTitle>
-      <S.LoginForm onSubmit={loginAction}>
+      <S.LoginForm onSubmit={handleLogin}>
         <LoginInputContainer
           updateUserInfo={updateUserInfo}
-          errorMessage={errorMessage.email}
           type="email"
           placeholder="이메일"
         />
         <LoginInputContainer
           updateUserInfo={updateUserInfo}
-          errorMessage={errorMessage.password}
           type="password"
           placeholder="비밀번호"
         />
