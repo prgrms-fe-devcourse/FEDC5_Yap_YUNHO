@@ -13,14 +13,6 @@ export const LoginComponentLayout = styled.div`
     height: 33rem;
   }
 `
-export const LoginComponentContainer = styled.div`
-  height: 50rem;
-  height: 50rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
 
 export const LoginComponentTitle = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.large};
