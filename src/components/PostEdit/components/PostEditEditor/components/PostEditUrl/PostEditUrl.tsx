@@ -40,7 +40,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
     if (response) {
       onEdit({
         type: "mediaUrl",
-        value: MEDIA_PLAYER_EMPTY_URL_KEYWORD,
+        value: "",
       })
     }
 
