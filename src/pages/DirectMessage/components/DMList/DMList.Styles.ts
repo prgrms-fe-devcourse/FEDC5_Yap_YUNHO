@@ -60,6 +60,9 @@ export const DMListItemLayout = styled.button`
   justify-content: flex-start;
   align-items: flex-start;
   font-family: "BMJUA", "Noto Sans KR", sans-serif;
+  &:hover {
+    opacity: 0.5;
+  }
 `
 
 export const DMUserProfileContainer = styled.div`
