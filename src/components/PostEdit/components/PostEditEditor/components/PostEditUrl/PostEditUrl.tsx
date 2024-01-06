@@ -8,7 +8,7 @@ import {
   POST_EDIT_EDITOR_PLACEHOLDER,
   POST_EDIT_MODAL_MESSAGE,
 } from "@/components/PostEdit/constants/PostEdit.Constants"
-import ModalConfirm from "@/components/Modal/components/ModalConfirm/ModalConfirm"
+import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 
 interface PostEditUrlProps {
   urlPath: string
@@ -72,7 +72,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         />
       </CustomModal>
 
-      <ModalConfirm
+      <ConfirmModal
         isShow={isConfirmToggle}
         onClose={handleRemoveUrl}
         message={POST_EDIT_MODAL_MESSAGE.URL_CONFIRM}
