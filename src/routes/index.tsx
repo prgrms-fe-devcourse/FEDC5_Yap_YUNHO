@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { DirectMessage, Home, Login, Profile, Signup, UserEdit } from "@/Pages"
+import Navbar from "@/components/Navbar/Navbar"
 
 const YAPRoute = () => {
   return (
     <Router>
+      <Navbar />
       <Routes>
-        {/* // query string Category 구별 */}
         <Route
           path="/"
           element={<Home />}
@@ -46,7 +47,7 @@ const YAPRoute = () => {
         />
         <Route
           path="*"
-          element={<></>}
+          element={<div></div>}
         />
       </Routes>
     </Router>

@@ -14,14 +14,12 @@ a, dl, dt, dd, ol, ul, li, form, label, table,button{
 
   vertical-align: baseline;
 }
-
 html{
   width: 100%;
   height: 100%;
   
   font-size : 62.5%;
 }
-
 body{
   width: 100%;
   height: 100%;

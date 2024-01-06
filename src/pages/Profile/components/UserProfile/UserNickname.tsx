@@ -1,7 +1,7 @@
-import * as S from "@/pages/Profile/styles/UserProfile.styles"
+import * as S from "./UserProfile.Styles"
 
 const UserNickname = () => {
-  return <S.UserNicknameContainer>UserNickname</S.UserNicknameContainer>
+  return <S.UserNickNameContainer>UserNickname</S.UserNickNameContainer>
 }
 
 export default UserNickname
