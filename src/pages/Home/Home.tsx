@@ -7,8 +7,12 @@ import {
 } from "./components/CategoryBar/CategoryBar.Types"
 import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
+import Modal from "@/components/Modal/Modal"
+import useModal from "@/components/Modal/hooks/useModal"
+import PostEdit from "@/components/PostEdit/PostEdit"
 
 const Home = () => {
+  const { closeModal } = useModal()
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(INITIAL_CATEGORY)
 
@@ -23,6 +27,12 @@ const Home = () => {
         onSelected={onSelectedCategory}
       />
       <PostContainer />
+      <Modal
+        isShow={true}
+        closeModal={closeModal}
+      >
+        <PostEdit />
+      </Modal>
     </S.HomeLayout>
   )
 }
