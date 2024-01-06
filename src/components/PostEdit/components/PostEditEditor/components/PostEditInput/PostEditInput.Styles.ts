@@ -13,7 +13,7 @@ export const PostEditInputTitle = styled.h6`
   align-items: center;
 
   color: ${({ theme }) => theme.colors.main};
-  font-size: 2.4rem;
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
 export const PostEditInput = styled.textarea`
@@ -21,15 +21,14 @@ export const PostEditInput = styled.textarea`
   height: 10rem;
   padding: 1rem;
 
-  font-size: ${({ theme }) => theme.fontSizes.large};
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   text-align: center;
-  white-space: pre-wrap;
-
-  overflow-x: auto;
 
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
   border-radius: ${({ theme }) => theme.radius.size8};
 
   ${({ theme }) => theme.scrollBarNone}
+
+  resize: none;
 `
