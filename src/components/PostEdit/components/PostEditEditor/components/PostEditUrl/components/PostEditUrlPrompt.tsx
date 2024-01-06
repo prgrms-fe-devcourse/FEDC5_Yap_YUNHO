@@ -23,7 +23,7 @@ const PostEditUrlPrompt = ({
   url,
 }: PostEditUrlPromptProps) => {
   const [newUrl, setNewUrl] = useState(url)
-  const [isErrorUrl, setIsErrorUrl] = useState(true)
+  const [isErrorUrl, setIsErrorUrl] = useState(false)
 
   useEffect(() => {
     const checkUrl = ReactPlayer.canPlay(url)
@@ -58,6 +58,13 @@ const PostEditUrlPrompt = ({
     onClose()
   }
 
+  const checkError = (isError: boolean, checkUrl: string) => {
+    if (isError && checkUrl.length !== 0) {
+      return true
+    }
+    return false
+  }
+
   return (
     <CustomModal
       isShow={isShow}
@@ -69,7 +76,9 @@ const PostEditUrlPrompt = ({
         </S.PostEditUrlPromptTitle>
 
         <S.PostEditUrlErrorMessage>
-          {isErrorUrl ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL : ""}
+          {checkError(isErrorUrl, newUrl)
+            ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL
+            : ""}
         </S.PostEditUrlErrorMessage>
 
         <S.PostEditUrlPromptInput
