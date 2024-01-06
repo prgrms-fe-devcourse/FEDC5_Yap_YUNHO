@@ -1,29 +1,27 @@
-// NavButton.js
 import { ReactNode } from "react"
 import * as S from "./Button.Styles"
+import { theme } from "@/styles/theme"
 
 interface ButtonProps {
-  height: string
-  color?: string
-  fontSize: string
-  fontColor?: string
+  $color?: string
+  $fontSize?: string
+  $fontColor?: string
   children: ReactNode
+  onClick?: () => void
 }
 
 const Button = ({
-  height = "4.5rem",
-  color = "#F6F9F0",
-  fontSize = "2rem",
-  fontColor = "#000",
+  $color = "none",
+  $fontSize = `${theme.fontSizes.medium}`,
+  $fontColor = `${theme.colors.black}`,
   children,
   ...rest
 }: ButtonProps) => {
   return (
     <S.ButtonLayout
-      $height={height}
-      color={color}
-      $fontSize={fontSize}
-      $fontColor={fontColor}
+      $color={$color}
+      $fontSize={$fontSize}
+      $fontColor={$fontColor}
       {...rest}
     >
       {children}
