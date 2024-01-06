@@ -34,7 +34,7 @@ export interface JSONPost {
   likes: Like[]
   comments: Comment[]
   _id: string
-  image?: string
+  image?: null
   imagePublicId?: string
   title: string // Content
   channel: Channel // Category
@@ -48,17 +48,25 @@ export interface Post {
   likes: Like[]
   comments: Comment[]
   _id: string
-  image?: string
+  image?: null
   imagePublicId?: string
   title: PostContent
-  channel: Channel // Category
+  channel: Channel
   author: User
   createdAt: string
   updatedAt: string
 }
 export interface PostContent {
-  mediaURL: string
+  mediaUrl: string
+  thumbnail: string
   content: string
+}
+
+export interface UsePostData {
+  mediaUrl: string
+  thumbnail: string
+  content: string
+  authUserProfile: string
 }
 
 export interface Like {

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const PostEditEditorLayout = styled.div`
-  width: 42rem;
+  width: 46rem;
   height: 63rem;
 
   background-color: ${({ theme }) => theme.colors.sub_alt};

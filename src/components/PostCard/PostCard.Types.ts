@@ -1,6 +1,12 @@
+import { UsePostData } from "@/types"
+
 export interface PostCardProps {
   textPercent?: "60%" | "80%" | "100%"
   isBlock?: boolean
+  authUserProfile: string
+  thumbnail: string
+  content: string
+  mediaUrl: string
 }
 
 export interface PostCardUserProfileProps {
