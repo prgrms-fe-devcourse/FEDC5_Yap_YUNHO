@@ -52,8 +52,20 @@ export const DMListItemLayout = styled.button`
   font-family: "BMJUA", "Noto Sans KR", sans-serif;
 `
 
-export const DMListProfile = styled.img`
+export const DMUserProfileContainer = styled.div`
+  position: relative;
+  width: 4.8rem;
+  height: 4.8rem;
+`
+
+export const DMUserProfileImg = styled.img`
   border-radius: ${({ theme }) => theme.radius.circle};
+`
+
+export const SeenIndicator = styled.img`
+  position: absolute;
+  top: 2.7rem;
+  right: 0;
 `
 
 export const DMListChat = styled.div`

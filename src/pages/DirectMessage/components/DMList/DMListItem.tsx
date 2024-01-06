@@ -1,6 +1,7 @@
 import * as S from "./DMList.Styles"
-import avatar from "@/assets/avatar.png"
 import { DMUserListProps } from "./../../types"
+import DMListProfile from "./DMListProfile"
+
 const DMListItem = ({
   receiver,
   sender,
@@ -10,10 +11,8 @@ const DMListItem = ({
 }: DMUserListProps) => {
   return (
     <S.DMListItemLayout>
-      <S.DMListProfile
-        src={avatar}
-        alt="DMList Profile Image"
-      />
+      <DMListProfile isSeen={isSeen} />
+
       <S.DMListChat>
         <S.DMListChatUserName>{receiver.fullName}</S.DMListChatUserName>
         <S.DMListChatContent>{message}</S.DMListChatContent>
