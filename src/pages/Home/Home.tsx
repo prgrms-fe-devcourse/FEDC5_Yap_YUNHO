@@ -33,6 +33,7 @@ const Home = () => {
       <Modal
         isShow={isShowModal}
         onClose={closeModal}
+        useClickAway={false}
       >
         <PostEdit />
       </Modal>
