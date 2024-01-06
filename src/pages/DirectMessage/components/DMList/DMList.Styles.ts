@@ -26,9 +26,19 @@ export const DMListNoticeTitle = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
-export const DMListNoticeContent = styled.span`
+export const DMListNoticeNumber = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+`
+
+export const DMListNotNoticeTitle = styled.span`
+  color: ${({ theme }) => theme.colors.point_alt};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+`
+
+export const DMListNotNoticedNumber = styled.span`
+  color: ${({ theme }) => theme.colors.point_alt};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
 `
 
 export const DMListContainer = styled.div`
