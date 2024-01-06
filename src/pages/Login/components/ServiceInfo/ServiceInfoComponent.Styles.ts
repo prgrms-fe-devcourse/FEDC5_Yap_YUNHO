@@ -1,9 +1,16 @@
 import styled from "styled-components"
 
 export const ServiceInfoLayout = styled.div`
-  min-width: 50%;
+  width: 100%;
   height: 100%;
-  border-right: 0.1rem solid black;
+  @media screen and (min-width: 50rem) {
+    border-right: 0.1rem solid black;
+  }
+  @media screen and (max-width: 50rem) {
+    border-bottom: 1px solid black;
+    height: 17rem;
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,8 +18,8 @@ export const ServiceInfoLayout = styled.div`
 `
 export const ServiceInfoContainer = styled.div`
   display: flex;
-  width: 80%;
-  height: 100%;
+  width: 50rem;
+  height: 50rem;
   gap: 2rem;
   flex-direction: column;
   justify-content: center;

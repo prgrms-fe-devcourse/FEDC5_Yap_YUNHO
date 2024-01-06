@@ -1,46 +1,60 @@
 import styled from "styled-components"
 
 export const LoginComponentLayout = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  min-width: 50%;
-  height: 100%;
-
   color: ${({ theme }) => theme.colors.white};
+  @media screen and (max-width: 50rem) {
+    height: 33rem;
+  }
+`
+export const LoginComponentContainer = styled.div`
+  height: 50rem;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
-export const LoginComponentTitle = styled.h1`
+export const LoginComponentTitle = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.large};
   text-align: center;
-  margin-bottom: 1rem;
+  min-width: 2rem;
 `
 export const LoginForm = styled.form`
-  min-width: 35%;
+  width: 50rem;
+  height: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 export const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  position: relative;
-`
-
-export const Button = styled.button<{
-  $color: string
-}>`
-  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  flex-direction: column;
+  position: relative;
+  height: 10rem;
+  gap: 2rem;
+`
+
+export const Button = styled.button<{ $color: string }>`
+  width: 53%;
+  height: 50%;
+  padding: 1rem 0;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ $color }) => $color};
 
   border-radius: ${({ theme }) => theme.radius.size4};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  margin-bottom: 1.5rem;
 
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
