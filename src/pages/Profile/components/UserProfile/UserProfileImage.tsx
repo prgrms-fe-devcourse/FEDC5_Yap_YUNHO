@@ -1,4 +1,4 @@
-import * as S from "@/pages/Profile/styles/UserProfile.styles"
+import * as S from "./UserProfile.Styles"
 
 const UserProfileImage = () => {
   return <S.UserProfileImageContainer></S.UserProfileImageContainer>

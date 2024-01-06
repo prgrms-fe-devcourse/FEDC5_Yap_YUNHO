@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const UserProfileSection = styled.section`
+export const UserProfileLayout = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,21 +17,22 @@ export const UserProfileImageContainer = styled.div`
   margin-bottom: 2rem;
 `
 
-export const UserNicknameContainer = styled.div`
+export const UserNickNameContainer = styled.div`
   display: flex;
-  margin-bottom: 0.1rem;
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  margin-bottom: 1.5rem;
+  font-size: ${({ theme }) => theme.fontSizes.large};
   color: ${({ theme }) => theme.colors.white};
 `
 
-export const UserActionSection = styled.section`
-  margin-bottom: 2rem;
-`
-
-export const UserFollowInfoSection = styled.section`
+export const UserFollowInfoLayout = styled.section`
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3.5rem;
+`
+
+export const UserFollowInfoDividerText = styled.span`
+  color: ${({ theme }) => theme.colors.white};
+  margin: 0 1rem;
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `

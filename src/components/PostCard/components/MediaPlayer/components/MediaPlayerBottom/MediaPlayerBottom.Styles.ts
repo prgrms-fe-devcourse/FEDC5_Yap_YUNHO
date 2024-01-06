@@ -8,8 +8,7 @@ const flexCenter = css`
 
 const buttonBaseStyle = css`
   border-radius: ${({ theme }) => theme.radius.circle};
-
-  cursor: pointer;
+  
   svg {
     width: 100%;
     height: 100%;
