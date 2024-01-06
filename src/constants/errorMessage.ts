@@ -3,5 +3,5 @@ export const API_ERROR_MESSAGE = {
 }
 
 export const POST_EDIT_ERROR_MESSAGE = {
-  URL_PROMPT_ERROR_URL: "유효하지 않은 URL 입니다!! ❌",
+  URL_PROMPT_ERROR_URL: "유효하지 않은 URL 입니다!!",
 }

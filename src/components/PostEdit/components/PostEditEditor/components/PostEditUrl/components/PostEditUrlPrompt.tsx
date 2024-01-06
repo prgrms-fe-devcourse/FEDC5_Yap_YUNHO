@@ -8,6 +8,7 @@ import { ChangeEvent, useEffect, useState } from "react"
 import ReactPlayer from "react-player"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
+import HighlightOffIcon from "@mui/icons-material/HighlightOff"
 
 interface PostEditUrlPromptProps {
   isShow: boolean
@@ -81,11 +82,15 @@ const PostEditUrlPrompt = ({
             : ""}
         </S.PostEditUrlErrorMessage>
 
+        <S.PostEditRemoveInputLayout>
+          <HighlightOffIcon />
+        </S.PostEditRemoveInputLayout>
         <S.PostEditUrlPromptInput
           value={newUrl}
           placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
           onChange={handleChangeUrl}
         />
+
         <GS.ModalBottomActions>
           <GS.ModalButton onClick={handleCloseModal}>{"취소"}</GS.ModalButton>
           <GS.ModalButton

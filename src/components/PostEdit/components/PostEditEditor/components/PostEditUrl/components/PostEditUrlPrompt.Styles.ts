@@ -34,7 +34,7 @@ export const PostEditUrlErrorMessage = styled.p`
   ${flexCenter}
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  color: red;
+  color: ${({ theme }) => theme.colors.point_alt};
 
   user-select: none;
 `
@@ -42,6 +42,7 @@ export const PostEditUrlErrorMessage = styled.p`
 export const PostEditUrlPromptInput = styled.textarea`
   width: 36rem;
   height: 6rem;
+  padding: 0rem 2.4rem;
   margin-bottom: 3rem;
 
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
@@ -51,4 +52,26 @@ export const PostEditUrlPromptInput = styled.textarea`
   text-align: center;
 
   resize: none;
+`
+
+export const PostEditRemoveInputLayout = styled.div`
+  width: 36rem;
+
+  position: relative;
+
+  svg {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    font-size: 2.4rem;
+    color: ${({ theme }) => theme.colors.point_alt};
+
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
 `
