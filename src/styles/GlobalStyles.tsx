@@ -52,7 +52,7 @@ button {
 }
 
 
-input{
+input, textarea{
   border : none;
   background-color: ${({ theme }) => theme.colors.white};
   outline: none;
