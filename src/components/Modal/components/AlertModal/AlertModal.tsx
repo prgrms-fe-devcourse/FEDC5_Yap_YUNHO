@@ -21,7 +21,7 @@ const AlertModal = ({ isShow, onClose, alertMessage }: AlertModalProps) => {
     <CustomModal
       isShow={isShow}
       $height={20}
-      onClose={onClose}
+      onClickAway={onClose}
     >
       <S.AlertModalLayout>
         <S.AlertModalMessage>{alertMessage}</S.AlertModalMessage>
