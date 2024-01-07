@@ -1,7 +1,12 @@
 import * as S from "./UserActions.Styles"
 
-const UserUpdateInfoButton = () => {
-  return <S.UserUpdateMyInfoButton>회원 정보 수정</S.UserUpdateMyInfoButton>
+interface UserActionButtonProps {
+  text: string
+  $width?: number
 }
 
-export default UserUpdateInfoButton
+const UserActionButton = ({ text, $width }: UserActionButtonProps) => {
+  return <S.UserActionButton $width={$width}>{text}</S.UserActionButton>
+}
+
+export default UserActionButton
