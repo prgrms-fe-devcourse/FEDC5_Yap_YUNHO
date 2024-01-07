@@ -1,4 +1,4 @@
-import { DefaultTheme } from "styled-components"
+import { DefaultTheme, css } from "styled-components"
 
 const colors = {
   main: "#2D3250",
@@ -34,6 +34,15 @@ const fontWeight = {
   bold: 700,
 }
 
+const scrollBarNone = css`
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
 export type ColorsType = typeof colors
 export type FontWeightType = typeof fontWeight
 export type SizeType = typeof fontSizes
@@ -44,4 +53,5 @@ export const theme: DefaultTheme = {
   fontWeight,
   fontSizes,
   radius,
+  scrollBarNone,
 }

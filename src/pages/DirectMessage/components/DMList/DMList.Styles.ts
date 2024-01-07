@@ -47,11 +47,7 @@ export const DMListContainer = styled.div`
   gap: 3rem;
   width: 100%;
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  ${({ theme }) => theme.scrollBarNone};
 `
 
 export const DMListItemLayout = styled.button<{ $isSelect: boolean }>`
