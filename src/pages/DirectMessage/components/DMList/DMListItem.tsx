@@ -9,7 +9,7 @@ const DMListItem = ({
   sender,
   message,
   createdAt,
-  seen,
+  isSeen,
   handleClick,
   selectedChattingId,
 }: DMUserListProps) => {
@@ -24,7 +24,7 @@ const DMListItem = ({
         selectedChattingId === decideChatUserName(user, receiver, sender)._id
       }
     >
-      <DMListProfile seen={seen} />
+      <DMListProfile isSeen={isSeen} />
 
       <S.DMListChat>
         <S.DMListChatUserName>

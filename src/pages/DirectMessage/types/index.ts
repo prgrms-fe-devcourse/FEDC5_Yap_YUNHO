@@ -8,7 +8,7 @@ export interface handleClickProps {
 export interface DMUserListProps {
   createdAt: string
   message: string
-  seen: boolean
+  isSeen: boolean
   receiver: User
   sender: User
   selectedChattingId: string

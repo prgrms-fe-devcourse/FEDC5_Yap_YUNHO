@@ -3,16 +3,16 @@ import * as S from "./DMList.Styles"
 import seenindicator from "@/assets/seenindicator.png"
 
 interface DMListProfileProps {
-  seen: boolean
+  isSeen: boolean
 }
-const DMListProfile = ({ seen }: DMListProfileProps) => {
+const DMListProfile = ({ isSeen }: DMListProfileProps) => {
   return (
     <S.DMUserProfileContainer>
       <S.DMUserProfileImg
         src={avatar}
         alt="DMList Profile Image"
       />
-      {!seen && (
+      {!isSeen && (
         <S.SeenIndicator
           src={seenindicator}
           alt="읽지 않음 표시"

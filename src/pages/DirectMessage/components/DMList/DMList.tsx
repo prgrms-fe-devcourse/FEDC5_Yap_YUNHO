@@ -73,7 +73,7 @@ const DMList = () => {
               message={user.message}
               sender={user.sender}
               createdAt={user.createdAt}
-              seen={user.seen}
+              isSeen={user.isSeen}
               selectedChattingId={selectedChattingId}
               handleClick={handleClick}
             />
