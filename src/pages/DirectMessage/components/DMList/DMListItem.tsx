@@ -2,8 +2,8 @@ import * as S from "./DMList.Styles"
 import { DMUserListProps } from "./../../types"
 import DMListProfile from "./DMListProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { User } from "@/types"
 import { useNavigate } from "react-router-dom"
+import decideChatUserName from "../../utils/decideChatUserName"
 
 const DMListItem = ({
   receiver,
@@ -15,26 +15,19 @@ const DMListItem = ({
   const { user } = useAuthUserStore()
   const navigate = useNavigate()
 
-  const decideChatUserName = (receiver: User, sender: User) => {
-    if (receiver._id === user._id) {
-      return sender.fullName
-    }
-    if (sender._id === user._id) {
-      return receiver.fullName
-    }
-  }
-
   return (
     <S.DMListItemLayout
       onClick={() => {
-        navigate(user._id)
+        // 상대방의 아이디
+        const { _id } = decideChatUserName(user, receiver, sender)
+        navigate(`/directmessage/${_id}`)
       }}
     >
       <DMListProfile seen={seen} />
 
       <S.DMListChat>
         <S.DMListChatUserName>
-          {decideChatUserName(receiver, sender)}
+          {decideChatUserName(user, receiver, sender).fullName}
         </S.DMListChatUserName>
         <S.DMListChatContent>{message}</S.DMListChatContent>
         <S.DMListChatDate>{createdAt.slice(0, 10)}</S.DMListChatDate>
