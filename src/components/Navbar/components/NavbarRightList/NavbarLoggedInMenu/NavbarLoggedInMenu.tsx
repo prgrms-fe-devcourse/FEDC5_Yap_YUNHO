@@ -13,7 +13,9 @@ const NavbarLoggedInMenu = ({
       </NavbarMenuItem>
       <NavbarMenuItem handleMenuClick={handleMenuClick}>DM</NavbarMenuItem>
       <NavbarMenuItem handleMenuClick={handleMenuClick}>알림</NavbarMenuItem>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>로그인</NavbarMenuItem>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>
+        로그아웃
+      </NavbarMenuItem>
     </NavbarMenuList>
   )
 }
