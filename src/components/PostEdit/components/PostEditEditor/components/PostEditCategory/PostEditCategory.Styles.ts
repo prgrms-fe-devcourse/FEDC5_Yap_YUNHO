@@ -25,7 +25,7 @@ export const PostEditCategoryList = styled.ul`
   flex-wrap: wrap;
   gap: 1rem 1rem;
 
-  font-size: ${({ theme }) => theme.fontSizes.large};
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 `
 
 export const PostEditCategoryItem = styled.li<{ $isSelect: boolean }>`
@@ -45,17 +45,4 @@ export const PostEditCategoryItem = styled.li<{ $isSelect: boolean }>`
   cursor: pointer;
 
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
-`
-
-export const PostEditCategoryDescription = styled.div`
-  width: 100%;
-  padding: 1.4rem;
-
-  border-radius: ${({ theme }) => theme.radius.size8};
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
-
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  line-height: 1.4;
-  letter-spacing: 0.4px;
 `
