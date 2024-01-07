@@ -4,7 +4,7 @@ import DMListItem from "./DMListItem"
 import { API, AUTH_API } from "@/apis/Api"
 import authToken from "@/stores/authToken"
 import { DMUserListProps } from "../../types"
-import { Conversation } from "@/types"
+import { Conversation, User } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
@@ -41,42 +41,39 @@ const DMList = () => {
     setSelectedChattingId(_id)
   }
 
+  const DMListCount = {
+    total: DMUserList.length,
+    NotNotice: DMUserList.filter((list: Conversation) => {
+      return !list.seen
+    }).length,
+  }
+
   useEffect(() => {
     fetchDMUsers()
   }, [fetchDMUsers])
 
   return (
     <S.DMListLayout>
-      <S.DMListNotice>
-        {/* 여기 변수명이 잘 안지어네요.. */}
-        <S.DMListNoticeTitle>DM 목록</S.DMListNoticeTitle>
-        <S.DMListNoticeNumber>{DMUserList.length}</S.DMListNoticeNumber>
+      <S.DMListInfo>
+        <S.DMListTotalNoticeTitle>DM 목록</S.DMListTotalNoticeTitle>
+        <S.DMListTotalNoticeNumber>
+          {DMListCount.total}
+        </S.DMListTotalNoticeNumber>
         <S.DMListNotNoticeTitle>안 읽음</S.DMListNotNoticeTitle>
         <S.DMListNotNoticedNumber>
-          {
-            DMUserList.filter((list: Conversation) => {
-              return !list.seen
-            }).length
-          }
+          {DMListCount.NotNotice}
         </S.DMListNotNoticedNumber>
-      </S.DMListNotice>
+      </S.DMListInfo>
       <S.DMListContainer>
-        {DMUserList.map((user) => {
-          const {
-            receiver,
-            sender,
-            seen,
-            message,
-            createdAt,
-          }: DMUserListProps = user
+        {DMUserList.map((user: DMUserListProps) => {
           return (
             <DMListItem
-              key={createdAt}
-              receiver={receiver}
-              message={message}
-              sender={sender}
-              createdAt={createdAt}
-              seen={seen}
+              key={user.createdAt}
+              receiver={user.receiver}
+              message={user.message}
+              sender={user.sender}
+              createdAt={user.createdAt}
+              seen={user.seen}
               selectedChattingId={selectedChattingId}
               handleClick={handleClick}
             />

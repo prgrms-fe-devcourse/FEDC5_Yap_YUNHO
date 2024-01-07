@@ -14,19 +14,19 @@ export const DMListLayout = styled.div`
   user-select: none;
 `
 
-export const DMListNotice = styled.div`
+export const DMListInfo = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
 `
-export const DMListNoticeTitle = styled.span`
+export const DMListTotalNoticeTitle = styled.span`
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
-export const DMListNoticeNumber = styled.span`
+export const DMListTotalNoticeNumber = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 `
