@@ -27,7 +27,7 @@ export const PostMainCard = styled.div`
 
   border-radius: ${({ theme }) => theme.radius.size16};
 
-  z-index: 3;
+  z-index: ${({ theme }) => theme.zIndex.postMainCard};
 
   @media (max-height: 900px) {
     align-self: flex-start;
@@ -44,7 +44,8 @@ export const PostSubCard = styled.div<{ $isLeft: boolean }>`
 
   border-radius: ${({ theme }) => theme.radius.size12};
 
-  z-index: 2;
+  z-index: ${({ theme }) => theme.zIndex.postSubCard};
+
   @media (max-height: 750px) {
     align-self: flex-start;
   }
@@ -60,7 +61,8 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
 
   border-radius: ${({ theme }) => theme.radius.size8};
 
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zIndex.postSmallCard};
+
   @media (max-height: 600px) {
     align-self: flex-start;
   }
@@ -76,7 +78,7 @@ export const ArrowIcon = styled.button<{ $isLeft: boolean }>`
 
   user-select: none;
   cursor: pointer;
-  z-index: 4;
+  z-index: ${({ theme }) => theme.zIndex.homeArrowIcon};
 
   .arrow_icon {
     font-size: 6rem;
