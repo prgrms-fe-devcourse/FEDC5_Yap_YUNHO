@@ -1,4 +1,4 @@
-import { DefaultTheme } from "styled-components"
+import { DefaultTheme, css } from "styled-components"
 
 const colors = {
   main: "#2D3250",
@@ -8,6 +8,7 @@ const colors = {
   point_alt: "#FF7F50",
   black: "#000000",
   white: "#ffffff",
+  gray40: "#B0B8C1",
 }
 
 const fontSizes = {
@@ -33,14 +34,36 @@ const fontWeight = {
   bold: 700,
 }
 
+const zIndex = {
+  postSmallCard: 1,
+  postSubCard: 2,
+  postMainCard: 3,
+  homeArrowIcon: 4,
+  modalBackground: 5,
+  smallModalBackground: 6,
+}
+
+const scrollBarNone = css`
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
 export type ColorsType = typeof colors
 export type FontWeightType = typeof fontWeight
 export type SizeType = typeof fontSizes
 export type Radius = typeof radius
+export type ZIndex = typeof zIndex
+export type ScrollBarNone = typeof scrollBarNone
 
 export const theme: DefaultTheme = {
   colors,
   fontWeight,
   fontSizes,
   radius,
+  zIndex,
+  scrollBarNone,
 }

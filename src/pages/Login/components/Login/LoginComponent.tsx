@@ -38,7 +38,7 @@ const LoginComponent = () => {
       .then((res) => {
         const { user, token } = res.data
         setLogin(user, token)
-        navigate("/")
+        navigate("/", { replace: true })
       })
       .catch(() => {
         alert("잘못된 이메일이거나 잘못된 비밀번호의 조합입니다.")

@@ -5,19 +5,16 @@ export const ButtonLayout = styled.button<{
   $fontSize: string
   $fontColor: string
 }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 1rem 1.4rem;
+  border-radius: ${({ theme }) => theme.radius.size20};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+
   background-color: ${({ $color }) => $color};
   font-size: ${({ $fontSize }) => $fontSize};
   color: ${({ $fontColor }) => $fontColor};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+
   &:hover {
     opacity: 0.5;
-    p {
-      padding-bottom: 0.5rem;
-      border-bottom: ${({ theme }) => `0.5rem solid ${theme.colors.point}`};
-    }
+    color: ${({ theme }) => theme.colors.gary};
   }
 `

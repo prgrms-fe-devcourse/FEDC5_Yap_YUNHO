@@ -1,27 +1,5 @@
 import { User } from "@/types"
 
-export interface NavMenuProps {
-  title: string
-  url?: string
-}
-
-export const NAV_MENU_LIST: NavMenuProps[] = [
-  {
-    title: "게시물 생성",
-  },
-  {
-    title: "DM",
-    url: "/directmessage",
-  },
-  {
-    title: "알림",
-  },
-  {
-    title: "로그인",
-    url: "/login",
-  },
-]
-
 export const AUTH_USER_INITIAL_USER_DATA: User = {
   coverImage: "",
   image: "",
