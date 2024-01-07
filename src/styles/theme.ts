@@ -8,6 +8,7 @@ const colors = {
   point_alt: "#FF7F50",
   black: "#000000",
   white: "#ffffff",
+  gray40: "#B0B8C1",
 }
 
 const fontSizes = {
