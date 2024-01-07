@@ -6,7 +6,7 @@ export const LoginLayout = styled.div`
   user-select: none;
 `
 
-export const LoginFormContainer = styled.div`
+export const LoginComponentContainer = styled.div`
   display: flex;
   flex-direction: row;
   color: ${({ theme }) => theme.colors.white};
