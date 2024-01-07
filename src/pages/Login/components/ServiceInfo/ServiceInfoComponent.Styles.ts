@@ -3,12 +3,13 @@ import styled from "styled-components"
 export const ServiceInfoLayout = styled.div`
   width: 100%;
   height: 100%;
-  @media screen and (min-width: 50rem) {
+  @media screen and (min-width: 900px) {
     border-right: 0.1rem solid black;
   }
-  @media screen and (max-width: 50rem) {
-    border-bottom: 1px solid black;
-    height: 17rem;
+  @media screen and (max-width: 900px) {
+    border-bottom: 0.1rem solid black;
+    min-height: 17rem;
+    height: 50%;
   }
 
   display: flex;

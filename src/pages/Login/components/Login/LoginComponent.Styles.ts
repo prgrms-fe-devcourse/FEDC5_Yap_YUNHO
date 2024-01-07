@@ -9,8 +9,9 @@ export const LoginComponentLayout = styled.div`
   align-items: center;
 
   color: ${({ theme }) => theme.colors.white};
-  @media screen and (max-width: 50rem) {
-    height: 33rem;
+  @media screen and (max-width: 900px) {
+    min-height: 33rem;
+    height: 50%;
   }
 `
 
