@@ -2,14 +2,28 @@ import useCategoryList from "@/hooks/useCategoryList"
 import * as S from "./PostEditCategory.Styles"
 import { useState } from "react"
 import { Category } from "@/Pages/Home/components/CategoryBar/CategoryBar.Types"
+import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 
-const PostEditCategory = () => {
+interface PostEditCategoryProps {
+  onEdit: HandleEditPost
+}
+
+const PostEditCategory = ({ onEdit }: PostEditCategoryProps) => {
   const categoryList = useCategoryList()
   const [selectedCategory, setSelectedCategory] = useState<Category>({
     name: "",
     id: "",
     description: "",
   })
+
+  const handleClickCategory = (category: Category) => {
+    setSelectedCategory(category)
+
+    onEdit({
+      type: "category",
+      value: category.id,
+    })
+  }
 
   return (
     <S.PostEditCategoryLayout>
@@ -25,7 +39,7 @@ const PostEditCategory = () => {
               <S.PostEditCategoryItem
                 $isSelect={category.id === selectedCategory?.id}
                 onClick={() => {
-                  setSelectedCategory(category)
+                  handleClickCategory(category)
                 }}
               >
                 {category.name}

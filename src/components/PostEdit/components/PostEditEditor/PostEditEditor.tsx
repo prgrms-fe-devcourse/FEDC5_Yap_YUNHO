@@ -21,7 +21,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
         text={postData.content}
         onEdit={onEdit}
       />
-      <PostEditCategory />
+      <PostEditCategory onEdit={onEdit} />
     </S.PostEditEditorLayout>
   )
 }
