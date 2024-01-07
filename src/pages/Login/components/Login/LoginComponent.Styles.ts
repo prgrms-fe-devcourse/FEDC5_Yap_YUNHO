@@ -27,7 +27,9 @@ export const ButtonContainer = styled.div`
   position: relative;
 `
 
-export const Button = styled.button<{ $color: string }>`
+export const Button = styled.button<{
+  $color: string
+}>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +42,6 @@ export const Button = styled.button<{ $color: string }>`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   margin-bottom: 1.5rem;
 
-  cursor: pointer;
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   &:hover {

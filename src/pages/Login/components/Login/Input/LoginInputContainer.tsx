@@ -1,28 +1,25 @@
 import * as S from "./LoginInputContainer.Styles"
-import LoginInput from "./LoginInputItem"
+import LoginInputItem from "./LoginInputItem"
 
-type UpdateUserInfo = (value: string, type: string) => void
+import type { UpdateUserInfo, AllowedInputType } from "../types"
 interface LoginInputContainerProps {
   updateUserInfo: UpdateUserInfo
-  errorMessage: string
-  type: string
+  type: AllowedInputType
   placeholder: string
 }
 
 const LoginInputContainer = ({
   updateUserInfo,
-  errorMessage,
   type,
   placeholder,
 }: LoginInputContainerProps) => {
   return (
     <S.LoginInputContainerLayout>
-      <LoginInput
+      <LoginInputItem
         updateUserInfo={updateUserInfo}
         type={type}
         placeholder={placeholder}
       />
-      {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
     </S.LoginInputContainerLayout>
   )
 }
