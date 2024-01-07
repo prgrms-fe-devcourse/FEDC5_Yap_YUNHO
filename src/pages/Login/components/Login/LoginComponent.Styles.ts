@@ -38,7 +38,6 @@ export const ButtonContainer = styled.div`
   gap: 2rem;
 `
 
-
 export const Button = styled.button<{ $color: string }>`
   width: 53%;
   height: 50%;
