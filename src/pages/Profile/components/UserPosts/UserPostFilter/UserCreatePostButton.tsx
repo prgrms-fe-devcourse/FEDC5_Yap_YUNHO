@@ -1,22 +1,24 @@
 import * as S from "./UserPostFilter.Styles"
 
-interface UserCreatePostButtonProps {
+interface UserPostFilterButtonProps {
   onClick: () => void
   $isSelected: boolean
+  title: string
 }
 
-const UserCreatePostButton = ({
+const UserPostFilterButton = ({
   onClick,
   $isSelected,
-}: UserCreatePostButtonProps) => {
+  title,
+}: UserPostFilterButtonProps) => {
   return (
-    <S.UserCreatePostsButton
+    <S.UserPostFilterButton
       $isSelected={$isSelected}
       onClick={onClick}
     >
-      생성한 게시글
-    </S.UserCreatePostsButton>
+      {title}
+    </S.UserPostFilterButton>
   )
 }
 
-export default UserCreatePostButton
+export default UserPostFilterButton

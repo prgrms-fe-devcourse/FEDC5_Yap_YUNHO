@@ -10,7 +10,7 @@ export const UserPostFilterLayout = styled.div<{ $isMyPage: boolean }>`
   gap: 2rem;
 `
 
-export const UserPostButton = styled.button<{
+export const UserPostFilterButton = styled.button<{
   $isSelected?: boolean
 }>`
   padding: 0.8rem 1.2rem;
@@ -28,7 +28,3 @@ export const UserPostButton = styled.button<{
     background-color: ${({ theme }) => theme.colors.point_alt};
   }
 `
-
-export const UserCreatePostsButton = styled(UserPostButton)``
-
-export const UserLikePostsButton = styled(UserPostButton)``

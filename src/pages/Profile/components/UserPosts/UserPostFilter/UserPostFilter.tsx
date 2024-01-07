@@ -1,10 +1,9 @@
 import { useState } from "react"
-import UserCreatePostButton from "./UserCreatePostButton"
-import UserLikePostButton from "./UserLikePostButton"
 import * as S from "./UserPostFilter.Styles"
 import { USER_POST_FILTER_LIST } from "@/pages/Profile/constants/UserPost.Constants"
 import { useParams } from "react-router-dom"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import UserPostFilterButton from "./UserCreatePostButton"
 
 const UserPostFilter = () => {
   const { id } = useParams()
@@ -17,14 +16,16 @@ const UserPostFilter = () => {
 
   return (
     <S.UserPostFilterLayout $isMyPage={isMyPage}>
-      <UserCreatePostButton
+      <UserPostFilterButton
         $isSelected={selectedButton === USER_POST_FILTER_LIST.create}
         onClick={() => setSelectedButton(USER_POST_FILTER_LIST.create)}
+        title="생성한 게시글"
       />
       {isMyPage && (
-        <UserLikePostButton
+        <UserPostFilterButton
           $isSelected={selectedButton === USER_POST_FILTER_LIST.like}
           onClick={() => setSelectedButton(USER_POST_FILTER_LIST.like)}
+          title="좋아요한 게시글"
         />
       )}
     </S.UserPostFilterLayout>
