@@ -33,6 +33,9 @@ const PostEditCategory = () => {
             )
           })}
       </S.PostEditCategoryList>
+      <S.PostEditCategoryDescription>
+        {selectedCategory.description}
+      </S.PostEditCategoryDescription>
     </S.PostEditCategoryLayout>
   )
 }
