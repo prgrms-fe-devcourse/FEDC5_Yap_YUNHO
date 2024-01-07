@@ -1,71 +1,61 @@
-import { useRef, useState, FormEvent } from "react"
+import { useRef, FormEvent } from "react"
 import * as S from "./LoginComponent.Styles"
 import { theme } from "@/styles/theme"
-import {
-  validateEmailInput,
-  validatePasswordInput,
-} from "../../utils/validation/index"
 
-import {
-  EMAIL_ERROR_MESSAGE,
-  PASSWORD_ERROR_MESSAGE,
-} from "../../constants/errorMessage"
 import LoginInputContainer from "./Input/LoginInputContainer"
+import { API } from "@/apis/Api"
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import { useNavigate } from "react-router-dom"
+import type { AllowedInputType } from "./types"
+
+interface UserInfoRef {
+  email: string
+  password: string
+}
 
 const LoginComponent = () => {
-  const userInfoRef = useRef({ email: "", password: "" })
-  const [errorMessage, setErrorMessage] = useState({ email: "", password: "" })
+  const userInfoRef = useRef<UserInfoRef>({ email: "", password: "" })
 
-  const updateUserInfo = (value: string, type: string) => {
-    if (type === "text") {
-      userInfoRef.current.email = value
-    } else if (type === "password") {
-      userInfoRef.current.password = value
-    }
+  const { setLogin } = useAuthUserStore()
+  const navigate = useNavigate()
+
+  const updateUserInfo = (value: string, type: AllowedInputType) => {
+    userInfoRef.current[type] = value
   }
 
-  const loginAction = (event: FormEvent<HTMLFormElement>) => {
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const { email, password } = userInfoRef.current
-    const _ErrorMessage = {
-      email: "",
-      password: "",
-    }
 
-    if (!validateEmailInput(email)) {
-      _ErrorMessage.email = EMAIL_ERROR_MESSAGE
-    }
-
-    if (!validatePasswordInput(password)) {
-      _ErrorMessage.password = PASSWORD_ERROR_MESSAGE
-    }
-
-    if (_ErrorMessage.email || _ErrorMessage.password) {
-      setErrorMessage(_ErrorMessage)
+    if (email === "" || password === "") {
       return
     }
 
-    setErrorMessage(_ErrorMessage)
-
-    console.log("로그인 시도!")
-    /** 추후 API 연결 */
-    // 로그인 성공시 -> 홈화면으로 이동
-    // 로그인 실패시 -> 없는 아이디면 잘못된 아이디 혹은 잘못된 비밀번호 입니다.
+    API.post("/login", {
+      email,
+      password,
+    })
+      .then((res) => {
+        const { user, token } = res.data
+        setLogin(user, token)
+        navigate("/", { replace: true })
+      })
+      .catch(() => {
+        alert("잘못된 이메일이거나 잘못된 비밀번호의 조합입니다.")
+      })
   }
 
   return (
     <S.LoginComponentLayout>
       <S.LoginComponentTitle>로그인</S.LoginComponentTitle>
-      <S.LoginForm onSubmit={loginAction}>
+      <S.LoginForm onSubmit={handleLogin}>
         <LoginInputContainer
           updateUserInfo={updateUserInfo}
-          errorMessage={errorMessage.email}
-          type="text"
+          type="email"
           placeholder="이메일"
         />
         <LoginInputContainer
           updateUserInfo={updateUserInfo}
-          errorMessage={errorMessage.password}
           type="password"
           placeholder="비밀번호"
         />
@@ -79,7 +69,7 @@ const LoginComponent = () => {
           <S.Button
             type="button"
             $color={theme.colors.sub_alt}
-            onClick={() => console.log("회원가입 창으로 이동")}
+            onClick={() => navigate("/signup")}
           >
             회원가입
           </S.Button>

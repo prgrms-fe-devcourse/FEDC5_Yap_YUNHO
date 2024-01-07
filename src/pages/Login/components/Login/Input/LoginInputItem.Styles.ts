@@ -1,6 +1,9 @@
 import styled from "styled-components"
 
-export const LoginInputLayout = styled.div``
+export const LoginInputItemLayout = styled.div`
+  width: 100%;
+  height: 100%;
+`
 export const Input = styled.input`
   padding: 0.8rem 1.2rem;
   display: inline-block;
@@ -11,4 +14,12 @@ export const Input = styled.input`
   &::placeholder {
     font-size: 1rem;
   }
+`
+export const ErrorMessage = styled.div`
+  text-align: center;
+  display: inline-block;
+  min-width: 100%;
+
+  font-size: ${({ theme }) => theme.fontSizes.semiSmall};
+  color: red;
 `
