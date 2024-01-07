@@ -1,6 +1,6 @@
 import * as S from "./UserProfile.Styles"
 import UserActions from "./components/UserActions/UserActions"
-import UserFollowInfo from "./components/UserFollowInfo"
+import UserFollowInfo from "./components/UserFollowInfo/UserFollowInfo"
 import UserNickname from "./components/UserNickname"
 import UserProfileImage from "./components/UserProfileImage"
 

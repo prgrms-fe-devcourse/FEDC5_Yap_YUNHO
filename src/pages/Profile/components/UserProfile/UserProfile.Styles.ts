@@ -26,32 +26,3 @@ export const UserNickNameContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
   color: ${({ theme }) => theme.colors.white};
 `
-
-export const UserFollowInfoLayout = styled.section`
-  position: absolute;
-  left: 50%;
-  bottom: 0rem;
-  transform: translateX(-50%);
-
-  margin-bottom: 3rem;
-
-  display: flex;
-  gap: 1rem;
-`
-
-export const UserFollowInfoContainer = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  color: ${({ theme }) => theme.colors.white};
-`
-
-export const UserFollowingInfoContainer = styled(UserFollowInfoContainer)``
-
-export const UserFollowerInfoContainer = styled(UserFollowInfoContainer)``
-
-export const UserFollowInfoDividerText = styled.div`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-family: "Noto Sans KR", sans-serif;
-  transform: translateY(10%);
-`

@@ -1,11 +1,11 @@
-import * as S from "../UserProfile.Styles"
+import * as S from "./UserFollowInfo.Styles"
 
 const UserFollowInfo = () => {
   return (
     <S.UserFollowInfoLayout>
-      <S.UserFollowingInfoContainer>팔로잉 500</S.UserFollowingInfoContainer>
+      <S.UserFollowInfoContainer>팔로잉 5090</S.UserFollowInfoContainer>
       <S.UserFollowInfoDividerText>·</S.UserFollowInfoDividerText>
-      <S.UserFollowerInfoContainer>팔로워 123</S.UserFollowerInfoContainer>
+      <S.UserFollowInfoContainer>팔로워 123</S.UserFollowInfoContainer>
     </S.UserFollowInfoLayout>
   )
 }
