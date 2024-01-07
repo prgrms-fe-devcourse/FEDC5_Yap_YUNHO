@@ -1,7 +1,6 @@
-import { UsePostData } from "@/types"
+import { PostContent } from "@/types"
 
-export const POST_EDIT_INITIAL_EDIT_POST: UsePostData = {
-  authUserProfile: "",
+export const POST_EDIT_INITIAL_EDIT_POST: PostContent = {
   thumbnail: "",
   content: "",
   mediaUrl: "",

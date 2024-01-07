@@ -2,6 +2,7 @@ import PostCard from "@/components/PostCard/Postcard"
 import * as S from "./PostContainer.Styles"
 
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material"
+import useModalDepth from "@/components/Modal/store/useModalDepth"
 
 // API 이전까지 사용될 데이터
 const DUMMY_POST = {
@@ -26,6 +27,7 @@ const DUMMY_POST = {
 }
 
 const PostContainer = () => {
+  const { modalDepth } = useModalDepth()
   return (
     <S.PostContainerLayout>
       <S.ArrowIcon $isLeft={true}>
@@ -56,6 +58,7 @@ const PostContainer = () => {
       {/* main */}
       <S.PostMainCard>
         <PostCard
+          isBlock={modalDepth !== 0}
           authUserProfile={DUMMY_POST.author.image}
           thumbnail={DUMMY_POST.title.thumbnail}
           content={DUMMY_POST.title.content}

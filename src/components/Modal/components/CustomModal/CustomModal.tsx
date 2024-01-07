@@ -7,7 +7,7 @@ interface CustomModalProps {
   isShow: boolean
   $width?: number
   $height?: number
-  onClose?: () => void
+  onClickAway?: () => void
 }
 
 export const CustomModal = ({
@@ -15,17 +15,17 @@ export const CustomModal = ({
   isShow,
   $width = 40,
   $height = 40,
-  onClose,
+  onClickAway,
 }: CustomModalProps) => {
   const handleCloseModal = ({ target, currentTarget }: MouseEvent) => {
-    if (!onClose) {
+    if (!onClickAway) {
       return
     }
     if (target !== currentTarget) {
       return
     }
 
-    onClose()
+    onClickAway()
   }
 
   return (

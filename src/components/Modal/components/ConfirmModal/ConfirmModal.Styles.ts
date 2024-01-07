@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ModalConfirmLayout = styled.div`
+export const ConfirmModalLayout = styled.div`
   width: 100%;
   height: 100%;
   padding: 2rem;
@@ -8,7 +8,7 @@ export const ModalConfirmLayout = styled.div`
   user-select: none;
 `
 
-export const ModalConfirmMessage = styled.h6`
+export const ConfirmModalMessage = styled.h6`
   width: 36rem;
   height: 10rem;
 

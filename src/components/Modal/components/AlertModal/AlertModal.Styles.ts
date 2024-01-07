@@ -6,7 +6,7 @@ const flexCenter = css`
   justify-content: center;
 `
 
-export const ModalAlertLayout = styled.div`
+export const AlertModalLayout = styled.div`
   width: 40rem;
   height: 20rem;
 
@@ -16,7 +16,7 @@ export const ModalAlertLayout = styled.div`
   user-select: none;
 `
 
-export const ModalAlertMessage = styled.h6`
+export const AlertModalMessage = styled.h6`
   width: 32rem;
   height: 14rem;
 

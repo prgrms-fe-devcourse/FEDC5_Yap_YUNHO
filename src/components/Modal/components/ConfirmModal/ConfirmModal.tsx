@@ -1,8 +1,8 @@
-import * as S from "./ModalConfirm.Styles"
+import * as S from "./ConfirmModal.Styles"
 import * as GS from "../../ModalGlobal.Styles"
 import CustomModal from "../CustomModal/CustomModal"
 
-interface ModalConfirmProps {
+interface ConfirmModalProps {
   isShow: boolean
   onClose: (response: boolean) => void
   message: string
@@ -10,13 +10,13 @@ interface ModalConfirmProps {
   cancelButtonText?: string
 }
 
-const ModalConfirm = ({
+const ConfirmModal = ({
   isShow,
   message,
   onClose,
   acceptButtonText = "수락",
   cancelButtonText = "취소",
-}: ModalConfirmProps) => {
+}: ConfirmModalProps) => {
   const handleClickAccept = () => {
     onClose(true)
   }
@@ -30,8 +30,8 @@ const ModalConfirm = ({
       isShow={isShow}
       $height={20}
     >
-      <S.ModalConfirmLayout>
-        <S.ModalConfirmMessage>{message}</S.ModalConfirmMessage>
+      <S.ConfirmModalLayout>
+        <S.ConfirmModalMessage>{message}</S.ConfirmModalMessage>
         <GS.ModalBottomActions>
           <GS.ModalButton onClick={handleClickCancel}>
             {cancelButtonText}
@@ -40,9 +40,9 @@ const ModalConfirm = ({
             {acceptButtonText}
           </GS.ModalButton>
         </GS.ModalBottomActions>
-      </S.ModalConfirmLayout>
+      </S.ConfirmModalLayout>
     </CustomModal>
   )
 }
 
-export default ModalConfirm
+export default ConfirmModal

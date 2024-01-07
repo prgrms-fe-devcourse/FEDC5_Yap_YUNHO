@@ -7,9 +7,10 @@ interface ModalProps {
   children: React.ReactNode
   isShow: boolean
   onClose: () => void
+  useClickAway: boolean
 }
 
-const Modal = ({ children, isShow, onClose }: ModalProps) => {
+const Modal = ({ children, isShow, onClose, useClickAway }: ModalProps) => {
   const handleCloseModal = ({ target, currentTarget }: MouseEvent) => {
     if (target !== currentTarget) {
       return
@@ -20,7 +21,11 @@ const Modal = ({ children, isShow, onClose }: ModalProps) => {
 
   return (
     <ModalPortal isShow={isShow}>
-      <S.ModalBackground onClick={handleCloseModal}>
+      <S.ModalBackground
+        onClick={(e) => {
+          useClickAway && handleCloseModal(e)
+        }}
+      >
         <S.ModalSection>
           <S.ModalTop>
             <CloseIcon onClick={handleCloseModal} />
