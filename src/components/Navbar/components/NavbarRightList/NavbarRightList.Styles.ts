@@ -5,6 +5,7 @@ export const NavbarRightListLayout = styled.div`
   align-items: center;
   gap: 2rem;
   user-select: none;
+  z-index: 2; // merge할때 theme으로 교체
 `
 
 export const NavbarProfile = styled.img`
@@ -18,12 +19,13 @@ export const NavbarMenuList = styled.ul<{ $isToggle?: boolean }>`
   align-items: center;
   gap: 1.4rem;
   @media screen and (max-width: 1024px) {
+    display: flex;
     flex-direction: column;
     top: 18rem;
     left: 12rem;
-    transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
+    transition: ${({ $isToggle }) =>
+      $isToggle ? `opacity 0.3s ease, visibility 0.1s ease` : `none`};
+
     opacity: ${({ $isToggle }) => ($isToggle ? "1" : "0")};
     visibility: ${({ $isToggle }) => ($isToggle ? "visible" : "hidden")};
   }
