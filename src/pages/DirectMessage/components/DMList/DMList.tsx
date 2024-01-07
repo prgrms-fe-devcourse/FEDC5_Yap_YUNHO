@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import * as S from "./DMList.Styles"
 import DMListItem from "./DMListItem"
 import { API, AUTH_API } from "@/apis/Api"
@@ -16,7 +16,7 @@ const DMList = () => {
   const [selectedChattingId, setSelectedChattingId] = useState("")
   const navigate = useNavigate()
 
-  const fetchDMUsers = async () => {
+  const fetchDMUsers = useCallback(async () => {
     await API.post("login", {
       email: "gnsdh8616@gmail.com",
       password: "gch220874!",
@@ -32,7 +32,7 @@ const DMList = () => {
       .catch((error) => {
         console.log(error, "DMList 받아오는데 문제가 생김")
       })
-  }
+  }, [setLogin])
 
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
@@ -43,7 +43,7 @@ const DMList = () => {
 
   useEffect(() => {
     fetchDMUsers()
-  }, [])
+  }, [fetchDMUsers])
 
   return (
     <S.DMListLayout>

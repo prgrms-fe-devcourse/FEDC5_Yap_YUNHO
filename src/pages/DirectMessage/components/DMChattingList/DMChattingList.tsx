@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import * as S from "./DMChattingList.Styles"
 import { AUTH_API } from "@/apis/Api"
-import { ReactNode, useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Conversation } from "@/types"
 const DMChattingList = () => {
   const { id } = useParams()
@@ -27,15 +27,13 @@ const DMChattingList = () => {
     <S.DMChattingListLayout>
       {id && (
         <S.DMChattingListMessageItem>
-          {selectedMessageList.map(
-            (list: Conversation): ReactNode => (
-              <p key={list.createdAt}>
-                {list.message}
-                <br />
-                <br />
-              </p>
-            ),
-          )}
+          {selectedMessageList.map((list: Conversation) => (
+            <p key={list.createdAt}>
+              {list.message}
+              <br />
+              <br />
+            </p>
+          ))}
         </S.DMChattingListMessageItem>
       )}
     </S.DMChattingListLayout>
