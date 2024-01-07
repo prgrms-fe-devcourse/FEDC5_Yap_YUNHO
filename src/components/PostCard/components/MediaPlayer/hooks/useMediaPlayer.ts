@@ -65,10 +65,6 @@ const useMediaPlayer = () => {
       const isCanPlay = ReactPlayer.canPlay(url)
       if (isCanPlay) {
         changeUrl(url)
-        onChangeRange({
-          type: "play",
-          percent: 0,
-        })
       }
 
       onChangeRange({
