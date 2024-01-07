@@ -23,8 +23,6 @@ body{
   height: 100%;
   line-height: 1;
   font-family: "BMJUA",'Noto Sans KR', sans-serif;
-
-
   background-color: ${({ theme }) => theme.colors.main};
 
 }
@@ -41,7 +39,7 @@ ol, ul{
 
 button {
   background: transparent;
-
+  font-family: "BMJUA", "Noto Sans KR", sans-serif;
   cursor: pointer;
 }
 

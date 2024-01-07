@@ -59,7 +59,6 @@ export const DMListItemLayout = styled.button<{ $isSelect: boolean }>`
   gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
-  font-family: "BMJUA", "Noto Sans KR", sans-serif;
   &:hover {
     opacity: 0.5;
   }
