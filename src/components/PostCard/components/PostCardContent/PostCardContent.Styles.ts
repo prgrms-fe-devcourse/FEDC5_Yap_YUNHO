@@ -5,7 +5,7 @@ export const PostCardContentLayout = styled.div`
   height: 18%;
   margin-top: 3%;
   margin-left: 15%;
-  padding: 4%;
+  padding: 3%;
 
   border-radius: ${({ theme }) => theme.radius.size8};
   background-color: rgba(255, 255, 255, 0.7);
@@ -16,16 +16,16 @@ export const PostCardContentLayout = styled.div`
   user-select: none;
 `
 
-export const PostCardContentText = styled.h4<{ $textPercent?: string }>`
+export const PostCardContentText = styled.h6<{ $textPercent?: string }>`
   height: 100%;
   width: 100%;
 
   display: flex;
 
-  text-align: center;
   line-height: 1.4;
   letter-spacing: 0.4px;
   font-size: ${({ $textPercent }) => ($textPercent ? $textPercent : "100%")};
+  white-space: pre-wrap;
 
   overflow-y: scroll;
   -ms-overflow-style: none;
