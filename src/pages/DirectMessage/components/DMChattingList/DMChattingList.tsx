@@ -29,7 +29,7 @@ const DMChattingList = () => {
         <S.DMChattingListMessageItem>
           {selectedMessageList.map(
             (list: Conversation): ReactNode => (
-              <p>
+              <p key={list.createdAt}>
                 {list.message}
                 <br />
                 <br />

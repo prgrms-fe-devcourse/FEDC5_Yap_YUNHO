@@ -6,13 +6,18 @@ import authToken from "@/stores/authToken"
 import { DMUserListProps } from "../../types"
 import { Conversation } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { useNavigate } from "react-router-dom"
+import decideChatUserName from "../../utils/decideChatUserName"
+import { handleClickProps } from "./../../types/index"
 
 const DMList = () => {
-  const [DMUserList, setDMUserList] = useState([])
   const { setLogin } = useAuthUserStore()
+  const [DMUserList, setDMUserList] = useState([])
+  const [selectedChattingId, setSelectedChattingId] = useState("")
+  const navigate = useNavigate()
 
-  const login = async () => {
-    return await API.post("login", {
+  const fetchDMUsers = async () => {
+    await API.post("login", {
       email: "gnsdh8616@gmail.com",
       password: "gch220874!",
     }).then((res) => {
@@ -20,16 +25,23 @@ const DMList = () => {
       setLogin(user, token)
       authToken.setToken(token)
     })
+    return await AUTH_API.get("messages/conversations")
+      .then((res) => {
+        setDMUserList(res.data)
+      })
+      .catch((error) => {
+        console.log(error, "DMList 받아오는데 문제가 생김")
+      })
   }
 
-  const fetchDMUsers = async () => {
-    return await AUTH_API.get("messages/conversations").then((res) => {
-      setDMUserList(res.data)
-    })
+  const handleClick = ({ user, receiver, sender }: handleClickProps) => {
+    // 상대방의 아이디
+    const { _id } = decideChatUserName(user, receiver, sender)
+    navigate(`/directmessage/${_id}`)
+    setSelectedChattingId(_id)
   }
 
   useEffect(() => {
-    login()
     fetchDMUsers()
   }, [])
 
@@ -65,6 +77,8 @@ const DMList = () => {
               sender={sender}
               createdAt={createdAt}
               seen={seen}
+              selectedChattingId={selectedChattingId}
+              handleClick={handleClick}
             />
           )
         })}

@@ -54,7 +54,7 @@ export const DMListContainer = styled.div`
   }
 `
 
-export const DMListItemLayout = styled.button`
+export const DMListItemLayout = styled.button<{ $isSelect: boolean }>`
   display: flex;
   gap: 1rem;
   justify-content: flex-start;
@@ -63,6 +63,7 @@ export const DMListItemLayout = styled.button`
   &:hover {
     opacity: 0.5;
   }
+  opacity: ${({ $isSelect }) => ($isSelect ? 0.3 : 1)};
 `
 
 export const DMUserProfileContainer = styled.div`
