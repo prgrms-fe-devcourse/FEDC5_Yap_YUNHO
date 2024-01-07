@@ -3,7 +3,7 @@ import * as S from "./UserPostFilter.Styles"
 import { USER_POST_FILTER_LIST } from "@/pages/Profile/constants/UserPost.Constants"
 import { useParams } from "react-router-dom"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import UserPostFilterButton from "./UserCreatePostButton"
+import UserPostFilterButton from "./UserPostFilterButton"
 
 const UserPostFilter = () => {
   const { id } = useParams()

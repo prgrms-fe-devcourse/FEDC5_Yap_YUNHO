@@ -1,7 +1,7 @@
 import * as S from "./UserActions.Styles"
 import { useParams } from "react-router-dom"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import UserActionButton from "./UserUpdateInfoButton"
+import UserActionButton from "./UserActionButton"
 
 const UserActions = () => {
   const { id } = useParams()

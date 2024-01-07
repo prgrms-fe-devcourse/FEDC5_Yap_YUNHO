@@ -1,11 +1,14 @@
 import * as S from "./UserFollowInfo.Styles"
+import CircleIcon from "@mui/icons-material/Circle"
 
 const UserFollowInfo = () => {
   return (
     <S.UserFollowInfoLayout>
-      <S.UserFollowInfoContainer>팔로잉 5090</S.UserFollowInfoContainer>
-      <S.UserFollowInfoDividerText>·</S.UserFollowInfoDividerText>
-      <S.UserFollowInfoContainer>팔로워 123</S.UserFollowInfoContainer>
+      <S.UserFollowInfoContainer>팔로잉 4444만</S.UserFollowInfoContainer>
+      <S.UserFollowInfoDividerContainer>
+        <CircleIcon />
+      </S.UserFollowInfoDividerContainer>
+      <S.UserFollowInfoContainer>팔로워 509</S.UserFollowInfoContainer>
     </S.UserFollowInfoLayout>
   )
 }
