@@ -3,6 +3,7 @@ import { HandleEditPost } from "../../PostEdit.Types"
 import * as S from "./PostEditEditor.Styles"
 import PostEditInput from "./components/PostEditInput/PostEditInput"
 import PostEditUrl from "./components/PostEditUrl/PostEditUrl"
+import PostEditCategory from "./components/PostEditCategory/PostEditCategory"
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
@@ -20,6 +21,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
         text={postData.content}
         onEdit={onEdit}
       />
+      <PostEditCategory />
     </S.PostEditEditorLayout>
   )
 }
