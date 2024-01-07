@@ -1,5 +1,5 @@
-import UserPostFilter from "./UserPostFilter/UserPostFilter"
 import * as S from "./UserPosts.Styles"
+import UserPostFilter from "./components/UserPostFilter/UserPostFilter"
 
 const UserPosts = () => {
   return (

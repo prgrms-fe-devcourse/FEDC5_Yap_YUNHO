@@ -1,4 +1,4 @@
-import * as S from "./UserProfile.Styles"
+import * as S from "../UserProfile.Styles"
 
 const UserFollowInfo = () => {
   return (

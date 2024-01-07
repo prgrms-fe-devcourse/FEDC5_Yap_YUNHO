@@ -14,16 +14,19 @@ const UserActions = () => {
         <UserActionButton
           text="회원 정보 수정"
           $width={11}
+          onClick={() => {}}
         />
       ) : (
         <>
           <UserActionButton
             text="팔로우"
             $width={9}
+            onClick={() => {}}
           />
           <UserActionButton
             text="DM 보내기"
             $width={9}
+            onClick={() => {}}
           />
         </>
       )}
