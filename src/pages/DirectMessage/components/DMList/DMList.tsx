@@ -54,14 +54,10 @@ const DMList = () => {
   return (
     <S.DMListLayout>
       <S.DMListInfo>
-        <S.DMListTotalNoticeTitle>DM 목록</S.DMListTotalNoticeTitle>
-        <S.DMListTotalNoticeNumber>
-          {DMListCount.total}
-        </S.DMListTotalNoticeNumber>
-        <S.DMListNotNoticeTitle>안 읽음</S.DMListNotNoticeTitle>
-        <S.DMListNotNoticedNumber>
-          {DMListCount.NotNotice}
-        </S.DMListNotNoticedNumber>
+        <S.DMListTotalSeenTitle>DM 목록</S.DMListTotalSeenTitle>
+        <S.DMListTotalSeenCounter>{DMListCount.total}</S.DMListTotalSeenCounter>
+        <S.DMListNotSeenTitle>안 읽음</S.DMListNotSeenTitle>
+        <S.DMListNotSeenCounter>{DMListCount.NotNotice}</S.DMListNotSeenCounter>
       </S.DMListInfo>
       <S.DMListContainer>
         {DMUserList.map((user: DMUserListProps) => {

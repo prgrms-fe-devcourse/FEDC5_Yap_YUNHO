@@ -21,22 +21,22 @@ export const DMListInfo = styled.div`
   justify-content: flex-start;
   gap: 1rem;
 `
-export const DMListTotalNoticeTitle = styled.span`
+export const DMListTotalSeenTitle = styled.span`
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
-export const DMListTotalNoticeNumber = styled.span`
+export const DMListTotalSeenCounter = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 `
 
-export const DMListNotNoticeTitle = styled.span`
+export const DMListNotSeenTitle = styled.span`
   color: ${({ theme }) => theme.colors.point_alt};
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `
 
-export const DMListNotNoticedNumber = styled.span`
+export const DMListNotSeenCounter = styled.span`
   color: ${({ theme }) => theme.colors.point_alt};
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `
