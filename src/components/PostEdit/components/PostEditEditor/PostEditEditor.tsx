@@ -1,5 +1,4 @@
-import { PostContent } from "@/types"
-import { HandleEditPost } from "../../PostEdit.Types"
+import { EditPostState, HandleEditPost } from "../../PostEdit.Types"
 import * as S from "./PostEditEditor.Styles"
 import PostEditInput from "./components/PostEditInput/PostEditInput"
 import PostEditUrl from "./components/PostEditUrl/PostEditUrl"
@@ -7,11 +6,14 @@ import PostEditCategory from "./components/PostEditCategory/PostEditCategory"
 import PostEditButton from "./components/PostEditButton/PostEditButton"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
+import createPost from "../../apis/createPost"
+import { useState } from "react"
+import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
 interface PostEditEditorProps {
   isNewPost: boolean
   onEdit: HandleEditPost
-  postData: PostContent
+  postData: EditPostState
 }
 
 const PostEditEditor = ({
@@ -19,20 +21,45 @@ const PostEditEditor = ({
   postData,
   isNewPost,
 }: PostEditEditorProps) => {
-  const { isShowModal, showModal, closeModal } = useModal()
+  const {
+    isShowModal: isShowConfirm,
+    showModal: showConfirm,
+    closeModal: closeConfirm,
+  } = useModal()
+  const {
+    isShowModal: isShowAlert,
+    showModal: showAlert,
+    closeModal: closeAlert,
+  } = useModal()
+
+  const [alertMessage, setAlertMessgae] = useState("")
 
   const handleSubmitPost = () => {
-    showModal()
+    showConfirm()
   }
 
   const handleCloseConfirm = (isAccept: boolean) => {
-    closeModal()
+    closeConfirm()
 
     if (!isAccept) {
       return
     }
 
-    console.log("dd")
+    // if (postData.category) {
+    //   return
+    // }
+
+    // if (postData.content) {
+    //   return
+    // }
+
+    // if (postData.mediaUrl) {
+    //   return
+    // }
+
+    if (isNewPost) {
+      createPost(postData)
+    }
   }
   return (
     <>
@@ -52,9 +79,15 @@ const PostEditEditor = ({
         <PostEditCategory onEdit={onEdit} />
       </S.PostEditEditorLayout>
       <ConfirmModal
-        isShow={isShowModal}
+        isShow={isShowConfirm}
         message={"게시물을 등록 하시겠나요?"}
         onClose={handleCloseConfirm}
+      />
+
+      <AlertModal
+        isShow={isShowAlert}
+        alertMessage={alertMessage}
+        onClose={closeAlert}
       />
     </>
   )

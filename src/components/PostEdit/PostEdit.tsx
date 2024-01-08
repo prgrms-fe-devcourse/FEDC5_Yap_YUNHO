@@ -41,7 +41,6 @@ const PostEdit = () => {
     setEditPost(newEditPost)
   }
 
-  console.log(editPost)
   return (
     <S.PostEditLayout>
       <S.PostEditContainer>
