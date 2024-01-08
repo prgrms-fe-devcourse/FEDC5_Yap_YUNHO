@@ -8,8 +8,15 @@ import getThumbnailByUrl from "@/util/getThumbnailByUrl"
 import { useNavigate, useParams } from "react-router-dom"
 import { API } from "@/apis/Api"
 import { JSONPost, PostContent } from "@/types"
+import PostEditAuthChecker from "./components/PostEditAuthChecker"
+import Modal from "../Modal/Modal"
 
-const PostEdit = () => {
+interface PostEditProps {
+  onClose: () => void
+  isShowModal: boolean
+}
+
+const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
   const { id } = useParams()
   const navigation = useNavigate()
   const [editPost, setEditPost] = useState<EditPostState>(
@@ -28,7 +35,6 @@ const PostEdit = () => {
           fetchPost.title,
         )
 
-        console.log(fetchPost)
         setEditPost({
           content: content,
           mediaUrl: mediaUrl,
@@ -37,7 +43,7 @@ const PostEdit = () => {
           postId: fetchPost._id,
         })
       })
-  }, [id, navigation])
+  }, [id, isShowModal, navigation, onClose])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
@@ -58,19 +64,29 @@ const PostEdit = () => {
   }
 
   return (
-    // 검사 프로바이더 씌워야함
-    <S.PostEditLayout>
-      <S.PostEditContainer>
-        <PostEditViewer postData={editPost} />
-      </S.PostEditContainer>
-      <S.PostEditBoundary />
-      <S.PostEditContainer>
-        <PostEditEditor
-          onEdit={handleEditPost}
-          postData={editPost}
-        />
-      </S.PostEditContainer>
-    </S.PostEditLayout>
+    <Modal
+      isShow={isShowModal}
+      onClose={onClose}
+      clickAwayEnable={false}
+    >
+      <PostEditAuthChecker
+        onCloseInnerModal={onClose}
+        authorId="dd"
+      >
+        <S.PostEditLayout>
+          <S.PostEditContainer>
+            <PostEditViewer postData={editPost} />
+          </S.PostEditContainer>
+          <S.PostEditBoundary />
+          <S.PostEditContainer>
+            <PostEditEditor
+              onEdit={handleEditPost}
+              postData={editPost}
+            />
+          </S.PostEditContainer>
+        </S.PostEditLayout>
+      </PostEditAuthChecker>
+    </Modal>
   )
 }
 
