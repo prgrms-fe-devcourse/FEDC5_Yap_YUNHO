@@ -1,8 +1,10 @@
 import { create } from "zustand"
-import { devtools } from "zustand/middleware"
+import { createJSONStorage, devtools, persist } from "zustand/middleware"
 import { User } from "../types"
 import { AUTH_USER_INITIAL_USER_DATA } from "../constants/stores"
 import authToken from "./authToken"
+
+const PERSIST_STORAGE_KEY = "userLoginStore"
 
 interface AuthUserStore {
   isLoggedIn: boolean
@@ -12,25 +14,32 @@ interface AuthUserStore {
 }
 
 const useAuthUserStore = create<AuthUserStore>()(
-  devtools((set) => ({
-    isLoggedIn: false,
-    user: AUTH_USER_INITIAL_USER_DATA,
+  persist(
+    devtools((set) => ({
+      isLoggedIn: false,
+      user: AUTH_USER_INITIAL_USER_DATA,
 
-    setLogin: (user, token) => {
-      authToken.setToken(token)
-      set(() => ({
-        isLoggedIn: true,
-        user: user,
-      }))
+      setLogin: (user, token) => {
+        authToken.setToken(token)
+        set(() => ({
+          isLoggedIn: true,
+          user: user,
+        }))
+      },
+      setLogout: () => {
+        authToken.removeToken()
+        set(() => ({
+          isLoggedIn: false,
+          user: AUTH_USER_INITIAL_USER_DATA,
+        }))
+      },
+    })),
+    {
+      name: PERSIST_STORAGE_KEY,
+      storage: createJSONStorage(() => sessionStorage),
+      partialize: (state) => ({ isLoggedIn: state.isLoggedIn }),
     },
-    setLogout: () => {
-      authToken.removeToken()
-      set(() => ({
-        isLoggedIn: false,
-        user: AUTH_USER_INITIAL_USER_DATA,
-      }))
-    },
-  })),
+  ),
 )
 
 export default useAuthUserStore
