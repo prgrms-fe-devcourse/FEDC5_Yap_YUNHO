@@ -9,17 +9,20 @@ export const SignupFormLayout = styled.div`
   height: 50rem;
   color: ${({ theme }) => theme.colors.white};
 `
-export const SignupFormTitle = styled.h2`
-  height: 2rem;
-  width: 100%;
+export const SignupFormTitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  height: 5rem;
+  width: 100%;
+  padding-bottom: 1rem;
+
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `
 export const SignupFormContainer = styled.div`
   width: 50rem;
-
-  height: 100%;
+  height: 38rem;
 `
 
 export const ButtonContainer = styled.div`
@@ -28,11 +31,11 @@ export const ButtonContainer = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 10rem;
+  height: 4rem;
 `
 export const Button = styled.button<{ $width: number; $color: string }>`
   width: ${({ $width }) => `${$width}%`};
-  height: 50%;
+  height: 100%;
   padding: 1rem 0;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ $color }) => $color};

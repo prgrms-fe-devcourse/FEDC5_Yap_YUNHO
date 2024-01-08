@@ -1,4 +1,3 @@
-import React from "react"
 import * as S from "./SignupInputItem.Styles"
 import Input from "./Input"
 import type { AllowedInputType } from "../../types"
@@ -16,8 +15,8 @@ const SignupInputItem = ({
   errorMessage,
 }: SignupInputItemProp) => {
   return (
-    <S.SingupInputItem>
-      <div>{title}</div>
+    <S.SignupInputItemLayout>
+      <S.SignupInputItemTitle>{title}</S.SignupInputItemTitle>
 
       <Input
         type={type}
@@ -25,7 +24,7 @@ const SignupInputItem = ({
       />
 
       <div>{errorMessage}</div>
-    </S.SingupInputItem>
+    </S.SignupInputItemLayout>
   )
 }
 
