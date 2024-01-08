@@ -37,7 +37,6 @@ const PostEditEditor = ({
     showModal: showComplete,
     closeModal: closeComplete,
   } = useModal()
-
   const navigation = useNavigate()
   const [alertMessage, setAlertMessage] = useState("")
 
@@ -52,6 +51,7 @@ const PostEditEditor = ({
       return
     }
 
+    // 각각의 validation 추가 예정
     // if (postData.category) {
     //   return
     // }

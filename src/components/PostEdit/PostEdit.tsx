@@ -20,7 +20,7 @@ const PostEdit = () => {
     }
 
     setIsNewPost(false)
-    console.log(id)
+    // 해당 부분에서 id에 맞는 포스트를 불러올 준비
   }, [id])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
