@@ -9,6 +9,7 @@ import useModal from "@/components/Modal/hooks/useModal"
 import createPost from "../../apis/createPost"
 import { useState } from "react"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
+import { useNavigate } from "react-router-dom"
 
 interface PostEditEditorProps {
   isNewPost: boolean
@@ -31,8 +32,14 @@ const PostEditEditor = ({
     showModal: showAlert,
     closeModal: closeAlert,
   } = useModal()
+  const {
+    isShowModal: isShowComplete,
+    showModal: showComplete,
+    closeModal: closeComplete,
+  } = useModal()
 
-  const [alertMessage, setAlertMessgae] = useState("")
+  const navigation = useNavigate()
+  const [alertMessage, setAlertMessage] = useState("")
 
   const handleSubmitPost = () => {
     showConfirm()
@@ -58,9 +65,26 @@ const PostEditEditor = ({
     // }
 
     if (isNewPost) {
-      createPost(postData)
+      createPost(postData).then((res) => {
+        if (res) {
+          showComplete()
+          return
+        }
+
+        if (!res) {
+          setAlertMessage("등록에 실패했습니다 다시 시도해주세요.. 🥹")
+          showAlert()
+          return
+        }
+      })
     }
   }
+
+  const handleCloseComplete = () => {
+    closeComplete()
+    navigation("/")
+  }
+
   return (
     <>
       <S.PostEditEditorLayout>
@@ -88,6 +112,12 @@ const PostEditEditor = ({
         isShow={isShowAlert}
         alertMessage={alertMessage}
         onClose={closeAlert}
+      />
+
+      <AlertModal
+        isShow={isShowComplete}
+        alertMessage={"등록이 완료되었습니다!"}
+        onClose={handleCloseComplete}
       />
     </>
   )
