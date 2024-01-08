@@ -13,9 +13,7 @@ const createPost = (newPost: EditPostState) => {
   }
 
   const response = AUTH_API.post("/posts/create", newPostBody)
-    .then(() => {
-      return true
-    })
+    .then(() => true)
     .catch((e) => {
       console.error(e)
       return false
