@@ -7,11 +7,11 @@ import { Message } from "@/types"
 
 const DMChattingList = () => {
   const { id } = useParams()
-  const [selectedMessageList, setSelectedMessgaeList] = useState([])
+  const [selectedMessageList, setSelectedMessageList] = useState([])
 
   const fetchMessageList = useCallback(async () => {
     return await AUTH_API.get(`/messages?userId=${id}`)
-      .then((res) => setSelectedMessgaeList(res.data))
+      .then((res) => setSelectedMessageList(res.data))
       .catch((error) => {
         console.log(error, "메시지 검색 오류")
       })
