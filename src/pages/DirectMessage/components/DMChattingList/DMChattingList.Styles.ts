@@ -13,7 +13,7 @@ export const DMMessageList = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
   overflow-y: scroll;
   height: 90%;
-  width: 100%;
+  width: 70%;
   ${({ theme }) => theme.scrollBarNone};
   display: flex;
   flex-direction: column;

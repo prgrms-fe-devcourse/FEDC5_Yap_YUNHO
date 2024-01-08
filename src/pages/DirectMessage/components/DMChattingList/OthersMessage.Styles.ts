@@ -28,11 +28,12 @@ export const OthersMessageDate = styled.div`
 
 export const OthersMessageContentContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.semiSmall};
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.gray};
   padding: 1rem;
-  border-radius:
-  width: 60%;
-  height: 10rem;
+  border-radius: ${({ theme }) =>
+    `0rem ${theme.radius.size12} ${theme.radius.size12}`};
+  width: 100%;
+  height: 7rem;
 `
 
 export const OthersMessageContent = styled.div`

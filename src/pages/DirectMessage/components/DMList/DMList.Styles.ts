@@ -100,6 +100,6 @@ export const DMListChatContent = styled.span`
 `
 
 export const DMListChatDate = styled.span`
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.gray};
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `
