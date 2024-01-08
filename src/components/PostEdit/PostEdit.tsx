@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import * as S from "./PostEdit.Styles"
 import PostEditEditor from "./components/PostEditEditor/PostEditEditor"
 import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
@@ -10,6 +10,11 @@ const PostEdit = () => {
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
+
+  useEffect(() => {
+    // 해당 모달이 오픈된 시점 - 새 게시물인가? 수정인가?
+    // 1. 서브밋 버튼 네이밍 변경 ( 상태 추가 )
+  }, [])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
