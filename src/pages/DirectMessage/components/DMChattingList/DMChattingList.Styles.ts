@@ -13,4 +13,6 @@ export const DMChattingListLayout = styled.div`
 
 export const DMChattingListMessageItem = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
+  background-color: ${({ theme }) => theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size20};
 `

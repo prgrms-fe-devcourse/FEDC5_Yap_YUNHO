@@ -59,6 +59,8 @@ export const PlayButton = styled.button`
   ${buttonHover}
   height: 100%;
 
+  ${flexCenter}
+
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
   svg {
     background-color: ${({ theme }) => theme.colors.main};
