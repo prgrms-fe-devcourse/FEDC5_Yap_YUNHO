@@ -3,6 +3,7 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
 import useModal from "@/components/Modal/hooks/useModal"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
+import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 interface PostEditAuthCheckerProps {
   children: React.ReactNode
@@ -21,21 +22,19 @@ const PostEditAuthChecker = ({
   const { isLoggedIn, user } = useAuthUserStore()
 
   const handleCloseModal = useCallback(() => {
-    closeModal()
-
     onCloseInnerModal()
     navigation("/")
-  }, [closeModal, navigation, onCloseInnerModal])
+  }, [navigation, onCloseInnerModal])
 
   useEffect(() => {
-    if (authorId === user._id) {
-      setAlertMessage("접근이 불가능 합니다")
+    if (!isLoggedIn) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER_NOT_LOGIN)
       showModal()
       return
     }
 
-    if (isLoggedIn) {
-      setAlertMessage("로그인 후 이용해 주세요!")
+    if (authorId === user._id) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER_NO_PERMISSION)
       showModal()
       return
     }
