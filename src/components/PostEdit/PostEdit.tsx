@@ -5,16 +5,22 @@ import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 import { POST_EDIT_INITIAL_EDIT_POST } from "./constants/PostEdit.Constants"
 import { EditPostState, HandleEditPost } from "./PostEdit.Types"
 import getThumbnailByUrl from "@/util/getThumbnailByUrl"
+import { useParams } from "react-router-dom"
 
 const PostEdit = () => {
+  const { id } = useParams()
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
+  const [isNewPost, setIsNewPost] = useState(true)
 
   useEffect(() => {
-    // 해당 모달이 오픈된 시점 - 새 게시물인가? 수정인가?
-    // 1. 서브밋 버튼 네이밍 변경 ( 상태 추가 )
-  }, [])
+    if (id === "newPost") {
+      return
+    }
+
+    console.log(id)
+  }, [id])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
