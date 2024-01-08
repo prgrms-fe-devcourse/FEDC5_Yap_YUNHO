@@ -27,7 +27,7 @@ const PostEditAuthChecker = ({
   }, [navigation, onCloseInnerModal])
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (isLoggedIn) {
       setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER_NOT_LOGIN)
       showModal()
       return

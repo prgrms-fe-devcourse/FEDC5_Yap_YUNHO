@@ -12,6 +12,9 @@ import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { useNavigate } from "react-router-dom"
 import updatePost from "../../apis/updatePost"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
+import checkCategoryValidation from "../../util/checkCategoryValidation"
+import checkUrlValidation from "../../util/checkUrlValidation"
+import checkContentValidation from "../../util/checkContentValidation"
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
@@ -49,17 +52,23 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
     }
 
     // 각각의 validation 추가 예정
-    // if (postData.category) {
-    //   return
-    // }
+    if (!checkCategoryValidation(postData.category)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CATEGORY)
+      showAlert()
+      return
+    }
 
-    // if (postData.content) {
-    //   return
-    // }
+    if (!checkContentValidation(postData.content)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CONTENT)
+      showAlert()
+      return
+    }
 
-    // if (postData.mediaUrl) {
-    //   return
-    // }
+    if (!checkUrlValidation(postData.mediaUrl)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_MEDIA_RUL)
+      showAlert()
+      return
+    }
 
     if (postData.postId === "newPost") {
       createPost(postData).then((res) => {
