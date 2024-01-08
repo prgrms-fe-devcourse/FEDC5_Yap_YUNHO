@@ -20,6 +20,8 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
       const { data } = await API.get(`/posts/channel/${selectedCategory.id}`)
       return data
     },
+    gcTime: 1000 * 60 * 3,
+    staleTime: 1000 * 60,
     select: (PostList: JSONPost[]) => {
       const convertedList: Post[] = PostList.map((post: JSONPost) => {
         return {
