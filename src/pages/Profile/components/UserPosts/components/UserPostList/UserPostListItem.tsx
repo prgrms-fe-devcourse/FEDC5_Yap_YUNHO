@@ -1,5 +1,7 @@
+import * as S from "./UserPostList.Styles"
+
 const UserPostListItem = () => {
-  return <div>UserPostListItem</div>
+  return <S.UserPostListItemContainer />
 }
 
 export default UserPostListItem
