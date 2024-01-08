@@ -15,6 +15,11 @@ export const Input = styled.input`
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   &::placeholder {
+    font-family: "BMJUA";
     font-size: ${({ theme }) => theme.fontSizes.medium};
+  }
+
+  &[type="password"] {
+    font-family: sans-serif;
   }
 `
