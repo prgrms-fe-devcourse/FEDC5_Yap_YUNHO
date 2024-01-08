@@ -3,6 +3,10 @@ import * as S from "./PostContainer.Styles"
 
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material"
 import useModalDepth from "@/components/Modal/store/useModalDepth"
+import { Category } from "../CategoryBar/CategoryBar.Types"
+import { useQuery } from "@tanstack/react-query"
+import { API } from "@/apis/Api"
+import { JSONPost, Post } from "@/types"
 
 // API 이전까지 사용될 데이터
 const DUMMY_POST = {
@@ -26,8 +30,33 @@ const DUMMY_POST = {
   updatedAt: "떠미더미",
 }
 
-const PostContainer = () => {
+const GET_POST_LIST_QUERY_KEY = "FETCH_POST_LIST_HOME"
+interface PostContainerProps {
+  selectedCategory: Category
+}
+
+const PostContainer = ({ selectedCategory }: PostContainerProps) => {
   const { modalDepth } = useModalDepth()
+
+  const { data } = useQuery({
+    queryKey: [GET_POST_LIST_QUERY_KEY, selectedCategory.id],
+    queryFn: async () => {
+      const { data } = await API.get(`/posts/channel/${selectedCategory.id}`)
+      return data
+    },
+    select: (PostList: JSONPost[]) => {
+      const convertedList: Post[] = PostList.map((post: JSONPost) => {
+        return {
+          ...post,
+          title: JSON.parse(post.title),
+        }
+      })
+
+      return convertedList
+    },
+  })
+
+  console.log(data)
   return (
     <S.PostContainerLayout>
       <S.ArrowIcon $isLeft={true}>

@@ -48,12 +48,12 @@ const Home = () => {
         />
         <button
           onClick={() => {
-            navigation("/postedit/newPost")
+            navigation("/postedit/659b5d3b6a3df40ed38914d4")
           }}
         >
           Modal Open
         </button>
-        <PostContainer />
+        <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>
 
       <PostEdit
