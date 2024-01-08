@@ -21,7 +21,7 @@ export const ModalButton = styled.button`
   transition: all 0.3s;
   user-select: none;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.point_alt};
+    opacity: 0.5;
   }
 `
 

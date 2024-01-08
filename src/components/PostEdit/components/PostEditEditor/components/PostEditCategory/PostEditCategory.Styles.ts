@@ -38,11 +38,15 @@ export const PostEditCategoryItem = styled.li<{ $isSelect: boolean }>`
   background-color: ${({ theme, $isSelect }) =>
     $isSelect ? theme.colors.point_alt : theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.size8};
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
 
   white-space: nowrap;
 
   user-select: none;
   cursor: pointer;
 
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.5;
+  }
 `

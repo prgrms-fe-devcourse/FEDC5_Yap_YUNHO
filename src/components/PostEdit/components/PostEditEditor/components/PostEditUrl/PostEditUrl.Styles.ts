@@ -24,7 +24,7 @@ export const PostEditUrlTitle = styled.div`
     cursor: pointer;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.point};
+      opacity: 0.5;
     }
   }
 `
