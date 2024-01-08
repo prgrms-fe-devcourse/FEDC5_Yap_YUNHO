@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query"
 import { API } from "@/apis/Api"
 import { JSONPost, Post } from "@/types"
 import PostCardList from "./components/PostCardList"
+import { useState } from "react"
 
 const GET_POST_LIST_QUERY_KEY = "FETCH_POST_LIST_HOME"
 interface PostContainerProps {
@@ -12,6 +13,7 @@ interface PostContainerProps {
 }
 
 const PostContainer = ({ selectedCategory }: PostContainerProps) => {
+  const [listRange, setListRange] = useState(0)
   const { data } = useQuery({
     queryKey: [GET_POST_LIST_QUERY_KEY, selectedCategory.id],
     queryFn: async () => {
@@ -30,14 +32,40 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
     },
   })
 
-  console.log(data?.slice(0, 5))
+  const handleDecreaseRange = () => {
+    if (listRange <= 0) {
+      return
+    }
+
+    setListRange((range) => range - 1)
+  }
+
+  const handleIncreaseRange = () => {
+    if (!data) {
+      return
+    }
+
+    if (listRange >= data.length) {
+      return
+    }
+    setListRange((range) => range + 1)
+  }
+
+  const slicedList = data ? data.slice(listRange, listRange + 5) : []
+
   return (
     <S.PostContainerLayout>
-      <S.ArrowIcon $isLeft={true}>
+      <S.ArrowIcon
+        $isLeft={true}
+        onClick={handleDecreaseRange}
+      >
         <ArrowBackIos className="arrow_icon" />
       </S.ArrowIcon>
-      <PostCardList />
-      <S.ArrowIcon $isLeft={false}>
+      <PostCardList postList={slicedList} />
+      <S.ArrowIcon
+        $isLeft={false}
+        onClick={handleIncreaseRange}
+      >
         <ArrowForwardIos className="arrow_icon" />
       </S.ArrowIcon>
     </S.PostContainerLayout>
