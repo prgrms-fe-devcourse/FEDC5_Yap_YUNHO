@@ -27,7 +27,10 @@ const SignupForm = () => {
     <S.SignupFormLayout>
       <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
       <S.SignupFormContainer>
-        <SignupInputContainer onChange={handleInput} />
+        <SignupInputContainer
+          requiredUserInfo={requiredUserInfo}
+          onChange={handleInput}
+        />
       </S.SignupFormContainer>
       <S.ButtonContainer>
         <S.Button

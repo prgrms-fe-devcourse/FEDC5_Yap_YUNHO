@@ -9,6 +9,7 @@ interface SignupInputItemProp {
   name: string
   placeholder: string
   errorMessage?: string
+  value: string
   onChange: OnChange
 }
 
@@ -18,6 +19,7 @@ const SignupInputItem = ({
   name,
   placeholder,
   errorMessage,
+  value,
   onChange,
 }: SignupInputItemProp) => {
   return (
@@ -27,6 +29,7 @@ const SignupInputItem = ({
       <Input
         type={type}
         name={name}
+        value={value}
         placeholder={placeholder}
         onChange={onChange}
       />

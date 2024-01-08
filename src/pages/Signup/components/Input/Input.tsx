@@ -7,6 +7,7 @@ interface InputProp {
   type: AllowedInputType
   placeholder: string
   name: string
+  value: string
   onChange?: OnChange
 }
 
@@ -14,7 +15,7 @@ type InputTypeList = {
   [key in AllowedInputType]: string
 }
 
-const Input = ({ type, name, placeholder, onChange }: InputProp) => {
+const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
   const inputTypeList: InputTypeList = {
     email: "text",
     nickname: "text",
@@ -29,6 +30,7 @@ const Input = ({ type, name, placeholder, onChange }: InputProp) => {
           <S.Input
             type={inputTypeList[type]}
             name={name}
+            value={value}
             placeholder={placeholder}
             onChange={onChange}
           />
@@ -38,6 +40,7 @@ const Input = ({ type, name, placeholder, onChange }: InputProp) => {
           <S.Input
             type={inputTypeList[type]}
             name={name}
+            value={value}
             placeholder={placeholder}
             onChange={onChange}
           />
