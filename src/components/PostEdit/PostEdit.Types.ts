@@ -8,4 +8,5 @@ export interface EditPostState {
   mediaUrl: string
   content: string
   category: string
+  postId: string
 }

@@ -12,16 +12,11 @@ import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { useNavigate } from "react-router-dom"
 
 interface PostEditEditorProps {
-  isNewPost: boolean
   onEdit: HandleEditPost
   postData: EditPostState
 }
 
-const PostEditEditor = ({
-  onEdit,
-  postData,
-  isNewPost,
-}: PostEditEditorProps) => {
+const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
   const {
     isShowModal: isShowConfirm,
     showModal: showConfirm,
@@ -64,7 +59,7 @@ const PostEditEditor = ({
     //   return
     // }
 
-    if (isNewPost) {
+    if (postData.postId === "newPost") {
       createPost(postData).then((res) => {
         if (res) {
           showComplete()
@@ -90,7 +85,7 @@ const PostEditEditor = ({
       <S.PostEditEditorLayout>
         <PostEditButton
           onSubmit={handleSubmitPost}
-          isNewPost={isNewPost}
+          postData={postData}
         />
         <PostEditUrl
           urlPath={postData.mediaUrl}
@@ -100,7 +95,10 @@ const PostEditEditor = ({
           text={postData.content}
           onEdit={onEdit}
         />
-        <PostEditCategory onEdit={onEdit} />
+        <PostEditCategory
+          onEdit={onEdit}
+          postData={postData}
+        />
       </S.PostEditEditorLayout>
       <ConfirmModal
         isShow={isShowConfirm}

@@ -7,7 +7,7 @@ import { EditPostState, HandleEditPost } from "./PostEdit.Types"
 import getThumbnailByUrl from "@/util/getThumbnailByUrl"
 import { useNavigate, useParams } from "react-router-dom"
 import { API } from "@/apis/Api"
-import { PostContent } from "@/types"
+import { JSONPost, PostContent } from "@/types"
 
 const PostEdit = () => {
   const { id } = useParams()
@@ -15,28 +15,29 @@ const PostEdit = () => {
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
-  const [isNewPost, setIsNewPost] = useState(true)
 
   useEffect(() => {
     if (!id || id === "newPost") {
       return
     }
 
-    setIsNewPost(false)
     API.get(`/posts/${id}`)
       .then((res) => res.data)
-      .then((fetchPost) => {
-        const parseData: PostContent = JSON.parse(fetchPost.title)
+      .then((fetchPost: JSONPost) => {
+        const { content, mediaUrl, thumbnail }: PostContent = JSON.parse(
+          fetchPost.title,
+        )
+
+        console.log(fetchPost)
         setEditPost({
-          content: parseData.content,
-          mediaUrl: parseData.mediaUrl,
-          thumbnail: parseData.thumbnail,
-          category: "",
+          content: content,
+          mediaUrl: mediaUrl,
+          thumbnail: thumbnail,
+          category: fetchPost.channel._id,
+          postId: fetchPost._id,
         })
       })
   }, [id, navigation])
-
-  console.log(editPost)
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
@@ -65,7 +66,6 @@ const PostEdit = () => {
       <S.PostEditBoundary />
       <S.PostEditContainer>
         <PostEditEditor
-          isNewPost={isNewPost}
           onEdit={handleEditPost}
           postData={editPost}
         />

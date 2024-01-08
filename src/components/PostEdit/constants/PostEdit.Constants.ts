@@ -10,6 +10,7 @@ export const POST_EDIT_INITIAL_EDIT_POST: EditPostState = {
   content: "",
   mediaUrl: "",
   category: "",
+  postId: "newPost",
 }
 
 export const POST_EDIT_EDITOR_PLACEHOLDER = {
