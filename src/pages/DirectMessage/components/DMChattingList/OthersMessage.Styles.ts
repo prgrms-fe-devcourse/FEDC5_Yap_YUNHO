@@ -9,7 +9,7 @@ export const OthersMessageItemLayout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  width: 100%;
+  width: 60%;
 `
 
 export const OthersMessageInfoContainer = styled.div`
@@ -33,7 +33,6 @@ export const OthersMessageContentContainer = styled.div`
   border-radius: ${({ theme }) =>
     `0rem ${theme.radius.size12} ${theme.radius.size12}`};
   width: 100%;
-  height: 7rem;
 `
 
 export const OthersMessageContent = styled.div`
