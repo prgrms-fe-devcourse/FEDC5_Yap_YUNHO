@@ -3,7 +3,7 @@ import * as S from "./DMList.Styles"
 import seenindicator from "@/assets/seenindicator.png"
 
 interface DMListProfileProps {
-  isSeen: boolean
+  isSeen?: boolean
 }
 const DMListProfile = ({ isSeen }: DMListProfileProps) => {
   return (
