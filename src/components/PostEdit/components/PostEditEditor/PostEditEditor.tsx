@@ -9,11 +9,16 @@ import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModa
 import useModal from "@/components/Modal/hooks/useModal"
 
 interface PostEditEditorProps {
+  isNewPost: boolean
   onEdit: HandleEditPost
   postData: PostContent
 }
 
-const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
+const PostEditEditor = ({
+  onEdit,
+  postData,
+  isNewPost,
+}: PostEditEditorProps) => {
   const { isShowModal, showModal, closeModal } = useModal()
 
   const handleSubmitPost = () => {
@@ -32,7 +37,10 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
   return (
     <>
       <S.PostEditEditorLayout>
-        <PostEditButton onSubmit={handleSubmitPost} />
+        <PostEditButton
+          onSubmit={handleSubmitPost}
+          isNewPost={isNewPost}
+        />
         <PostEditUrl
           urlPath={postData.mediaUrl}
           onEdit={onEdit}

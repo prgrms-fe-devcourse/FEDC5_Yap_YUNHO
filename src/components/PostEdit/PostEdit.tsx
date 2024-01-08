@@ -15,10 +15,11 @@ const PostEdit = () => {
   const [isNewPost, setIsNewPost] = useState(true)
 
   useEffect(() => {
-    if (id === "newPost") {
+    if (!id || id === "newPost") {
       return
     }
 
+    setIsNewPost(false)
     console.log(id)
   }, [id])
 
@@ -49,6 +50,7 @@ const PostEdit = () => {
       <S.PostEditBoundary />
       <S.PostEditContainer>
         <PostEditEditor
+          isNewPost={isNewPost}
           onEdit={handleEditPost}
           postData={editPost}
         />
