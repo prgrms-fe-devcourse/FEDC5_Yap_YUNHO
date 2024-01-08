@@ -9,4 +9,10 @@ export const SingupInputItem = styled.div`
 
   height: 33%;
   width: 100%;
+
+  &:last-of-type {
+    position: relative;
+    z-index: 0;
+    top: -4rem;
+  }
 `

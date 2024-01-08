@@ -17,7 +17,7 @@ export const SignupFormTitle = styled.h2`
   align-items: center;
 `
 export const SignupFormContainer = styled.div`
-  width: 100%;
+  width: 50rem;
 
   height: 100%;
 `
@@ -31,7 +31,7 @@ export const ButtonContainer = styled.div`
   height: 10rem;
 `
 export const Button = styled.button<{ $width: number; $color: string }>`
-  width: ${({ $width }) => `${$width}rem`};
+  width: ${({ $width }) => `${$width}%`};
   height: 50%;
   padding: 1rem 0;
   color: ${({ theme }) => theme.colors.white};

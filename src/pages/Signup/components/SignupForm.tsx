@@ -12,13 +12,13 @@ const SignupForm = () => {
       </S.SignupFormContainer>
       <S.ButtonContainer>
         <S.Button
-          $width={8.1}
+          $width={18}
           $color={theme.colors.sub_alt}
         >
           취소
         </S.Button>
         <S.Button
-          $width={18.9}
+          $width={35}
           $color={theme.colors.point}
         >
           가입완료
