@@ -11,13 +11,22 @@ export const DMChattingListLayout = styled.div`
 
 export const DMMessageList = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 90%;
-  width: 70%;
-  ${({ theme }) => theme.scrollBarNone};
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-right: 2rem;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.sub};
+    border-radius: 6px;
+  }
 `
 
 export const DMMessageItem = styled.div`
