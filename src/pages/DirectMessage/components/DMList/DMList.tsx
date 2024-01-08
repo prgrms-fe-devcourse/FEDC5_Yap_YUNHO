@@ -23,7 +23,6 @@ const DMList = () => {
     }).then((res) => {
       const { user, token } = res.data
       setLogin(user, token)
-      authToken.setToken(token)
     })
     return await AUTH_API.get("messages/conversations")
       .then((res) => {
