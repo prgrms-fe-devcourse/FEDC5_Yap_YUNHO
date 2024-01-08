@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const PostEditUrlLayout = styled.div`
-  width: 40rem;
+  width: 90%;
 `
 
 export const PostEditUrlTitle = styled.div`

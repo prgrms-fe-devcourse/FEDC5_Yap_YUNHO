@@ -14,7 +14,7 @@ export const ModalBackground = styled.section`
   z-index: ${({ theme }) => theme.zIndex.modalBackground};
   background-color: rgba(0, 0, 0, 0.5);
 
-  @media (max-width: 1000px) {
+  @media (max-width: 750px) {
     & {
       align-items: flex-start;
       overflow-y: scroll;
@@ -24,6 +24,7 @@ export const ModalBackground = styled.section`
 
 export const ModalSection = styled.section`
   width: 104rem;
+  min-width: 50rem;
   height: 80rem;
   padding: 0 2rem 2rem 2rem;
 
@@ -36,7 +37,7 @@ export const ModalSection = styled.section`
   border-radius: ${({ theme }) => theme.radius.size12};
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
 
-  @media (max-width: 1000px) {
+  @media (max-width: 750px) {
     & {
       width: 50rem;
       height: fit-content;

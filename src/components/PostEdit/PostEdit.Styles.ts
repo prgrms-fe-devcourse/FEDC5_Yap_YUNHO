@@ -8,7 +8,7 @@ export const PostEditLayout = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 750px) {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -17,6 +17,7 @@ export const PostEditLayout = styled.div`
 
 export const PostEditContainer = styled.div`
   width: 46rem;
+  min-width: 20rem;
   height: 70rem;
 
   display: flex;
@@ -32,7 +33,7 @@ export const PostEditBoundary = styled.div`
   border-radius: ${({ theme }) => theme.radius.size4};
   background-color: ${({ theme }) => theme.colors.point};
 
-  @media (max-width: 1000px) {
+  @media (max-width: 750px) {
     height: 0.4rem;
     width: 42rem;
     margin: 0;
