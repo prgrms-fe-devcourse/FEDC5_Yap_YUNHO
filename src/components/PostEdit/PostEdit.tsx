@@ -5,10 +5,13 @@ import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 import { POST_EDIT_INITIAL_EDIT_POST } from "./constants/PostEdit.Constants"
 import { EditPostState, HandleEditPost } from "./PostEdit.Types"
 import getThumbnailByUrl from "@/util/getThumbnailByUrl"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import { API } from "@/apis/Api"
+import { PostContent } from "@/types"
 
 const PostEdit = () => {
   const { id } = useParams()
+  const navigation = useNavigate()
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
@@ -20,8 +23,20 @@ const PostEdit = () => {
     }
 
     setIsNewPost(false)
-    // 해당 부분에서 id에 맞는 포스트를 불러올 준비
-  }, [id])
+    API.get(`/posts/${id}`)
+      .then((res) => res.data)
+      .then((fetchPost) => {
+        const parseData: PostContent = JSON.parse(fetchPost.title)
+        setEditPost({
+          content: parseData.content,
+          mediaUrl: parseData.mediaUrl,
+          thumbnail: parseData.thumbnail,
+          category: "",
+        })
+      })
+  }, [id, navigation])
+
+  console.log(editPost)
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
@@ -42,6 +57,7 @@ const PostEdit = () => {
   }
 
   return (
+    // 검사 프로바이더 씌워야함
     <S.PostEditLayout>
       <S.PostEditContainer>
         <PostEditViewer postData={editPost} />

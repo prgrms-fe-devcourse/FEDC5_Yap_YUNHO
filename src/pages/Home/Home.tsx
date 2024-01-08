@@ -45,7 +45,7 @@ const Home = () => {
         />
         <button
           onClick={() => {
-            navigation("/postedit/newPost")
+            navigation("/postedit/659b5e766a3df40ed389150c")
           }}
         >
           Modal Open
