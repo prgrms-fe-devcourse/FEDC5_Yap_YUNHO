@@ -45,13 +45,32 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
       return
     }
 
-    if (listRange >= data.length) {
+    if (listRange >= data.length - 1) {
       return
     }
     setListRange((range) => range + 1)
   }
 
-  const slicedList = data ? data.slice(listRange, listRange + 5) : []
+  const getPageData = () => {
+    if (!data) {
+      return []
+    }
+
+    if (listRange === 0) {
+      return [null, null, ...data.slice(0, 3)]
+    }
+
+    if (listRange === 1) {
+      return [null, ...data.slice(0, 4)]
+    }
+
+    if (listRange >= data.length - 2) {
+      const makeNull = new Array(5 - (data.length - listRange)).fill(null)
+      return [...data.slice(listRange - 2), ...makeNull]
+    }
+
+    return data.slice(listRange - 2, listRange + 3)
+  }
 
   return (
     <S.PostContainerLayout>
@@ -61,7 +80,7 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
       >
         <ArrowBackIos className="arrow_icon" />
       </S.ArrowIcon>
-      <PostCardList postList={slicedList} />
+      <PostCardList postList={getPageData()} />
       <S.ArrowIcon
         $isLeft={false}
         onClick={handleIncreaseRange}
