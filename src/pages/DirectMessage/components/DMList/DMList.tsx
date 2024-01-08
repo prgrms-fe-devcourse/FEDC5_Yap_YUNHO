@@ -25,7 +25,7 @@ const DMList = () => {
       setLogin(user, token)
       authToken.setToken(token)
     })
-    return await AUTH_API.get("messages/conversations")
+    await AUTH_API.get("messages/conversations")
       .then((res) => {
         setDMUserList(res.data)
       })
