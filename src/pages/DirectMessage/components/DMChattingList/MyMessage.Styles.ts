@@ -6,9 +6,9 @@ export const MyMessageLayout = styled.div`
   padding: 1rem;
   border-radius: ${({ theme }) =>
     `0rem ${theme.radius.size12} ${theme.radius.size12}`};
-  width: 50%;
   display: flex;
   align-self: flex-end;
+  max-width: 50%;
 `
 
 export const MyMessageContent = styled.div`

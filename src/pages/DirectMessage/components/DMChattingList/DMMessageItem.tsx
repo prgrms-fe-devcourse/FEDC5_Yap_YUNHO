@@ -1,13 +1,9 @@
 import MyMessage from "./MyMessage"
 import OthersMessage from "./OthersMessage"
-import { Message } from "@/types"
-
-interface DMMessageItemProps {
-  children: Message
-}
+import { MessageProps } from "./../../types/index"
 
 // 여기서 MyMessage, OtherMessage거르기
-const DMMessageItem = ({ children }: DMMessageItemProps) => {
+const DMMessageItem = ({ children }: MessageProps) => {
   console.log(children)
   return (
     <>

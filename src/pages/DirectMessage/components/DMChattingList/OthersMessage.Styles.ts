@@ -9,7 +9,7 @@ export const OthersMessageItemLayout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  width: 60%;
+  max-width: 50%;
 `
 
 export const OthersMessageInfoContainer = styled.div`

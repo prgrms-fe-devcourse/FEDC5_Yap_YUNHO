@@ -1,11 +1,7 @@
 import * as S from "./MyMessage.Styles.ts"
-import { Message } from "@/types"
+import { MessageProps } from "./../../types/index"
 
-interface MyMessageProps {
-  children: Message
-}
-
-const MyMessage = ({ children }: MyMessageProps) => {
+const MyMessage = ({ children }: MessageProps) => {
   return (
     <S.MyMessageLayout>
       <S.MyMessageContent>{children.message}</S.MyMessageContent>
