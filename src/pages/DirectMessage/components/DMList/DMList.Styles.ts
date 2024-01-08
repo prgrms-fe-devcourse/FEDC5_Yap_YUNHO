@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const DMListLayout = styled.div`
   width: 40%;
   height: 100%;
-  background: gray;
+  background: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size20};
   padding: 2.5rem;
   display: flex;
@@ -14,21 +14,31 @@ export const DMListLayout = styled.div`
   user-select: none;
 `
 
-export const DMListNotice = styled.div`
+export const DMListInfo = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
 `
-export const DMListNoticeTitle = styled.span`
+export const DMListTotalSeenTitle = styled.span`
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
-export const DMListNoticeContent = styled.span`
+export const DMListTotalSeenCounter = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+`
+
+export const DMListNotSeenTitle = styled.span`
+  color: ${({ theme }) => theme.colors.point_alt};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+`
+
+export const DMListNotSeenCounter = styled.span`
+  color: ${({ theme }) => theme.colors.point_alt};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
 `
 
 export const DMListContainer = styled.div`
@@ -37,23 +47,34 @@ export const DMListContainer = styled.div`
   gap: 3rem;
   width: 100%;
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  ${({ theme }) => theme.scrollBarNone};
 `
 
-export const DMListItemLayout = styled.button`
+export const DMListItemLayout = styled.button<{ $isSelect: boolean }>`
   display: flex;
   gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
-  font-family: "BMJUA", "Noto Sans KR", sans-serif;
+  &:hover {
+    opacity: 0.5;
+  }
+  opacity: ${({ $isSelect }) => ($isSelect ? 0.3 : 1)};
 `
 
-export const DMListProfile = styled.img`
+export const DMUserProfileContainer = styled.div`
+  position: relative;
+  width: 4.8rem;
+  height: 4.8rem;
+`
+
+export const DMUserProfileImg = styled.img`
   border-radius: ${({ theme }) => theme.radius.circle};
+`
+
+export const SeenIndicator = styled.img`
+  position: absolute;
+  top: 2.7rem;
+  right: 0;
 `
 
 export const DMListChat = styled.div`
@@ -72,6 +93,10 @@ export const DMListChatContent = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `
 
 export const DMListChatDate = styled.span`

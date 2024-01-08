@@ -11,22 +11,18 @@ a, dl, dt, dd, ol, ul, li, form, label, table,button{
   margin: 0;
   padding: 0;
   border: 0;
-
   vertical-align: baseline;
 }
 html{
   width: 100%;
   height: 100%;
-  
   font-size : 62.5%;
 }
 body{
   width: 100%;
   height: 100%;
-
   line-height: 1;
   font-family: "BMJUA",'Noto Sans KR', sans-serif;
-
   background-color: ${({ theme }) => theme.colors.main};
 
 }
@@ -34,8 +30,6 @@ body{
 #root {
   width: 100%;
   height: 100%;
-
-  position: relative;
 }
 
 
@@ -45,16 +39,16 @@ ol, ul{
 
 button {
   background: transparent;
-  font-family: "BMJUA",'Noto Sans KR', sans-serif;
+  font-family: "BMJUA", "Noto Sans KR", sans-serif;
   cursor: pointer;
+}
 
 
-input, textarea{
+input{
   border : none;
-  background-color: ${({ theme }) => theme.colors.white};
   outline: none;
-
-  font-family: "BMJUA",'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+  background-color: ${({ theme }) => theme.colors.white};
 }
 
 a{
