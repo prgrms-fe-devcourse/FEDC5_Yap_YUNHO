@@ -1,5 +1,6 @@
 import useCategoryList from "@/hooks/useCategoryList"
 import * as S from "./PostEditCategory.Styles"
+import * as GS from "@/components/CategoryList/CategoryList.Styles"
 import { Category } from "@/Pages/Home/components/CategoryBar/CategoryBar.Types"
 import {
   EditPostState,
@@ -32,7 +33,7 @@ const PostEditCategory = ({ onEdit, postData }: PostEditCategoryProps) => {
             }
 
             return (
-              <S.PostEditCategoryItem
+              <GS.CategoryBarListItem
                 key={category.id}
                 $isSelect={category.id === postData.category}
                 onClick={() => {
@@ -40,7 +41,7 @@ const PostEditCategory = ({ onEdit, postData }: PostEditCategoryProps) => {
                 }}
               >
                 {category.name}
-              </S.PostEditCategoryItem>
+              </GS.CategoryBarListItem>
             )
           })}
       </S.PostEditCategoryList>
