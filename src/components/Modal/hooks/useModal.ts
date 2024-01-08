@@ -12,7 +12,14 @@ const useModal = () => {
 
   const closeModal = useCallback(() => {
     setIsShowModal(false)
-    decreaseModal()
+
+    const modalBaseElement = document.querySelector("#modal")
+    if (!(modalBaseElement instanceof HTMLElement)) {
+      return
+    }
+
+    const { childElementCount } = modalBaseElement
+    decreaseModal(childElementCount)
   }, [decreaseModal])
 
   return {
