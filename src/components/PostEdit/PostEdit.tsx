@@ -41,6 +41,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
           thumbnail: thumbnail,
           category: fetchPost.channel._id,
           postId: fetchPost._id,
+          authorId: fetchPost.author._id,
         })
       })
   }, [id, isShowModal, navigation, onClose])
@@ -71,7 +72,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
     >
       <PostEditAuthChecker
         onCloseInnerModal={onClose}
-        authorId="dd"
+        authorId={editPost.authorId}
       >
         <S.PostEditLayout>
           <S.PostEditContainer>

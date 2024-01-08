@@ -9,4 +9,5 @@ export interface EditPostState {
   content: string
   category: string
   postId: string
+  authorId: string
 }
