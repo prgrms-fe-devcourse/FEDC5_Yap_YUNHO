@@ -83,6 +83,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
             <PostEditEditor
               onEdit={handleEditPost}
               postData={editPost}
+              onClose={onClose}
             />
           </S.PostEditContainer>
         </S.PostEditLayout>

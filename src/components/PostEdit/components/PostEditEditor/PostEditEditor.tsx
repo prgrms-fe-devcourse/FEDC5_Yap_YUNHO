@@ -9,7 +9,6 @@ import useModal from "@/components/Modal/hooks/useModal"
 import createPost from "../../apis/createPost"
 import { useState } from "react"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-import { useNavigate } from "react-router-dom"
 import updatePost from "../../apis/updatePost"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import checkCategoryValidation from "../../util/checkCategoryValidation"
@@ -18,10 +17,11 @@ import checkContentValidation from "../../util/checkContentValidation"
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
+  onClose: () => void
   postData: EditPostState
 }
 
-const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
+const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
   const {
     isShowModal: isShowConfirm,
     showModal: showConfirm,
@@ -37,7 +37,6 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
     showModal: showComplete,
     closeModal: closeComplete,
   } = useModal()
-  const navigation = useNavigate()
   const [alertMessage, setAlertMessage] = useState("")
 
   const handleSubmitPost = () => {
@@ -83,6 +82,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
           return
         }
       })
+      return
     }
 
     if (postData.postId) {
@@ -97,12 +97,13 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
           return
         }
       })
+      return
     }
   }
 
   const handleCloseComplete = () => {
     closeComplete()
-    navigation("/")
+    onClose()
   }
 
   return (

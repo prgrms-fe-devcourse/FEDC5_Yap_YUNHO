@@ -24,10 +24,9 @@ const Home = () => {
     }
 
     showModal()
+
     return () => {
-      if (isShowModal) {
-        closeModal()
-      }
+      closeModal()
     }
   }, [closeModal, id, isShowModal, showModal])
 
@@ -48,7 +47,7 @@ const Home = () => {
         />
         <button
           onClick={() => {
-            navigation("/postedit/659b5d3b6a3df40ed38914d4")
+            navigation("/postedit/659c181c16a2b736436afca2")
           }}
         >
           Modal Open
