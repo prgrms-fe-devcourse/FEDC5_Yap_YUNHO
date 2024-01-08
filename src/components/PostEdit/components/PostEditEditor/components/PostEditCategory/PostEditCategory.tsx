@@ -37,6 +37,7 @@ const PostEditCategory = ({ onEdit }: PostEditCategoryProps) => {
 
             return (
               <S.PostEditCategoryItem
+                key={category.id}
                 $isSelect={category.id === selectedCategory?.id}
                 onClick={() => {
                   handleClickCategory(category)
