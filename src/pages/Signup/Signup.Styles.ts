@@ -1,12 +1,6 @@
-import styled, { css } from "styled-components"
-
-const layoutBorder = css`
-  border: 3px solid;
-  border-color: ${({ theme }) => theme.colors.point};
-`
+import styled from "styled-components"
 
 export const SignupLayout = styled.div`
-  ${layoutBorder}
   width: 100%;
   height: 100%;
   user-select: none;

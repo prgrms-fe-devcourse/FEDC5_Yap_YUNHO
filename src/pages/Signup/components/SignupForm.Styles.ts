@@ -1,11 +1,6 @@
-import styled, { css } from "styled-components"
-const layoutBorder = css`
-  border: 3px solid;
-  border-color: ${({ theme }) => theme.colors.point};
-`
+import styled from "styled-components"
 
 export const SignupFormLayout = styled.div`
-  ${layoutBorder}
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +10,6 @@ export const SignupFormLayout = styled.div`
   color: ${({ theme }) => theme.colors.white};
 `
 export const SignupFormTitle = styled.h2`
-  ${layoutBorder}
   height: 2rem;
   width: 100%;
   display: flex;
@@ -24,15 +18,11 @@ export const SignupFormTitle = styled.h2`
 `
 export const SignupFormContainer = styled.div`
   width: 100%;
-  ${layoutBorder}
+
   height: 100%;
 `
-export const SingupInputContainer = styled.div`
-  ${layoutBorder}
-  height: 10rem;
-`
+
 export const ButtonContainer = styled.div`
-  ${layoutBorder}
   display: flex;
   justify-content: center;
   align-items: center;
