@@ -10,6 +10,8 @@ import createPost from "../../apis/createPost"
 import { useState } from "react"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { useNavigate } from "react-router-dom"
+import updatePost from "../../apis/updatePost"
+import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
@@ -67,7 +69,21 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
         }
 
         if (!res) {
-          setAlertMessage("등록에 실패했습니다 다시 시도해주세요.. 🥹")
+          setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_NEW_POST)
+          showAlert()
+          return
+        }
+      })
+    }
+
+    if (postData.postId) {
+      updatePost(postData).then((res) => {
+        if (res) {
+          showComplete()
+        }
+
+        if (!res) {
+          setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_UPDATE_POST)
           showAlert()
           return
         }
@@ -114,7 +130,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
 
       <AlertModal
         isShow={isShowComplete}
-        alertMessage={"등록이 완료되었습니다!"}
+        alertMessage={"완료되었습니다!"}
         onClose={handleCloseComplete}
       />
     </>
