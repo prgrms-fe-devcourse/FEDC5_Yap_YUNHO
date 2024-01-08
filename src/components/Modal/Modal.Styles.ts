@@ -65,6 +65,10 @@ export const ModalTop = styled.div`
     &:hover {
       transform: scale(1.4);
     }
+
+    path {
+      pointer-events: none;
+    }
   }
 `
 
