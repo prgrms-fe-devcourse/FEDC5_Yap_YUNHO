@@ -1,84 +1,78 @@
 import PostCard from "@/components/PostCard/Postcard"
 import * as S from "./PostCardList.styles"
 import useModalDepth from "@/components/Modal/store/useModalDepth"
+import { Post } from "@/types"
 
-// API 이전까지 사용될 데이터
-const DUMMY_POST = {
-  likes: [],
-  comments: [],
-  _id: "dummyIdValue",
-  image: null,
-  imagePublicId: "모름",
-  title: {
-    content:
-      "아마도 이건 테스트를 위한 값 그렇기 때문에 길게 길게 작성해보는 값",
-    playUrl: "https://www.youtube.com/watch?v=U8v4A_zXhq4",
-    thumbnail: "https://i1.ytimg.com/vi/2gliGzb2_1I/maxresdefault.jpg",
-  },
-  channel: {},
-  author: {
-    image:
-      "https://res.cloudinary.com/dalxgxu2o/image/upload/v1699980818/IMG_0508_mke9kp.gif",
-  },
-  createdAt: "아마도 2일에 생성함",
-  updatedAt: "떠미더미",
+interface PostCardListProps {
+  postList: Post[]
 }
 
-const PostCardList = () => {
+const PostCardList = ({ postList }: PostCardListProps) => {
   const { modalDepth } = useModalDepth()
+  console.log(postList)
   return (
     <>
-      <S.PostSmallCard $isLeft={true}>
-        <PostCard
-          authUserProfile={DUMMY_POST.author.image}
-          thumbnail={DUMMY_POST.title.thumbnail}
-          content={DUMMY_POST.title.content}
-          mediaUrl={DUMMY_POST.title.playUrl}
-          textPercent={"60%"}
-          isBlock={true}
-        />
-      </S.PostSmallCard>
-      {/* sub - left */}
-      <S.PostSubCard $isLeft={true}>
-        <PostCard
-          authUserProfile={DUMMY_POST.author.image}
-          thumbnail={DUMMY_POST.title.thumbnail}
-          content={DUMMY_POST.title.content}
-          mediaUrl={DUMMY_POST.title.playUrl}
-          textPercent={"80%"}
-          isBlock={true}
-        />
-      </S.PostSubCard>
-      {/* main */}
-      <S.PostMainCard>
-        <PostCard
-          isBlock={modalDepth !== 0}
-          authUserProfile={DUMMY_POST.author.image}
-          thumbnail={DUMMY_POST.title.thumbnail}
-          content={DUMMY_POST.title.content}
-          mediaUrl={DUMMY_POST.title.playUrl}
-        />
-      </S.PostMainCard>
-      <S.PostSubCard $isLeft={false}>
-        <PostCard
-          authUserProfile={DUMMY_POST.author.image}
-          thumbnail={DUMMY_POST.title.thumbnail}
-          content={DUMMY_POST.title.content}
-          mediaUrl={DUMMY_POST.title.playUrl}
-          textPercent={"80%"}
-          isBlock={true}
-        />
-      </S.PostSubCard>
-      <S.PostSmallCard $isLeft={false}>
-        <PostCard
-          authUserProfile={DUMMY_POST.author.image}
-          thumbnail={DUMMY_POST.title.thumbnail}
-          content={DUMMY_POST.title.content}
-          mediaUrl={DUMMY_POST.title.playUrl}
-          textPercent={"60%"}
-          isBlock={true}
-        />
-      </S.PostSmallCard>
+      {postList[4] && (
+        <S.PostSmallCard $isLeft={true}>
+          <PostCard
+            authUserProfile={postList[4].author.image}
+            thumbnail={postList[4].title.thumbnail}
+            content={postList[4].title.content}
+            mediaUrl={postList[4].title.mediaUrl}
+            textPercent={"60%"}
+            isBlock={true}
+          />
+        </S.PostSmallCard>
+      )}
+
+      {postList[2] && (
+        <S.PostSubCard $isLeft={true}>
+          <PostCard
+            authUserProfile={postList[2].author.image}
+            thumbnail={postList[2].title.thumbnail}
+            content={postList[2].title.content}
+            mediaUrl={postList[2].title.mediaUrl}
+            textPercent={"80%"}
+            isBlock={true}
+          />
+        </S.PostSubCard>
+      )}
+
+      {postList[0] && (
+        <S.PostMainCard>
+          <PostCard
+            isBlock={modalDepth !== 0}
+            authUserProfile={postList[0].author.image}
+            thumbnail={postList[0].title.thumbnail}
+            content={postList[0].title.content}
+            mediaUrl={postList[0].title.mediaUrl}
+          />
+        </S.PostMainCard>
+      )}
+      {postList[1] && (
+        <S.PostSubCard $isLeft={false}>
+          <PostCard
+            authUserProfile={postList[1].author.image}
+            thumbnail={postList[1].title.thumbnail}
+            content={postList[1].title.content}
+            mediaUrl={postList[1].title.mediaUrl}
+            textPercent={"80%"}
+            isBlock={true}
+          />
+        </S.PostSubCard>
+      )}
+      {postList[3] && (
+        <S.PostSmallCard $isLeft={false}>
+          <PostCard
+            authUserProfile={postList[3].author.image}
+            thumbnail={postList[3].title.thumbnail}
+            content={postList[3].title.content}
+            mediaUrl={postList[3].title.mediaUrl}
+            textPercent={"60%"}
+            isBlock={true}
+          />
+        </S.PostSmallCard>
+      )}
     </>
   )
 }
