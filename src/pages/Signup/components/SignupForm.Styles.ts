@@ -20,7 +20,7 @@ export const SignupFormTitle = styled.div`
 
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
-export const SignupFormContainer = styled.div`
+export const SignupFormContainer = styled.form`
   width: 50rem;
   height: 38rem;
 `

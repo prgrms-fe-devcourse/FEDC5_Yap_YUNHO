@@ -6,6 +6,7 @@ type OnChange = ({ target }: ChangeEvent<HTMLInputElement>) => void
 interface InputProp {
   type: AllowedInputType
   placeholder: string
+  name: string
   onChange?: OnChange
 }
 
@@ -13,20 +14,21 @@ type InputTypeList = {
   [key in AllowedInputType]: string
 }
 
-const Input = ({ type, placeholder, onChange }: InputProp) => {
+const Input = ({ type, name, placeholder, onChange }: InputProp) => {
   const inputTypeList: InputTypeList = {
     email: "text",
-    name: "text",
+    nickname: "text",
     password: "password",
   }
 
   const getInputFieldByType = (type: AllowedInputType) => {
     switch (type) {
       case "email":
-      case "name":
+      case "nickname":
         return (
           <S.Input
             type={inputTypeList[type]}
+            name={name}
             placeholder={placeholder}
             onChange={onChange}
           />
@@ -35,6 +37,7 @@ const Input = ({ type, placeholder, onChange }: InputProp) => {
         return (
           <S.Input
             type={inputTypeList[type]}
+            name={name}
             placeholder={placeholder}
             onChange={onChange}
           />

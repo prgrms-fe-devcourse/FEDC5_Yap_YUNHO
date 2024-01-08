@@ -1,1 +1,1 @@
-export type AllowedInputType = "email" | "name" | "password"
+export type AllowedInputType = "email" | "password" | "nickname"

@@ -1,18 +1,24 @@
 import * as S from "./SignupInputItem.Styles"
 import Input from "./Input"
 import type { AllowedInputType } from "../../types"
+import type { OnChange } from "./SignupInputContainer"
+
 interface SignupInputItemProp {
   title?: string
   type: AllowedInputType
+  name: string
   placeholder: string
   errorMessage?: string
+  onChange: OnChange
 }
 
 const SignupInputItem = ({
   title,
   type,
+  name,
   placeholder,
   errorMessage,
+  onChange,
 }: SignupInputItemProp) => {
   return (
     <S.SignupInputItemLayout>
@@ -20,7 +26,9 @@ const SignupInputItem = ({
 
       <Input
         type={type}
+        name={name}
         placeholder={placeholder}
+        onChange={onChange}
       />
 
       <div>{errorMessage}</div>
