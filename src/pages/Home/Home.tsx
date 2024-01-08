@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import * as S from "./Home.Styles"
 import CategoryBar from "./components/CategoryBar/CategoryBar"
 import {
@@ -7,7 +7,6 @@ import {
 } from "./components/CategoryBar/CategoryBar.Types"
 import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
-import Modal from "@/components/Modal/Modal"
 import useModal from "@/components/Modal/hooks/useModal"
 import PostEdit from "@/components/PostEdit/PostEdit"
 import { useNavigate, useParams } from "react-router-dom"
@@ -21,21 +20,25 @@ const Home = () => {
 
   useEffect(() => {
     if (!id) {
-      closeModal()
       return
     }
 
     showModal()
-  }, [closeModal, id, showModal])
+    return () => {
+      if (isShowModal) {
+        closeModal()
+      }
+    }
+  }, [closeModal, id, isShowModal, showModal])
+
+  const handleClosePostEdit = useCallback(() => {
+    closeModal()
+    navigation("/")
+  }, [closeModal, navigation])
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
   }
-
-  const handleClosePostEdit = () => {
-    navigation("/")
-  }
-
   return (
     <>
       <S.HomeLayout>
@@ -45,7 +48,7 @@ const Home = () => {
         />
         <button
           onClick={() => {
-            navigation("/postedit/659b5b7a6a3df40ed3891474")
+            navigation("/postedit/newPost")
           }}
         >
           Modal Open
@@ -53,13 +56,10 @@ const Home = () => {
         <PostContainer />
       </S.HomeLayout>
 
-      <Modal
-        isShow={isShowModal}
+      <PostEdit
         onClose={handleClosePostEdit}
-        clickAwayEnable={false}
-      >
-        <PostEdit />
-      </Modal>
+        isShowModal={isShowModal}
+      />
     </>
   )
 }
