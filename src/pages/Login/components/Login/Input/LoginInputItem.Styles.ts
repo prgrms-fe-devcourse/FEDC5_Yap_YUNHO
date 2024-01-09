@@ -28,5 +28,5 @@ export const ErrorMessage = styled.div`
   min-width: 100%;
 
   font-size: ${({ theme }) => theme.fontSizes.semiSmall};
-  color: red;
+  color: ${({ theme }) => theme.colors.point};
 `

@@ -5,7 +5,7 @@ export const SignupInputItemLayout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.3rem;
 
   height: 10rem;
   width: 100%;
@@ -13,12 +13,16 @@ export const SignupInputItemLayout = styled.div`
   &:last-of-type {
     position: relative;
     z-index: 0;
-    top: -2rem;
-    height: auto;
+    top: -1.5rem;
   }
 `
 
 export const SignupInputItemTitle = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   width: 53%;
+`
+
+export const ErrorMessage = styled.div`
+  color: ${({ theme }) => theme.colors.point};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
 `

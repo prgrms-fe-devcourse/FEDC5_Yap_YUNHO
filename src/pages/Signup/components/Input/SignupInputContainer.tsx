@@ -1,22 +1,17 @@
-import { ChangeEvent } from "react"
 import * as S from "./SignupInputContainer.Styles"
 import SignupInputItem from "./SignupInputItem"
+import type { OnChange, RequiredUserInfo } from "../types"
 
-export type OnChange = (event: ChangeEvent<HTMLInputElement>) => void
-interface RequiredUserInfo {
-  email: string
-  nickname: string
-  password: string
-  passwordCheck: string
-}
 interface SignupInputContainerProp {
   onChange: OnChange
   requiredUserInfo: RequiredUserInfo
+  errorMessage: RequiredUserInfo
 }
 
 const SignupInputContainer = ({
   onChange,
   requiredUserInfo,
+  errorMessage,
 }: SignupInputContainerProp) => {
   return (
     <S.SignupInputContainerLayout>
@@ -25,7 +20,7 @@ const SignupInputContainer = ({
         type="email"
         name="email"
         placeholder="이메일을 입력해주세요."
-        errorMessage="사용가능한 이메일입니다."
+        errorMessage={errorMessage.email}
         onChange={onChange}
         value={requiredUserInfo.email}
       />
@@ -34,7 +29,7 @@ const SignupInputContainer = ({
         type="nickname"
         name="nickname"
         placeholder="닉네임을 입력해주세요."
-        errorMessage="사용 가능한 닉네임입니다."
+        errorMessage={errorMessage.nickname}
         onChange={onChange}
         value={requiredUserInfo.nickname}
       />
@@ -42,6 +37,7 @@ const SignupInputContainer = ({
         title="비밀번호"
         type="password"
         name="password"
+        errorMessage={errorMessage.password}
         placeholder="비밀번호를 4자리 이상 입력해주세요."
         onChange={onChange}
         value={requiredUserInfo.password}
@@ -50,7 +46,7 @@ const SignupInputContainer = ({
         type="password"
         name="passwordCheck"
         placeholder="설정한 비밀번호와 동일하게 입력해주세요."
-        errorMessage="비밀번호 생성 규칙에 맞지 않습니다."
+        errorMessage={errorMessage.passwordCheck}
         onChange={onChange}
         value={requiredUserInfo.passwordCheck}
       />

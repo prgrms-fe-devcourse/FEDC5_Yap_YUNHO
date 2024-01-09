@@ -2,6 +2,8 @@ import { ChangeEvent, useState, useEffect } from "react"
 import * as S from "./SignupForm.Styles"
 import { theme } from "@/styles/theme"
 import SignupInputContainer from "./Input/SignupInputContainer"
+import type { RequiredUserInfo } from "./types"
+import { getNewErrorMessage } from "../utils/validateInput"
 
 const SignupForm = () => {
   const [requiredUserInfo, setRequiredUserInfo] = useState({
@@ -10,17 +12,35 @@ const SignupForm = () => {
     password: "",
     passwordCheck: "",
   })
+
+  const [errorMessage, setErrorMessage] = useState({
+    email: "유효한 이메일을 입력해주세요.",
+    nickname: "빈 공백은 입력하면 안됩니다. 닉네임을 입력해주세요.",
+    password: "빈 공백은 입력하면 안됩니다. 비밀번호를 입력해주세요.",
+    passwordCheck: "",
+  })
+
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { target } = event
-
+    console.log("requiredUserInfo", requiredUserInfo)
     setRequiredUserInfo((prevState) => ({
       ...prevState,
       [target.name]: target.value,
     }))
   }
 
+  const validateUserInfo = (userInfo: RequiredUserInfo) => {
+    const newErrorMessage = getNewErrorMessage(userInfo)
+    setErrorMessage(newErrorMessage)
+  }
+
+  // useEffect(() => {
+  //   console.log("errorMessage", errorMessage)
+  // }, [errorMessage])
+
   useEffect(() => {
-    console.log("requiredUserInfo", requiredUserInfo)
+    validateUserInfo(requiredUserInfo)
+    // console.log("validate")
   }, [requiredUserInfo])
 
   return (
@@ -30,6 +50,7 @@ const SignupForm = () => {
         <SignupInputContainer
           requiredUserInfo={requiredUserInfo}
           onChange={handleInput}
+          errorMessage={errorMessage}
         />
       </S.SignupFormContainer>
       <S.ButtonContainer>
@@ -42,6 +63,12 @@ const SignupForm = () => {
         <S.Button
           $width={35}
           $color={theme.colors.point}
+          disabled={
+            errorMessage.email !== "" ||
+            errorMessage.nickname !== "" ||
+            errorMessage.password !== "" ||
+            errorMessage.passwordCheck !== ""
+          }
         >
           가입완료
         </S.Button>

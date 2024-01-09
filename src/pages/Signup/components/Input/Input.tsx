@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react"
 import * as S from "./Input.Styles"
-import type { AllowedInputType } from "../../types/index"
+import type { AllowedInputType } from "../types/index"
+
 type OnChange = ({ target }: ChangeEvent<HTMLInputElement>) => void
 
 interface InputProp {
@@ -39,6 +40,16 @@ const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
         return (
           <S.Input
             type={inputTypeList[type]}
+            name={name}
+            value={value}
+            placeholder={placeholder}
+            onChange={onChange}
+          />
+        )
+      default:
+        return (
+          <S.Input
+            type="text"
             name={name}
             value={value}
             placeholder={placeholder}
