@@ -14,7 +14,7 @@ export const OthersMessageItemLayout = styled.div`
 
 export const OthersMessageInfoContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 2rem;
 `
 
 export const OthersMessageUserName = styled.div`

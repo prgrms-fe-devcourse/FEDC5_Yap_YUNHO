@@ -7,6 +7,7 @@ export const DMChattingListLayout = styled.div`
   border-radius: ${({ theme }) => theme.radius.size20};
   display: flex;
   flex-direction: column;
+  gap: 3rem;
   padding: 3rem 1.5rem;
 `
 
