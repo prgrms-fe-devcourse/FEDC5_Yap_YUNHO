@@ -43,7 +43,7 @@ button {
   cursor: pointer;
 }
 
-input{
+input, textarea{
   border : none;
   outline: none;
     font-family: 'Noto Sans KR', sans-serif;

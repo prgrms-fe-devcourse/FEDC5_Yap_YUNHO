@@ -1,18 +1,18 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 
 const useModal = () => {
-  const [isModalToggle, setIsModalToggle] = useState(false)
+  const [isShowModal, setIsShowModal] = useState(false)
 
-  const showModal = () => {
-    setIsModalToggle(true)
-  }
+  const showModal = useCallback(() => {
+    setIsShowModal(true)
+  }, [])
 
-  const closeModal = () => {
-    setIsModalToggle(false)
-  }
+  const closeModal = useCallback(() => {
+    setIsShowModal(false)
+  }, [])
 
   return {
-    isModalToggle,
+    isShowModal,
     showModal,
     closeModal,
   }

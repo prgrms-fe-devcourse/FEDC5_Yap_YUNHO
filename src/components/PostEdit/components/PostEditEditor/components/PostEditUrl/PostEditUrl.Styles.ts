@@ -20,11 +20,11 @@ export const PostEditUrlTitle = styled.div`
   svg {
     font-size: 2.8rem;
 
-    transition: all 0.3s;
+    transition: opacity ${({ theme }) => theme.transition.normal};
     cursor: pointer;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.point};
+      opacity: ${({ theme }) => theme.opacity.normal};
     }
   }
 `

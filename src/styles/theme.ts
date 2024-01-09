@@ -40,7 +40,7 @@ const zIndex = {
   postMainCard: 3,
   homeArrowIcon: 4,
   modalBackground: 5,
-  smallModalBackground: 6,
+  customModalBackground: 6,
 }
 
 const scrollBarNone = css`
@@ -52,12 +52,22 @@ const scrollBarNone = css`
   }
 `
 
+const transition = {
+  normal: `0.3s`,
+}
+
+const opacity = {
+  normal: 0.5,
+}
+
 export type ColorsType = typeof colors
 export type FontWeightType = typeof fontWeight
 export type SizeType = typeof fontSizes
 export type Radius = typeof radius
 export type ZIndex = typeof zIndex
 export type ScrollBarNone = typeof scrollBarNone
+export type Transition = typeof transition
+export type Opacity = typeof opacity
 
 export const theme: DefaultTheme = {
   colors,
@@ -66,4 +76,6 @@ export const theme: DefaultTheme = {
   radius,
   zIndex,
   scrollBarNone,
+  opacity,
+  transition,
 }
