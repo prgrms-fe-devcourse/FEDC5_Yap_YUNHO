@@ -1,15 +1,16 @@
+import { EditPostState } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditButton.Styles"
 
 interface PostEditButtonProps {
-  isNewPost: boolean
+  postData: EditPostState
   onSubmit: () => void
 }
 
-const PostEditButton = ({ onSubmit, isNewPost }: PostEditButtonProps) => {
+const PostEditButton = ({ onSubmit, postData }: PostEditButtonProps) => {
   return (
     <S.PostEditButtonLayout>
       <S.PostEditButton onClick={onSubmit}>
-        {isNewPost ? "등록" : "수정"}
+        {postData.postId === "newPost" ? "등록 완료" : "수정 완료"}
       </S.PostEditButton>
     </S.PostEditButtonLayout>
   )

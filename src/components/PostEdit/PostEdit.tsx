@@ -6,22 +6,44 @@ import { POST_EDIT_INITIAL_EDIT_POST } from "./constants/PostEdit.Constants"
 import { EditPostState, HandleEditPost } from "./PostEdit.Types"
 import getThumbnailByUrl from "@/util/getThumbnailByUrl"
 import { useParams } from "react-router-dom"
+import { API } from "@/apis/Api"
+import { JSONPost, PostContent } from "@/types"
+import PostEditAuthChecker from "./components/PostEditAuthChecker"
+import Modal from "../Modal/Modal"
 
-const PostEdit = () => {
+interface PostEditProps {
+  onClose: () => void
+  isShowModal: boolean
+}
+
+const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
   const { id } = useParams()
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
-  const [isNewPost, setIsNewPost] = useState(true)
 
   useEffect(() => {
     if (!id || id === "newPost") {
       return
     }
 
-    setIsNewPost(false)
-    // 해당 부분에서 id에 맞는 포스트를 불러올 준비
-  }, [id])
+    API.get(`/posts/${id}`)
+      .then((res) => res.data)
+      .then((fetchPost: JSONPost) => {
+        const { content, mediaUrl, thumbnail }: PostContent = JSON.parse(
+          fetchPost.title,
+        )
+
+        setEditPost({
+          content: content,
+          mediaUrl: mediaUrl,
+          thumbnail: thumbnail,
+          category: fetchPost.channel._id,
+          postId: fetchPost._id,
+          authorId: fetchPost.author._id,
+        })
+      })
+  }, [id, isShowModal])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
@@ -42,19 +64,30 @@ const PostEdit = () => {
   }
 
   return (
-    <S.PostEditLayout>
-      <S.PostEditContainer>
-        <PostEditViewer postData={editPost} />
-      </S.PostEditContainer>
-      <S.PostEditBoundary />
-      <S.PostEditContainer>
-        <PostEditEditor
-          isNewPost={isNewPost}
-          onEdit={handleEditPost}
-          postData={editPost}
-        />
-      </S.PostEditContainer>
-    </S.PostEditLayout>
+    <Modal
+      isShow={isShowModal}
+      onClose={onClose}
+      clickAwayEnable={false}
+    >
+      <PostEditAuthChecker
+        onCloseInnerModal={onClose}
+        authorId={editPost.authorId}
+      >
+        <S.PostEditLayout>
+          <S.PostEditContainer>
+            <PostEditViewer postData={editPost} />
+          </S.PostEditContainer>
+          <S.PostEditBoundary />
+          <S.PostEditContainer>
+            <PostEditEditor
+              onEdit={handleEditPost}
+              postData={editPost}
+              onClose={onClose}
+            />
+          </S.PostEditContainer>
+        </S.PostEditLayout>
+      </PostEditAuthChecker>
+    </Modal>
   )
 }
 

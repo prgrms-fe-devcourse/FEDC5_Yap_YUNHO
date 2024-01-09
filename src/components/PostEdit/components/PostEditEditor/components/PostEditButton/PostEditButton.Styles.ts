@@ -22,9 +22,9 @@ export const PostEditButton = styled.button`
 
   font-size: ${({ theme }) => theme.fontSizes.large};
 
-  transition: all 0.3s;
+  transition: all ${({ theme }) => theme.transition.normal};
   user-select: none;
   &:hover {
-    opacity: 0.5;
+    opacity: ${({ theme }) => theme.opacity.normal};
   }
 `

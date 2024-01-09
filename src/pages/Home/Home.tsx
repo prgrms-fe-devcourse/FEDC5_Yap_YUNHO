@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import * as S from "./Home.Styles"
 import CategoryBar from "./components/CategoryBar/CategoryBar"
 import {
@@ -7,35 +7,38 @@ import {
 } from "./components/CategoryBar/CategoryBar.Types"
 import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
-import Modal from "@/components/Modal/Modal"
-import useModal from "@/components/Modal/hooks/useModal"
 import PostEdit from "@/components/PostEdit/PostEdit"
 import { useNavigate, useParams } from "react-router-dom"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 
 const Home = () => {
-  const { isShowModal, showModal, closeModal } = useModal()
+  const { isShowEditModal, showEditModal, closeEditModal } =
+    usePostEditModalStore()
   const { id } = useParams()
-  const navigation = useNavigate()
+  const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(INITIAL_CATEGORY)
 
   useEffect(() => {
     if (!id) {
-      closeModal()
       return
     }
 
-    showModal()
-  }, [closeModal, id, showModal])
+    showEditModal()
+
+    return () => {
+      closeEditModal()
+    }
+  }, [closeEditModal, id, showEditModal])
+
+  const handleClosePostEdit = useCallback(() => {
+    closeEditModal()
+    navigate("/")
+  }, [closeEditModal, navigate])
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
   }
-
-  const handleClosePostEdit = () => {
-    navigation("/")
-  }
-
   return (
     <>
       <S.HomeLayout>
@@ -45,21 +48,18 @@ const Home = () => {
         />
         <button
           onClick={() => {
-            navigation("/postedit/newPost")
+            navigate("/postedit/659c181c16a2b736436afca2")
           }}
         >
           Modal Open
         </button>
-        <PostContainer />
+        <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>
 
-      <Modal
-        isShow={isShowModal}
+      <PostEdit
         onClose={handleClosePostEdit}
-        clickAwayEnable={false}
-      >
-        <PostEdit />
-      </Modal>
+        isShowModal={isShowEditModal}
+      />
     </>
   )
 }

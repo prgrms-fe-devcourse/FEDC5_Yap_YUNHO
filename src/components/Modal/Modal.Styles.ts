@@ -60,7 +60,7 @@ export const ModalTop = styled.div`
     color: ${({ theme }) => theme.colors.point};
 
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all ${({ theme }) => theme.transition.normal};
 
     &:hover {
       transform: scale(1.4);

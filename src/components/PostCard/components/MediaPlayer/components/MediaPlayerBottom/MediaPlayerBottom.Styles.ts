@@ -20,7 +20,7 @@ const buttonBaseStyle = css`
 const buttonHover = css`
   &:hover {
     svg {
-      transition: all 0.5s;
+      transition: all ${({ theme }) => theme.transition.normal};
       color: ${({ theme }) => theme.colors.point_alt};
     }
   }

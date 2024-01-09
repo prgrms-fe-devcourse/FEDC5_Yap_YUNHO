@@ -1,5 +1,6 @@
 import React from "react"
 import * as S from "./CategoryBar.Styles"
+import * as GS from "@/components/CategoryList/CategoryList.Styles"
 import { CategoryBarProps } from "./CategoryBar.Types"
 import useCategoryList from "@/hooks/useCategoryList"
 
@@ -11,18 +12,18 @@ const CategoryBar = ({
 
   return (
     <S.CategoryBarLayout>
-      <S.CategoryBarList>
+      <GS.CategoryBarList>
         {categoryList &&
           categoryList.map((category) => (
-            <S.CategoryBarListItem
+            <GS.CategoryBarListItem
               key={category.id}
               $isSelect={selectedCategory.id === category.id}
               onClick={() => onSelected(category)}
             >
               <p>{category.name}</p>
-            </S.CategoryBarListItem>
+            </GS.CategoryBarListItem>
           ))}
-      </S.CategoryBarList>
+      </GS.CategoryBarList>
     </S.CategoryBarLayout>
   )
 }

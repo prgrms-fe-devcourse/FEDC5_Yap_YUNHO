@@ -9,19 +9,20 @@ import useModal from "@/components/Modal/hooks/useModal"
 import createPost from "../../apis/createPost"
 import { useState } from "react"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-import { useNavigate } from "react-router-dom"
+import updatePost from "../../apis/updatePost"
+import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
+import checkCategoryValidation from "../../util/checkCategoryValidation"
+import checkUrlValidation from "../../util/checkUrlValidation"
+import checkContentValidation from "../../util/checkContentValidation"
+import { POST_EDIT_MODAL_MESSAGE } from "../../constants/PostEdit.Constants"
 
 interface PostEditEditorProps {
-  isNewPost: boolean
   onEdit: HandleEditPost
+  onClose: () => void
   postData: EditPostState
 }
 
-const PostEditEditor = ({
-  onEdit,
-  postData,
-  isNewPost,
-}: PostEditEditorProps) => {
+const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
   const {
     isShowModal: isShowConfirm,
     showModal: showConfirm,
@@ -37,8 +38,9 @@ const PostEditEditor = ({
     showModal: showComplete,
     closeModal: closeComplete,
   } = useModal()
-  const navigation = useNavigate()
   const [alertMessage, setAlertMessage] = useState("")
+
+  const isNewPost = postData.postId === "newPost"
 
   const handleSubmitPost = () => {
     showConfirm()
@@ -51,18 +53,23 @@ const PostEditEditor = ({
       return
     }
 
-    // 각각의 validation 추가 예정
-    // if (postData.category) {
-    //   return
-    // }
+    if (!checkCategoryValidation(postData.category)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CATEGORY)
+      showAlert()
+      return
+    }
 
-    // if (postData.content) {
-    //   return
-    // }
+    if (!checkContentValidation(postData.content)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CONTENT)
+      showAlert()
+      return
+    }
 
-    // if (postData.mediaUrl) {
-    //   return
-    // }
+    if (!checkUrlValidation(postData.mediaUrl)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_MEDIA_RUL)
+      showAlert()
+      return
+    }
 
     if (isNewPost) {
       createPost(postData).then((res) => {
@@ -72,17 +79,33 @@ const PostEditEditor = ({
         }
 
         if (!res) {
-          setAlertMessage("등록에 실패했습니다 다시 시도해주세요.. 🥹")
+          setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_NEW_POST)
           showAlert()
           return
         }
       })
+      return
+    }
+
+    if (postData.postId) {
+      updatePost(postData).then((res) => {
+        if (res) {
+          showComplete()
+        }
+
+        if (!res) {
+          setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_UPDATE_POST)
+          showAlert()
+          return
+        }
+      })
+      return
     }
   }
 
   const handleCloseComplete = () => {
     closeComplete()
-    navigation("/")
+    onClose()
   }
 
   return (
@@ -90,7 +113,7 @@ const PostEditEditor = ({
       <S.PostEditEditorLayout>
         <PostEditButton
           onSubmit={handleSubmitPost}
-          isNewPost={isNewPost}
+          postData={postData}
         />
         <PostEditUrl
           urlPath={postData.mediaUrl}
@@ -100,11 +123,18 @@ const PostEditEditor = ({
           text={postData.content}
           onEdit={onEdit}
         />
-        <PostEditCategory onEdit={onEdit} />
+        <PostEditCategory
+          onEdit={onEdit}
+          postData={postData}
+        />
       </S.PostEditEditorLayout>
       <ConfirmModal
         isShow={isShowConfirm}
-        message={"게시물을 등록 하시겠나요?"}
+        message={
+          isNewPost
+            ? POST_EDIT_MODAL_MESSAGE.SUBMIT_NEW_POST_CONFIRM
+            : POST_EDIT_MODAL_MESSAGE.SUBMIT_UPDATE_POST_CONFIRM
+        }
         onClose={handleCloseConfirm}
       />
 
@@ -116,7 +146,7 @@ const PostEditEditor = ({
 
       <AlertModal
         isShow={isShowComplete}
-        alertMessage={"등록이 완료되었습니다!"}
+        alertMessage={POST_EDIT_MODAL_MESSAGE.SUBMIT_COMPLETE}
         onClose={handleCloseComplete}
       />
     </>
