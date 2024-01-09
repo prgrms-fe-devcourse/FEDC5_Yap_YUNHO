@@ -4,7 +4,7 @@ export const DirectMessageLayout = styled.div`
   max-width: 90rem;
   max-height: 70rem;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 10rem);
   display: flex;
   gap: 5rem;
   position: absolute;
