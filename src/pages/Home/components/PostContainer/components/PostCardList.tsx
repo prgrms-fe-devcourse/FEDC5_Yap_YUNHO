@@ -1,5 +1,5 @@
-import PostCard from "@/components/PostCard/Postcard"
-import * as S from "./PostCardList.styles"
+import PostCard from "@/components/PostCard/PostCard"
+import * as S from "./PostCardList.Styles"
 import useModalDepth from "@/components/Modal/store/useModalDepth"
 import { Post } from "@/types"
 
