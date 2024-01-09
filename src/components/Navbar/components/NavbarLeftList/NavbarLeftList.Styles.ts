@@ -32,7 +32,7 @@ export const NavbarLogo = styled.div`
   height: 8.5rem;
   border-radius: ${({ theme }) => theme.radius.circle};
 
-  background-image: url("/src/assets/logo.png");
+  background-image: url("src/assets/logo.png");
   background-size: cover;
   z-index: 1;
 `
