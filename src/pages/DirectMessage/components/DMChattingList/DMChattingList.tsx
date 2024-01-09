@@ -16,7 +16,7 @@ const DMChattingList = () => {
     await AUTH_API.get(`/messages?userId=${id}`)
       .then((res) => {
         // 나 와의 메시지일 경우 내가 보낸 것만 데이터 정제
-        if (user._id === id) {
+        if (id && user?._id === id) {
           setSelectedMessageList(
             res.data.filter((list: Conversation) => {
               return list.receiver?._id === list.sender?._id
