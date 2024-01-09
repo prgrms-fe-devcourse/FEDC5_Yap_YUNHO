@@ -9,10 +9,11 @@ import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
 import PostEdit from "@/components/PostEdit/PostEdit"
 import { useNavigate, useParams } from "react-router-dom"
-import usePostEditModal from "@/components/PostEdit/stores/usePostEditModal"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 
 const Home = () => {
-  const { isShowEditModal, showEditModal, closeEditModal } = usePostEditModal()
+  const { isShowEditModal, showEditModal, closeEditModal } =
+    usePostEditModalStore()
   const { id } = useParams()
   const navigation = useNavigate()
   const [selectedCategory, setSelectedCategory] =

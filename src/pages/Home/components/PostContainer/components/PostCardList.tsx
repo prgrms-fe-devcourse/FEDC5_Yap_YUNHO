@@ -2,14 +2,14 @@ import PostCard from "@/components/PostCard/PostCard"
 import * as S from "./PostCardList.Styles"
 
 import { Post } from "@/types"
-import usePostEditModal from "@/components/PostEdit/stores/usePostEditModal"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 
 interface PostCardListProps {
   postList: Post[] | null[]
 }
 
 const PostCardList = ({ postList }: PostCardListProps) => {
-  const { isShowEditModal } = usePostEditModal()
+  const { isShowEditModal } = usePostEditModalStore()
   return (
     <>
       {postList[0] && (
