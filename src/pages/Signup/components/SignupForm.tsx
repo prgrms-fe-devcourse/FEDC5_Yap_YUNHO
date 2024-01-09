@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, useEffect } from "react"
 import * as S from "./SignupForm.Styles"
 import { theme } from "@/styles/theme"
-import SignupInputContainer from "./Input/SignupInputContainer"
+import SignupInputContainer from "./SignupInput/SignupInputContainer"
 import type { RequiredUserInfo } from "./types"
 import { getNewErrorMessage } from "../utils/validateInput"
 
