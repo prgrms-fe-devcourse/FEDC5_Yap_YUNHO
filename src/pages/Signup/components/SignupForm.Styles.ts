@@ -42,7 +42,7 @@ export const Button = styled.button<{ $width: number; $color: string }>`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
 
   &:hover {
-    opacity: 0.7;
-    transition: opacity 0.2s ease-in-out;
+    opacity: ${({ theme }) => theme.opacity.normal};
+    transition: opacity ${({ theme }) => theme.transition.normal};
   }
 `
