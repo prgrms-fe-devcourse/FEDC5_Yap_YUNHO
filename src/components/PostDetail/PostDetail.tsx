@@ -45,15 +45,20 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
       onClose={onClose}
       clickAwayEnable={true}
     >
-      <GS.PostModalGlobalLayout>
-        <GS.PostModalGlobalContainer>
-          <PostDetailViewer />
-        </GS.PostModalGlobalContainer>
-        <GS.PostModalGlobalBoundary />
-        <GS.PostModalGlobalContainer>
-          <PostDetailInfo />
-        </GS.PostModalGlobalContainer>
-      </GS.PostModalGlobalLayout>
+      {data && (
+        <GS.PostModalGlobalLayout>
+          <GS.PostModalGlobalContainer>
+            <PostDetailViewer />
+          </GS.PostModalGlobalContainer>
+          <GS.PostModalGlobalBoundary />
+          <GS.PostModalGlobalContainer>
+            <PostDetailInfo
+              onClose={onClose}
+              post={data}
+            />
+          </GS.PostModalGlobalContainer>
+        </GS.PostModalGlobalLayout>
+      )}
     </Modal>
   )
 }
