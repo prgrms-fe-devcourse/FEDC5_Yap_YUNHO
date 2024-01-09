@@ -1,7 +1,7 @@
 import useCategoryList from "@/hooks/useCategoryList"
 import * as S from "./PostEditCategory.Styles"
 import * as GS from "@/components/CategoryList/CategoryList.Styles"
-import { Category } from "@/Pages/Home/components/CategoryBar/CategoryBar.Types"
+import { Category } from "@/pages/Home/components/CategoryBar/CategoryBar.Types"
 import {
   EditPostState,
   HandleEditPost,
