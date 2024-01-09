@@ -1,5 +1,7 @@
 import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import Modal from "../Modal/Modal"
+import PostDetailViewer from "./components/PostDetailViewer/PostDetailViewer"
+import PostDetailInfo from "./components/PostDetailInfo/PostDetailInfo"
 
 interface PostDetailProps {
   isShow: boolean
@@ -14,9 +16,13 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
       clickAwayEnable={true}
     >
       <GS.PostModalGlobalLayout>
-        <GS.PostModalGlobalContainer></GS.PostModalGlobalContainer>
+        <GS.PostModalGlobalContainer>
+          <PostDetailViewer />
+        </GS.PostModalGlobalContainer>
         <GS.PostModalGlobalBoundary />
-        <GS.PostModalGlobalContainer></GS.PostModalGlobalContainer>
+        <GS.PostModalGlobalContainer>
+          <PostDetailInfo />
+        </GS.PostModalGlobalContainer>
       </GS.PostModalGlobalLayout>
     </Modal>
   )
