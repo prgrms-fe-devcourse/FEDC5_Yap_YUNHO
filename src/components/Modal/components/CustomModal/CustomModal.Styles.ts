@@ -11,7 +11,7 @@ export const CustomModalBackground = styled.section`
   position: absolute;
   top: 0;
 
-  z-index: ${({ theme }) => theme.zIndex.CustomModalBackground};
+  z-index: ${({ theme }) => theme.zIndex.customModalBackground};
   background-color: rgba(0, 0, 0, 0.5);
 `
 

@@ -6,6 +6,7 @@ import MediaPlayerSlider from "./components/MediaPlayerPlaySlider/MediaPlayerSli
 import ReactPlayer from "react-player"
 import { ChangePlayer } from "./store/useMediaPlayerStore.Types"
 import MediaPlayerBottom from "./components/MediaPlayerBottom/MediaPlayerBottom"
+import { MEDIA_PLAYER_EMPTY_URL_KEYWORD } from "./constants/MediaPlayer.Constants"
 
 const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
   const {
@@ -22,6 +23,11 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
 
   useEffect(() => {
     if (isBlock) {
+      return
+    }
+
+    if (url === "") {
+      onChangeUrl(MEDIA_PLAYER_EMPTY_URL_KEYWORD)
       return
     }
 

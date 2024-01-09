@@ -62,13 +62,6 @@ export interface PostContent {
   content: string
 }
 
-export interface UsePostData {
-  mediaUrl: string
-  thumbnail: string
-  content: string
-  authUserProfile: string
-}
-
 export interface Like {
   _id: string
   user: string // 사용자 id

@@ -40,7 +40,7 @@ const zIndex = {
   postMainCard: 3,
   homeArrowIcon: 4,
   modalBackground: 5,
-  smallModalBackground: 6,
+  customModalBackground: 6,
 
   navbarLogo: 1,
   navbarRightList: 2,

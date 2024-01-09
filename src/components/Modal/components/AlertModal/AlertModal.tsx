@@ -1,15 +1,15 @@
-import * as S from "./ModalAlert.Styles"
+import * as S from "./AlertModal.Styles"
 import * as GS from "../../ModalGlobal.Styles"
 import CustomModal from "../CustomModal/CustomModal"
 import { MouseEvent } from "react"
 
-interface ModalAlertProps {
+interface AlertModalProps {
   isShow: boolean
   alertMessage: string
   onClose: () => void
 }
 
-const ModalAlert = ({ isShow, onClose, alertMessage }: ModalAlertProps) => {
+const AlertModal = ({ isShow, onClose, alertMessage }: AlertModalProps) => {
   const handleCloseModal = ({ target, currentTarget }: MouseEvent) => {
     if (target !== currentTarget) {
       return
@@ -21,16 +21,16 @@ const ModalAlert = ({ isShow, onClose, alertMessage }: ModalAlertProps) => {
     <CustomModal
       isShow={isShow}
       $height={20}
-      onClose={onClose}
+      onClickAway={onClose}
     >
-      <S.ModalAlertLayout>
-        <S.ModalAlertMessage>{alertMessage}</S.ModalAlertMessage>
+      <S.AlertModalLayout>
+        <S.AlertModalMessage>{alertMessage}</S.AlertModalMessage>
         <GS.ModalBottomActions>
           <GS.ModalButton onClick={handleCloseModal}>닫기</GS.ModalButton>
         </GS.ModalBottomActions>
-      </S.ModalAlertLayout>
+      </S.AlertModalLayout>
     </CustomModal>
   )
 }
 
-export default ModalAlert
+export default AlertModal
