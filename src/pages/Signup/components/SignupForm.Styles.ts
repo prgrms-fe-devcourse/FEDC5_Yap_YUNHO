@@ -15,14 +15,14 @@ export const SignupFormTitle = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 3rem;
+  height: 2rem;
   width: 100%;
 
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
 export const SignupFormContainer = styled.form`
   width: 50rem;
-  height: 40rem;
+  height: 48rem;
 `
 
 export const ButtonContainer = styled.div`
@@ -36,6 +36,7 @@ export const ButtonContainer = styled.div`
   position: relative;
   top: -1.5rem;
 `
+
 export const Button = styled.button<{
   $width: number
   $color: string
@@ -50,6 +51,9 @@ export const Button = styled.button<{
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   transition: all 0.3s ease-in-out;
+
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
+
   &:hover {
     opacity: 0.7;
     transition: opacity 0.3s ease-in-out;

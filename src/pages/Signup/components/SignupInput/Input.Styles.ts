@@ -2,6 +2,17 @@ import styled from "styled-components"
 
 export const InputLayout = styled.div`
   width: 53%;
+  position: relative;
+`
+
+export const VisibleButton = styled.button`
+  position: absolute;
+
+  min-height: 1.5rem;
+  aspect-ratio: 1;
+
+  right: 0.8rem;
+  top: 1.25rem;
 `
 
 export const Input = styled.input`
@@ -22,5 +33,10 @@ export const Input = styled.input`
 
   &[type="password"] {
     font-family: sans-serif;
+  }
+
+  &:focus {
+    transition: all 0.1s ease-in-out;
+    outline: 0.4rem solid ${({ theme }) => theme.colors.point};
   }
 `

@@ -22,7 +22,7 @@ const SignupForm = () => {
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { target } = event
-    console.log("requiredUserInfo", requiredUserInfo)
+
     setRequiredUserInfo((prevState) => ({
       ...prevState,
       [target.name]: target.value,
@@ -50,33 +50,43 @@ const SignupForm = () => {
   return (
     <S.SignupFormLayout>
       <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
-      <S.SignupFormContainer>
+      <S.SignupFormContainer
+        onSubmit={(e) => {
+          e.preventDefault()
+          alert("회원가입 시도!")
+        }}
+      >
         <SignupInputContainer
           requiredUserInfo={requiredUserInfo}
           onChange={handleInput}
           errorMessage={errorMessage}
         />
+        <S.ButtonContainer>
+          <S.Button
+            $width={18}
+            $color={theme.colors.sub_alt}
+            onClick={() => {
+              alert("회원가입 취소!")
+            }}
+            type="button"
+          >
+            취소
+          </S.Button>
+          <S.Button
+            $width={35}
+            $color={theme.colors.point}
+            disabled={
+              errorMessage.email !== "" ||
+              errorMessage.nickname !== "" ||
+              errorMessage.password !== "" ||
+              errorMessage.passwordCheck !== ""
+            }
+            type="submit"
+          >
+            가입완료
+          </S.Button>
+        </S.ButtonContainer>
       </S.SignupFormContainer>
-      <S.ButtonContainer>
-        <S.Button
-          $width={18}
-          $color={theme.colors.sub_alt}
-        >
-          취소
-        </S.Button>
-        <S.Button
-          $width={35}
-          $color={theme.colors.point}
-          disabled={
-            errorMessage.email !== "" ||
-            errorMessage.nickname !== "" ||
-            errorMessage.password !== "" ||
-            errorMessage.passwordCheck !== ""
-          }
-        >
-          가입완료
-        </S.Button>
-      </S.ButtonContainer>
     </S.SignupFormLayout>
   )
 }
