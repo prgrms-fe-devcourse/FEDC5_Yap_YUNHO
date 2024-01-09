@@ -34,10 +34,6 @@ class AuthToken {
   }
 
   removeToken() {
-    const res = localStorage.getItem(this.KEY)
-    if (!res) {
-      return
-    }
     localStorage.removeItem(this.KEY)
   }
 }
