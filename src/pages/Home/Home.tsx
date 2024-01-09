@@ -15,7 +15,7 @@ const Home = () => {
   const { isShowEditModal, showEditModal, closeEditModal } =
     usePostEditModalStore()
   const { id } = useParams()
-  const navigation = useNavigate()
+  const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(INITIAL_CATEGORY)
 
@@ -33,8 +33,8 @@ const Home = () => {
 
   const handleClosePostEdit = useCallback(() => {
     closeEditModal()
-    navigation("/")
-  }, [closeEditModal, navigation])
+    navigate("/")
+  }, [closeEditModal, navigate])
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
@@ -48,7 +48,7 @@ const Home = () => {
         />
         <button
           onClick={() => {
-            navigation("/postedit/659c181c16a2b736436afca2")
+            navigate("/postedit/659c181c16a2b736436afca2")
           }}
         >
           Modal Open

@@ -5,7 +5,7 @@ import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 import { POST_EDIT_INITIAL_EDIT_POST } from "./constants/PostEdit.Constants"
 import { EditPostState, HandleEditPost } from "./PostEdit.Types"
 import getThumbnailByUrl from "@/util/getThumbnailByUrl"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { API } from "@/apis/Api"
 import { JSONPost, PostContent } from "@/types"
 import PostEditAuthChecker from "./components/PostEditAuthChecker"
@@ -18,7 +18,6 @@ interface PostEditProps {
 
 const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
   const { id } = useParams()
-  const navigation = useNavigate()
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
@@ -44,7 +43,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
           authorId: fetchPost.author._id,
         })
       })
-  }, [id, isShowModal, navigation])
+  }, [id, isShowModal])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {

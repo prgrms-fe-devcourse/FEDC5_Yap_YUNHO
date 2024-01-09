@@ -16,15 +16,15 @@ const PostEditAuthChecker = ({
   onCloseInnerModal,
   authorId,
 }: PostEditAuthCheckerProps) => {
-  const navigation = useNavigate()
+  const navigate = useNavigate()
   const { isShowModal, showModal } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
   const { isLoggedIn, user } = useAuthUserStore()
 
   const handleCloseModal = useCallback(() => {
     onCloseInnerModal()
-    navigation("/")
-  }, [navigation, onCloseInnerModal])
+    navigate("/")
+  }, [navigate, onCloseInnerModal])
 
   useEffect(() => {
     if (!isLoggedIn) {
