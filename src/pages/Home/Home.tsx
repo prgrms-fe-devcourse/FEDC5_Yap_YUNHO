@@ -7,12 +7,12 @@ import {
 } from "./components/CategoryBar/CategoryBar.Types"
 import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
-import useModal from "@/components/Modal/hooks/useModal"
 import PostEdit from "@/components/PostEdit/PostEdit"
 import { useNavigate, useParams } from "react-router-dom"
+import usePostEditModal from "@/components/PostEdit/stores/usePostEditModal"
 
 const Home = () => {
-  const { isShowModal, showModal, closeModal } = useModal()
+  const { isShowEditModal, showEditModal, closeEditModal } = usePostEditModal()
   const { id } = useParams()
   const navigation = useNavigate()
   const [selectedCategory, setSelectedCategory] =
@@ -23,17 +23,17 @@ const Home = () => {
       return
     }
 
-    showModal()
+    showEditModal()
 
     return () => {
-      closeModal()
+      closeEditModal()
     }
-  }, [closeModal, id, isShowModal, showModal])
+  }, [closeEditModal, id, showEditModal])
 
   const handleClosePostEdit = useCallback(() => {
-    closeModal()
+    closeEditModal()
     navigation("/")
-  }, [closeModal, navigation])
+  }, [closeEditModal, navigation])
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
@@ -57,7 +57,7 @@ const Home = () => {
 
       <PostEdit
         onClose={handleClosePostEdit}
-        isShowModal={isShowModal}
+        isShowModal={isShowEditModal}
       />
     </>
   )
