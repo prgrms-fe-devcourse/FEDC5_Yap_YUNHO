@@ -1,14 +1,15 @@
 import PostCard from "@/components/PostCard/PostCard"
 import * as S from "./PostCardList.Styles"
-import useModalDepth from "@/components/Modal/store/useModalDepth"
+
 import { Post } from "@/types"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 
 interface PostCardListProps {
   postList: Post[] | null[]
 }
 
 const PostCardList = ({ postList }: PostCardListProps) => {
-  const { modalDepth } = useModalDepth()
+  const { isShowEditModal } = usePostEditModalStore()
 
   return (
     <>
@@ -41,7 +42,7 @@ const PostCardList = ({ postList }: PostCardListProps) => {
       {postList[2] && (
         <S.PostMainCard>
           <PostCard
-            isBlock={modalDepth !== 0}
+            isBlock={isShowEditModal}
             authUserProfile={postList[2].author.image}
             thumbnail={postList[2].title.thumbnail}
             content={postList[2].title.content}

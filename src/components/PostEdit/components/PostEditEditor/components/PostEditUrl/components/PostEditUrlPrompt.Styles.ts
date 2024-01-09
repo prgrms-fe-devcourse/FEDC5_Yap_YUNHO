@@ -52,6 +52,7 @@ export const PostEditUrlPromptInput = styled.textarea`
   text-align: center;
 
   resize: none;
+  ${({ theme }) => theme.scrollBarNone}
 `
 
 export const PostEditRemoveInputLayout = styled.div`
@@ -68,7 +69,7 @@ export const PostEditRemoveInputLayout = styled.div`
     color: ${({ theme }) => theme.colors.point_alt};
 
     cursor: pointer;
-    transition: all 0.3s;
+    transition: transform ${({ theme }) => theme.transition.normal};
 
     &:hover {
       transform: scale(1.2);

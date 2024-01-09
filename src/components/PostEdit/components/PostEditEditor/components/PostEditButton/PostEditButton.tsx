@@ -10,7 +10,7 @@ const PostEditButton = ({ onSubmit, postData }: PostEditButtonProps) => {
   return (
     <S.PostEditButtonLayout>
       <S.PostEditButton onClick={onSubmit}>
-        {postData.postId === "newPost" ? "등록" : "수정"}
+        {postData.postId === "newPost" ? "등록 완료" : "수정 완료"}
       </S.PostEditButton>
     </S.PostEditButtonLayout>
   )

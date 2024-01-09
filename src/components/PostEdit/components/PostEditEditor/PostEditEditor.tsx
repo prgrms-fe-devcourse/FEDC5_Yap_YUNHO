@@ -14,6 +14,7 @@ import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import checkCategoryValidation from "../../util/checkCategoryValidation"
 import checkUrlValidation from "../../util/checkUrlValidation"
 import checkContentValidation from "../../util/checkContentValidation"
+import { POST_EDIT_MODAL_MESSAGE } from "../../constants/PostEdit.Constants"
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
@@ -39,6 +40,8 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
   } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
 
+  const isNewPost = postData.postId === "newPost"
+
   const handleSubmitPost = () => {
     showConfirm()
   }
@@ -50,7 +53,6 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       return
     }
 
-    // 각각의 validation 추가 예정
     if (!checkCategoryValidation(postData.category)) {
       setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CATEGORY)
       showAlert()
@@ -69,7 +71,7 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       return
     }
 
-    if (postData.postId === "newPost") {
+    if (isNewPost) {
       createPost(postData).then((res) => {
         if (res) {
           showComplete()
@@ -128,7 +130,11 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       </S.PostEditEditorLayout>
       <ConfirmModal
         isShow={isShowConfirm}
-        message={"게시물을 등록 하시겠나요?"}
+        message={
+          isNewPost
+            ? POST_EDIT_MODAL_MESSAGE.SUBMIT_NEW_POST_CONFIRM
+            : POST_EDIT_MODAL_MESSAGE.SUBMIT_UPDATE_POST_CONFIRM
+        }
         onClose={handleCloseConfirm}
       />
 
@@ -140,7 +146,7 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
 
       <AlertModal
         isShow={isShowComplete}
-        alertMessage={"완료되었습니다!"}
+        alertMessage={POST_EDIT_MODAL_MESSAGE.SUBMIT_COMPLETE}
         onClose={handleCloseComplete}
       />
     </>
