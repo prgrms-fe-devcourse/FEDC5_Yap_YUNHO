@@ -56,7 +56,7 @@ export const DMListItemLayout = styled.button<{ $isSelect: boolean }>`
   justify-content: flex-start;
   align-items: flex-start;
   &:hover {
-    opacity: 0.5;
+    ${({ theme }) => theme.opacity.normal}
   }
   opacity: ${({ $isSelect }) => ($isSelect ? 0.3 : 1)};
 `

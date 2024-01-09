@@ -32,7 +32,7 @@ const useToggle = () => {
     return () => {
       document.removeEventListener("click", handleOutSideClick)
     }
-  }, [isToggle, handleOutSideClick])
+  }, [handleOutSideClick])
 
   return { isToggle, toggleRef, handleToggle }
 }

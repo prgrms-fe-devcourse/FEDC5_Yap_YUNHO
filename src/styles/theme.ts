@@ -41,6 +41,9 @@ const zIndex = {
   homeArrowIcon: 4,
   modalBackground: 5,
   customModalBackground: 6,
+
+  navbarLogo: 1,
+  navbarRightList: 2,
 }
 
 const scrollBarNone = css`
