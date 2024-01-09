@@ -30,7 +30,12 @@ const DMChattingList = () => {
       {id && (
         <S.DMMessageList>
           {selectedMessageList.map((list: Message) => (
-            <DMMessageItem key={list.createdAt}>{list}</DMMessageItem>
+            <DMMessageItem
+              key={list.createdAt}
+              id={id}
+            >
+              {list}
+            </DMMessageItem>
           ))}
         </S.DMMessageList>
       )}

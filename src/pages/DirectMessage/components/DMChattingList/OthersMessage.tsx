@@ -1,12 +1,8 @@
 import * as S from "./OthersMessage.Styles.ts"
 import DMListProfile from "../DMList/DMListProfile.tsx"
-import { Message } from "@/types"
+import { MessageProps } from "../../types/index.ts"
 
-interface OthersMessageProps {
-  children: Message
-}
-
-const OthersMessage = ({ children }: OthersMessageProps) => {
+const OthersMessage = ({ children }: MessageProps) => {
   return (
     <S.OthersMessageLayout>
       <DMListProfile />

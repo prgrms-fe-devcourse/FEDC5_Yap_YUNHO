@@ -2,22 +2,18 @@ import MyMessage from "./MyMessage"
 import OthersMessage from "./OthersMessage"
 import { MessageProps } from "./../../types/index"
 
-// 여기서 MyMessage, OtherMessage거르기
-const DMMessageItem = ({ children }: MessageProps) => {
-  console.log(children)
+// 주소의 id는 타인의 아이디
+const DMMessageItem = ({ children, id }: MessageProps) => {
+  const isMyMessage = id === children.receiver._id
   return (
     <>
-      <OthersMessage>{children}</OthersMessage>
-      <MyMessage>{children}</MyMessage>
-      <OthersMessage>{children}</OthersMessage>
-      <MyMessage>{children}</MyMessage>
+      {isMyMessage ? (
+        <MyMessage>{children}</MyMessage>
+      ) : (
+        <OthersMessage>{children}</OthersMessage>
+      )}
     </>
   )
 }
 
 export default DMMessageItem
-
-// 메시지는 시간순서대로
-// 내가보낸거 남이보낸거 구분해서 왼쪽 오른쪽으로 정렬시켜야함
-// receiver가 나일때는 메시지를 왼쪽으로
-// receiver가 내가아닐때는 메시지를 오른쪽으로
