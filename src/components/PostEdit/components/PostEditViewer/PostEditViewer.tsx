@@ -1,4 +1,4 @@
-import PostCard from "@/components/PostCard/Postcard"
+import PostCard from "@/components/PostCard/PostCard"
 import * as S from "./PostEditViewer.Styles"
 import { UsePostData } from "@/types"
 

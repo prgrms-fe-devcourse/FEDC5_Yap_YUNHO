@@ -1,5 +1,14 @@
+import * as S from "./UserPosts.Styles"
+import UserPostFilter from "./components/UserPostFilter/UserPostFilter"
+import UserPostList from "./components/UserPostList/UserPostList"
+
 const UserPosts = () => {
-  return <div>UserPosts</div>
+  return (
+    <S.UserPostsLayout>
+      <UserPostFilter />
+      <UserPostList />
+    </S.UserPostsLayout>
+  )
 }
 
 export default UserPosts

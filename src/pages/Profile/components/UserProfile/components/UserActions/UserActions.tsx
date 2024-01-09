@@ -1,9 +1,7 @@
-import UserFollowButton from "./UserFollowButton"
-import UserUpdateInfoButton from "./UserUpdateInfoButton"
-import UserSendDMButton from "./UserSendDMButton"
 import * as S from "./UserActions.Styles"
 import { useParams } from "react-router-dom"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import UserActionButton from "./UserActionButton"
 
 const UserActions = () => {
   const { id } = useParams()
@@ -13,11 +11,23 @@ const UserActions = () => {
   return (
     <S.UserActionLayout>
       {isMyPage ? (
-        <UserUpdateInfoButton />
+        <UserActionButton
+          text="회원 정보 수정"
+          $width={11}
+          onClick={() => {}}
+        />
       ) : (
         <>
-          <UserFollowButton />
-          <UserSendDMButton />
+          <UserActionButton
+            text="팔로우"
+            $width={9}
+            onClick={() => {}}
+          />
+          <UserActionButton
+            text="DM 보내기"
+            $width={9}
+            onClick={() => {}}
+          />
         </>
       )}
     </S.UserActionLayout>

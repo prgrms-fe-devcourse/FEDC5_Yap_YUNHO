@@ -9,7 +9,7 @@ import {
 import {
   MEDIA_PLAYER_EMPTY_URL_KEYWORD,
   MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE,
-} from "../constants/MediaPlayer"
+} from "../constants/MediaPlayer.Constants"
 
 const useMediaPlayer = () => {
   const playerRef = useRef<ReactPlayer>(null)

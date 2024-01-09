@@ -28,7 +28,7 @@ const Home = () => {
       />
       <PostContainer />
       <Modal
-        isShow={true}
+        isShow={false}
         onClose={closeModal}
       >
         <PostEdit />
