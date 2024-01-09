@@ -20,7 +20,7 @@ const Home = () => {
     usePostEditModalStore()
 
   // Post Detail store 상태
-  const { isShowPostDetail, showPostDetail, closePostDetail } =
+  const { isShowPostDetail, showDetailModal, closeDetailModal } =
     usePostDetailModalStore()
 
   const { modalName } = useParams()
@@ -38,12 +38,12 @@ const Home = () => {
     }
 
     if (modalName === "postdetail") {
-      showPostDetail()
+      showDetailModal()
     }
     return () => {
       closeEditModal()
     }
-  }, [closeEditModal, modalName, showEditModal, showPostDetail])
+  }, [closeEditModal, modalName, showDetailModal, showEditModal])
 
   const handleClosePostEdit = useCallback(() => {
     closeEditModal()
@@ -51,9 +51,9 @@ const Home = () => {
   }, [closeEditModal, navigate])
 
   const handleClosePostDetail = useCallback(() => {
-    closePostDetail()
+    closeDetailModal()
     navigate("/")
-  }, [closePostDetail, navigate])
+  }, [closeDetailModal, navigate])
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
