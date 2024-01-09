@@ -17,7 +17,7 @@ const PostEditAuthChecker = ({
   authorId,
 }: PostEditAuthCheckerProps) => {
   const navigation = useNavigate()
-  const { isShowModal, showModal, closeModal } = useModal()
+  const { isShowModal, showModal } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
   const { isLoggedIn, user } = useAuthUserStore()
 
@@ -38,16 +38,7 @@ const PostEditAuthChecker = ({
       showModal()
       return
     }
-  }, [
-    alertMessage,
-    authorId,
-    closeModal,
-    isLoggedIn,
-    isShowModal,
-    onCloseInnerModal,
-    showModal,
-    user._id,
-  ])
+  }, [authorId, isLoggedIn, showModal, user._id])
 
   return (
     <>
