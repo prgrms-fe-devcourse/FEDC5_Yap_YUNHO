@@ -44,10 +44,10 @@ button {
   cursor: pointer;
 }
 
-input, textarea{
+input, textarea {
   border : none;
   outline: none;
-    font-family: 'Noto Sans KR', sans-serif;
+  font-family: "BMJUA", 'Noto Sans KR', sans-serif;
   background-color: ${({ theme }) => theme.colors.white};
 }
 

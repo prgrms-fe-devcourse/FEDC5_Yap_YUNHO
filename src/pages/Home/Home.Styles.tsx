@@ -7,3 +7,11 @@ export const HomeLayout = styled.section`
   display: flex;
   flex-direction: column;
 `
+
+export const TestButton = styled.button`
+  width: 12rem;
+  height: 4rem;
+
+  background-color: #fff;
+  font-size: 2rem;
+`
