@@ -22,7 +22,6 @@ export const LoginComponentLayout = styled.div`
 `
 
 export const LoginComponentTitle = styled.h2`
-export const LoginComponentTitle = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.large};
   text-align: center;
   min-width: 2rem;
@@ -54,7 +53,6 @@ export const ButtonContainer = styled.div`
   height: 10rem;
   gap: 2rem;
 `
-
 
 export const Button = styled.button<{ $color: string }>`
   width: 53%;
