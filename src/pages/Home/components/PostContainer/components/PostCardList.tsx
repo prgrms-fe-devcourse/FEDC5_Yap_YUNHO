@@ -3,6 +3,7 @@ import * as S from "./PostCardList.Styles"
 
 import { Post } from "@/types"
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
+import usePostDetailModalStore from "@/components/PostDetail/store/usePostDetailModalStore"
 
 interface PostCardListProps {
   postList: Post[] | null[]
@@ -10,6 +11,7 @@ interface PostCardListProps {
 
 const PostCardList = ({ postList }: PostCardListProps) => {
   const { isShowEditModal } = usePostEditModalStore()
+  const { isShowPostDetail } = usePostDetailModalStore()
 
   return (
     <>
@@ -42,7 +44,7 @@ const PostCardList = ({ postList }: PostCardListProps) => {
       {postList[2] && (
         <S.PostMainCard>
           <PostCard
-            isBlock={isShowEditModal}
+            isBlock={isShowEditModal || isShowPostDetail}
             authUserProfile={postList[2].author.image}
             thumbnail={postList[2].title.thumbnail}
             content={postList[2].title.content}
