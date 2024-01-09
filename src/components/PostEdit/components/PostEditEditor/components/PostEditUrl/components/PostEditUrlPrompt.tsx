@@ -103,7 +103,7 @@ const PostEditUrlPrompt = ({
             onClick={handleSubmitUrl}
             disabled={isErrorUrl}
           >
-            {"등록"}
+            {"생성"}
           </GS.ModalButton>
         </GS.ModalBottomActions>
       </S.PostEditUrlPromptLayout>

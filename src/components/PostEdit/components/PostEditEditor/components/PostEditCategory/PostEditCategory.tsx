@@ -1,24 +1,21 @@
 import useCategoryList from "@/hooks/useCategoryList"
 import * as S from "./PostEditCategory.Styles"
-import { useState } from "react"
-import { Category } from "@/Pages/Home/components/CategoryBar/CategoryBar.Types"
-import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
+import * as GS from "@/components/CategoryList/CategoryList.Styles"
+import { Category } from "@/pages/Home/components/CategoryBar/CategoryBar.Types"
+import {
+  EditPostState,
+  HandleEditPost,
+} from "@/components/PostEdit/PostEdit.Types"
 
 interface PostEditCategoryProps {
   onEdit: HandleEditPost
+  postData: EditPostState
 }
 
-const PostEditCategory = ({ onEdit }: PostEditCategoryProps) => {
+const PostEditCategory = ({ onEdit, postData }: PostEditCategoryProps) => {
   const categoryList = useCategoryList()
-  const [selectedCategory, setSelectedCategory] = useState<Category>({
-    name: "",
-    id: "",
-    description: "",
-  })
 
   const handleClickCategory = (category: Category) => {
-    setSelectedCategory(category)
-
     onEdit({
       type: "category",
       value: category.id,
@@ -30,22 +27,17 @@ const PostEditCategory = ({ onEdit }: PostEditCategoryProps) => {
       <S.PostEditCategoryTitle>카테고리</S.PostEditCategoryTitle>
       <S.PostEditCategoryList>
         {categoryList &&
-          categoryList.map((category) => {
-            if (category.id === "all") {
-              return
-            }
-
-            return (
-              <S.PostEditCategoryItem
-                $isSelect={category.id === selectedCategory?.id}
-                onClick={() => {
-                  handleClickCategory(category)
-                }}
-              >
-                {category.name}
-              </S.PostEditCategoryItem>
-            )
-          })}
+          categoryList.map((category) => (
+            <GS.CategoryBarListItem
+              key={category.id}
+              $isSelect={category.id === postData.category}
+              onClick={() => {
+                handleClickCategory(category)
+              }}
+            >
+              {category.name}
+            </GS.CategoryBarListItem>
+          ))}
       </S.PostEditCategoryList>
     </S.PostEditCategoryLayout>
   )

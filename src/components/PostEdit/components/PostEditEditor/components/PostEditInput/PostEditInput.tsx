@@ -2,6 +2,7 @@ import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditInput.Styles"
 import { ChangeEvent } from "react"
 import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
+
 interface PostEditInputProps {
   text: string
   onEdit: HandleEditPost
