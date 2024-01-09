@@ -28,9 +28,5 @@ export const PostCardContentText = styled.h6<{ $textPercent?: string }>`
   white-space: pre-wrap;
 
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  ${({ theme }) => theme.scrollBarNone}
 `
