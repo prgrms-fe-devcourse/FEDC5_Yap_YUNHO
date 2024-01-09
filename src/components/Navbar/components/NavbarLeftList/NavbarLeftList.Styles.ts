@@ -35,5 +35,5 @@ export const NavbarLogo = styled.div`
 
   background-image: url(${logo});
   background-size: cover;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zIndex.navbarLogo};
 `
