@@ -1,10 +1,10 @@
 import * as S from "./Signup.styles"
-import SignupForm from "./components/SignupForm"
+import FirstSignupForm from "./components/FirstSignupForm"
 
 export default function Signup() {
   return (
     <S.SignupLayout>
-      <SignupForm />
+      <FirstSignupForm />
     </S.SignupLayout>
   )
 }

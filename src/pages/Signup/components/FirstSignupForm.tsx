@@ -1,11 +1,14 @@
-import { ChangeEvent, useState, useEffect } from "react"
-import * as S from "./SignupForm.Styles"
+import { ChangeEvent, useState, useEffect, FormEvent } from "react"
+import * as S from "./FirstSignupForm.Styles"
 import { theme } from "@/styles/theme"
 import SignupInputContainer from "./SignupInput/SignupInputContainer"
 import type { RequiredUserInfo } from "./types"
 import { getNewErrorMessage } from "../utils/validateInput"
+import { useNavigate } from "react-router-dom"
+import { API } from "@/apis/Api"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
-const SignupForm = () => {
+const FirstSignupForm = () => {
   const [requiredUserInfo, setRequiredUserInfo] = useState({
     email: "",
     nickname: "",
@@ -20,13 +23,33 @@ const SignupForm = () => {
     passwordCheck: "동일한 비밀번호를 입력해주세요.",
   })
 
-  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+  const navigate = useNavigate()
+  const { setLogin } = useAuthUserStore()
+
+  const handleRequiredUserInfo = (event: ChangeEvent<HTMLInputElement>) => {
     const { target } = event
 
     setRequiredUserInfo((prevState) => ({
       ...prevState,
       [target.name]: target.value,
     }))
+  }
+
+  const handleSignup = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    API.post("/signup", {
+      email: requiredUserInfo.email,
+      fullName: requiredUserInfo.nickname,
+      password: requiredUserInfo.password,
+    })
+      .then((res) => {
+        const { user, token } = res.data
+        setLogin(user, token)
+      })
+      .catch(() => {
+        alert("이미 가입된 이메일입니다.")
+      })
   }
 
   const validateUserInfo = (userInfo: RequiredUserInfo) => {
@@ -50,15 +73,10 @@ const SignupForm = () => {
   return (
     <S.SignupFormLayout>
       <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
-      <S.SignupFormContainer
-        onSubmit={(e) => {
-          e.preventDefault()
-          alert("회원가입 시도!")
-        }}
-      >
+      <S.SignupFormContainer onSubmit={handleSignup}>
         <SignupInputContainer
           requiredUserInfo={requiredUserInfo}
-          onChange={handleInput}
+          onChange={handleRequiredUserInfo}
           errorMessage={errorMessage}
         />
         <S.ButtonContainer>
@@ -66,7 +84,7 @@ const SignupForm = () => {
             $width={18}
             $color={theme.colors.sub_alt}
             onClick={() => {
-              alert("회원가입 취소!")
+              navigate("/login")
             }}
             type="button"
           >
@@ -91,4 +109,4 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+export default FirstSignupForm
