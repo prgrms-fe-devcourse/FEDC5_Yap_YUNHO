@@ -43,7 +43,6 @@ button {
   cursor: pointer;
 }
 
-
 input{
   border : none;
   outline: none;

@@ -1,55 +1,45 @@
 import styled from "styled-components"
 
-export const LoginComponentLayout = styled.div`
-  width: 100%;
-  height: 100%;
+export const SignupFormLayout = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  color: ${({ theme }) => theme.colors.white};
-  @media screen and (max-width: 900px) {
-    min-height: 33rem;
-    height: 50%;
-  }
-`
-
-export const LoginComponentTitle = styled.h2`
-  font-size: ${({ theme }) => theme.fontSizes.large};
-  text-align: center;
-  min-width: 2rem;
-`
-export const LoginForm = styled.form`
   width: 50rem;
-  height: 28rem;
+  height: 50rem;
+  color: ${({ theme }) => theme.colors.white};
+`
+export const SignupFormTitle = styled.h2`
+  height: 2rem;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+`
+export const SignupFormContainer = styled.div`
+  width: 100%;
+
+  height: 100%;
 `
 
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   position: relative;
+  width: 100%;
   height: 10rem;
-  gap: 2rem;
 `
-
-export const Button = styled.button<{ $color: string }>`
-  width: 53%;
+export const Button = styled.button<{ $width: number; $color: string }>`
+  width: ${({ $width }) => `${$width}rem`};
   height: 50%;
   padding: 1rem 0;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ $color }) => $color};
 
-  border-radius: ${({ theme }) => theme.radius.size4};
+  border-radius: ${({ theme }) => theme.radius.size8};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   &:hover {
     opacity: 0.7;
