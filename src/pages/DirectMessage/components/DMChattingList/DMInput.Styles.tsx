@@ -7,7 +7,7 @@ export const DMInputLayout = styled.div`
   justify-content: center;
 `
 
-export const DMInputContainer = styled.div`
+export const DMInputForm = styled.form`
   width: 90%;
   height: 6rem;
   border-radius: ${({ theme }) => theme.radius.size12};

@@ -9,6 +9,7 @@ import DMInput from "./DMInput"
 const DMChattingList = () => {
   const { id } = useParams()
   const [selectedMessageList, setSelectedMessageList] = useState([])
+  console.log(selectedMessageList)
 
   const fetchMessageList = useCallback(async () => {
     return await AUTH_API.get(`/messages?userId=${id}`)
@@ -40,7 +41,7 @@ const DMChattingList = () => {
               </DMMessageItem>
             ))}
           </S.DMMessageList>
-          <DMInput />
+          <DMInput id={id} />
         </>
       )}
     </S.DMChattingListLayout>
