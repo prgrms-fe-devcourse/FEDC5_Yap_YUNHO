@@ -6,7 +6,7 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp"
 import VolumeOffIcon from "@mui/icons-material/VolumeOff"
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled"
 import PauseCircleFilledIcon from "@mui/icons-material/PauseCircleFilled"
-import { MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE } from "../../constants/MediaPlayer"
+import { MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE } from "../../constants/MediaPlayer.Constants"
 
 interface MediaPlayerBottomProps {
   isBlock: boolean
