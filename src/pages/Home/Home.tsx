@@ -58,6 +58,7 @@ const Home = () => {
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
   }
+
   return (
     <>
       <S.HomeLayout>
@@ -84,15 +85,19 @@ const Home = () => {
         <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>
 
-      <PostEdit
-        onClose={handleClosePostEdit}
-        isShowModal={isShowEditModal}
-      />
+      {isShowEditModal && (
+        <PostEdit
+          onClose={handleClosePostEdit}
+          isShowModal={isShowEditModal}
+        />
+      )}
 
-      <PostDetail
-        onClose={handleClosePostDetail}
-        isShow={isShowPostDetail}
-      />
+      {isShowPostDetail && (
+        <PostDetail
+          onClose={handleClosePostDetail}
+          isShow={isShowPostDetail}
+        />
+      )}
     </>
   )
 }
