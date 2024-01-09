@@ -23,6 +23,6 @@ export const UserPostFilterButton = styled.button<{
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.point_alt};
-    transition: 0.3s ease-in-out;
+    transition: ${({ theme }) => theme.transition.normal};
   }
 `

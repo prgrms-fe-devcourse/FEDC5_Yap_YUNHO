@@ -20,7 +20,7 @@ export const UserActionButton = styled.button<{
   border-radius: ${({ theme }) => theme.radius.size8};
   background-color: ${({ theme }) => theme.colors.point};
   &:hover {
-    background-color: ${({ theme }) => theme.colors.point_alt};
-    transition: 0.3s ease-in-out;
+    opacity: ${({ theme }) => theme.opacity.normal};
+    transition: ${({ theme }) => theme.transition.normal};
   }
 `
