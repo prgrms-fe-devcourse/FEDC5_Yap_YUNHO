@@ -6,7 +6,7 @@ import LoginInputContainer from "./LoginInput/LoginInputContainer"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
-import type { AllowedInputType } from "./types"
+import type { AllowedInputType } from "../../types"
 import useModal from "@/components/Modal/hooks/useModal"
 import ModalAlert from "@/components/Modal/components/ModalAlert/ModalAlert"
 

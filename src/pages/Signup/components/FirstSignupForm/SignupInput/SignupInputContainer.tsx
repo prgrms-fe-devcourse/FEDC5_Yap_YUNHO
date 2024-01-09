@@ -1,6 +1,6 @@
 import * as S from "./SignupInputContainer.Styles"
 import SignupInputItem from "./SignupInputItem"
-import type { OnChange, RequiredUserInfo } from "../types"
+import type { OnChange, RequiredUserInfo } from "../../../types"
 
 interface SignupInputContainerProp {
   onChange: OnChange

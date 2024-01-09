@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import * as S from "./Input.Styles"
-import type { AllowedInputType } from "../types/index"
+import type { AllowedInputType } from "../../../types/index"
 import VisibilityIcon from "@mui/icons-material/Visibility"
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
 
