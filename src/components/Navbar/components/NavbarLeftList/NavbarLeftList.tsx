@@ -8,7 +8,7 @@ import Search from "@/components/Search/Search"
 
 const NavbarLeftList = () => {
   const navigate = useNavigate()
-  const { showModal, closeModal, isModalToggle } = useModal()
+  const { showModal, closeModal, isShowModal } = useModal()
 
   return (
     <S.NavbarLeftListLayout>
@@ -23,8 +23,9 @@ const NavbarLeftList = () => {
         <SearchIcon />
       </NavbarButton>
       <Modal
-        isShow={isModalToggle}
+        isShow={isShowModal}
         onClose={closeModal}
+        clickAwayEnable={true}
       >
         <Search />
       </Modal>

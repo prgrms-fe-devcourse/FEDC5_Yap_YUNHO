@@ -1,7 +1,6 @@
-import React from "react"
 import * as S from "./SignupForm.Styles"
 import { theme } from "@/styles/theme"
-import SignupInputContainer from "./Input/SignupInputContainer"
+import SignupInputContainer from "./SignupInput/SignupInputContainer"
 
 const SignupForm = () => {
   return (

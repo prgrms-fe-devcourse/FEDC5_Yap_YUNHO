@@ -1,4 +1,4 @@
-import * as S from "./Signup.styles"
+import * as S from "./Signup.Styles"
 import SignupForm from "./components/SignupForm"
 
 export default function Signup() {
