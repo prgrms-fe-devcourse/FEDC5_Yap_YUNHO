@@ -6,7 +6,7 @@ import MediaPlayerSlider from "./components/MediaPlayerPlaySlider/MediaPlayerSli
 import ReactPlayer from "react-player"
 import { ChangePlayer } from "./store/useMediaPlayerStore.Types"
 import MediaPlayerBottom from "./components/MediaPlayerBottom/MediaPlayerBottom"
-import { MEDIA_PLAYER_EMPTY_URL_KEYWORD } from "./constants/mediaPlayer"
+import { MEDIA_PLAYER_EMPTY_URL_KEYWORD } from "./constants/MediaPlayer"
 
 const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
   const {
