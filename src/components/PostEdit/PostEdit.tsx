@@ -44,7 +44,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
           authorId: fetchPost.author._id,
         })
       })
-  }, [id, isShowModal, navigation, onClose])
+  }, [id, isShowModal, navigation])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
