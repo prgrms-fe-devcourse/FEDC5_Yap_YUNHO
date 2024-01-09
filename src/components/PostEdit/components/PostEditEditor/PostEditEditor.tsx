@@ -40,6 +40,8 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
   } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
 
+  const isNewPost = postData.postId === "newPost"
+
   const handleSubmitPost = () => {
     showConfirm()
   }
@@ -69,7 +71,7 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       return
     }
 
-    if (postData.postId === "newPost") {
+    if (isNewPost) {
       createPost(postData).then((res) => {
         if (res) {
           showComplete()
@@ -128,7 +130,11 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       </S.PostEditEditorLayout>
       <ConfirmModal
         isShow={isShowConfirm}
-        message={POST_EDIT_MODAL_MESSAGE.SUBMIT_CONFIRM}
+        message={
+          isNewPost
+            ? POST_EDIT_MODAL_MESSAGE.SUBMIT_NEW_POST_CONFIRM
+            : POST_EDIT_MODAL_MESSAGE.SUBMIT_UPDATE_POST_CONFIRM
+        }
         onClose={handleCloseConfirm}
       />
 
