@@ -1,6 +1,5 @@
 import { useState } from "react"
 import * as S from "./DMList.Styles"
-import { DMUserListProps } from "../../types"
 import { Conversation } from "@/types"
 import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
@@ -11,8 +10,7 @@ import DMListItem from "./DMListItem"
 const DMList = () => {
   const [selectedChattingId, setSelectedChattingId] = useState("")
   const navigate = useNavigate()
-  const { isLoading, data: DMUserList } = useDMList()
-  console.log(DMUserList)
+  const { data: DMUserList } = useDMList()
 
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
@@ -41,7 +39,7 @@ const DMList = () => {
         </S.DMListNotNoticedNumber>
       </S.DMListInfo>
       <S.DMListContainer>
-        {DMUserList?.map((user: DMUserListProps) => {
+        {DMUserList?.map((user: Conversation) => {
           return (
             <DMListItem
               key={user.createdAt}
@@ -49,7 +47,7 @@ const DMList = () => {
               message={user.message}
               sender={user.sender}
               createdAt={user.createdAt}
-              isSeen={user.isSeen}
+              isSeen={user.seen}
               selectedChattingId={selectedChattingId}
               handleClick={handleClick}
             />
