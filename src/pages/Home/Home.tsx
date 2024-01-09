@@ -10,31 +10,50 @@ import PostContainer from "./components/PostContainer/PostContainer"
 import PostEdit from "@/components/PostEdit/PostEdit"
 import { useNavigate, useParams } from "react-router-dom"
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
+import PostDetail from "@/components/PostDetail/PostDetail"
+import usePostDetailModalStore from "@/components/PostDetail/store/usePostDetailModalStore"
 
 const Home = () => {
+  // 완료 후 제거 예정
+  // Post Edit store 상태
   const { isShowEditModal, showEditModal, closeEditModal } =
     usePostEditModalStore()
-  const { id } = useParams()
+
+  // Post Detail store 상태
+  const { isShowPostDetail, showPostDetail, closePostDetail } =
+    usePostDetailModalStore()
+
+  const { modalName } = useParams()
   const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(INITIAL_CATEGORY)
 
   useEffect(() => {
-    if (!id) {
+    if (!modalName) {
       return
     }
 
-    showEditModal()
+    if (modalName === "postedit") {
+      showEditModal()
+    }
 
+    if (modalName === "postdetail") {
+      showPostDetail()
+    }
     return () => {
       closeEditModal()
     }
-  }, [closeEditModal, id, showEditModal])
+  }, [closeEditModal, modalName, showEditModal, showPostDetail])
 
   const handleClosePostEdit = useCallback(() => {
     closeEditModal()
     navigate("/")
   }, [closeEditModal, navigate])
+
+  const handleClosePostDetail = useCallback(() => {
+    closePostDetail()
+    navigate("/")
+  }, [closePostDetail, navigate])
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
@@ -46,19 +65,33 @@ const Home = () => {
           selectedCategory={selectedCategory}
           onSelected={onSelectedCategory}
         />
-        <button
+        <S.TestButton
           onClick={() => {
             navigate("/postedit/659c181c16a2b736436afca2")
           }}
         >
-          Modal Open
-        </button>
+          Edit Modal
+        </S.TestButton>
+
+        <S.TestButton
+          onClick={() => {
+            navigate("/postdetail/659c181c16a2b736436afca2")
+          }}
+        >
+          Detail Modal
+        </S.TestButton>
+
         <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>
 
       <PostEdit
         onClose={handleClosePostEdit}
         isShowModal={isShowEditModal}
+      />
+
+      <PostDetail
+        onClose={handleClosePostDetail}
+        isShow={isShowPostDetail}
       />
     </>
   )
