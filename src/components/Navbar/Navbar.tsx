@@ -3,27 +3,33 @@ import * as S from "./Navbar.Styles"
 import NavbarLeftList from "./components/NavbarLeftList/NavbarLeftList"
 import NavbarRightList from "./components/NavbarRightList/NavbarRightList"
 
+const checkPathName = (path: string) => {
+  if (path.includes("useredit") || path.includes("signup")) {
+    return false
+  }
+
+  if (path.includes("login")) {
+    return "login"
+  }
+
+  return true
+}
+
 const Navbar = () => {
-  if (!checkPathName(useLocation().pathname)) {
+  const { pathname } = useLocation()
+  const NavbarFlag = checkPathName(pathname)
+  if (!NavbarFlag) {
     return
   }
+
+  const isLoginPage = NavbarFlag === "login"
 
   return (
     <S.NavbarLayout>
       <NavbarLeftList />
-      <NavbarRightList />
+      {!isLoginPage && <NavbarRightList />}
     </S.NavbarLayout>
   )
-}
-
-const checkPathName = (path: string) => {
-  // 404페이지에서도 Navbar를 보여준다 가정
-  switch (path) {
-    case "useredit":
-      return false
-    default:
-      return true
-  }
 }
 
 export default Navbar
