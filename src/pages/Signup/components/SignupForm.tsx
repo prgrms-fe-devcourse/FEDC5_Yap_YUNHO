@@ -14,10 +14,10 @@ const SignupForm = () => {
   })
 
   const [errorMessage, setErrorMessage] = useState({
-    email: "유효한 이메일을 입력해주세요.",
-    nickname: "빈 공백은 입력하면 안됩니다. 닉네임을 입력해주세요.",
-    password: "빈 공백은 입력하면 안됩니다. 비밀번호를 입력해주세요.",
-    passwordCheck: "",
+    email: "이메일을 입력해주세요.",
+    nickname: "닉네임을 입력해주세요.",
+    password: "비밀번호를 입력해주세요.",
+    passwordCheck: "동일한 비밀번호를 입력해주세요.",
   })
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -34,13 +34,17 @@ const SignupForm = () => {
     setErrorMessage(newErrorMessage)
   }
 
-  // useEffect(() => {
-  //   console.log("errorMessage", errorMessage)
-  // }, [errorMessage])
-
   useEffect(() => {
+    if (
+      requiredUserInfo.email === "" &&
+      requiredUserInfo.nickname === "" &&
+      requiredUserInfo.password === "" &&
+      requiredUserInfo.passwordCheck === ""
+    ) {
+      return
+    }
+
     validateUserInfo(requiredUserInfo)
-    // console.log("validate")
   }, [requiredUserInfo])
 
   return (

@@ -8,6 +8,8 @@ const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
  * */
 const NICKNAME_REGEX = /^[a-zA-Z0-9]{4,10}$/
 
+const NICKNAME_MIN_LENGTH = 4
+const NICKNAME_MAX_LENGTH = 10
 const PASSWORD_MIN_LENGTH = 4
 const PASSWORD_MAX_LENGTH = 10
 
@@ -23,7 +25,7 @@ const VALIDATE_INPUT_LIST = {
       return "빈 공백은 입력하면 안됩니다. 닉네임을 입력해주세요."
     }
     if (!NICKNAME_REGEX.test(nickname)) {
-      return "길이는 4에서 10이며, 영문 대소문자와 숫자만 입력해주세요."
+      return `길이는 ${NICKNAME_MIN_LENGTH}에서 ${NICKNAME_MAX_LENGTH}이며, 영문 대소문자와 숫자만 입력해주세요.`
     }
     return ""
   },
