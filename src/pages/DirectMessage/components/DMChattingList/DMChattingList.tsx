@@ -4,6 +4,7 @@ import { AUTH_API } from "@/apis/Api"
 import { useCallback, useEffect, useState } from "react"
 import DMMessageItem from "./DMMessageItem"
 import { Message } from "@/types"
+import DMInput from "./DMInput"
 
 const DMChattingList = () => {
   const { id } = useParams()
@@ -28,16 +29,19 @@ const DMChattingList = () => {
   return (
     <S.DMChattingListLayout>
       {id && (
-        <S.DMMessageList>
-          {selectedMessageList.map((list: Message) => (
-            <DMMessageItem
-              key={list.createdAt}
-              id={id}
-            >
-              {list}
-            </DMMessageItem>
-          ))}
-        </S.DMMessageList>
+        <>
+          <S.DMMessageList>
+            {selectedMessageList.map((list: Message) => (
+              <DMMessageItem
+                key={list.createdAt}
+                id={id}
+              >
+                {list}
+              </DMMessageItem>
+            ))}
+          </S.DMMessageList>
+          <DMInput />
+        </>
       )}
     </S.DMChattingListLayout>
   )

@@ -47,8 +47,11 @@ button {
 input{
   border : none;
   outline: none;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "BMJUA", "Noto Sans KR", sans-serif;
   background-color: ${({ theme }) => theme.colors.white};
+  &::placeholder {
+    font-family: "BMJUA", "Noto Sans KR", sans-serif;
+  }
 }
 
 a{
