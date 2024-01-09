@@ -10,6 +10,7 @@ interface PostCardListProps {
 
 const PostCardList = ({ postList }: PostCardListProps) => {
   const { isShowEditModal } = usePostEditModalStore()
+
   return (
     <>
       {postList[0] && (
