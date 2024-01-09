@@ -12,11 +12,11 @@ const PostCard = ({
   thumbnail,
   content,
   mediaUrl,
+  isNoneProfile,
 }: PostCardProps): React.ReactNode => {
   return (
     <S.PostCardLayout>
-      {/* 이후 Profile은 조건부 렌더링 적용 예정 */}
-      <PostCardUserProfile imgUrl={authUserProfile} />
+      {!isNoneProfile && <PostCardUserProfile imgUrl={authUserProfile} />}
       <PostCardThumbnail imgUrl={thumbnail} />
       <PostCardContent
         content={content}

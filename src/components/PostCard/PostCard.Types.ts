@@ -5,6 +5,7 @@ export interface PostCardProps {
   thumbnail: string
   content: string
   mediaUrl: string
+  isNoneProfile?: boolean
 }
 
 export interface PostCardUserProfileProps {
