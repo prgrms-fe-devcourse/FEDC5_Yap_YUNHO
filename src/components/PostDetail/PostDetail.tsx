@@ -1,4 +1,4 @@
-import * as S from "./PostDetail.Styles"
+import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import Modal from "../Modal/Modal"
 
 interface PostDetailProps {
@@ -13,7 +13,11 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
       onClose={onClose}
       clickAwayEnable={true}
     >
-      <S.PostDetailLayout></S.PostDetailLayout>
+      <GS.PostModalGlobalLayout>
+        <GS.PostModalGlobalContainer></GS.PostModalGlobalContainer>
+        <GS.PostModalGlobalBoundary />
+        <GS.PostModalGlobalContainer></GS.PostModalGlobalContainer>
+      </GS.PostModalGlobalLayout>
     </Modal>
   )
 }

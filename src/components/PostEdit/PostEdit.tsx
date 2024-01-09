@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import * as S from "./PostEdit.Styles"
+import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import PostEditEditor from "./components/PostEditEditor/PostEditEditor"
 import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 import { POST_EDIT_INITIAL_EDIT_POST } from "./constants/PostEdit.Constants"
@@ -73,19 +73,19 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
         onCloseInnerModal={onClose}
         authorId={editPost.authorId}
       >
-        <S.PostEditLayout>
-          <S.PostEditContainer>
+        <GS.PostModalGlobalLayout>
+          <GS.PostModalGlobalContainer>
             <PostEditViewer postData={editPost} />
-          </S.PostEditContainer>
-          <S.PostEditBoundary />
-          <S.PostEditContainer>
+          </GS.PostModalGlobalContainer>
+          <GS.PostModalGlobalBoundary />
+          <GS.PostModalGlobalContainer>
             <PostEditEditor
               onEdit={handleEditPost}
               postData={editPost}
               onClose={onClose}
             />
-          </S.PostEditContainer>
-        </S.PostEditLayout>
+          </GS.PostModalGlobalContainer>
+        </GS.PostModalGlobalLayout>
       </PostEditAuthChecker>
     </Modal>
   )
