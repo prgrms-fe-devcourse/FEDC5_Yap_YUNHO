@@ -29,8 +29,8 @@ export const CategoryBarListItem = styled.li<{ $isSelect: boolean }>`
   user-select: none;
   cursor: pointer;
 
-  transition: all 0.3s;
+  transition: all ${({ theme }) => theme.transition.normal};
   &:hover {
-    opacity: 0.5;
+    opacity: ${({ theme }) => theme.opacity.normal};
   }
 `

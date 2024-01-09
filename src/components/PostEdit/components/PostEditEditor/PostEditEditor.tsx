@@ -9,19 +9,20 @@ import useModal from "@/components/Modal/hooks/useModal"
 import createPost from "../../apis/createPost"
 import { useState } from "react"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-import { useNavigate } from "react-router-dom"
 import updatePost from "../../apis/updatePost"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import checkCategoryValidation from "../../util/checkCategoryValidation"
 import checkUrlValidation from "../../util/checkUrlValidation"
 import checkContentValidation from "../../util/checkContentValidation"
+import { POST_EDIT_MODAL_MESSAGE } from "../../constants/PostEdit.Constants"
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
+  onClose: () => void
   postData: EditPostState
 }
 
-const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
+const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
   const {
     isShowModal: isShowConfirm,
     showModal: showConfirm,
@@ -37,8 +38,9 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
     showModal: showComplete,
     closeModal: closeComplete,
   } = useModal()
-  const navigation = useNavigate()
   const [alertMessage, setAlertMessage] = useState("")
+
+  const isNewPost = postData.postId === "newPost"
 
   const handleSubmitPost = () => {
     showConfirm()
@@ -51,7 +53,6 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
       return
     }
 
-    // 각각의 validation 추가 예정
     if (!checkCategoryValidation(postData.category)) {
       setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CATEGORY)
       showAlert()
@@ -70,7 +71,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
       return
     }
 
-    if (postData.postId === "newPost") {
+    if (isNewPost) {
       createPost(postData).then((res) => {
         if (res) {
           showComplete()
@@ -83,6 +84,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
           return
         }
       })
+      return
     }
 
     if (postData.postId) {
@@ -97,12 +99,13 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
           return
         }
       })
+      return
     }
   }
 
   const handleCloseComplete = () => {
     closeComplete()
-    navigation("/")
+    onClose()
   }
 
   return (
@@ -127,7 +130,11 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
       </S.PostEditEditorLayout>
       <ConfirmModal
         isShow={isShowConfirm}
-        message={"게시물을 등록 하시겠나요?"}
+        message={
+          isNewPost
+            ? POST_EDIT_MODAL_MESSAGE.SUBMIT_NEW_POST_CONFIRM
+            : POST_EDIT_MODAL_MESSAGE.SUBMIT_UPDATE_POST_CONFIRM
+        }
         onClose={handleCloseConfirm}
       />
 
@@ -139,7 +146,7 @@ const PostEditEditor = ({ onEdit, postData }: PostEditEditorProps) => {
 
       <AlertModal
         isShow={isShowComplete}
-        alertMessage={"완료되었습니다!"}
+        alertMessage={POST_EDIT_MODAL_MESSAGE.SUBMIT_COMPLETE}
         onClose={handleCloseComplete}
       />
     </>

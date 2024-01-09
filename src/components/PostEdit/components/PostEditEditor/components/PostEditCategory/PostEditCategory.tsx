@@ -1,7 +1,7 @@
 import useCategoryList from "@/hooks/useCategoryList"
 import * as S from "./PostEditCategory.Styles"
 import * as GS from "@/components/CategoryList/CategoryList.Styles"
-import { Category } from "@/Pages/Home/components/CategoryBar/CategoryBar.Types"
+import { Category } from "@/pages/Home/components/CategoryBar/CategoryBar.Types"
 import {
   EditPostState,
   HandleEditPost,
@@ -27,23 +27,17 @@ const PostEditCategory = ({ onEdit, postData }: PostEditCategoryProps) => {
       <S.PostEditCategoryTitle>카테고리</S.PostEditCategoryTitle>
       <S.PostEditCategoryList>
         {categoryList &&
-          categoryList.map((category) => {
-            if (category.id === "all") {
-              return
-            }
-
-            return (
-              <GS.CategoryBarListItem
-                key={category.id}
-                $isSelect={category.id === postData.category}
-                onClick={() => {
-                  handleClickCategory(category)
-                }}
-              >
-                {category.name}
-              </GS.CategoryBarListItem>
-            )
-          })}
+          categoryList.map((category) => (
+            <GS.CategoryBarListItem
+              key={category.id}
+              $isSelect={category.id === postData.category}
+              onClick={() => {
+                handleClickCategory(category)
+              }}
+            >
+              {category.name}
+            </GS.CategoryBarListItem>
+          ))}
       </S.PostEditCategoryList>
     </S.PostEditCategoryLayout>
   )
