@@ -2,7 +2,7 @@ import { useRef, FormEvent } from "react"
 import * as S from "./LoginComponent.Styles"
 import { theme } from "@/styles/theme"
 
-import LoginInputContainer from "./Input/LoginInputContainer"
+import LoginInputContainer from "./LoginInput/LoginInputContainer"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
