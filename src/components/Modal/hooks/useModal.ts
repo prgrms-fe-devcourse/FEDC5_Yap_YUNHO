@@ -1,19 +1,15 @@
-import { useState } from "react"
-import useModalDepth from "../store/useModalDepth"
+import { useCallback, useState } from "react"
 
 const useModal = () => {
   const [isShowModal, setIsShowModal] = useState(false)
-  const { increaseModal, decreaseModal } = useModalDepth()
 
-  const showModal = () => {
+  const showModal = useCallback(() => {
     setIsShowModal(true)
-    increaseModal()
-  }
+  }, [])
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsShowModal(false)
-    decreaseModal()
-  }
+  }, [])
 
   return {
     isShowModal,

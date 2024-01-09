@@ -1,5 +1,5 @@
-import { MIN_LENGTH } from "../../constants/passwordValidation"
+import { PASSWORD_MIN_LENGTH } from "../../constants/passwordValidation"
 
 export const validatePasswordInput = (password: string) => {
-  return password.length >= MIN_LENGTH
+  return password.length >= PASSWORD_MIN_LENGTH
 }
