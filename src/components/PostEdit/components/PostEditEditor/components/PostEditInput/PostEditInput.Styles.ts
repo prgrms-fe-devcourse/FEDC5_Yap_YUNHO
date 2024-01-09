@@ -3,10 +3,14 @@ import styled from "styled-components"
 export const PostEditInputLayout = styled.div`
   width: 40rem;
   height: 14rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const PostEditInputTitle = styled.h6`
-  width: 100%;
+  width: 82%;
   height: 4rem;
 
   display: flex;
@@ -17,16 +21,17 @@ export const PostEditInputTitle = styled.h6`
 `
 
 export const PostEditInput = styled.textarea`
-  width: 100%;
-  height: 10rem;
-  padding: 1rem;
-
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  text-align: center;
+  width: 82%;
+  height: 12rem;
+  padding: 1.6rem;
 
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
   border-radius: ${({ theme }) => theme.radius.size8};
+
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  line-height: 1.4;
+  letter-spacing: 0.4px;
 
   ${({ theme }) => theme.scrollBarNone}
 

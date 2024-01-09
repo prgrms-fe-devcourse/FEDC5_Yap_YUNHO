@@ -34,7 +34,6 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
   }
 
   const handleRemoveUrl = (response: boolean) => {
-    console.log(response)
     if (response) {
       onEdit({
         type: "mediaUrl",
