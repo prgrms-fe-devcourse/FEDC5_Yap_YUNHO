@@ -52,6 +52,7 @@ export const PostEditUrlPromptInput = styled.textarea`
   text-align: center;
 
   resize: none;
+  ${({ theme }) => theme.scrollBarNone}
 `
 
 export const PostEditRemoveInputLayout = styled.div`
