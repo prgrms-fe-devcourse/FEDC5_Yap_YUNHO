@@ -18,4 +18,5 @@ export interface DMUserListProps {
 export interface MessageProps {
   children: Message
   id?: string
+  scrollToBottom?: () => void
 }

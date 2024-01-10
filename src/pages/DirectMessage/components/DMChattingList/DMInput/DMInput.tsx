@@ -6,9 +6,10 @@ import SendIcon from "@mui/icons-material/Send"
 
 interface DMInputProps {
   id: string
+  scrollToBottom: () => void
 }
 
-const DMInput = ({ id }: DMInputProps) => {
+const DMInput = ({ id, scrollToBottom }: DMInputProps) => {
   const [message, setMessage] = useState("")
   const { mutate: sendMessage } = useSendMessage()
 
@@ -23,8 +24,11 @@ const DMInput = ({ id }: DMInputProps) => {
       message,
       receiver: id,
     }
-    sendMessage(messageSubmission)
+    await sendMessage(messageSubmission)
     setMessage("")
+    setTimeout(() => {
+      scrollToBottom()
+    }, 200)
   }
 
   return (

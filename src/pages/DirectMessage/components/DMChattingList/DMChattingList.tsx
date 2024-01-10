@@ -3,7 +3,7 @@ import * as S from "./DMChattingList.Styles"
 
 import { Message } from "@/types"
 import useChattingList from "../../hooks/useChattingList"
-import { useEffect, useRef, useCallback } from "react"
+import { useRef } from "react"
 import DMInput from "./DMInput/DMInput"
 import DMMessageItem from "./DMMessage/DMMessageItem"
 
@@ -12,16 +12,11 @@ const DMChattingList = () => {
   const { data: MessageList } = useChattingList(id || "")
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const scrollToBottom = useCallback(() => {
+  const scrollToBottom = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
-  }, [])
-
-  useEffect(() => {
-    scrollToBottom()
-    // 문자가 추가가 될때만 스크롤 맨 아래로 이동
-  }, [MessageList?.length, scrollToBottom])
+  }
 
   return (
     <S.DMChattingListLayout>
@@ -32,12 +27,16 @@ const DMChattingList = () => {
               <DMMessageItem
                 key={list.createdAt}
                 id={id}
+                scrollToBottom={scrollToBottom}
               >
                 {list}
               </DMMessageItem>
             ))}
           </S.DMMessageList>
-          <DMInput id={id} />
+          <DMInput
+            id={id}
+            scrollToBottom={scrollToBottom}
+          />
         </>
       )}
     </S.DMChattingListLayout>
