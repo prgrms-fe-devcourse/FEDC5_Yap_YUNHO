@@ -8,7 +8,8 @@ import PostCardUserProfile from "./components/PostCardUserProfile/PostCardUserPr
 const PostCard = ({
   textPercent,
   isBlock = false,
-  authUserProfile,
+  // 이후 기본 유저 프로필 사진으로 대체
+  authUserProfile = "",
   thumbnail,
   content,
   mediaUrl,

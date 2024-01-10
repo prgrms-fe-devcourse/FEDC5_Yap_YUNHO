@@ -17,7 +17,7 @@ interface PostDetailProps {
 const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
   const { id } = useParams()
 
-  const { data } = useQuery({
+  const { data: post } = useQuery({
     queryKey: [POST_DETAIL_QUERY_KEY, id],
     queryFn: async () => {
       return await API.get(`/posts/${id}`).then((res) => res.data)
@@ -37,24 +37,22 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
     },
   })
 
-  console.log(data)
-
   return (
     <Modal
       isShow={isShow}
       onClose={onClose}
       clickAwayEnable={true}
     >
-      {data && (
+      {post && (
         <GS.PostModalGlobalLayout>
           <GS.PostModalGlobalContainer>
-            <PostDetailViewer />
+            <PostDetailViewer post={post} />
           </GS.PostModalGlobalContainer>
           <GS.PostModalGlobalBoundary />
           <GS.PostModalGlobalContainer>
             <PostDetailInfo
               onClose={onClose}
-              post={data}
+              post={post}
             />
           </GS.PostModalGlobalContainer>
         </GS.PostModalGlobalLayout>
