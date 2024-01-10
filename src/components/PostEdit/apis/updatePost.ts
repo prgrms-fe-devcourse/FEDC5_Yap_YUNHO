@@ -16,8 +16,7 @@ const updatePost = (updatedData: EditPostState) => {
   const response = AUTH_API.put("/posts/update", updatedPostBody)
     .then(() => true)
     .catch((e) => {
-      console.error(e)
-      return false
+      throw Error(e)
     })
 
   return response

@@ -15,6 +15,12 @@ import checkCategoryValidation from "../../util/checkCategoryValidation"
 import checkUrlValidation from "../../util/checkUrlValidation"
 import checkContentValidation from "../../util/checkContentValidation"
 import { POST_EDIT_MODAL_MESSAGE } from "../../constants/PostEdit.Constants"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+
+const MUTATION_KEY = {
+  UPDATE_POST: "IT_IS_UPDATE_KEY_12361278467821",
+  CREATE_POST: "IT_IS_CREATE_KEY_64895712389571",
+}
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
@@ -39,6 +45,33 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
     closeModal: closeComplete,
   } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
+
+  const queryClient = useQueryClient()
+  const updateMutate = useMutation({
+    mutationKey: [MUTATION_KEY.UPDATE_POST],
+    mutationFn: updatePost,
+    onSuccess: () => {
+      queryClient.refetchQueries()
+      showComplete()
+    },
+    onError: () => {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_UPDATE_POST)
+      showAlert()
+    },
+  })
+
+  const createMutate = useMutation({
+    mutationKey: [MUTATION_KEY.CREATE_POST],
+    mutationFn: createPost,
+    onSuccess: () => {
+      queryClient.refetchQueries()
+      showComplete()
+    },
+    onError: () => {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_NEW_POST)
+      showAlert()
+    },
+  })
 
   const isNewPost = postData.postId === "newPost"
 
@@ -72,33 +105,12 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
     }
 
     if (isNewPost) {
-      createPost(postData).then((res) => {
-        if (res) {
-          showComplete()
-          return
-        }
-
-        if (!res) {
-          setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_NEW_POST)
-          showAlert()
-          return
-        }
-      })
+      createMutate.mutate(postData)
       return
     }
 
     if (postData.postId) {
-      updatePost(postData).then((res) => {
-        if (res) {
-          showComplete()
-        }
-
-        if (!res) {
-          setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_UPDATE_POST)
-          showAlert()
-          return
-        }
-      })
+      updateMutate.mutate(postData)
       return
     }
   }
