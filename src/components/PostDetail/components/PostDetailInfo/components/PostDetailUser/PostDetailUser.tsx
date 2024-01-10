@@ -1,5 +1,5 @@
 import { Post } from "@/types"
-import * as S from "./PostDetailUser"
+import * as S from "./PostDetailUser.Styles"
 
 interface PostDetailInfoUserProps {
   post: Post
