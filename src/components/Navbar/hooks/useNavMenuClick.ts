@@ -11,8 +11,7 @@ const useMenuClick = () => {
   const handleMenuClick: HandleMenuClickProps = (menu) => {
     switch (menu) {
       case "로그인":
-        // navigate("/login")
-        handleLogin()
+        navigate("/login")
         break
       case "로그아웃":
         handleLogout()
@@ -29,17 +28,6 @@ const useMenuClick = () => {
       default:
         break
     }
-  }
-
-  const handleLogin = async () => {
-    await API.post("login", {
-      email: "gnsdh8616@gmail.com",
-      password: "gch220874!",
-    }).then((res) => {
-      const { user, token } = res.data
-      setLogin(user, token)
-      authToken.setToken(token)
-    })
   }
 
   const handleLogout = async () => {
