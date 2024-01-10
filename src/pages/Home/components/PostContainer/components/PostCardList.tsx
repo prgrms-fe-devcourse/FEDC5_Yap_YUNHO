@@ -5,6 +5,9 @@ import { Post } from "@/types"
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 import usePostDetailModalStore from "@/components/PostDetail/store/usePostDetailModalStore"
 import { OnNavigatePostDetail } from "@/components/PostCard/PostCard.Types"
+import { useNavigate, useParams } from "react-router-dom"
+import { useCallback, useEffect } from "react"
+import PostDetail from "@/components/PostDetail/PostDetail"
 
 interface PostCardListProps {
   postList: Post[] | null[]
@@ -12,11 +15,29 @@ interface PostCardListProps {
 
 const PostCardList = ({ postList }: PostCardListProps) => {
   const { isShowEditModal } = usePostEditModalStore()
-  const { isShowPostDetail } = usePostDetailModalStore()
+  const { isShowPostDetail, showDetailModal, closeDetailModal } =
+    usePostDetailModalStore()
+  const { modalName } = useParams()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!modalName) {
+      return
+    }
+
+    if (modalName === "postdetail") {
+      showDetailModal()
+    }
+  }, [modalName, showDetailModal])
 
   const handleNavigatePostDetail: OnNavigatePostDetail = (postId) => {
-    console.log(postId)
+    navigate(`/postdetail/${postId}`)
   }
+
+  const handleClosePostDetail = useCallback(() => {
+    closeDetailModal()
+    navigate("/")
+  }, [closeDetailModal, navigate])
 
   return (
     <>
@@ -86,6 +107,13 @@ const PostCardList = ({ postList }: PostCardListProps) => {
             isBlock={true}
           />
         </S.PostSmallCard>
+      )}
+
+      {isShowPostDetail && (
+        <PostDetail
+          onClose={handleClosePostDetail}
+          isShow={isShowPostDetail}
+        />
       )}
     </>
   )
