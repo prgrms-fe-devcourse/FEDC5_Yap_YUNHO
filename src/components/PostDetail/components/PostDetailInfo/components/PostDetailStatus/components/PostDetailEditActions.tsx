@@ -1,12 +1,16 @@
-import { useNavigate } from "react-router-dom"
 import * as S from "./PostDetailEditActions.Styles"
 import { Post } from "@/types"
+import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import deletePost from "@/components/PostDetail/apis/deletePost"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
-import { useState } from "react"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
+import {
+  COMPLETE_MODAL_MESSAGE,
+  CONFIRM_MODAL_MESSAGE,
+} from "@/constants/modalMessage"
+import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const MUTATION_KEY_DELETE_POST = "IT_IS_DELETE_MUTATION_KEY_41728461278632781"
 
@@ -31,7 +35,6 @@ const PostDetailEditActions = ({
   } = useModal()
   const { isShowModal: isShowComplete, showModal: showComplete } = useModal()
 
-  const [alertMessage, setAlertMessage] = useState("")
   const navigate = useNavigate()
 
   const queryClient = useQueryClient()
@@ -40,11 +43,9 @@ const PostDetailEditActions = ({
     mutationFn: deletePost,
     onSuccess: () => {
       queryClient.refetchQueries()
-      setAlertMessage("정상적으로 삭제되었습니다!")
       showComplete()
     },
     onError: () => {
-      setAlertMessage("게시물 삭제에 실패하였습니다! 다시 시도해주세요!")
       showAlert()
     },
   })
@@ -82,18 +83,18 @@ const PostDetailEditActions = ({
       <ConfirmModal
         isShow={isShowConfirm}
         onClose={handleConfirmDeletePost}
-        message="해당 게시물을 삭제하시겠나요?"
+        message={CONFIRM_MODAL_MESSAGE.DELETE_CONFIRM}
       />
 
       <AlertModal
         isShow={isShowAlert}
-        alertMessage={alertMessage}
+        alertMessage={POST_EDIT_ERROR_MESSAGE.DELETE_ERROR}
         onClose={closeAlert}
       />
 
       <AlertModal
         isShow={isShowComplete}
-        alertMessage={"삭제 되었습니다!"}
+        alertMessage={COMPLETE_MODAL_MESSAGE.DELETE_COMPLETE}
         onClose={handleCompleteDelete}
       />
     </>
