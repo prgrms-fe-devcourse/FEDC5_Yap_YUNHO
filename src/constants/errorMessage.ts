@@ -15,4 +15,7 @@ export const POST_EDIT_ERROR_MESSAGE = {
   SUBMIT_VALIDATION_CONTENT: "올바른 제목을 입력해 주세요~",
 
   DELETE_ERROR: "게시물 삭제에 실패하였습니다! 다시 시도해주세요!",
+
+  LIKE_ERROR: "잠시 후 다시 시도해주세요!",
+  UN_ERROR: "잠시 후 다시 시도해주세요!",
 }

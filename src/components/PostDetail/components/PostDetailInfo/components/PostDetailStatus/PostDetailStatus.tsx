@@ -7,6 +7,10 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt"
 import LinkIcon from "@mui/icons-material/Link"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { likePost } from "@/components/PostDetail/apis/likePost"
+import useModal from "@/components/Modal/hooks/useModal"
+import { useState } from "react"
+import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
+import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
 const MUTATION_KEY = {
   LIKE_POST_KEY: "IT_IS_LIKE_MUTATION_KEY_546786723746238",
@@ -27,22 +31,24 @@ const PostDetailStatus = ({
   isLogin,
   onClose,
 }: PostDetailStatusProps) => {
+  const { isShowModal, closeModal, showModal } = useModal()
+  const [alertMessage, setAlertMessage] = useState("")
   const queryClient = useQueryClient()
   const likeMutate = useMutation({
     mutationKey: [MUTATION_KEY.LIKE_POST_KEY],
     mutationFn: likePost,
     onSuccess: () => {
       queryClient.refetchQueries()
-      console.log("라이크 성공")
     },
     onError: () => {
-      console.log("라이크 실패")
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.LIKE_ERROR)
+      showModal()
     },
   })
 
   const { likes } = post
 
-  const isMyLikePost = post.likes.some(
+  const MyLikePost = post.likes.filter(
     (likeData) => likeData.user === authUser._id,
   )
 
@@ -51,7 +57,7 @@ const PostDetailStatus = ({
       return
     }
 
-    if (isMyLikePost) {
+    if (MyLikePost) {
       return
     }
 
@@ -62,10 +68,10 @@ const PostDetailStatus = ({
       <S.PostDetailStatus>
         <S.PostDetailStatusActions>
           <S.PostDetailLike
-            $isMyLikePost={isMyLikePost}
+            $isMyLikePost={!!MyLikePost}
             onClick={handleClickLikeButton}
           >
-            {isMyLikePost ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+            {MyLikePost ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
 
             {convertFollowCount(likes.length)}
           </S.PostDetailLike>
@@ -79,6 +85,12 @@ const PostDetailStatus = ({
           />
         )}
       </S.PostDetailStatus>
+
+      <AlertModal
+        isShow={isShowModal}
+        alertMessage={alertMessage}
+        onClose={closeModal}
+      />
     </>
   )
 }
