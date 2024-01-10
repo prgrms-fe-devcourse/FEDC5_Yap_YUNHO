@@ -38,6 +38,8 @@ const useChattingList = (userId: string) => {
     queryFn: () => fetchMessage(userId),
     initialData: [],
     refetchInterval: 1000, // 재 요청
+    gcTime: Infinity,
+    staleTime: Infinity,
   })
 
   return { data }

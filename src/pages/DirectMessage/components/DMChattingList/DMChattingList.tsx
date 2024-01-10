@@ -13,14 +13,14 @@ const DMChattingList = () => {
 
   const scrollToBottom = useCallback(() => {
     if (scrollRef.current) {
-      console.log(scrollRef.current.scrollHeight)
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
   }, [])
 
   useEffect(() => {
     scrollToBottom()
-  }, [scrollToBottom])
+    // 문자가 추가가 될때만 스크롤 맨 아래로 이동
+  }, [MessageList?.length, scrollToBottom])
 
   return (
     <S.DMChattingListLayout>
@@ -36,7 +36,10 @@ const DMChattingList = () => {
               </DMMessageItem>
             ))}
           </S.DMMessageList>
-          <DMInput id={id} />
+          <DMInput
+            id={id}
+            onChildSubmit={scrollToBottom}
+          />
         </>
       )}
     </S.DMChattingListLayout>
