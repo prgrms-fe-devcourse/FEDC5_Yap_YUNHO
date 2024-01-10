@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { createJSONStorage, devtools, persist } from "zustand/middleware"
+import { createJSONStorage, persist } from "zustand/middleware"
 import { User } from "../types"
 import { AUTH_USER_INITIAL_USER_DATA } from "../constants/stores"
 import authToken from "./authToken"
@@ -15,7 +15,7 @@ interface AuthUserStore {
 
 const useAuthUserStore = create<AuthUserStore>()(
   persist(
-    devtools((set) => ({
+    (set) => ({
       isLoggedIn: false,
       user: AUTH_USER_INITIAL_USER_DATA,
 
@@ -33,7 +33,7 @@ const useAuthUserStore = create<AuthUserStore>()(
           user: AUTH_USER_INITIAL_USER_DATA,
         }))
       },
-    })),
+    }),
     {
       name: PERSIST_STORAGE_KEY,
       storage: createJSONStorage(() => sessionStorage),

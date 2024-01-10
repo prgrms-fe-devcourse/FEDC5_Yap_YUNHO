@@ -6,7 +6,6 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 export const QUERY_KEY_GET_MESSAGELIST = "GET_MESSAGELIST"
 
 const fetchMessage = async (userId: string, myId: string) => {
-  console.log(myId)
   if (!userId) {
     return []
   }
