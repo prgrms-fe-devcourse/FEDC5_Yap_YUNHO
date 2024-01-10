@@ -6,7 +6,7 @@ const NavbarMenuItem = ({ children, handleMenuClick }: NavbarMenuProps) => {
   return (
     <S.NavbarMenuContainer>
       <Button
-        $fontSize={"1.6rem"}
+        $fontSize={"2rem"}
         onClick={() => {
           // string | undefined 문제..
           if (!(typeof children === "string")) {
