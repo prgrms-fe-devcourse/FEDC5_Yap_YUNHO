@@ -29,7 +29,6 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 100%;
   height: 4rem;
 
@@ -50,13 +49,13 @@ export const Button = styled.button<{
   border-radius: ${({ theme }) => theme.radius.size8};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  transition: all 0.3s ease-in-out;
+  transition: ${({ theme }) => theme.transition.normal};
 
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   &:hover {
-    opacity: 0.7;
-    transition: opacity 0.3s ease-in-out;
+    opacity: ${({ theme }) => theme.opacity.high};
+    transition: ${({ theme }) => theme.transition.normal};
   }
   &:not(:disabled) {
     background-color: ${({ $color }) => $color};

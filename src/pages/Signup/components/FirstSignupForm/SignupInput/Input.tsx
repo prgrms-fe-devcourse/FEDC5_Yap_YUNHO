@@ -14,18 +14,8 @@ interface InputProp {
   onChange?: OnChange
 }
 
-type InputTypeList = {
-  [key in AllowedInputType]: string
-}
-
 const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
   const [isVisible, setIsVisible] = useState(false)
-
-  const inputTypeList: InputTypeList = {
-    email: "text",
-    nickname: "text",
-    password: "password",
-  }
 
   const handleVisible = () => {
     setIsVisible(!isVisible)
@@ -37,7 +27,7 @@ const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
       case "nickname":
         return (
           <S.Input
-            type={inputTypeList[type]}
+            type="text"
             name={name}
             value={value}
             placeholder={placeholder}
@@ -48,7 +38,7 @@ const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
         return (
           <>
             <S.Input
-              type={isVisible ? "text" : inputTypeList[type]}
+              type={isVisible ? "text" : "password"}
               name={name}
               value={value}
               placeholder={placeholder}

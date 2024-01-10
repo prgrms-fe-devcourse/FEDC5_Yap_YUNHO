@@ -27,7 +27,7 @@ export const Input = styled.input`
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   &::placeholder {
-    font-family: "BMJUA", "Noto Sans KR", sans-serif;
+    font-family: ${({ theme }) => theme.fontFamily.defaultFont};
     font-size: ${({ theme }) => theme.fontSizes.medium};
   }
 
