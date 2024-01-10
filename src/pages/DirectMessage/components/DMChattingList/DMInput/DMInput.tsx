@@ -1,9 +1,8 @@
 import * as S from "./DMInput.Styles"
 import DMListProfile from "../../DMList/DMListProfile"
-import Button from "@/components/Button/Button"
-import { theme } from "@/styles/theme"
 import { useState } from "react"
 import useSendMessage from "../../../hooks/useSendMessage"
+import SendIcon from "@mui/icons-material/Send"
 
 interface DMInputProps {
   id: string
@@ -37,9 +36,9 @@ const DMInput = ({ id }: DMInputProps) => {
           onChange={handleInputChange}
           value={message}
         />
-        <S.DMInputButtonContainer>
-          <Button $fontColor={`${theme.colors.sub_alt}`}>전송</Button>
-        </S.DMInputButtonContainer>
+        <S.DMSendButton>
+          <SendIcon />
+        </S.DMSendButton>
       </S.DMInputForm>
     </S.DMInputLayout>
   )

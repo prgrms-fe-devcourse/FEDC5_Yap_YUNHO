@@ -27,6 +27,10 @@ export const DMInputItem = styled.input`
   padding-left: 1.5rem;
 `
 
-export const DMInputButtonContainer = styled.div`
-  width: 15%;
+export const DMSendButton = styled.button`
+  display: flex;
+  align-items: center;
+  svg {
+    font-size: 2.5rem;
+  }
 `
