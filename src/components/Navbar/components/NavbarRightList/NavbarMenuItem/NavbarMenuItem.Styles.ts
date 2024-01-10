@@ -7,7 +7,7 @@ export const NavbarMenuDivider = styled.div`
   background: ${({ theme }) => theme.colors.point};
   transform: scaleX(0);
   padding-top: 0.5rem;
-  transition: transform ease-in-out 0.3s;
+  transition: transform ${({ theme }) => theme.transition.normal};
 `
 
 export const NavbarMenuContainer = styled.div`

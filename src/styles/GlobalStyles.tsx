@@ -13,18 +13,19 @@ a, dl, dt, dd, ol, ul, li, form, label, table,button{
   border: 0;
   vertical-align: baseline;
 }
+
 html{
   width: 100%;
   height: 100%;
   font-size : 62.5%;
 }
+
 body{
   width: 100%;
   height: 100%;
   line-height: 1;
   font-family: "BMJUA",'Noto Sans KR', sans-serif;
   background-color: ${({ theme }) => theme.colors.main};
-
 }
 
 #root {
@@ -43,8 +44,7 @@ button {
   cursor: pointer;
 }
 
-
-input{
+input, textarea{
   border : none;
   outline: none;
     font-family: "BMJUA", "Noto Sans KR", sans-serif;

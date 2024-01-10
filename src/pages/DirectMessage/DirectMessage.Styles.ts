@@ -5,6 +5,7 @@ export const DirectMessageLayout = styled.div`
   max-height: 70rem;
   width: 100%;
   height: calc(100% - 10rem);
+  height: 100%;
   display: flex;
   gap: 5rem;
   position: absolute;

@@ -19,6 +19,7 @@ export const PostCardUserProfileImg = styled.img`
   width: 100%;
   height: 100%;
 
+  background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
 
   object-fit: cover;

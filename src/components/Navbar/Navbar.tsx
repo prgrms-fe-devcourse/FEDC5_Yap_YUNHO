@@ -6,22 +6,28 @@ import NavbarRightList from "./components/NavbarRightList/NavbarRightList"
 const checkPathName = (path: string) => {
   if (path.includes("useredit") || path.includes("signup")) {
     return false
-  } else if (path.includes("login")) {
+  }
+
+  if (path.includes("login")) {
     return "login"
   }
+
   return true
 }
 
 const Navbar = () => {
-  const NavbarFlag = checkPathName(useLocation().pathname)
+  const { pathname } = useLocation()
+  const NavbarFlag = checkPathName(pathname)
   if (!NavbarFlag) {
     return
   }
 
+  const isLoginPage = NavbarFlag === "login"
+
   return (
     <S.NavbarLayout>
       <NavbarLeftList />
-      {NavbarFlag !== "login" && <NavbarRightList />}
+      {!isLoginPage && <NavbarRightList />}
     </S.NavbarLayout>
   )
 }
