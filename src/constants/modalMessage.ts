@@ -15,6 +15,8 @@ export const POST_EDIT_MODAL_MESSAGE = {
 export const POST_DETAIL_MODAL_MESSAGE = {
   CONFIRM: {
     DELETE: "해당 게시물을 삭제하시겠나요?",
+    COMMENT_FOCUS:
+      "로그인을 하신 후 댓글을 남기실 수 있습니다!    로그인 하시겠나요?",
   },
   COMPLETE: {
     DELETE: "삭제 되었습니다!",

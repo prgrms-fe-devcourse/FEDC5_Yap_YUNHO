@@ -34,7 +34,7 @@ export const PostCommentInputContainer = styled.form`
   border-radius: 2rem;
 `
 
-export const PostCommentInput = styled.input`
+export const PostCommentInput = styled.input<{ $isNotLogin: boolean }>`
   flex-grow: 1;
   height: 100%;
   padding: 0 2rem;
@@ -43,6 +43,7 @@ export const PostCommentInput = styled.input`
   border-top-left-radius: 2rem;
 
   font-size: ${({ theme }) => theme.fontSizes.large};
+  pointer-events: ${({ $isNotLogin }) => ($isNotLogin ? "none" : "")};
 `
 
 export const PostCommentButton = styled.button`
