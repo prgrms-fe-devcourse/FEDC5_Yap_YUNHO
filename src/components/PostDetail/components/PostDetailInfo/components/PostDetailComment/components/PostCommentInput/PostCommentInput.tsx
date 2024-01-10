@@ -23,6 +23,7 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
   const [writeComment, setWriteComment] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
   const { user: authUser, isLoggedIn } = useAuthUserStore()
+
   const {
     isShowModal: isShowConfirm,
     showModal: showConfirm,
@@ -69,6 +70,9 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
 
   const handleSubmitComment = (e: FormEvent) => {
     e.preventDefault()
+    if (isShowAlert || isShowConfirm) {
+      return
+    }
 
     if (!commentValidation(writeComment)) {
       setAlertMessage(POST_DETAIL_ERROR_MESSAGE.SUBMIT_VALIDATION.COMMENT)
@@ -83,6 +87,9 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
   }
 
   const handleChangeComment = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    if (isShowAlert || isShowConfirm) {
+      return
+    }
     const { value } = target
     setWriteComment(value)
   }
@@ -90,7 +97,7 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
   return (
     <>
       <S.PostCommentInputLayout>
-        <S.PostCommentAuthUserProfile $authUserImage={""} />
+        <S.PostCommentAuthUserProfile $authUserImage={authUser.image} />
         <S.PostCommentInputContainer
           onSubmit={handleSubmitComment}
           onClick={(e) => {
