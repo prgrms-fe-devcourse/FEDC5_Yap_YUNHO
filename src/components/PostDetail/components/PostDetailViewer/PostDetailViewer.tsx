@@ -11,7 +11,6 @@ const PostDetailViewer = ({ post }: PostDetailViewerProps) => {
   return (
     <S.PostDetailViewerLayout>
       <PostCard
-        authUserProfile=""
         isNoneProfile={true}
         thumbnail={thumbnail}
         content={content}
