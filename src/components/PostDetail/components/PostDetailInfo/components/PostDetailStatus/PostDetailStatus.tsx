@@ -26,7 +26,12 @@ const PostDetailStatus = ({
         </S.PostDetailLike>
       </S.PostDetailStatusActions>
 
-      {<PostDetailEditActions />}
+      {
+        <PostDetailEditActions
+          onClose={onClose}
+          post={post}
+        />
+      }
     </S.PostDetailStatus>
   )
 }
