@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { API } from "@/apis/Api"
 import { JSONPost, PostContent } from "@/types"
 import PostEditAuthChecker from "./components/PostEditAuthChecker"
-import Modal from "../Modal/Modal"
+import Modal from "./../Modal/Modal"
 
 interface PostEditProps {
   onClose: () => void
