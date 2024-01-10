@@ -77,7 +77,6 @@ export const theme: DefaultTheme = {
   fontWeight,
   fontSizes,
   radius,
-  scrollBarNone,
   zIndex,
   scrollBarNone,
   opacity,
