@@ -2,7 +2,7 @@ import { Post, User } from "@/types"
 import * as S from "./PostDetailStatus.Styles"
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt"
 import { convertFollowCount } from "@/util/convertFollowCount"
-import PostDetailEditActions from "./PostDetailEditActions/PostDetailEditActions"
+import PostDetailEditActions from "./components/PostDetailEditActions"
 
 interface PostDetailStatusProps {
   post: Post
