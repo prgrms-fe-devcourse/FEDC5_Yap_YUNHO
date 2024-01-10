@@ -1,10 +1,10 @@
 import PostCard from "@/components/PostCard/PostCard"
 import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { PostContent } from "@/types"
+import { EditPostState } from "../../PostEdit.Types"
 
 interface PostEditViewerProps {
-  postData: PostContent
+  postData: EditPostState
 }
 
 const PostEditViewer = ({ postData }: PostEditViewerProps) => {
@@ -17,6 +17,7 @@ const PostEditViewer = ({ postData }: PostEditViewerProps) => {
         thumbnail={postData.thumbnail}
         content={postData.content}
         mediaUrl={postData.mediaUrl}
+        postId={postData.authorId}
       />
     </GS.PostModalGlobalViewerLayout>
   )
