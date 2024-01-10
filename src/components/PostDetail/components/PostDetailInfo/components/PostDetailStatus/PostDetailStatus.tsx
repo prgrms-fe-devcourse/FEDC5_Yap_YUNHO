@@ -11,6 +11,9 @@ import useModal from "@/components/Modal/hooks/useModal"
 import { useState } from "react"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
+import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
+import { useNavigate } from "react-router-dom"
+import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 
 const MUTATION_KEY = {
   LIKE_POST_KEY: "IT_IS_LIKE_MUTATION_KEY_546786723746238",
@@ -32,7 +35,16 @@ const PostDetailStatus = ({
   isLogin,
   onClose,
 }: PostDetailStatusProps) => {
-  const { isShowModal, closeModal, showModal } = useModal()
+  const {
+    isShowModal: isShowAlert,
+    closeModal: closeAlert,
+    showModal: showAlert,
+  } = useModal()
+  const {
+    isShowModal: isShowConfirm,
+    closeModal: closeConfirm,
+    showModal: showConfirm,
+  } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
 
   const queryClient = useQueryClient()
@@ -44,7 +56,7 @@ const PostDetailStatus = ({
     },
     onError: () => {
       setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.LIKE)
-      showModal()
+      showAlert()
     },
   })
   const unlikeMutate = useMutation({
@@ -55,9 +67,11 @@ const PostDetailStatus = ({
     },
     onError: () => {
       setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.UNLIKE)
-      showModal()
+      showAlert()
     },
   })
+
+  const navigate = useNavigate()
 
   const { likes } = post
   const myLikePost = post.likes.filter(
@@ -66,6 +80,7 @@ const PostDetailStatus = ({
 
   const handleClickLikeButton = () => {
     if (!isLogin) {
+      showConfirm()
       return
     }
 
@@ -75,6 +90,15 @@ const PostDetailStatus = ({
     }
 
     likeMutate.mutate(post._id)
+  }
+
+  const handleConfirm = (isAccept: boolean) => {
+    if (isAccept) {
+      onClose()
+      navigate("/login")
+      return
+    }
+    closeConfirm()
   }
   return (
     <>
@@ -107,9 +131,15 @@ const PostDetailStatus = ({
       </S.PostDetailStatus>
 
       <AlertModal
-        isShow={isShowModal}
+        isShow={isShowAlert}
         alertMessage={alertMessage}
-        onClose={closeModal}
+        onClose={closeAlert}
+      />
+
+      <ConfirmModal
+        isShow={isShowConfirm}
+        onClose={handleConfirm}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
       />
     </>
   )
