@@ -48,16 +48,17 @@ const PostDetailStatus = ({
 
   const { likes } = post
 
-  const MyLikePost = post.likes.filter(
+  const myLikePost = post.likes.filter(
     (likeData) => likeData.user === authUser._id,
-  )
+  )[0]
 
   const handleClickLikeButton = () => {
     if (!isLogin) {
       return
     }
 
-    if (MyLikePost) {
+    if (myLikePost) {
+      console.log(myLikePost)
       return
     }
 
@@ -68,10 +69,10 @@ const PostDetailStatus = ({
       <S.PostDetailStatus>
         <S.PostDetailStatusActions>
           <S.PostDetailLike
-            $isMyLikePost={!!MyLikePost}
+            $isMyLikePost={!!myLikePost}
             onClick={handleClickLikeButton}
           >
-            {MyLikePost ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+            {myLikePost ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
 
             {convertFollowCount(likes.length)}
           </S.PostDetailLike>
