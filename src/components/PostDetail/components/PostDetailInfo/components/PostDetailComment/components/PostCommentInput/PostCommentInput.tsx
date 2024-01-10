@@ -7,8 +7,11 @@ import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 import { Post } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { sendComment } from "@/components/PostDetail/apis/sendComment"
+import commentValidation from "./util/commentValidation"
+import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
+import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
 const SEND_MUTATION_QUERY_KEY = "SEND_MUTATION_MUTATION_KEY_9128178621782"
 
@@ -25,11 +28,26 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
     showModal: showConfirm,
     closeModal: closeConfirm,
   } = useModal()
+  const {
+    isShowModal: isShowAlert,
+    showModal: showAlert,
+    closeModal: closeAlert,
+  } = useModal()
 
+  const queryClient = useQueryClient()
   const CommentApi_send = useMutation({
     mutationKey: [SEND_MUTATION_QUERY_KEY],
     mutationFn: sendComment,
+    onSuccess: () => {
+      queryClient.refetchQueries()
+    },
+    onError: () => {
+      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.COMMENT_SUBMIT.ERROR)
+      showAlert()
+    },
   })
+
+  console.log(post)
 
   const navigate = useNavigate()
 
@@ -52,6 +70,17 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
 
   const handleSubmitComment = (e: FormEvent) => {
     e.preventDefault()
+
+    if (!commentValidation(writeComment)) {
+      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.SUBMIT_VALIDATION.COMMENT)
+      showAlert()
+      return
+    }
+
+    CommentApi_send.mutate({
+      comment: writeComment,
+      postId: post._id,
+    })
   }
 
   const handleChangeComment = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -64,8 +93,10 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
       <S.PostCommentInputLayout>
         <S.PostCommentAuthUserProfile $authUserImage={""} />
         <S.PostCommentInputContainer
-          onClick={handleClickLoginCheck}
           onSubmit={handleSubmitComment}
+          onClick={(e) => {
+            !isLoggedIn && handleClickLoginCheck(e)
+          }}
         >
           <S.PostCommentInput
             type="text"
@@ -84,6 +115,12 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
         isShow={isShowConfirm}
         onClose={handleCloseConfirmModal}
         message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_FOCUS}
+      />
+
+      <AlertModal
+        isShow={isShowAlert}
+        onClose={closeAlert}
+        alertMessage={alertMessage}
       />
     </>
   )
