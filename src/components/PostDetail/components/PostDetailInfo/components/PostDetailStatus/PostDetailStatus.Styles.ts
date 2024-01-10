@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const PostDetailInfoStatus = styled.div`
+export const PostDetailStatus = styled.div`
   width: 100%;
   height: 10rem;
 

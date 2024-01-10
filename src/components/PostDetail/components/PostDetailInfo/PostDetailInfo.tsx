@@ -1,8 +1,8 @@
 import * as S from "./PostDetailInfo.Styles"
 import { Post } from "@/types"
-import PostDetailInfoUser from "./components/PostDetailInfoUser/PostDetailInfoUser"
-import PostDetailInfoStatus from "./components/PostDetailInfoStatus/PostDetailInfoStatus"
-import PostDetailInfoComment from "./components/PostDetailInfoComment/PostDetailInfoComment"
+import PostDetailUser from "./components/PostDetailUser/PostDetailUser.Styles"
+import PostDetailStatus from "./components/PostDetailStatus/PostDetailStatus"
+import PostDetailComment from "./components/PostDetailComment/PostDetailComment"
 
 interface PostDetailInfoProps {
   onClose: () => void
@@ -11,13 +11,14 @@ interface PostDetailInfoProps {
 
 const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
   console.log(onClose)
+
   return (
     <S.PostDetailInfoLayout>
-      <PostDetailInfoUser post={post} />
+      <PostDetailUser post={post} />
       <S.PostDetailInfoBoundary />
-      <PostDetailInfoStatus />
+      <PostDetailStatus />
       <S.PostDetailInfoBoundary />
-      <PostDetailInfoComment />
+      <PostDetailComment />
     </S.PostDetailInfoLayout>
   )
 }
