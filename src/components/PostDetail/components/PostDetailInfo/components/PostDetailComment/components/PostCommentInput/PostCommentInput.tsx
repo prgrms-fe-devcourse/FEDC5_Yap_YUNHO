@@ -7,6 +7,10 @@ import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 import { Post } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
+import { useMutation } from "@tanstack/react-query"
+import { sendComment } from "@/components/PostDetail/apis/sendComment"
+
+const SEND_MUTATION_QUERY_KEY = "SEND_MUTATION_MUTATION_KEY_9128178621782"
 
 interface PostCommentInputProps {
   post: Post
@@ -20,6 +24,10 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
     closeModal: closeConfirm,
   } = useModal()
   const navigate = useNavigate()
+  const CommentApi = useMutation({
+    mutationKey: [SEND_MUTATION_QUERY_KEY],
+    mutationFn: sendComment,
+  })
 
   const handleClickLoginCheck = (e: MouseEvent) => {
     e.preventDefault()

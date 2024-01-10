@@ -12,7 +12,7 @@ const PostDetailComment = ({ post }: PostDetailCommentProps) => {
     <S.PostDetailCommentLayout>
       <S.PostDetailCommentInfo>{`댓글 ${post.comments.length} 개`}</S.PostDetailCommentInfo>
       <PostCommentList />
-      <PostCommentInput />
+      <PostCommentInput post={post} />
     </S.PostDetailCommentLayout>
   )
 }
