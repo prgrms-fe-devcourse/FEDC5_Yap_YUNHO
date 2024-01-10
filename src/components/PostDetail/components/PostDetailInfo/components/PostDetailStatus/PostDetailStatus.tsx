@@ -6,7 +6,7 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt"
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt"
 import LinkIcon from "@mui/icons-material/Link"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { likePost } from "@/components/PostDetail/apis/likePost"
+import { likePost, unLikePost } from "@/components/PostDetail/apis/likePost"
 import useModal from "@/components/Modal/hooks/useModal"
 import { useState } from "react"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
@@ -14,6 +14,7 @@ import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
 const MUTATION_KEY = {
   LIKE_POST_KEY: "IT_IS_LIKE_MUTATION_KEY_546786723746238",
+  UN_LIKE_POST_KEY: "IT_IS_UN_LIKE_MUTATION_KEY_5448718927139",
 }
 
 interface PostDetailStatusProps {
@@ -46,8 +47,19 @@ const PostDetailStatus = ({
     },
   })
 
-  const { likes } = post
+  const unlikeMutate = useMutation({
+    mutationKey: [MUTATION_KEY.UN_LIKE_POST_KEY],
+    mutationFn: unLikePost,
+    onSuccess: () => {
+      queryClient.refetchQueries()
+    },
+    onError: () => {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.LIKE_ERROR)
+      showModal()
+    },
+  })
 
+  const { likes } = post
   const myLikePost = post.likes.filter(
     (likeData) => likeData.user === authUser._id,
   )[0]
@@ -58,7 +70,7 @@ const PostDetailStatus = ({
     }
 
     if (myLikePost) {
-      console.log(myLikePost)
+      unlikeMutate.mutate(myLikePost._id)
       return
     }
 

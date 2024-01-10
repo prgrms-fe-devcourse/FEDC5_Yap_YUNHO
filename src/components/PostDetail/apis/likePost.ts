@@ -5,11 +5,21 @@ export const likePost = async (postId: string) => {
     postId,
   })
     .then((res) => {
-      res.data
+      return res.data
     })
     .catch((e) => {
       throw Error(e)
     })
 }
 
-export const unLikePost = () => {}
+export const unLikePost = async (likeId: string) => {
+  return await AUTH_API.delete("/likes/delete", {
+    data: { id: likeId },
+  })
+    .then((res) => {
+      return res.data
+    })
+    .catch((e) => {
+      throw Error(e)
+    })
+}
