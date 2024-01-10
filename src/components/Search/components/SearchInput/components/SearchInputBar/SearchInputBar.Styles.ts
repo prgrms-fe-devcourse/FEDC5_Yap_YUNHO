@@ -14,6 +14,12 @@ export const SearchBarForm = styled.form`
 export const SearchBarInput = styled.input`
   width: 100%;
 
+  //chrome이 제공하는 input 자동완성의 백그라운드 지정
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100rem ${({ theme }) => theme.colors.white} inset !important;
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.black} !important;
+  }
+
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray40};
   }
@@ -30,10 +36,7 @@ export const SearchBarInput = styled.input`
     cursor: pointer;
   }
 
-  &::-webkit-search-decoration,
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-results-button,
-  &::-webkit-search-results-decoration {
+  &::-webkit-search-cancel-button {
     cursor: pointer;
   }
 `
