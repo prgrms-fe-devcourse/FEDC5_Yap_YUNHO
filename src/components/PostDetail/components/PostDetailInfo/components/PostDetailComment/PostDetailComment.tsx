@@ -9,6 +9,7 @@ interface PostDetailCommentProps {
 }
 
 const PostDetailComment = ({ post, authUser }: PostDetailCommentProps) => {
+  console.log(authUser)
   return (
     <S.PostDetailCommentLayout>
       <S.PostDetailCommentInfo>{`댓글 ${post.comments.length} 개`}</S.PostDetailCommentInfo>
