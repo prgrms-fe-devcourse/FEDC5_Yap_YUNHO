@@ -1,4 +1,4 @@
-import { FormEvent, MouseEvent } from "react"
+import { ChangeEvent, FormEvent, MouseEvent, useState } from "react"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import * as S from "./PostCommentInput.Styles"
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward"
@@ -17,17 +17,21 @@ interface PostCommentInputProps {
 }
 
 const PostCommentInput = ({ post }: PostCommentInputProps) => {
+  const [writeComment, setWriteComment] = useState("")
+  const [alertMessage, setAlertMessage] = useState("")
   const { user: authUser, isLoggedIn } = useAuthUserStore()
   const {
     isShowModal: isShowConfirm,
     showModal: showConfirm,
     closeModal: closeConfirm,
   } = useModal()
-  const navigate = useNavigate()
+
   const CommentApi_send = useMutation({
     mutationKey: [SEND_MUTATION_QUERY_KEY],
     mutationFn: sendComment,
   })
+
+  const navigate = useNavigate()
 
   const handleClickLoginCheck = (e: MouseEvent) => {
     e.preventDefault()
@@ -50,6 +54,11 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
     e.preventDefault()
   }
 
+  const handleChangeComment = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const { value } = target
+    setWriteComment(value)
+  }
+
   return (
     <>
       <S.PostCommentInputLayout>
@@ -60,7 +69,9 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
         >
           <S.PostCommentInput
             type="text"
+            value={writeComment}
             $isNotLogin={!isLoggedIn}
+            onChange={handleChangeComment}
           />
 
           <S.PostCommentButton disabled={!isLoggedIn}>
