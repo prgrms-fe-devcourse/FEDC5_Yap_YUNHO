@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, useEffect, FormEvent } from "react"
 import * as S from "./FirstSignupForm.Styles"
 import { theme } from "@/styles/theme"
-import SignupInputContainer from "./SignupInput/SignupInputContainer"
+import SignupInputContainer from "../SignupInput/SignupInputContainer"
 import type { RequiredUserInfo } from "../../types"
 import { getNewErrorMessage } from "../../utils/validateInput"
 import { useNavigate } from "react-router-dom"
