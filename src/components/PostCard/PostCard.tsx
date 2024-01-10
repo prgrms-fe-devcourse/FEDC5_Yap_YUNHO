@@ -6,7 +6,7 @@ import PostCardThumbnail from "./components/PostCardThumbnail/PostCardThumbnail"
 import PostCardUserProfile from "./components/PostCardUserProfile/PostCardUserProfile"
 
 const PostCard = ({
-  textPercent,
+  textPercent = "100%",
   isBlock = false,
   // 이후 기본 유저 프로필 사진으로 대체
   authUserProfile = "",

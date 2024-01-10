@@ -16,7 +16,9 @@ export const PostCardContentLayout = styled.div`
   user-select: none;
 `
 
-export const PostCardContentText = styled.h6<{ $textPercent?: string }>`
+export const PostCardContentText = styled.h6<{
+  $textPercent?: "60%" | "80%" | "100%"
+}>`
   height: 100%;
   width: 100%;
 
@@ -24,7 +26,7 @@ export const PostCardContentText = styled.h6<{ $textPercent?: string }>`
 
   line-height: 1.4;
   letter-spacing: 0.4px;
-  font-size: ${({ $textPercent }) => ($textPercent ? $textPercent : "100%")};
+  font-size: ${({ $textPercent }) => $textPercent};
   white-space: pre-wrap;
 
   overflow-y: scroll;

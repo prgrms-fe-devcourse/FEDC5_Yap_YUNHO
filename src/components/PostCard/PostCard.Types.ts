@@ -22,5 +22,5 @@ export interface PostCardThumbnailProps {
 
 export interface PostCardContentProps {
   content: string
-  textPercent?: string
+  textPercent?: "60%" | "80%" | "100%"
 }
