@@ -8,11 +8,13 @@ export const PostDetailUserLayout = styled.div`
   align-items: center;
 `
 
-export const PostDetailUserProfile = styled.img`
+export const PostDetailUserProfile = styled.div<{ $src: string }>`
   width: 8rem;
   height: 8rem;
 
-  /* box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5); */
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
   border-radius: ${({ theme }) => theme.radius.circle};
   background-color: ${({ theme }) => theme.colors.sub_alt};
+  background-image: url(${({ $src }) => $src});
+  background-size: cover;
 `

@@ -6,9 +6,12 @@ interface PostDetailInfoUserProps {
 }
 
 const PostDetailUser = ({ post }: PostDetailInfoUserProps) => {
+  console.log(post)
   return (
     <S.PostDetailUserLayout>
-      <S.PostDetailUserProfile src={post.author.image} />
+      <S.PostDetailUserProfile
+        $src={"https://i1.ytimg.com/vi/W_MUcyXz3r4/sddefault.jpg"}
+      />
     </S.PostDetailUserLayout>
   )
 }
