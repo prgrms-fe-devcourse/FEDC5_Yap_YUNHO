@@ -55,7 +55,6 @@ export const Button = styled.button<{
 
   &:hover {
     opacity: ${({ theme }) => theme.opacity.high};
-    transition: ${({ theme }) => theme.transition.normal};
   }
   &:not(:disabled) {
     background-color: ${({ $color }) => $color};

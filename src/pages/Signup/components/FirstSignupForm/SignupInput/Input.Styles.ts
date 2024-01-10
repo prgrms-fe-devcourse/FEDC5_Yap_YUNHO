@@ -15,7 +15,7 @@ export const VisibleButton = styled.button`
   top: 1.25rem;
 `
 
-export const Input = styled.input`
+export const InputField = styled.input`
   width: 100%;
   height: 4rem;
   padding: 0.8rem 1.2rem;

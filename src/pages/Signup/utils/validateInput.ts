@@ -1,4 +1,4 @@
-import { RequiredUserInfo } from "../types"
+import { ValidateUserInfo } from "../types"
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
@@ -21,9 +21,6 @@ const VALIDATE_INPUT_LIST = {
     return ""
   },
   validateNickName(nickname: string) {
-    if (nickname.trim().length === 0) {
-      return "빈 공백은 입력하면 안됩니다. 닉네임을 입력해주세요."
-    }
     if (!NICKNAME_REGEX.test(nickname)) {
       return `길이는 ${NICKNAME_MIN_LENGTH}에서 ${NICKNAME_MAX_LENGTH}이며, 영문 대소문자와 숫자만 입력해주세요.`
     }
@@ -49,16 +46,24 @@ const VALIDATE_INPUT_LIST = {
   },
 }
 
-export const getNewErrorMessage = (userInfo: RequiredUserInfo) => {
-  const newErrorMessage = {
-    email: VALIDATE_INPUT_LIST.validateEmail(userInfo.email),
-    nickname: VALIDATE_INPUT_LIST.validateNickName(userInfo.nickname),
-    password: VALIDATE_INPUT_LIST.validatePassword(userInfo.password),
-    passwordCheck: VALIDATE_INPUT_LIST.validatePasswordCheck(
-      userInfo.password,
-      userInfo.passwordCheck,
-    ),
-  }
+export const getNewErrorMessage = (
+  type: string,
+  userInfo: ValidateUserInfo,
+) => {
+  const { email, nickname, password, passwordCheck } = userInfo
 
-  return newErrorMessage
+  switch (type) {
+    case "email": {
+      return VALIDATE_INPUT_LIST.validateEmail(email)
+    }
+    case "nickname": {
+      return VALIDATE_INPUT_LIST.validateNickName(nickname)
+    }
+    case "password": {
+      return VALIDATE_INPUT_LIST.validatePassword(password)
+    }
+    case "passwordCheck": {
+      return VALIDATE_INPUT_LIST.validatePasswordCheck(password, passwordCheck)
+    }
+  }
 }

@@ -51,41 +51,43 @@ const LoginComponent = () => {
   }
 
   return (
-    <S.LoginComponentLayout>
+    <>
       <ModalAlert
         isShow={isShowModal}
         alertMessage={alertMessage}
         onClose={closeModal}
       />
-      <S.LoginComponentTitle>로그인</S.LoginComponentTitle>
-      <S.LoginForm onSubmit={handleLogin}>
-        <LoginInputContainer
-          updateUserInfo={updateUserInfo}
-          type="email"
-          placeholder="이메일"
-        />
-        <LoginInputContainer
-          updateUserInfo={updateUserInfo}
-          type="password"
-          placeholder="비밀번호"
-        />
-        <S.ButtonContainer>
-          <S.Button
-            type="submit"
-            $color={theme.colors.point}
-          >
-            로그인
-          </S.Button>
-          <S.Button
-            type="button"
-            $color={theme.colors.sub_alt}
-            onClick={() => navigate("/signup")}
-          >
-            회원가입
-          </S.Button>
-        </S.ButtonContainer>
-      </S.LoginForm>
-    </S.LoginComponentLayout>
+      <S.LoginComponentLayout>
+        <S.LoginComponentTitle>로그인</S.LoginComponentTitle>
+        <S.LoginForm onSubmit={handleLogin}>
+          <LoginInputContainer
+            updateUserInfo={updateUserInfo}
+            type="email"
+            placeholder="이메일"
+          />
+          <LoginInputContainer
+            updateUserInfo={updateUserInfo}
+            type="password"
+            placeholder="비밀번호"
+          />
+          <S.ButtonContainer>
+            <S.Button
+              type="submit"
+              $color={theme.colors.point}
+            >
+              로그인
+            </S.Button>
+            <S.Button
+              type="button"
+              $color={theme.colors.sub_alt}
+              onClick={() => navigate("/signup")}
+            >
+              회원가입
+            </S.Button>
+          </S.ButtonContainer>
+        </S.LoginForm>
+      </S.LoginComponentLayout>
+    </>
   )
 }
 
