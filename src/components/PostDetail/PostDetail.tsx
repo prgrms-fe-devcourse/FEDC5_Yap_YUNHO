@@ -38,6 +38,11 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
     },
   })
 
+  if (!id) {
+    onClose()
+    return
+  }
+
   return (
     <Modal
       isShow={isShow}

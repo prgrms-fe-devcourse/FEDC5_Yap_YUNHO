@@ -40,14 +40,13 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
     mutationFn: sendComment,
     onSuccess: () => {
       queryClient.refetchQueries()
+      setWriteComment("")
     },
     onError: () => {
       setAlertMessage(POST_DETAIL_ERROR_MESSAGE.COMMENT_SUBMIT.ERROR)
       showAlert()
     },
   })
-
-  console.log(post)
 
   const navigate = useNavigate()
 
