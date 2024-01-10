@@ -4,23 +4,23 @@ import DMMessageItem from "./DMMessageItem"
 import { Message } from "@/types"
 import DMInput from "./DMInput"
 import useChattingList from "../../hooks/useChattingList"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 
 const DMChattingList = () => {
   const { id } = useParams()
-
   const { data: MessageList } = useChattingList(id || "")
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     if (scrollRef.current) {
+      console.log(scrollRef.current.scrollHeight)
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
-  }
+  }, [])
 
   useEffect(() => {
     scrollToBottom()
-  })
+  }, [scrollToBottom])
 
   return (
     <S.DMChattingListLayout>

@@ -16,7 +16,6 @@ const useDMList = () => {
   const { data } = useQuery<Conversation[]>({
     queryKey: ["getDMList"],
     queryFn: fetchConversation,
-    refetchInterval: 5000, // 재 요청
     initialData: [],
   })
 

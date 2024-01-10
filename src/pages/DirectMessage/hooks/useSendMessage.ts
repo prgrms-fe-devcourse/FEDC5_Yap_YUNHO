@@ -22,6 +22,7 @@ const useSendMessage = () => {
     mutationFn: sendMessage,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["getMessageList", id] })
+      queryClient.invalidateQueries({ queryKey: ["getDMList"] })
     },
   })
 }
