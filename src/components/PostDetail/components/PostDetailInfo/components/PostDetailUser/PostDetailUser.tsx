@@ -1,17 +1,24 @@
 import { Post } from "@/types"
 import * as S from "./PostDetailUser.Styles"
+import { convertFollowCount } from "@/util/convertFollowCount"
 
 interface PostDetailInfoUserProps {
   post: Post
 }
 
 const PostDetailUser = ({ post }: PostDetailInfoUserProps) => {
-  console.log(post)
+  const { image, fullName, followers } = post.author
+  const followerCount = convertFollowCount(followers.length)
+
   return (
     <S.PostDetailUserLayout>
-      <S.PostDetailUserProfile
-        $src={"https://i1.ytimg.com/vi/W_MUcyXz3r4/sddefault.jpg"}
-      />
+      <S.PostDetailUserContainer>
+        <S.PostDetailUserProfile $src={image} />
+        <S.PostDetailUserInfo>
+          <S.PostDetailUserName>{fullName}</S.PostDetailUserName>
+          <S.PostDetailUserFollower>{`팔로워 ${followerCount}`}</S.PostDetailUserFollower>
+        </S.PostDetailUserInfo>
+      </S.PostDetailUserContainer>
     </S.PostDetailUserLayout>
   )
 }

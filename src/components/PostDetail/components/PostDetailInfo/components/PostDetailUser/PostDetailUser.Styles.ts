@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const PostDetailUserLayout = styled.div`
   width: 100%;
@@ -6,6 +6,14 @@ export const PostDetailUserLayout = styled.div`
 
   display: flex;
   align-items: center;
+`
+
+export const PostDetailUserContainer = styled.div`
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 `
 
 export const PostDetailUserProfile = styled.div<{ $src: string }>`
@@ -17,4 +25,34 @@ export const PostDetailUserProfile = styled.div<{ $src: string }>`
   background-color: ${({ theme }) => theme.colors.sub_alt};
   background-image: url(${({ $src }) => $src});
   background-size: cover;
+`
+
+export const PostDetailUserInfo = styled.div`
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+`
+
+const textStyle = css`
+  letter-spacing: 0.1rem;
+  color: #e9e9e9;
+`
+
+export const PostDetailUserName = styled.h6`
+  ${textStyle}
+  font-size: ${({ theme }) => theme.fontSizes.large};
+`
+
+export const PostDetailUserFollower = styled.p`
+  ${textStyle}
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+`
+
+export const PostDetailFollowButton = styled.button`
+  height: 4rem;
+
+  background-color: ${({ theme }) => theme.colors.sub_alt};
 `
