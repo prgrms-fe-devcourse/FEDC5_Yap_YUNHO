@@ -1,11 +1,14 @@
 import styled from "styled-components"
 
 export const UserProfileLayout = styled.section`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 4rem 0 2rem;
-  padding: 4rem 0 0;
+
+  margin: 4rem 0;
+  padding: 4rem 0;
   border-bottom: 0.1rem solid;
 `
 export const UserProfileImageContainer = styled.div`
@@ -22,17 +25,4 @@ export const UserNickNameContainer = styled.div`
   margin-bottom: 1.5rem;
   font-size: ${({ theme }) => theme.fontSizes.large};
   color: ${({ theme }) => theme.colors.white};
-`
-
-export const UserFollowInfoLayout = styled.section`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3.5rem;
-`
-
-export const UserFollowInfoDividerText = styled.span`
-  color: ${({ theme }) => theme.colors.white};
-  margin: 0 1rem;
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `

@@ -1,5 +1,10 @@
-import React from "react"
+import * as S from "./Signup.Styles"
+import SignupForm from "./components/SignupForm"
 
 export default function Signup() {
-  return <div>Signup</div>
+  return (
+    <S.SignupLayout>
+      <SignupForm />
+    </S.SignupLayout>
+  )
 }

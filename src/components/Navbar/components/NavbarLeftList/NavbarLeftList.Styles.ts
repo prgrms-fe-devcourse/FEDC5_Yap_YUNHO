@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import logo from "@/assets/logo.png"
 
 export const NavbarLeftListLayout = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ export const NavbarLogo = styled.div`
   height: 8.5rem;
   border-radius: ${({ theme }) => theme.radius.circle};
 
-  background-image: url("/src/assets/logo.png");
+  background-image: url(${logo});
   background-size: cover;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zIndex.navbarLogo};
 `

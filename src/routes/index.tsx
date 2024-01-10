@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { DirectMessage, Home, Login, Profile, Signup, UserEdit } from "@/Pages"
+import { DirectMessage, Home, Login, Profile, Signup, UserEdit } from "@/pages"
 import Navbar from "@/components/Navbar/Navbar"
 
 const YAPRoute = () => {
@@ -10,6 +10,12 @@ const YAPRoute = () => {
         <Route
           path="/"
           element={<Home />}
+          children={
+            <Route
+              path="/postedit/:id?"
+              element={<></>}
+            />
+          }
         />
         <Route
           path="/signup"
@@ -41,10 +47,7 @@ const YAPRoute = () => {
           path="/postdetail/:id?"
           element={<></>}
         />
-        <Route
-          path="/postedit/:id?"
-          element={<></>}
-        />
+
         <Route
           path="*"
           element={<div></div>}

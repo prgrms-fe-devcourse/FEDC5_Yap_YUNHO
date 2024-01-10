@@ -15,7 +15,6 @@ const useSlider = ({ initialPercent }: { initialPercent: number }) => {
 
     const rect = current.getBoundingClientRect()
     const handlerOffset = clientX - rect.left
-
     const calcPercent = handlerOffset / current.offsetWidth
     let checkedPercent = Math.max(0, calcPercent)
     checkedPercent = Math.min(1, checkedPercent)
@@ -39,7 +38,6 @@ const useSlider = ({ initialPercent }: { initialPercent: number }) => {
 
       const rect = current.getBoundingClientRect()
       const handlerOffset = clientX - rect.left
-
       const calcPercent = handlerOffset / current.offsetWidth
       let checkedPercent = Math.max(0, calcPercent)
       checkedPercent = Math.min(1, checkedPercent)

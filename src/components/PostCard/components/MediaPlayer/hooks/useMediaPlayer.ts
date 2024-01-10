@@ -9,7 +9,7 @@ import {
 import {
   MEDIA_PLAYER_EMPTY_URL_KEYWORD,
   MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE,
-} from "../constants/MediaPlayer"
+} from "../constants/MediaPlayer.Constants"
 
 const useMediaPlayer = () => {
   const playerRef = useRef<ReactPlayer>(null)
@@ -60,15 +60,19 @@ const useMediaPlayer = () => {
     (url) => {
       if (url === MEDIA_PLAYER_EMPTY_URL_KEYWORD) {
         changeUrl("")
-        return
       }
 
       const isCanPlay = ReactPlayer.canPlay(url)
       if (isCanPlay) {
         changeUrl(url)
       }
+
+      onChangeRange({
+        type: "play",
+        percent: 0,
+      })
     },
-    [changeUrl],
+    [changeUrl, onChangeRange],
   )
 
   return {

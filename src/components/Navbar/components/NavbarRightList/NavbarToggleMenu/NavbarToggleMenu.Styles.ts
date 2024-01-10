@@ -8,7 +8,7 @@ export const NavbarToggleMenuLayout = styled.div<{ $isToggle: boolean }>`
   background-color: ${({ theme }) => theme.colors.point};
   transform-origin: top;
   transform: ${({ $isToggle }) => ($isToggle ? `scaleY(1)` : `scaleY(0)`)};
-  transition: transform 0.3s ease-in-out;
+  transition: transform ${({ theme }) => theme.transition.normal};
   @media screen and (max-width: 1024px) {
     display: block;
   }
