@@ -1,5 +1,5 @@
+import * as S from "./PostDetailInfo.Styles"
 import { Post } from "@/types"
-import { useNavigate } from "react-router-dom"
 
 interface PostDetailInfoProps {
   onClose: () => void
@@ -7,19 +7,8 @@ interface PostDetailInfoProps {
 }
 
 const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
-  const navigate = useNavigate()
-  return (
-    <>
-      <button
-        onClick={() => {
-          onClose()
-          navigate(`/postedit/${post._id}`)
-        }}
-      >
-        Modal 디테일 테스트
-      </button>
-    </>
-  )
+  console.log(post, onClose)
+  return <S.PostDetailInfoLayout></S.PostDetailInfoLayout>
 }
 
 export default PostDetailInfo

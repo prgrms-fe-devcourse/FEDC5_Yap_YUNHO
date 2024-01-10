@@ -1,4 +1,5 @@
 import * as GS from "@/components/Modal/ModalGlobal.Styles"
+import * as S from "./PostDetail.Styles"
 import Modal from "../Modal/Modal"
 import PostDetailViewer from "./components/PostDetailViewer/PostDetailViewer"
 import PostDetailInfo from "./components/PostDetailInfo/PostDetailInfo"
@@ -49,12 +50,12 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
             <PostDetailViewer post={post} />
           </GS.PostModalGlobalContainer>
           <GS.PostModalGlobalBoundary />
-          <GS.PostModalGlobalContainer>
+          <S.PostDetailInfoLayout>
             <PostDetailInfo
               onClose={onClose}
               post={post}
             />
-          </GS.PostModalGlobalContainer>
+          </S.PostDetailInfoLayout>
         </GS.PostModalGlobalLayout>
       )}
     </Modal>
