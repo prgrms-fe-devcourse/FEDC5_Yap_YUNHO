@@ -36,10 +36,7 @@ const DMChattingList = () => {
               </DMMessageItem>
             ))}
           </S.DMMessageList>
-          <DMInput
-            id={id}
-            onChildSubmit={scrollToBottom}
-          />
+          <DMInput id={id} />
         </>
       )}
     </S.DMChattingListLayout>

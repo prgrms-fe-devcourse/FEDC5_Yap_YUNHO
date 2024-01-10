@@ -7,10 +7,9 @@ import useSendMessage from "../../hooks/useSendMessage"
 
 interface DMInputProps {
   id: string
-  onChildSubmit: () => void
 }
 
-const DMInput = ({ id, onChildSubmit }: DMInputProps) => {
+const DMInput = ({ id }: DMInputProps) => {
   const [message, setMessage] = useState("")
   const { mutate: sendMessage } = useSendMessage()
 
@@ -27,7 +26,6 @@ const DMInput = ({ id, onChildSubmit }: DMInputProps) => {
     }
     sendMessage(messageSubmission)
     setMessage("")
-    onChildSubmit()
   }
 
   return (
