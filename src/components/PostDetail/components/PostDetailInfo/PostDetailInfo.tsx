@@ -10,10 +10,10 @@ interface PostDetailInfoProps {
 }
 
 const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
-  console.log(post, onClose)
+  console.log(onClose)
   return (
     <S.PostDetailInfoLayout>
-      <PostDetailInfoUser />
+      <PostDetailInfoUser post={post} />
       <S.PostDetailInfoBoundary />
       <PostDetailInfoStatus />
       <S.PostDetailInfoBoundary />
