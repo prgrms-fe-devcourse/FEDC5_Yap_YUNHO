@@ -5,10 +5,10 @@ import * as S from "./Login.styles"
 export default function Login() {
   return (
     <S.LoginLayout>
-      <S.LoginFormContainer>
+      <S.LoginComponentContainer>
         <ServiceInfoComponent />
         <LoginComponent />
-      </S.LoginFormContainer>
+      </S.LoginComponentContainer>
     </S.LoginLayout>
   )
 }
