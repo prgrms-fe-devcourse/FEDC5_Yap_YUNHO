@@ -1,7 +1,7 @@
 import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditInput.Styles"
 import { ChangeEvent } from "react"
-import { POST_EDIT_EDITOR_PLACEHOLDER } from "@/components/PostEdit/constants/PostEdit.Constants"
+import { POST_EDIT_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 
 interface PostEditInputProps {
   text: string
@@ -24,7 +24,7 @@ const PostEditInput = ({ text, onEdit }: PostEditInputProps) => {
       <S.PostEditInputTitle>제목</S.PostEditInputTitle>
       <S.PostEditInput
         value={text}
-        placeholder={POST_EDIT_EDITOR_PLACEHOLDER.CONTENT_INPUT}
+        placeholder={POST_EDIT_PLACEHOLDER_MESSAGE.CONTENT_INPUT}
         onChange={handleEditInput}
       />
     </S.PostEditInputLayout>

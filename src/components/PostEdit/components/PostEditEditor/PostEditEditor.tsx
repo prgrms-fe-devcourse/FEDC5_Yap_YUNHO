@@ -14,8 +14,9 @@ import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import checkCategoryValidation from "../../util/checkCategoryValidation"
 import checkUrlValidation from "../../util/checkUrlValidation"
 import checkContentValidation from "../../util/checkContentValidation"
-import { POST_EDIT_MODAL_MESSAGE } from "../../constants/PostEdit.Constants"
+
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { POST_EDIT_MODAL_MESSAGE } from "@/constants/modalMessage"
 
 const MUTATION_KEY = {
   UPDATE_POST: "IT_IS_UPDATE_KEY_12361278467821",
@@ -144,8 +145,8 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
         isShow={isShowConfirm}
         message={
           isNewPost
-            ? POST_EDIT_MODAL_MESSAGE.SUBMIT_NEW_POST_CONFIRM
-            : POST_EDIT_MODAL_MESSAGE.SUBMIT_UPDATE_POST_CONFIRM
+            ? POST_EDIT_MODAL_MESSAGE.CONFIRM.SUBMIT_NEW_POST
+            : POST_EDIT_MODAL_MESSAGE.CONFIRM.SUBMIT_UPDATE_POST
         }
         onClose={handleCloseConfirm}
       />
@@ -158,7 +159,7 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
 
       <AlertModal
         isShow={isShowComplete}
-        alertMessage={POST_EDIT_MODAL_MESSAGE.SUBMIT_COMPLETE}
+        alertMessage={POST_EDIT_MODAL_MESSAGE.COMPLETE.SUBMIT_POST}
         onClose={handleCloseComplete}
       />
     </>

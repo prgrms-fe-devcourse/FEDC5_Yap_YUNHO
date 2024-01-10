@@ -1,7 +1,3 @@
-import {
-  POST_EDIT_EDITOR_PLACEHOLDER,
-  POST_EDIT_MODAL_MESSAGE,
-} from "@/components/PostEdit/constants/PostEdit.Constants"
 import * as S from "./PostEditUrlPrompt.Styles"
 import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import { ChangeEvent, useEffect, useState } from "react"
@@ -9,6 +5,8 @@ import ReactPlayer from "react-player"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
 import HighlightOffIcon from "@mui/icons-material/HighlightOff"
+import { POST_EDIT_MODAL_MESSAGE } from "@/constants/modalMessage"
+import { POST_EDIT_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 
 interface PostEditUrlPromptProps {
   isShow: boolean
@@ -77,7 +75,7 @@ const PostEditUrlPrompt = ({
     >
       <S.PostEditUrlPromptLayout>
         <S.PostEditUrlPromptTitle>
-          {POST_EDIT_MODAL_MESSAGE.URL_PROMPT}
+          {POST_EDIT_MODAL_MESSAGE.PROMPT.URL}
         </S.PostEditUrlPromptTitle>
 
         <S.PostEditUrlErrorMessage>
@@ -93,7 +91,7 @@ const PostEditUrlPrompt = ({
 
         <S.PostEditUrlPromptInput
           value={newUrl}
-          placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
+          placeholder={POST_EDIT_PLACEHOLDER_MESSAGE.URL_PROMPT}
           onChange={handleChangeUrl}
         />
 

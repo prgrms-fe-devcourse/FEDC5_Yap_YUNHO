@@ -3,13 +3,7 @@ import { API } from "@/apis/Api"
 import { Channel } from "@/types"
 import { useQuery } from "@tanstack/react-query"
 
-const QUERY_KEY_CATEGORY_LIST = "CategoryListQueryKey"
-
-// export const INITIAL_CATEGORY = {
-//   name: "전체",
-//   id: "all",
-//   description: "장르 불문, 모든 장르를 추천해 드립니다!",
-// }
+const QUERY_KEY_CATEGORY_LIST = "IT_IS_CATEGORY_LIST_QUERY_KEY_723445213"
 
 export const INITIAL_CATEGORY = {
   name: "집중",

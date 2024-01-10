@@ -3,11 +3,9 @@ import * as S from "./PostEditUrl.Styles"
 import useModal from "@/components/Modal/hooks/useModal"
 import PostEditUrlPrompt from "./components/PostEditUrlPrompt"
 import DeleteIcon from "@mui/icons-material/Delete"
-import {
-  POST_EDIT_EDITOR_PLACEHOLDER,
-  POST_EDIT_MODAL_MESSAGE,
-} from "@/components/PostEdit/constants/PostEdit.Constants"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
+import { POST_EDIT_MODAL_MESSAGE } from "@/constants/modalMessage"
+import { POST_EDIT_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 
 interface PostEditUrlProps {
   urlPath: string
@@ -54,7 +52,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         <S.PostEditUrlInput
           readOnly
           value={urlPath}
-          placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_INPUT}
+          placeholder={POST_EDIT_PLACEHOLDER_MESSAGE.URL_INPUT}
           onClick={() => showPrompt()}
         />
       </S.PostEditUrlLayout>
@@ -69,7 +67,7 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
       <ConfirmModal
         isShow={isConfirmShow}
         onClose={handleRemoveUrl}
-        message={POST_EDIT_MODAL_MESSAGE.URL_CONFIRM}
+        message={POST_EDIT_MODAL_MESSAGE.CONFIRM.URL}
         acceptButtonText={"확인"}
       />
     </>

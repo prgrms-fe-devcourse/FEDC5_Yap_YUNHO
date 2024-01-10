@@ -8,7 +8,7 @@ import PostCardList from "./components/PostCardList"
 import { useEffect, useState } from "react"
 import getSlicedPostList from "./util/getSlicedPostList"
 
-const GET_POST_LIST_QUERY_KEY = "FETCH_POST_LIST_HOME"
+const GET_POST_LIST_QUERY_KEY = "IT_IS_POST_LIST_QUERY_KEY_904367589125619"
 interface PostContainerProps {
   selectedCategory: Category
 }
