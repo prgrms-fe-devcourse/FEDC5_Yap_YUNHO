@@ -17,6 +17,8 @@ const PostDetailStatus = ({
   onClose,
 }: PostDetailStatusProps) => {
   const { likes } = post
+
+  console.log(authUser, isMyPost)
   return (
     <S.PostDetailStatus>
       <S.PostDetailStatusActions>
