@@ -5,18 +5,7 @@ import { Conversation } from "@/types"
 const fetchConversation = async (): Promise<Conversation[]> => {
   // 인증을 매번 해야하는 번거로움 존재
   try {
-    const myId = await AUTH_API.get("auth-user").then((res) => res.data._id)
-    const conversations = await AUTH_API.get("messages/conversations").then(
-      (res) => {
-        if (myId && res.data._id) {
-          return res.data.filter(
-            (list: Conversation) => list.receiver._id === list.sender?._id,
-          )
-        }
-        return res.data
-      },
-    )
-    return conversations
+    return await AUTH_API.get("messages/conversations").then((res) => res.data)
   } catch (e) {
     console.log(e)
     return []
@@ -28,6 +17,7 @@ const useDMList = () => {
     queryKey: ["getDMList"],
     queryFn: fetchConversation,
     refetchInterval: 5000, // 재 요청
+    initialData: [],
   })
 
   return { data }

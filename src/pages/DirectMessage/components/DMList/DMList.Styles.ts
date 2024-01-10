@@ -19,7 +19,7 @@ export const DMListInfo = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 0.5rem;
 `
 export const DMListTotalNoticeTitle = styled.span`
   color: ${({ theme }) => theme.colors.main};
@@ -33,12 +33,13 @@ export const DMListTotalNoticeNumber = styled.span`
 
 export const DMListNotNoticeTitle = styled.span`
   color: ${({ theme }) => theme.colors.point_alt};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  padding-left: 1rem;
 `
 
 export const DMListNotNoticedNumber = styled.span`
   color: ${({ theme }) => theme.colors.point_alt};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 `
 
 export const DMListContainer = styled.div`

@@ -15,6 +15,7 @@ const DMList = () => {
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
     const { _id } = decideChatUserName(user, receiver, sender)
+
     navigate(`/directmessage/${_id}`)
     setSelectedChattingId(_id)
   }
