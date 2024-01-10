@@ -7,14 +7,15 @@ interface PostDetailViewerProps {
 }
 
 const PostDetailViewer = ({ post }: PostDetailViewerProps) => {
+  const { mediaUrl, content, thumbnail } = post.title
   return (
     <S.PostDetailViewerLayout>
       <PostCard
         authUserProfile=""
         isNoneProfile={true}
-        thumbnail=""
-        content=""
-        mediaUrl=""
+        thumbnail={thumbnail}
+        content={content}
+        mediaUrl={mediaUrl}
       />
     </S.PostDetailViewerLayout>
   )
