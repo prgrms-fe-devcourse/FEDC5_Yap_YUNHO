@@ -1,23 +1,28 @@
+export type OnNavigatePostDetail = (postId: string) => void
+
 export interface PostCardProps {
-  textPercent?: "60%" | "80%" | "100%"
-  isBlock?: boolean
-  authUserProfile?: string
   thumbnail: string
   content: string
   mediaUrl: string
+  postId: string
+  isBlock?: boolean
+  authUserProfile?: string
   isNoneProfile?: boolean
-  onNavigatePostDetail?: () => void
+  textPercent?: "60%" | "80%" | "100%"
+  onNavigatePostDetail?: OnNavigatePostDetail
 }
 
 export interface PostCardUserProfileProps {
   imgUrl: string
+  postId: string
   isNoneProfile?: boolean
-  onNavigatePostDetail?: () => void
+  onNavigatePostDetail?: OnNavigatePostDetail
 }
 
 export interface PostCardThumbnailProps {
   imgUrl: string
-  onNavigatePostDetail?: () => void
+  postId: string
+  onNavigatePostDetail?: OnNavigatePostDetail
 }
 
 export interface PostCardContentProps {
