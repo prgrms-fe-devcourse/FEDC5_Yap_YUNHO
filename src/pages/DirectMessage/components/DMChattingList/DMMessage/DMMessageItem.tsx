@@ -1,6 +1,6 @@
-import MyMessage from "./MyMessage"
-import OthersMessage from "./OthersMessage"
-import { MessageProps } from "./../../types/index"
+import OthersMessage from "./OthersMessage/OthersMessage"
+import { MessageProps } from "../../../types/index"
+import MyMessage from "./MyMessage/MyMessage"
 
 // 주소의 id는 타인의 아이디
 const DMMessageItem = ({ children, id }: MessageProps) => {

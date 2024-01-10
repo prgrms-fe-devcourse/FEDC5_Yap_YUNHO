@@ -1,9 +1,9 @@
 import * as S from "./DMInput.Styles"
-import DMListProfile from "./../DMList/DMListProfile"
+import DMListProfile from "../../DMList/DMListProfile"
 import Button from "@/components/Button/Button"
 import { theme } from "@/styles/theme"
 import { useState } from "react"
-import useSendMessage from "../../hooks/useSendMessage"
+import useSendMessage from "../../../hooks/useSendMessage"
 
 interface DMInputProps {
   id: string

@@ -1,8 +1,7 @@
-import { MessageProps } from "../../types"
-import MyMessage from "./MyMessage"
+import { MessageProps } from "../../../types"
+import MyMessage from "./MyMessage/MyMessage"
 
 const DMMyMessageItem = ({ children }: MessageProps) => {
-  console.log("gg")
   return <MyMessage>{children}</MyMessage>
 }
 

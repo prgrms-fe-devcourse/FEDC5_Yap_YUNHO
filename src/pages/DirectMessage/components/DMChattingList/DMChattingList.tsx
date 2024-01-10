@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom"
 import * as S from "./DMChattingList.Styles"
-import DMMessageItem from "./DMMessageItem"
+
 import { Message } from "@/types"
-import DMInput from "./DMInput"
 import useChattingList from "../../hooks/useChattingList"
 import { useEffect, useRef, useCallback } from "react"
+import DMInput from "./DMInput/DMInput"
+import DMMessageItem from "./DMMessage/DMMessageItem"
 
 const DMChattingList = () => {
   const { id } = useParams()

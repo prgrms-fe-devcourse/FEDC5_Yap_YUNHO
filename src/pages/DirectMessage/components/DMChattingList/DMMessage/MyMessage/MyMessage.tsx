@@ -1,5 +1,5 @@
 import * as S from "./MyMessage.Styles.ts"
-import { MessageProps } from "./../../types/index"
+import { MessageProps } from "../../../../types/index"
 
 const MyMessage = ({ children }: MessageProps) => {
   return (

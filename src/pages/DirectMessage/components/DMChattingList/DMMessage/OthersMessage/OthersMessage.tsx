@@ -1,6 +1,6 @@
 import * as S from "./OthersMessage.Styles.ts"
-import DMListProfile from "../DMList/DMListProfile.tsx"
-import { MessageProps } from "../../types/index.ts"
+import DMListProfile from "../../../DMList/DMListProfile.tsx"
+import { MessageProps } from "../../../../types/index.ts"
 
 const OthersMessage = ({ children }: MessageProps) => {
   return (
