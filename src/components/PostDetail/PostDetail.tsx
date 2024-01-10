@@ -50,12 +50,12 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
             <PostDetailViewer post={post} />
           </GS.PostModalGlobalContainer>
           <GS.PostModalGlobalBoundary />
-          <S.PostDetailInfoLayout>
+          <S.PostDetailInfoContainer>
             <PostDetailInfo
               onClose={onClose}
               post={post}
             />
-          </S.PostDetailInfoLayout>
+          </S.PostDetailInfoContainer>
         </GS.PostModalGlobalLayout>
       )}
     </Modal>
