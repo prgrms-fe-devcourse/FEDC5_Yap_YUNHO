@@ -8,12 +8,18 @@ const fetchMessage = async (userId: string): Promise<Message[]> => {
       return []
     }
 
+    // 매번 인증한다는 번거로움 존재
     const myId = await AUTH_API.get("auth-user").then((res) => res.data._id)
+
+    if (!myId) {
+      return []
+    }
+
     const messageList = await AUTH_API.get(`/messages?userId=${userId}`).then(
       (res) => {
-        if (myId && res.data._id) {
+        if (userId === myId) {
           return res.data.filter(
-            (list: Conversation) => list.receiver._id === list.sender?._id,
+            (list: Conversation) => list.receiver?._id === list.sender?._id,
           )
         }
         return res.data
