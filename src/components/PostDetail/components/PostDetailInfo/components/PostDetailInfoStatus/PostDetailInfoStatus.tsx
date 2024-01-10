@@ -1,5 +1,7 @@
+import * as S from "./PostDetailInfoStatus.Styles"
+
 const PostDetailInfoStatus = () => {
-  return <></>
+  return <S.PostDetailInfoStatus></S.PostDetailInfoStatus>
 }
 
 export default PostDetailInfoStatus

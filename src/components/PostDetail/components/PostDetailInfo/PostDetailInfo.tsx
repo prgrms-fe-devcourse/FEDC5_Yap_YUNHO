@@ -14,7 +14,9 @@ const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
   return (
     <S.PostDetailInfoLayout>
       <PostDetailInfoUser />
+      <S.PostDetailInfoBoundary />
       <PostDetailInfoStatus />
+      <S.PostDetailInfoBoundary />
       <PostDetailInfoComment />
     </S.PostDetailInfoLayout>
   )
