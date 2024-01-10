@@ -24,7 +24,7 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
     closeModal: closeConfirm,
   } = useModal()
   const navigate = useNavigate()
-  const CommentApi = useMutation({
+  const CommentApi_send = useMutation({
     mutationKey: [SEND_MUTATION_QUERY_KEY],
     mutationFn: sendComment,
   })
