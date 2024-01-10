@@ -14,11 +14,19 @@ const PostCard = ({
   content,
   mediaUrl,
   isNoneProfile,
+  onNavigatePostDetail,
 }: PostCardProps): React.ReactNode => {
   return (
     <S.PostCardLayout>
-      {!isNoneProfile && <PostCardUserProfile imgUrl={authUserProfile} />}
-      <PostCardThumbnail imgUrl={thumbnail} />
+      <PostCardUserProfile
+        imgUrl={authUserProfile}
+        isNoneProfile={isNoneProfile}
+        onNavigatePostDetail={onNavigatePostDetail}
+      />
+      <PostCardThumbnail
+        imgUrl={thumbnail}
+        onNavigatePostDetail={onNavigatePostDetail}
+      />
       <PostCardContent
         content={content}
         textPercent={textPercent}

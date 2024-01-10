@@ -6,14 +6,18 @@ export interface PostCardProps {
   content: string
   mediaUrl: string
   isNoneProfile?: boolean
+  onNavigatePostDetail?: () => void
 }
 
 export interface PostCardUserProfileProps {
   imgUrl: string
+  isNoneProfile?: boolean
+  onNavigatePostDetail?: () => void
 }
 
 export interface PostCardThumbnailProps {
   imgUrl: string
+  onNavigatePostDetail?: () => void
 }
 
 export interface PostCardContentProps {
