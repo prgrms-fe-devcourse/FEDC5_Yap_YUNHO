@@ -34,6 +34,7 @@ const PostDetailStatus = ({
 }: PostDetailStatusProps) => {
   const { isShowModal, closeModal, showModal } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
+
   const queryClient = useQueryClient()
   const likeMutate = useMutation({
     mutationKey: [MUTATION_KEY.LIKE_POST_KEY],
@@ -46,7 +47,6 @@ const PostDetailStatus = ({
       showModal()
     },
   })
-
   const unlikeMutate = useMutation({
     mutationKey: [MUTATION_KEY.UN_LIKE_POST_KEY],
     mutationFn: unLikePost,
