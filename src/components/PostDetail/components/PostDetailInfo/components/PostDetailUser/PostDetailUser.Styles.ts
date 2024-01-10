@@ -6,6 +6,9 @@ export const PostDetailUserLayout = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  user-select: none;
 `
 
 export const PostDetailUserContainer = styled.div`
@@ -52,7 +55,16 @@ export const PostDetailUserFollower = styled.p`
 `
 
 export const PostDetailFollowButton = styled.button`
+  width: 10rem;
   height: 4rem;
 
-  background-color: ${({ theme }) => theme.colors.sub_alt};
+  background-color: ${({ theme }) => theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size8};
+
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+
+  transition: opacity ${({ theme }) => theme.transition.normal};
+  &:hover {
+    opacity: ${({ theme }) => theme.opacity.normal};
+  }
 `
