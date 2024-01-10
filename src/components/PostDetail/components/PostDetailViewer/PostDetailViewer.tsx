@@ -15,6 +15,7 @@ const PostDetailViewer = ({ post }: PostDetailViewerProps) => {
         thumbnail={thumbnail}
         content={content}
         mediaUrl={mediaUrl}
+        postId={post._id}
       />
     </GS.PostModalGlobalViewerLayout>
   )
