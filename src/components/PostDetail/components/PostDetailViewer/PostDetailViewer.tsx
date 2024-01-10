@@ -1,5 +1,5 @@
 import PostCard from "@/components/PostCard/PostCard"
-import * as S from "./PostDetailViewer.Styles"
+import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import { Post } from "@/types"
 
 interface PostDetailViewerProps {
@@ -9,14 +9,14 @@ interface PostDetailViewerProps {
 const PostDetailViewer = ({ post }: PostDetailViewerProps) => {
   const { mediaUrl, content, thumbnail } = post.title
   return (
-    <S.PostDetailViewerLayout>
+    <GS.PostModalGlobalViewerLayout>
       <PostCard
         isNoneProfile={true}
         thumbnail={thumbnail}
         content={content}
         mediaUrl={mediaUrl}
       />
-    </S.PostDetailViewerLayout>
+    </GS.PostModalGlobalViewerLayout>
   )
 }
 
