@@ -80,7 +80,7 @@ const PostEditUrlPrompt = ({
 
         <S.PostEditUrlErrorMessage>
           {checkError(isErrorUrl, newUrl)
-            ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL
+            ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT.ERROR_URL
             : ""}
         </S.PostEditUrlErrorMessage>
 

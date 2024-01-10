@@ -56,7 +56,7 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       showComplete()
     },
     onError: () => {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_UPDATE_POST)
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.POST_SUBMIT.UPDATE_POST)
       showAlert()
     },
   })
@@ -69,7 +69,7 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       showComplete()
     },
     onError: () => {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_ERROR_NEW_POST)
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.POST_SUBMIT.NEW_POST)
       showAlert()
     },
   })
@@ -88,19 +88,19 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
     }
 
     if (!checkCategoryValidation(postData.category)) {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CATEGORY)
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION.CATEGORY)
       showAlert()
       return
     }
 
     if (!checkContentValidation(postData.content)) {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_CONTENT)
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION.CONTENT)
       showAlert()
       return
     }
 
     if (!checkUrlValidation(postData.mediaUrl)) {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION_MEDIA_RUL)
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION.MEDIA_RUL)
       showAlert()
       return
     }

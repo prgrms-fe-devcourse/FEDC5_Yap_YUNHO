@@ -9,7 +9,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { likePost, unLikePost } from "@/components/PostDetail/apis/likePost"
 import useModal from "@/components/Modal/hooks/useModal"
 import { useState } from "react"
-import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
+import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
 const MUTATION_KEY = {
@@ -43,7 +43,7 @@ const PostDetailStatus = ({
       queryClient.refetchQueries()
     },
     onError: () => {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.LIKE_ERROR)
+      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.LIKE)
       showModal()
     },
   })
@@ -54,7 +54,7 @@ const PostDetailStatus = ({
       queryClient.refetchQueries()
     },
     onError: () => {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.LIKE_ERROR)
+      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.UNLIKE)
       showModal()
     },
   })

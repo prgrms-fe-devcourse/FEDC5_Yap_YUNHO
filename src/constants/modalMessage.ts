@@ -1,11 +1,3 @@
-export const CONFIRM_MODAL_MESSAGE = {
-  DELETE_CONFIRM: "해당 게시물을 삭제하시겠나요?",
-}
-
-export const COMPLETE_MODAL_MESSAGE = {
-  DELETE_COMPLETE: "삭제 되었습니다!",
-}
-
 export const POST_EDIT_MODAL_MESSAGE = {
   CONFIRM: {
     URL: "URL을 초기화 하시겠습니까?",
@@ -17,5 +9,14 @@ export const POST_EDIT_MODAL_MESSAGE = {
   },
   COMPLETE: {
     SUBMIT_POST: "완료되었습니다!",
+  },
+}
+
+export const POST_DETAIL_MODAL_MESSAGE = {
+  CONFIRM: {
+    DELETE: "해당 게시물을 삭제하시겠나요?",
+  },
+  COMPLETE: {
+    DELETE: "삭제 되었습니다!",
   },
 }

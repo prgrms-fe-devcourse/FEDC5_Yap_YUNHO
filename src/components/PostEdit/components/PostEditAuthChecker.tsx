@@ -28,13 +28,13 @@ const PostEditAuthChecker = ({
 
   useEffect(() => {
     if (!isLoggedIn) {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER_NOT_LOGIN)
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER.NOT_LOGIN)
       showModal()
       return
     }
 
     if (authorId !== "newPost" && authorId !== user._id) {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER_NO_PERMISSION)
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER.NO_PERMISSION)
       showModal()
       return
     }

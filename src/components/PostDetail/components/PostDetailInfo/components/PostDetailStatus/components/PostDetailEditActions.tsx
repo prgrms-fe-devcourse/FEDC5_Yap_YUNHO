@@ -6,11 +6,8 @@ import deletePost from "@/components/PostDetail/apis/deletePost"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-import {
-  COMPLETE_MODAL_MESSAGE,
-  CONFIRM_MODAL_MESSAGE,
-} from "@/constants/modalMessage"
-import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
+import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
+import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const MUTATION_KEY_DELETE_POST = "IT_IS_DELETE_MUTATION_KEY_41728461278632781"
 
@@ -83,18 +80,18 @@ const PostDetailEditActions = ({
       <ConfirmModal
         isShow={isShowConfirm}
         onClose={handleConfirmDeletePost}
-        message={CONFIRM_MODAL_MESSAGE.DELETE_CONFIRM}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.DELETE}
       />
 
       <AlertModal
         isShow={isShowAlert}
-        alertMessage={POST_EDIT_ERROR_MESSAGE.DELETE_ERROR}
+        alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.DELETE}
         onClose={closeAlert}
       />
 
       <AlertModal
         isShow={isShowComplete}
-        alertMessage={COMPLETE_MODAL_MESSAGE.DELETE_COMPLETE}
+        alertMessage={POST_DETAIL_MODAL_MESSAGE.COMPLETE.DELETE}
         onClose={handleCompleteDelete}
       />
     </>
