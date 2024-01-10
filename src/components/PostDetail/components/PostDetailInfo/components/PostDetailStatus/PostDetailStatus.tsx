@@ -88,7 +88,14 @@ const PostDetailStatus = ({
 
             {convertFollowCount(likes.length)}
           </S.PostDetailLike>
-          <LinkIcon />
+
+          <S.PostDetailLink
+            href={post.title.mediaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkIcon />
+          </S.PostDetailLink>
         </S.PostDetailStatusActions>
 
         {isMyPost && (
