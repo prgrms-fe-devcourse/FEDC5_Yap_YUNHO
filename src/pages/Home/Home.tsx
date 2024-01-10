@@ -40,9 +40,6 @@ const Home = () => {
     if (modalName === "postdetail") {
       showDetailModal()
     }
-    return () => {
-      closeEditModal()
-    }
   }, [closeEditModal, modalName, showDetailModal, showEditModal])
 
   const handleClosePostEdit = useCallback(() => {

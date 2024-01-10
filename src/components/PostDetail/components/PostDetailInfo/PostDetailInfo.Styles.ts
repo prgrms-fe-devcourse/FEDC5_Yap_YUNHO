@@ -6,8 +6,6 @@ export const PostDetailInfoLayout = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  border: 1px solid red;
 `
 
 export const PostDetailInfoBoundary = styled.div`
