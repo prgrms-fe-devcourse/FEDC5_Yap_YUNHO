@@ -4,6 +4,7 @@ import * as S from "./PostCardList.Styles"
 import { Post } from "@/types"
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 import usePostDetailModalStore from "@/components/PostDetail/store/usePostDetailModalStore"
+import { OnNavigatePostDetail } from "@/components/PostCard/PostCard.Types"
 
 interface PostCardListProps {
   postList: Post[] | null[]
@@ -12,6 +13,10 @@ interface PostCardListProps {
 const PostCardList = ({ postList }: PostCardListProps) => {
   const { isShowEditModal } = usePostEditModalStore()
   const { isShowPostDetail } = usePostDetailModalStore()
+
+  const handleNavigatePostDetail: OnNavigatePostDetail = (postId) => {
+    console.log(postId)
+  }
 
   return (
     <>
@@ -22,6 +27,7 @@ const PostCardList = ({ postList }: PostCardListProps) => {
             thumbnail={postList[0].title.thumbnail}
             content={postList[0].title.content}
             mediaUrl={postList[0].title.mediaUrl}
+            postId={postList[0]._id}
             textPercent={"60%"}
             isBlock={true}
           />
@@ -35,6 +41,7 @@ const PostCardList = ({ postList }: PostCardListProps) => {
             thumbnail={postList[1].title.thumbnail}
             content={postList[1].title.content}
             mediaUrl={postList[1].title.mediaUrl}
+            postId={postList[1]._id}
             textPercent={"80%"}
             isBlock={true}
           />
@@ -49,6 +56,8 @@ const PostCardList = ({ postList }: PostCardListProps) => {
             thumbnail={postList[2].title.thumbnail}
             content={postList[2].title.content}
             mediaUrl={postList[2].title.mediaUrl}
+            postId={postList[2]._id}
+            onNavigatePostDetail={handleNavigatePostDetail}
           />
         </S.PostMainCard>
       )}
@@ -59,6 +68,7 @@ const PostCardList = ({ postList }: PostCardListProps) => {
             thumbnail={postList[3].title.thumbnail}
             content={postList[3].title.content}
             mediaUrl={postList[3].title.mediaUrl}
+            postId={postList[3]._id}
             textPercent={"80%"}
             isBlock={true}
           />
@@ -71,6 +81,7 @@ const PostCardList = ({ postList }: PostCardListProps) => {
             thumbnail={postList[4].title.thumbnail}
             content={postList[4].title.content}
             mediaUrl={postList[4].title.mediaUrl}
+            postId={postList[4]._id}
             textPercent={"60%"}
             isBlock={true}
           />
