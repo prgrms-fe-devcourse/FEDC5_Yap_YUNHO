@@ -1,5 +1,5 @@
 import * as S from "./DMList.Styles"
-import { DMUserListProps } from "./../../types"
+import { DMUserListProps } from "../../DirectMessage.Types"
 import DMListProfile from "./DMListProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import decideChatUserName from "../../utils/decideChatUserName"

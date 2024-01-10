@@ -3,9 +3,9 @@ import * as S from "./DMList.Styles"
 import { Conversation } from "@/types"
 import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
-import { handleClickProps } from "./../../types/index"
 import useDMList from "./../../hooks/useDMList"
 import DMListItem from "./DMListItem"
+import { handleClickProps } from "./../../DirectMessage.Types"
 
 const DMList = () => {
   const [selectedChattingId, setSelectedChattingId] = useState("")

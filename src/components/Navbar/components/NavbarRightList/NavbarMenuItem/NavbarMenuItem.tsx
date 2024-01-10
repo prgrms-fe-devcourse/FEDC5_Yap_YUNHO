@@ -1,7 +1,6 @@
 import Button from "@/components/Button/Button"
-import { NavbarMenuProps } from "@/components/Navbar/types"
 import * as S from "./NavbarMenuItem.Styles"
-
+import { NavbarMenuProps } from "@/components/Navbar/Navbar.Types"
 const NavbarMenuItem = ({ children, handleMenuClick }: NavbarMenuProps) => {
   return (
     <S.NavbarMenuContainer>
