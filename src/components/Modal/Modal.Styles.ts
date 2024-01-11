@@ -8,7 +8,7 @@ export const ModalBackground = styled.section`
   align-items: center;
   justify-content: center;
 
-  position: absolute;
+  position: fixed;
   top: 0;
 
   z-index: ${({ theme }) => theme.zIndex.modalBackground};
