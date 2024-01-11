@@ -1,21 +1,30 @@
-import avatar from "@/assets/avatar.png"
+import standard from "@/assets/standard.jpeg"
 import * as S from "./DMList.Styles"
 import seenindicator from "@/assets/seenindicator.png"
 
 interface DMListProfileProps {
   isSeen?: boolean
+  profileImg: string
 }
-const DMListProfile = ({ isSeen }: DMListProfileProps) => {
+const DMListProfile = ({ isSeen, profileImg }: DMListProfileProps) => {
   return (
     <S.DMUserProfileContainer>
-      <S.DMUserProfileImg
-        src={avatar}
-        alt="DMList Profile Image"
-      />
+      {profileImg ? (
+        <S.DMUserProfileImg
+          src={profileImg}
+          alt="DMList Profile Image"
+        />
+      ) : (
+        <S.DMUserProfileImg
+          src={standard}
+          alt="DMList Profile Image"
+        />
+      )}
+
       {!isSeen && (
         <S.SeenIndicator
           src={seenindicator}
-          alt="읽지 않음 표시"
+          alt="온라인 표시"
         />
       )}
     </S.DMUserProfileContainer>

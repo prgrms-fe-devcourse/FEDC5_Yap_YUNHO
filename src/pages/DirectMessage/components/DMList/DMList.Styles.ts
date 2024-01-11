@@ -69,6 +69,8 @@ export const DMUserProfileContainer = styled.div`
 `
 
 export const DMUserProfileImg = styled.img`
+  width: 4rem;
+  height: 4rem;
   border-radius: ${({ theme }) => theme.radius.circle};
 `
 

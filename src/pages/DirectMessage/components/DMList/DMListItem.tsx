@@ -12,6 +12,7 @@ const DMListItem = ({
   isSeen,
   handleClick,
   selectedMessageId,
+  profileImg,
 }: DMUserListProps) => {
   const { user } = useAuthUserStore()
 
@@ -24,7 +25,10 @@ const DMListItem = ({
         selectedMessageId === decideChatUserName(user, receiver, sender)._id
       }
     >
-      <DMListProfile isSeen={isSeen} />
+      <DMListProfile
+        isSeen={isSeen}
+        profileImg={profileImg}
+      />
 
       <S.DMListChat>
         <S.DMListChatUserName>

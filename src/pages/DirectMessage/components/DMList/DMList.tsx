@@ -6,11 +6,13 @@ import decideChatUserName from "../../utils/decideChatUserName"
 import useDMList from "./../../hooks/useDMList"
 import DMListItem from "./DMListItem"
 import { handleClickProps } from "./../../DirectMessage.Types"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 const DMList = () => {
   const [selectedMessageId, setSelectedMessageId] = useState("")
   const navigate = useNavigate()
   const { data: DMUserList } = useDMList()
+  const { user: me } = useAuthUserStore()
 
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
@@ -40,7 +42,11 @@ const DMList = () => {
         </S.DMListNotNoticedNumber>
       </S.DMListInfo>
       <S.DMListContainer>
+        {/* 상대방: receiver가 내아이디면 sender를, receiver가 내가아니면 receiver를  */}
         {DMUserList?.map((user: Conversation) => {
+          const { receiver, sender } = user
+          const others = decideChatUserName(me, receiver, sender)
+
           return (
             <DMListItem
               key={user.createdAt}
@@ -51,6 +57,7 @@ const DMList = () => {
               isSeen={user.seen}
               selectedMessageId={selectedMessageId}
               handleClick={handleClick}
+              profileImg={others.image}
             />
           )
         })}

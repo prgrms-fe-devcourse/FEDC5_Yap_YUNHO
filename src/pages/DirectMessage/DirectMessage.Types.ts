@@ -13,6 +13,7 @@ export interface DMUserListProps {
   sender: User
   selectedMessageId: string
   handleClick: ({ user, sender, receiver }: handleClickProps) => void
+  profileImg: string
 }
 
 export interface MessageProps {
