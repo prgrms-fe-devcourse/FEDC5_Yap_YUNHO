@@ -17,9 +17,13 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
         <S.PostDetailUserProfile $src={image} />
         <S.PostDetailUserInfo>
           <S.PostDetailUserName>{fullName}</S.PostDetailUserName>
-          <S.PostDetailUserFollower>{`팔로워 ${followerCount}`}</S.PostDetailUserFollower>
+
+          <S.PostDetailUserFollower>
+            {`팔로워 ${followerCount}`}
+          </S.PostDetailUserFollower>
         </S.PostDetailUserInfo>
       </S.PostDetailUserContainer>
+
       {!isMyPost && (
         <S.PostDetailFollowButton>
           {/* 이후 follow 여부에 따라 변경 */} 팔로우
