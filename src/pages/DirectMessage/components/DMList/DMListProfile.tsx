@@ -17,7 +17,7 @@ const DMListProfile = ({ isSeen, profileImg }: DMListProfileProps) => {
       ) : (
         <S.DMUserProfileImg
           src={standard}
-          alt="DMList Profile Image"
+          alt="DMList Profile Standard Image"
         />
       )}
 
