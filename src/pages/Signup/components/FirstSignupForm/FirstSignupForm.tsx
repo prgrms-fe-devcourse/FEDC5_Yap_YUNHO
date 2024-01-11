@@ -8,7 +8,13 @@ import { useNavigate } from "react-router-dom"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 
-const FirstSignupForm = () => {
+interface FirstSignupFormProp {
+  handleSelectedFormComponent: () => void
+}
+
+const FirstSignupForm = ({
+  handleSelectedFormComponent,
+}: FirstSignupFormProp) => {
   const [requiredUserInfo, setRequiredUserInfo] = useState({
     email: "",
     nickname: "",
@@ -46,6 +52,7 @@ const FirstSignupForm = () => {
       .then((res) => {
         const { user, token } = res.data
         setLogin(user, token)
+        handleSelectedFormComponent()
       })
       .catch(() => {
         alert("이미 가입된 이메일입니다.")
