@@ -1,13 +1,12 @@
 import styled from "styled-components"
 
-export const PostCommentItemLayout = styled.div`
+export const PostCommentItemLayout = styled.li`
   width: 100%;
-  min-height: 6rem;
+
+  height: fit-content;
 
   display: flex;
   gap: 1rem;
-
-  overflow-y: auto;
 `
 
 export const PostCommentItemUserProfile = styled.div<{ $profile: string }>`
@@ -22,8 +21,43 @@ export const PostCommentItemUserProfile = styled.div<{ $profile: string }>`
 `
 
 export const PostCommentItemContainer = styled.div`
-  flex-grow: 1;
-  border: 1px solid red;
+  width: 74%;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+`
+
+export const PostCommentItemInfo = styled.p`
+  width: 100%;
+  height: 3rem;
+
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  color: ${({ theme }) => theme.colors.white};
+
+  display: flex;
+  align-items: center;
+
+  user-select: none;
+  svg {
+    font-size: 2rem;
+    margin: 0 0.2rem 0 1rem;
+  }
+
+  strong {
+    margin-left: 1rem;
+    color: ${({ theme }) => theme.colors.point};
+  }
+`
+
+export const PostCommentItemComment = styled.p`
+  width: 100%;
+
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  word-break: break-all;
+  white-space: pre-wrap;
+
+  color: ${({ theme }) => theme.colors.white};
 `
 
 export const PostCommentItemActions = styled.div`
