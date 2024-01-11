@@ -1,12 +1,10 @@
-import { Post, User } from "@/types"
 import * as S from "./PostDetailStatus.Styles"
+import { Post, User } from "@/types"
 import { convertFollowCount } from "@/util/convertFollowCount"
 import PostDetailEditActions from "./components/PostDetailEditActions"
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt"
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt"
 import LinkIcon from "@mui/icons-material/Link"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { unLikePost } from "@/components/PostDetail/apis/likePost"
 import useModal from "@/components/Modal/hooks/useModal"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import { useNavigate } from "react-router-dom"
@@ -29,16 +27,15 @@ const PostDetailStatus = ({
   isLogin,
   onClose,
 }: PostDetailStatusProps) => {
+  const { likeMutate, LikeErrorAlertModal } = useLikePost()
+  const { unlikeMutate, UnLikeErrorAlertModal } = useUnLikePost()
+  const navigate = useNavigate()
+
   const {
     isShowModal: isShowConfirm,
     closeModal: closeConfirm,
     showModal: showConfirm,
   } = useModal()
-
-  const { likeMutate, LikeErrorAlertModal } = useLikePost()
-  const { unlikeMutate, UnLikeErrorAlertModal } = useUnLikePost()
-
-  const navigate = useNavigate()
 
   const { likes } = post
   const myLikePost = post.likes.filter(
@@ -50,12 +47,10 @@ const PostDetailStatus = ({
       showConfirm()
       return
     }
-
     if (myLikePost) {
       unlikeMutate.mutate(myLikePost._id)
       return
     }
-
     likeMutate.mutate(post._id)
   }
 
