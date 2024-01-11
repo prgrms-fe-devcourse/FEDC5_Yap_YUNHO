@@ -2,30 +2,39 @@ import { API } from "@/apis/Api"
 import * as S from "./SearchInputBar.Styles"
 import { useState } from "react"
 import { Search } from "@mui/icons-material"
+import {
+  SEARCH_INPUT_BAR_PLACEHOLDER,
+  SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY,
+} from "@/components/Search/Search.Constants"
 
 const SearchInputBar = () => {
-  const [input, setInput] = useState("")
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const [searchKeyword, setSearchKeyword] = useState("")
 
-    // filter 컴포넌트, result 컴포넌트 작업 후 수정 예정
-    const { data } = await API.get(`/search/all/${input}`)
-    console.log(data)
-  }
-
+  let timer: number | null | undefined = null
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value)
+    if (timer) {
+      clearTimeout(timer)
+    }
+
+    timer = setTimeout(async () => {
+      setSearchKeyword(e.target.value)
+
+      if (e.target.value) {
+        const { data } = await API.get(`/search/all/${e.target.value}`)
+        console.log(data)
+      }
+    }, SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY)
   }
 
   return (
-    <S.SearchBarForm onSubmit={handleSubmit}>
+    <S.SearchBarForm onSubmit={(e) => e.preventDefault()}>
       <S.SearchBarInput
         type="search"
-        placeholder="사용자나 게시물을 검색해보세요"
+        placeholder={SEARCH_INPUT_BAR_PLACEHOLDER}
         name="searchbar"
         onChange={handleInputChange}
       />
-      {!input && (
+      {!searchKeyword && (
         <S.SearchIconLayout>
           <Search />
         </S.SearchIconLayout>
