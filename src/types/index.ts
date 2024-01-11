@@ -1,14 +1,14 @@
 export interface User {
-  coverImage: string // 커버 이미지
+  coverImage: string
   image: string // 프로필 이미지
   role: string
-  emailVerified: boolean // 사용되지 않음
-  banned: boolean // 사용되지 않음
+  emailVerified: boolean
+  banned: boolean
   isOnline: boolean
   posts: Post[]
   likes: Like[]
   comments: string[]
-  followers: Follow[] // 찍히는 Data 확인후 작업
+  followers: Follow[]
   following: Following[]
   notifications: Notification[]
   messages: Message[]
@@ -20,7 +20,7 @@ export interface User {
 }
 
 export interface Channel {
-  authRequired: boolean // 사용되지 않음
+  authRequired: boolean
   posts: string[]
   _id: string
   name: string
@@ -36,8 +36,8 @@ export interface JSONPost {
   _id: string
   image?: null
   imagePublicId?: string
-  title: string // Content
-  channel: Channel // Category
+  title: string
+  channel: Channel
   author: User
   createdAt: string
   updatedAt: string
@@ -60,13 +60,6 @@ export interface PostContent {
   mediaUrl: string
   thumbnail: string
   content: string
-}
-
-export interface UsePostData {
-  mediaUrl: string
-  thumbnail: string
-  content: string
-  authUserProfile: string
 }
 
 export interface Like {

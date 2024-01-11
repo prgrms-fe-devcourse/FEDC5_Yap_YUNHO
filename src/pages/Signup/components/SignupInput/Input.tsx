@@ -48,7 +48,7 @@ const Input = forwardRef(
         case "email":
         case "nickname":
           return (
-            <S.Input
+            <S.InputField
               type={inputTypeList[type]}
               name={name}
               value={value}
@@ -59,7 +59,7 @@ const Input = forwardRef(
         case "password":
           return (
             <>
-              <S.Input
+              <S.InputField
                 type={isVisible ? "text" : inputTypeList[type]}
                 name={name}
                 value={value}
@@ -76,7 +76,7 @@ const Input = forwardRef(
           )
         case "file":
           return (
-            <S.Input
+            <S.InputField
               type={inputTypeList[type]}
               name={name}
               value={value}
@@ -89,7 +89,7 @@ const Input = forwardRef(
           )
         default:
           return (
-            <S.Input
+            <S.InputField
               type="text"
               name={name}
               value={value}

@@ -4,11 +4,11 @@ import type { UpdateUserInfo, AllowedInputType } from "../../../types"
 import {
   validateEmailInput,
   validatePasswordInput,
-} from "@/Pages/Login/utils/validation"
+} from "@/pages/Login/utils/validation"
 import {
   EMAIL_ERROR_MESSAGE,
   PASSWORD_ERROR_MESSAGE,
-} from "@/Pages/Login/constants/errorMessage"
+} from "@/pages/Login/constants/errorMessage"
 
 interface LoginInputItemPropType {
   updateUserInfo: UpdateUserInfo

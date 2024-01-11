@@ -1,16 +1,19 @@
-import PostCard from "@/components/PostCard/Postcard"
+import PostCard from "@/components/PostCard/PostCard"
 import * as S from "./PostEditViewer.Styles"
-import { UsePostData } from "@/types"
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import { PostContent } from "@/types"
 
 interface PostEditViewerProps {
-  postData: UsePostData
+  postData: PostContent
 }
 
 const PostEditViewer = ({ postData }: PostEditViewerProps) => {
+  const { user } = useAuthUserStore()
+
   return (
     <S.PostEditViewerLayout>
       <PostCard
-        authUserProfile={postData.authUserProfile}
+        authUserProfile={user.image}
         thumbnail={postData.thumbnail}
         content={postData.content}
         mediaUrl={postData.mediaUrl}

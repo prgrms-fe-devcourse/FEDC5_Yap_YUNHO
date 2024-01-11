@@ -1,8 +1,8 @@
-import { ChangeEvent, useState, useEffect, FormEvent } from "react"
+import { ChangeEvent, useState, FormEvent } from "react"
 import * as S from "./FirstSignupForm.Styles"
 import { theme } from "@/styles/theme"
 import SignupInputContainer from "../SignupInput/SignupInputContainer"
-import type { RequiredUserInfo } from "../../types"
+
 import { getNewErrorMessage } from "../../utils/validateInput"
 import { useNavigate } from "react-router-dom"
 import { API } from "@/apis/Api"
@@ -23,32 +23,25 @@ const FirstSignupForm = ({
   })
 
   const [errorMessage, setErrorMessage] = useState({
-    email: "이메일을 입력해주세요.",
-    nickname: "닉네임을 입력해주세요.",
-    password: "비밀번호를 입력해주세요.",
-    passwordCheck: "동일한 비밀번호를 입력해주세요.",
+    email: "",
+    nickname: "",
+    password: "",
+    passwordCheck: "",
   })
 
   const navigate = useNavigate()
   const { setLogin } = useAuthUserStore()
 
-  const handleRequiredUserInfo = (event: ChangeEvent<HTMLInputElement>) => {
-    const { target } = event
-
-    setRequiredUserInfo((prevState) => ({
-      ...prevState,
-      [target.name]: target.value,
-    }))
-  }
-
   const handleSignup = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    API.post("/signup", {
+    const requestBody = {
       email: requiredUserInfo.email,
       fullName: requiredUserInfo.nickname,
       password: requiredUserInfo.password,
-    })
+    }
+
+    API.post("/signup", requestBody)
       .then((res) => {
         const { user, token } = res.data
         setLogin(user, token)
@@ -59,23 +52,43 @@ const FirstSignupForm = ({
       })
   }
 
-  const validateUserInfo = (userInfo: RequiredUserInfo) => {
-    const newErrorMessage = getNewErrorMessage(userInfo)
-    setErrorMessage(newErrorMessage)
+  const handleRequiredUserInfo = (event: ChangeEvent<HTMLInputElement>) => {
+    const { target } = event
+
+    validateUserInfo(target.name, target.value)
+
+    setRequiredUserInfo((prevState) => ({
+      ...prevState,
+      [target.name]: target.value,
+    }))
   }
 
-  useEffect(() => {
-    if (
-      requiredUserInfo.email === "" &&
-      requiredUserInfo.nickname === "" &&
-      requiredUserInfo.password === "" &&
-      requiredUserInfo.passwordCheck === ""
-    ) {
-      return
+  const validateUserInfo = (userInfoType: string, userInfoValue: string) => {
+    const newData = {
+      ...requiredUserInfo,
+      [userInfoType]: userInfoValue,
     }
 
-    validateUserInfo(requiredUserInfo)
-  }, [requiredUserInfo])
+    const newErrorMessage = getNewErrorMessage(userInfoType, newData)
+
+    setErrorMessage((prevErrorMessage) => ({
+      ...prevErrorMessage,
+      [userInfoType]: newErrorMessage,
+    }))
+  }
+
+  const handleDisabled = () => {
+    return (
+      errorMessage.email !== "" ||
+      errorMessage.nickname !== "" ||
+      errorMessage.password !== "" ||
+      errorMessage.passwordCheck !== "" ||
+      requiredUserInfo.email === "" ||
+      requiredUserInfo.nickname === "" ||
+      requiredUserInfo.password === "" ||
+      requiredUserInfo.passwordCheck === ""
+    )
+  }
 
   return (
     <S.SignupFormLayout>
@@ -100,12 +113,7 @@ const FirstSignupForm = ({
           <S.Button
             $width={35}
             $color={theme.colors.point}
-            disabled={
-              errorMessage.email !== "" ||
-              errorMessage.nickname !== "" ||
-              errorMessage.password !== "" ||
-              errorMessage.passwordCheck !== ""
-            }
+            disabled={handleDisabled()}
             type="submit"
           >
             가입완료

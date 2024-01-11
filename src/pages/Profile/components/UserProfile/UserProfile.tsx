@@ -1,8 +1,8 @@
-import UserFollowInfo from "./UserFollowInfo"
-import UserNickname from "./UserNickname"
-import UserProfileImage from "./UserProfileImage"
-import UserActions from "./UserActions/UserActions"
 import * as S from "./UserProfile.Styles"
+import UserActions from "./components/UserActions/UserActions"
+import UserFollowInfo from "./components/UserFollowInfo/UserFollowInfo"
+import UserNickname from "./components/UserNickname"
+import UserProfileImage from "./components/UserProfileImage"
 
 const UserProfile = () => {
   return (

@@ -14,13 +14,14 @@ export const ModalButton = styled.button`
 
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.size8};
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
 
   font-size: ${({ theme }) => theme.fontSizes.large};
 
   transition: all 0.3s;
   user-select: none;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.point_alt};
+    opacity: 0.5;
   }
 `
 

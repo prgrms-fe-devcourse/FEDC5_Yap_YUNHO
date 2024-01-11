@@ -8,3 +8,12 @@ export interface RequiredUserInfo {
   password: string
   passwordCheck: string
 }
+export type AllowedUserInfoType =
+  | "email"
+  | "password"
+  | "nickname"
+  | "passwordCheck"
+
+export type ValidateUserInfo = {
+  [key in AllowedUserInfoType]: string
+}

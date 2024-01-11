@@ -23,6 +23,7 @@ export const SignupInputItemTitle = styled.div`
 `
 
 export const ErrorMessage = styled.div`
+  height: 1.4rem;
   color: ${({ theme }) => theme.colors.point};
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `
