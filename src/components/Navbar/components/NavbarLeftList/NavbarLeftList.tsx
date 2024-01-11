@@ -3,12 +3,13 @@ import { NavbarButton } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarLeftList.Styles"
 import SearchIcon from "@mui/icons-material/Search"
 import Modal from "@/components/Modal/Modal"
-import useModal from "@/components/Modal/hooks/useModal"
 import Search from "@/components/Search/Search"
+import useSearchModalStore from "@/components/Search/stores/useSearchModalStore"
 
 const NavbarLeftList = () => {
   const navigate = useNavigate()
-  const { showModal, closeModal, isShowModal } = useModal()
+  const { isShowSearchModal, showSearchModal, closeSearchModal } =
+    useSearchModalStore()
 
   return (
     <S.NavbarLeftListLayout>
@@ -17,14 +18,14 @@ const NavbarLeftList = () => {
       </S.NavbarLogoContainer>
       <NavbarButton
         onClick={() => {
-          showModal()
+          showSearchModal()
         }}
       >
         <SearchIcon />
       </NavbarButton>
       <Modal
-        isShow={isShowModal}
-        onClose={closeModal}
+        isShow={isShowSearchModal}
+        onClose={closeSearchModal}
         clickAwayEnable={true}
       >
         <Search />

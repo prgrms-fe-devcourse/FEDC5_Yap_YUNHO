@@ -7,4 +7,6 @@ export const SearchResultItemContainer = styled.div`
 
   padding: 1rem 3rem 1rem 0;
   gap: 1rem;
+
+  cursor: pointer;
 `
