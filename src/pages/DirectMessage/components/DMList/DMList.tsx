@@ -78,6 +78,4 @@ const DMList = () => {
 }
 export default DMList
 
-// DM목록의 안 읽음은 내가 받은 메시지에 대해서만..
-
-// 채팅방의 안 읽음은 내가 보낸 메시지에 대해서만..
+// 최근 메시지가 내가 보낸거면 seen을 true로, 아니면 false로

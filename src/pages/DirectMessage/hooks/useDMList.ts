@@ -20,7 +20,6 @@ const useDMList = () => {
     initialData: [],
     refetchInterval: 1000, // 재 요청
   })
-
   return { data }
 }
 

@@ -32,13 +32,12 @@ const useChattingList = (othersId: string) => {
     initialData: [],
     refetchInterval: 1000, // 재 요청
 
-    select: (MessageList: Message[]) => {
-      return MessageList.sort(
+    select: (MessageList: Message[]) =>
+      MessageList.sort(
         (message, message2) =>
           Number(message.createdAt.slice(0, 10).replace(/-/g, "")) -
           Number(message2.createdAt.slice(0, 10).replace(/-/g, "")),
-      )
-    },
+      ),
   })
 
   return { data }
