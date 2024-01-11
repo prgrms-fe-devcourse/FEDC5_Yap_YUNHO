@@ -1,7 +1,6 @@
 import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
 import * as S from "./PostCommentPrompt.styles"
 import { ChangeEvent, useState } from "react"
-import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import commentValidation from "../../components/PostDetail/components/PostDetailInfo/components/PostDetailComment/components/PostCommentInput/util/commentValidation"
 
 interface PostCommentPromptProps {
@@ -10,6 +9,8 @@ interface PostCommentPromptProps {
   onClose: () => void
   onClickButton: (editedComment: string) => void
 }
+
+// 폐기... 아까워서 Dummy에 저장
 
 const PostCommentPrompt = ({
   isShow,
@@ -47,7 +48,7 @@ const PostCommentPrompt = ({
         <S.CommentPromptErrorContainer>
           {isErrorMessage && (
             <S.CommentPromptError>
-              {POST_DETAIL_ERROR_MESSAGE.COMMENT_PROMPT.ERROR_COMMENT}
+              {"미사용으로 사용시 해당 부분의 멘트를 붙여주세요"}
             </S.CommentPromptError>
           )}
         </S.CommentPromptErrorContainer>
