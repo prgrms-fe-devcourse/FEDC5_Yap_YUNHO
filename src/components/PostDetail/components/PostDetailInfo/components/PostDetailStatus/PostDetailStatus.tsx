@@ -12,11 +12,7 @@ import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModa
 import { useNavigate } from "react-router-dom"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 import useLikePost from "@/components/PostDetail/hooks/useLikePost"
-
-const MUTATION_KEY = {
-  LIKE_POST_KEY: "IT_IS_LIKE_MUTATION_KEY_546786723746238",
-  UN_LIKE_POST_KEY: "IT_IS_UN_LIKE_MUTATION_KEY_5448718927139",
-}
+import useUnLikePost from "@/components/PostDetail/hooks/useUnLikePost"
 
 interface PostDetailStatusProps {
   post: Post
@@ -40,19 +36,7 @@ const PostDetailStatus = ({
   } = useModal()
 
   const { likeMutate, LikeErrorAlertModal } = useLikePost()
-  const queryClient = useQueryClient()
-
-  const unlikeMutate = useMutation({
-    mutationKey: [MUTATION_KEY.UN_LIKE_POST_KEY],
-    mutationFn: unLikePost,
-    onSuccess: () => {
-      queryClient.refetchQueries()
-    },
-    onError: () => {
-      // setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.UNLIKE)
-      // showAlert()
-    },
-  })
+  const { unlikeMutate, UnLikeErrorAlertModal } = useUnLikePost()
 
   const navigate = useNavigate()
 
@@ -120,7 +104,9 @@ const PostDetailStatus = ({
           message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
         />
       )}
+
       {LikeErrorAlertModal}
+      {UnLikeErrorAlertModal}
     </>
   )
 }
