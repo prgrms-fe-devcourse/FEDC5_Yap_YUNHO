@@ -1,0 +1,8 @@
+export const MEDIA_PLAYER_PROGRESS_BAR_RANGE_PERCENTAGE = {
+  MIN: 0,
+  MAX: 1,
+}
+
+export const MEDIA_PLAYER_EMPTY_URL_KEYWORD = "this is other Page"
+
+export const MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE = 0.1

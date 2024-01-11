@@ -1,7 +1,7 @@
 import { create } from "zustand"
 import { devtools } from "zustand/middleware"
 import { UseMediaPlayerStore } from "./useMediaPlayerStore.Types"
-import { MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE } from "../constants/MediaPlayer"
+import { MEDIA_PLAYER_INITIAL_VOLUME_PERCENTAGE } from "../constants/MediaPlayer.Constants"
 
 const useMediaPlayerStore = create<UseMediaPlayerStore>()(
   devtools((set) => ({

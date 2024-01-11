@@ -1,14 +1,13 @@
 import { HandleEditPost } from "@/components/PostEdit/PostEdit.Types"
 import * as S from "./PostEditUrl.Styles"
 import useModal from "@/components/Modal/hooks/useModal"
-import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
 import PostEditUrlPrompt from "./components/PostEditUrlPrompt"
 import DeleteIcon from "@mui/icons-material/Delete"
 import {
   POST_EDIT_EDITOR_PLACEHOLDER,
   POST_EDIT_MODAL_MESSAGE,
 } from "@/components/PostEdit/constants/PostEdit.Constants"
-import ModalConfirm from "@/components/Modal/components/ModalConfirm/ModalConfirm"
+import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 
 interface PostEditUrlProps {
   urlPath: string
@@ -17,12 +16,12 @@ interface PostEditUrlProps {
 
 const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
   const {
-    isModalToggle: isPromptToggle,
+    isShowModal: isPromptShow,
     closeModal: closePrompt,
     showModal: showPrompt,
   } = useModal()
   const {
-    isModalToggle: isConfirmToggle,
+    isShowModal: isConfirmShow,
     closeModal: closeConfirm,
     showModal: showConfirm,
   } = useModal()
@@ -35,7 +34,6 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
   }
 
   const handleRemoveUrl = (response: boolean) => {
-    console.log(response)
     if (response) {
       onEdit({
         type: "mediaUrl",
@@ -61,21 +59,18 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         />
       </S.PostEditUrlLayout>
 
-      <CustomModal
-        isShow={isPromptToggle}
-        $height={30}
-      >
-        <PostEditUrlPrompt
-          onClose={closePrompt}
-          onEdit={handleEditUrl}
-          url={urlPath}
-        />
-      </CustomModal>
+      <PostEditUrlPrompt
+        onClose={closePrompt}
+        onEdit={handleEditUrl}
+        isShow={isPromptShow}
+        url={urlPath}
+      />
 
-      <ModalConfirm
-        isShow={isConfirmToggle}
+      <ConfirmModal
+        isShow={isConfirmShow}
         onClose={handleRemoveUrl}
         message={POST_EDIT_MODAL_MESSAGE.URL_CONFIRM}
+        acceptButtonText={"확인"}
       />
     </>
   )
