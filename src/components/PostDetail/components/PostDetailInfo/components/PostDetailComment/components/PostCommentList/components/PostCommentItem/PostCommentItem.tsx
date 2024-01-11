@@ -13,9 +13,14 @@ import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 interface PostCommentItemProps {
   comment: PostComment
   onDelete: (commentId: string) => void
+  showEditPrompt: () => void
 }
 
-const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
+const PostCommentItem = ({
+  comment,
+  onDelete,
+  showEditPrompt,
+}: PostCommentItemProps) => {
   const {
     isShowModal: isShowConfirm,
     showModal: showConfirm,
@@ -57,7 +62,7 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
               <S.PostCommentItemButton onClick={showConfirm}>
                 <DeleteIcon />
               </S.PostCommentItemButton>
-              <S.PostCommentItemButton>
+              <S.PostCommentItemButton onClick={showEditPrompt}>
                 <ModeEditOutlineIcon />
               </S.PostCommentItemButton>
             </>
