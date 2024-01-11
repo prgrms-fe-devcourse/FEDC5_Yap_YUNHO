@@ -3,11 +3,14 @@ import * as S from "./SecondSignupForm.Styles"
 import { theme } from "@/styles/theme"
 import Input from "../SignupInput/Input"
 import emptyImg from "@/assets/emptyimg.png"
+import { AUTH_API } from "@/apis/Api"
+import { useNavigate } from "react-router-dom"
 
 const SecondSignupForm = () => {
-  const [previewUserProfile, setPreviewUserProfile] = useState<string>("")
+  const [previewUserProfile, setPreviewUserProfile] = useState("")
   const [userProfileImgFile, setUserProfileImgFile] = useState<File>()
   const imgRef = useRef<HTMLInputElement>(null)
+  const navigate = useNavigate()
 
   const openFileSelector = () => {
     if (imgRef.current === null) {
@@ -29,10 +32,9 @@ const SecondSignupForm = () => {
       return
     }
 
-    setUserProfileImgFile(file)
-
     const userImg = URL.createObjectURL(file)
     setPreviewUserProfile(userImg)
+    setUserProfileImgFile(file)
   }
 
   const removeImgFile = () => {
@@ -40,7 +42,14 @@ const SecondSignupForm = () => {
     setUserProfileImgFile(undefined)
   }
 
-  const handleUpdateUserProfile = async (event: FormEvent) => {
+  const getDefaultImgFile = async () => {
+    const response = await fetch(emptyImg)
+    const defaultImg = await response.blob()
+
+    return defaultImg
+  }
+
+  const updateUserProfile = async (event: FormEvent) => {
     event.preventDefault()
 
     const formData = new FormData()
@@ -55,19 +64,21 @@ const SecondSignupForm = () => {
     if (userProfileImgFile instanceof File) {
       formData.append("image", userProfileImgFile)
     }
-  }
 
-  const getDefaultImgFile = async () => {
-    const response = await fetch(emptyImg)
-    const defaultImg = await response.blob()
-
-    return defaultImg
+    await AUTH_API.post("/users/upload-photo", formData)
+      .then(() => {
+        alert("프로필 이미지 등록 성공")
+      })
+      .catch(() => {
+        alert("프로필 이미지 등록 실패")
+      })
+    navigate("/", { replace: true })
   }
 
   return (
     <S.SignupFormLayout>
       <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
-      <S.SignupFormContainer onSubmit={handleUpdateUserProfile}>
+      <S.SignupFormContainer onSubmit={updateUserProfile}>
         <S.ImgContainer>
           <S.ImgItem onClick={openFileSelector}>
             <S.Img
@@ -76,6 +87,7 @@ const SecondSignupForm = () => {
             />
           </S.ImgItem>
           <Input
+            key={Date.now()}
             type="file"
             ref={imgRef}
             onChange={addImgFile}

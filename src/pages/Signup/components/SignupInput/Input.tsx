@@ -83,6 +83,7 @@ const Input = forwardRef(
               style={{ display: "none" }}
               placeholder={placeholder}
               ref={ref}
+              accept="image/*"
               onChange={onChange}
             />
           )

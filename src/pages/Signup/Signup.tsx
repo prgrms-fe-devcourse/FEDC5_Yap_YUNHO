@@ -5,7 +5,7 @@ import SecondSignupForm from "./components/SecondSignupForm/SecondSignupForm"
 export default function Signup() {
   return (
     <S.SignupLayout>
-      {/* <FirstSignupForm /> */}
+      <FirstSignupForm />
       <SecondSignupForm />
     </S.SignupLayout>
   )
