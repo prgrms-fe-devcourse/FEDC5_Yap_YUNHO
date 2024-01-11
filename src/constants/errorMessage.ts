@@ -31,7 +31,7 @@ export const POST_DETAIL_ERROR_MESSAGE = {
   COMMENT: {
     DELETE: "삭제과정에서 오류가 발생했습니다. 다시 시도해주세요!",
   },
-  COMMENT_PROMPT: { ERROR_COMMENT: "글자를 입력해주세요" },
+
   COMMENT_SUBMIT: {
     ERROR: "잠시 후 다시 시도해주세요!",
   },

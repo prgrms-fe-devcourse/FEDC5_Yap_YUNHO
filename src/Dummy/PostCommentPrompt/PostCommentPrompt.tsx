@@ -2,6 +2,7 @@ import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
 import * as S from "./PostCommentPrompt.styles"
 import { ChangeEvent, useState } from "react"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
+import commentValidation from "../../components/PostDetail/components/PostDetailInfo/components/PostDetailComment/components/PostCommentInput/util/commentValidation"
 
 interface PostCommentPromptProps {
   isShow: boolean
@@ -14,16 +15,24 @@ const PostCommentPrompt = ({
   isShow,
   initialComment,
   onClose,
+  onClickButton,
 }: PostCommentPromptProps) => {
   const [editMessage, setEditMessage] = useState(initialComment)
-
+  const isErrorMessage = !commentValidation(editMessage)
   const handleChangeEditComment = ({
     target,
   }: ChangeEvent<HTMLTextAreaElement>) => {
     setEditMessage(target.value)
   }
 
-  const isErrorMessage = !editMessage.trim()
+  const handleCompletedComment = () => {
+    if (isErrorMessage) {
+      return
+    }
+
+    onClose()
+    onClickButton(editMessage)
+  }
 
   return (
     <CustomModal
@@ -50,7 +59,12 @@ const PostCommentPrompt = ({
           <S.CommentPromptButton onClick={onClose}>
             {"취소"}
           </S.CommentPromptButton>
-          <S.CommentPromptButton>{"수정"}</S.CommentPromptButton>
+          <S.CommentPromptButton
+            disabled={isErrorMessage}
+            onClick={handleCompletedComment}
+          >
+            {"수정"}
+          </S.CommentPromptButton>
         </S.CommentPromptActions>
       </S.CommentPromptLayout>
     </CustomModal>

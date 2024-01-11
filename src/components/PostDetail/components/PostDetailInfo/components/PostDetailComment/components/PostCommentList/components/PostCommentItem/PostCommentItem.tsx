@@ -2,7 +2,6 @@ import { PostComment } from "@/types"
 import * as S from "./PostCommentItem.Styles"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import DeleteIcon from "@mui/icons-material/Delete"
-import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline"
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import { format, register } from "timeago.js"
 import kolocale from "timeago.js/lib/lang/ko"
@@ -13,25 +12,16 @@ import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 interface PostCommentItemProps {
   comment: PostComment
   onDelete: (commentId: string) => void
-  showEditPrompt: (prevComment: string) => void
 }
 
 register("ko", kolocale)
-const PostCommentItem = ({
-  comment,
-  onDelete,
-  showEditPrompt,
-}: PostCommentItemProps) => {
+const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
   const {
     isShowModal: isShowDeleteConfirm,
     showModal: showDeleteConfirm,
     closeModal: closeDeleteConfirm,
   } = useModal()
-  const {
-    isShowModal: isShowEditConfirm,
-    showModal: showEditConfirm,
-    closeModal: closeEditConfirm,
-  } = useModal()
+
   const { user } = useAuthUserStore()
   const { author, createdAt, updatedAt } = comment
 
@@ -42,15 +32,6 @@ const PostCommentItem = ({
     }
     closeDeleteConfirm()
     onDelete(comment._id)
-  }
-
-  const handleEditComment = (isAccept: boolean) => {
-    if (!isAccept) {
-      closeEditConfirm()
-      return
-    }
-    closeEditConfirm()
-    showEditPrompt(comment.comment)
   }
 
   const isMyComment = author._id === user._id
@@ -71,14 +52,9 @@ const PostCommentItem = ({
         </S.PostCommentItemContainer>
         <S.PostCommentItemActions>
           {isMyComment && (
-            <>
-              <S.PostCommentItemButton onClick={showDeleteConfirm}>
-                <DeleteIcon />
-              </S.PostCommentItemButton>
-              <S.PostCommentItemButton onClick={showEditConfirm}>
-                <ModeEditOutlineIcon />
-              </S.PostCommentItemButton>
-            </>
+            <S.PostCommentItemButton onClick={showDeleteConfirm}>
+              <DeleteIcon />
+            </S.PostCommentItemButton>
           )}
         </S.PostCommentItemActions>
       </S.PostCommentItemLayout>
@@ -87,12 +63,6 @@ const PostCommentItem = ({
         isShow={isShowDeleteConfirm}
         message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_DELETE}
         onClose={handleDeleteComment}
-      />
-
-      <ConfirmModal
-        isShow={isShowEditConfirm}
-        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_EDIT}
-        onClose={handleEditComment}
       />
     </>
   )

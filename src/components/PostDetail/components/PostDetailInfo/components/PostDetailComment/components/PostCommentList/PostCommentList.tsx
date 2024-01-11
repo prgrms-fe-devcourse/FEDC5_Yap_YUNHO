@@ -8,7 +8,6 @@ import useModal from "@/components/Modal/hooks/useModal"
 import { useState } from "react"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
-import PostCommentPrompt from "./components/PostCommentPrompt/PostCommentPrompt"
 
 const COMMENT_DELETE_MUTATION_KEY =
   "IT_IS_DELETE_MUTATION_KEY_672532461414612689"
@@ -23,13 +22,7 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
     showModal: showAlert,
     closeModal: closeAlert,
   } = useModal()
-  const {
-    isShowModal: isShowPrompt,
-    showModal: showPrompt,
-    closeModal: closePrompt,
-  } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
-  const [promptInitialValue, setPromptInitialValue] = useState("")
 
   const queryClient = useQueryClient()
   const deleteMutation = useMutation({
@@ -51,15 +44,6 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
     deleteMutation.mutate(commentId)
   }
 
-  const handleEditComment = (editComment: string) => {
-    console.log(editComment)
-  }
-
-  const showEditPromptModal = (prevComment: string) => {
-    setPromptInitialValue(prevComment)
-    showPrompt()
-  }
-
   const reversedList = [...commentList].reverse()
   return (
     <>
@@ -70,23 +54,15 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
               key={comment._id}
               comment={comment}
               onDelete={handleDeleteComment}
-              showEditPrompt={showEditPromptModal}
             />
           ))}
       </S.PostCommentListLayout>
 
-      <AlertModal
-        alertMessage={alertMessage}
-        isShow={isShowAlert}
-        onClose={closeAlert}
-      />
-
-      {isShowPrompt && (
-        <PostCommentPrompt
-          isShow={isShowPrompt}
-          initialComment={promptInitialValue}
-          onClose={closePrompt}
-          onClickButton={handleEditComment}
+      {isShowAlert && (
+        <AlertModal
+          alertMessage={alertMessage}
+          isShow={isShowAlert}
+          onClose={closeAlert}
         />
       )}
     </>
