@@ -1,19 +1,11 @@
 import { ForwardedRef, RefObject, forwardRef, useState } from "react"
 import * as S from "./Input.Styles"
-import type { OnChange, AllowedSignupInputType } from "../../types/index"
+import type { OnChange, AllowedLoginInputType } from "../../../types/index"
 import VisibilityIcon from "@mui/icons-material/Visibility"
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
 
-/**
- * Input 컴포넌트 사용법
- * types/index.ts 에서 필요한 타입을 만들어서 참조해온 후
- * InputProp의 type에 넣고 나머지 필요한 곳에 넣으면 됩니다.
- *
- * Input 컴포넌트가 필요한 곳에서 <Input type="넣고 싶은 타입"/>
- * 으로 쓰면 됩니다!
- */
 interface InputProp {
-  type: AllowedSignupInputType
+  type: AllowedLoginInputType
   placeholder?: string
   name?: string
   value?: string
@@ -32,7 +24,9 @@ const Input = forwardRef(
       setIsVisible(!isVisible)
     }
 
-    const getInputFieldByType = (type: AllowedSignupInputType) => {
+    const getInputFieldByType = (
+      type: AllowedLoginInputType | "nickname" | "file",
+    ) => {
       switch (type) {
         case "email":
         case "nickname":

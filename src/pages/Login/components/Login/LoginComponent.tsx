@@ -6,7 +6,7 @@ import LoginInputContainer from "./LoginInput/LoginInputContainer"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
-import type { AllowedInputType } from "../../types"
+import type { AllowedLoginInputType } from "../../types"
 import useModal from "@/components/Modal/hooks/useModal"
 import ModalAlert from "@/components/Modal/components/AlertModal/AlertModal"
 
@@ -23,7 +23,7 @@ const LoginComponent = () => {
   const navigate = useNavigate()
   const { isShowModal, showModal, closeModal } = useModal()
 
-  const updateUserInfo = (value: string, type: AllowedInputType) => {
+  const updateUserInfo = (value: string, type: AllowedLoginInputType) => {
     userInfoRef.current[type] = value
   }
 

@@ -1,6 +1,9 @@
 import * as S from "./LoginInputItem.Styles"
 import { ChangeEvent, useState } from "react"
-import type { UpdateUserInfo, AllowedInputType } from "../../../types"
+import type {
+  UpdateUserInfo,
+  AllowedLoginInputType,
+} from "../../../types/index"
 import {
   validateEmailInput,
   validatePasswordInput,
@@ -9,15 +12,12 @@ import {
   EMAIL_ERROR_MESSAGE,
   PASSWORD_ERROR_MESSAGE,
 } from "@/pages/Login/constants/errorMessage"
+import Input from "./Input"
 
 interface LoginInputItemPropType {
   updateUserInfo: UpdateUserInfo
-  type: AllowedInputType
+  type: AllowedLoginInputType
   placeholder: string
-}
-
-type InputTypeList = {
-  [key in AllowedInputType]: string
 }
 
 const LoginInputItem = ({
@@ -26,11 +26,6 @@ const LoginInputItem = ({
   placeholder,
 }: LoginInputItemPropType) => {
   const [errorMessage, setErrorMessage] = useState("")
-
-  const inputTypeList: InputTypeList = {
-    email: "text",
-    password: "password",
-  }
 
   const handleInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (type === "email" && !validateEmailInput(target.value)) {
@@ -51,13 +46,11 @@ const LoginInputItem = ({
 
   return (
     <>
-      <S.LoginInputItemLayout>
-        <S.Input
-          type={inputTypeList[type]}
-          placeholder={placeholder}
-          onChange={handleInput}
-        />
-      </S.LoginInputItemLayout>
+      <Input
+        type={type}
+        placeholder={placeholder}
+        onChange={handleInput}
+      />
       {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
     </>
   )
