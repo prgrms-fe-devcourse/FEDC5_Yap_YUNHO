@@ -21,7 +21,7 @@ const DMInput = ({ othersId, scrollToBottom }: DMInputProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const messageSubmission = {
-      sendingMessage,
+      message: sendingMessage,
       receiver: othersId,
     }
     await sendMessage(messageSubmission)

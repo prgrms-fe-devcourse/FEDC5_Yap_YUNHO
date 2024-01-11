@@ -9,7 +9,6 @@ const fetchMessage = async (othersId: string, myId: string) => {
   if (!othersId) {
     return []
   }
-
   const messageList = await AUTH_API.get(`/messages?userId=${othersId}`)
     .then((res) => res.data)
     .catch((e) => {
