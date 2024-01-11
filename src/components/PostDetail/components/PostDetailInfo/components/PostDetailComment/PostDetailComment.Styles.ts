@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const PostDetailCommentLayout = styled.div`
   width: 100%;
-  height: 51rem;
+  height: 40rem;
 
   display: flex;
   flex-direction: column;

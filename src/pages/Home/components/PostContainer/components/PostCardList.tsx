@@ -11,9 +11,15 @@ import PostDetail from "@/components/PostDetail/PostDetail"
 
 interface PostCardListProps {
   postList: Post[] | null[]
+  onClickLeftCard: () => void
+  onClickRightCard: () => void
 }
 
-const PostCardList = ({ postList }: PostCardListProps) => {
+const PostCardList = ({
+  postList,
+  onClickLeftCard,
+  onClickRightCard,
+}: PostCardListProps) => {
   const { isShowEditModal } = usePostEditModalStore()
   const { isShowPostDetail, showDetailModal, closeDetailModal } =
     usePostDetailModalStore()
@@ -42,7 +48,10 @@ const PostCardList = ({ postList }: PostCardListProps) => {
   return (
     <>
       {postList[0] && (
-        <S.PostSmallCard $isLeft={true}>
+        <S.PostSmallCard
+          $isLeft={true}
+          onClick={onClickLeftCard}
+        >
           <PostCard
             authUserProfile={postList[0].author.image}
             thumbnail={postList[0].title.thumbnail}
@@ -56,7 +65,10 @@ const PostCardList = ({ postList }: PostCardListProps) => {
       )}
 
       {postList[1] && (
-        <S.PostSubCard $isLeft={true}>
+        <S.PostSubCard
+          $isLeft={true}
+          onClick={onClickLeftCard}
+        >
           <PostCard
             authUserProfile={postList[1].author.image}
             thumbnail={postList[1].title.thumbnail}
@@ -83,7 +95,10 @@ const PostCardList = ({ postList }: PostCardListProps) => {
         </S.PostMainCard>
       )}
       {postList[3] && (
-        <S.PostSubCard $isLeft={false}>
+        <S.PostSubCard
+          $isLeft={false}
+          onClick={onClickRightCard}
+        >
           <PostCard
             authUserProfile={postList[3].author.image}
             thumbnail={postList[3].title.thumbnail}
@@ -96,7 +111,10 @@ const PostCardList = ({ postList }: PostCardListProps) => {
         </S.PostSubCard>
       )}
       {postList[4] && (
-        <S.PostSmallCard $isLeft={false}>
+        <S.PostSmallCard
+          $isLeft={false}
+          onClick={onClickRightCard}
+        >
           <PostCard
             authUserProfile={postList[4].author.image}
             thumbnail={postList[4].title.thumbnail}
