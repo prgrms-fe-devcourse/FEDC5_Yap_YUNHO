@@ -35,7 +35,7 @@ const PostDetailEditActions = ({
   const navigate = useNavigate()
 
   const queryClient = useQueryClient()
-  const updateMutate = useMutation({
+  const deletePostMutate = useMutation({
     mutationKey: [MUTATION_KEY_DELETE_POST],
     mutationFn: deletePost,
     onSuccess: () => {
@@ -57,7 +57,7 @@ const PostDetailEditActions = ({
       return closeConfirm()
     }
 
-    updateMutate.mutate(post._id)
+    deletePostMutate.mutate(post._id)
     closeConfirm()
   }
 
@@ -77,23 +77,29 @@ const PostDetailEditActions = ({
         </S.PostDetailEditButton>
       </S.PostDetailEditActions>
 
-      <ConfirmModal
-        isShow={isShowConfirm}
-        onClose={handleConfirmDeletePost}
-        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.DELETE}
-      />
+      {isShowConfirm && (
+        <ConfirmModal
+          isShow={isShowConfirm}
+          onClose={handleConfirmDeletePost}
+          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.DELETE}
+        />
+      )}
 
-      <AlertModal
-        isShow={isShowAlert}
-        alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.DELETE}
-        onClose={closeAlert}
-      />
+      {isShowAlert && (
+        <AlertModal
+          isShow={isShowAlert}
+          alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.DELETE}
+          onClose={closeAlert}
+        />
+      )}
 
-      <AlertModal
-        isShow={isShowComplete}
-        alertMessage={POST_DETAIL_MODAL_MESSAGE.COMPLETE.DELETE}
-        onClose={handleCompleteDelete}
-      />
+      {isShowComplete && (
+        <AlertModal
+          isShow={isShowComplete}
+          alertMessage={POST_DETAIL_MODAL_MESSAGE.COMPLETE.DELETE}
+          onClose={handleCompleteDelete}
+        />
+      )}
     </>
   )
 }
