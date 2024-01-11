@@ -11,7 +11,7 @@ const DMListItem = ({
   createdAt,
   isSeen,
   handleClick,
-  selectedChattingId,
+  selectedMessageId,
 }: DMUserListProps) => {
   const { user } = useAuthUserStore()
 
@@ -21,7 +21,7 @@ const DMListItem = ({
         handleClick({ user, receiver, sender })
       }}
       $isSelect={
-        selectedChattingId === decideChatUserName(user, receiver, sender)._id
+        selectedMessageId === decideChatUserName(user, receiver, sender)._id
       }
     >
       <DMListProfile isSeen={isSeen} />

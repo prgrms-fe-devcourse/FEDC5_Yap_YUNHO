@@ -5,7 +5,7 @@ import { QUERY_KEY_GET_GROUP_MESSAGELIST } from "./useDMList"
 import { QUERY_KEY_GET_MESSAGELIST } from "./useChattingList"
 
 interface SendMessageProps {
-  message: string
+  sendingMessage: string
   receiver: string
 }
 
@@ -19,14 +19,14 @@ const sendMessage = async (messageSubmission: SendMessageProps) => {
 
 const useSendMessage = () => {
   const queryClient = useQueryClient()
-  const { id } = useParams()
+  const { othersId } = useParams()
 
   return useMutation({
     mutationFn: sendMessage,
     onSuccess: () => {
       // 그룹 메시지 목록 업데이트
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST, id],
+        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST, othersId],
       })
       // 메시지 목록 업데이트
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGELIST] })

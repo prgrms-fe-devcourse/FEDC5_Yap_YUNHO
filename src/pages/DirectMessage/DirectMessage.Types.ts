@@ -11,12 +11,12 @@ export interface DMUserListProps {
   isSeen: boolean
   receiver: User
   sender: User
-  selectedChattingId: string
+  selectedMessageId: string
   handleClick: ({ user, sender, receiver }: handleClickProps) => void
 }
 
 export interface MessageProps {
   children: Message
-  id?: string
+  othersId?: string
   scrollToBottom?: () => void
 }

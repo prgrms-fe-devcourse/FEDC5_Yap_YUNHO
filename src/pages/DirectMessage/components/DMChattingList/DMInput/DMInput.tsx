@@ -5,27 +5,27 @@ import useSendMessage from "../../../hooks/useSendMessage"
 import SendIcon from "@mui/icons-material/Send"
 
 interface DMInputProps {
-  id: string
+  othersId: string
   scrollToBottom: () => void
 }
 
-const DMInput = ({ id, scrollToBottom }: DMInputProps) => {
-  const [message, setMessage] = useState("")
+const DMInput = ({ othersId, scrollToBottom }: DMInputProps) => {
+  const [sendingMessage, setSendingMessage] = useState("")
   const { mutate: sendMessage } = useSendMessage()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
-    setMessage(value)
+    setSendingMessage(value)
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const messageSubmission = {
-      message,
-      receiver: id,
+      sendingMessage,
+      receiver: othersId,
     }
     await sendMessage(messageSubmission)
-    setMessage("")
+    setSendingMessage("")
     setTimeout(() => {
       scrollToBottom()
     }, 200)
@@ -38,7 +38,7 @@ const DMInput = ({ id, scrollToBottom }: DMInputProps) => {
         <S.DMInputItem
           placeholder="메시지를 입력해주세요"
           onChange={handleInputChange}
-          value={message}
+          value={sendingMessage}
         />
         <S.DMSendButton>
           <SendIcon />

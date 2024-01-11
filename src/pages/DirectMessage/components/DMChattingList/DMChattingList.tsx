@@ -8,8 +8,8 @@ import DMInput from "./DMInput/DMInput"
 import DMMessageItem from "./DMMessage/DMMessageItem"
 
 const DMChattingList = () => {
-  const { id } = useParams()
-  const { data: MessageList } = useChattingList(id || "")
+  const { id: othersId } = useParams()
+  const { data: MessageList } = useChattingList(othersId || "")
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -20,13 +20,13 @@ const DMChattingList = () => {
 
   return (
     <S.DMChattingListLayout>
-      {id && (
+      {othersId && (
         <>
           <S.DMMessageList ref={scrollRef}>
             {MessageList?.map((list: Message) => (
               <DMMessageItem
                 key={list.createdAt}
-                id={id}
+                othersId={othersId}
                 scrollToBottom={scrollToBottom}
               >
                 {list}
@@ -34,7 +34,7 @@ const DMChattingList = () => {
             ))}
           </S.DMMessageList>
           <DMInput
-            id={id}
+            othersId={othersId}
             scrollToBottom={scrollToBottom}
           />
         </>

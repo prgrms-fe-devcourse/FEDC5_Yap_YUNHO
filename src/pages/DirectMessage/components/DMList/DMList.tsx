@@ -8,16 +8,16 @@ import DMListItem from "./DMListItem"
 import { handleClickProps } from "./../../DirectMessage.Types"
 
 const DMList = () => {
-  const [selectedChattingId, setSelectedChattingId] = useState("")
+  const [selectedMessageId, setSelectedMessageId] = useState("")
   const navigate = useNavigate()
   const { data: DMUserList } = useDMList()
 
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
-    const { _id } = decideChatUserName(user, receiver, sender)
+    const { _id: othersId } = decideChatUserName(user, receiver, sender)
 
-    navigate(`/directmessage/${_id}`)
-    setSelectedChattingId(_id)
+    navigate(`/directmessage/${othersId}`)
+    setSelectedMessageId(othersId)
   }
 
   const DMListCount = {
@@ -49,7 +49,7 @@ const DMList = () => {
               sender={user.sender}
               createdAt={user.createdAt}
               isSeen={user.seen}
-              selectedChattingId={selectedChattingId}
+              selectedMessageId={selectedMessageId}
               handleClick={handleClick}
             />
           )
