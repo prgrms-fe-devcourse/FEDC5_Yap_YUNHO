@@ -5,8 +5,9 @@ import {
   SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY,
 } from "@/components/Search/Search.Constants"
 import { useState, useEffect } from "react"
+import { showResultProp } from "@/components/Search/Search.Types"
 
-const SearchInputBar = ({ showResults }) => {
+const SearchInputBar = ({ showResults }: showResultProp) => {
   const [searchKeyword, setSearchKeyword] = useState("")
   const [isFocusOnBar, setIsFocusOnBar] = useState(false)
 

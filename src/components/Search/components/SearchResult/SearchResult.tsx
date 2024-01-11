@@ -1,26 +1,19 @@
-import { SearchResultType } from "../../Search.Types"
+import { keywordProp, searchResultProps, typeProp } from "../../Search.Types"
 import useSearchResult from "../../hooks/useSearchResult"
 import * as S from "./SearchResult.Styles"
 import SearchResultItem from "./components/SearchResultItem/SearchResultItem"
 import * as SS from "./components/SearchResultList.Styles"
 
-interface resultProps {
-  type: "user" | "post"
-  id: string
-  title: string
-  image: string
-  isOnline?: boolean
-}
-
-const SearchResult = ({ keyword }) => {
+const SearchResult = ({ keyword }: keywordProp) => {
   const results = useSearchResult(keyword)
 
   const users = results
     ? results
-        .filter(({ type }) => type === "user")
-        .map(({ type, id, title, isOnline, image }: resultProps) => (
+        .filter(({ type }: typeProp) => type === "user")
+        .map(({ type, id, title, isOnline, image }: searchResultProps) => (
           <SearchResultItem
             key={id}
+            id={id}
             type={type}
             image={image}
             title={title}
@@ -31,10 +24,11 @@ const SearchResult = ({ keyword }) => {
 
   const posts = results
     ? results
-        .filter(({ type }) => type === "post")
-        .map(({ type, id, title, image }: resultProps) => (
+        .filter(({ type }: typeProp) => type === "post")
+        .map(({ type, id, title, image }: searchResultProps) => (
           <SearchResultItem
             key={id}
+            id={id}
             type={type}
             image={image}
             title={title}

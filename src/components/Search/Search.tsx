@@ -8,7 +8,7 @@ const Search = () => {
 
   return (
     <S.SearchLayout>
-      <SearchInput showResults={(keyword) => setKeyword(keyword)} />
+      <SearchInput showResults={(keyword: string) => setKeyword(keyword)} />
       <SearchResult keyword={keyword} />
     </S.SearchLayout>
   )

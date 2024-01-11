@@ -2,20 +2,15 @@ import DMListProfile from "@/pages/DirectMessage/components/DMList/DMListProfile
 import * as S from "./SearchResultItem.Styles"
 import SearchResultItemImage from "./components/SearchResultItemImage"
 import SearchResultItemTitle from "./components/SearchResultItemTitle"
-
-interface SearchResultItemProps {
-  image: string
-  title: string
-  isOnline?: boolean
-  type: "user" | "post"
-}
+import { searchResultProps } from "@/components/Search/Search.Types"
 
 const SearchResultItem = ({
+  id,
   image,
   title,
   isOnline = false,
   type,
-}: SearchResultItemProps) => {
+}: searchResultProps) => {
   return (
     <S.SearchResultItemContainer>
       {type === "user" ? (

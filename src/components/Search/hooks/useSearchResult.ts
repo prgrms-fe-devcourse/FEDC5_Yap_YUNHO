@@ -1,13 +1,10 @@
 import { API } from "@/apis/Api"
+import { JSONPost, User } from "@/types"
 import { useQuery } from "@tanstack/react-query"
 
 const GET_SEARCH_RESULT_QUERY_KEY = "GET_SEARCH_RESULT"
 
-interface useSearchResultProps {
-  keyword: string
-}
-
-const useSearchResult = (keyword) => {
+const useSearchResult = (keyword: string) => {
   const { data } = useQuery({
     queryKey: [GET_SEARCH_RESULT_QUERY_KEY, keyword],
     queryFn: async () => {
@@ -20,7 +17,7 @@ const useSearchResult = (keyword) => {
       return data
     },
     select: (results) => {
-      const resultList = results.map((result) => {
+      const resultList = results.map((result: User | JSONPost) => {
         if ("fullName" in result) {
           return {
             type: "user",
@@ -37,8 +34,6 @@ const useSearchResult = (keyword) => {
           if (keywordIndex === -1) {
             return {}
           }
-
-          console.log(keywordIndex)
 
           return {
             type: "post",
