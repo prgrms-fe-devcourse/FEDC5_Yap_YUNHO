@@ -43,11 +43,14 @@ const PostEditAuthChecker = ({
   return (
     <>
       {!alertMessage && <>{children}</>}
-      <AlertModal
-        isShow={isShowModal}
-        alertMessage={alertMessage}
-        onClose={handleCloseModal}
-      />
+
+      {isShowModal && (
+        <AlertModal
+          isShow={isShowModal}
+          alertMessage={alertMessage}
+          onClose={handleCloseModal}
+        />
+      )}
     </>
   )
 }
