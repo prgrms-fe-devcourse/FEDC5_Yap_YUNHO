@@ -20,6 +20,7 @@ export const POST_DETAIL_MODAL_MESSAGE = {
     LIKE_NOT_LOGIN:
       "로그인을 하신 후 좋아요를 눌를 수 있어요! 로그인 하시겠나요?",
     COMMENT_DELETE: "정말 삭제하시겠어요?",
+    COMMENT_EDIT: "해당 댓글을 수정하시겠어요?",
   },
   COMPLETE: {
     DELETE: "삭제 되었습니다!",
