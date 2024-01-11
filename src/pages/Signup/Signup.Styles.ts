@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const SignupLayout = styled.div`
   width: 100%;
-  height: calc(100% - 10rem);
+  height: 100%;
   user-select: none;
 
   min-height: 50rem;
