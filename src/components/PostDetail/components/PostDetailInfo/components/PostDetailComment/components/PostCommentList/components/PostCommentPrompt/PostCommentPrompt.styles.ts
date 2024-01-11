@@ -11,13 +11,27 @@ export const CommentPromptLayout = styled.div`
 
 export const CommentPromptTitle = styled.p`
   width: 40rem;
-  height: 10rem;
-
+  height: 7rem;
+  padding-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 
   font-size: ${({ theme }) => theme.fontSizes.large};
+`
+
+export const CommentPromptErrorContainer = styled.div`
+  width: 40rem;
+  height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const CommentPromptError = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  color: ${({ theme }) => theme.colors.point_alt};
 `
 
 export const CommentPromptInput = styled.textarea`
@@ -35,7 +49,7 @@ export const CommentPromptInput = styled.textarea`
 
 export const CommentPromptActions = styled.div`
   width: 100%;
-  height: 8rem;
+  height: 7rem;
 
   display: flex;
   justify-content: center;

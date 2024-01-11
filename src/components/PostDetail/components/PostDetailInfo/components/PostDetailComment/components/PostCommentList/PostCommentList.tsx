@@ -29,6 +29,7 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
     closeModal: closePrompt,
   } = useModal()
   const [alertMessage, setAlertMessage] = useState("")
+  const [promptInitialValue, setPromptInitialValue] = useState("")
 
   const queryClient = useQueryClient()
   const deleteMutation = useMutation({
@@ -54,6 +55,11 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
     console.log(editComment)
   }
 
+  const showEditPromptModal = (prevComment: string) => {
+    setPromptInitialValue(prevComment)
+    showPrompt()
+  }
+
   const reversedList = [...commentList].reverse()
   return (
     <>
@@ -64,7 +70,7 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
               key={comment._id}
               comment={comment}
               onDelete={handleDeleteComment}
-              showEditPrompt={showPrompt}
+              showEditPrompt={showEditPromptModal}
             />
           ))}
       </S.PostCommentListLayout>
@@ -75,11 +81,14 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
         onClose={closeAlert}
       />
 
-      <PostCommentPrompt
-        isShow={isShowPrompt}
-        onClose={closePrompt}
-        onClickButton={handleEditComment}
-      />
+      {isShowPrompt && (
+        <PostCommentPrompt
+          isShow={isShowPrompt}
+          initialComment={promptInitialValue}
+          onClose={closePrompt}
+          onClickButton={handleEditComment}
+        />
+      )}
     </>
   )
 }
