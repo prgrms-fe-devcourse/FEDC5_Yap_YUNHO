@@ -14,15 +14,15 @@ const DMListItem = ({
   selectedMessageId,
   profileImg,
 }: DMUserListProps) => {
-  const { user } = useAuthUserStore()
+  const { myId } = useAuthUserStore()
 
   return (
     <S.DMListItemLayout
       onClick={() => {
-        handleClick({ user, receiver, sender })
+        handleClick({ myId, receiver, sender })
       }}
       $isSelect={
-        selectedMessageId === decideChatUserName(user, receiver, sender)._id
+        selectedMessageId === decideChatUserName(myId, receiver, sender)._id
       }
     >
       <DMListProfile
@@ -32,7 +32,7 @@ const DMListItem = ({
 
       <S.DMListChat>
         <S.DMListChatUserName>
-          {decideChatUserName(user, receiver, sender).fullName}
+          {decideChatUserName(myId, receiver, sender).fullName}
         </S.DMListChatUserName>
         <S.DMListChatContent>{message}</S.DMListChatContent>
         <S.DMListChatDate>{createdAt.slice(0, 10)}</S.DMListChatDate>

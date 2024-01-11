@@ -1,6 +1,10 @@
 import { User } from "@/types"
-const decideChatUserName = (user: User, receiver: User, sender: User): User => {
-  if (receiver._id === user._id) {
+const decideChatUserName = (
+  myId: string,
+  receiver: User,
+  sender: User,
+): User => {
+  if (receiver._id === myId) {
     return sender
   }
   return receiver

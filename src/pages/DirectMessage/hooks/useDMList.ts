@@ -16,8 +16,7 @@ const fetchConversation = async () => {
 }
 
 const useDMList = () => {
-  const { user } = useAuthUserStore()
-  const myId = user._id
+  const { myId } = useAuthUserStore()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: fetchConversation,
@@ -40,4 +39,3 @@ const useDMList = () => {
 }
 
 export default useDMList
-// receiver가 상대방이라면 seen을 true로 받아오자

@@ -1,7 +1,7 @@
 import { User, Message } from "@/types"
 
 export interface handleClickProps {
-  user: User
+  myId: string
   sender: User
   receiver: User
 }
@@ -12,7 +12,7 @@ export interface DMUserListProps {
   receiver: User
   sender: User
   selectedMessageId: string
-  handleClick: ({ user, sender, receiver }: handleClickProps) => void
+  handleClick: ({ myId, sender, receiver }: handleClickProps) => void
   profileImg: string
 }
 

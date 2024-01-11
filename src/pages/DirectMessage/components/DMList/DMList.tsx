@@ -13,7 +13,7 @@ const DMList = () => {
   const [selectedMessageId, setSelectedMessageId] = useState("")
   const navigate = useNavigate()
   const { data: DMUserList } = useDMList()
-  const { user: me } = useAuthUserStore()
+  const { myId } = useAuthUserStore()
 
   const readCheckMessage = async (others: User) => {
     try {
@@ -26,9 +26,9 @@ const DMList = () => {
   }
   console.log(DMUserList)
 
-  const handleClick = ({ user, receiver, sender }: handleClickProps) => {
+  const handleClick = ({ myId, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
-    const others = decideChatUserName(user, receiver, sender)
+    const others = decideChatUserName(myId, receiver, sender)
 
     navigate(`/directmessage/${others._id}`)
     setSelectedMessageId(others._id)
@@ -57,7 +57,7 @@ const DMList = () => {
       <S.DMListContainer>
         {DMUserList?.map((user: Conversation) => {
           const { receiver, sender } = user
-          const others = decideChatUserName(me, receiver, sender)
+          const others = decideChatUserName(myId, receiver, sender)
 
           return (
             <DMListItem
@@ -78,5 +78,3 @@ const DMList = () => {
   )
 }
 export default DMList
-
-// 최근 메시지가 내가 보낸거면 seen을 true로, 아니면 false로

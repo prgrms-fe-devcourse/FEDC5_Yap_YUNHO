@@ -1,7 +1,7 @@
 import { User } from "@/types"
 
 export interface handleClickProps {
-  user: User
+  my: User
   sender: User
   receiver: User
 }
@@ -12,5 +12,5 @@ export interface DMUserListProps {
   receiver: User
   sender: User
   selectedChattingId: string
-  handleClick: ({ user, sender, receiver }: handleClickProps) => void
+  handleClick: ({ my, sender, receiver }: handleClickProps) => void
 }
