@@ -6,7 +6,11 @@ interface PostCommentItemProps {
 }
 
 const PostCommentItem = ({ comment }: PostCommentItemProps) => {
-  return <S.PostCommentItemLayout></S.PostCommentItemLayout>
+  return (
+    <S.PostCommentItemLayout>
+      <S.PostCommentItemUserProfile $profile={comment.author.image} />
+    </S.PostCommentItemLayout>
+  )
 }
 
 export default PostCommentItem
