@@ -9,9 +9,17 @@ export const MyMessageLayout = styled.div`
   display: flex;
   align-self: flex-end;
   max-width: 50%;
+  position: relative;
 `
 
 export const MyMessageContent = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.medium};
   color: ${({ theme }) => theme.colors.black};
+`
+
+export const MyMessageReadIndicator = styled.span`
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  color: ${({ theme }) => theme.colors.point};
+  position: absolute;
+  left: -1.5rem;
 `

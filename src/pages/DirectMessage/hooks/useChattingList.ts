@@ -25,12 +25,20 @@ const fetchMessage = async (othersId: string, myId: string) => {
 }
 
 const useChattingList = (othersId: string) => {
-  const { user } = useAuthUserStore()
+  const { user: my } = useAuthUserStore()
   const { data } = useQuery<Message[]>({
-    queryKey: [QUERY_KEY_GET_MESSAGELIST, othersId, user._id],
-    queryFn: () => fetchMessage(othersId, user._id),
+    queryKey: [QUERY_KEY_GET_MESSAGELIST, othersId, my._id],
+    queryFn: () => fetchMessage(othersId, my._id),
     initialData: [],
     refetchInterval: 1000, // 재 요청
+
+    select: (MessageList: Message[]) => {
+      return MessageList.sort(
+        (message, message2) =>
+          Number(message.createdAt.slice(0, 10).replace(/-/g, "")) -
+          Number(message2.createdAt.slice(0, 10).replace(/-/g, "")),
+      )
+    },
   })
 
   return { data }

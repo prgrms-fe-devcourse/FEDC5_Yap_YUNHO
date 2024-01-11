@@ -1,12 +1,13 @@
 import { useState } from "react"
 import * as S from "./DMList.Styles"
-import { Conversation } from "@/types"
+import { Conversation, User } from "@/types"
 import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
 import useDMList from "./../../hooks/useDMList"
 import DMListItem from "./DMListItem"
 import { handleClickProps } from "./../../DirectMessage.Types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { AUTH_API } from "@/apis/Api"
 
 const DMList = () => {
   const [selectedMessageId, setSelectedMessageId] = useState("")
@@ -14,12 +15,23 @@ const DMList = () => {
   const { data: DMUserList } = useDMList()
   const { user: me } = useAuthUserStore()
 
+  const readCheckMessage = async (others: User) => {
+    try {
+      await AUTH_API.put("/messages/update-seen", {
+        sender: others._id,
+      })
+    } catch (e) {
+      console.log(e, "메시지 읽음 처리 오류")
+    }
+  }
+
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
-    const { _id: othersId } = decideChatUserName(user, receiver, sender)
+    const others = decideChatUserName(user, receiver, sender)
 
-    navigate(`/directmessage/${othersId}`)
-    setSelectedMessageId(othersId)
+    navigate(`/directmessage/${others._id}`)
+    setSelectedMessageId(others._id)
+    readCheckMessage(others)
   }
 
   const DMListCount = {
@@ -42,7 +54,6 @@ const DMList = () => {
         </S.DMListNotNoticedNumber>
       </S.DMListInfo>
       <S.DMListContainer>
-        {/* 상대방: receiver가 내아이디면 sender를, receiver가 내가아니면 receiver를  */}
         {DMUserList?.map((user: Conversation) => {
           const { receiver, sender } = user
           const others = decideChatUserName(me, receiver, sender)
@@ -66,3 +77,7 @@ const DMList = () => {
   )
 }
 export default DMList
+
+// DM목록의 안 읽음은 내가 받은 메시지에 대해서만..
+
+// 채팅방의 안 읽음은 내가 보낸 메시지에 대해서만..
