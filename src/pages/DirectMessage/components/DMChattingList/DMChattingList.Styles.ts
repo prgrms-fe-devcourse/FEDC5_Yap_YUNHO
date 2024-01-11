@@ -20,15 +20,7 @@ export const DMMessageList = styled.div`
   flex-direction: column;
   gap: 2rem;
   padding-right: 1rem;
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    border-radius: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.sub};
-    border-radius: 6px;
-  }
+  ${({ theme }) => theme.scrollBar};
 `
 
 export const DMMessageItem = styled.div`
