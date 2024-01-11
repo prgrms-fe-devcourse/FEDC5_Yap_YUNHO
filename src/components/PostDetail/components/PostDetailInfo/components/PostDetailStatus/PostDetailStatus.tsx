@@ -6,14 +6,12 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt"
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt"
 import LinkIcon from "@mui/icons-material/Link"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { likePost, unLikePost } from "@/components/PostDetail/apis/likePost"
+import { unLikePost } from "@/components/PostDetail/apis/likePost"
 import useModal from "@/components/Modal/hooks/useModal"
-import { useState } from "react"
-import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
-import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import { useNavigate } from "react-router-dom"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
+import useLikePost from "@/components/PostDetail/hooks/useLikePost"
 
 const MUTATION_KEY = {
   LIKE_POST_KEY: "IT_IS_LIKE_MUTATION_KEY_546786723746238",
@@ -36,29 +34,14 @@ const PostDetailStatus = ({
   onClose,
 }: PostDetailStatusProps) => {
   const {
-    isShowModal: isShowAlert,
-    closeModal: closeAlert,
-    showModal: showAlert,
-  } = useModal()
-  const {
     isShowModal: isShowConfirm,
     closeModal: closeConfirm,
     showModal: showConfirm,
   } = useModal()
-  const [alertMessage, setAlertMessage] = useState("")
 
+  const { likeMutate, LikeErrorAlertModal } = useLikePost()
   const queryClient = useQueryClient()
-  const likeMutate = useMutation({
-    mutationKey: [MUTATION_KEY.LIKE_POST_KEY],
-    mutationFn: likePost,
-    onSuccess: () => {
-      queryClient.refetchQueries()
-    },
-    onError: () => {
-      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.LIKE)
-      showAlert()
-    },
-  })
+
   const unlikeMutate = useMutation({
     mutationKey: [MUTATION_KEY.UN_LIKE_POST_KEY],
     mutationFn: unLikePost,
@@ -66,8 +49,8 @@ const PostDetailStatus = ({
       queryClient.refetchQueries()
     },
     onError: () => {
-      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.UNLIKE)
-      showAlert()
+      // setAlertMessage(POST_DETAIL_ERROR_MESSAGE.POST.UNLIKE)
+      // showAlert()
     },
   })
 
@@ -130,17 +113,14 @@ const PostDetailStatus = ({
         )}
       </S.PostDetailStatus>
 
-      <AlertModal
-        isShow={isShowAlert}
-        alertMessage={alertMessage}
-        onClose={closeAlert}
-      />
-
-      <ConfirmModal
-        isShow={isShowConfirm}
-        onClose={handleConfirm}
-        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
-      />
+      {isShowConfirm && (
+        <ConfirmModal
+          isShow={isShowConfirm}
+          onClose={handleConfirm}
+          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
+        />
+      )}
+      {LikeErrorAlertModal}
     </>
   )
 }
