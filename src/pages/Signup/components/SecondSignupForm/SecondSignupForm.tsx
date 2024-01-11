@@ -6,16 +6,18 @@ import emptyImg from "@/assets/emptyimg.png"
 
 const SecondSignupForm = () => {
   const [previewUserProfile, setPreviewUserProfile] = useState<string>("")
+  const [userProfileImgFile, setUserProfileImgFile] = useState<File>()
   const imgRef = useRef<HTMLInputElement>(null)
 
   const openFileSelector = () => {
     if (imgRef.current === null) {
       return
     }
+
     imgRef.current.click()
   }
 
-  const handleImageFile = (event: ChangeEvent<HTMLInputElement>) => {
+  const addImgFile = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files === null) {
       return
     }
@@ -27,16 +29,15 @@ const SecondSignupForm = () => {
       return
     }
 
-    const userImg = URL.createObjectURL(file)
+    setUserProfileImgFile(file)
 
+    const userImg = URL.createObjectURL(file)
     setPreviewUserProfile(userImg)
   }
 
-  const getDefaultImageFile = async () => {
-    const response = await fetch(emptyImg)
-    const defaultImg = await response.blob()
-
-    return defaultImg
+  const removeImgFile = () => {
+    setPreviewUserProfile("")
+    setUserProfileImgFile(undefined)
   }
 
   const handleUpdateUserProfile = async (event: FormEvent) => {
@@ -45,16 +46,27 @@ const SecondSignupForm = () => {
     const formData = new FormData()
     formData.append("isCover", "false")
 
-    const isDefaultImage = previewUserProfile === ""
-    if (isDefaultImage) {
-      const defaultImgFile = await getDefaultImageFile()
-      formData.append("image", defaultImgFile)
+    const isDefaultImg = previewUserProfile === ""
+    if (isDefaultImg) {
+      const defaultImgFile = await getDefaultImgFile()
+      formData.append("image", defaultImgFile, "defaultImg")
     }
+
+    if (userProfileImgFile instanceof File) {
+      formData.append("image", userProfileImgFile)
+    }
+  }
+
+  const getDefaultImgFile = async () => {
+    const response = await fetch(emptyImg)
+    const defaultImg = await response.blob()
+
+    return defaultImg
   }
 
   return (
     <S.SignupFormLayout>
-      <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
+      <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
       <S.SignupFormContainer onSubmit={handleUpdateUserProfile}>
         <S.ImgContainer>
           <S.ImgItem onClick={openFileSelector}>
@@ -66,10 +78,18 @@ const SecondSignupForm = () => {
           <Input
             type="file"
             ref={imgRef}
-            onChange={handleImageFile}
+            onChange={addImgFile}
           />
         </S.ImgContainer>
         <S.ButtonContainer>
+          <S.Button
+            $width={53}
+            $color={theme.colors.sub_alt}
+            type="button"
+            onClick={removeImgFile}
+          >
+            프로필 이미지 제거
+          </S.Button>
           <S.Button
             $width={53}
             $color={theme.colors.point}

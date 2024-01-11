@@ -8,8 +8,8 @@ export const SignupFormLayout = styled.div`
   width: 50rem;
   height: 50rem;
   color: ${({ theme }) => theme.colors.white};
-  gap: 1rem;
 `
+
 export const SignupFormTitle = styled.div`
   display: flex;
   justify-content: center;
@@ -33,8 +33,8 @@ export const ImgContainer = styled.div`
   height: 35rem;
 `
 export const ImgItem = styled.div`
-  width: fit-content;
-  height: fit-content;
+  width: 26.5rem;
+  height: 26.5rem;
   background-color: ${({ theme }) => theme.colors.sub};
 `
 export const Img = styled.img`
@@ -46,14 +46,15 @@ export const Img = styled.img`
 
 export const ButtonContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
-  height: 4rem;
+  height: 10rem;
+  gap: 2rem;
 
-  position: relative;
-  /* top: -1.5rem; */
+  top: -1.5rem;
 `
 
 export const Button = styled.button<{
