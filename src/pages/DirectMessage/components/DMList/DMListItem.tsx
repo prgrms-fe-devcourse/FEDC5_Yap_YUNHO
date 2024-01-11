@@ -9,7 +9,7 @@ const DMListItem = ({
   sender,
   message,
   createdAt,
-  isSeen,
+  isOnline,
   handleClick,
   selectedMessageId,
   profileImg,
@@ -26,7 +26,7 @@ const DMListItem = ({
       }
     >
       <DMListProfile
-        isSeen={isSeen}
+        isOnline={isOnline}
         profileImg={profileImg}
       />
 

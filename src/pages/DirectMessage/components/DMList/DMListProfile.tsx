@@ -3,10 +3,10 @@ import * as S from "./DMList.Styles"
 import seenindicator from "@/assets/seenindicator.png"
 
 interface DMListProfileProps {
-  isSeen?: boolean
+  isOnline?: boolean
   profileImg: string
 }
-const DMListProfile = ({ isSeen, profileImg }: DMListProfileProps) => {
+const DMListProfile = ({ isOnline, profileImg }: DMListProfileProps) => {
   return (
     <S.DMUserProfileContainer>
       {profileImg ? (
@@ -21,7 +21,7 @@ const DMListProfile = ({ isSeen, profileImg }: DMListProfileProps) => {
         />
       )}
 
-      {!isSeen && (
+      {isOnline && (
         <S.SeenIndicator
           src={seenindicator}
           alt="온라인 표시"

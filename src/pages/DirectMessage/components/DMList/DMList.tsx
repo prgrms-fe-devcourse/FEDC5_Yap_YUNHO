@@ -54,7 +54,7 @@ const DMList = () => {
               message={user.message}
               sender={user.sender}
               createdAt={user.createdAt}
-              isSeen={user.seen}
+              isOnline={others.isOnline}
               selectedMessageId={selectedMessageId}
               handleClick={handleClick}
               profileImg={others.image}

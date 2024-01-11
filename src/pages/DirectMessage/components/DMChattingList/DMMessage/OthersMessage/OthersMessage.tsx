@@ -5,7 +5,10 @@ import { MessageProps } from "./../../../../DirectMessage.Types"
 const OthersMessage = ({ children }: MessageProps) => {
   return (
     <S.OthersMessageLayout>
-      <DMListProfile profileImg={children.sender.image} />
+      <DMListProfile
+        profileImg={children.sender.image}
+        isOnline={children.sender.isOnline}
+      />
       <S.OthersMessageItemLayout>
         <S.OthersMessageInfoContainer>
           <S.OthersMessageUserName>
