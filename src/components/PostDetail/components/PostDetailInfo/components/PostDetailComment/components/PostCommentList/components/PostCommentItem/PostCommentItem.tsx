@@ -59,11 +59,13 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
         </S.PostCommentItemActions>
       </S.PostCommentItemLayout>
 
-      <ConfirmModal
-        isShow={isShowConfirm}
-        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_DELETE}
-        onClose={handleDeleteComment}
-      />
+      {isShowConfirm && (
+        <ConfirmModal
+          isShow={isShowConfirm}
+          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_DELETE}
+          onClose={handleDeleteComment}
+        />
+      )}
     </>
   )
 }
