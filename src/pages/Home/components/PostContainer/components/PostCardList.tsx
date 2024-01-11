@@ -127,12 +127,7 @@ const PostCardList = ({
         </S.PostSmallCard>
       )}
 
-      {isShowPostDetail && (
-        <PostDetail
-          onClose={handleClosePostDetail}
-          isShow={isShowPostDetail}
-        />
-      )}
+      {isShowPostDetail && <PostDetail onClose={handleClosePostDetail} />}
     </>
   )
 }

@@ -5,13 +5,14 @@ import PostDetailViewer from "./components/PostDetailViewer/PostDetailViewer"
 import PostDetailInfo from "./components/PostDetailInfo/PostDetailInfo"
 import { useParams } from "react-router-dom"
 import useGetPost from "./hooks/useGetPost"
+import usePostDetailModalStore from "./store/usePostDetailModalStore"
 
 interface PostDetailProps {
-  isShow: boolean
   onClose: () => void
 }
 
-const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
+const PostDetail = ({ onClose }: PostDetailProps) => {
+  const { isShowPostDetail } = usePostDetailModalStore()
   const { id } = useParams()
   const post = useGetPost({ postId: id })
 
@@ -22,7 +23,7 @@ const PostDetail = ({ onClose, isShow }: PostDetailProps) => {
 
   return (
     <Modal
-      isShow={isShow}
+      isShow={isShowPostDetail}
       onClose={onClose}
       clickAwayEnable={true}
     >
