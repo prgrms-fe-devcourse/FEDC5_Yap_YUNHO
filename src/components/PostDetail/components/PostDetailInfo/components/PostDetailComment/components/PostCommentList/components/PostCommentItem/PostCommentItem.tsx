@@ -17,9 +17,9 @@ interface PostCommentItemProps {
 register("ko", kolocale)
 const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
   const {
-    isShowModal: isShowDeleteConfirm,
-    showModal: showDeleteConfirm,
-    closeModal: closeDeleteConfirm,
+    isShowModal: isShowConfirm,
+    showModal: showConfirm,
+    closeModal: closeConfirm,
   } = useModal()
 
   const { user } = useAuthUserStore()
@@ -27,10 +27,10 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
 
   const handleDeleteComment = (isAccept: boolean) => {
     if (!isAccept) {
-      closeDeleteConfirm()
+      closeConfirm()
       return
     }
-    closeDeleteConfirm()
+    closeConfirm()
     onDelete(comment._id)
   }
 
@@ -52,7 +52,7 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
         </S.PostCommentItemContainer>
         <S.PostCommentItemActions>
           {isMyComment && (
-            <S.PostCommentItemButton onClick={showDeleteConfirm}>
+            <S.PostCommentItemButton onClick={showConfirm}>
               <DeleteIcon />
             </S.PostCommentItemButton>
           )}
@@ -60,7 +60,7 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
       </S.PostCommentItemLayout>
 
       <ConfirmModal
-        isShow={isShowDeleteConfirm}
+        isShow={isShowConfirm}
         message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_DELETE}
         onClose={handleDeleteComment}
       />
