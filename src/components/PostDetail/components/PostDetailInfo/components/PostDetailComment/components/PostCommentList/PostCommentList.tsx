@@ -6,6 +6,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import deleteComment from "@/components/PostDetail/apis/deleteComment"
 import useModal from "@/components/Modal/hooks/useModal"
 import { useState } from "react"
+import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
+import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const COMMENT_DELETE_MUTATION_KEY =
   "IT_IS_DELETE_MUTATION_KEY_672532461414612689"
@@ -28,12 +30,12 @@ const PostCommentList = ({ commentList }: PostCommentListProps) => {
     mutationFn: deleteComment,
     onSuccess: () => {
       queryClient.refetchQueries()
-      setAlertMessage("댓글이 삭제되었습니다!")
+      setAlertMessage(POST_DETAIL_MODAL_MESSAGE.COMPLETE.COMMENT_DELETE)
       showAlert()
       return
     },
     onError: () => {
-      setAlertMessage("삭제과정에서 오류가 발생했습니다. 다시 시도해주세요!")
+      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.COMMENT.DELETE)
       showAlert()
     },
   })

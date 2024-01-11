@@ -28,6 +28,9 @@ export const POST_DETAIL_ERROR_MESSAGE = {
     LIKE: "잠시 후 다시 시도해주세요!",
     UNLIKE: "잠시 후 다시 시도해주세요!",
   },
+  COMMENT: {
+    DELETE: "삭제과정에서 오류가 발생했습니다. 다시 시도해주세요!",
+  },
   COMMENT_SUBMIT: {
     ERROR: "잠시 후 다시 시도해주세요!",
   },

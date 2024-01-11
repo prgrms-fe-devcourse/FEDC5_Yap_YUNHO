@@ -8,6 +8,7 @@ import { format, register } from "timeago.js"
 import kolocale from "timeago.js/lib/lang/ko"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
+import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 
 interface PostCommentItemProps {
   comment: PostComment
@@ -66,7 +67,7 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
 
       <ConfirmModal
         isShow={isShowConfirm}
-        message={"정말 삭제하시겠어요?"}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_DELETE}
         onClose={handleDeleteComment}
       />
     </>
