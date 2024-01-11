@@ -11,7 +11,12 @@ const useSearchResult = (keyword) => {
   const { data } = useQuery({
     queryKey: [GET_SEARCH_RESULT_QUERY_KEY, keyword],
     queryFn: async () => {
+      if (!keyword) {
+        return []
+      }
+
       const { data } = await API.get(`/search/all/${keyword}`)
+
       return data
     },
     select: (results) => {
@@ -26,14 +31,21 @@ const useSearchResult = (keyword) => {
           }
         } else {
           const { content, thumbnail } = JSON.parse(result.title)
-          if (!content.includes(keyword)) {
+
+          const keywordIndex = content.indexOf(keyword)
+
+          if (keywordIndex === -1) {
             return {}
           }
+
+          console.log(keywordIndex)
 
           return {
             type: "post",
             id: result._id,
-            title: content,
+            title:
+              (keywordIndex > 0 ? "..." : "") +
+              content.slice(keywordIndex, content.length - 1),
             image: thumbnail,
           }
         }
