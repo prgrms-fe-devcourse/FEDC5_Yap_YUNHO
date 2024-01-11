@@ -8,10 +8,12 @@ interface PostDetailCommentProps {
 }
 
 const PostDetailComment = ({ post }: PostDetailCommentProps) => {
+  const reversedList = post.comments
+
   return (
     <S.PostDetailCommentLayout>
       <S.PostDetailCommentInfo>{`댓글 ${post.comments.length} 개`}</S.PostDetailCommentInfo>
-      <PostCommentList />
+      <PostCommentList commentList={reversedList} />
       <PostCommentInput post={post} />
     </S.PostDetailCommentLayout>
   )
