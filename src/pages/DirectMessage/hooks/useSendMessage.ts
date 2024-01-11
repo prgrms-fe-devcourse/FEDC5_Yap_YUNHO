@@ -11,9 +11,10 @@ interface SendMessageProps {
 
 const sendMessage = async (messageSubmission: SendMessageProps) => {
   return await AUTH_API.post("messages/create", messageSubmission)
-    .then((res) => res.data)
-    .catch((e) => {
-      console.log(e, "메시지 요청 실패")
+    .then((res) => res.data.asfas)
+    .catch(() => {
+      // Alert 모달로 변경 예정
+      throw new Error("메시지 요청 실패")
     })
 }
 
