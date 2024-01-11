@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useRef } from "react"
+import { ChangeEvent, useState, useRef, FormEvent } from "react"
 import * as S from "./SecondSignupForm.Styles"
 import { theme } from "@/styles/theme"
 import Input from "../SignupInput/Input"
@@ -32,10 +32,30 @@ const SecondSignupForm = () => {
     setPreviewUserProfile(userImg)
   }
 
+  const getDefaultImageFile = async () => {
+    const response = await fetch(emptyImg)
+    const defaultImg = await response.blob()
+
+    return defaultImg
+  }
+
+  const handleUpdateUserProfile = async (event: FormEvent) => {
+    event.preventDefault()
+
+    const formData = new FormData()
+    formData.append("isCover", "false")
+
+    const isDefaultImage = previewUserProfile === ""
+    if (isDefaultImage) {
+      const defaultImgFile = await getDefaultImageFile()
+      formData.append("image", defaultImgFile)
+    }
+  }
+
   return (
     <S.SignupFormLayout>
       <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
-      <S.SignupFormContainer>
+      <S.SignupFormContainer onSubmit={handleUpdateUserProfile}>
         <S.ImgContainer>
           <S.ImgItem onClick={openFileSelector}>
             <S.Img
