@@ -24,7 +24,8 @@ body{
   width: 100%;
   height: 100%;
   line-height: 1;
-  font-family: "BMJUA",'Noto Sans KR', sans-serif;
+  font-family: ${({ theme }) => theme.fontFamily.defaultFont};
+
   background-color: ${({ theme }) => theme.colors.main};
 }
 
@@ -40,14 +41,15 @@ ol, ul{
 
 button {
   background: transparent;
-  font-family: "BMJUA", "Noto Sans KR", sans-serif;
+  font-family: ${({ theme }) => theme.fontFamily.defaultFont};
   cursor: pointer;
 }
 
 input, textarea{
   border : none;
   outline: none;
-    font-family: 'Noto Sans KR', sans-serif;
+
+  font-family: ${({ theme }) => theme.fontFamily.defaultFont};
   background-color: ${({ theme }) => theme.colors.white};
 }
 
