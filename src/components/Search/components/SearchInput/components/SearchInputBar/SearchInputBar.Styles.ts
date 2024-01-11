@@ -4,6 +4,7 @@ export const SearchBarForm = styled.form`
   display: flex;
   width: 100%;
   padding: 1.4rem;
+  height: 6rem;
 
   border-radius: 1rem;
   border: ${({ theme }) => `0.1rem solid ${theme.colors.sub}`};

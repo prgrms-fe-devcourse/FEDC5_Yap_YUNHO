@@ -40,7 +40,7 @@ const useSearchResult = (keyword: string) => {
             id: result._id,
             title:
               (keywordIndex > 0 ? "..." : "") +
-              content.slice(keywordIndex, content.length - 1),
+              content.slice(keywordIndex, content.length),
             image: thumbnail,
           }
         }
