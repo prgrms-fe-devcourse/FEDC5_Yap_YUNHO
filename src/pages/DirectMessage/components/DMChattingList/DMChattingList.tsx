@@ -11,7 +11,7 @@ const DMChattingList = () => {
   const { id: othersId } = useParams()
   const { data: MessageList } = useChattingList(othersId || "")
   const scrollRef = useRef<HTMLDivElement>(null)
-
+  console.log(MessageList)
   const scrollToBottom = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight

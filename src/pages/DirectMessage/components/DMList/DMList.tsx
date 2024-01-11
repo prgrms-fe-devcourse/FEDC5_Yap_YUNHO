@@ -24,6 +24,7 @@ const DMList = () => {
       console.log(e, "메시지 읽음 처리 오류")
     }
   }
+  console.log(DMUserList)
 
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디

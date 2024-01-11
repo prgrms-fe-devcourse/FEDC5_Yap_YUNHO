@@ -1,4 +1,6 @@
 import { AUTH_API } from "@/apis/Api"
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import { Conversation } from "@/types"
 import { useQuery } from "@tanstack/react-query"
 
 export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
@@ -14,13 +16,28 @@ const fetchConversation = async () => {
 }
 
 const useDMList = () => {
+  const { user } = useAuthUserStore()
+  const myId = user._id
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: fetchConversation,
     initialData: [],
     refetchInterval: 1000, // 재 요청
+
+    select: (GroupMessageList: Conversation[]) =>
+      GroupMessageList.map((MessageList) => {
+        if (myId === MessageList.sender._id) {
+          return {
+            ...MessageList,
+            seen: true,
+          }
+        } else {
+          return MessageList
+        }
+      }),
   })
   return { data }
 }
 
 export default useDMList
+// receiver가 상대방이라면 seen을 true로 받아오자
