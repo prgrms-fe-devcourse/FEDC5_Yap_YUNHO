@@ -1,6 +1,6 @@
 import { PostComment } from "@/types"
 import * as S from "./PostCommentList.Styles"
-import PostCommentItem from "./components/PostCommentItem/PostCommentItem"
+import PostCommentItem from "./components/PostCommentItem"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import deleteComment from "@/components/PostDetail/apis/deleteComment"
