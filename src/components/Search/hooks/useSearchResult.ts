@@ -1,6 +1,7 @@
 import { API } from "@/apis/Api"
 import { JSONPost, User } from "@/types"
 import { useQuery } from "@tanstack/react-query"
+import findIndexByLowerCase from "@/components/Search/utils/findIndexByLowerCase"
 
 const GET_SEARCH_RESULT_QUERY_KEY = "GET_SEARCH_RESULT"
 
@@ -29,7 +30,7 @@ const useSearchResult = (keyword: string) => {
         } else {
           const { content, thumbnail } = JSON.parse(result.title)
 
-          const keywordIndex = content.indexOf(keyword)
+          const keywordIndex = findIndexByLowerCase(content, keyword)
 
           if (keywordIndex === -1) {
             return {}

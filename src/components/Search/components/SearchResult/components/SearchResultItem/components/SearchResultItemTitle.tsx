@@ -1,3 +1,4 @@
+import findIndexByLowerCase from "@/components/Search/utils/findIndexByLowerCase"
 import * as S from "./SearchResultItemTitle.Styles"
 
 interface SearchResultItemTitle {
@@ -6,8 +7,11 @@ interface SearchResultItemTitle {
 }
 
 const SearchResultItemTitle = ({ title, keyword }: SearchResultItemTitle) => {
-  const keywordIndex = title.indexOf(keyword)
-  const beforeKeywordTitle = keywordIndex ? title.slice(0, keywordIndex) : ""
+  const keywordIndex = findIndexByLowerCase(title, keyword)
+  const matchedTitle = title.slice(keywordIndex, keywordIndex + keyword.length)
+
+  const beforeKeywordTitle =
+    keywordIndex > 0 ? title.slice(0, keywordIndex) : ""
   const afterKeywordTitle = title.slice(keywordIndex + keyword.length)
 
   return (
@@ -15,7 +19,9 @@ const SearchResultItemTitle = ({ title, keyword }: SearchResultItemTitle) => {
       <S.SearchResultItemEllipsisText>
         {beforeKeywordTitle}
       </S.SearchResultItemEllipsisText>
-      <S.SearchResultItemStrongText>{keyword}</S.SearchResultItemStrongText>
+      <S.SearchResultItemStrongText>
+        {matchedTitle}
+      </S.SearchResultItemStrongText>
       <S.SearchResultItemText>{afterKeywordTitle}</S.SearchResultItemText>
     </S.SearchResultItemTitleContainer>
   )
