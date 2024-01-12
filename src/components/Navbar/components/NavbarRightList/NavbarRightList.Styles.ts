@@ -6,7 +6,7 @@ export const NavbarRightListLayout = styled.div`
   gap: 2rem;
   user-select: none;
   z-index: ${({ theme }) =>
-    theme.zIndex.navbarRightList}; // merge할때 theme으로 교체
+    theme.zIndex.navbarRightList};
 `
 
 export const NavbarProfile = styled.img`
@@ -26,9 +26,7 @@ export const NavbarMenuList = styled.ul<{ $isToggle?: boolean }>`
     left: 12rem;
     transition: ${({ $isToggle }) =>
       $isToggle ? `opacity 0.3s ease, visibility 0.1s ease` : `none`};
-
-    opacity: ${({ $isToggle, theme }) =>
-      $isToggle ? theme.opacity.normal : "0"};
+    opacity: ${({ $isToggle }) => ($isToggle ? "1" : "0")};
     visibility: ${({ $isToggle }) => ($isToggle ? "visible" : "hidden")};
   }
 `

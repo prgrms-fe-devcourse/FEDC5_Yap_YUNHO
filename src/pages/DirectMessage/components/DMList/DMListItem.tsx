@@ -1,5 +1,5 @@
 import * as S from "./DMList.Styles"
-import { DMUserListProps } from "./../../types"
+import { DMUserListProps } from "../../DirectMessage.Types"
 import DMListProfile from "./DMListProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import decideChatUserName from "../../utils/decideChatUserName"
@@ -9,9 +9,10 @@ const DMListItem = ({
   sender,
   message,
   createdAt,
-  isSeen,
+  isOnline,
   handleClick,
-  selectedChattingId,
+  selectedMessageId,
+  profileImg,
 }: DMUserListProps) => {
   const { user } = useAuthUserStore()
 
@@ -21,10 +22,13 @@ const DMListItem = ({
         handleClick({ user, receiver, sender })
       }}
       $isSelect={
-        selectedChattingId === decideChatUserName(user, receiver, sender)._id
+        selectedMessageId === decideChatUserName(user, receiver, sender)._id
       }
     >
-      <DMListProfile isSeen={isSeen} />
+      <DMListProfile
+        isOnline={isOnline}
+        profileImg={profileImg}
+      />
 
       <S.DMListChat>
         <S.DMListChatUserName>

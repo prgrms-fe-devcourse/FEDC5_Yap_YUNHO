@@ -1,0 +1,68 @@
+import * as S from "./DMInput.Styles"
+import DMListProfile from "../../DMList/DMListProfile"
+import { useEffect, useState } from "react"
+import useSendMessage from "../../../hooks/useSendMessage"
+import SendIcon from "@mui/icons-material/Send"
+import { AUTH_API } from "@/apis/Api"
+
+interface DMInputProps {
+  othersId: string
+  scrollToBottom: () => void
+}
+
+const DMInput = ({ othersId, scrollToBottom }: DMInputProps) => {
+  const [sendingMessage, setSendingMessage] = useState("")
+  const { mutate: sendMessage } = useSendMessage()
+  const [myProfileImg, setMyProfileImg] = useState("")
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    setSendingMessage(value)
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const messageSubmission = {
+      message: sendingMessage,
+      receiver: othersId,
+    }
+    await sendMessage(messageSubmission)
+    setSendingMessage("")
+    setTimeout(() => {
+      scrollToBottom()
+    }, 200)
+  }
+
+  const getMyProfileImg = async () => {
+    const { image } = await AUTH_API.get(`/auth-user`)
+      .then((res) => res.data)
+      .catch((e) => {
+        console.log(e, "이미지 요청 실패")
+      })
+    setMyProfileImg(image)
+  }
+
+  useEffect(() => {
+    getMyProfileImg()
+  }, [])
+
+  getMyProfileImg()
+
+  return (
+    <S.DMInputLayout>
+      <S.DMInputForm onSubmit={handleSubmit}>
+        <DMListProfile profileImg={myProfileImg} />
+        <S.DMInputItem
+          placeholder="메시지를 입력해주세요"
+          onChange={handleInputChange}
+          value={sendingMessage}
+        />
+        <S.DMSendButton>
+          <SendIcon />
+        </S.DMSendButton>
+      </S.DMInputForm>
+    </S.DMInputLayout>
+  )
+}
+
+export default DMInput

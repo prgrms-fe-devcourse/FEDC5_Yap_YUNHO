@@ -26,7 +26,6 @@ const useAuthUserStore = create<AuthUserStore>()(
           user: user,
         }))
       },
-
       setLogout: () => {
         authToken.removeToken()
         set(() => ({
@@ -38,7 +37,9 @@ const useAuthUserStore = create<AuthUserStore>()(
     {
       name: PERSIST_STORAGE_KEY,
       storage: createJSONStorage(() => sessionStorage),
-      partialize: (state) => ({ isLoggedIn: state.isLoggedIn }),
+      partialize: (state) => ({
+        isLoggedIn: state.isLoggedIn,
+      }),
     },
   ),
 )
