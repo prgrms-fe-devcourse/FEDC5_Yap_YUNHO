@@ -1,4 +1,4 @@
-import { useRef, FormEvent, useState } from "react"
+import { FormEvent, useState } from "react"
 import * as S from "./LoginComponent.Styles"
 import { theme } from "@/styles/theme"
 
@@ -6,26 +6,17 @@ import LoginInputContainer from "./LoginInput/LoginInputContainer"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
-import type { AllowedLoginInputType } from "../../types"
 import useModal from "@/components/Modal/hooks/useModal"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-
-interface UserInfoRef {
-  email: string
-  password: string
-}
+import useLogin from "../hooks/useLogin"
 
 const LoginComponent = () => {
-  const userInfoRef = useRef<UserInfoRef>({ email: "", password: "" })
+  const { userInfoRef, updateUserInfo } = useLogin()
   const [alertMessage, setAlertMessage] = useState("")
 
   const { setLogin } = useAuthUserStore()
   const navigate = useNavigate()
   const { isShowModal, showModal, closeModal } = useModal()
-
-  const updateUserInfo = (value: string, type: AllowedLoginInputType) => {
-    userInfoRef.current[type] = value
-  }
 
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
