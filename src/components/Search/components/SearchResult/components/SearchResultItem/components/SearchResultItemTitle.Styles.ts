@@ -7,7 +7,9 @@ export const SearchResultItemTitleContainer = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+
+  padding-bottom: 0.5rem;
 `
 
 export const SearchResultItemEllipsisText = styled.p``

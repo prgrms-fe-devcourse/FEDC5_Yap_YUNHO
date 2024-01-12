@@ -20,4 +20,5 @@ export const SearchResultItemImage = styled.img`
   object-fit: contain;
 
   margin-left: 0.5rem;
+  padding-bottom: 0.5rem;
 `
