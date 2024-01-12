@@ -16,7 +16,7 @@ const sendMessage = async (messageSubmission: SendMessageProps) => {
     })
 
   await AUTH_API.put("/messages/update-seen", {
-    sender: messageSubmission.receiver._id,
+    sender: messageSubmission.receiver,
   })
     .then()
     .catch((e) => {

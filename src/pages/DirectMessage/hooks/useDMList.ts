@@ -1,6 +1,6 @@
 import { AUTH_API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { Conversation, User } from "@/types"
+import { Conversation } from "@/types"
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "react-router-dom"
 export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
