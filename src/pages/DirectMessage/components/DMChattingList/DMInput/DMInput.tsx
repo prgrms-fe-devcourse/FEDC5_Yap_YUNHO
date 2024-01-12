@@ -7,10 +7,9 @@ import { AUTH_API } from "@/apis/Api"
 
 interface DMInputProps {
   othersId: string
-  scrollToBottom: () => void
 }
 
-const DMInput = ({ othersId, scrollToBottom }: DMInputProps) => {
+const DMInput = ({ othersId }: DMInputProps) => {
   const [sendingMessage, setSendingMessage] = useState("")
   const { mutate: sendMessage } = useSendMessage()
   const [myProfileImg, setMyProfileImg] = useState("")
@@ -28,9 +27,6 @@ const DMInput = ({ othersId, scrollToBottom }: DMInputProps) => {
     }
     await sendMessage(messageSubmission)
     setSendingMessage("")
-    setTimeout(() => {
-      scrollToBottom()
-    }, 200)
   }
 
   const getMyProfileImg = async () => {

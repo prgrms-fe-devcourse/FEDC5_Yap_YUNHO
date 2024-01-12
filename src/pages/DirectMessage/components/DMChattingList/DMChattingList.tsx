@@ -3,7 +3,7 @@ import * as S from "./DMChattingList.Styles"
 
 import { Message } from "@/types"
 import useChattingList from "../../hooks/useChattingList"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import DMInput from "./DMInput/DMInput"
 import DMMessageItem from "./DMMessage/DMMessageItem"
 
@@ -18,6 +18,11 @@ const DMChattingList = () => {
     }
   }
 
+  // 내가 메시지를 보낼때, 상대방에게 메시지를 받을때 스크롤 이동
+  useEffect(() => {
+    scrollToBottom()
+  }, [MessageList?.length])
+
   return (
     <S.DMChattingListLayout>
       {othersId && (
@@ -27,16 +32,12 @@ const DMChattingList = () => {
               <DMMessageItem
                 key={list.createdAt}
                 othersId={othersId}
-                scrollToBottom={scrollToBottom}
               >
                 {list}
               </DMMessageItem>
             ))}
           </S.DMMessageList>
-          <DMInput
-            othersId={othersId}
-            scrollToBottom={scrollToBottom}
-          />
+          <DMInput othersId={othersId} />
         </>
       )}
     </S.DMChattingListLayout>
