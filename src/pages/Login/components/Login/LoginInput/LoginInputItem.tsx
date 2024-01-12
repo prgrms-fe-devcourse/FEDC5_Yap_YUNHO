@@ -1,6 +1,6 @@
 import * as S from "./LoginInputItem.Styles"
 import { ChangeEvent, useState } from "react"
-import type { UpdateUserInfo, AllowedInputType } from "../types"
+import type { UpdateUserInfo, AllowedInputType } from "../../../types"
 import {
   validateEmailInput,
   validatePasswordInput,

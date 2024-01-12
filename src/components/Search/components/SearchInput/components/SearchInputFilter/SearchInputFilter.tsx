@@ -1,9 +1,7 @@
 import * as S from "./SearchInputFilter.Styles"
 
 const SearchInputFilter = () => {
-  return (
-    <S.SearchInputFilterLayout>SearchInputFilter</S.SearchInputFilterLayout>
-  )
+  return <S.SearchFilterInput></S.SearchFilterInput>
 }
 
 export default SearchInputFilter

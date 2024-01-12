@@ -72,7 +72,13 @@ const transition = {
 }
 
 const opacity = {
+  low: 0.3,
   normal: 0.5,
+  high: 0.7,
+}
+
+const fontFamily = {
+  defaultFont: `"BMJUA",'Noto Sans KR', sans-serif`,
 }
 
 export type ColorsType = typeof colors
@@ -84,6 +90,7 @@ export type scrollBar = typeof scrollBar
 export type ScrollBarNone = typeof scrollBarNone
 export type Transition = typeof transition
 export type Opacity = typeof opacity
+export type FontFamily = typeof fontFamily
 
 export const theme: DefaultTheme = {
   colors,
@@ -95,4 +102,5 @@ export const theme: DefaultTheme = {
   scrollBarNone,
   opacity,
   transition,
+  fontFamily,
 }

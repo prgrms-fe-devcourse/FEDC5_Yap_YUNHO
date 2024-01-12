@@ -26,7 +26,7 @@ const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
       case "email":
       case "nickname":
         return (
-          <S.Input
+          <S.InputField
             type="text"
             name={name}
             value={value}
@@ -37,7 +37,7 @@ const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
       case "password":
         return (
           <>
-            <S.Input
+            <S.InputField
               type={isVisible ? "text" : "password"}
               name={name}
               value={value}
@@ -54,7 +54,7 @@ const Input = ({ type, name, value, placeholder, onChange }: InputProp) => {
         )
       default:
         return (
-          <S.Input
+          <S.InputField
             type="text"
             name={name}
             value={value}
