@@ -5,7 +5,7 @@ export interface handleClickProps {
   sender: User
   receiver: User
 }
-export interface DMUserListProps {
+export interface MessageUserListProps {
   createdAt: string
   message: string
   isOnline: boolean

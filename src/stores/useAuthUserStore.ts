@@ -50,5 +50,3 @@ const useAuthUserStore = create<AuthUserStore>()(
 )
 
 export default useAuthUserStore
-
-// 채팅방에 있을때 상대방에게 메시지가 오면 update 처리

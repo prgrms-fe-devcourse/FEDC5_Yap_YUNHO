@@ -1,21 +1,21 @@
 import { useState } from "react"
-import * as S from "./DMList.Styles"
+import * as S from "./MessageList.Styles"
 import { Conversation, User } from "@/types"
 import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
-import useDMList from "./../../hooks/useDMList"
-import DMListItem from "./DMListItem"
-import { handleClickProps } from "./../../DirectMessage.Types"
+import useDMList from "../../hooks/useDMList"
+import MessageGroupItem from "./MessageGroupItem"
+import { handleClickProps } from "../../DirectMessage.Types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { AUTH_API } from "@/apis/Api"
 
-const DMList = () => {
+const MessageGroupList = () => {
   const [selectedMessageId, setSelectedMessageId] = useState("")
   const navigate = useNavigate()
-  const { data: DMUserList } = useDMList()
+  const { data: MessageGroupList } = useDMList()
   const { myId } = useAuthUserStore()
 
-  const readCheckMessage = async (others: User) => {
+  const updateSeenMessage = async (others: User) => {
     try {
       await AUTH_API.put("/messages/update-seen", {
         sender: others._id,
@@ -31,35 +31,35 @@ const DMList = () => {
 
     navigate(`/directmessage/${others._id}`)
     setSelectedMessageId(others._id)
-    readCheckMessage(others)
+    updateSeenMessage(others)
   }
 
-  const DMListCount = {
-    total: DMUserList?.length,
-    NotNotice: DMUserList?.filter((list: Conversation) => {
+  const MessageGroupListCount = {
+    total: MessageGroupList?.length,
+    NotSeen: MessageGroupList?.filter((list: Conversation) => {
       return !list.seen
     }).length,
   }
 
   return (
-    <S.DMListLayout>
-      <S.DMListInfo>
-        <S.DMListTotalNoticeTitle>DM 목록</S.DMListTotalNoticeTitle>
-        <S.DMListTotalNoticeNumber>
-          {DMListCount.total}
-        </S.DMListTotalNoticeNumber>
-        <S.DMListNotNoticeTitle>안 읽음</S.DMListNotNoticeTitle>
-        <S.DMListNotNoticedNumber>
-          {DMListCount.NotNotice}
-        </S.DMListNotNoticedNumber>
-      </S.DMListInfo>
-      <S.DMListContainer>
-        {DMUserList?.map((user: Conversation) => {
+    <S.MessageGroupListLayout>
+      <S.MessageGroupListInfo>
+        <S.MessageGroupListSeenTitle>DM 목록</S.MessageGroupListSeenTitle>
+        <S.MessageGroupListTotalSeenNumber>
+          {MessageGroupListCount.total}
+        </S.MessageGroupListTotalSeenNumber>
+        <S.MessageGroupListNotSeenTitle>안 읽음</S.MessageGroupListNotSeenTitle>
+        <S.MessageGroupListNotSeenNumber>
+          {MessageGroupListCount.NotSeen}
+        </S.MessageGroupListNotSeenNumber>
+      </S.MessageGroupListInfo>
+      <S.MessageGroupListContainer>
+        {MessageGroupList?.map((user: Conversation) => {
           const { receiver, sender } = user
           const others = decideChatUserName(myId, receiver, sender)
 
           return (
-            <DMListItem
+            <MessageGroupItem
               key={user.createdAt}
               receiver={user.receiver}
               message={user.message}
@@ -72,8 +72,8 @@ const DMList = () => {
             />
           )
         })}
-      </S.DMListContainer>
-    </S.DMListLayout>
+      </S.MessageGroupListContainer>
+    </S.MessageGroupListLayout>
   )
 }
-export default DMList
+export default MessageGroupList

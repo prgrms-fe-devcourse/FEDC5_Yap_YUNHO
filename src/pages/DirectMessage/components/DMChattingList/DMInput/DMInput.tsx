@@ -1,5 +1,5 @@
 import * as S from "./DMInput.Styles"
-import DMListProfile from "../../DMList/DMListProfile"
+import MessageProfile from "../../MessageGroupList/MessageProfile"
 import { useEffect, useState } from "react"
 import useSendMessage from "../../../hooks/useSendMessage"
 import SendIcon from "@mui/icons-material/Send"
@@ -47,7 +47,7 @@ const DMInput = ({ othersId }: DMInputProps) => {
   return (
     <S.DMInputLayout>
       <S.DMInputForm onSubmit={handleSubmit}>
-        <DMListProfile profileImg={myProfileImg} />
+        <MessageProfile profileImg={myProfileImg} />
         <S.DMInputItem
           placeholder="메시지를 입력해주세요"
           onChange={handleInputChange}

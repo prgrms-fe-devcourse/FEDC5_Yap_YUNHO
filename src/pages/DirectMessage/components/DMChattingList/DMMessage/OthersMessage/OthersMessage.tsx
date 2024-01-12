@@ -1,11 +1,11 @@
 import * as S from "./OthersMessage.Styles.ts"
-import DMListProfile from "../../../DMList/DMListProfile.tsx"
 import { MessageProps } from "./../../../../DirectMessage.Types"
+import MessageProfile from "./../../../MessageGroupList/MessageProfile"
 
 const OthersMessage = ({ children }: MessageProps) => {
   return (
     <S.OthersMessageLayout>
-      <DMListProfile
+      <MessageProfile
         profileImg={children.sender.image}
         isOnline={children.sender.isOnline}
       />

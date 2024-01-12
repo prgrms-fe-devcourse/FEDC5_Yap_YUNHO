@@ -1,21 +1,21 @@
 import standard from "@/assets/standard.jpeg"
-import * as S from "./DMList.Styles"
+import * as S from "./MessageList.Styles"
 import seenindicator from "@/assets/seenindicator.png"
 
-interface DMListProfileProps {
+interface MessageProfileProps {
   isOnline?: boolean
   profileImg: string
 }
-const DMListProfile = ({ isOnline, profileImg }: DMListProfileProps) => {
+const MessageProfile = ({ isOnline, profileImg }: MessageProfileProps) => {
   return (
-    <S.DMUserProfileContainer>
+    <S.MessageProfileContainer>
       {profileImg ? (
-        <S.DMUserProfileImg
+        <S.MessageProfileImg
           src={profileImg}
           alt="DMList Profile Image"
         />
       ) : (
-        <S.DMUserProfileImg
+        <S.MessageProfileImg
           src={standard}
           alt="DMList Profile Standard Image"
         />
@@ -27,8 +27,8 @@ const DMListProfile = ({ isOnline, profileImg }: DMListProfileProps) => {
           alt="온라인 표시"
         />
       )}
-    </S.DMUserProfileContainer>
+    </S.MessageProfileContainer>
   )
 }
 
-export default DMListProfile
+export default MessageProfile

@@ -1,11 +1,11 @@
 import * as S from "./DirectMessage.Styles"
 import DMChattingList from "./components/DMChattingList/DMChattingList"
-import DMList from "./components/DMList/DMList"
+import MessageGroupList from "./components/MessageGroupList/MessageGroupList"
 
 const DirectMessage = () => {
   return (
     <S.DirectMessageLayout>
-      <DMList />
+      <MessageGroupList />
       <DMChattingList />
     </S.DirectMessageLayout>
   )
