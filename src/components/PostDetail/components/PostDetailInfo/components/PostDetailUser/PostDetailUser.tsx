@@ -11,7 +11,7 @@ interface PostDetailInfoUserProps {
 }
 
 const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
-  const { user } = useAuthUserStore()
+  const { user, isLoggedIn } = useAuthUserStore()
   const fetchFollowMutate = useFetchFollow()
   const fetchUnFollowMutate = useFetchUnFollow()
 
@@ -19,19 +19,19 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
   const { image, fullName, followers } = author
   const followerCount = convertFollowCount(followers.length)
 
-  const hasFollowData = user.following.find(
+  const hasFollowingData = user.following.find(
     (following) => following.user === author._id,
   )
 
   const handleClickFollow = () => {
-    if (hasFollowData) {
-      fetchUnFollowMutate.mutate(hasFollowData._id)
-      return
-    }
     fetchFollowMutate.mutate(author._id)
   }
 
-  console.log(hasFollowData)
+  const handleClickUnFollow = () => {
+    if (hasFollowingData) {
+      fetchUnFollowMutate.mutate(hasFollowingData._id)
+    }
+  }
 
   return (
     <S.PostDetailUserLayout>
@@ -46,11 +46,17 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
         </S.PostDetailUserInfo>
       </S.PostDetailUserContainer>
 
-      {!isMyPost && (
-        <S.PostDetailFollowButton onClick={handleClickFollow}>
-          {hasFollowData ? "팔로우" : "언 팔로우"}
-        </S.PostDetailFollowButton>
-      )}
+      {isLoggedIn &&
+        !isMyPost &&
+        (hasFollowingData ? (
+          <S.PostDetailFollowButton onClick={handleClickUnFollow}>
+            {"언 팔로우"}
+          </S.PostDetailFollowButton>
+        ) : (
+          <S.PostDetailFollowButton onClick={handleClickFollow}>
+            {"팔로우"}
+          </S.PostDetailFollowButton>
+        ))}
     </S.PostDetailUserLayout>
   )
 }
