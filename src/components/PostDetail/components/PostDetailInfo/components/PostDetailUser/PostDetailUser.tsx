@@ -12,8 +12,8 @@ interface PostDetailInfoUserProps {
 
 const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
   const { user, isLoggedIn } = useAuthUserStore()
-  const fetchFollowMutate = useFetchFollow()
-  const fetchUnFollowMutate = useFetchUnFollow()
+  const { fetchFollowMutate, FollowErrorAlertModal } = useFetchFollow()
+  const { fetchUnFollowMutate, UnFollowErrorAlertModal } = useFetchUnFollow()
 
   const { author } = post
   const { image, fullName, followers } = author
@@ -24,6 +24,9 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
   )
 
   const handleClickFollow = () => {
+    if (fetchFollowMutate.isPending) {
+      return
+    }
     fetchFollowMutate.mutate(author._id)
   }
 
@@ -57,6 +60,9 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
             {"팔로우"}
           </S.PostDetailFollowButton>
         ))}
+
+      {FollowErrorAlertModal}
+      {UnFollowErrorAlertModal}
     </S.PostDetailUserLayout>
   )
 }

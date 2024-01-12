@@ -1,19 +1,40 @@
 import { AUTH_API } from "@/apis/Api"
+import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
+import useModal from "@/components/Modal/hooks/useModal"
+import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 const FETCH_MUTATION_FOLLOW_KEY = "IT_IS_FETCH_MUTATION_KEY_781521784628175281"
 
 const useFetchFollow = () => {
+  const { updateUser } = useAuthUserStore()
   const queryClient = useQueryClient()
   const fetchFollowMutate = useMutation({
     mutationKey: [FETCH_MUTATION_FOLLOW_KEY],
     mutationFn: fetchFollow,
     onSuccess: () => {
       queryClient.refetchQueries()
+
+      AUTH_API.get("/auth-user")
+        .then((res) => res.data)
+        .then((data) => updateUser(data))
+    },
+    onError: () => {
+      showModal()
     },
   })
+  const { isShowModal, showModal, closeModal } = useModal()
 
-  return fetchFollowMutate
+  const FollowErrorAlertModal = isShowModal && (
+    <AlertModal
+      isShow={isShowModal}
+      onClose={closeModal}
+      alertMessage={POST_DETAIL_ERROR_MESSAGE.USER.FOLLOW}
+    />
+  )
+
+  return { fetchFollowMutate, FollowErrorAlertModal }
 }
 
 export default useFetchFollow

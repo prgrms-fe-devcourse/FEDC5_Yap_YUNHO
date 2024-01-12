@@ -1,4 +1,7 @@
 import { AUTH_API } from "@/apis/Api"
+import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
+import useModal from "@/components/Modal/hooks/useModal"
+import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
@@ -8,7 +11,7 @@ const FETCH_MUTATION_UN_FOLLOW_KEY =
 const useFetchUnFollow = () => {
   const { updateUser } = useAuthUserStore()
   const queryClient = useQueryClient()
-  const fetchFollowMutate = useMutation({
+  const fetchUnFollowMutate = useMutation({
     mutationKey: [FETCH_MUTATION_UN_FOLLOW_KEY],
     mutationFn: fetchUnFollow,
     onSuccess: () => {
@@ -18,9 +21,21 @@ const useFetchUnFollow = () => {
         .then((res) => res.data)
         .then((data) => updateUser(data))
     },
+    onError: () => {
+      showModal()
+    },
   })
+  const { isShowModal, showModal, closeModal } = useModal()
 
-  return fetchFollowMutate
+  const UnFollowErrorAlertModal = isShowModal && (
+    <AlertModal
+      isShow={isShowModal}
+      onClose={closeModal}
+      alertMessage={POST_DETAIL_ERROR_MESSAGE.USER.UN_FOLLOW}
+    />
+  )
+
+  return { fetchUnFollowMutate, UnFollowErrorAlertModal }
 }
 
 export default useFetchUnFollow
