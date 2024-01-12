@@ -1,10 +1,10 @@
 import { AUTH_API } from "@/apis/Api"
 import { useMutation } from "@tanstack/react-query"
 
-const FETCH_MUTATION_KEY = "IT_IS_FETCH_MUTATION_KEY_781521784628175281"
+const FETCH_MUTATION_FOLLOW_KEY = "IT_IS_FETCH_MUTATION_KEY_781521784628175281"
 const useFetchFollow = () => {
   const fetchFollowMutate = useMutation({
-    mutationKey: [FETCH_MUTATION_KEY],
+    mutationKey: [FETCH_MUTATION_FOLLOW_KEY],
     mutationFn: fetchFollow,
   })
 
