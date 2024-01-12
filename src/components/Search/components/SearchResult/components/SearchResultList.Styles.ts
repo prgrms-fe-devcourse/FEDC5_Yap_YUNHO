@@ -14,5 +14,5 @@ export const SearchResultListTitle = styled.div`
 
   border-bottom: 0.1rem solid;
   padding-bottom: 0.5rem;
-  margin: 1rem 3rem 0 0;
+  margin: 1rem 0 0;
 `

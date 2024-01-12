@@ -12,7 +12,9 @@ const SearchResultItemTitle = ({ title, keyword }: SearchResultItemTitle) => {
 
   return (
     <S.SearchResultItemTitleContainer>
-      <S.SearchResultItemText>{beforeKeywordTitle}</S.SearchResultItemText>
+      <S.SearchResultItemEllipsisText>
+        {beforeKeywordTitle}
+      </S.SearchResultItemEllipsisText>
       <S.SearchResultItemStrongText>{keyword}</S.SearchResultItemStrongText>
       <S.SearchResultItemText>{afterKeywordTitle}</S.SearchResultItemText>
     </S.SearchResultItemTitleContainer>

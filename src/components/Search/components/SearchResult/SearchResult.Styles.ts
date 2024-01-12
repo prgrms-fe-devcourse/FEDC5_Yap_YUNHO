@@ -11,5 +11,7 @@ export const SearchResultLayout = styled.div`
 
   margin-top: 1rem;
   padding: 1rem;
+
+  gap: 3rem;
 `
 export const SearchResultItemTypeContainer = styled.div``
