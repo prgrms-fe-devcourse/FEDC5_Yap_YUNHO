@@ -10,7 +10,7 @@ export default function Login() {
   return (
     <>
       {isLoggedIn ? (
-        <Navigate to={"/"}></Navigate>
+        <Navigate to="/" />
       ) : (
         <S.LoginLayout>
           <S.LoginComponentContainer>
