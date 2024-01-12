@@ -1,0 +1,25 @@
+################
+# i 를 눌러 insert 모드를 실행함
+# 작성하고자하는 commit 메세지에 해당하는 #제거
+# commit 메세지 작성
+#
+# :wq + enter 를 눌러 완료 
+
+################
+# [Feat ✏️] 새로운 기능 추가
+# [Change 🚜 ] 파일 구조를 변경할 때 📝과 함께 사용
+# [Design 🎨] UI / style 개선시
+#
+# [Rename 🏷️] 이름 변경 위주의 작업을 진행 할 때
+# [Remove 🗑️] 코드 또는 파일 제거할 때
+# [Refactoring ⚙️] 코드를 리팩토링 할 때
+#
+# [Bug 🐛] 버그 reporting할 때, @FIXME 주석 태그 삽입
+# [Fix 🪛] 버그를 고칠 때
+#
+# [Release 💎] New Release
+# [Version 🔖] 버전 태그
+#
+# [Write 📚] 문서를 쓸 때
+# [Chore 🚀] 배포 / 개발 작업 과 관련된 모든 것
+################
