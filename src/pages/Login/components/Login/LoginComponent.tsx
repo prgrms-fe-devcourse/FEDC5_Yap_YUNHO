@@ -8,7 +8,7 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
 import type { AllowedLoginInputType } from "../../types"
 import useModal from "@/components/Modal/hooks/useModal"
-import ModalAlert from "@/components/Modal/components/AlertModal/AlertModal"
+import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
 interface UserInfoRef {
   email: string
@@ -52,7 +52,7 @@ const LoginComponent = () => {
 
   return (
     <>
-      <ModalAlert
+      <AlertModal
         isShow={isShowModal}
         alertMessage={alertMessage}
         onClose={closeModal}
