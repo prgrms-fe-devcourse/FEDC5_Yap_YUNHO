@@ -18,6 +18,7 @@ const SearchResult = ({ keyword }: keywordProp) => {
             image={image}
             title={title}
             isOnline={isOnline}
+            keyword={keyword}
           />
         ))
     : []
@@ -32,6 +33,7 @@ const SearchResult = ({ keyword }: keywordProp) => {
             type={type}
             image={image}
             title={title}
+            keyword={keyword}
           />
         ))
     : []

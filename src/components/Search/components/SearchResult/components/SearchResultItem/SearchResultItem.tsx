@@ -12,6 +12,7 @@ const SearchResultItem = ({
   title,
   isOnline = false,
   type,
+  keyword,
 }: searchResultProps) => {
   const navigate = useNavigate()
   const { closeSearchModal } = useSearchModalStore()
@@ -28,7 +29,10 @@ const SearchResultItem = ({
       ) : (
         <SearchResultItemImage src={image} />
       )}
-      <SearchResultItemTitle title={title} />
+      <SearchResultItemTitle
+        title={title}
+        keyword={keyword}
+      />
     </S.SearchResultItemContainer>
   )
 }

@@ -39,8 +39,7 @@ const useSearchResult = (keyword: string) => {
             type: "post",
             id: result._id,
             title:
-              (keywordIndex > 0 ? "..." : "") +
-              content.slice(keywordIndex, content.length),
+              (keywordIndex > 0 ? "..." : "") + content.slice(keywordIndex),
             image: thumbnail,
           }
         }

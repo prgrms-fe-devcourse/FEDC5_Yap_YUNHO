@@ -11,6 +11,7 @@ export interface searchResultProps {
   title: string
   image: string
   isOnline?: boolean
+  keyword: string
 }
 
 export type showResultProp = {
