@@ -2,6 +2,7 @@ import { Post } from "@/types"
 import * as S from "./PostDetailUser.Styles"
 import { convertFollowCount } from "@/util/convertFollowCount"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import useFetchFollow from "@/hooks/useFetchFollow"
 
 interface PostDetailInfoUserProps {
   isMyPost: boolean
@@ -10,6 +11,7 @@ interface PostDetailInfoUserProps {
 
 const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
   const { user } = useAuthUserStore()
+  const fetchFollowMutate = useFetchFollow()
 
   const { author } = post
   const { image, fullName, followers } = author
@@ -21,11 +23,10 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
 
   const handleClickFollow = () => {
     if (hasFollowData) {
-      return
+      console.log(hasFollowData)
     }
+    fetchFollowMutate.mutate(author._id)
   }
-
-  console.log(hasFollowData)
 
   return (
     <S.PostDetailUserLayout>
