@@ -1,3 +1,4 @@
+import { SEARCH_RESULT_COUNT } from "../../Search.Constants"
 import { keywordProp, searchResultProps, typeProp } from "../../Search.Types"
 import useSearchResult from "../../hooks/useSearchResult"
 import * as S from "./SearchResult.Styles"
@@ -43,13 +44,13 @@ const SearchResult = ({ keyword }: keywordProp) => {
       {users.length > 0 && (
         <SS.SearchResultListLayout>
           <SS.SearchResultListTitle>{"사용자"}</SS.SearchResultListTitle>
-          {users.slice(0, 7)}
+          {users.slice(0, SEARCH_RESULT_COUNT)}
         </SS.SearchResultListLayout>
       )}
       {posts.length > 0 && (
         <SS.SearchResultListLayout>
           <SS.SearchResultListTitle>{"포스트"}</SS.SearchResultListTitle>
-          {posts.slice(0, 7)}
+          {posts.slice(0, SEARCH_RESULT_COUNT)}
         </SS.SearchResultListLayout>
       )}
     </S.SearchResultLayout>
