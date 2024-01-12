@@ -7,12 +7,28 @@ const NavbarMenuItem = ({ children, handleMenuClick }: NavbarMenuProps) => {
       <Button
         $fontSize={"2rem"}
         onClick={() => {
-          // string | undefined 문제..
-          if (!(typeof children === "string")) {
+          if (!children) {
             return
           }
 
-          handleMenuClick(children)
+          if (children === "로그인") {
+            return handleMenuClick(children)
+          }
+
+          if (children === "로그아웃") {
+            return handleMenuClick(children)
+          }
+
+          if (children === "DM") {
+            return handleMenuClick(children)
+          }
+          if (children === "게시물 생성") {
+            return handleMenuClick(children)
+          }
+
+          if (children === "알림") {
+            return handleMenuClick(children)
+          }
         }}
       >
         <p>{children}</p>

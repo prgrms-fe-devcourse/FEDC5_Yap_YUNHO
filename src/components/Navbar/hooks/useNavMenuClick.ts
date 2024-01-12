@@ -6,9 +6,7 @@ const useMenuClick = () => {
   const navigate = useNavigate()
   const { setLogout } = useAuthUserStore()
 
-  const handleMenuClick = (
-    menu: "로그인" | "로그아웃" | "DM" | "게시물 생성" | "알림",
-  ) => {
+  const handleMenuClick = (menu: string) => {
     switch (menu) {
       case "로그인":
         navigate("/login")
