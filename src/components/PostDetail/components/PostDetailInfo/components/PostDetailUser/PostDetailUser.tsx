@@ -1,6 +1,7 @@
 import { Post } from "@/types"
 import * as S from "./PostDetailUser.Styles"
 import { convertFollowCount } from "@/util/convertFollowCount"
+import useFollow from "@/hooks/useFollow"
 
 interface PostDetailInfoUserProps {
   isMyPost: boolean
@@ -8,8 +9,14 @@ interface PostDetailInfoUserProps {
 }
 
 const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
+  const { followMutate } = useFollow()
+
   const { image, fullName, followers } = post.author
   const followerCount = convertFollowCount(followers.length)
+
+  const handleClickFollow = () => {
+    followMutate.mutate(post.author._id)
+  }
 
   return (
     <S.PostDetailUserLayout>
@@ -25,7 +32,7 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
       </S.PostDetailUserContainer>
 
       {!isMyPost && (
-        <S.PostDetailFollowButton>
+        <S.PostDetailFollowButton onClick={handleClickFollow}>
           {/* 이후 follow 여부에 따라 변경 */} 팔로우
         </S.PostDetailFollowButton>
       )}
