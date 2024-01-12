@@ -1,7 +1,7 @@
 import { useState } from "react"
 import * as S from "./DMList.Styles"
 import { Conversation, User } from "@/types"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
 import useDMList from "./../../hooks/useDMList"
 import DMListItem from "./DMListItem"
@@ -14,6 +14,7 @@ const DMList = () => {
   const navigate = useNavigate()
   const { data: DMUserList } = useDMList()
   const { myId } = useAuthUserStore()
+  console.log(DMUserList)
 
   const readCheckMessage = async (others: User) => {
     try {

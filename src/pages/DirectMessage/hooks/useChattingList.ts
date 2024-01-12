@@ -44,3 +44,5 @@ const useChattingList = (othersId: string) => {
 }
 
 export default useChattingList
+
+// 상대방으로부터 메시지가 오면 dmlist의 해당 메시지를 읽기처리 한다.

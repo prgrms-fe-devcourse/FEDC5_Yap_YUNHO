@@ -14,6 +14,14 @@ const sendMessage = async (messageSubmission: SendMessageProps) => {
     .catch((e) => {
       console.log(e, "메시지 보내기 요청 실패")
     })
+
+  await AUTH_API.put("/messages/update-seen", {
+    sender: messageSubmission.receiver._id,
+  })
+    .then()
+    .catch((e) => {
+      console.log(e, "메시지 읽음 처리 실패")
+    })
 }
 
 const useSendMessage = () => {
@@ -33,3 +41,5 @@ const useSendMessage = () => {
 }
 
 export default useSendMessage
+
+// 내가 상대방에게 메시지를 보낼때마다 업데이트 처리를 해야한다.
