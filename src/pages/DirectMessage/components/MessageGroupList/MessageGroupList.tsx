@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
 import useDMList from "../../hooks/useDMList"
 import MessageGroupItem from "./MessageGroupItem"
-import { handleClickProps } from "../../DirectMessage.Types"
+import { handleMessageGroupClickProps } from "../../DirectMessage.Types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { AUTH_API } from "@/apis/Api"
 
 const MessageGroupList = () => {
-  const [selectedMessageId, setSelectedMessageId] = useState("")
+  const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
   const navigate = useNavigate()
   const { data: MessageGroupList } = useDMList()
   const { myId } = useAuthUserStore()
@@ -25,12 +25,15 @@ const MessageGroupList = () => {
     }
   }
 
-  const handleClick = ({ myId, receiver, sender }: handleClickProps) => {
+  const handleMessageGroupClick = ({
+    myId,
+    receiver,
+    sender,
+  }: handleMessageGroupClickProps) => {
     // 상대방의 아이디
-    const others = decideChatUserName(myId, receiver, sender)
-
+    const others = decideChatUserName({ myId, receiver, sender })
     navigate(`/directmessage/${others._id}`)
-    setSelectedMessageId(others._id)
+    setSelectedMessageGroupId(others._id)
     updateSeenMessage(others)
   }
 
@@ -56,7 +59,7 @@ const MessageGroupList = () => {
       <S.MessageGroupListContainer>
         {MessageGroupList?.map((user: Conversation) => {
           const { receiver, sender } = user
-          const others = decideChatUserName(myId, receiver, sender)
+          const others = decideChatUserName({ myId, receiver, sender })
 
           return (
             <MessageGroupItem
@@ -66,8 +69,8 @@ const MessageGroupList = () => {
               sender={user.sender}
               createdAt={user.createdAt}
               isOnline={others.isOnline}
-              selectedMessageId={selectedMessageId}
-              handleClick={handleClick}
+              selectedMessageGroupId={selectedMessageGroupId}
+              handleMessageGroupClick={handleMessageGroupClick}
               profileImg={others.image}
             />
           )

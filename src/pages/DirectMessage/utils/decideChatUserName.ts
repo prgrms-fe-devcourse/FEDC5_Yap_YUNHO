@@ -1,9 +1,11 @@
 import { User } from "@/types"
-const decideChatUserName = (
-  myId: string,
-  receiver: User,
-  sender: User,
-): User => {
+import { handleMessageGroupClickProps } from "./../DirectMessage.Types"
+
+const decideChatUserName = ({
+  myId,
+  receiver,
+  sender,
+}: handleMessageGroupClickProps): User => {
   if (receiver._id === myId) {
     return sender
   }

@@ -1,5 +1,5 @@
 import * as S from "./MessageList.Styles"
-import { MessageUserListProps } from "../../DirectMessage.Types"
+import { MessageGroupItemProps } from "../../DirectMessage.Types"
 import MessageProfile from "./MessageProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import decideChatUserName from "../../utils/decideChatUserName"
@@ -10,19 +10,20 @@ const MessageGroupItem = ({
   message,
   createdAt,
   isOnline,
-  handleClick,
-  selectedMessageId,
+  handleMessageGroupClick,
+  selectedMessageGroupId,
   profileImg,
-}: MessageUserListProps) => {
+}: MessageGroupItemProps) => {
   const { myId } = useAuthUserStore()
 
   return (
     <S.MessageItemLayout
       onClick={() => {
-        handleClick({ myId, receiver, sender })
+        handleMessageGroupClick({ myId, receiver, sender })
       }}
       $isSelect={
-        selectedMessageId === decideChatUserName(myId, receiver, sender)._id
+        selectedMessageGroupId ===
+        decideChatUserName({ myId, receiver, sender })._id
       }
     >
       <MessageProfile
@@ -32,7 +33,7 @@ const MessageGroupItem = ({
 
       <S.MessageGroupItemChat>
         <S.MessageGroupItemUserName>
-          {decideChatUserName(myId, receiver, sender).fullName}
+          {decideChatUserName({ myId, receiver, sender }).fullName}
         </S.MessageGroupItemUserName>
         <S.MessageGroupItemContent>{message}</S.MessageGroupItemContent>
         <S.MessageGroupItemChatDate>

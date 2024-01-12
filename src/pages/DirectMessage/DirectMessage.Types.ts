@@ -1,18 +1,22 @@
 import { User, Message } from "@/types"
 
-export interface handleClickProps {
+export interface handleMessageGroupClickProps {
   myId: string
   sender: User
   receiver: User
 }
-export interface MessageUserListProps {
+export interface MessageGroupItemProps {
   createdAt: string
   message: string
   isOnline: boolean
   receiver: User
   sender: User
-  selectedMessageId: string
-  handleClick: ({ myId, sender, receiver }: handleClickProps) => void
+  selectedMessageGroupId: string
+  handleMessageGroupClick: ({
+    myId,
+    sender,
+    receiver,
+  }: handleMessageGroupClickProps) => void
   profileImg: string
 }
 
