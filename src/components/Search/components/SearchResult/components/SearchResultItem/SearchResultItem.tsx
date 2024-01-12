@@ -24,7 +24,10 @@ const SearchResultItem = ({
   return (
     <S.SearchResultItemContainer onClick={() => onNavigate()}>
       {type === "user" ? (
-        <DMListProfile isSeen={isOnline} /> //수정예정
+        <DMListProfile
+          isOnline={isOnline}
+          profileImg={image}
+        />
       ) : (
         <S.SearchResultItemImage src={image} />
       )}

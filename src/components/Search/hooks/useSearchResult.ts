@@ -23,7 +23,7 @@ const useSearchResult = (keyword: string) => {
             type: "user",
             id: result._id,
             title: result.fullName,
-            image: "",
+            image: result.image,
             isOnline: result.isOnline,
           }
         } else {
