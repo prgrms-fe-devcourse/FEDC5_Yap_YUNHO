@@ -6,14 +6,13 @@ import findIndexByLowerCase from "@/components/SearchModal/utils/findIndexByLowe
 const GET_SEARCH_RESULT_QUERY_KEY = "GET_SEARCH_RESULT"
 
 const useSearchResult = (keyword: string) => {
-  const { data } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: [GET_SEARCH_RESULT_QUERY_KEY, keyword],
     queryFn: async () => {
       if (!keyword) {
         return []
       }
-
-      const { data } = await API.get(`/SearchModal/all/${keyword}`)
+      const { data } = await API.get(`/search/all/${keyword}`)
 
       return data
     },
@@ -45,6 +44,10 @@ const useSearchResult = (keyword: string) => {
           }
         }
       })
+
+      if (isError) {
+        return []
+      }
 
       return resultList
     },

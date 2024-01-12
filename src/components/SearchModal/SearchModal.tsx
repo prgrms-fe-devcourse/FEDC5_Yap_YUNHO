@@ -8,7 +8,7 @@ import useSearchModalStore from "./stores/useSearchModalStore"
 const SearchModal = () => {
   const [keyword, setKeyword] = useState("")
   const { isShowSearchModal, closeSearchModal } = useSearchModalStore()
-  console.log("Search", isShowSearchModal)
+
   return (
     <Modal
       isShow={isShowSearchModal}
