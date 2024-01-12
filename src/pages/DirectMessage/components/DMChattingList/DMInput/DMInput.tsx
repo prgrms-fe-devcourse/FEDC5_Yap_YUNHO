@@ -19,13 +19,13 @@ const DMInput = ({ othersId }: DMInputProps) => {
     setSendingMessage(value)
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const messageSubmission = {
       message: sendingMessage,
       receiver: othersId,
     }
-    await sendMessage(messageSubmission)
+    sendMessage(messageSubmission)
     setSendingMessage("")
   }
 
@@ -41,8 +41,6 @@ const DMInput = ({ othersId }: DMInputProps) => {
   useEffect(() => {
     getMyProfileImg()
   }, [])
-
-  getMyProfileImg()
 
   return (
     <S.DMInputLayout>
