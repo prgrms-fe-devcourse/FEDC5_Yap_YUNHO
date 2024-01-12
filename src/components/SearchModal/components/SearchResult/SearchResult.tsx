@@ -1,5 +1,9 @@
-import { SEARCH_RESULT_COUNT } from "../../Search.Constants"
-import { keywordProp, searchResultProps, typeProp } from "../../Search.Types"
+import { SEARCH_RESULT_COUNT } from "../../SearchModal.Constants"
+import {
+  keywordProp,
+  searchResultProps,
+  typeProp,
+} from "../../SearchModal.Types"
 import useSearchResult from "../../hooks/useSearchResult"
 import * as S from "./SearchResult.Styles"
 import SearchResultItem from "./components/SearchResultItem/SearchResultItem"

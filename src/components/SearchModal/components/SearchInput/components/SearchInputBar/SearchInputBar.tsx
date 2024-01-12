@@ -3,9 +3,9 @@ import { Search } from "@mui/icons-material"
 import {
   SEARCH_INPUT_BAR_PLACEHOLDER,
   SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY,
-} from "@/components/Search/Search.Constants"
+} from "@/components/SearchModal/SearchModal.Constants"
 import { useState, useEffect } from "react"
-import { showResultProp } from "@/components/Search/Search.Types"
+import { showResultProp } from "@/components/SearchModal/SearchModal.Types"
 
 const SearchInputBar = ({ showResults }: showResultProp) => {
   const [searchKeyword, setSearchKeyword] = useState("")

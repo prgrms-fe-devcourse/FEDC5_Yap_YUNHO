@@ -1,9 +1,9 @@
 import DMListProfile from "@/pages/DirectMessage/components/DMList/DMListProfile"
 import * as S from "./SearchResultItem.Styles"
 import SearchResultItemTitle from "./components/SearchResultItemTitle"
-import { searchResultProps } from "@/components/Search/Search.Types"
+import { searchResultProps } from "@/components/SearchModal/SearchModal.Types"
 import { useNavigate } from "react-router-dom"
-import useSearchModalStore from "@/components/Search/stores/useSearchModalStore"
+import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalStore"
 
 const SearchResultItem = ({
   id,

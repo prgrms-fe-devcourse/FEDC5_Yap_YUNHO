@@ -1,4 +1,4 @@
-import findIndexByLowerCase from "@/components/Search/utils/findIndexByLowerCase"
+import findIndexByLowerCase from "@/components/SearchModal/utils/findIndexByLowerCase"
 import * as S from "./SearchResultItemTitle.Styles"
 
 interface SearchResultItemTitle {
