@@ -7,9 +7,7 @@ export const ServiceInfoLayout = styled.div`
     border-right: 0.1rem solid black;
   }
   @media screen and (max-width: 900px) {
-    border-bottom: 0.1rem solid black;
-    min-height: 17rem;
-    height: 50%;
+    display: none;
   }
 
   display: flex;
