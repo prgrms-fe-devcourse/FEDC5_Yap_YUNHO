@@ -1,5 +1,5 @@
 import { ChangeEvent, useState, FormEvent } from "react"
-import * as S from "./FirstSignupForm.Styles"
+import * as S from "./SignupFirstForm.Styles"
 import { theme } from "@/styles/theme"
 import SignupInputContainer from "../SignupInput/SignupInputContainer"
 
