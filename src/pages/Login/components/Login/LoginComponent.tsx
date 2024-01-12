@@ -8,7 +8,7 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
 import type { AllowedInputType } from "../../types"
 import useModal from "@/components/Modal/hooks/useModal"
-import ModalAlert from "@/components/Modal/components/ModalAlert/ModalAlert"
+import ModalAlert from "@/components/Modal/components/AlertModal/AlertModal"
 
 interface UserInfoRef {
   email: string
@@ -21,7 +21,7 @@ const LoginComponent = () => {
 
   const { setLogin } = useAuthUserStore()
   const navigate = useNavigate()
-  const { isModalToggle: isShowModal, showModal, closeModal } = useModal()
+  const { isShowModal: isShowModal, showModal, closeModal } = useModal()
 
   const updateUserInfo = (value: string, type: AllowedInputType) => {
     userInfoRef.current[type] = value
