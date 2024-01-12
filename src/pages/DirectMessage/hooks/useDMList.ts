@@ -2,6 +2,7 @@ import { AUTH_API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { Conversation } from "@/types"
 import { useQuery } from "@tanstack/react-query"
+import { useParams } from "react-router-dom"
 
 export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
 
@@ -17,6 +18,7 @@ const fetchConversation = async () => {
 
 const useDMList = () => {
   const { myId } = useAuthUserStore()
+  const { id: userId } = useParams()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: fetchConversation,
@@ -25,7 +27,11 @@ const useDMList = () => {
 
     select: (GroupMessageList: Conversation[]) =>
       GroupMessageList.map((MessageList) => {
-        if (myId === MessageList.sender._id) {
+        // 최근에 보낸 메시지가 내가 보낸거면 채팅을 하고 있거나 읽음 처리
+        if (
+          myId === MessageList.sender._id ||
+          userId === MessageList.sender._id
+        ) {
           return {
             ...MessageList,
             seen: true,
