@@ -5,11 +5,11 @@ interface SendMessageProps {
   receiver: string
 }
 
-const sendMessage = async (messageSubmission: SendMessageProps) => {
+const sendMessageAPI = async (messageSubmission: SendMessageProps) => {
   await AUTH_API.post("messages/create", messageSubmission)
     .then((res) => res.data)
-    .catch((e) => {
-      console.log(e, "메시지 보내기 요청 실패")
+    .catch(() => {
+      throw new Error("메시지 보내기 요청 실패")
     })
 
   await AUTH_API.put("/messages/update-seen", {
@@ -21,4 +21,4 @@ const sendMessage = async (messageSubmission: SendMessageProps) => {
     })
 }
 
-export default sendMessage
+export default sendMessageAPI

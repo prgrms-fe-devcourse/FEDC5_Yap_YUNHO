@@ -11,7 +11,7 @@ interface MessageInputProps {
 
 const MessageInput = ({ othersId }: MessageInputProps) => {
   const [sendingMessage, setSendingMessage] = useState("")
-  const { mutate: sendMessage } = useSendMessage()
+  const { AlertModalComponent, sendMessage } = useSendMessage()
   const [myProfileImg, setMyProfileImg] = useState("")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +25,7 @@ const MessageInput = ({ othersId }: MessageInputProps) => {
       message: sendingMessage,
       receiver: othersId,
     }
-    sendMessage(messageSubmission)
+    sendMessage.mutate(messageSubmission)
     setSendingMessage("")
   }
 
@@ -43,19 +43,22 @@ const MessageInput = ({ othersId }: MessageInputProps) => {
   }, [])
 
   return (
-    <S.MessageInputLayout>
-      <S.MessageInputForm onSubmit={handleSubmit}>
-        <MessageProfile profileImg={myProfileImg} />
-        <S.MessageInputItem
-          placeholder="메시지를 입력해주세요"
-          onChange={handleInputChange}
-          value={sendingMessage}
-        />
-        <S.MessageSendButton>
-          <SendIcon />
-        </S.MessageSendButton>
-      </S.MessageInputForm>
-    </S.MessageInputLayout>
+    <>
+      {AlertModalComponent}
+      <S.MessageInputLayout>
+        <S.MessageInputForm onSubmit={handleSubmit}>
+          <MessageProfile profileImg={myProfileImg} />
+          <S.MessageInputItem
+            placeholder="메시지를 입력해주세요"
+            onChange={handleInputChange}
+            value={sendingMessage}
+          />
+          <S.MessageSendButton>
+            <SendIcon />
+          </S.MessageSendButton>
+        </S.MessageInputForm>
+      </S.MessageInputLayout>
+    </>
   )
 }
 
