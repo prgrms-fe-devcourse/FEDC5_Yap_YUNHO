@@ -30,7 +30,8 @@ export const ImgContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 35rem;
+  height: 39rem;
+  gap: 2rem;
 `
 export const ImgItem = styled.div`
   width: 26.5rem;
@@ -51,10 +52,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 10rem;
-  gap: 2rem;
-
-  top: -1.5rem;
+  height: 4rem;
 `
 
 export const Button = styled.button<{
@@ -62,7 +60,7 @@ export const Button = styled.button<{
   $color: string
 }>`
   width: ${({ $width }) => `${$width}%`};
-  height: 100%;
+  height: 4rem;
   padding: 1rem 0;
   color: ${({ theme }) => theme.colors.white};
 

@@ -3,7 +3,7 @@ import type { AllowedLoginInputType } from "../types"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "../apis/login"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { useNavigate } from "react-router-dom"
+
 import useModal from "@/components/Modal/hooks/useModal"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
@@ -16,10 +16,12 @@ interface UserInfoRef {
 
 const useLogin = () => {
   const userInfoRef = useRef<UserInfoRef>({ email: "", password: "" })
-  const { setLogin } = useAuthUserStore()
-  const navigate = useNavigate()
   const { isShowModal, showModal, closeModal } = useModal()
+  const { setLogin } = useAuthUserStore()
 
+  const updateUserInfo = (value: string, type: AllowedLoginInputType) => {
+    userInfoRef.current[type] = value
+  }
   const AlertModalComponent = isShowModal ? (
     <AlertModal
       isShow={isShowModal}
@@ -28,16 +30,11 @@ const useLogin = () => {
     />
   ) : null
 
-  const updateUserInfo = (value: string, type: AllowedLoginInputType) => {
-    userInfoRef.current[type] = value
-  }
-
   const LoginApi_send = useMutation({
     mutationKey: [LOGIN_MUTATION_QUERY_KEY],
     mutationFn: login,
     onSuccess: ({ user, token }) => {
       setLogin(user, token)
-      navigate("/", { replace: true })
     },
     onError: () => {
       showModal()

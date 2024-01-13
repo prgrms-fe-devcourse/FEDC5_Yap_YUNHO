@@ -1,16 +1,21 @@
 import { ChangeEvent, useState, useRef, FormEvent } from "react"
-import * as S from "./SecondSignupForm.Styles"
+import * as S from "./SignupSecondForm.Styles"
 import { theme } from "@/styles/theme"
 import Input from "../SignupInput/Input"
 import emptyImg from "@/assets/emptyimg.png"
-import { AUTH_API } from "@/apis/Api"
-import { useNavigate } from "react-router-dom"
+import useSignupSecondForm from "../../hooks/useSignupSecondForm"
 
-const SecondSignupForm = () => {
+interface SecondSignupFormProp {
+  userToken: string
+}
+
+const SecondSignupForm = ({ userToken }: SecondSignupFormProp) => {
   const [previewUserProfile, setPreviewUserProfile] = useState("")
   const [userProfileImgFile, setUserProfileImgFile] = useState<File>()
+  const [isDefaultImg, setIsDefaultImg] = useState(false)
   const imgRef = useRef<HTMLInputElement>(null)
-  const navigate = useNavigate()
+
+  const { AlertModalComponent, SignupSecondForm_API } = useSignupSecondForm()
 
   const openFileSelector = () => {
     if (imgRef.current === null) {
@@ -35,11 +40,13 @@ const SecondSignupForm = () => {
     const userImg = URL.createObjectURL(file)
     setPreviewUserProfile(userImg)
     setUserProfileImgFile(file)
+    setIsDefaultImg(false)
   }
 
   const removeImgFile = () => {
     setPreviewUserProfile("")
     setUserProfileImgFile(undefined)
+    setIsDefaultImg(true)
   }
 
   const getDefaultImgFile = async () => {
@@ -55,7 +62,6 @@ const SecondSignupForm = () => {
     const formData = new FormData()
     formData.append("isCover", "false")
 
-    const isDefaultImg = previewUserProfile === ""
     if (isDefaultImg) {
       const defaultImgFile = await getDefaultImgFile()
       formData.append("image", defaultImgFile, "defaultImg")
@@ -65,53 +71,49 @@ const SecondSignupForm = () => {
       formData.append("image", userProfileImgFile)
     }
 
-    await AUTH_API.post("/users/upload-photo", formData)
-      .then(() => {
-        alert("프로필 이미지 등록 성공")
-      })
-      .catch(() => {
-        alert("프로필 이미지 등록 실패")
-      })
-    navigate("/", { replace: true })
+    SignupSecondForm_API.mutate({ userToken, formData })
   }
 
   return (
-    <S.SignupFormLayout>
-      <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
-      <S.SignupFormContainer onSubmit={updateUserProfile}>
-        <S.ImgContainer>
-          <S.ImgItem onClick={openFileSelector}>
-            <S.Img
-              src={previewUserProfile === "" ? emptyImg : previewUserProfile}
-              draggable="false"
+    <>
+      {AlertModalComponent}
+      <S.SignupFormLayout>
+        <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
+        <S.SignupFormContainer onSubmit={updateUserProfile}>
+          <S.ImgContainer>
+            <S.ImgItem onClick={openFileSelector}>
+              <S.Img
+                src={previewUserProfile === "" ? emptyImg : previewUserProfile}
+                draggable="false"
+              />
+            </S.ImgItem>
+            <Input
+              key={Date.now()}
+              type="file"
+              ref={imgRef}
+              onChange={addImgFile}
             />
-          </S.ImgItem>
-          <Input
-            key={Date.now()}
-            type="file"
-            ref={imgRef}
-            onChange={addImgFile}
-          />
-        </S.ImgContainer>
-        <S.ButtonContainer>
-          <S.Button
-            $width={53}
-            $color={theme.colors.sub_alt}
-            type="button"
-            onClick={removeImgFile}
-          >
-            프로필 이미지 제거
-          </S.Button>
-          <S.Button
-            $width={53}
-            $color={theme.colors.point}
-            type="submit"
-          >
-            완료
-          </S.Button>
-        </S.ButtonContainer>
-      </S.SignupFormContainer>
-    </S.SignupFormLayout>
+            <S.Button
+              $width={53}
+              $color={theme.colors.sub_alt}
+              type="button"
+              onClick={removeImgFile}
+            >
+              프로필 이미지 제거
+            </S.Button>
+          </S.ImgContainer>
+          <S.ButtonContainer>
+            <S.Button
+              $width={53}
+              $color={theme.colors.point}
+              type="submit"
+            >
+              완료
+            </S.Button>
+          </S.ButtonContainer>
+        </S.SignupFormContainer>
+      </S.SignupFormLayout>
+    </>
   )
 }
 

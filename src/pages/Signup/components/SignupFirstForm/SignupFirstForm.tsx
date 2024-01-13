@@ -2,19 +2,24 @@ import { ChangeEvent, useState, FormEvent } from "react"
 import * as S from "./SignupFirstForm.Styles"
 import { theme } from "@/styles/theme"
 import SignupInputContainer from "../SignupInput/SignupInputContainer"
-
 import { getNewErrorMessage } from "../../utils/validateInput"
 import { useNavigate } from "react-router-dom"
-import { API } from "@/apis/Api"
-import useAuthUserStore from "@/stores/useAuthUserStore"
+import useSignupFirstForm from "../../hooks/useSignupFirstForm"
 
 interface FirstSignupFormProp {
   handleSelectedFormComponent: () => void
+  setUserToken: (userToken: string) => void
 }
 
 const FirstSignupForm = ({
   handleSelectedFormComponent,
+  setUserToken,
 }: FirstSignupFormProp) => {
+  const { AlertModalComponent, SignupFirstForm_API } = useSignupFirstForm({
+    handleSelectedFormComponent,
+    setUserToken,
+  })
+
   const [requiredUserInfo, setRequiredUserInfo] = useState({
     email: "",
     nickname: "",
@@ -30,7 +35,6 @@ const FirstSignupForm = ({
   })
 
   const navigate = useNavigate()
-  const { setLogin } = useAuthUserStore()
 
   const handleSignup = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -41,15 +45,21 @@ const FirstSignupForm = ({
       password: requiredUserInfo.password,
     }
 
-    API.post("/signup", requestBody)
-      .then((res) => {
-        const { user, token } = res.data
-        setLogin(user, token)
-        handleSelectedFormComponent()
-      })
-      .catch(() => {
-        alert("이미 가입된 이메일입니다.")
-      })
+    SignupFirstForm_API.mutate(requestBody)
+  }
+
+  const validateUserInfo = (userInfoType: string, userInfoValue: string) => {
+    const newData = {
+      ...requiredUserInfo,
+      [userInfoType]: userInfoValue,
+    }
+
+    const newErrorMessage = getNewErrorMessage(
+      errorMessage,
+      userInfoType,
+      newData,
+    )
+    setErrorMessage(newErrorMessage)
   }
 
   const handleRequiredUserInfo = (event: ChangeEvent<HTMLInputElement>) => {
@@ -60,20 +70,6 @@ const FirstSignupForm = ({
     setRequiredUserInfo((prevState) => ({
       ...prevState,
       [target.name]: target.value,
-    }))
-  }
-
-  const validateUserInfo = (userInfoType: string, userInfoValue: string) => {
-    const newData = {
-      ...requiredUserInfo,
-      [userInfoType]: userInfoValue,
-    }
-
-    const newErrorMessage = getNewErrorMessage(userInfoType, newData)
-
-    setErrorMessage((prevErrorMessage) => ({
-      ...prevErrorMessage,
-      [userInfoType]: newErrorMessage,
     }))
   }
 
@@ -91,36 +87,39 @@ const FirstSignupForm = ({
   }
 
   return (
-    <S.SignupFormLayout>
-      <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
-      <S.SignupFormContainer onSubmit={handleSignup}>
-        <SignupInputContainer
-          requiredUserInfo={requiredUserInfo}
-          onChange={handleRequiredUserInfo}
-          errorMessage={errorMessage}
-        />
-        <S.ButtonContainer>
-          <S.Button
-            $width={18}
-            $color={theme.colors.sub_alt}
-            onClick={() => {
-              navigate("/login")
-            }}
-            type="button"
-          >
-            취소
-          </S.Button>
-          <S.Button
-            $width={35}
-            $color={theme.colors.point}
-            disabled={handleDisabled()}
-            type="submit"
-          >
-            가입완료
-          </S.Button>
-        </S.ButtonContainer>
-      </S.SignupFormContainer>
-    </S.SignupFormLayout>
+    <>
+      {AlertModalComponent}
+      <S.SignupFormLayout>
+        <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
+        <S.SignupFormContainer onSubmit={handleSignup}>
+          <SignupInputContainer
+            requiredUserInfo={requiredUserInfo}
+            onChange={handleRequiredUserInfo}
+            errorMessage={errorMessage}
+          />
+          <S.ButtonContainer>
+            <S.Button
+              $width={18}
+              $color={theme.colors.sub_alt}
+              onClick={() => {
+                navigate("/login")
+              }}
+              type="button"
+            >
+              취소
+            </S.Button>
+            <S.Button
+              $width={35}
+              $color={theme.colors.point}
+              disabled={handleDisabled()}
+              type="submit"
+            >
+              가입완료
+            </S.Button>
+          </S.ButtonContainer>
+        </S.SignupFormContainer>
+      </S.SignupFormLayout>
+    </>
   )
 }
 

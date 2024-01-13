@@ -9,6 +9,7 @@ export interface RequiredUserInfo {
   password: string
   passwordCheck: string
 }
+
 export type AllowedUserInfoType =
   | "email"
   | "password"
