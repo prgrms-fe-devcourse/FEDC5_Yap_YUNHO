@@ -21,7 +21,7 @@ const LoginComponent = () => {
 
   const { setLogin } = useAuthUserStore()
   const navigate = useNavigate()
-  const { isShowModal: isShowModal, showModal, closeModal } = useModal()
+  const { isShowModal, showModal, closeModal } = useModal()
 
   const updateUserInfo = (value: string, type: AllowedInputType) => {
     userInfoRef.current[type] = value

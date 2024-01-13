@@ -12,24 +12,26 @@ import { useNavigate, useParams } from "react-router-dom"
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 
 const Home = () => {
+  // 완료 후 제거 예정
+  // Post Edit store 상태
   const { isShowEditModal, showEditModal, closeEditModal } =
     usePostEditModalStore()
-  const { id } = useParams()
+
+  const { modalName } = useParams()
   const navigate = useNavigate()
+
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(INITIAL_CATEGORY)
 
   useEffect(() => {
-    if (!id) {
+    if (!modalName) {
       return
     }
 
-    showEditModal()
-
-    return () => {
-      closeEditModal()
+    if (modalName === "postedit") {
+      showEditModal()
     }
-  }, [closeEditModal, id, showEditModal])
+  }, [modalName, showEditModal])
 
   const handleClosePostEdit = useCallback(() => {
     closeEditModal()
@@ -39,6 +41,7 @@ const Home = () => {
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
   }
+
   return (
     <>
       <S.HomeLayout>
@@ -46,20 +49,18 @@ const Home = () => {
           selectedCategory={selectedCategory}
           onSelected={onSelectedCategory}
         />
-        <button
+        <S.TestButton
           onClick={() => {
-            navigate("/postedit/659c181c16a2b736436afca2")
+            navigate("/postedit/newPost")
           }}
         >
-          Modal Open
-        </button>
+          Edit Modal
+        </S.TestButton>
+
         <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>
 
-      <PostEdit
-        onClose={handleClosePostEdit}
-        isShowModal={isShowEditModal}
-      />
+      {isShowEditModal && <PostEdit onClose={handleClosePostEdit} />}
     </>
   )
 }
