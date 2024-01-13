@@ -25,7 +25,6 @@ const useDeleteComment = () => {
       queryClient.refetchQueries()
       setAlertMessage(POST_DETAIL_MODAL_MESSAGE.COMPLETE.COMMENT_DELETE)
       showAlert()
-      return
     },
     onError: () => {
       setAlertMessage(POST_DETAIL_ERROR_MESSAGE.COMMENT.DELETE)

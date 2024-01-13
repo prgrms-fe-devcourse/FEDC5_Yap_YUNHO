@@ -15,13 +15,9 @@ const useLikePost = () => {
     mutationFn: fetchLikePost,
     onSuccess: () => {
       queryClient.refetchQueries()
-
-      return true
     },
     onError: () => {
       showModal()
-
-      return false
     },
   })
 
@@ -45,9 +41,7 @@ const fetchLikePost = async (postId: string) => {
   return await AUTH_API.post("/likes/create", {
     postId,
   })
-    .then((res) => {
-      return res.data
-    })
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })

@@ -41,9 +41,7 @@ const fetchUnLikePost = async (likeId: string) => {
   return await AUTH_API.delete("/likes/delete", {
     data: { id: likeId },
   })
-    .then((res) => {
-      return res.data
-    })
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })

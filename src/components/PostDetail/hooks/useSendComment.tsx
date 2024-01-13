@@ -27,9 +27,7 @@ interface SendCommentBody {
 
 export const fetchSendComment = async (data: SendCommentBody) => {
   return await AUTH_API.post("/comments/create", data)
-    .then((res) => {
-      return res.data
-    })
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })

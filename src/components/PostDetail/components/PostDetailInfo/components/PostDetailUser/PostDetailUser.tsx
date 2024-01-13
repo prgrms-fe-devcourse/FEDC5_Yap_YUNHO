@@ -14,9 +14,6 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
   const { user, isLoggedIn } = useAuthUserStore()
   const { fetchFollowMutate, FollowErrorAlertModal } = useFetchFollow()
   const { fetchUnFollowMutate, UnFollowErrorAlertModal } = useFetchUnFollow()
-  const { mutate: followMutate, isPending: isFollowPending } = fetchFollowMutate
-  const { mutate: unFollowMutate, isPending: isUnFollowPending } =
-    fetchUnFollowMutate
 
   const { author } = post
   const { image, fullName, followers } = author
@@ -27,20 +24,20 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
   )
 
   const handleClickFollow = () => {
-    if (isFollowPending || isUnFollowPending) {
+    if (fetchFollowMutate.isPending || fetchUnFollowMutate.isPending) {
       return
     }
 
-    followMutate(author._id)
+    fetchFollowMutate.mutate(author._id)
   }
 
   const handleClickUnFollow = () => {
-    if (isFollowPending || isUnFollowPending) {
+    if (fetchFollowMutate.isPending || fetchUnFollowMutate.isPending) {
       return
     }
 
     if (hasFollowingData) {
-      unFollowMutate(hasFollowingData._id)
+      fetchUnFollowMutate.mutate(hasFollowingData._id)
     }
   }
 
@@ -61,14 +58,18 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
         !isMyPost &&
         (hasFollowingData ? (
           <S.PostDetailFollowButton
-            disabled={isFollowPending || isUnFollowPending}
+            disabled={
+              fetchFollowMutate.isPending || fetchUnFollowMutate.isPending
+            }
             onClick={handleClickUnFollow}
           >
             {"언 팔로우"}
           </S.PostDetailFollowButton>
         ) : (
           <S.PostDetailFollowButton
-            disabled={isFollowPending || isUnFollowPending}
+            disabled={
+              fetchFollowMutate.isPending || fetchUnFollowMutate.isPending
+            }
             onClick={handleClickFollow}
           >
             {"팔로우"}
