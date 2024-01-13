@@ -24,7 +24,6 @@ const UserInfoPopover = ({
       <S.UserInfoPopoverLayout $isShow={isHover}>
         {isHover && (
           <>
-            <S.UserInfoPopoverInteriorArrow />
             <S.UserInfoPopoverContainer>
               <h1>잔액부족</h1>
             </S.UserInfoPopoverContainer>
