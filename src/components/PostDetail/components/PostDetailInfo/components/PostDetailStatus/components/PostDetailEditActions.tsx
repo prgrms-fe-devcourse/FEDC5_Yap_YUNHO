@@ -44,11 +44,6 @@ const PostDetailEditActions = ({
     closeConfirm()
   }
 
-  const handleCompleteDelete = () => {
-    onClose()
-    navigate(`/`)
-  }
-
   return (
     <>
       <S.PostDetailEditActions>
@@ -60,21 +55,17 @@ const PostDetailEditActions = ({
         </S.PostDetailEditButton>
       </S.PostDetailEditActions>
 
-      {isShowConfirm && (
-        <ConfirmModal
-          isShow={isShowConfirm}
-          onClose={handleConfirmDeletePost}
-          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.DELETE}
-        />
-      )}
+      <ConfirmModal
+        isShow={isShowConfirm}
+        onClose={handleConfirmDeletePost}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.DELETE}
+      />
 
-      {isShowComplete && (
-        <AlertModal
-          isShow={isShowComplete}
-          alertMessage={POST_DETAIL_MODAL_MESSAGE.COMPLETE.DELETE}
-          onClose={handleCompleteDelete}
-        />
-      )}
+      <AlertModal
+        isShow={isShowComplete}
+        alertMessage={POST_DETAIL_MODAL_MESSAGE.COMPLETE.DELETE}
+        onClose={onClose}
+      />
 
       {DeletePostErrorAlertModal}
     </>

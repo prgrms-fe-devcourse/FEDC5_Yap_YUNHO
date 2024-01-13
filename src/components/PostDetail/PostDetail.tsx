@@ -5,7 +5,7 @@ import PostDetailViewer from "./components/PostDetailViewer/PostDetailViewer"
 import PostDetailInfo from "./components/PostDetailInfo/PostDetailInfo"
 import { useParams } from "react-router-dom"
 import useGetPost from "./hooks/useGetPost"
-import usePostDetailModalStore from "./store/usePostDetailModalStore"
+import usePostDetailModalStore from "./stores/usePostDetailModalStore"
 
 interface PostDetailProps {
   onClose: () => void

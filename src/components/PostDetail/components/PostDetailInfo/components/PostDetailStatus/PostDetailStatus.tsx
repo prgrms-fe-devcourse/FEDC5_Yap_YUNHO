@@ -71,14 +71,18 @@ const PostDetailStatus = ({
   }
   return (
     <>
-      <S.PostDetailStatus>
+      <S.PostDetailStatusLayout>
         <S.PostDetailStatusActions>
           <S.PostDetailLike
             $isMyLikePost={!!myLikePost}
             onClick={handleClickLikeButton}
             disabled={isLikePending || isUnLikePending}
           >
-            {myLikePost ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+            {myLikePost && myLikePost._id ? (
+              <ThumbUpAltIcon />
+            ) : (
+              <ThumbUpOffAltIcon />
+            )}
 
             {convertFollowCount(likes.length)}
           </S.PostDetailLike>
@@ -98,15 +102,13 @@ const PostDetailStatus = ({
             post={post}
           />
         )}
-      </S.PostDetailStatus>
+      </S.PostDetailStatusLayout>
 
-      {isShowConfirm && (
-        <ConfirmModal
-          isShow={isShowConfirm}
-          onClose={handleConfirm}
-          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
-        />
-      )}
+      <ConfirmModal
+        isShow={isShowConfirm}
+        onClose={handleConfirm}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
+      />
 
       {LikeErrorAlertModal}
       {UnLikeErrorAlertModal}

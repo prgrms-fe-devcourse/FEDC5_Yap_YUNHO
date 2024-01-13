@@ -119,33 +119,27 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
         />
       </S.PostEditEditorLayout>
 
-      {isShowConfirm && (
-        <ConfirmModal
-          isShow={isShowConfirm}
-          message={
-            isNewPost
-              ? POST_EDIT_MODAL_MESSAGE.CONFIRM.SUBMIT_NEW_POST
-              : POST_EDIT_MODAL_MESSAGE.CONFIRM.SUBMIT_UPDATE_POST
-          }
-          onClose={handleCloseConfirm}
-        />
-      )}
+      <ConfirmModal
+        isShow={isShowConfirm}
+        message={
+          isNewPost
+            ? POST_EDIT_MODAL_MESSAGE.CONFIRM.SUBMIT_NEW_POST
+            : POST_EDIT_MODAL_MESSAGE.CONFIRM.SUBMIT_UPDATE_POST
+        }
+        onClose={handleCloseConfirm}
+      />
 
-      {isShowComplete && (
-        <AlertModal
-          isShow={isShowComplete}
-          alertMessage={POST_EDIT_MODAL_MESSAGE.COMPLETE.SUBMIT_POST}
-          onClose={handleCloseComplete}
-        />
-      )}
+      <AlertModal
+        isShow={isShowComplete}
+        alertMessage={POST_EDIT_MODAL_MESSAGE.COMPLETE.SUBMIT_POST}
+        onClose={handleCloseComplete}
+      />
 
-      {isShowAlert && (
-        <AlertModal
-          isShow={isShowAlert}
-          alertMessage={alertMessage}
-          onClose={closeAlert}
-        />
-      )}
+      <AlertModal
+        isShow={isShowAlert}
+        alertMessage={alertMessage}
+        onClose={closeAlert}
+      />
 
       {CreatePostErrorAlertModal}
       {UpdatePostErrorAlertModal}

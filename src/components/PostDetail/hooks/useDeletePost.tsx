@@ -25,7 +25,7 @@ const useDeletePost = () => {
     },
   })
 
-  const DeletePostErrorAlertModal = isShowAlert && (
+  const DeletePostErrorAlertModal = (
     <AlertModal
       isShow={isShowAlert}
       alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.DELETE}

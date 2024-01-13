@@ -4,14 +4,14 @@ import { PostCardUserProfileProps } from "../../PostCard.Types"
 import ReadMoreIcon from "@mui/icons-material/ReadMore"
 
 const PostCardUserProfile = ({
-  isNoneProfile,
+  hasProfile,
   postId,
   onNavigatePostDetail,
   imgUrl,
 }: PostCardUserProfileProps): React.ReactNode => {
   return (
     <S.PostCardUserProfileLayout>
-      {!isNoneProfile && (
+      {hasProfile && (
         <S.PostCardUserProfileImgLayout>
           <S.PostCardUserProfileImg
             src={imgUrl}
