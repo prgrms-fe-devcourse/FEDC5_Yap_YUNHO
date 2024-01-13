@@ -1,14 +1,12 @@
-import {
-  POST_EDIT_EDITOR_PLACEHOLDER,
-  POST_EDIT_MODAL_MESSAGE,
-} from "@/components/PostEdit/constants/PostEdit.Constants"
 import * as S from "./PostEditUrlPrompt.Styles"
 import * as GS from "@/components/Modal/ModalGlobal.Styles"
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import ReactPlayer from "react-player"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
 import HighlightOffIcon from "@mui/icons-material/HighlightOff"
+import { POST_EDIT_MODAL_MESSAGE } from "@/constants/modalMessage"
+import { POST_EDIT_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 
 interface PostEditUrlPromptProps {
   isShow: boolean
@@ -26,18 +24,7 @@ const PostEditUrlPrompt = ({
   const [newUrl, setNewUrl] = useState(url)
   const [isErrorUrl, setIsErrorUrl] = useState(false)
 
-  useEffect(() => {
-    const checkUrl = ReactPlayer.canPlay(url)
-
-    setIsErrorUrl(!checkUrl)
-    setNewUrl(url)
-  }, [url])
-
-  const handleChangeUrl = ({ target }: ChangeEvent) => {
-    if (!(target instanceof HTMLTextAreaElement)) {
-      return
-    }
-
+  const handleChangeUrl = ({ target }: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = target
     const checkUrl = ReactPlayer.canPlay(value)
 
@@ -77,23 +64,22 @@ const PostEditUrlPrompt = ({
     >
       <S.PostEditUrlPromptLayout>
         <S.PostEditUrlPromptTitle>
-          {POST_EDIT_MODAL_MESSAGE.URL_PROMPT}
+          {POST_EDIT_MODAL_MESSAGE.PROMPT.URL}
         </S.PostEditUrlPromptTitle>
 
         <S.PostEditUrlErrorMessage>
           {checkError(isErrorUrl, newUrl)
-            ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT_ERROR_URL
+            ? POST_EDIT_ERROR_MESSAGE.URL_PROMPT.ERROR_URL
             : ""}
         </S.PostEditUrlErrorMessage>
 
-        {/* Url 제거 Button */}
         <S.PostEditRemoveInputLayout>
           <HighlightOffIcon onClick={removeInput} />
         </S.PostEditRemoveInputLayout>
 
         <S.PostEditUrlPromptInput
           value={newUrl}
-          placeholder={POST_EDIT_EDITOR_PLACEHOLDER.URL_PROMPT}
+          placeholder={POST_EDIT_PLACEHOLDER_MESSAGE.URL_PROMPT}
           onChange={handleChangeUrl}
         />
 

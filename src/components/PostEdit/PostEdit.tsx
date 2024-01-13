@@ -10,14 +10,15 @@ import { API } from "@/apis/Api"
 import { JSONPost, PostContent } from "@/types"
 import PostEditAuthChecker from "./components/PostEditAuthChecker"
 import Modal from "../Modal/Modal"
+import usePostEditModalStore from "./stores/usePostEditModalStore"
 
 interface PostEditProps {
   onClose: () => void
-  isShowModal: boolean
 }
 
-const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
+const PostEdit = ({ onClose }: PostEditProps) => {
   const { id } = useParams()
+  const { isShowEditModal } = usePostEditModalStore()
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
@@ -43,7 +44,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
           authorId: fetchPost.author._id,
         })
       })
-  }, [id, isShowModal])
+  }, [id, isShowEditModal])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
@@ -65,7 +66,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
 
   return (
     <Modal
-      isShow={isShowModal}
+      isShow={isShowEditModal}
       onClose={onClose}
       clickAwayEnable={false}
     >
