@@ -22,7 +22,7 @@ const useUpdatePost = () => {
     },
   })
 
-  const UpdatePostErrorAlertModal = isShowModal && (
+  const UpdatePostErrorAlertModal = (
     <AlertModal
       isShow={isShowModal}
       alertMessage={POST_EDIT_ERROR_MESSAGE.POST_SUBMIT.UPDATE_POST}
@@ -50,7 +50,7 @@ const fetchUpdatePost = async (updatedData: EditPostState) => {
   }
 
   return await AUTH_API.put("/posts/update", updatedPostBody)
-    .then(() => true)
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })

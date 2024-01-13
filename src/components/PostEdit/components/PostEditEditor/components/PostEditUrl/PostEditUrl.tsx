@@ -57,23 +57,19 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         />
       </S.PostEditUrlLayout>
 
-      {isShowPrompt && (
-        <PostEditUrlPrompt
-          onClose={closePrompt}
-          onEdit={handleEditUrl}
-          isShow={isShowPrompt}
-          url={urlPath}
-        />
-      )}
+      <PostEditUrlPrompt
+        onClose={closePrompt}
+        onEdit={handleEditUrl}
+        isShow={isShowPrompt}
+        url={urlPath}
+      />
 
-      {isShowConfirm && (
-        <ConfirmModal
-          isShow={isShowConfirm}
-          onClose={handleRemoveUrl}
-          message={POST_EDIT_MODAL_MESSAGE.CONFIRM.URL}
-          acceptButtonText={"확인"}
-        />
-      )}
+      <ConfirmModal
+        isShow={isShowConfirm}
+        onClose={handleRemoveUrl}
+        message={POST_EDIT_MODAL_MESSAGE.CONFIRM.URL}
+        acceptButtonText={"확인"}
+      />
     </>
   )
 }

@@ -22,7 +22,7 @@ const useCreatePost = () => {
     },
   })
 
-  const CreatePostErrorAlertModal = isShowModal && (
+  const CreatePostErrorAlertModal = (
     <AlertModal
       isShow={isShowModal}
       alertMessage={POST_EDIT_ERROR_MESSAGE.POST_SUBMIT.NEW_POST}
@@ -50,7 +50,7 @@ const fetchCreatePost = async (newPost: EditPostState) => {
   }
 
   return await AUTH_API.post("/posts/create", newPostBody)
-    .then(() => true)
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })
