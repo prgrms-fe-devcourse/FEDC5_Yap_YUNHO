@@ -1,6 +1,9 @@
 import { Post } from "@/types"
 import * as S from "./PostDetailUser.Styles"
 import { convertFollowCount } from "@/util/convertFollowCount"
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import useFetchFollow from "@/hooks/useFetchFollow"
+import useFetchUnFollow from "@/hooks/useFetchUnFollow"
 
 interface PostDetailInfoUserProps {
   isMyPost: boolean
@@ -8,8 +11,35 @@ interface PostDetailInfoUserProps {
 }
 
 const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
-  const { image, fullName, followers } = post.author
+  const { user, isLoggedIn } = useAuthUserStore()
+  const { fetchFollowMutate, FollowErrorAlertModal } = useFetchFollow()
+  const { fetchUnFollowMutate, UnFollowErrorAlertModal } = useFetchUnFollow()
+
+  const { author } = post
+  const { image, fullName, followers } = author
   const followerCount = convertFollowCount(followers.length)
+
+  const hasFollowingData = user.following.find(
+    (following) => following.user === author._id,
+  )
+
+  const handleClickFollow = () => {
+    if (fetchFollowMutate.isPending || fetchUnFollowMutate.isPending) {
+      return
+    }
+
+    fetchFollowMutate.mutate(author._id)
+  }
+
+  const handleClickUnFollow = () => {
+    if (fetchFollowMutate.isPending || fetchUnFollowMutate.isPending) {
+      return
+    }
+
+    if (hasFollowingData) {
+      fetchUnFollowMutate.mutate(hasFollowingData._id)
+    }
+  }
 
   return (
     <S.PostDetailUserLayout>
@@ -17,14 +47,37 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
         <S.PostDetailUserProfile $src={image} />
         <S.PostDetailUserInfo>
           <S.PostDetailUserName>{fullName}</S.PostDetailUserName>
-          <S.PostDetailUserFollower>{`팔로워 ${followerCount}`}</S.PostDetailUserFollower>
+
+          <S.PostDetailUserFollower>
+            {`팔로워 ${followerCount}`}
+          </S.PostDetailUserFollower>
         </S.PostDetailUserInfo>
       </S.PostDetailUserContainer>
-      {!isMyPost && (
-        <S.PostDetailFollowButton>
-          {/* 이후 follow 여부에 따라 변경 */} 팔로우
-        </S.PostDetailFollowButton>
-      )}
+
+      {isLoggedIn &&
+        !isMyPost &&
+        (hasFollowingData ? (
+          <S.PostDetailFollowButton
+            disabled={
+              fetchFollowMutate.isPending || fetchUnFollowMutate.isPending
+            }
+            onClick={handleClickUnFollow}
+          >
+            {"언 팔로우"}
+          </S.PostDetailFollowButton>
+        ) : (
+          <S.PostDetailFollowButton
+            disabled={
+              fetchFollowMutate.isPending || fetchUnFollowMutate.isPending
+            }
+            onClick={handleClickFollow}
+          >
+            {"팔로우"}
+          </S.PostDetailFollowButton>
+        ))}
+
+      {FollowErrorAlertModal}
+      {UnFollowErrorAlertModal}
     </S.PostDetailUserLayout>
   )
 }

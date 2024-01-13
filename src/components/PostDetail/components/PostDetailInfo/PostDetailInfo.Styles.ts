@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const PostDetailInfoLayout = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 46rem;
+  height: 63rem;
 
   display: flex;
   flex-direction: column;

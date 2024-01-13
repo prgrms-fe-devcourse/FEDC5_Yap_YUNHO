@@ -11,9 +11,8 @@ interface PostDetailInfoProps {
 }
 
 const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
-  const { user } = useAuthUserStore()
+  const { user, isLoggedIn } = useAuthUserStore()
   const isMyPost = user._id === post.author._id
-  console.log(onClose)
 
   return (
     <S.PostDetailInfoLayout>
@@ -22,9 +21,15 @@ const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
         isMyPost={isMyPost}
       />
       <S.PostDetailInfoBoundary />
-      <PostDetailStatus />
+      <PostDetailStatus
+        post={post}
+        authUser={user}
+        isMyPost={isMyPost}
+        isLogin={isLoggedIn}
+        onClose={onClose}
+      />
       <S.PostDetailInfoBoundary />
-      <PostDetailComment />
+      <PostDetailComment post={post} />
     </S.PostDetailInfoLayout>
   )
 }

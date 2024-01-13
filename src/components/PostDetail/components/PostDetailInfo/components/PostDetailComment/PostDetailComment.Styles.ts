@@ -2,8 +2,15 @@ import styled from "styled-components"
 
 export const PostDetailCommentLayout = styled.div`
   width: 100%;
-  flex-grow: 1;
+  height: 40rem;
 
-  opacity: 0.2;
-  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+export const PostDetailCommentInfo = styled.p`
+  height: 2rem;
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  color: ${({ theme }) => theme.colors.white};
 `

@@ -51,7 +51,7 @@ const Home = () => {
         />
         <S.TestButton
           onClick={() => {
-            navigate("/postedit/659c181c16a2b736436afca2")
+            navigate("/postedit/newPost")
           }}
         >
           Edit Modal
@@ -60,12 +60,7 @@ const Home = () => {
         <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>
 
-      {isShowEditModal && (
-        <PostEdit
-          onClose={handleClosePostEdit}
-          isShowModal={isShowEditModal}
-        />
-      )}
+      {isShowEditModal && <PostEdit onClose={handleClosePostEdit} />}
     </>
   )
 }
