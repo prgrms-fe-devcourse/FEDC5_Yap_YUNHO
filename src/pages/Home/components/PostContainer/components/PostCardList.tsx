@@ -3,7 +3,7 @@ import * as S from "./PostCardList.Styles"
 
 import { Post } from "@/types"
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
-import usePostDetailModalStore from "@/components/PostDetail/store/usePostDetailModalStore"
+import usePostDetailModalStore from "@/components/PostDetail/stores/usePostDetailModalStore"
 import { OnNavigatePostDetail } from "@/components/PostCard/PostCard.Types"
 import { useNavigate, useParams } from "react-router-dom"
 import { useCallback, useEffect } from "react"
