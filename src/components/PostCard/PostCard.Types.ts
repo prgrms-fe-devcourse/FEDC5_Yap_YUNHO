@@ -7,7 +7,7 @@ export interface PostCardProps {
   postId: string
   isBlock?: boolean
   authUserProfile?: string
-  isNoneProfile?: boolean
+  hasProfile?: boolean
   textPercent?: "60%" | "80%" | "100%"
   onNavigatePostDetail?: OnNavigatePostDetail
 }
@@ -15,7 +15,7 @@ export interface PostCardProps {
 export interface PostCardUserProfileProps {
   imgUrl: string
   postId: string
-  isNoneProfile?: boolean
+  hasProfile?: boolean
   onNavigatePostDetail?: OnNavigatePostDetail
 }
 
