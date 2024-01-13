@@ -60,12 +60,7 @@ const Home = () => {
         <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>
 
-      {isShowEditModal && (
-        <PostEdit
-          onClose={handleClosePostEdit}
-          isShowModal={isShowEditModal}
-        />
-      )}
+      {isShowEditModal && <PostEdit onClose={handleClosePostEdit} />}
     </>
   )
 }

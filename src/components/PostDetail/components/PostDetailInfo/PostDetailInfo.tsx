@@ -29,10 +29,7 @@ const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
         onClose={onClose}
       />
       <S.PostDetailInfoBoundary />
-      <PostDetailComment
-        post={post}
-        authUser={user}
-      />
+      <PostDetailComment post={post} />
     </S.PostDetailInfoLayout>
   )
 }
