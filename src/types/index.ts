@@ -118,7 +118,7 @@ export interface Message {
   updatedAt: string
 }
 
-export interface Notification {
+export interface SendNotificationProps {
   notificationType: "COMMENT" | "FOLLOW" | "LIKE" | "MESSAGE"
   notificationTypeId: string
   userId: string

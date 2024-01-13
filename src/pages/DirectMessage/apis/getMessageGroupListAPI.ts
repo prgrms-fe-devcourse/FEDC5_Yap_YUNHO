@@ -1,6 +1,6 @@
 import { AUTH_API } from "@/apis/Api"
 
-const fetchMessageGroupList = async () => {
+const getMessageGroupListAPI = async () => {
   // 인증을 매번 해야하는 번거로움 존재
   return await AUTH_API.get("messages/conversations")
     .then((res) => res.data)
@@ -10,4 +10,4 @@ const fetchMessageGroupList = async () => {
     })
 }
 
-export default fetchMessageGroupList
+export default getMessageGroupListAPI

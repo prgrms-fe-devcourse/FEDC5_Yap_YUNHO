@@ -2,7 +2,7 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import { Conversation } from "@/types"
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "react-router-dom"
-import fetchMessageGroupList from "../apis/fetchMessageGroupList"
+import getMessageGroupListAPI from "../apis/getMessageGroupListAPI"
 export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
 
 const useMessageGroupList = () => {
@@ -10,7 +10,7 @@ const useMessageGroupList = () => {
   const { id: userId } = useParams()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
-    queryFn: fetchMessageGroupList,
+    queryFn: getMessageGroupListAPI,
     initialData: [],
     refetchInterval: 1000, // 재 요청
 

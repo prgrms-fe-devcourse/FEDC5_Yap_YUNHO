@@ -6,7 +6,7 @@ interface SendMessageProps {
 }
 
 const sendMessageAPI = async (messageSubmission: SendMessageProps) => {
-  await AUTH_API.post("messages/create", messageSubmission)
+  const message = await AUTH_API.post("messages/create", messageSubmission)
     .then((res) => res.data)
     .catch(() => {
       throw new Error("메시지 보내기 요청 실패")
@@ -19,6 +19,8 @@ const sendMessageAPI = async (messageSubmission: SendMessageProps) => {
     .catch((e) => {
       console.log(e, "메시지 읽음 처리 실패")
     })
+
+  return message
 }
 
 export default sendMessageAPI

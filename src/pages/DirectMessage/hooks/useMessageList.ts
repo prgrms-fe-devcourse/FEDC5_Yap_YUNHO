@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { Message } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import fetchMessageList from "../apis/fetchMessageList"
+import getMessageListAPI from "../apis/getMessageListAPI"
 
 export const QUERY_KEY_GET_MESSAGELIST = "GET_MESSAGELIST"
 
@@ -9,7 +9,7 @@ const useMessageList = (othersId: string) => {
   const { user: my } = useAuthUserStore()
   const { data } = useQuery<Message[]>({
     queryKey: [QUERY_KEY_GET_MESSAGELIST, othersId, my._id],
-    queryFn: () => fetchMessageList(othersId, my._id),
+    queryFn: () => getMessageListAPI(othersId, my._id),
     initialData: [],
     refetchInterval: 1000, // 재 요청
 
