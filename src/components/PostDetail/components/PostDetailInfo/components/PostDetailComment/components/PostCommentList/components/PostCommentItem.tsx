@@ -23,7 +23,7 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
   } = useModal()
 
   const { user } = useAuthUserStore()
-  const { author, createdAt, updatedAt } = comment
+  const { author, createdAt } = comment
 
   const handleDeleteComment = (isAccept: boolean) => {
     closeConfirm()
@@ -34,7 +34,6 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
   }
 
   const isMyComment = author._id === user._id
-  const isEditComment = createdAt !== updatedAt
   const convertedData = format(createdAt, "ko")
   return (
     <>
@@ -45,7 +44,6 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
             {`${author.fullName}`}
             <AccessTimeIcon />
             {`${convertedData}`}
-            {!isEditComment && <strong>편집됨</strong>}
           </S.PostCommentItemInfo>
           <S.PostCommentItemComment>{comment.comment}</S.PostCommentItemComment>
         </S.PostCommentItemContainer>
