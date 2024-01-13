@@ -6,22 +6,15 @@ import PostEditCategory from "./components/PostEditCategory/PostEditCategory"
 import PostEditButton from "./components/PostEditButton/PostEditButton"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
-import createPost from "../../apis/createPost"
 import { useState } from "react"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-import updatePost from "../../apis/updatePost"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import checkCategoryValidation from "../../util/checkCategoryValidation"
 import checkUrlValidation from "../../util/checkUrlValidation"
 import checkContentValidation from "../../util/checkContentValidation"
-
-import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { POST_EDIT_MODAL_MESSAGE } from "@/constants/modalMessage"
-
-const MUTATION_KEY = {
-  UPDATE_POST: "IT_IS_UPDATE_KEY_12361278467821",
-  CREATE_POST: "IT_IS_CREATE_KEY_64895712389571",
-}
+import useCreatePost from "../../hooks/useCreatePost"
+import useUpdatePost from "../../hooks/useUpdatePost"
 
 interface PostEditEditorProps {
   onEdit: HandleEditPost
@@ -45,34 +38,10 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
     showModal: showComplete,
     closeModal: closeComplete,
   } = useModal()
+
   const [alertMessage, setAlertMessage] = useState("")
-
-  const queryClient = useQueryClient()
-  const updateMutate = useMutation({
-    mutationKey: [MUTATION_KEY.UPDATE_POST],
-    mutationFn: updatePost,
-    onSuccess: () => {
-      queryClient.refetchQueries()
-      showComplete()
-    },
-    onError: () => {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.POST_SUBMIT.UPDATE_POST)
-      showAlert()
-    },
-  })
-
-  const createMutate = useMutation({
-    mutationKey: [MUTATION_KEY.CREATE_POST],
-    mutationFn: createPost,
-    onSuccess: () => {
-      queryClient.refetchQueries()
-      showComplete()
-    },
-    onError: () => {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.POST_SUBMIT.NEW_POST)
-      showAlert()
-    },
-  })
+  const { createPostMutate, CreatePostErrorAlertModal } = useCreatePost()
+  const { updatePostMutate, UpdatePostErrorAlertModal } = useUpdatePost()
 
   const isNewPost = postData.postId === "newPost"
 
@@ -106,12 +75,20 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
     }
 
     if (isNewPost) {
-      createMutate.mutate(postData)
+      createPostMutate.mutate(postData, {
+        onSuccess: () => {
+          showComplete()
+        },
+      })
       return
     }
 
     if (postData.postId) {
-      updateMutate.mutate(postData)
+      updatePostMutate.mutate(postData, {
+        onSuccess: () => {
+          showComplete()
+        },
+      })
       return
     }
   }
@@ -141,6 +118,7 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
           postData={postData}
         />
       </S.PostEditEditorLayout>
+
       <ConfirmModal
         isShow={isShowConfirm}
         message={
@@ -152,16 +130,19 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       />
 
       <AlertModal
+        isShow={isShowComplete}
+        alertMessage={POST_EDIT_MODAL_MESSAGE.COMPLETE.SUBMIT_POST}
+        onClose={handleCloseComplete}
+      />
+
+      <AlertModal
         isShow={isShowAlert}
         alertMessage={alertMessage}
         onClose={closeAlert}
       />
 
-      <AlertModal
-        isShow={isShowComplete}
-        alertMessage={POST_EDIT_MODAL_MESSAGE.COMPLETE.SUBMIT_POST}
-        onClose={handleCloseComplete}
-      />
+      {CreatePostErrorAlertModal}
+      {UpdatePostErrorAlertModal}
     </>
   )
 }

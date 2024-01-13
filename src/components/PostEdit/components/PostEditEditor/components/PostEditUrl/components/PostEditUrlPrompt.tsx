@@ -1,6 +1,6 @@
 import * as S from "./PostEditUrlPrompt.Styles"
 import * as GS from "@/components/Modal/ModalGlobal.Styles"
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import ReactPlayer from "react-player"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import CustomModal from "@/components/Modal/components/CustomModal/CustomModal"
@@ -24,18 +24,7 @@ const PostEditUrlPrompt = ({
   const [newUrl, setNewUrl] = useState(url)
   const [isErrorUrl, setIsErrorUrl] = useState(false)
 
-  useEffect(() => {
-    const checkUrl = ReactPlayer.canPlay(url)
-
-    setIsErrorUrl(!checkUrl)
-    setNewUrl(url)
-  }, [url])
-
-  const handleChangeUrl = ({ target }: ChangeEvent) => {
-    if (!(target instanceof HTMLTextAreaElement)) {
-      return
-    }
-
+  const handleChangeUrl = ({ target }: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = target
     const checkUrl = ReactPlayer.canPlay(value)
 
@@ -84,7 +73,6 @@ const PostEditUrlPrompt = ({
             : ""}
         </S.PostEditUrlErrorMessage>
 
-        {/* Url 제거 Button */}
         <S.PostEditRemoveInputLayout>
           <HighlightOffIcon onClick={removeInput} />
         </S.PostEditRemoveInputLayout>

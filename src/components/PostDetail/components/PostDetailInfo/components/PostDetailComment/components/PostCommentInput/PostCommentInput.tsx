@@ -7,19 +7,17 @@ import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 import { Post } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { sendComment } from "@/components/PostDetail/apis/sendComment"
 import commentValidation from "./util/commentValidation"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-
-const SEND_MUTATION_QUERY_KEY = "SEND_MUTATION_MUTATION_KEY_9128178621782"
+import useSendComment from "@/components/PostDetail/hooks/useSendComment"
 
 interface PostCommentInputProps {
   post: Post
 }
 
 const PostCommentInput = ({ post }: PostCommentInputProps) => {
+  const { sendCommentMutate } = useSendComment()
   const [writeComment, setWriteComment] = useState("")
   const [alertMessage, setAlertMessage] = useState("")
   const { user: authUser, isLoggedIn } = useAuthUserStore()
@@ -35,20 +33,6 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
     closeModal: closeAlert,
   } = useModal()
 
-  const queryClient = useQueryClient()
-  const CommentApi_send = useMutation({
-    mutationKey: [SEND_MUTATION_QUERY_KEY],
-    mutationFn: sendComment,
-    onSuccess: () => {
-      queryClient.refetchQueries()
-      setWriteComment("")
-    },
-    onError: () => {
-      setAlertMessage(POST_DETAIL_ERROR_MESSAGE.COMMENT_SUBMIT.ERROR)
-      showAlert()
-    },
-  })
-
   const navigate = useNavigate()
 
   const handleClickLoginCheck = (e: MouseEvent) => {
@@ -60,12 +44,11 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
   }
 
   const handleCloseConfirmModal = (isAccept: boolean) => {
-    if (isAccept) {
-      closeConfirm()
-      navigate("/login")
-      return
-    }
     closeConfirm()
+
+    if (isAccept) {
+      navigate("/login")
+    }
   }
 
   const handleSubmitComment = (e: FormEvent) => {
@@ -80,10 +63,21 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
       return
     }
 
-    CommentApi_send.mutate({
-      comment: writeComment,
-      postId: post._id,
-    })
+    sendCommentMutate.mutate(
+      {
+        comment: writeComment,
+        postId: post._id,
+      },
+      {
+        onSuccess: () => {
+          setWriteComment("")
+        },
+        onError: () => {
+          setAlertMessage(POST_DETAIL_ERROR_MESSAGE.COMMENT_SUBMIT.ERROR)
+          showAlert()
+        },
+      },
+    )
   }
 
   const handleChangeComment = ({ target }: ChangeEvent<HTMLInputElement>) => {

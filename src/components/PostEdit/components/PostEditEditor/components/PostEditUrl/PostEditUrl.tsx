@@ -14,12 +14,12 @@ interface PostEditUrlProps {
 
 const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
   const {
-    isShowModal: isPromptShow,
+    isShowModal: isShowPrompt,
     closeModal: closePrompt,
     showModal: showPrompt,
   } = useModal()
   const {
-    isShowModal: isConfirmShow,
+    isShowModal: isShowConfirm,
     closeModal: closeConfirm,
     showModal: showConfirm,
   } = useModal()
@@ -60,12 +60,12 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
       <PostEditUrlPrompt
         onClose={closePrompt}
         onEdit={handleEditUrl}
-        isShow={isPromptShow}
+        isShow={isShowPrompt}
         url={urlPath}
       />
 
       <ConfirmModal
-        isShow={isConfirmShow}
+        isShow={isShowConfirm}
         onClose={handleRemoveUrl}
         message={POST_EDIT_MODAL_MESSAGE.CONFIRM.URL}
         acceptButtonText={"확인"}
