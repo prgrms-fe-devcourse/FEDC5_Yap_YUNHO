@@ -12,9 +12,11 @@ export const UserInfoPopoverProvider = styled.div<{
   user-select: none;
 `
 
-export const UserInfoPopoverLayout = styled.div`
+export const UserInfoPopoverLayout = styled.div<{ $isShow: boolean }>`
   width: 20rem;
   height: 14rem;
+
+  display: ${({ $isShow }) => ($isShow ? "block" : "none")};
 
   position: absolute;
   top: 100%;

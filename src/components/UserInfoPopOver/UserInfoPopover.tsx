@@ -21,9 +21,7 @@ const UserInfoPopover = ({
       ref={hoverRef}
       $isPostCard={isPostCard}
     >
-      <S.UserInfoPopoverLayout
-        style={{ display: `${isHover ? "block" : "none"}` }}
-      >
+      <S.UserInfoPopoverLayout $isShow={isHover}>
         {isHover && (
           <>
             <S.UserInfoPopoverInteriorArrow />
