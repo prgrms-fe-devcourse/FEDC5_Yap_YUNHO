@@ -44,12 +44,11 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
   }
 
   const handleCloseConfirmModal = (isAccept: boolean) => {
-    if (isAccept) {
-      closeConfirm()
-      navigate("/login")
-      return
-    }
     closeConfirm()
+
+    if (isAccept) {
+      navigate("/login")
+    }
   }
 
   const handleSubmitComment = (e: FormEvent) => {
