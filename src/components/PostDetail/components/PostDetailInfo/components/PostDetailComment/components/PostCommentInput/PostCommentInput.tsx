@@ -111,21 +111,17 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
         </S.PostCommentInputContainer>
       </S.PostCommentInputLayout>
 
-      {isShowConfirm && (
-        <ConfirmModal
-          isShow={isShowConfirm}
-          onClose={handleCloseConfirmModal}
-          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_FOCUS}
-        />
-      )}
+      <ConfirmModal
+        isShow={isShowConfirm}
+        onClose={handleCloseConfirmModal}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_FOCUS}
+      />
 
-      {isShowAlert && (
-        <AlertModal
-          isShow={isShowAlert}
-          onClose={closeAlert}
-          alertMessage={alertMessage}
-        />
-      )}
+      <AlertModal
+        isShow={isShowAlert}
+        onClose={closeAlert}
+        alertMessage={alertMessage}
+      />
     </>
   )
 }

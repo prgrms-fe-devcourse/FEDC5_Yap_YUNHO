@@ -21,7 +21,7 @@ const useUnLikePost = () => {
     },
   })
 
-  const UnLikeErrorAlertModal = isShowModal && (
+  const UnLikeErrorAlertModal = (
     <AlertModal
       isShow={isShowModal}
       alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.UNLIKE}

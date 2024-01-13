@@ -33,7 +33,7 @@ const useDeleteComment = () => {
     },
   })
 
-  const DeleteCommentAlertModal = isShowAlert && (
+  const DeleteCommentAlertModal = (
     <AlertModal
       alertMessage={alertMessage}
       isShow={isShowAlert}

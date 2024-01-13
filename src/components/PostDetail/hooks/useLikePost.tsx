@@ -25,7 +25,7 @@ const useLikePost = () => {
     },
   })
 
-  const LikeErrorAlertModal = isShowModal && (
+  const LikeErrorAlertModal = (
     <AlertModal
       isShow={isShowModal}
       alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.LIKE}

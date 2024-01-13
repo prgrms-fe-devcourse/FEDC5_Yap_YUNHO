@@ -104,13 +104,11 @@ const PostDetailStatus = ({
         )}
       </S.PostDetailStatusLayout>
 
-      {isShowConfirm && (
-        <ConfirmModal
-          isShow={isShowConfirm}
-          onClose={handleConfirm}
-          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
-        />
-      )}
+      <ConfirmModal
+        isShow={isShowConfirm}
+        onClose={handleConfirm}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.LIKE_NOT_LOGIN}
+      />
 
       {LikeErrorAlertModal}
       {UnLikeErrorAlertModal}
