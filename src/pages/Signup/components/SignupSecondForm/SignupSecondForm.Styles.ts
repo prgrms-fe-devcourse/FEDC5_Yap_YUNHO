@@ -25,26 +25,6 @@ export const SignupFormContainer = styled.form`
   height: 48rem;
 `
 
-export const ImgContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 39rem;
-  gap: 2rem;
-`
-export const ImgItem = styled.div`
-  width: 26.5rem;
-  height: 26.5rem;
-  background-color: ${({ theme }) => theme.colors.sub};
-`
-export const Img = styled.img`
-  width: 26.5rem;
-  height: 26.5rem;
-  border-radius: ${({ theme }) => theme.radius.circle};
-  object-fit: cover;
-`
-
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
