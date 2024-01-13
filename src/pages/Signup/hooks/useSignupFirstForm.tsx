@@ -7,13 +7,11 @@ const SIGNUP_FIRST_FORM_MUTATION_QUERY_KEY =
   "SIGNUP_FIRST_FORM_MUTATION_QUERY_KEY"
 
 interface UseSignupFirstFormParam {
-  handleSelectedFormComponent: () => void
-  setUserToken: (userToken: string) => void
+  handleSelectedFormComponent: (authToken: string) => void
 }
 
 const useSignupFirstForm = ({
   handleSelectedFormComponent,
-  setUserToken,
 }: UseSignupFirstFormParam) => {
   const {
     isShowModal: isShowAlertModal,
@@ -33,8 +31,7 @@ const useSignupFirstForm = ({
     mutationKey: [SIGNUP_FIRST_FORM_MUTATION_QUERY_KEY],
     mutationFn: signup,
     onSuccess: ({ token }) => {
-      setUserToken(token)
-      handleSelectedFormComponent()
+      handleSelectedFormComponent(token)
     },
     onError: () => {
       showAlertModal()

@@ -1,18 +1,34 @@
-import { useState } from "react"
 import * as S from "./Signup.Styles"
 import SignupFirstForm from "./components/SignupFirstForm/SignupFirstForm"
 import SignupSecondForm from "./components/SignupSecondForm/SignupSecondForm"
 import { Navigate } from "react-router-dom"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import useLocalStorage from "@/hooks/useLocalStorage"
+import { useEffect } from "react"
+
+const SIGNUP_TEMPORARY_DATA = "SIGNUP_TEMPORARY_DATA"
 
 export default function Signup() {
   const { isLoggedIn } = useAuthUserStore()
-  const [userToken, setUserToken] = useState("")
-  const [selectedFormComponent, setSelectedFormComponent] = useState("First")
+  const [signupTemporaryData, setSignupTemporaryData, removeLocalStorageItem] =
+    useLocalStorage(SIGNUP_TEMPORARY_DATA, {
+      selectedFormComponent: "First",
+      authToken: "",
+    })
+  const { selectedFormComponent, authToken } = signupTemporaryData
 
-  const handleSelectedFormComponent = (): void => {
-    setSelectedFormComponent("Second")
+  const handleSelectedFormComponent = (authToken: string): void => {
+    setSignupTemporaryData({
+      selectedFormComponent: "Second",
+      authToken,
+    })
   }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      removeLocalStorageItem()
+    }
+  }, [isLoggedIn, removeLocalStorageItem])
 
   return (
     <>
@@ -26,10 +42,9 @@ export default function Signup() {
           {selectedFormComponent === "First" ? (
             <SignupFirstForm
               handleSelectedFormComponent={handleSelectedFormComponent}
-              setUserToken={setUserToken}
             />
           ) : (
-            <SignupSecondForm userToken={userToken} />
+            <SignupSecondForm authToken={authToken} />
           )}
         </S.SignupLayout>
       )}

@@ -3,7 +3,7 @@ import { useState } from "react"
 const useLocalStorage = <T>(
   key: string,
   initialData: T,
-): [T, (newData: T) => void] => {
+): [T, (newData: T) => void, () => void] => {
   const [data, setData] = useState<T>(() => {
     try {
       const res = localStorage.getItem(key)
@@ -29,7 +29,11 @@ const useLocalStorage = <T>(
     }
   }
 
-  return [data, setLocalStorage]
+  const removeLocalStorageItem = () => {
+    localStorage.removeItem(key)
+  }
+
+  return [data, setLocalStorage, removeLocalStorageItem]
 }
 
 export default useLocalStorage

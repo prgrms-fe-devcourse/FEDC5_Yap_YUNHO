@@ -5,17 +5,17 @@ import useSignupSecondForm from "../../hooks/useSignupSecondForm"
 import UserProfileImageUpload from "@/components/UserProfileImageUpload/UserProfileImageUpload"
 
 interface SecondSignupFormProp {
-  userToken: string
+  authToken: string
 }
 
-const SecondSignupForm = ({ userToken }: SecondSignupFormProp) => {
+const SecondSignupForm = ({ authToken }: SecondSignupFormProp) => {
   const [formData, setFormData] = useState<FormData>(new FormData())
   const { AlertModalComponent, SignupSecondForm_API } = useSignupSecondForm()
 
   const updateUserProfile = async (event: FormEvent) => {
     event.preventDefault()
 
-    SignupSecondForm_API.mutate({ userToken, formData })
+    SignupSecondForm_API.mutate({ authToken, formData })
   }
 
   return (

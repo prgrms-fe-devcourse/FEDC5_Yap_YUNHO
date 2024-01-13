@@ -27,8 +27,8 @@ const useSignupSecondForm = () => {
   const SignupSecondForm_API = useMutation({
     mutationKey: [SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY],
     mutationFn: signupUploadPhoto,
-    onSuccess: ({ user, userToken }) => {
-      setLogin(user, userToken)
+    onSuccess: ({ user, authToken }) => {
+      setLogin(user, authToken)
     },
     onError: () => {
       showAlertModal()
