@@ -1,7 +1,7 @@
 import { AUTH_API } from "@/apis/Api"
 import { Conversation } from "@/types"
 
-const getMessageList = async (othersId: string, myId: string) => {
+const getMessageListAPI = async (othersId: string, myId: string) => {
   if (!othersId) {
     return []
   }
@@ -20,4 +20,4 @@ const getMessageList = async (othersId: string, myId: string) => {
   return messageList
 }
 
-export default getMessageList
+export default getMessageListAPI
