@@ -1,15 +1,15 @@
-import * as S from "./DMInput.Styles"
+import * as S from "./MessageInput.Styles"
 import MessageProfile from "../../MessageGroupList/MessageProfile"
 import { useEffect, useState } from "react"
 import useSendMessage from "../../../hooks/useSendMessage"
 import SendIcon from "@mui/icons-material/Send"
 import { AUTH_API } from "@/apis/Api"
 
-interface DMInputProps {
+interface MessageInputProps {
   othersId: string
 }
 
-const DMInput = ({ othersId }: DMInputProps) => {
+const MessageInput = ({ othersId }: MessageInputProps) => {
   const [sendingMessage, setSendingMessage] = useState("")
   const { mutate: sendMessage } = useSendMessage()
   const [myProfileImg, setMyProfileImg] = useState("")
@@ -43,20 +43,20 @@ const DMInput = ({ othersId }: DMInputProps) => {
   }, [])
 
   return (
-    <S.DMInputLayout>
-      <S.DMInputForm onSubmit={handleSubmit}>
+    <S.MessageInputLayout>
+      <S.MessageInputForm onSubmit={handleSubmit}>
         <MessageProfile profileImg={myProfileImg} />
-        <S.DMInputItem
+        <S.MessageInputItem
           placeholder="메시지를 입력해주세요"
           onChange={handleInputChange}
           value={sendingMessage}
         />
-        <S.DMSendButton>
+        <S.MessageSendButton>
           <SendIcon />
-        </S.DMSendButton>
-      </S.DMInputForm>
-    </S.DMInputLayout>
+        </S.MessageSendButton>
+      </S.MessageInputForm>
+    </S.MessageInputLayout>
   )
 }
 
-export default DMInput
+export default MessageInput

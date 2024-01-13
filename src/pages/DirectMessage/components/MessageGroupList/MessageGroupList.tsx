@@ -3,7 +3,7 @@ import * as S from "./MessageList.Styles"
 import { Conversation, User } from "@/types"
 import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
-import useDMList from "../../hooks/useDMList"
+import useMessageGroupList from "../../hooks/useMessageGroupList"
 import MessageGroupItem from "./MessageGroupItem"
 import { handleMessageGroupClickProps } from "../../DirectMessage.Types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
@@ -12,7 +12,7 @@ import { AUTH_API } from "@/apis/Api"
 const MessageGroupList = () => {
   const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
   const navigate = useNavigate()
-  const { data: MessageGroupList } = useDMList()
+  const { data: MessageGroupList } = useMessageGroupList()
   const { myId } = useAuthUserStore()
 
   const updateSeenMessage = async (others: User) => {

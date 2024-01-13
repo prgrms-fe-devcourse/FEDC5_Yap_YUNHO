@@ -1,13 +1,13 @@
 import styled from "styled-components"
 
-export const DMInputLayout = styled.div`
+export const MessageInputLayout = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
 `
 
-export const DMInputForm = styled.form`
+export const MessageInputForm = styled.form`
   width: 90%;
   height: 6rem;
   border-radius: ${({ theme }) => theme.radius.size12};
@@ -17,7 +17,7 @@ export const DMInputForm = styled.form`
   padding: 1rem 1.5rem;
 `
 
-export const DMInputItem = styled.input`
+export const MessageInputItem = styled.input`
   width: 90%;
   height: 5rem;
   border-radius: ${({ theme }) => theme.radius.size12};
@@ -27,7 +27,7 @@ export const DMInputItem = styled.input`
   padding-left: 1.5rem;
 `
 
-export const DMSendButton = styled.button`
+export const MessageSendButton = styled.button`
   display: flex;
   align-items: center;
   svg {

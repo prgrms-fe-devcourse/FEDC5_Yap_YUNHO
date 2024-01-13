@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { QUERY_KEY_GET_GROUP_MESSAGELIST } from "./useDMList"
-import { QUERY_KEY_GET_MESSAGELIST } from "./useChattingList"
+import { QUERY_KEY_GET_GROUP_MESSAGELIST } from "./useMessageGroupList"
+import { QUERY_KEY_GET_MESSAGELIST } from "./useMessageList"
 import sendMessage from "../apis/sendMessage"
 
 const useSendMessage = () => {

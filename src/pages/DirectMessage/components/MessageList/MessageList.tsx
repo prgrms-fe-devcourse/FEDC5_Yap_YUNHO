@@ -1,15 +1,14 @@
 import { useParams } from "react-router-dom"
-import * as S from "./DMChattingList.Styles"
-
+import * as S from "./MessageList.Styles"
 import { Message } from "@/types"
-import useChattingList from "../../hooks/useChattingList"
+import useMessageList from "../../hooks/useMessageList"
 import { useEffect, useRef } from "react"
-import DMInput from "./DMInput/DMInput"
-import DMMessageItem from "./DMMessage/DMMessageItem"
+import MessageInput from "./MessageInput/MessageInput"
+import MessageItem from "./MessageItem/MessageItem"
 
-const DMChattingList = () => {
+const MessageList = () => {
   const { id: othersId } = useParams()
-  const { data: MessageList } = useChattingList(othersId || "")
+  const { data: MessageList } = useMessageList(othersId || "")
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -24,23 +23,23 @@ const DMChattingList = () => {
   }, [MessageList?.length])
 
   return (
-    <S.DMChattingListLayout>
+    <S.MessageListLayout>
       {othersId && (
         <>
-          <S.DMMessageList ref={scrollRef}>
+          <S.MessageListContainer ref={scrollRef}>
             {MessageList?.map((list: Message) => (
-              <DMMessageItem
+              <MessageItem
                 key={list.createdAt}
                 othersId={othersId}
               >
                 {list}
-              </DMMessageItem>
+              </MessageItem>
             ))}
-          </S.DMMessageList>
-          <DMInput othersId={othersId} />
+          </S.MessageListContainer>
+          <MessageInput othersId={othersId} />
         </>
       )}
-    </S.DMChattingListLayout>
+    </S.MessageListLayout>
   )
 }
-export default DMChattingList
+export default MessageList

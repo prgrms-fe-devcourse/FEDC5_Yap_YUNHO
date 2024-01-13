@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import fetchMessageGroupList from "../apis/fetchMessageGroupList"
 export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
 
-const useDMList = () => {
+const useMessageGroupList = () => {
   const { myId } = useAuthUserStore()
   const { id: userId } = useParams()
   const { data } = useQuery({
@@ -33,4 +33,4 @@ const useDMList = () => {
   return { data }
 }
 
-export default useDMList
+export default useMessageGroupList

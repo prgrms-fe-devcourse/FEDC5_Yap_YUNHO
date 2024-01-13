@@ -5,7 +5,7 @@ import fetchMessageList from "../apis/fetchMessageList"
 
 export const QUERY_KEY_GET_MESSAGELIST = "GET_MESSAGELIST"
 
-const useChattingList = (othersId: string) => {
+const useMessageList = (othersId: string) => {
   const { user: my } = useAuthUserStore()
   const { data } = useQuery<Message[]>({
     queryKey: [QUERY_KEY_GET_MESSAGELIST, othersId, my._id],
@@ -24,6 +24,6 @@ const useChattingList = (othersId: string) => {
   return { data }
 }
 
-export default useChattingList
+export default useMessageList
 
 // 상대방으로부터 메시지가 오면 dmlist의 해당 메시지를 읽기처리 한다.
