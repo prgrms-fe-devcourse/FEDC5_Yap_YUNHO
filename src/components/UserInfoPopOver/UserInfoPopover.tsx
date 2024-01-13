@@ -1,4 +1,4 @@
-import * as S from "./UserInfo.Styles"
+import * as S from "./UserInfoPopover.Styles"
 import { ReactNode } from "react"
 import useHover from "./hooks/useHover"
 
@@ -8,7 +8,7 @@ interface UserInfoDropDownProps {
   isPostCard?: boolean
 }
 
-const UserInfoDropDown = ({
+const UserInfoPopover = ({
   children,
   userId,
   isPostCard,
@@ -17,23 +17,25 @@ const UserInfoDropDown = ({
   console.log(userId)
 
   return (
-    <S.UserInfoProvider
+    <S.UserInfoPopoverProvider
       ref={hoverRef}
       $isPostCard={isPostCard}
     >
-      <S.UserInfoLayout style={{ display: `${isHover ? "block" : "none"}` }}>
+      <S.UserInfoPopoverLayout
+        style={{ display: `${isHover ? "block" : "none"}` }}
+      >
         {isHover && (
           <>
-            <S.UserInfoInteriorArrow />
-            <S.UserInfoContainer>
+            <S.UserInfoPopoverInteriorArrow />
+            <S.UserInfoPopoverContainer>
               <h1>잔액부족</h1>
-            </S.UserInfoContainer>
+            </S.UserInfoPopoverContainer>
           </>
         )}
-      </S.UserInfoLayout>
+      </S.UserInfoPopoverLayout>
       {children}
-    </S.UserInfoProvider>
+    </S.UserInfoPopoverProvider>
   )
 }
 
-export default UserInfoDropDown
+export default UserInfoPopover

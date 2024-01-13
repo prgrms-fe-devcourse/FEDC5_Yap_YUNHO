@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const UserInfoProvider = styled.div<{
+export const UserInfoPopoverProvider = styled.div<{
   $isPostCard?: boolean
 }>`
   width: ${({ $isPostCard }) => $isPostCard && `13%`};
@@ -12,7 +12,7 @@ export const UserInfoProvider = styled.div<{
   user-select: none;
 `
 
-export const UserInfoLayout = styled.div`
+export const UserInfoPopoverLayout = styled.div`
   width: 20rem;
   height: 14rem;
 
@@ -21,7 +21,7 @@ export const UserInfoLayout = styled.div`
   left: calc(50% - 2rem);
 `
 
-export const UserInfoInteriorArrow = styled.div`
+export const UserInfoPopoverInteriorArrow = styled.div`
   height: 1.8rem;
   width: 1.8rem;
 
@@ -35,7 +35,7 @@ export const UserInfoInteriorArrow = styled.div`
   transform: rotate(45deg);
 `
 
-export const UserInfoContainer = styled.div`
+export const UserInfoPopoverContainer = styled.div`
   height: 12rem;
   width: 20rem;
   padding: 1rem;
