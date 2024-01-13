@@ -17,7 +17,7 @@ export default function Signup() {
     })
   const { selectedFormComponent, authToken } = signupTemporaryData
 
-  const handleSelectedFormComponent = (authToken: string): void => {
+  const changeSignupFormComponent = (authToken: string): void => {
     setSignupTemporaryData({
       selectedFormComponent: "Second",
       authToken,
@@ -41,7 +41,7 @@ export default function Signup() {
         <S.SignupLayout>
           {selectedFormComponent === "First" ? (
             <SignupFirstForm
-              handleSelectedFormComponent={handleSelectedFormComponent}
+              changeSignupFormComponent={changeSignupFormComponent}
             />
           ) : (
             <SignupSecondForm authToken={authToken} />

@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom"
 import useSignupFirstForm from "../../hooks/useSignupFirstForm"
 
 interface FirstSignupFormProp {
-  handleSelectedFormComponent: (authToken: string) => void
+  changeSignupFormComponent: (authToken: string) => void
 }
 
 const FirstSignupForm = ({
-  handleSelectedFormComponent,
+  changeSignupFormComponent,
 }: FirstSignupFormProp) => {
   const { AlertModalComponent, SignupFirstForm_API } = useSignupFirstForm({
-    handleSelectedFormComponent,
+    changeSignupFormComponent,
   })
 
   const [requiredUserInfo, setRequiredUserInfo] = useState({

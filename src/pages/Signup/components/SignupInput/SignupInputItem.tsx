@@ -1,10 +1,10 @@
 import * as S from "./SignupInputItem.Styles"
-import Input from "./Input"
-import type { AllowedSignupInputType, OnChange } from "../../types"
+import Input from "@/components/Input/Input"
+import type { OnChange } from "../../types"
 
 interface SignupInputItemProp {
   title?: string
-  type: AllowedSignupInputType
+  type: string
   name: string
   placeholder: string
   errorMessage?: string

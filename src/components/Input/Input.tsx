@@ -1,11 +1,18 @@
-import { ForwardedRef, RefObject, forwardRef, useState } from "react"
+import {
+  ForwardedRef,
+  RefObject,
+  forwardRef,
+  useState,
+  ChangeEvent,
+} from "react"
 import * as S from "./Input.Styles"
-import type { OnChange, AllowedLoginInputType } from "../../../types/index"
 import VisibilityIcon from "@mui/icons-material/Visibility"
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
 
+type OnChange = (event: ChangeEvent<HTMLInputElement>) => void
+
 interface InputProp {
-  type: AllowedLoginInputType
+  type: string
   placeholder?: string
   name?: string
   value?: string
@@ -13,6 +20,23 @@ interface InputProp {
   ref?: RefObject<HTMLInputElement>
 }
 
+/**
+ * @props
+ * type: string
+ *
+ * placeholder?: string
+ *
+ * name?: string
+ *
+ * value?: string
+ *
+ * onChange?: OnChange
+ *
+ * ref?: RefObject<HTMLInputElement>
+ *
+ * @usage
+ * Input 컴포넌트가 필요한 곳에서 <Input type="넣고 싶은 타입"/> 으로 쓰면 됩니다!
+ */
 const Input = forwardRef(
   (
     { type, name, value, placeholder, onChange }: InputProp,
@@ -24,12 +48,9 @@ const Input = forwardRef(
       setIsVisible(!isVisible)
     }
 
-    const getInputFieldByType = (
-      type: AllowedLoginInputType | "nickname" | "file",
-    ) => {
+    const getInputFieldByType = (type: string) => {
       switch (type) {
-        case "email":
-        case "nickname":
+        case "text":
           return (
             <S.InputField
               type="text"
@@ -62,10 +83,8 @@ const Input = forwardRef(
           return (
             <S.InputField
               type="file"
-              name={name}
               value={value}
               style={{ display: "none" }}
-              placeholder={placeholder}
               ref={ref}
               accept="image/*"
               onChange={onChange}

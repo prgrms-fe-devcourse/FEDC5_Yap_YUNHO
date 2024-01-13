@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react"
 import * as S from "./UserProfileImageUpload.Styles"
 import emptyImage from "@/assets/emptyimg.png"
-import Input from "../../pages/Signup/components/SignupInput/Input"
+import Input from "@/components/Input/Input"
 import { theme } from "@/styles/theme"
 
 interface UserProfileImageUploadProp {

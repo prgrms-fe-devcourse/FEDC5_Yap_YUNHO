@@ -28,12 +28,14 @@ const LoginComponent = () => {
         <S.LoginForm onSubmit={handleLogin}>
           <LoginInputContainer
             updateUserInfo={updateUserInfo}
-            type="email"
+            type="text"
+            name="email"
             placeholder="이메일"
           />
           <LoginInputContainer
             updateUserInfo={updateUserInfo}
             type="password"
+            name="password"
             placeholder="비밀번호"
           />
           <S.ButtonContainer>

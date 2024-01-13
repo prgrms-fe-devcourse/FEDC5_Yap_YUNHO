@@ -1,5 +1,4 @@
 import { useRef } from "react"
-import type { AllowedLoginInputType } from "../types"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "../apis/login"
 import useAuthUserStore from "@/stores/useAuthUserStore"
@@ -10,8 +9,7 @@ import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 const LOGIN_MUTATION_QUERY_KEY = "LOGIN_MUTATION_QUERY_KEY"
 
 interface UserInfoRef {
-  email: string
-  password: string
+  [key: string]: string
 }
 
 const useLogin = () => {
@@ -19,8 +17,8 @@ const useLogin = () => {
   const { isShowModal, showModal, closeModal } = useModal()
   const { setLogin } = useAuthUserStore()
 
-  const updateUserInfo = (value: string, type: AllowedLoginInputType) => {
-    userInfoRef.current[type] = value
+  const updateUserInfo = (value: string, name: string) => {
+    userInfoRef.current[name] = value
   }
   const AlertModalComponent = isShowModal ? (
     <AlertModal
