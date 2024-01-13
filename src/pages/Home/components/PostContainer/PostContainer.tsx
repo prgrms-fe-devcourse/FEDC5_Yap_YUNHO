@@ -67,7 +67,11 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
       >
         <ArrowBackIos className="arrow_icon" />
       </S.ArrowIcon>
-      <PostCardList postList={getSlicedPostList(data, listRange)} />
+      <PostCardList
+        postList={getSlicedPostList(data, listRange)}
+        onClickLeftCard={handleDecreaseRange}
+        onClickRightCard={handleIncreaseRange}
+      />
       <S.ArrowIcon
         $isLeft={false}
         onClick={handleIncreaseRange}

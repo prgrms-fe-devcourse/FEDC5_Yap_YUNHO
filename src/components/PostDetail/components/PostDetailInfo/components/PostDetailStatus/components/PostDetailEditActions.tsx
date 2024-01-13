@@ -1,15 +1,11 @@
 import * as S from "./PostDetailEditActions.Styles"
 import { Post } from "@/types"
 import { useNavigate } from "react-router-dom"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import deletePost from "@/components/PostDetail/apis/deletePost"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
-import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
-
-const MUTATION_KEY_DELETE_POST = "IT_IS_DELETE_MUTATION_KEY_41728461278632781"
+import useDeletePost from "@/components/PostDetail/hooks/useDeletePost"
 
 interface PostDetailEditActionsProps {
   onClose: () => void
@@ -25,27 +21,10 @@ const PostDetailEditActions = ({
     showModal: showConfirm,
     closeModal: closeConfirm,
   } = useModal()
-  const {
-    isShowModal: isShowAlert,
-    showModal: showAlert,
-    closeModal: closeAlert,
-  } = useModal()
   const { isShowModal: isShowComplete, showModal: showComplete } = useModal()
 
+  const { deletePostMutate, DeletePostErrorAlertModal } = useDeletePost()
   const navigate = useNavigate()
-
-  const queryClient = useQueryClient()
-  const updateMutate = useMutation({
-    mutationKey: [MUTATION_KEY_DELETE_POST],
-    mutationFn: deletePost,
-    onSuccess: () => {
-      queryClient.refetchQueries()
-      showComplete()
-    },
-    onError: () => {
-      showAlert()
-    },
-  })
 
   const handleClickEditButton = () => {
     onClose()
@@ -57,13 +36,12 @@ const PostDetailEditActions = ({
       return closeConfirm()
     }
 
-    updateMutate.mutate(post._id)
+    deletePostMutate.mutate(post._id, {
+      onSuccess: () => {
+        showComplete()
+      },
+    })
     closeConfirm()
-  }
-
-  const handleCompleteDelete = () => {
-    onClose()
-    navigate(`/`)
   }
 
   return (
@@ -84,16 +62,12 @@ const PostDetailEditActions = ({
       />
 
       <AlertModal
-        isShow={isShowAlert}
-        alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.DELETE}
-        onClose={closeAlert}
-      />
-
-      <AlertModal
         isShow={isShowComplete}
         alertMessage={POST_DETAIL_MODAL_MESSAGE.COMPLETE.DELETE}
-        onClose={handleCompleteDelete}
+        onClose={onClose}
       />
+
+      {DeletePostErrorAlertModal}
     </>
   )
 }

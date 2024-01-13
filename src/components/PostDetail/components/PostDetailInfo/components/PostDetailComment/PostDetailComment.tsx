@@ -11,7 +11,7 @@ const PostDetailComment = ({ post }: PostDetailCommentProps) => {
   return (
     <S.PostDetailCommentLayout>
       <S.PostDetailCommentInfo>{`댓글 ${post.comments.length} 개`}</S.PostDetailCommentInfo>
-      <PostCommentList />
+      <PostCommentList commentList={post.comments} />
       <PostCommentInput post={post} />
     </S.PostDetailCommentLayout>
   )

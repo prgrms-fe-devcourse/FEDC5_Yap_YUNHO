@@ -67,4 +67,8 @@ export const PostDetailFollowButton = styled.button`
   &:hover {
     opacity: ${({ theme }) => theme.opacity.normal};
   }
+
+  svg {
+    pointer-events: none;
+  }
 `
