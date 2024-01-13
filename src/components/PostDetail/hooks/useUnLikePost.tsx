@@ -10,7 +10,7 @@ const useUnLikePost = () => {
   const { isShowModal, showModal, closeModal } = useModal()
 
   const queryClient = useQueryClient()
-  const unlikeMutate = useMutation({
+  const fetchUnlikeMutate = useMutation({
     mutationKey: [MUTATION_KEY_UN_LIKE_POST_KEY],
     mutationFn: fetchUnLikePost,
     onSuccess: () => {
@@ -21,7 +21,7 @@ const useUnLikePost = () => {
     },
   })
 
-  const UnLikeErrorAlertModal = isShowModal && (
+  const UnLikeErrorAlertModal = (
     <AlertModal
       isShow={isShowModal}
       alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.UNLIKE}
@@ -30,7 +30,7 @@ const useUnLikePost = () => {
   )
 
   return {
-    unlikeMutate,
+    fetchUnlikeMutate,
     UnLikeErrorAlertModal,
   }
 }
@@ -41,9 +41,7 @@ const fetchUnLikePost = async (likeId: string) => {
   return await AUTH_API.delete("/likes/delete", {
     data: { id: likeId },
   })
-    .then((res) => {
-      return res.data
-    })
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })

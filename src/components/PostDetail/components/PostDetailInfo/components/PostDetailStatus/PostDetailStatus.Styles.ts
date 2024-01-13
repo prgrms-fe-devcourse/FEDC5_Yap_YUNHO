@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const PostDetailStatus = styled.div`
+export const PostDetailStatusLayout = styled.div`
   width: 100%;
   height: 6rem;
 
@@ -46,8 +46,6 @@ export const PostDetailLink = styled.a`
   svg {
     font-size: 3.2rem;
     color: ${({ theme }) => theme.colors.white};
-
-    cursor: pointer;
 
     transition: transform ${({ theme }) => theme.transition.normal};
     &:hover {

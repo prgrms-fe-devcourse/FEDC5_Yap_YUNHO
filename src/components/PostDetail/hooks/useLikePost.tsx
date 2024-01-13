@@ -10,22 +10,18 @@ const useLikePost = () => {
   const { isShowModal, showModal, closeModal } = useModal()
 
   const queryClient = useQueryClient()
-  const likeMutate = useMutation({
+  const fetchLikeMutate = useMutation({
     mutationKey: [MUTATION_KEY_LIKE_POST_KEY],
     mutationFn: fetchLikePost,
     onSuccess: () => {
       queryClient.refetchQueries()
-
-      return true
     },
     onError: () => {
       showModal()
-
-      return false
     },
   })
 
-  const LikeErrorAlertModal = isShowModal && (
+  const LikeErrorAlertModal = (
     <AlertModal
       isShow={isShowModal}
       alertMessage={POST_DETAIL_ERROR_MESSAGE.POST.LIKE}
@@ -34,7 +30,7 @@ const useLikePost = () => {
   )
 
   return {
-    likeMutate,
+    fetchLikeMutate,
     LikeErrorAlertModal,
   }
 }
@@ -45,9 +41,7 @@ const fetchLikePost = async (postId: string) => {
   return await AUTH_API.post("/likes/create", {
     postId,
   })
-    .then((res) => {
-      return res.data
-    })
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })

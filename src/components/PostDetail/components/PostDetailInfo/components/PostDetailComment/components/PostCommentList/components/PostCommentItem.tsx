@@ -23,19 +23,17 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
   } = useModal()
 
   const { user } = useAuthUserStore()
-  const { author, createdAt, updatedAt } = comment
+  const { author, createdAt } = comment
 
   const handleDeleteComment = (isAccept: boolean) => {
-    if (!isAccept) {
-      closeConfirm()
-      return
-    }
     closeConfirm()
-    onDelete(comment._id)
+
+    if (isAccept) {
+      onDelete(comment._id)
+    }
   }
 
   const isMyComment = author._id === user._id
-  const isEditComment = createdAt !== updatedAt
   const convertedData = format(createdAt, "ko")
   return (
     <>
@@ -46,7 +44,6 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
             {`${author.fullName}`}
             <AccessTimeIcon />
             {`${convertedData}`}
-            {!isEditComment && <strong>편집됨</strong>}
           </S.PostCommentItemInfo>
           <S.PostCommentItemComment>{comment.comment}</S.PostCommentItemComment>
         </S.PostCommentItemContainer>
@@ -59,13 +56,11 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
         </S.PostCommentItemActions>
       </S.PostCommentItemLayout>
 
-      {isShowConfirm && (
-        <ConfirmModal
-          isShow={isShowConfirm}
-          message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_DELETE}
-          onClose={handleDeleteComment}
-        />
-      )}
+      <ConfirmModal
+        isShow={isShowConfirm}
+        message={POST_DETAIL_MODAL_MESSAGE.CONFIRM.COMMENT_DELETE}
+        onClose={handleDeleteComment}
+      />
     </>
   )
 }
