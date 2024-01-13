@@ -78,7 +78,11 @@ const PostDetailStatus = ({
             onClick={handleClickLikeButton}
             disabled={isLikePending || isUnLikePending}
           >
-            {myLikePost ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+            {myLikePost && myLikePost._id ? (
+              <ThumbUpAltIcon />
+            ) : (
+              <ThumbUpOffAltIcon />
+            )}
 
             {convertFollowCount(likes.length)}
           </S.PostDetailLike>
