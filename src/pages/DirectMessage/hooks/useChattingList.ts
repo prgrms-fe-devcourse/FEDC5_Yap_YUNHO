@@ -1,34 +1,15 @@
-import { AUTH_API } from "@/apis/Api"
 import { useQuery } from "@tanstack/react-query"
-import { Conversation, Message } from "@/types"
+import { Message } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import fetchMessageList from "../apis/fetchMessageList"
 
 export const QUERY_KEY_GET_MESSAGELIST = "GET_MESSAGELIST"
-
-const fetchMessage = async (othersId: string, myId: string) => {
-  if (!othersId) {
-    return []
-  }
-  const messageList = await AUTH_API.get(`/messages?userId=${othersId}`)
-    .then((res) => res.data)
-    .catch((e) => {
-      console.log(e, "메시지 리스트 요청 실패")
-      return []
-    })
-
-  if (othersId === myId) {
-    return messageList.filter(
-      (list: Conversation) => list.receiver?._id === list.sender?._id,
-    )
-  }
-  return messageList
-}
 
 const useChattingList = (othersId: string) => {
   const { user: my } = useAuthUserStore()
   const { data } = useQuery<Message[]>({
     queryKey: [QUERY_KEY_GET_MESSAGELIST, othersId, my._id],
-    queryFn: () => fetchMessage(othersId, my._id),
+    queryFn: () => fetchMessageList(othersId, my._id),
     initialData: [],
     refetchInterval: 1000, // 재 요청
 
