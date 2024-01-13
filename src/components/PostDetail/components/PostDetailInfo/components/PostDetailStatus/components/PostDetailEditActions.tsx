@@ -44,11 +44,6 @@ const PostDetailEditActions = ({
     closeConfirm()
   }
 
-  const handleCompleteDelete = () => {
-    onClose()
-    navigate(`/`)
-  }
-
   return (
     <>
       <S.PostDetailEditActions>
@@ -72,7 +67,7 @@ const PostDetailEditActions = ({
         <AlertModal
           isShow={isShowComplete}
           alertMessage={POST_DETAIL_MODAL_MESSAGE.COMPLETE.DELETE}
-          onClose={handleCompleteDelete}
+          onClose={onClose}
         />
       )}
 
