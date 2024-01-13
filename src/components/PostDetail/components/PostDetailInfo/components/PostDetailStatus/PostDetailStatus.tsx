@@ -71,7 +71,7 @@ const PostDetailStatus = ({
   }
   return (
     <>
-      <S.PostDetailStatus>
+      <S.PostDetailStatusLayout>
         <S.PostDetailStatusActions>
           <S.PostDetailLike
             $isMyLikePost={!!myLikePost}
@@ -98,7 +98,7 @@ const PostDetailStatus = ({
             post={post}
           />
         )}
-      </S.PostDetailStatus>
+      </S.PostDetailStatusLayout>
 
       {isShowConfirm && (
         <ConfirmModal
