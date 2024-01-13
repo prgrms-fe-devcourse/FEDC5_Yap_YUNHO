@@ -27,7 +27,7 @@ export const CustomModal = ({
 
     onClickAway()
   }
-  console.log("test")
+
   return (
     <ModalPortal isShow={isShow}>
       <S.CustomModalBackground onClick={handleCloseModal}>
