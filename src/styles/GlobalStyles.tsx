@@ -45,7 +45,7 @@ button {
   cursor: pointer;
 }
 
-input, textarea{
+input, textarea {
   border : none;
   outline: none;
   font-family: ${({ theme }) => theme.fontFamily.defaultFont};

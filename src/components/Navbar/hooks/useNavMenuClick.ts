@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { HandleMenuClickProps } from "../Navbar.Types"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 
