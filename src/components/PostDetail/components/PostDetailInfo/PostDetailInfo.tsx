@@ -1,5 +1,9 @@
+import * as S from "./PostDetailInfo.Styles"
 import { Post } from "@/types"
-import { useNavigate } from "react-router-dom"
+import PostDetailUser from "./components/PostDetailUser/PostDetailUser"
+import PostDetailStatus from "./components/PostDetailStatus/PostDetailStatus"
+import PostDetailComment from "./components/PostDetailComment/PostDetailComment"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 interface PostDetailInfoProps {
   onClose: () => void
@@ -7,18 +11,26 @@ interface PostDetailInfoProps {
 }
 
 const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
-  const navigate = useNavigate()
+  const { user, isLoggedIn } = useAuthUserStore()
+  const isMyPost = user._id === post.author._id
+
   return (
-    <>
-      <button
-        onClick={() => {
-          onClose()
-          navigate(`/postedit/${post._id}`)
-        }}
-      >
-        Modal 디테일 테스트
-      </button>
-    </>
+    <S.PostDetailInfoLayout>
+      <PostDetailUser
+        post={post}
+        isMyPost={isMyPost}
+      />
+      <S.PostDetailInfoBoundary />
+      <PostDetailStatus
+        post={post}
+        authUser={user}
+        isMyPost={isMyPost}
+        isLogin={isLoggedIn}
+        onClose={onClose}
+      />
+      <S.PostDetailInfoBoundary />
+      <PostDetailComment post={post} />
+    </S.PostDetailInfoLayout>
   )
 }
 

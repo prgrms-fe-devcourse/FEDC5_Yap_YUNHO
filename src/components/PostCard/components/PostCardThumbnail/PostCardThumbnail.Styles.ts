@@ -9,7 +9,7 @@ export const PostCardThumbnailLayout = styled.div`
   user-select: none;
 `
 
-export const PostCardThumbnailImg = styled.img`
+export const PostCardThumbnailImg = styled.img<{ $isCursor: boolean }>`
   width: 100%;
   height: 100%;
 
@@ -18,4 +18,5 @@ export const PostCardThumbnailImg = styled.img`
   border-radius: 8px;
 
   object-fit: cover;
+  cursor: ${({ $isCursor }) => ($isCursor ? "pointer" : "")};
 `

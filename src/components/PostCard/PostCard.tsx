@@ -6,19 +6,30 @@ import PostCardThumbnail from "./components/PostCardThumbnail/PostCardThumbnail"
 import PostCardUserProfile from "./components/PostCardUserProfile/PostCardUserProfile"
 
 const PostCard = ({
-  textPercent,
-  isBlock = false,
   // 이후 기본 유저 프로필 사진으로 대체
-  authUserProfile = "",
   thumbnail,
   content,
   mediaUrl,
-  isNoneProfile,
+  postId,
+  isBlock = false,
+  hasProfile = true,
+  authUserProfile = "",
+  textPercent = "100%",
+  onNavigatePostDetail,
 }: PostCardProps): React.ReactNode => {
   return (
     <S.PostCardLayout>
-      {!isNoneProfile && <PostCardUserProfile imgUrl={authUserProfile} />}
-      <PostCardThumbnail imgUrl={thumbnail} />
+      <PostCardUserProfile
+        imgUrl={authUserProfile}
+        hasProfile={hasProfile}
+        onNavigatePostDetail={onNavigatePostDetail}
+        postId={postId}
+      />
+      <PostCardThumbnail
+        postId={postId}
+        imgUrl={thumbnail}
+        onNavigatePostDetail={onNavigatePostDetail}
+      />
       <PostCardContent
         content={content}
         textPercent={textPercent}

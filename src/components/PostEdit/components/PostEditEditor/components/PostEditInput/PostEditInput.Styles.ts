@@ -18,6 +18,8 @@ export const PostEditInputTitle = styled.h6`
 
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes.large};
+
+  user-select: none;
 `
 
 export const PostEditInput = styled.textarea`
