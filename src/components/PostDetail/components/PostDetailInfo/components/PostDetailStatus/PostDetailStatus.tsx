@@ -27,31 +27,38 @@ const PostDetailStatus = ({
   isLogin,
   onClose,
 }: PostDetailStatusProps) => {
-  const { likeMutate, LikeErrorAlertModal } = useLikePost()
-  const { unlikeMutate, UnLikeErrorAlertModal } = useUnLikePost()
-  const navigate = useNavigate()
-
   const {
     isShowModal: isShowConfirm,
     closeModal: closeConfirm,
     showModal: showConfirm,
   } = useModal()
 
+  const navigate = useNavigate()
+  const { fetchLikeMutate, LikeErrorAlertModal } = useLikePost()
+  const { fetchUnlikeMutate, UnLikeErrorAlertModal } = useUnLikePost()
+  const { mutate: likeMutate, isPending: isLikePending } = fetchLikeMutate
+  const { mutate: unLikeMutate, isPending: isUnLikePending } = fetchUnlikeMutate
+
   const { likes } = post
-  const myLikePost = post.likes.filter(
+  const myLikePost = post.likes.find(
     (likeData) => likeData.user === authUser._id,
-  )[0]
+  )
 
   const handleClickLikeButton = () => {
     if (!isLogin) {
       showConfirm()
       return
     }
-    if (myLikePost) {
-      unlikeMutate.mutate(myLikePost._id)
+
+    if (isLikePending || isUnLikePending) {
       return
     }
-    likeMutate.mutate(post._id)
+
+    if (myLikePost) {
+      unLikeMutate(myLikePost._id)
+      return
+    }
+    likeMutate(post._id)
   }
 
   const handleConfirm = (isAccept: boolean) => {
@@ -69,6 +76,7 @@ const PostDetailStatus = ({
           <S.PostDetailLike
             $isMyLikePost={!!myLikePost}
             onClick={handleClickLikeButton}
+            disabled={isLikePending || isUnLikePending}
           >
             {myLikePost ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
 

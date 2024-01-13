@@ -10,7 +10,7 @@ const useUnLikePost = () => {
   const { isShowModal, showModal, closeModal } = useModal()
 
   const queryClient = useQueryClient()
-  const unlikeMutate = useMutation({
+  const fetchUnlikeMutate = useMutation({
     mutationKey: [MUTATION_KEY_UN_LIKE_POST_KEY],
     mutationFn: fetchUnLikePost,
     onSuccess: () => {
@@ -30,7 +30,7 @@ const useUnLikePost = () => {
   )
 
   return {
-    unlikeMutate,
+    fetchUnlikeMutate,
     UnLikeErrorAlertModal,
   }
 }

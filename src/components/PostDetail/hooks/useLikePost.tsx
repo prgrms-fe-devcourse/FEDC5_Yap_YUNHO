@@ -10,7 +10,7 @@ const useLikePost = () => {
   const { isShowModal, showModal, closeModal } = useModal()
 
   const queryClient = useQueryClient()
-  const likeMutate = useMutation({
+  const fetchLikeMutate = useMutation({
     mutationKey: [MUTATION_KEY_LIKE_POST_KEY],
     mutationFn: fetchLikePost,
     onSuccess: () => {
@@ -34,7 +34,7 @@ const useLikePost = () => {
   )
 
   return {
-    likeMutate,
+    fetchLikeMutate,
     LikeErrorAlertModal,
   }
 }
