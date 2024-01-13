@@ -26,12 +26,11 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
   const { author, createdAt, updatedAt } = comment
 
   const handleDeleteComment = (isAccept: boolean) => {
-    if (!isAccept) {
-      closeConfirm()
-      return
-    }
     closeConfirm()
-    onDelete(comment._id)
+
+    if (isAccept) {
+      onDelete(comment._id)
+    }
   }
 
   const isMyComment = author._id === user._id
