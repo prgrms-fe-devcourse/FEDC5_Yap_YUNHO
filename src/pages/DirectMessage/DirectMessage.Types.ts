@@ -1,4 +1,4 @@
-import { User } from "@/types"
+import { User, Message } from "@/types"
 
 export interface handleClickProps {
   user: User
@@ -11,6 +11,13 @@ export interface DMUserListProps {
   isOnline: boolean
   receiver: User
   sender: User
-  selectedChattingId: string
+  selectedMessageId: string
   handleClick: ({ user, sender, receiver }: handleClickProps) => void
+  profileImg: string
+}
+
+export interface MessageProps {
+  children: Message
+  othersId?: string
+  scrollToBottom?: () => void
 }

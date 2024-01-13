@@ -1,40 +1,43 @@
 import { useParams } from "react-router-dom"
 import * as S from "./DMChattingList.Styles"
-import { AUTH_API } from "@/apis/Api"
-import { useCallback, useEffect, useState } from "react"
-import { Conversation } from "@/types"
+
+import { Message } from "@/types"
+import useChattingList from "../../hooks/useChattingList"
+import { useRef } from "react"
+import DMInput from "./DMInput/DMInput"
+import DMMessageItem from "./DMMessage/DMMessageItem"
+
 const DMChattingList = () => {
-  const { id } = useParams()
-  const [selectedMessageList, setSelectedMessgaeList] = useState([])
+  const { id: othersId } = useParams()
+  const { data: MessageList } = useChattingList(othersId || "")
+  const scrollRef = useRef<HTMLDivElement>(null)
 
-  const fetchMessageList = useCallback(async () => {
-    return await AUTH_API.get(`/messages?userId=${id}`)
-      .then((res) => setSelectedMessgaeList(res.data))
-      .catch((error) => {
-        console.log(error, "메시지 검색 오류")
-      })
-  }, [id])
-
-  useEffect(() => {
-    // 기본 페이지에서는 메시지 받아오지 않기
-    if (!id) {
-      return
+  const scrollToBottom = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
-    fetchMessageList()
-  }, [id, fetchMessageList])
+  }
 
   return (
     <S.DMChattingListLayout>
-      {id && (
-        <S.DMChattingListMessageItem>
-          {selectedMessageList.map((list: Conversation) => (
-            <p key={list.createdAt}>
-              {list.message}
-              <br />
-              <br />
-            </p>
-          ))}
-        </S.DMChattingListMessageItem>
+      {othersId && (
+        <>
+          <S.DMMessageList ref={scrollRef}>
+            {MessageList?.map((list: Message) => (
+              <DMMessageItem
+                key={list.createdAt}
+                othersId={othersId}
+                scrollToBottom={scrollToBottom}
+              >
+                {list}
+              </DMMessageItem>
+            ))}
+          </S.DMMessageList>
+          <DMInput
+            othersId={othersId}
+            scrollToBottom={scrollToBottom}
+          />
+        </>
       )}
     </S.DMChattingListLayout>
   )

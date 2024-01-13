@@ -6,13 +6,23 @@ export const DMChattingListLayout = styled.div`
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size20};
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 3rem 1.5rem;
 `
 
-export const DMChattingListMessageItem = styled.div`
+export const DMMessageList = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
-  background-color: ${({ theme }) => theme.colors.point};
-  border-radius: ${({ theme }) => theme.radius.size20};
+  overflow-y: auto;
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-right: 1rem;
+  ${({ theme }) => theme.scrollBar};
+`
+
+export const DMMessageItem = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `

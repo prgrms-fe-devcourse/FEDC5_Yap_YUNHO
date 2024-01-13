@@ -2,10 +2,12 @@ import { useNavigate } from "react-router-dom"
 import { HandleMenuClickProps } from "../types"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import authToken from "@/stores/authToken"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
-  const { setLogout } = useAuthUserStore()
+  const { setLogin, setLogout } = useAuthUserStore()
+
   const handleMenuClick: HandleMenuClickProps = (menu) => {
     switch (menu) {
       case "로그인":
@@ -29,7 +31,7 @@ const useMenuClick = () => {
   }
 
   const handleLogout = async () => {
-    await API("/logout")
+    await API.post("/logout")
       .then(() => {
         setLogout()
         navigate("/")

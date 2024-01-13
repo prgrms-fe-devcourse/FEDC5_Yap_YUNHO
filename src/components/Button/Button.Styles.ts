@@ -14,6 +14,7 @@ export const ButtonLayout = styled.button<{
   color: ${({ $fontColor }) => $fontColor};
 
   &:hover {
+    transition: opacity 0.5s ease-in-out;
     opacity: ${({ theme }) => theme.opacity.normal};
     color: ${({ theme }) => theme.colors.gary};
   }

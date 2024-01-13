@@ -19,26 +19,27 @@ export const DMListInfo = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 0.5rem;
 `
-export const DMListTotalSeenTitle = styled.span`
+export const DMListTotalNoticeTitle = styled.span`
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
 
-export const DMListTotalSeenCounter = styled.span`
+export const DMListTotalNoticeNumber = styled.span`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 `
 
-export const DMListNotSeenTitle = styled.span`
+export const DMListNotNoticeTitle = styled.span`
   color: ${({ theme }) => theme.colors.point_alt};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  padding-left: 1rem;
 `
 
-export const DMListNotSeenCounter = styled.span`
+export const DMListNotNoticedNumber = styled.span`
   color: ${({ theme }) => theme.colors.point_alt};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 `
 
 export const DMListContainer = styled.div`
@@ -56,7 +57,7 @@ export const DMListItemLayout = styled.button<{ $isSelect: boolean }>`
   justify-content: flex-start;
   align-items: flex-start;
   &:hover {
-    ${({ theme }) => theme.opacity.normal}
+    opacity: 0.5;
   }
   opacity: ${({ $isSelect }) => ($isSelect ? 0.3 : 1)};
 `
@@ -68,6 +69,8 @@ export const DMUserProfileContainer = styled.div`
 `
 
 export const DMUserProfileImg = styled.img`
+  width: 4rem;
+  height: 4rem;
   border-radius: ${({ theme }) => theme.radius.circle};
 `
 
@@ -100,6 +103,6 @@ export const DMListChatContent = styled.span`
 `
 
 export const DMListChatDate = styled.span`
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.gray};
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `

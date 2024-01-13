@@ -1,65 +1,52 @@
-import { useCallback, useEffect, useState } from "react"
+import { useState } from "react"
 import * as S from "./DMList.Styles"
-import DMListItem from "./DMListItem"
-import { API, AUTH_API } from "@/apis/Api"
-import { DMUserListProps } from "../../types"
 import { Conversation } from "@/types"
-import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
-import { handleClickProps } from "./../../types/index"
+import useDMList from "./../../hooks/useDMList"
+import DMListItem from "./DMListItem"
+import { handleClickProps } from "./../../DirectMessage.Types"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 const DMList = () => {
-  const { setLogin } = useAuthUserStore()
-  const [DMUserList, setDMUserList] = useState([])
-  const [selectedChattingId, setSelectedChattingId] = useState("")
+  const [selectedMessageId, setSelectedMessageId] = useState("")
   const navigate = useNavigate()
-
-  const fetchDMUsers = useCallback(async () => {
-    await API.post("login", {
-      email: "gnsdh8616@gmail.com",
-      password: "gch220874!",
-    }).then((res) => {
-      const { user, token } = res.data
-      setLogin(user, token)
-    })
-    return await AUTH_API.get("messages/conversations")
-      .then((res) => {
-        setDMUserList(res.data)
-      })
-      .catch((error) => {
-        console.log(error, "DMList 받아오는데 문제가 생김")
-      })
-  }, [setLogin])
+  const { data: DMUserList } = useDMList()
+  const { user: me } = useAuthUserStore()
 
   const handleClick = ({ user, receiver, sender }: handleClickProps) => {
     // 상대방의 아이디
-    const { _id } = decideChatUserName(user, receiver, sender)
-    navigate(`/directmessage/${_id}`)
-    setSelectedChattingId(_id)
+    const { _id: othersId } = decideChatUserName(user, receiver, sender)
+
+    navigate(`/directmessage/${othersId}`)
+    setSelectedMessageId(othersId)
   }
 
   const DMListCount = {
-    total: DMUserList.length,
-    NotNotice: DMUserList.filter((list: Conversation) => {
+    total: DMUserList?.length,
+    NotNotice: DMUserList?.filter((list: Conversation) => {
       return !list.seen
     }).length,
   }
 
-  useEffect(() => {
-    fetchDMUsers()
-  }, [fetchDMUsers])
-
   return (
     <S.DMListLayout>
       <S.DMListInfo>
-        <S.DMListTotalSeenTitle>DM 목록</S.DMListTotalSeenTitle>
-        <S.DMListTotalSeenCounter>{DMListCount.total}</S.DMListTotalSeenCounter>
-        <S.DMListNotSeenTitle>안 읽음</S.DMListNotSeenTitle>
-        <S.DMListNotSeenCounter>{DMListCount.NotNotice}</S.DMListNotSeenCounter>
+        <S.DMListTotalNoticeTitle>DM 목록</S.DMListTotalNoticeTitle>
+        <S.DMListTotalNoticeNumber>
+          {DMListCount.total}
+        </S.DMListTotalNoticeNumber>
+        <S.DMListNotNoticeTitle>안 읽음</S.DMListNotNoticeTitle>
+        <S.DMListNotNoticedNumber>
+          {DMListCount.NotNotice}
+        </S.DMListNotNoticedNumber>
       </S.DMListInfo>
       <S.DMListContainer>
-        {DMUserList.map((user: DMUserListProps) => {
+        {/* 상대방: receiver가 내아이디면 sender를, receiver가 내가아니면 receiver를  */}
+        {DMUserList?.map((user: Conversation) => {
+          const { receiver, sender } = user
+          const others = decideChatUserName(me, receiver, sender)
+
           return (
             <DMListItem
               key={user.createdAt}
@@ -67,9 +54,10 @@ const DMList = () => {
               message={user.message}
               sender={user.sender}
               createdAt={user.createdAt}
-              isSeen={user.isSeen}
-              selectedChattingId={selectedChattingId}
+              isOnline={others.isOnline}
+              selectedMessageId={selectedMessageId}
               handleClick={handleClick}
+              profileImg={others.image}
             />
           )
         })}
