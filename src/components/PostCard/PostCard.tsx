@@ -12,7 +12,7 @@ const PostCard = ({
   mediaUrl,
   postId,
   isBlock = false,
-  isNoneProfile,
+  hasProfile = true,
   authUserProfile = "",
   textPercent = "100%",
   onNavigatePostDetail,
@@ -21,7 +21,7 @@ const PostCard = ({
     <S.PostCardLayout>
       <PostCardUserProfile
         imgUrl={authUserProfile}
-        isNoneProfile={isNoneProfile}
+        hasProfile={hasProfile}
         onNavigatePostDetail={onNavigatePostDetail}
         postId={postId}
       />

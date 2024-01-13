@@ -10,7 +10,7 @@ const getSlicedPostList = (postData: Post[] | undefined, listRange: number) => {
   }
 
   if (listRange === 1 && postData.length === 2) {
-    return [null, ...postData, null]
+    return [null, ...postData, null, null]
   }
 
   if (postData.length === 2) {
@@ -18,7 +18,7 @@ const getSlicedPostList = (postData: Post[] | undefined, listRange: number) => {
   }
 
   if (listRange === 2 && postData.length === 3) {
-    return [...postData]
+    return [...postData, null, null]
   }
 
   if (listRange === 1 && postData.length === 3) {

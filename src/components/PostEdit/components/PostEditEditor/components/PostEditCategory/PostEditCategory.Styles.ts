@@ -3,6 +3,8 @@ import styled from "styled-components"
 
 export const PostEditCategoryLayout = styled.div`
   width: 40rem;
+
+  user-select: none;
 `
 
 export const PostEditCategoryTitle = styled.h6`
