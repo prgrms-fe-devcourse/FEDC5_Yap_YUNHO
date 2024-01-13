@@ -11,6 +11,7 @@ interface AuthUserStore {
   user: User
   setLogin: (user: User, token: string) => void
   setLogout: () => void
+  updateUser: (user: User) => void
 }
 
 const useAuthUserStore = create<AuthUserStore>()(
@@ -33,6 +34,8 @@ const useAuthUserStore = create<AuthUserStore>()(
           user: AUTH_USER_INITIAL_USER_DATA,
         }))
       },
+
+      updateUser: (user) => set(() => ({ user })),
     }),
     {
       name: PERSIST_STORAGE_KEY,

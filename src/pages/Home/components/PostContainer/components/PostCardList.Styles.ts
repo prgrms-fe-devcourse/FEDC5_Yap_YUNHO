@@ -34,6 +34,7 @@ export const PostSubCard = styled.div<{ $isLeft: boolean }>`
   border-radius: ${({ theme }) => theme.radius.size12};
 
   z-index: ${({ theme }) => theme.zIndex.postSubCard};
+  cursor: pointer;
 
   @media (max-height: 750px) {
     align-self: flex-start;
@@ -51,6 +52,7 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
   border-radius: ${({ theme }) => theme.radius.size8};
 
   z-index: ${({ theme }) => theme.zIndex.postSmallCard};
+  cursor: pointer;
 
   @media (max-height: 600px) {
     align-self: flex-start;

@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom"
-import { HandleMenuClickProps } from "../types"
+import { HandleMenuClickProps } from "../Navbar.Types"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import authToken from "@/stores/authToken"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
-  const { setLogin, setLogout } = useAuthUserStore()
+  const { setLogout } = useAuthUserStore()
 
   const handleMenuClick: HandleMenuClickProps = (menu) => {
     switch (menu) {
