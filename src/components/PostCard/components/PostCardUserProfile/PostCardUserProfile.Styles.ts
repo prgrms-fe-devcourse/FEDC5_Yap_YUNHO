@@ -10,9 +10,8 @@ export const PostCardUserProfileLayout = styled.div`
 `
 
 export const PostCardUserProfileImgLayout = styled.div`
-  width: 13%;
+  width: 100%;
   height: 100%;
-  margin-left: 5%;
 
   border-radius: ${({ theme }) => theme.radius.circle};
 `
