@@ -117,3 +117,10 @@ export interface Message {
   createdAt: string
   updatedAt: string
 }
+
+export interface Notification {
+  notificationType: "COMMENT" | "FOLLOW" | "LIKE" | "MESSAGE"
+  notificationTypeId: string
+  userId: string
+  postId: string | null
+}
