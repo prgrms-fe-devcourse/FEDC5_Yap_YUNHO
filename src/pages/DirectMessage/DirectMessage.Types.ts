@@ -22,6 +22,6 @@ export interface MessageGroupItemProps {
 
 export interface MessageProps {
   children: Message
-  othersId?: string
+  othersUserId?: string
   scrollToBottom?: () => void
 }

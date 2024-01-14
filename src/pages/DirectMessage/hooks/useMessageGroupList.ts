@@ -7,7 +7,7 @@ export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
 
 const useMessageGroupList = () => {
   const { myId } = useAuthUserStore()
-  const { id: userId } = useParams()
+  const { id: othersUserId } = useParams()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: getMessageGroupListAPI,
@@ -19,7 +19,7 @@ const useMessageGroupList = () => {
         // 최근에 보낸 메시지가 내가 보낸거면 채팅을 하고 있거나 읽음 처리
         if (
           myId === MessageList.sender._id ||
-          userId === MessageList.sender._id
+          othersUserId === MessageList.sender._id
         ) {
           return {
             ...MessageList,

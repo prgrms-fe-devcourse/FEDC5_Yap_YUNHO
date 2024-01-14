@@ -12,7 +12,7 @@ export const QUERY_KEY_SEND_MESSAGE = "SEND_MESSAGE"
 
 const useSendMessage = () => {
   const queryClient = useQueryClient()
-  const { id: othersId } = useParams()
+  const { id: othersUserId } = useParams()
   const { isShowModal, showModal, closeModal } = useModal()
 
   const AlertModalComponent = isShowModal ? (
@@ -34,13 +34,13 @@ const useSendMessage = () => {
       })
       // 메시지 목록 업데이트
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGELIST] })
-      if (!othersId) {
+      if (!othersUserId) {
         return
       }
       const NotificationSubmission: SendNotificationProps = {
         notificationType: "COMMENT",
         notificationTypeId: messageId,
-        userId: othersId,
+        userId: othersUserId,
         postId: null,
       }
       sendMessageNotificationAPI(NotificationSubmission)

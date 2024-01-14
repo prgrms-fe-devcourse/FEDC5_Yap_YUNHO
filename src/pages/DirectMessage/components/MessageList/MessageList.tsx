@@ -7,8 +7,8 @@ import MessageInput from "./MessageInput/MessageInput"
 import MessageItem from "./MessageItem/MessageItem"
 
 const MessageList = () => {
-  const { id: othersId } = useParams()
-  const { data: MessageList } = useMessageList(othersId || "")
+  const { id: othersUserId } = useParams()
+  const { data: MessageList } = useMessageList(othersUserId || "")
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -24,19 +24,19 @@ const MessageList = () => {
 
   return (
     <S.MessageListLayout>
-      {othersId && (
+      {othersUserId && (
         <>
           <S.MessageListContainer ref={scrollRef}>
             {MessageList?.map((list: Message) => (
               <MessageItem
                 key={list.createdAt}
-                othersId={othersId}
+                othersUserId={othersUserId}
               >
                 {list}
               </MessageItem>
             ))}
           </S.MessageListContainer>
-          <MessageInput othersId={othersId} />
+          <MessageInput othersUserId={othersUserId} />
         </>
       )}
     </S.MessageListLayout>
