@@ -31,9 +31,8 @@ const MessageList = () => {
               <MessageItem
                 key={list.createdAt}
                 othersUserId={othersUserId}
-              >
-                {list}
-              </MessageItem>
+                messageData={list}
+              />
             ))}
           </S.MessageListContainer>
           <MessageInput othersUserId={othersUserId} />

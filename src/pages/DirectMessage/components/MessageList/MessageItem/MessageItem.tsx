@@ -7,10 +7,10 @@ const MessageItem = ({ messageData, othersUserId }: MessageProps) => {
   const isMyMessage = othersUserId === messageData.receiver?._id
 
   if (isMyMessage) {
-    return <MyMessage>{messageData}</MyMessage>
+    return <MyMessage messageData={messageData} />
   }
 
-  return <OthersMessage>{messageData}</OthersMessage>
+  return <OthersMessage messageData={messageData} />
 }
 
 export default MessageItem

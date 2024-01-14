@@ -3,6 +3,7 @@ import { MessageProps } from "./../../../../DirectMessage.Types"
 import MessageProfile from "./../../../MessageGroupList/MessageProfile"
 
 const OthersMessage = ({ messageData }: MessageProps) => {
+  console.log(messageData)
   return (
     <S.OthersMessageLayout>
       <MessageProfile
