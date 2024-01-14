@@ -4,16 +4,11 @@ import {
   SEARCH_INPUT_BAR_PLACEHOLDER,
   SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY,
 } from "@/components/SearchModal/SearchModal.Constants"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { showResultProp } from "@/components/SearchModal/SearchModal.Types"
 
-const SearchInputBar = ({ showResults }: showResultProp) => {
-  const [searchKeyword, setSearchKeyword] = useState("")
+const SearchInputBar = ({ handleKeyword }: showResultProp) => {
   const [isFocusOnBar, setIsFocusOnBar] = useState(false)
-
-  useEffect(() => {
-    showResults(searchKeyword)
-  }, [searchKeyword, showResults])
 
   let timer: number | null | undefined = null
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +16,8 @@ const SearchInputBar = ({ showResults }: showResultProp) => {
       clearTimeout(timer)
     }
 
-    timer = setTimeout(async () => {
-      setSearchKeyword(e.target.value)
+    timer = setTimeout(() => {
+      handleKeyword(e.target.value)
     }, SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY)
   }
 

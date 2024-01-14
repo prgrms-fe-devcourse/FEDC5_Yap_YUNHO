@@ -1,9 +1,9 @@
-import DMListProfile from "@/pages/DirectMessage/components/DMList/DMListProfile"
 import * as S from "./SearchResultItem.Styles"
 import SearchResultItemTitle from "./components/SearchResultItemTitle"
 import { searchResultProps } from "@/components/SearchModal/SearchModal.Types"
 import { useNavigate } from "react-router-dom"
 import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalStore"
+import MessageProfile from "@/pages/DirectMessage/components/MessageGroupList/MessageProfile"
 
 const SearchResultItem = ({
   id,
@@ -22,9 +22,9 @@ const SearchResultItem = ({
   }
 
   return (
-    <S.SearchResultItemContainer onClick={() => onNavigate()}>
+    <S.SearchResultItemContainer onClick={onNavigate}>
       {type === "user" ? (
-        <DMListProfile
+        <MessageProfile
           isOnline={isOnline}
           profileImg={image}
         />

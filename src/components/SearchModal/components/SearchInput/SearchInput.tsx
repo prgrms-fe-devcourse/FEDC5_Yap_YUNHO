@@ -3,11 +3,11 @@ import * as S from "./SearchInput.Styles"
 import SearchInputBar from "./components/SearchInputBar/SearchInputBar"
 import SearchInputFilter from "./components/SearchInputFilter/SearchInputFilter"
 
-const SearchInput = ({ showResults }: showResultProp) => {
+const SearchInput = ({ handleKeyword }: showResultProp) => {
   return (
     <S.SearchInputLayout>
       <SearchInputFilter />
-      <SearchInputBar showResults={showResults} />
+      <SearchInputBar handleKeyword={handleKeyword} />
     </S.SearchInputLayout>
   )
 }

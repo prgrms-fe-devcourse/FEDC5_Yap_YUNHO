@@ -15,5 +15,5 @@ export interface searchResultProps {
 }
 
 export type showResultProp = {
-  showResults: (keyword: string) => void
+  handleKeyword: (keyword: string) => void
 }

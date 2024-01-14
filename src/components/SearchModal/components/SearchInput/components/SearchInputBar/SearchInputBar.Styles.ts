@@ -41,7 +41,7 @@ export const SearchBarInput = styled.input`
     cursor: pointer;
   }
 `
-export const SearchIconLayout = styled.div`
+export const SearchIconLayout = styled.button`
   svg {
     font-size: 3rem;
   }

@@ -16,7 +16,7 @@ const SearchModal = () => {
       clickAwayEnable={true}
     >
       <S.SearchLayout>
-        <SearchInput showResults={(keyword: string) => setKeyword(keyword)} />
+        <SearchInput handleKeyword={(keyword: string) => setKeyword(keyword)} />
         <SearchResult keyword={keyword} />
       </S.SearchLayout>
     </Modal>
