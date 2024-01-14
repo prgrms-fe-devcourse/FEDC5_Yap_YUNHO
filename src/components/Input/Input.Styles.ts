@@ -27,7 +27,6 @@ export const InputField = styled.input`
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   &::placeholder {
-    font-family: ${({ theme }) => theme.fontFamily.defaultFont};
     font-size: ${({ theme }) => theme.fontSizes.medium};
   }
 

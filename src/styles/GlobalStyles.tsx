@@ -54,7 +54,7 @@ input, textarea {
   font-family: ${({ theme }) => theme.fontFamily.defaultFont};
   background-color: ${({ theme }) => theme.colors.white};
   &::placeholder {
-    font-family: "BMJUA", "Noto Sans KR", sans-serif;
+    font-family: ${({ theme }) => theme.fontFamily.defaultFont}
   }
 }
 
