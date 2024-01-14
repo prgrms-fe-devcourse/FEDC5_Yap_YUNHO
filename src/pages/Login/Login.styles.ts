@@ -15,6 +15,7 @@ export const LoginComponentContainer = styled.div`
 
   min-height: 50rem;
   @media screen and (max-width: 900px) {
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `

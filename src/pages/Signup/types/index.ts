@@ -1,11 +1,6 @@
 import { ChangeEvent } from "react"
 
 export type OnChange = (event: ChangeEvent<HTMLInputElement>) => void
-export type AllowedInputType =
-  | "email"
-  | "password"
-  | "nickname"
-  | "passwordCheck"
 export interface RequiredUserInfo {
   email: string
   nickname: string
@@ -13,6 +8,12 @@ export interface RequiredUserInfo {
   passwordCheck: string
 }
 
+export type AllowedUserInfoType =
+  | "email"
+  | "password"
+  | "nickname"
+  | "passwordCheck"
+
 export type ValidateUserInfo = {
-  [key in AllowedInputType]: string
+  [key in AllowedUserInfoType]: string
 }

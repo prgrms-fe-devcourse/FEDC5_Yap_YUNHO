@@ -1,3 +1,16 @@
-export type UpdateUserInfo = (value: string, type: AllowedInputType) => void
+import { ChangeEvent } from "react"
 
-export type AllowedInputType = "email" | "password"
+export type UpdateUserInfo = (value: string, type: string) => void
+
+export type OnChange = (event: ChangeEvent<HTMLInputElement>) => void
+
+export interface RequiredUserInfo {
+  email: string
+  password: string
+}
+
+export type AllowedUserInfoType = "email" | "password"
+
+export type ValidateUserInfo = {
+  [key in AllowedUserInfoType]: string
+}

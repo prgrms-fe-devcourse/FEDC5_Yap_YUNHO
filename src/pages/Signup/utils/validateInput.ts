@@ -1,4 +1,7 @@
-import { ValidateUserInfo } from "../types"
+import {
+  ValidateUserInfo,
+  RequiredUserInfo as ErrorMessageType,
+} from "../types"
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
@@ -47,6 +50,7 @@ const VALIDATE_INPUT_LIST = {
 }
 
 export const getNewErrorMessage = (
+  errorMessage: ErrorMessageType,
   type: string,
   userInfo: ValidateUserInfo,
 ) => {
@@ -54,16 +58,38 @@ export const getNewErrorMessage = (
 
   switch (type) {
     case "email": {
-      return VALIDATE_INPUT_LIST.validateEmail(email)
+      return {
+        ...errorMessage,
+        email: VALIDATE_INPUT_LIST.validateEmail(email),
+      }
     }
     case "nickname": {
-      return VALIDATE_INPUT_LIST.validateNickName(nickname)
+      return {
+        ...errorMessage,
+        nickname: VALIDATE_INPUT_LIST.validateNickName(nickname),
+      }
     }
     case "password": {
-      return VALIDATE_INPUT_LIST.validatePassword(password)
+      return {
+        ...errorMessage,
+        password: VALIDATE_INPUT_LIST.validatePassword(password),
+        passwordCheck: VALIDATE_INPUT_LIST.validatePasswordCheck(
+          password,
+          passwordCheck,
+        ),
+      }
     }
     case "passwordCheck": {
-      return VALIDATE_INPUT_LIST.validatePasswordCheck(password, passwordCheck)
+      return {
+        ...errorMessage,
+        password: VALIDATE_INPUT_LIST.validatePassword(password),
+        passwordCheck: VALIDATE_INPUT_LIST.validatePasswordCheck(
+          password,
+          passwordCheck,
+        ),
+      }
     }
+    default:
+      return errorMessage
   }
 }
