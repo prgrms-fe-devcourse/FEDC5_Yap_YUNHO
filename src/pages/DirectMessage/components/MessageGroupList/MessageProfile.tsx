@@ -7,19 +7,14 @@ interface MessageProfileProps {
   profileImg: string
 }
 const MessageProfile = ({ isOnline, profileImg }: MessageProfileProps) => {
+  const checkedImg = profileImg || standard
+
   return (
     <S.MessageProfileContainer>
-      {profileImg ? (
-        <S.MessageProfileImg
-          src={profileImg}
-          alt="DMList Profile Image"
-        />
-      ) : (
-        <S.MessageProfileImg
-          src={standard}
-          alt="DMList Profile Standard Image"
-        />
-      )}
+      <S.MessageProfileImg
+        src={checkedImg}
+        alt="DMList Profile Image"
+      />
 
       {isOnline && (
         <S.SeenIndicator

@@ -25,9 +25,8 @@ const useMessageGroupList = () => {
             ...MessageList,
             seen: true,
           }
-        } else {
-          return MessageList
         }
+        return MessageList
       }),
   })
   return { data }

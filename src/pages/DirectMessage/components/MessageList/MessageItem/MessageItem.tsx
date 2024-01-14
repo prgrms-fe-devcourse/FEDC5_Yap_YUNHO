@@ -6,15 +6,11 @@ import { MessageProps } from "../../../DirectMessage.Types"
 const MessageItem = ({ children, othersUserId }: MessageProps) => {
   const isMyMessage = othersUserId === children.receiver?._id
 
-  return (
-    <>
-      {isMyMessage ? (
-        <MyMessage>{children}</MyMessage>
-      ) : (
-        <OthersMessage>{children}</OthersMessage>
-      )}
-    </>
-  )
+  if (isMyMessage) {
+    return <MyMessage>{children}</MyMessage>
+  }
+
+  return <OthersMessage>{children}</OthersMessage>
 }
 
 export default MessageItem
