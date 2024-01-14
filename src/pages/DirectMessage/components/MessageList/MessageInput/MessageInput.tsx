@@ -6,10 +6,10 @@ import SendIcon from "@mui/icons-material/Send"
 import { AUTH_API } from "@/apis/Api"
 
 interface MessageInputProps {
-  othersId: string
+  othersUserId: string
 }
 
-const MessageInput = ({ othersId }: MessageInputProps) => {
+const MessageInput = ({ othersUserId }: MessageInputProps) => {
   const [sendingMessage, setSendingMessage] = useState("")
   const { AlertModalComponent, sendMessage } = useSendMessage()
   const [myProfileImg, setMyProfileImg] = useState("")
@@ -23,7 +23,7 @@ const MessageInput = ({ othersId }: MessageInputProps) => {
     e.preventDefault()
     const messageSubmission = {
       message: sendingMessage,
-      receiver: othersId,
+      receiver: othersUserId,
     }
     sendMessage.mutate(messageSubmission)
     setSendingMessage("")
