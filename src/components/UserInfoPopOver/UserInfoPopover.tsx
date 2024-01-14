@@ -2,6 +2,8 @@ import * as S from "./UserInfoPopover.Styles"
 import { ReactNode } from "react"
 import useHover from "./hooks/useHover"
 
+import PopoverPortal from "./components/PopoverPortal"
+
 interface UserInfoDropDownProps {
   userId: string
   children: ReactNode
@@ -13,23 +15,25 @@ const UserInfoPopover = ({
   userId,
   isPostCard,
 }: UserInfoDropDownProps) => {
-  const { hoverRef, isHover } = useHover()
+  const { hoverRef, isHover, refPosition } = useHover()
   console.log(userId)
+
+  const topRange = refPosition.top + refPosition.height
+  const leftRange = refPosition.left + refPosition.width / 2 - 100
 
   return (
     <S.UserInfoPopoverProvider
       ref={hoverRef}
       $isPostCard={isPostCard}
     >
-      <S.UserInfoPopoverLayout $isShow={isHover}>
-        {isHover && (
-          <>
-            <S.UserInfoPopoverContainer>
-              <h1>잔액부족</h1>
-            </S.UserInfoPopoverContainer>
-          </>
-        )}
-      </S.UserInfoPopoverLayout>
+      <PopoverPortal isShow={isHover}>
+        <S.UserInfoPopoverLayout
+          $top={topRange}
+          $left={leftRange}
+        >
+          <button onClick={() => console.log("Test")}>잔액 부족</button>
+        </S.UserInfoPopoverLayout>
+      </PopoverPortal>
       {children}
     </S.UserInfoPopoverProvider>
   )
