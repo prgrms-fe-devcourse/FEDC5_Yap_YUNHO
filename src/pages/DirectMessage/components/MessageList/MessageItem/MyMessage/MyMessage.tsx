@@ -1,12 +1,14 @@
 import * as S from "./MyMessage.Styles.ts"
 import { MessageProps } from "./../../../../DirectMessage.Types"
 
-const MyMessage = ({ children }: MessageProps) => {
+const MyMessage = ({ messageData }: MessageProps) => {
   return (
     <S.MyMessageLayout>
-      {!children.seen && <S.MyMessageReadIndicator>1</S.MyMessageReadIndicator>}
+      {!messageData.seen && (
+        <S.MyMessageReadIndicator>1</S.MyMessageReadIndicator>
+      )}
 
-      <S.MyMessageContent>{children.message}</S.MyMessageContent>
+      <S.MyMessageContent>{messageData.message}</S.MyMessageContent>
     </S.MyMessageLayout>
   )
 }
