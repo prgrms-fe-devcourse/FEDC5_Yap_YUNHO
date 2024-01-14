@@ -5,11 +5,11 @@ import getMessageListAPI from "../apis/getMessageListAPI"
 
 export const QUERY_KEY_GET_MESSAGELIST = "GET_MESSAGELIST"
 
-const useMessageList = (othersId: string) => {
+const useMessageList = (othersUserId: string) => {
   const { user: my } = useAuthUserStore()
   const { data } = useQuery<Message[]>({
-    queryKey: [QUERY_KEY_GET_MESSAGELIST, othersId, my._id],
-    queryFn: () => getMessageListAPI(othersId, my._id),
+    queryKey: [QUERY_KEY_GET_MESSAGELIST, othersUserId, my._id],
+    queryFn: () => getMessageListAPI(othersUserId, my._id),
     initialData: [],
     refetchInterval: 1000, // 재 요청
 
