@@ -2,34 +2,25 @@ import { useNavigate } from "react-router-dom"
 import { NavbarButton } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarLeftList.Styles"
 import SearchIcon from "@mui/icons-material/Search"
-import Modal from "@/components/Modal/Modal"
-import useModal from "@/components/Modal/hooks/useModal"
-import Search from "@/components/Search/Search"
+import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalStore"
+import SearchModal from "@/components/SearchModal/SearchModal"
 
 const NavbarLeftList = () => {
   const navigate = useNavigate()
-  const { showModal, closeModal, isShowModal } = useModal()
+  const { showSearchModal } = useSearchModalStore()
 
   return (
-    <S.NavbarLeftListLayout>
-      <S.NavbarLogoContainer onClick={() => navigate("/")}>
-        <S.NavbarLogo />
-      </S.NavbarLogoContainer>
-      <NavbarButton
-        onClick={() => {
-          showModal()
-        }}
-      >
-        <SearchIcon />
-      </NavbarButton>
-      <Modal
-        isShow={isShowModal}
-        onClose={closeModal}
-        clickAwayEnable={true}
-      >
-        <Search />
-      </Modal>
-    </S.NavbarLeftListLayout>
+    <>
+      <S.NavbarLeftListLayout>
+        <S.NavbarLogoContainer onClick={() => navigate("/")}>
+          <S.NavbarLogo />
+        </S.NavbarLogoContainer>
+        <NavbarButton onClick={showSearchModal}>
+          <SearchIcon />
+        </NavbarButton>
+      </S.NavbarLeftListLayout>
+      <SearchModal />
+    </>
   )
 }
 

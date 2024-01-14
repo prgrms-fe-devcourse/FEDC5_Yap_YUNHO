@@ -1,14 +1,14 @@
-import { API } from "@/apis/Api"
 import * as S from "./SearchInputBar.Styles"
-import { useState } from "react"
 import { Search } from "@mui/icons-material"
 import {
   SEARCH_INPUT_BAR_PLACEHOLDER,
   SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY,
-} from "@/components/Search/Search.Constants"
+} from "@/components/SearchModal/SearchModal.Constants"
+import { useState } from "react"
+import { showResultProp } from "@/components/SearchModal/SearchModal.Types"
 
-const SearchInputBar = () => {
-  const [searchKeyword, setSearchKeyword] = useState("")
+const SearchInputBar = ({ handleKeyword }: showResultProp) => {
+  const [isFocusOnBar, setIsFocusOnBar] = useState(false)
 
   let timer: number | null | undefined = null
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,13 +16,8 @@ const SearchInputBar = () => {
       clearTimeout(timer)
     }
 
-    timer = setTimeout(async () => {
-      setSearchKeyword(e.target.value)
-
-      if (e.target.value) {
-        const { data } = await API.get(`/search/all/${e.target.value}`)
-        console.log(data)
-      }
+    timer = setTimeout(() => {
+      handleKeyword(e.target.value)
     }, SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY)
   }
 
@@ -33,8 +28,10 @@ const SearchInputBar = () => {
         placeholder={SEARCH_INPUT_BAR_PLACEHOLDER}
         name="searchbar"
         onChange={handleInputChange}
+        onFocus={() => setIsFocusOnBar(true)}
+        onBlur={() => setIsFocusOnBar(false)}
       />
-      {!searchKeyword && (
+      {!isFocusOnBar && (
         <S.SearchIconLayout>
           <Search />
         </S.SearchIconLayout>

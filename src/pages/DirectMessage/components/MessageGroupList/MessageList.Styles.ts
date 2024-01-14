@@ -64,6 +64,9 @@ export const MessageItemLayout = styled.button<{ $isSelect: boolean }>`
 
 export const MessageProfileContainer = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 4.8rem;
   height: 4.8rem;
 `
