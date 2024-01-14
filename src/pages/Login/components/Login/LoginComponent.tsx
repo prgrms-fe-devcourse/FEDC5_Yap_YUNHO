@@ -6,7 +6,7 @@ import useLogin from "../../hooks/useLogin"
 import { useNavigate } from "react-router-dom"
 
 const LoginComponent = () => {
-  const { userInfoRef, updateUserInfo, AlertModalComponent, LoginApi_send } =
+  const { userInfoRef, updateUserInfo, AlertModalComponent, loginApi } =
     useLogin()
   const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ const LoginComponent = () => {
     if (email === "" || password === "") {
       return
     }
-    LoginApi_send.mutate({ email, password })
+    loginApi.mutate({ email, password })
   }
 
   return (

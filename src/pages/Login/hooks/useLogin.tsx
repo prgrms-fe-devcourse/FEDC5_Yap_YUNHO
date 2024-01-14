@@ -28,7 +28,7 @@ const useLogin = () => {
     />
   ) : null
 
-  const LoginApi_send = useMutation({
+  const loginApi = useMutation({
     mutationKey: [LOGIN_MUTATION_QUERY_KEY],
     mutationFn: login,
     onSuccess: ({ user, token }) => {
@@ -39,7 +39,7 @@ const useLogin = () => {
     },
   })
 
-  return { userInfoRef, updateUserInfo, AlertModalComponent, LoginApi_send }
+  return { userInfoRef, updateUserInfo, AlertModalComponent, loginApi }
 }
 
 export default useLogin

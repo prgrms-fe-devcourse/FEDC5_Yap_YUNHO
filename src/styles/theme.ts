@@ -8,7 +8,7 @@ const colors = {
   point_alt: "#FF7F50",
   black: "#000000",
   white: "#ffffff",
-  gray40: "#B0B8C1",
+  gray: "#B0B8C1",
 }
 
 const fontSizes = {
@@ -46,6 +46,18 @@ const zIndex = {
   navbarRightList: 2,
 }
 
+const scrollBar = css`
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.sub};
+    border-radius: 6px;
+  }
+`
+
 const scrollBarNone = css`
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -74,6 +86,7 @@ export type FontWeightType = typeof fontWeight
 export type SizeType = typeof fontSizes
 export type Radius = typeof radius
 export type ZIndex = typeof zIndex
+export type scrollBar = typeof scrollBar
 export type ScrollBarNone = typeof scrollBarNone
 export type Transition = typeof transition
 export type Opacity = typeof opacity
@@ -85,6 +98,7 @@ export const theme: DefaultTheme = {
   fontSizes,
   radius,
   zIndex,
+  scrollBar,
   scrollBarNone,
   opacity,
   transition,

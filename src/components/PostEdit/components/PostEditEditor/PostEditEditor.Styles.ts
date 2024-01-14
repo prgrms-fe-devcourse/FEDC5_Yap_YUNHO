@@ -12,4 +12,5 @@ export const PostEditEditorLayout = styled.div`
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size12};
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 `

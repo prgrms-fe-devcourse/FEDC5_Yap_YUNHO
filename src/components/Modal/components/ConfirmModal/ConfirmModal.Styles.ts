@@ -17,4 +17,7 @@ export const ConfirmModalMessage = styled.h6`
   justify-content: center;
 
   font-size: ${({ theme }) => theme.fontSizes.large};
+  word-break: keep-all;
+  text-align: center;
+  line-height: 1.4;
 `

@@ -1,24 +1,25 @@
 import PostCard from "@/components/PostCard/PostCard"
-import * as S from "./PostEditViewer.Styles"
+import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { PostContent } from "@/types"
+import { EditPostState } from "../../PostEdit.Types"
 
 interface PostEditViewerProps {
-  postData: PostContent
+  postData: EditPostState
 }
 
 const PostEditViewer = ({ postData }: PostEditViewerProps) => {
   const { user } = useAuthUserStore()
 
   return (
-    <S.PostEditViewerLayout>
+    <GS.PostModalGlobalViewerLayout>
       <PostCard
         authUserProfile={user.image}
         thumbnail={postData.thumbnail}
         content={postData.content}
         mediaUrl={postData.mediaUrl}
+        postId={postData.authorId}
       />
-    </S.PostEditViewerLayout>
+    </GS.PostModalGlobalViewerLayout>
   )
 }
 

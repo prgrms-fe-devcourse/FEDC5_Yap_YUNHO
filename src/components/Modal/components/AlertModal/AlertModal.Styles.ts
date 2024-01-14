@@ -23,4 +23,7 @@ export const AlertModalMessage = styled.h6`
   ${flexCenter}
 
   font-size: ${({ theme }) => theme.fontSizes.large};
+  word-break: keep-all;
+  text-align: center;
+  line-height: 1.4;
 `

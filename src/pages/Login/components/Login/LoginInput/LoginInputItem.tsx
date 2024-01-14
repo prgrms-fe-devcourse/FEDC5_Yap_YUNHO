@@ -5,10 +5,6 @@ import {
   validateEmailInput,
   validatePasswordInput,
 } from "@/pages/Login/utils/validation"
-import {
-  EMAIL_ERROR_MESSAGE,
-  PASSWORD_ERROR_MESSAGE,
-} from "@/pages/Login/constants/errorMessage"
 import Input from "@/components/Input/Input"
 
 interface LoginInputItemPropType {
@@ -27,19 +23,25 @@ const LoginInputItem = ({
   const [errorMessage, setErrorMessage] = useState("")
 
   const handleInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    if (name === "email" && !validateEmailInput(target.value)) {
-      updateUserInfo("", name)
-      setErrorMessage(EMAIL_ERROR_MESSAGE)
-      return
+    if (target.name === "email") {
+      const newErrorMessage = validateEmailInput(target.value)
+      if (newErrorMessage !== "") {
+        updateUserInfo("", target.name)
+        setErrorMessage(newErrorMessage)
+        return
+      }
     }
 
-    if (name === "password" && !validatePasswordInput(target.value)) {
-      updateUserInfo("", name)
-      setErrorMessage(PASSWORD_ERROR_MESSAGE)
-      return
+    if (target.name === "password") {
+      const newErrorMessage = validatePasswordInput(target.value)
+      if (newErrorMessage !== "") {
+        updateUserInfo("", target.name)
+        setErrorMessage(newErrorMessage)
+        return
+      }
     }
 
-    updateUserInfo(target.value, name)
+    updateUserInfo(target.value, target.name)
     setErrorMessage("")
   }
 
