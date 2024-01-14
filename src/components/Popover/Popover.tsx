@@ -26,6 +26,8 @@ const Popover = ({ children, isPostCard, innerComponent }: PopoverProps) => {
       return
     }
     const innerComponentPosition = current.getBoundingClientRect()
+    const windowWidth = window.innerWidth
+    const windowHieght = window.innerHeight
 
     const topRange = refPosition.top + refPosition.height
     const leftRange =
