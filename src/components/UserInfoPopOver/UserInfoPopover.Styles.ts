@@ -10,28 +10,20 @@ export const UserInfoPopoverProvider = styled.div<{
   position: relative;
 
   user-select: none;
+
+  border: 1px solid red;
 `
 
-export const UserInfoPopoverLayout = styled.div<{ $isShow: boolean }>`
+export const UserInfoPopoverLayout = styled.div<{
+  $top: number
+  $left: number
+}>`
   width: 20rem;
   height: 14rem;
 
-  display: ${({ $isShow }) => ($isShow ? "block" : "none")};
-
   position: absolute;
-  top: 100%;
-  left: calc(50% - 2rem);
-`
-
-export const UserInfoPopoverContainer = styled.div`
-  height: 12rem;
-  width: 20rem;
-  padding: 1rem;
-
-  position: absolute;
-  top: 0.9rem;
+  top: ${({ $top }) => `${$top}px`};
+  left: ${({ $left }) => `${$left}px`};
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
-  border-radius: ${({ theme }) => theme.radius.size8};
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 `
