@@ -6,13 +6,11 @@ interface NotificationTitleProps {
 }
 
 const NotificationTitle = ({ DUMMY_DATA }: NotificationTitleProps) => {
-  const { seen, _id, createdAt, author, user, message } = DUMMY_DATA
-  if (!DUMMY_DATA) {
-    return
-  }
-  const NotificationLength = DUMMY_DATA.filter((notification: Notification) => {
-    return !notification.seen
-  }).length
+  const NotificationLength = DUMMY_DATA?.filter(
+    (notification: Notification) => {
+      return !notification.seen
+    },
+  ).length
 
   return (
     <S.NotificationTitleLayout>
