@@ -10,8 +10,6 @@ export const UserInfoPopoverProvider = styled.div<{
   position: relative;
 
   user-select: none;
-
-  border: 1px solid red;
 `
 
 export const UserInfoPopoverLayout = styled.div<{
