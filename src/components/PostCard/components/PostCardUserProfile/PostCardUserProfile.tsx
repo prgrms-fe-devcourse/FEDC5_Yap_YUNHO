@@ -2,7 +2,7 @@ import React from "react"
 import * as S from "./PostCardUserProfile.Styles"
 import { PostCardUserProfileProps } from "../../PostCard.Types"
 import ReadMoreIcon from "@mui/icons-material/ReadMore"
-import UserInfoPopover from "@/components/UserInfoPopover/UserInfoPopover"
+import UserInfoPopover from "@/components/UserInfo/UserInfoPopover"
 
 const PostCardUserProfile = ({
   hasProfile,

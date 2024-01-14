@@ -1,4 +1,4 @@
-import UserInfoPopover from "@/components/UserInfoPopover/UserInfoPopover"
+import UserInfoPopover from "@/components/UserInfo/UserInfoPopover"
 import * as S from "./UserProfile.Styles"
 import UserActions from "./components/UserActions/UserActions"
 import UserFollowInfo from "./components/UserFollowInfo/UserFollowInfo"
