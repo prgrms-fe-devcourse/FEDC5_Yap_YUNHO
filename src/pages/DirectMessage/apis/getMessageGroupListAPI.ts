@@ -6,7 +6,6 @@ const getMessageGroupListAPI = async () => {
     .then((res) => res.data)
     .catch((e) => {
       console.error(e, "전체 메시지 목록 받아옴 실패")
-      return []
     })
 }
 

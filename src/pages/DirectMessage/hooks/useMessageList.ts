@@ -16,8 +16,7 @@ const useMessageList = (othersUserId: string) => {
     select: (MessageList: Message[]) =>
       MessageList.sort(
         (message, message2) =>
-          Number(message.createdAt.slice(0, 10).replace(/-/g, "")) -
-          Number(message2.createdAt.slice(0, 10).replace(/-/g, "")),
+          Date.parse(message.createdAt) - Date.parse(message2.createdAt),
       ),
   })
 
