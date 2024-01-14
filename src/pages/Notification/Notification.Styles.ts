@@ -20,6 +20,7 @@ export const NotificationLayout = styled.div`
 
 // 타이틀
 export const NotificationTitleLayout = styled.div`
+  height: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,7 +48,7 @@ export const NotificationDeleteButton = styled.button`
 // 리스트
 export const NotificationListLayout = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 5rem);
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size20};
   display: flex;

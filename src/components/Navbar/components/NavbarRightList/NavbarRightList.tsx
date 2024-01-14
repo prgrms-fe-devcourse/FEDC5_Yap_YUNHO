@@ -17,45 +17,48 @@ import CloseIcon from "@mui/icons-material/Close"
 const NavbarRightList = () => {
   const { isLoggedIn } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
-  const { handleMenuClick } = useMenuClick()
+  const { handleMenuClick, notificationModal } = useMenuClick()
 
   const navigate = useNavigate()
 
   return (
-    <S.NavbarRightListLayout>
-      {/* 메뉴들 */}
+    <>
+      {notificationModal}
+      <S.NavbarRightListLayout>
+        {/* 메뉴들 */}
 
-      {isLoggedIn ? (
-        <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
-      ) : (
-        <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
-      )}
+        {isLoggedIn ? (
+          <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
+        ) : (
+          <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
+        )}
 
-      {/* 햄버거 토글 버튼*/}
-      <NavbarToggleButton
-        onClick={handleToggle}
-        ref={toggleRef}
-      >
-        {isToggle ? <CloseIcon /> : <MenuIcon />}
+        {/* 햄버거 토글 버튼*/}
+        <NavbarToggleButton
+          onClick={handleToggle}
+          ref={toggleRef}
+        >
+          {isToggle ? <CloseIcon /> : <MenuIcon />}
 
-        <NavbarToggleMenu
-          $isToggle={isToggle}
-          handleMenuClick={handleMenuClick}
-        />
-      </NavbarToggleButton>
+          <NavbarToggleMenu
+            $isToggle={isToggle}
+            handleMenuClick={handleMenuClick}
+          />
+        </NavbarToggleButton>
 
-      {/* 프로필 버튼*/}
-      <NavbarButton
-        onClick={() => {
-          navigate("/profile")
-        }}
-      >
-        <S.NavbarProfile
-          src={profile}
-          alt="프로필"
-        />
-      </NavbarButton>
-    </S.NavbarRightListLayout>
+        {/* 프로필 버튼*/}
+        <NavbarButton
+          onClick={() => {
+            navigate("/profile")
+          }}
+        >
+          <S.NavbarProfile
+            src={profile}
+            alt="프로필"
+          />
+        </NavbarButton>
+      </S.NavbarRightListLayout>
+    </>
   )
 }
 

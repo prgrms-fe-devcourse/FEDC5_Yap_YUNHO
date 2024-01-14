@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import useModal from "@/components/Modal/hooks/useModal"
+import NotificationModal from "@/components/NotificationModal/NotificationModal"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
   const { setLogout } = useAuthUserStore()
+  const {
+    isShowModal: isShowNotification,
+    showModal: showNotification,
+    closeModal: closeNotification,
+  } = useModal()
 
   const handleMenuClick = (menu: string) => {
     switch (menu) {
@@ -21,12 +28,20 @@ const useMenuClick = () => {
         // 게시물 생성 모달
         break
       case "알림":
+        showNotification()
         // 알림 창(후순위)
         break
       default:
         break
     }
   }
+
+  const notificationModal = (
+    <NotificationModal
+      isShow={isShowNotification}
+      onClose={closeNotification}
+    />
+  )
 
   const handleLogout = async () => {
     await API.post("/logout")
@@ -39,7 +54,7 @@ const useMenuClick = () => {
       })
   }
 
-  return { handleMenuClick }
+  return { handleMenuClick, notificationModal }
 }
 
 export default useMenuClick
