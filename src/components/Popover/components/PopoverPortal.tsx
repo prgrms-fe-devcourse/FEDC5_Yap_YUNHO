@@ -38,10 +38,12 @@ const PopoverPortal = ({ children, isShow }: ModalPortalProps) => {
   if (!isShow && !isPopoverHover) {
     return
   }
+
   const PopoverBaseElement = document.querySelector("#popover")
   if (!(PopoverBaseElement instanceof HTMLElement)) {
     return
   }
+
   return createPortal(
     <S.PopOverLayout ref={popoverRef}>{children}</S.PopOverLayout>,
     PopoverBaseElement,

@@ -5,5 +5,5 @@ export const PopOverLayout = styled.div`
   top: 0;
   left: 0;
 
-  z-index: 24;
+  z-index: ${({ theme }) => theme.zIndex.popover};
 `

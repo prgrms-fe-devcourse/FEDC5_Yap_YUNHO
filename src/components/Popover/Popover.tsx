@@ -21,7 +21,6 @@ const Popover = ({
   const innerComponentRef = useRef<HTMLDivElement>(null)
   const [layoutPosition, setLayoutPosition] = useState({
     top: 0,
-
     left: 0,
   })
 

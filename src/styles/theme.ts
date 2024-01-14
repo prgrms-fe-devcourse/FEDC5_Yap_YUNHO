@@ -44,6 +44,8 @@ const zIndex = {
 
   navbarLogo: 1,
   navbarRightList: 2,
+
+  popover: 20,
 }
 
 const scrollBar = css`
