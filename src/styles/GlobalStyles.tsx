@@ -48,7 +48,7 @@ button {
 input, textarea {
   border : none;
   outline: none;
-  font-family: ${({ theme }) => theme.fontFamily.defaultFont};
+    font-family: "BMJUA", "Noto Sans KR", sans-serif;
   background-color: ${({ theme }) => theme.colors.white};
   &::placeholder {
     font-family: "BMJUA", "Noto Sans KR", sans-serif;

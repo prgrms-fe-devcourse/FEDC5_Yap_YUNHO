@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const DMChattingListLayout = styled.div`
+export const MessageListLayout = styled.div`
   width: 60%;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.sub_alt};
@@ -11,7 +11,7 @@ export const DMChattingListLayout = styled.div`
   padding: 3rem 1.5rem;
 `
 
-export const DMMessageList = styled.div`
+export const MessageListContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
   overflow-y: auto;
   height: 90%;
@@ -23,6 +23,6 @@ export const DMMessageList = styled.div`
   ${({ theme }) => theme.scrollBar};
 `
 
-export const DMMessageItem = styled.div`
+export const MessageItem = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
 `
