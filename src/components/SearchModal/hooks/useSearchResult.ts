@@ -45,13 +45,13 @@ const useSearchResult = (keyword: string) => {
         }
       })
 
-      if (isError) {
-        return []
-      }
-
       return resultList
     },
   })
+
+  if (isError) {
+    return []
+  }
 
   return data
 }
