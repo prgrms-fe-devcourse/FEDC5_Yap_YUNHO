@@ -32,7 +32,7 @@ export interface Channel {
 // API 에서 값을 전달받은 상태
 export interface JSONPost {
   likes: Like[]
-  comments: Comment[]
+  comments: PostComment[]
   _id: string
   image?: null
   imagePublicId?: string
@@ -46,7 +46,7 @@ export interface JSONPost {
 // 전달 받은 데이터를 JSON 으로 변환한 객체 상태
 export interface Post {
   likes: Like[]
-  comments: Comment[]
+  comments: PostComment[]
   _id: string
   image?: null
   imagePublicId?: string
@@ -114,6 +114,15 @@ export interface Message {
   sender: User
   receiver: User
   seen: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+export interface PostComment {
+  _id: string
+  comment: string
+  author: User
+  post: string
   createdAt: string
   updatedAt: string
 }

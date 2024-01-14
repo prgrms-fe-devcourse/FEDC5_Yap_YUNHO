@@ -1,12 +1,12 @@
 import * as S from "./SearchInput.Styles"
-import { SearchInputBarLayout } from "./components/SearchInputBar/SearchInputBar.Styles"
-import { SearchInputFilterLayout } from "./components/SearchInputFilter/SearchInputFilter.Styles"
+import SearchInputBar from "./components/SearchInputBar/SearchInputBar"
+import SearchInputFilter from "./components/SearchInputFilter/SearchInputFilter"
 
 const SearchInput = () => {
   return (
     <S.SearchInputLayout>
-      <SearchInputFilterLayout />
-      <SearchInputBarLayout />
+      <SearchInputFilter />
+      <SearchInputBar />
     </S.SearchInputLayout>
   )
 }

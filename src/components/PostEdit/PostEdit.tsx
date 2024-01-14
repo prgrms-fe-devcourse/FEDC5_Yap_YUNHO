@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import * as S from "./PostEdit.Styles"
+import * as GS from "@/components/Modal/ModalGlobal.Styles"
 import PostEditEditor from "./components/PostEditEditor/PostEditEditor"
 import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 import { POST_EDIT_INITIAL_EDIT_POST } from "./constants/PostEdit.Constants"
@@ -10,14 +10,15 @@ import { API } from "@/apis/Api"
 import { JSONPost, PostContent } from "@/types"
 import PostEditAuthChecker from "./components/PostEditAuthChecker"
 import Modal from "../Modal/Modal"
+import usePostEditModalStore from "./stores/usePostEditModalStore"
 
 interface PostEditProps {
   onClose: () => void
-  isShowModal: boolean
 }
 
-const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
+const PostEdit = ({ onClose }: PostEditProps) => {
   const { id } = useParams()
+  const { isShowEditModal } = usePostEditModalStore()
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
@@ -43,7 +44,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
           authorId: fetchPost.author._id,
         })
       })
-  }, [id, isShowModal])
+  }, [id, isShowEditModal])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
@@ -65,7 +66,7 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
 
   return (
     <Modal
-      isShow={isShowModal}
+      isShow={isShowEditModal}
       onClose={onClose}
       clickAwayEnable={false}
     >
@@ -73,19 +74,19 @@ const PostEdit = ({ onClose, isShowModal }: PostEditProps) => {
         onCloseInnerModal={onClose}
         authorId={editPost.authorId}
       >
-        <S.PostEditLayout>
-          <S.PostEditContainer>
+        <GS.PostModalGlobalLayout>
+          <GS.PostModalGlobalContainer>
             <PostEditViewer postData={editPost} />
-          </S.PostEditContainer>
-          <S.PostEditBoundary />
-          <S.PostEditContainer>
+          </GS.PostModalGlobalContainer>
+          <GS.PostModalGlobalBoundary />
+          <GS.PostModalGlobalContainer>
             <PostEditEditor
               onEdit={handleEditPost}
               postData={editPost}
               onClose={onClose}
             />
-          </S.PostEditContainer>
-        </S.PostEditLayout>
+          </GS.PostModalGlobalContainer>
+        </GS.PostModalGlobalLayout>
       </PostEditAuthChecker>
     </Modal>
   )

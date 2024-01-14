@@ -35,6 +35,9 @@ export const PostEditUrlErrorMessage = styled.p`
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
   color: ${({ theme }) => theme.colors.point_alt};
+  word-break: keep-all;
+  text-align: center;
+  line-height: 1.4;
 
   user-select: none;
 `
