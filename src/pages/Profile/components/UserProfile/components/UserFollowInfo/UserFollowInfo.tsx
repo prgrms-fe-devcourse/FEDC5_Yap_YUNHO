@@ -1,10 +1,10 @@
+import { getConvertedCount } from "@/util/getConvertedCount"
 import * as S from "./UserFollowInfo.Styles"
 import CircleIcon from "@mui/icons-material/Circle"
-import { convertFollowCount } from "@/util/convertFollowCount"
 
 const UserFollowInfo = () => {
-  const following = convertFollowCount(44343324)
-  const follower = convertFollowCount(321)
+  const following = getConvertedCount(15000)
+  const follower = getConvertedCount(321)
 
   return (
     <S.UserFollowInfoLayout>
