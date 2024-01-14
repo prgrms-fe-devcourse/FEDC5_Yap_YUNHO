@@ -15,5 +15,6 @@ export const UserInfoLayout = styled.div`
   height: 16rem;
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
-  border: 1px solid red;
+  border-radius: ${({ theme }) => theme.radius.size8};
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
 `
