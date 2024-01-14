@@ -35,7 +35,7 @@ const useMenuClick = () => {
         navigate("/")
       })
       .catch((err) => {
-        console.log("로그아웃 오류", err)
+        console.error("로그아웃 오류", err)
       })
   }
 

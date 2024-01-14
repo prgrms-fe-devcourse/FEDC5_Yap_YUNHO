@@ -21,7 +21,7 @@ const MessageGroupList = () => {
         sender: others._id,
       })
     } catch (e) {
-      console.log(e, "메시지 읽음 처리 오류")
+      console.error(e, "메시지 읽음 처리 오류")
     }
   }
 

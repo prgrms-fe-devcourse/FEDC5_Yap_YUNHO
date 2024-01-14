@@ -33,7 +33,7 @@ const MessageInput = ({ othersUserId }: MessageInputProps) => {
     const { image } = await AUTH_API.get(`/auth-user`)
       .then((res) => res.data)
       .catch((e) => {
-        console.log(e, "이미지 요청 실패")
+        console.error(e, "이미지 요청 실패")
       })
     setMyProfileImg(image)
   }
