@@ -7,17 +7,22 @@ import PopoverPortal from "./components/PopoverPortal"
 interface PopoverProps {
   children: ReactNode
   isPostCard?: boolean
+  isLeft?: boolean
   innerComponent: React.ReactNode
 }
 
-const Popover = ({ children, isPostCard, innerComponent }: PopoverProps) => {
+const Popover = ({
+  children,
+  isPostCard,
+  innerComponent,
+  isLeft,
+}: PopoverProps) => {
   const { hoverRef, isHover, refPosition } = useHover()
   const innerComponentRef = useRef<HTMLDivElement>(null)
   const [layoutPosition, setLayoutPosition] = useState({
     top: 0,
-    bottom: 0,
+
     left: 0,
-    right: 0,
   })
 
   useEffect(() => {
@@ -25,9 +30,20 @@ const Popover = ({ children, isPostCard, innerComponent }: PopoverProps) => {
     if (!current) {
       return
     }
+
     const innerComponentPosition = current.getBoundingClientRect()
-    const windowWidth = window.innerWidth
-    const windowHieght = window.innerHeight
+
+    if (isLeft) {
+      const topRange = refPosition.top
+      const leftRage = refPosition.left - innerComponentPosition.width
+
+      setLayoutPosition(() => ({
+        top: topRange - 10,
+        left: leftRage,
+      }))
+
+      return
+    }
 
     const topRange = refPosition.top + refPosition.height
     const leftRange =
@@ -35,12 +51,11 @@ const Popover = ({ children, isPostCard, innerComponent }: PopoverProps) => {
       refPosition.width / 2 -
       innerComponentPosition.width / 2
 
-    setLayoutPosition((state) => ({
-      ...state,
+    setLayoutPosition(() => ({
       top: topRange,
       left: leftRange,
     }))
-  }, [refPosition])
+  }, [isLeft, refPosition])
 
   return (
     <S.PopoverProvider

@@ -16,12 +16,7 @@ export const PopoverInnerLayout = styled.div<{
   $top: number
   $left: number
 }>`
-  /* width: 20rem;
-  height: 14rem; */
-
   position: absolute;
   top: ${({ $top }) => `${$top}px`};
   left: ${({ $left }) => `${$left}px`};
-
-  background-color: ${({ theme }) => theme.colors.sub_alt};
 `
