@@ -9,12 +9,14 @@ const NavbarLoggedInMenu = ({
   return (
     <NavbarMenuList $isToggle={$isToggle}>
       <NavbarMenuItem handleMenuClick={handleMenuClick}>
-        게시물 생성
+        {"게시물 생성"}
       </NavbarMenuItem>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>DM</NavbarMenuItem>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>알림</NavbarMenuItem>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>{"DM"}</NavbarMenuItem>
       <NavbarMenuItem handleMenuClick={handleMenuClick}>
-        로그아웃
+        {"알림"}
+      </NavbarMenuItem>
+      <NavbarMenuItem handleMenuClick={handleMenuClick}>
+        {"로그아웃"}
       </NavbarMenuItem>
     </NavbarMenuList>
   )

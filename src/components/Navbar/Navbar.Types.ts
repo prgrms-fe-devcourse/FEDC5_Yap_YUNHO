@@ -1,7 +1,9 @@
-export type HandleMenuClickProps = (menu: string) => void
+export type MenuType = string
+
+export type HandleMenuClickProps = (menu: MenuType) => void
 
 export interface NavbarMenuProps {
   handleMenuClick: HandleMenuClickProps
   $isToggle?: boolean
-  children?: string
+  children?: MenuType
 }

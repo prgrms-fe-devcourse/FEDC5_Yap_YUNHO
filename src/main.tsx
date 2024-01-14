@@ -16,6 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <GlobalStyles />
         <App />
         <S.ModalPlace id="modal" />
+        <S.PopoverPlace id="popover" />
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>,
