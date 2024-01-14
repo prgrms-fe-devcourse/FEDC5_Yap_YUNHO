@@ -30,7 +30,7 @@ const YAPRoute = () => {
           element={<UserEdit />}
         />
         <Route
-          path="/profile/:id?"
+          path="/profile/:id"
           element={<Profile />}
         />
         {/* query string Category 구별 */}

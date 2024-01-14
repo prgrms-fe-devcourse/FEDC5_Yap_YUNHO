@@ -15,7 +15,7 @@ import useMenuClick from "../../hooks/useNavMenuClick"
 import CloseIcon from "@mui/icons-material/Close"
 
 const NavbarRightList = () => {
-  const { isLoggedIn } = useAuthUserStore()
+  const { isLoggedIn, myId } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
   const { handleMenuClick, PostEditModal } = useMenuClick()
 
@@ -47,7 +47,7 @@ const NavbarRightList = () => {
       {/* 프로필 버튼*/}
       <NavbarButton
         onClick={() => {
-          navigate("/profile")
+          navigate(`/profile/${myId}`)
         }}
       >
         <S.NavbarProfile
