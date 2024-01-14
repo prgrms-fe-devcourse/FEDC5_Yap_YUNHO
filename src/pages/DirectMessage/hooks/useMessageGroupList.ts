@@ -16,17 +16,15 @@ const useMessageGroupList = () => {
 
     select: (GroupMessageList: Conversation[]) =>
       GroupMessageList.map((MessageList) => {
-        // 최근에 보낸 메시지가 내가 보낸거면 채팅을 하고 있거나 읽음 처리
-        if (
-          myId === MessageList.sender._id ||
-          othersUserId === MessageList.sender._id
-        ) {
-          return {
-            ...MessageList,
-            seen: true,
-          }
+        // 최근에 보낸 메시지가 내가 보낸거거나 채팅을 하고 있을때 자동으로 읽음 처리
+        return {
+          ...MessageList,
+          seen:
+            myId === MessageList.sender._id ||
+            othersUserId === MessageList.sender._id
+              ? true
+              : MessageList.seen,
         }
-        return MessageList
       }),
   })
   return { data }

@@ -28,15 +28,18 @@ const useSendMessage = () => {
     mutationFn: sendMessageAPI,
     onSuccess: (data) => {
       const { _id: messageId } = data
-      // 그룹 메시지 목록 업데이트
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
-      })
       // 메시지 목록 업데이트
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGELIST] })
       if (!othersUserId) {
         return
       }
+
+      // 그룹 메시지 목록 업데이트
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
+      })
+
+      // 상대방에게 알림 보내기
       const NotificationSubmission: SendNotificationProps = {
         notificationType: "COMMENT",
         notificationTypeId: messageId,

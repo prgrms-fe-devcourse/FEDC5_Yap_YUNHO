@@ -10,8 +10,8 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import { AUTH_API } from "@/apis/Api"
 
 const MessageGroupList = () => {
-  const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
   const navigate = useNavigate()
+  const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
   const { data: MessageGroupList } = useMessageGroupList()
   const { myId } = useAuthUserStore()
 
