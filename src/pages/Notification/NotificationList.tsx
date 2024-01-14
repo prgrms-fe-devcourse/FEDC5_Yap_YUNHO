@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import * as S from "./Notification.Styles"
 import NotificationItem from "./NotificationItem"
 import { Notification } from "@/types/index"
@@ -7,15 +8,27 @@ interface DUMMY_DATA_PROPS {
 }
 
 const NotificationList = ({ DUMMY_DATA }: DUMMY_DATA_PROPS) => {
-  console.log(DUMMY_DATA[0])
-  const handleClick = () => {
-    console.log("버튼 테스트")
+  const navigate = useNavigate()
+  const handleClick = (NotificationType: string, NavigationId: string) => {
+    navigate(`/${NotificationType}/${NavigationId}`)
   }
   return (
     <S.NotificationListLayout>
       <NotificationItem
         handleClick={handleClick}
         Notification={DUMMY_DATA[0]}
+      />
+      <NotificationItem
+        handleClick={handleClick}
+        Notification={DUMMY_DATA[1]}
+      />
+      <NotificationItem
+        handleClick={handleClick}
+        Notification={DUMMY_DATA[2]}
+      />
+      <NotificationItem
+        handleClick={handleClick}
+        Notification={DUMMY_DATA[3]}
       />
     </S.NotificationListLayout>
   )
