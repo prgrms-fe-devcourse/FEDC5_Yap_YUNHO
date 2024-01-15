@@ -22,6 +22,7 @@ const useLikePost = () => {
         postId: response.post,
         userId: response.user,
       })
+
       queryClient.refetchQueries()
     },
     onError: () => {

@@ -16,8 +16,6 @@ const useFetchFollow = () => {
     mutationKey: [FETCH_MUTATION_FOLLOW_KEY],
     mutationFn: fetchFollow,
     onSuccess: (response: Follow) => {
-      queryClient.refetchQueries()
-
       sendNotification({
         notificationType: "FOLLOW",
         userId: response.user,
@@ -27,6 +25,8 @@ const useFetchFollow = () => {
       AUTH_API.get("/auth-user")
         .then((res) => res.data)
         .then((data) => updateUser(data))
+
+      queryClient.refetchQueries()
     },
     onError: () => {
       showModal()

@@ -17,6 +17,7 @@ const useSendComment = () => {
         userId: response.author._id,
         postId: response.post,
       })
+
       queryClient.refetchQueries()
     },
   })
