@@ -11,6 +11,7 @@ const NotificationList = ({
   NotificationListData,
 }: NotificationListDataProps) => {
   const navigate = useNavigate()
+  console.log(NotificationListData)
   const handleClick = (NotificationType: string, NavigationId: string) => {
     navigate(`/${NotificationType}/${NavigationId}`)
   }

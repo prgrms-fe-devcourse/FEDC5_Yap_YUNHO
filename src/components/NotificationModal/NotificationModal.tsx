@@ -11,7 +11,6 @@ interface NotificationModalProps {
 
 const NotificationModal = ({ isShow, onClose }: NotificationModalProps) => {
   const { data: NotificationListData } = useGetNotification()
-  console.log(NotificationListData)
   return (
     <CustomModal
       isShow={isShow}

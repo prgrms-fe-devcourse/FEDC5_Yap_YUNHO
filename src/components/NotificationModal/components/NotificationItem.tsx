@@ -1,7 +1,15 @@
 import MessageProfile from "../../../pages/DirectMessage/components/MessageGroupList/MessageProfile"
 import * as S from "./Notification.Styles"
 import { Notification } from "../../../types/index"
+import { Message, Like, Follow, PostComment, Post } from "@/types"
 
+interface GetNotificationTypeProps {
+  message: Message
+  like: Like
+  follow: Follow
+  comment: PostComment
+  post: Post
+}
 interface NotificationItemProps {
   handleClick: (NotificationType: string, NavigationId: string) => void
   Notification: Notification
@@ -10,10 +18,49 @@ const NotificationItem = ({
   handleClick,
   Notification: notificationItem,
 }: NotificationItemProps) => {
-  const { _id, createdAt, author, user, message, like, comment, follow } =
+  const { createdAt, author, user, message, like, comment, follow, post } =
     notificationItem
+
   if (typeof user === "string") {
     return
+  }
+
+  const getNotificationType = ({
+    message,
+    like,
+    comment,
+    follow,
+    post,
+  }: GetNotificationTypeProps) => {
+    if (message) {
+      return {
+        NOTIFITYPE: "MESSAGE",
+        NOTIFI_LANGUAGE: "메시지를 보냈습니다",
+      }
+    }
+    if (post && like) {
+      return {
+        NOTIFITYPE: "LIKE",
+        NOTIFI_LANGUAGE: "게시물에 좋아요를 눌렀습니다",
+      }
+    }
+    if (post && comment) {
+      return {
+        NOTIFITYPE: "COMMENT",
+        NOTIFI_LANGUAGE: "게시물에 댓글을 달았습니다",
+      }
+    }
+
+    if (post && follow) {
+      return {
+        NOTIFITYPE: "FOLLOW",
+        NOTIFI_LANGUAGE: "팔로우를 하였습니다",
+      }
+    }
+    return {
+      NOTIFITYPE: "ERROR",
+      NOTIFI_LANGUAGE: "잘못보냈습니다",
+    }
   }
 
   const { _id: othersUserId } = author // 메시지
@@ -25,19 +72,18 @@ const NotificationItem = ({
     return
   }
 
-  const NotificationType =
-    comment || like
-      ? "postdetail"
-      : follow
-        ? "profile"
-        : message
-          ? "directmessage"
-          : "undefined"
+  const { NOTIFITYPE, NOTIFI_LANGUAGE } = getNotificationType({
+    message,
+    like,
+    comment,
+    follow,
+    post,
+  })
 
   return (
     <S.NotificationItemLayout
       onClick={() => {
-        handleClick(NotificationType, NavigationId)
+        handleClick(NOTIFITYPE, NavigationId)
       }}
     >
       <S.NotificationItemContainer>
@@ -50,7 +96,7 @@ const NotificationItem = ({
             {author.fullName}
           </S.NotificationItemUserName>
           <S.NotificationItemContent>
-            {author.fullName}님이 댓글을 달았습니다.
+            {author.fullName}님이 {NOTIFI_LANGUAGE}
           </S.NotificationItemContent>
           <S.NotificationItemDate>
             {createdAt.slice(0, 10)}
