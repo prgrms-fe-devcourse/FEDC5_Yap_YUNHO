@@ -10,7 +10,11 @@ const useGetNotification = () => {
     queryFn: getNotificationAPI,
     initialData: [],
     select: (data) => {
-      return data.filter((notification: Notification) => !notification.seen)
+      return data.filter(
+        (notification: Notification) =>
+          !notification.seen &&
+          notification.author._id !== notification.user._id,
+      )
     },
   })
 
