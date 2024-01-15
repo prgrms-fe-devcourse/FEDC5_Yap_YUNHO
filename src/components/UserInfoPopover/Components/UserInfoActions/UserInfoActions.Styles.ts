@@ -7,8 +7,6 @@ export const UserInfoTopLayout = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-
-  border: 1px solid red;
 `
 
 const hoverEffect = css`

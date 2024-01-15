@@ -6,14 +6,17 @@ export const UserInfoNickNameLayout = styled.div`
 
   display: flex;
   align-items: center;
-
-  border: 1px solid red;
 `
 
 export const UserInfoNickNameText = styled.h6`
   width: 22rem;
 
+  display: flex;
+
+  background-color: ${({ theme }) => theme.colors.sub_alt};
+
   font-size: ${({ theme }) => theme.fontSizes.large};
+  color: ${({ theme }) => theme.colors.white};
 
   overflow-x: hidden;
   text-overflow: ellipsis;
