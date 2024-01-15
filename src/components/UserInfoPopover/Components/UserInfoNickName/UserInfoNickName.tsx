@@ -6,9 +6,14 @@ interface UserInfoNickNameProps {
 }
 
 const UserInfoNickName = ({ user }: UserInfoNickNameProps) => {
+  console.log(user)
+
   return (
     <S.UserInfoNickNameLayout>
-      <S.UserInfoNickNameText>{user.fullName}</S.UserInfoNickNameText>
+      <S.UserInfoActions>
+        <S.UserInfoButtons>DM</S.UserInfoButtons>
+        <S.UserInfoButtons>언 팔로우</S.UserInfoButtons>
+      </S.UserInfoActions>
     </S.UserInfoNickNameLayout>
   )
 }

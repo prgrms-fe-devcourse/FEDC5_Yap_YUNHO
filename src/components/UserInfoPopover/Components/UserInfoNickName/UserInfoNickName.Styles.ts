@@ -8,16 +8,26 @@ export const UserInfoNickNameLayout = styled.div`
   align-items: center;
 `
 
-export const UserInfoNickNameText = styled.h6`
-  width: 22rem;
+export const UserInfoActions = styled.div`
+  width: 16rem;
+  height: 6rem;
 
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+`
 
-  background-color: ${({ theme }) => theme.colors.sub_alt};
+export const UserInfoButtons = styled.button`
+  width: 7rem;
+  height: 3.5rem;
 
-  font-size: ${({ theme }) => theme.fontSizes.large};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size4};
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
 
-  overflow-x: hidden;
-  text-overflow: ellipsis;
+  transition: ${({ theme }) => theme.transition.normal};
+  &:hover {
+    opacity: ${({ theme }) => theme.opacity.normal};
+  }
 `
