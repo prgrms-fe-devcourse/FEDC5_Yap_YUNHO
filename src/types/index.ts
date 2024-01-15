@@ -75,7 +75,7 @@ export interface Notification {
   _id: string
   author: User
   user: User | string
-  post: string | null // 포스트 id
+  post?: string // 포스트 id
   follow?: string // 사용자 id
   comment?: string
   message?: string // 메시지 id

@@ -10,10 +10,10 @@ interface NotificationListDataProps {
 const NotificationList = ({
   NotificationListData,
 }: NotificationListDataProps) => {
-  const navigate = useNavigate()
   console.log(NotificationListData)
-  const handleClick = (NotificationType: string, NavigationId: string) => {
-    navigate(`/${NotificationType}/${NavigationId}`)
+  const navigate = useNavigate()
+  const handleClick = (NOTIFI_NAVIGATION: string) => {
+    navigate(`/${NOTIFI_NAVIGATION}`)
   }
   return (
     <S.NotificationListLayout>
