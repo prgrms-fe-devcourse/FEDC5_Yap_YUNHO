@@ -12,7 +12,7 @@ import AlertModal from "../Modal/components/AlertModal/AlertModal"
 const Navbar = () => {
   const { isShowModal, showModal, closeModal } = useModal()
 
-  const { updateUser, setLogout } = useAuthUserStore()
+  const { updateUser } = useAuthUserStore()
 
   useEffect(() => {
     const hasToken = authToken.getToken()
@@ -24,9 +24,8 @@ const Navbar = () => {
       .then((res) => updateUser(res.data))
       .catch(() => {
         showModal()
-        setLogout()
       })
-  }, [updateUser, setLogout, showModal])
+  }, [updateUser, showModal])
 
   const { pathname } = useLocation()
   const NavbarFlag = checkPathName(pathname)

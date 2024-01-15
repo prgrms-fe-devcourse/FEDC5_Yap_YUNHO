@@ -48,14 +48,16 @@ export const NotificationDeleteButton = styled.button`
 // 리스트
 export const NotificationListLayout = styled.div`
   width: 100%;
-  height: calc(100% - 5rem);
+  height: 30rem;
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size20};
   display: flex;
   flex-direction: column;
   gap: 3rem;
   ${({ theme }) => theme.scrollBar};
-  overflow-y: auto;
+  overflow-y: scroll;
+
+  height: 45rem;
 `
 
 // 아이템

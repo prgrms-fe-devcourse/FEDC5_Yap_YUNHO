@@ -1,6 +1,6 @@
-import MessageProfile from "../DirectMessage/components/MessageGroupList/MessageProfile"
+import MessageProfile from "../../../pages/DirectMessage/components/MessageGroupList/MessageProfile"
 import * as S from "./Notification.Styles"
-import { Notification } from "./../../types/index"
+import { Notification } from "../../../types/index"
 
 interface NotificationItemProps {
   handleClick: (NotificationType: string, NavigationId: string) => void
@@ -10,7 +10,6 @@ const NotificationItem = ({
   handleClick,
   Notification: notificationItem,
 }: NotificationItemProps) => {
-  console.log(notificationItem.like)
   const { _id, createdAt, author, user, message, like, comment, follow } =
     notificationItem
   if (typeof user === "string") {

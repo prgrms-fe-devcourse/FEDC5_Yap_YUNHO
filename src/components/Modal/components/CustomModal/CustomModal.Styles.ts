@@ -34,6 +34,7 @@ export const CustomModalContent = styled.div<{
 }>`
   width: ${({ $width }) => `${$width}rem`};
   height: ${({ $height }) => `${$height}rem`};
+  ${({ theme }) => theme.scrollBar};
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size12};

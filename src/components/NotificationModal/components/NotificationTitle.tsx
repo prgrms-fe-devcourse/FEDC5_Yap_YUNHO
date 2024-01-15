@@ -1,12 +1,14 @@
 import * as S from "./Notification.Styles"
-import { Notification } from "./../../types/index"
+import { Notification } from "../../../types/index"
 
 interface NotificationTitleProps {
-  DUMMY_DATA: Notification[]
+  NotificationListData: Notification[]
 }
 
-const NotificationTitle = ({ DUMMY_DATA }: NotificationTitleProps) => {
-  const NotificationLength = DUMMY_DATA?.filter(
+const NotificationTitle = ({
+  NotificationListData,
+}: NotificationTitleProps) => {
+  const NotificationLength = NotificationListData?.filter(
     (notification: Notification) => {
       return !notification.seen
     },

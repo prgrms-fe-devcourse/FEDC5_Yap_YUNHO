@@ -1,8 +1,8 @@
-import DUMMY_DATA from "@/pages/Notification/constants/DUMMY_DATA"
-import CustomModal from "../Modal/components/CustomModal/CustomModal"
-import NotificationTitle from "./../../pages/Notification/NotificationTitle"
-import NotificationList from "@/pages/Notification/NotificationList"
 import * as S from "./NotificationModal.Styles"
+import useGetNotification from "./hooks/useGetNotification"
+import NotificationTitle from "./components/NotificationTitle"
+import NotificationList from "./components/NotificationList"
+import CustomModal from "../Modal/components/CustomModal/CustomModal"
 
 interface NotificationModalProps {
   isShow: boolean
@@ -10,6 +10,8 @@ interface NotificationModalProps {
 }
 
 const NotificationModal = ({ isShow, onClose }: NotificationModalProps) => {
+  const { data: NotificationListData } = useGetNotification()
+  console.log(NotificationListData)
   return (
     <CustomModal
       isShow={isShow}
@@ -18,8 +20,8 @@ const NotificationModal = ({ isShow, onClose }: NotificationModalProps) => {
       $height={54}
     >
       <S.NotificationContainer>
-        <NotificationTitle DUMMY_DATA={DUMMY_DATA} />
-        <NotificationList DUMMY_DATA={DUMMY_DATA} />
+        <NotificationTitle NotificationListData={NotificationListData} />
+        <NotificationList NotificationListData={NotificationListData} />
       </S.NotificationContainer>
     </CustomModal>
   )

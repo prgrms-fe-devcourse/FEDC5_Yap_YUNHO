@@ -8,9 +8,6 @@ const useGetNotification = () => {
     queryKey: [QUERY_KEY_GET_NOTIFICATION],
     queryFn: getNotificationAPI,
     initialData: [],
-    refetchInterval: 5000,
-
-    select: () => {},
   })
 
   return { data }

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { DirectMessage, Home, Login, Profile, Signup, UserEdit } from "@/pages"
 import Navbar from "@/components/Navbar/Navbar"
-import Notification from "@/pages/Notification/Notification"
 
 const YAPRoute = () => {
   return (
@@ -43,10 +42,6 @@ const YAPRoute = () => {
         <Route
           path="/search"
           element={<></>}
-        />
-        <Route
-          path="/notification"
-          element={<Notification />}
         />
 
         <Route
