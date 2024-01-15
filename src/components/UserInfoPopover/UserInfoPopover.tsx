@@ -24,7 +24,7 @@ const UserInfoPopover = ({
     <S.UserInfoBackground>
       <S.UserInfoLayout>
         <UserInfoProfile user={user} />
-        <UserInfoActions user={user} />
+        <UserInfoActions author={user} />
         <UserInfoFollowStatus user={user} />
       </S.UserInfoLayout>
     </S.UserInfoBackground>
