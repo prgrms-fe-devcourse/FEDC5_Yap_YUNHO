@@ -7,12 +7,16 @@ import { AUTH_API } from "@/apis/Api"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 
+const USER_PROFILE_QUERY_KEY = "USER_PROFILE_QUERY_KEY"
+
 const UserProfile = () => {
   const { id } = useParams()
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["1234", id],
+    queryKey: [USER_PROFILE_QUERY_KEY, id],
     queryFn: () => AUTH_API.get(`/users/${id}`).then((res) => res.data),
+    staleTime: 1000 * 60 * 5,
+    gcTime: 1000 * 60 * 10,
   })
 
   if (isLoading || isError) {
