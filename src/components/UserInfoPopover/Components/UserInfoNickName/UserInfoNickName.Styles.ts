@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const UserInfoActionLayout = styled.div`
+export const UserInfoNickNameLayout = styled.div`
   width: 22rem;
   height: 4rem;
 
