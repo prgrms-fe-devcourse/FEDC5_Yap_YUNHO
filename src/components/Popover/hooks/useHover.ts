@@ -35,7 +35,6 @@ const useHover = () => {
       current.removeEventListener("mouseleave", handleMouseLeave)
     }
   }, [])
-  console.log(refPosition)
 
   return {
     hoverRef,
