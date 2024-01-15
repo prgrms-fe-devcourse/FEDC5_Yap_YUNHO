@@ -5,15 +5,17 @@ import { Notification } from "@/types/index"
 
 interface NotificationListDataProps {
   NotificationListData: Notification[]
+  onClose: () => void
 }
 
 const NotificationList = ({
   NotificationListData,
+  onClose,
 }: NotificationListDataProps) => {
-  console.log(NotificationListData)
   const navigate = useNavigate()
   const handleClick = (NOTIFI_NAVIGATION: string) => {
     navigate(`/${NOTIFI_NAVIGATION}`)
+    onClose()
   }
   return (
     <S.NotificationListLayout>

@@ -20,7 +20,10 @@ const NotificationModal = ({ isShow, onClose }: NotificationModalProps) => {
     >
       <S.NotificationContainer>
         <NotificationTitle NotificationListData={NotificationListData} />
-        <NotificationList NotificationListData={NotificationListData} />
+        <NotificationList
+          NotificationListData={NotificationListData}
+          onClose={onClose}
+        />
       </S.NotificationContainer>
     </CustomModal>
   )
