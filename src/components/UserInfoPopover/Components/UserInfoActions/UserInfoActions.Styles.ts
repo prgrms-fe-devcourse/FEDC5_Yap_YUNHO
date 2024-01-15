@@ -6,6 +6,7 @@ export const UserInfoTopLayout = styled.div`
 
   display: flex;
   align-items: center;
+  gap: 1rem;
 
   border: 1px solid red;
 `
@@ -20,4 +21,11 @@ export const UserInfoProfile = styled.div<{ $url: string }>`
   background-image: url(${({ $url }) => $url});
   background-size: cover;
   background-position: center;
+`
+
+export const UserInfoActions = styled.div`
+  width: 16rem;
+  height: 6rem;
+
+  border: 1px solid red;
 `

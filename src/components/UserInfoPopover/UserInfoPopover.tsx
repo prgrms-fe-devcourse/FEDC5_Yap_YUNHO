@@ -1,6 +1,6 @@
 import * as S from "./UserInfoPopover.Styles"
 import Popover from "../Popover/Popover"
-import UserInfoTop from "./Components/UserInfoTop/UserInfoTop"
+import UserInfoActions from "./Components/UserInfoActions/UserInfoActions"
 import UserInfoFollowAction from "./Components/UserInfoFollowAction/UserInfoFollowAction"
 import UserInfoAction from "./Components/UserInfoAction/UserInfoAction"
 import { User } from "@/types"
@@ -23,7 +23,7 @@ const UserInfoPopover = ({
   const UserInfoComponent = (
     <S.UserInfoBackground>
       <S.UserInfoLayout>
-        <UserInfoTop user={user} />
+        <UserInfoActions user={user} />
         <UserInfoFollowAction />
         <UserInfoAction />
       </S.UserInfoLayout>
