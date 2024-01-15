@@ -4,5 +4,20 @@ export const UserInfoTopLayout = styled.div`
   height: 6rem;
   width: 22rem;
 
+  display: flex;
+  align-items: center;
+
   border: 1px solid red;
+`
+
+export const UserInfoProfile = styled.div<{ $url: string }>`
+  width: 5rem;
+  height: 5rem;
+
+  border-radius: ${({ theme }) => theme.radius.circle};
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
+
+  background-image: url(${({ $url }) => $url});
+  background-size: cover;
+  background-position: center;
 `

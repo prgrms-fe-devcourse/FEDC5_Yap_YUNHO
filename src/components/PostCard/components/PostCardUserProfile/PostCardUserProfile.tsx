@@ -16,6 +16,7 @@ const PostCardUserProfile = ({
         <S.PostCardUserProfileImgLayout>
           <UserInfoPopover
             isPostCard={true}
+            isRight={true}
             user={author}
           >
             <S.PostCardUserProfileImg

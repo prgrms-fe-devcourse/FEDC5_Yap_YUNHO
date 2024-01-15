@@ -20,12 +20,10 @@ const UserInfoPopover = ({
   isLeft,
   isRight,
 }: UserInfoDropDownProps) => {
-  console.log(user)
-
   const UserInfoComponent = (
     <S.UserInfoBackground>
       <S.UserInfoLayout>
-        <UserInfoTop />
+        <UserInfoTop user={user} />
         <UserInfoFollowAction />
         <UserInfoAction />
       </S.UserInfoLayout>
