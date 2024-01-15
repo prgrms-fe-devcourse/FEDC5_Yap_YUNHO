@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import * as S from "./UserProfile.Styles"
 import UserActions from "./components/UserActions/UserActions"
 import UserFollowInfo from "./components/UserFollowInfo/UserFollowInfo"
@@ -6,31 +5,28 @@ import UserNickname from "./components/UserNickname"
 import UserProfileImage from "./components/UserProfileImage"
 import { AUTH_API } from "@/apis/Api"
 import { useParams } from "react-router-dom"
-import { User } from "@/types"
+import { useQuery } from "@tanstack/react-query"
 
 const UserProfile = () => {
   const { id } = useParams()
-  const [userInfo, setUserInfo] = useState<User>()
-  const [followerCount, setFollowerCount] = useState(0)
 
-  useEffect(() => {
-    AUTH_API.get(`/users/${id}`).then((res) => {
-      setUserInfo(res.data)
-      setFollowerCount(res.data.followers.length)
-    })
-  }, [id, setUserInfo])
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["1234", id],
+    queryFn: () => AUTH_API.get(`/users/${id}`).then((res) => res.data),
+  })
+
+  if (isLoading || isError) {
+    return
+  }
 
   return (
     <S.UserProfileLayout>
-      <UserProfileImage image={userInfo?.image} />
-      <UserNickname nickName={userInfo?.fullName} />
-      <UserActions
-        onFollowButtonClick={() => setFollowerCount((state) => state + 1)}
-        onUnFollowButtonClick={() => setFollowerCount((state) => state - 1)}
-      />
+      <UserProfileImage image={data.image} />
+      <UserNickname nickName={data.fullName} />
+      <UserActions />
       <UserFollowInfo
-        followingCount={userInfo?.following.length}
-        followerCount={followerCount}
+        followingCount={data.following.length}
+        followerCount={data.followers.length}
       />
     </S.UserProfileLayout>
   )

@@ -3,18 +3,14 @@ import * as S from "./UserFollowInfo.Styles"
 import CircleIcon from "@mui/icons-material/Circle"
 
 interface UserFollowInfoProps {
-  followingCount?: number
-  followerCount?: number
+  followingCount: number
+  followerCount: number
 }
 
 const UserFollowInfo = ({
   followingCount,
   followerCount,
 }: UserFollowInfoProps) => {
-  if (followingCount === undefined || followerCount === undefined) {
-    return
-  }
-
   const following = getConvertedCount(followingCount)
   const follower = getConvertedCount(followerCount)
 

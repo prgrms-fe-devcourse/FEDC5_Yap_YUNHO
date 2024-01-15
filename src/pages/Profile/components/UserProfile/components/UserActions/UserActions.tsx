@@ -7,15 +7,7 @@ import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModa
 import { NOT_LOGIN_MODAL_MESSAGE } from "@/constants/modalMessage"
 import useModal from "@/components/Modal/hooks/useModal"
 
-interface UserActionsProps {
-  onFollowButtonClick: () => void
-  onUnFollowButtonClick: () => void
-}
-
-const UserActions = ({
-  onFollowButtonClick,
-  onUnFollowButtonClick,
-}: UserActionsProps) => {
+const UserActions = () => {
   const navigate = useNavigate()
   const { isShowModal, showModal, closeModal } = useModal()
 
@@ -28,7 +20,6 @@ const UserActions = ({
       showModal()
       return
     }
-    console.log(isDMPage)
 
     if (isDMPage) {
       navigate(`/directmessage/${id}`)
@@ -54,11 +45,7 @@ const UserActions = ({
         />
       ) : (
         <>
-          <UserFollowActionButton
-            onFollowButtonClick={onFollowButtonClick}
-            onUnFollowButtonClick={onUnFollowButtonClick}
-            onClick={handleClickButton}
-          />
+          <UserFollowActionButton onClick={handleClickButton} />
           <UserActionButton
             text="DM 보내기"
             $width={9}
