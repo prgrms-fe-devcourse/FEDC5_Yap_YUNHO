@@ -14,12 +14,10 @@ const UserProfile = () => {
   const [followerCount, setFollowerCount] = useState(0)
 
   useEffect(() => {
-    AUTH_API.get(`/users/${id}`)
-      .then((res) => res.data)
-      .then((data) => {
-        setUserInfo(data)
-        setFollowerCount(data.followers.length)
-      })
+    AUTH_API.get(`/users/${id}`).then((res) => {
+      setUserInfo(res.data)
+      setFollowerCount(res.data.followers.length)
+    })
   }, [id, setUserInfo])
 
   return (
