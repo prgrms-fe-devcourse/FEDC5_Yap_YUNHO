@@ -8,6 +8,7 @@ import kolocale from "timeago.js/lib/lang/ko"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
+import UserInfoPopover from "@/components/UserInfoPopover/UserInfoPopover"
 
 interface PostCommentItemProps {
   comment: PostComment
@@ -38,7 +39,12 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
   return (
     <>
       <S.PostCommentItemLayout>
-        <S.PostCommentItemUserProfile $profile={author.image} />
+        <UserInfoPopover
+          user={author}
+          isLeft={true}
+        >
+          <S.PostCommentItemUserProfile $profile={author.image} />
+        </UserInfoPopover>
         <S.PostCommentItemContainer>
           <S.PostCommentItemInfo>
             {`${author.fullName}`}
