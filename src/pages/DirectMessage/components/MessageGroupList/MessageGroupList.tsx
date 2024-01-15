@@ -6,14 +6,14 @@ import decideChatUserName from "../../utils/decideChatUserName"
 import useMessageGroupList from "../../hooks/useMessageGroupList"
 import MessageGroupItem from "./MessageGroupItem"
 import { handleMessageGroupClickProps } from "../../DirectMessage.Types"
-import useAuthUserStore from "@/stores/useAuthUserStore"
 import { AUTH_API } from "@/apis/Api"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 const MessageGroupList = () => {
   const navigate = useNavigate()
   const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
   const { data: MessageGroupList } = useMessageGroupList()
-  const { myId } = useAuthUserStore()
+  const { user } = useAuthUserStore()
 
   const updateSeenMessage = async (others: User) => {
     try {
@@ -30,7 +30,6 @@ const MessageGroupList = () => {
     receiver,
     sender,
   }: handleMessageGroupClickProps) => {
-    // 상대방의 아이디
     const others = decideChatUserName({ myId, receiver, sender })
     navigate(`/directmessage/${others._id}`)
     setSelectedMessageGroupId(others._id)
@@ -57,17 +56,22 @@ const MessageGroupList = () => {
         </S.MessageGroupListNotSeenNumber>
       </S.MessageGroupListInfo>
       <S.MessageGroupListContainer>
-        {MessageGroupList?.map((user: Conversation) => {
-          const { receiver, sender } = user
-          const others = decideChatUserName({ myId, receiver, sender })
+        {MessageGroupList?.map((messageGroupItem: Conversation) => {
+          const { receiver, sender } = messageGroupItem
+
+          const others = decideChatUserName({
+            myId: user._id,
+            receiver,
+            sender,
+          })
 
           return (
             <MessageGroupItem
-              key={user.createdAt}
-              receiver={user.receiver}
-              message={user.message}
-              sender={user.sender}
-              createdAt={user.createdAt}
+              key={messageGroupItem.createdAt}
+              receiver={messageGroupItem.receiver}
+              message={messageGroupItem.message}
+              sender={messageGroupItem.sender}
+              createdAt={messageGroupItem.createdAt}
               isOnline={others.isOnline}
               selectedMessageGroupId={selectedMessageGroupId}
               handleMessageGroupClick={handleMessageGroupClick}

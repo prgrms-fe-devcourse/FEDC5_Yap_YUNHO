@@ -14,16 +14,16 @@ const MessageGroupItem = ({
   selectedMessageGroupId,
   profileImg,
 }: MessageGroupItemProps) => {
-  const { myId } = useAuthUserStore()
+  const { user } = useAuthUserStore()
 
   return (
     <S.MessageItemLayout
       onClick={() => {
-        handleMessageGroupClick({ myId, receiver, sender })
+        handleMessageGroupClick({ myId: user._id, receiver, sender })
       }}
       $isSelect={
         selectedMessageGroupId ===
-        decideChatUserName({ myId, receiver, sender })._id
+        decideChatUserName({ myId: user._id, receiver, sender })._id
       }
     >
       <MessageProfile
@@ -33,7 +33,7 @@ const MessageGroupItem = ({
 
       <S.MessageGroupItemChat>
         <S.MessageGroupItemUserName>
-          {decideChatUserName({ myId, receiver, sender }).fullName}
+          {decideChatUserName({ myId: user._id, receiver, sender }).fullName}
         </S.MessageGroupItemUserName>
         <S.MessageGroupItemContent>{message}</S.MessageGroupItemContent>
         <S.MessageGroupItemChatDate>

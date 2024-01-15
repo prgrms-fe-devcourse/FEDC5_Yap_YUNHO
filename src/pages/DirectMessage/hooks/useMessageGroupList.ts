@@ -6,7 +6,8 @@ import getMessageGroupListAPI from "../apis/getMessageGroupListAPI"
 export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
 
 const useMessageGroupList = () => {
-  const { myId } = useAuthUserStore()
+  const { user } = useAuthUserStore()
+  const myId = user._id
   const { id: othersUserId } = useParams()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
