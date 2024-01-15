@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const UserInfoFollowAction = styled.div`
+export const UserInfoFollowStatusLayout = styled.div`
   width: 22rem;
   height: 4rem;
 
