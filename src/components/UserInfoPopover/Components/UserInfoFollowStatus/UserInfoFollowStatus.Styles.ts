@@ -2,22 +2,25 @@ import styled from "styled-components"
 
 export const UserInfoFollowStatusLayout = styled.div`
   width: 22rem;
-  height: 4rem;
+  height: 4.5rem;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+
   border-radius: ${({ theme }) => theme.radius.size4};
-  background-color: ${({ theme }) => theme.colors.white};
 `
 
 export const UserInfoFollowStatus = styled.p`
   width: 11rem;
-  height: 3rem;
+  height: 2rem;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  color: ${({ theme }) => theme.colors.white};
   white-space: nowrap;
 `

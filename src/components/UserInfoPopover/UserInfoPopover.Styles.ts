@@ -17,7 +17,7 @@ export const UserInfoLayout = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size8};
