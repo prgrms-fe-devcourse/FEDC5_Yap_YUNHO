@@ -5,7 +5,6 @@ import PostEditViewer from "./components/PostEditViewer/PostEditViewer"
 import { POST_EDIT_INITIAL_EDIT_POST } from "./constants/PostEdit.Constants"
 import { EditPostState, HandleEditPost } from "./PostEdit.Types"
 import getThumbnailByUrl from "@/util/getThumbnailByUrl"
-import { useParams } from "react-router-dom"
 import { API } from "@/apis/Api"
 import { JSONPost, PostContent } from "@/types"
 import PostEditAuthChecker from "./components/PostEditAuthChecker"
@@ -13,22 +12,21 @@ import Modal from "../Modal/Modal"
 import usePostEditModalStore from "./stores/usePostEditModalStore"
 
 interface PostEditProps {
-  onClose: () => void
+  postId: string
 }
 
-const PostEdit = ({ onClose }: PostEditProps) => {
-  const { id } = useParams()
-  const { isShowEditModal } = usePostEditModalStore()
+const PostEdit = ({ postId }: PostEditProps) => {
+  const { isShowEditModal, closeEditModal } = usePostEditModalStore()
   const [editPost, setEditPost] = useState<EditPostState>(
     POST_EDIT_INITIAL_EDIT_POST,
   )
 
   useEffect(() => {
-    if (!id || id === "newPost") {
+    if (!postId || postId === "newPost") {
       return
     }
 
-    API.get(`/posts/${id}`)
+    API.get(`/posts/${postId}`)
       .then((res) => res.data)
       .then((fetchPost: JSONPost) => {
         const { content, mediaUrl, thumbnail }: PostContent = JSON.parse(
@@ -44,7 +42,7 @@ const PostEdit = ({ onClose }: PostEditProps) => {
           authorId: fetchPost.author._id,
         })
       })
-  }, [id, isShowEditModal])
+  }, [postId, isShowEditModal])
 
   const handleEditPost: HandleEditPost = ({ type, value }) => {
     if (type === "mediaUrl") {
@@ -67,11 +65,11 @@ const PostEdit = ({ onClose }: PostEditProps) => {
   return (
     <Modal
       isShow={isShowEditModal}
-      onClose={onClose}
+      onClose={closeEditModal}
       clickAwayEnable={false}
     >
       <PostEditAuthChecker
-        onCloseInnerModal={onClose}
+        onCloseInnerModal={closeEditModal}
         authorId={editPost.authorId}
       >
         <GS.PostModalGlobalLayout>
@@ -83,7 +81,7 @@ const PostEdit = ({ onClose }: PostEditProps) => {
             <PostEditEditor
               onEdit={handleEditPost}
               postData={editPost}
-              onClose={onClose}
+              onClose={closeEditModal}
             />
           </GS.PostModalGlobalContainer>
         </GS.PostModalGlobalLayout>
