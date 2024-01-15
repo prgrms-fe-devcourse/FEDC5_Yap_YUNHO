@@ -12,7 +12,7 @@ const useMessageGroupList = () => {
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: getMessageGroupListAPI,
     initialData: [],
-    refetchInterval: 1000, // 재 요청
+    refetchInterval: 2000, // 재 요청
 
     select: (GroupMessageList: Conversation[]) =>
       GroupMessageList.map((MessageList) => {
