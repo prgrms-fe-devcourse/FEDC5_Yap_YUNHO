@@ -20,6 +20,7 @@ const NotificationList = ({
         <NotificationItem
           handleClick={handleClick}
           Notification={item}
+          key={item._id}
         />
       ))}
     </S.NotificationListLayout>

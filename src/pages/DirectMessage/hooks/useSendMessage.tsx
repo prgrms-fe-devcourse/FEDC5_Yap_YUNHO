@@ -41,7 +41,7 @@ const useSendMessage = () => {
 
       // 상대방에게 알림 보내기
       const NotificationSubmission: SendNotificationProps = {
-        notificationType: "COMMENT",
+        notificationType: "MESSAGE",
         notificationTypeId: messageId,
         userId: othersUserId,
         postId: null,
