@@ -12,6 +12,8 @@ export const MessageGroupListLayout = styled.div`
   align-items: center;
   gap: 2rem;
   user-select: none;
+  ${({ theme }) => theme.scrollBar};
+  overflow-y: scroll;
 `
 
 export const MessageGroupListInfo = styled.div`
@@ -48,7 +50,7 @@ export const MessageGroupListContainer = styled.div`
   gap: 3rem;
   width: 100%;
   overflow-y: scroll;
-  ${({ theme }) => theme.scrollBarNone};
+  ${({ theme }) => theme.scrollBar};
 `
 
 export const MessageItemLayout = styled.button<{ $isSelect: boolean }>`
