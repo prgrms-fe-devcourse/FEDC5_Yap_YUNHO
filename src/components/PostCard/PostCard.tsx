@@ -6,7 +6,6 @@ import PostCardThumbnail from "./components/PostCardThumbnail/PostCardThumbnail"
 import PostCardUserProfile from "./components/PostCardUserProfile/PostCardUserProfile"
 
 const PostCard = ({
-  // 이후 기본 유저 프로필 사진으로 대체
   thumbnail,
   content,
   mediaUrl,
