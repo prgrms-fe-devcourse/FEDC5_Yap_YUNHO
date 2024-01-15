@@ -4,7 +4,15 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import UserActionButton from "./UserActionButton"
 import UserFollowActionButton from "./UserFollowActionButton"
 
-const UserActions = () => {
+interface UserActionsProps {
+  onFollowButtonClick: () => void
+  onUnFollowButtonClick: () => void
+}
+
+const UserActions = ({
+  onFollowButtonClick,
+  onUnFollowButtonClick,
+}: UserActionsProps) => {
   const navigate = useNavigate()
   const { id } = useParams()
   const { myId } = useAuthUserStore()
@@ -22,7 +30,10 @@ const UserActions = () => {
         />
       ) : (
         <>
-          <UserFollowActionButton />
+          <UserFollowActionButton
+            onFollowButtonClick={onFollowButtonClick}
+            onUnFollowButtonClick={onUnFollowButtonClick}
+          />
           <UserActionButton
             text="DM 보내기"
             $width={9}

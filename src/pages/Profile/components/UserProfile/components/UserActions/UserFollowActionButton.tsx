@@ -11,7 +11,15 @@ interface followInfoProp {
   user: string
 }
 
-const UserFollowActionButton = () => {
+interface FollowButtonProps {
+  onFollowButtonClick: () => void
+  onUnFollowButtonClick: () => void
+}
+
+const UserFollowActionButton = ({
+  onFollowButtonClick,
+  onUnFollowButtonClick,
+}: FollowButtonProps) => {
   const { id } = useParams()
   const { myId } = useAuthUserStore()
   const { fetchFollowMutate } = useFetchFollow()
@@ -42,6 +50,7 @@ const UserFollowActionButton = () => {
       fetchUnFollowMutate.mutate(followInfoId, {
         onSuccess: () => {
           setFollowInfoId("")
+          onUnFollowButtonClick()
         },
       })
 
@@ -51,6 +60,7 @@ const UserFollowActionButton = () => {
     fetchFollowMutate.mutate(id!, {
       onSuccess: ({ _id }) => {
         setFollowInfoId(_id)
+        onFollowButtonClick()
       },
     })
   }
