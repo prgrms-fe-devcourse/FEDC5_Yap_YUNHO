@@ -12,17 +12,19 @@ interface followInfoProp {
 interface FollowButtonProps {
   onFollowButtonClick: () => void
   onUnFollowButtonClick: () => void
+  onClick: () => void
 }
 
 const UserFollowActionButton = ({
   onFollowButtonClick,
   onUnFollowButtonClick,
+  onClick,
 }: FollowButtonProps) => {
   const { id } = useParams()
-  const { user } = useAuthUserStore()
+  const { user, isLoggedIn } = useAuthUserStore()
 
-  const { fetchFollowMutate } = useFetchFollow()
-  const { fetchUnFollowMutate } = useFetchUnFollow()
+  const { fetchFollowMutate, FollowErrorAlertModal } = useFetchFollow()
+  const { fetchUnFollowMutate, UnFollowErrorAlertModal } = useFetchUnFollow()
 
   const followInfo = user.following.find(
     ({ user }: followInfoProp) => user === id,
@@ -30,6 +32,11 @@ const UserFollowActionButton = ({
   const followInfoId = followInfo?._id
 
   const handleFollowButton = () => {
+    if (!isLoggedIn) {
+      onClick()
+      return
+    }
+
     if (fetchFollowMutate.isPending || fetchUnFollowMutate.isPending) {
       return
     }
@@ -52,13 +59,21 @@ const UserFollowActionButton = ({
   }
 
   return (
-    <S.UserActionButton
-      $width={9}
-      onClick={handleFollowButton}
-      $isFollowing={!!followInfoId}
-    >
-      {followInfoId ? "언팔로우" : "팔로우"}
-    </S.UserActionButton>
+    <>
+      <S.UserActionButton
+        $width={9}
+        onClick={handleFollowButton}
+        $isFollowing={!!followInfoId}
+      >
+        {followInfoId ? "언팔로우" : "팔로우"}
+      </S.UserActionButton>
+      {isLoggedIn && (
+        <>
+          {FollowErrorAlertModal}
+          {UnFollowErrorAlertModal}
+        </>
+      )}
+    </>
   )
 }
 

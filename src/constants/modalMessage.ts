@@ -26,3 +26,5 @@ export const POST_DETAIL_MODAL_MESSAGE = {
     COMMENT_DELETE: "댓글이 삭제되었습니다!",
   },
 }
+
+export const NOT_LOGIN_MODAL_MESSAGE = "로그인 후 이용 가능합니다."
