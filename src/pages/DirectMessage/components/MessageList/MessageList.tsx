@@ -24,7 +24,7 @@ const MessageList = () => {
 
   return (
     <S.MessageListLayout>
-      {othersUserId && (
+      {othersUserId && MessageList && (
         <>
           <S.MessageListContainer ref={scrollRef}>
             {MessageList?.map((list: Message) => (

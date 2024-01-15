@@ -2,6 +2,10 @@ import { AUTH_API } from "@/apis/Api"
 import { Conversation } from "@/types"
 
 const getMessageListAPI = async (othersUserId: string, myId: string) => {
+  if (!othersUserId) {
+    return []
+  }
+
   const messageList = await AUTH_API.get(`/messages?userId=${othersUserId}`)
     .then((res) => res.data)
     .catch((e) => {
