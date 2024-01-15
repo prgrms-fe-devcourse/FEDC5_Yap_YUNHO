@@ -12,5 +12,6 @@ export const PostCommentListLayout = styled.ul`
   border-top: 2px solid ${({ theme }) => theme.colors.point};
   border-bottom: 2px solid ${({ theme }) => theme.colors.point};
 
-  overflow: scroll;
+  ${({ theme }) => theme.scrollBarNone}
+  overflow-y: scroll;
 `
