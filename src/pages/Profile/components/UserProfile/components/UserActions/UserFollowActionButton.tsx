@@ -2,7 +2,6 @@ import * as S from "./UserActions.Styles"
 
 import useFetchFollow from "@/hooks/useFetchFollow"
 import useFetchUnFollow from "@/hooks/useFetchUnFollow"
-import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 
@@ -25,16 +24,10 @@ const UserFollowActionButton = ({
   const { fetchFollowMutate } = useFetchFollow()
   const { fetchUnFollowMutate } = useFetchUnFollow()
 
-  const [followInfoId, setFollowInfoId] = useState("")
-
-  useEffect(() => {
-    const { following } = user
-
-    const followInfo = following.find(({ user }: followInfoProp) => user === id)
-    if (followInfo) {
-      setFollowInfoId(followInfo._id)
-    }
-  }, [])
+  const followInfo = user.following.find(
+    ({ user }: followInfoProp) => user === id,
+  )
+  const followInfoId = followInfo?._id
 
   const handleFollowButton = () => {
     if (fetchFollowMutate.isPending || fetchUnFollowMutate.isPending) {
@@ -44,7 +37,6 @@ const UserFollowActionButton = ({
     if (followInfoId) {
       fetchUnFollowMutate.mutate(followInfoId, {
         onSuccess: () => {
-          setFollowInfoId("")
           onUnFollowButtonClick()
         },
       })
@@ -53,8 +45,7 @@ const UserFollowActionButton = ({
     }
 
     fetchFollowMutate.mutate(id!, {
-      onSuccess: ({ _id }) => {
-        setFollowInfoId(_id)
+      onSuccess: () => {
         onFollowButtonClick()
       },
     })
