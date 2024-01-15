@@ -1,4 +1,4 @@
-import { User, Message } from "@/types"
+import { User, Message, Conversation } from "@/types"
 
 export interface handleMessageGroupClickProps {
   myId: string
@@ -6,18 +6,14 @@ export interface handleMessageGroupClickProps {
   receiver: User
 }
 export interface MessageGroupItemProps {
-  createdAt: string
-  message: string
-  isOnline: boolean
-  receiver: User
-  sender: User
+  messageGroupItem: Conversation
+  others: User
   selectedMessageGroupId: string
   handleMessageGroupClick: ({
     myId,
     sender,
     receiver,
   }: handleMessageGroupClickProps) => void
-  profileImg: string
 }
 
 export interface MessageProps {

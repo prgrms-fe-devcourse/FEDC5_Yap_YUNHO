@@ -67,15 +67,11 @@ const MessageGroupList = () => {
 
           return (
             <MessageGroupItem
+              messageGroupItem={messageGroupItem}
+              others={others}
               key={messageGroupItem.createdAt}
-              receiver={messageGroupItem.receiver}
-              message={messageGroupItem.message}
-              sender={messageGroupItem.sender}
-              createdAt={messageGroupItem.createdAt}
-              isOnline={others.isOnline}
               selectedMessageGroupId={selectedMessageGroupId}
               handleMessageGroupClick={handleMessageGroupClick}
-              profileImg={others.image}
             />
           )
         })}

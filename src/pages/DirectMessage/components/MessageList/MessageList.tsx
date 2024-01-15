@@ -20,14 +20,14 @@ const MessageList = () => {
   // 내가 메시지를 보낼때, 상대방에게 메시지를 받을때 스크롤 이동
   useEffect(() => {
     scrollToBottom()
-  }, [MessageList?.length])
+  }, [MessageList])
 
   return (
     <S.MessageListLayout>
       {othersUserId && MessageList && (
         <>
           <S.MessageListContainer ref={scrollRef}>
-            {MessageList?.map((list: Message) => (
+            {MessageList.map((list: Message) => (
               <MessageItem
                 key={list.createdAt}
                 othersUserId={othersUserId}
