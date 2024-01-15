@@ -49,13 +49,13 @@ const Home = () => {
           selectedCategory={selectedCategory}
           onSelected={onSelectedCategory}
         />
-        <S.TestButton
+        {/* <S.TestButton
           onClick={() => {
             navigate("/postedit/newPost")
           }}
         >
           Edit Modal
-        </S.TestButton>
+        </S.TestButton> */}
 
         <PostContainer selectedCategory={selectedCategory} />
       </S.HomeLayout>

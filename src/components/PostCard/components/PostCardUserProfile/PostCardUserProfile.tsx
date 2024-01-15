@@ -8,7 +8,7 @@ const PostCardUserProfile = ({
   hasProfile,
   postId,
   onNavigatePostDetail,
-  imgUrl,
+  author,
 }: PostCardUserProfileProps): React.ReactNode => {
   return (
     <S.PostCardUserProfileLayout>
@@ -19,7 +19,7 @@ const PostCardUserProfile = ({
             userId="none"
           >
             <S.PostCardUserProfileImg
-              src={imgUrl}
+              src={author.image}
               alt=""
             />
           </UserInfoPopover>

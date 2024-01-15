@@ -11,6 +11,7 @@ const PostDetailViewer = ({ post }: PostDetailViewerProps) => {
   return (
     <GS.PostModalGlobalViewerLayout>
       <PostCard
+        author={post.author}
         hasProfile={false}
         thumbnail={thumbnail}
         content={content}
