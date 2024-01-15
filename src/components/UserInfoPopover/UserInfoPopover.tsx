@@ -10,6 +10,7 @@ interface UserInfoDropDownProps {
   children: React.ReactNode
   isPostCard?: boolean
   isLeft?: boolean
+  isRight?: boolean
 }
 
 const UserInfoPopover = ({
@@ -17,6 +18,7 @@ const UserInfoPopover = ({
   isPostCard,
   children,
   isLeft,
+  isRight,
 }: UserInfoDropDownProps) => {
   console.log(user)
 
@@ -35,6 +37,7 @@ const UserInfoPopover = ({
       innerComponent={UserInfoComponent}
       isPostCard={isPostCard}
       isLeft={isLeft}
+      isRight={isRight}
     >
       {children}
     </Popover>

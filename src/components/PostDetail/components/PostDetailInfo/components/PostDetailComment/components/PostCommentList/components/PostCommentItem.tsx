@@ -41,7 +41,7 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
       <S.PostCommentItemLayout>
         <UserInfoPopover
           user={author}
-          isLeft={true}
+          isRight={true}
         >
           <S.PostCommentItemUserProfile $profile={author.image} />
         </UserInfoPopover>
