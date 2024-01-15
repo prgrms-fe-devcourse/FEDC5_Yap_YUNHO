@@ -6,7 +6,11 @@ interface UserInfoNickNameProps {
 }
 
 const UserInfoNickName = ({ user }: UserInfoNickNameProps) => {
-  return <S.UserInfoNickNameLayout></S.UserInfoNickNameLayout>
+  return (
+    <S.UserInfoNickNameLayout>
+      <S.UserInfoNickNameText>{user.fullName}</S.UserInfoNickNameText>
+    </S.UserInfoNickNameLayout>
+  )
 }
 
 export default UserInfoNickName
