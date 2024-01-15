@@ -2,7 +2,6 @@ import { useCallback, useState } from "react"
 
 const useModal = () => {
   const [isShowModal, setIsShowModal] = useState(false)
-
   const showModal = useCallback(() => {
     setIsShowModal(true)
   }, [])

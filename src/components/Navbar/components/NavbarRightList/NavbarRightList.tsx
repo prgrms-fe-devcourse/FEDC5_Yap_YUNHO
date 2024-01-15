@@ -13,15 +13,30 @@ import useToggle from "@/hooks/useToggle"
 import useMenuClick from "../../hooks/useNavMenuClick"
 import CloseIcon from "@mui/icons-material/Close"
 import standard from "@/assets/standard.jpeg"
+import useModal from "@/components/Modal/hooks/useModal"
+import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
+import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const NavbarRightList = () => {
   const { isLoggedIn, user } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
   const { handleMenuClick, notificationModal } = useMenuClick()
+  const {
+    isShowModal: isShowConfirm,
+    closeModal: closeConfirm,
+    showModal: showConfirm,
+  } = useModal()
 
   const proifleImg = user.image || standard
 
   const navigate = useNavigate()
+
+  const handleConfirm = (isAccept: boolean) => {
+    closeConfirm()
+    if (isAccept) {
+      navigate("/login")
+    }
+  }
 
   return (
     <>
@@ -51,7 +66,11 @@ const NavbarRightList = () => {
         {/* 프로필 버튼*/}
         <NavbarButton
           onClick={() => {
-            navigate("/profile")
+            if (isLoggedIn) {
+              navigate("/profile")
+              return
+            }
+            showConfirm()
           }}
         >
           <S.NavbarProfile
@@ -60,6 +79,11 @@ const NavbarRightList = () => {
           />
         </NavbarButton>
       </S.NavbarRightListLayout>
+      <ConfirmModal
+        isShow={isShowConfirm}
+        onClose={handleConfirm}
+        message={POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER.NOT_LOGIN}
+      />
     </>
   )
 }
