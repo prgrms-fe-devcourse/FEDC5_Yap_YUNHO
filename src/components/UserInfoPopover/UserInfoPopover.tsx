@@ -2,7 +2,7 @@ import * as S from "./UserInfoPopover.Styles"
 import Popover from "../Popover/Popover"
 import UserInfoProfile from "./Components/UserInfoProfile/UserInfoProfile"
 import UserInfoFollowStatus from "./Components/UserInfoFollowStatus/UserInfoFollowStatus"
-import UserInfoNickName from "./Components/UserInfoNickName/UserInfoNickName"
+import UserInfoActions from "./Components/UserInfoActions/UserInfoActions"
 import { User } from "@/types"
 
 interface UserInfoDropDownProps {
@@ -24,7 +24,7 @@ const UserInfoPopover = ({
     <S.UserInfoBackground>
       <S.UserInfoLayout>
         <UserInfoProfile user={user} />
-        <UserInfoNickName user={user} />
+        <UserInfoActions user={user} />
         <UserInfoFollowStatus user={user} />
       </S.UserInfoLayout>
     </S.UserInfoBackground>

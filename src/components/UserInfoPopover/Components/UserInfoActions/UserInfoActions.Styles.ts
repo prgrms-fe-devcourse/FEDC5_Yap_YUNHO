@@ -1,26 +1,18 @@
 import styled from "styled-components"
 
-export const UserInfoNickNameLayout = styled.div`
+export const UserInfoActionsLayout = styled.div`
   width: 22rem;
   height: 3rem;
 
   display: flex;
   align-items: center;
-`
-
-export const UserInfoActions = styled.div`
-  width: 16rem;
-  height: 6rem;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 2rem;
 `
 
 export const UserInfoButtons = styled.button`
-  width: 7rem;
-  height: 3.5rem;
+  width: 8rem;
+  height: 3rem;
 
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.size4};
