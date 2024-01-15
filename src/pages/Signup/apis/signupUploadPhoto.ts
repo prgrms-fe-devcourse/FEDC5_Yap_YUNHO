@@ -9,7 +9,6 @@ export const signupUploadPhoto = async ({
 }: SignupUploadPhotoParam) => {
   return await AUTH_API.post("/users/upload-photo", formData)
     .then((res) => {
-      console.log("upload-photo : ", res.data)
       return res.data
     })
     .catch((error) => {

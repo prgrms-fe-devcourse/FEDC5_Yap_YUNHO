@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import * as S from "./UserEditForm.Styles"
 import { theme } from "@/styles/theme"
 import UserEditInputContainer from "./UserEditInput/UserEditInputContainer"
@@ -7,18 +7,14 @@ import { getNewErrorMessage } from "../utils/validateInput"
 import useEditNickname from "../hooks/useEditNickname"
 import useEditPassword from "../hooks/useEditPassword"
 import useEditUserProfileImage from "../hooks/useEditUserProfileImage"
+import { User } from "@/types"
+import { useNavigate } from "react-router-dom"
 
 interface UserEditFormProp {
-  userInfo: {
-    email: string
-    image: string
-  }
+  authUser: User
 }
 
-const UserEditForm = ({ userInfo }: UserEditFormProp) => {
-  useEffect(() => {
-    console.log("userInfo", userInfo)
-  }, [userInfo])
+const UserEditForm = ({ authUser }: UserEditFormProp) => {
   const [requiredUserInfo, setRequiredUserInfo] = useState({
     nickname: "",
     password: "",
@@ -31,7 +27,12 @@ const UserEditForm = ({ userInfo }: UserEditFormProp) => {
     passwordCheck: "",
   })
 
-  const [formData, setFormData] = useState(new FormData())
+  const [formData, setFormData] = useState({
+    binary: new FormData(),
+    url: "",
+  })
+
+  const navigate = useNavigate()
 
   const { EditUserNickname } = useEditNickname()
   const { EditUserPassword } = useEditPassword()
@@ -39,15 +40,16 @@ const UserEditForm = ({ userInfo }: UserEditFormProp) => {
 
   const handleEdit = () => {
     const { nickname, password } = requiredUserInfo
-    console.log("requiredUserInfo", requiredUserInfo)
-    for (const data of formData.entries()) {
-      console.log("data", data)
-    }
 
-    // 수정 api 전부 하기
-    // EditUserNickname.mutate({ fullName: nickname, username: "" })
-    // EditUserPassword.mutate({ password })
-    // EditUserProfileImage.mutate(formData)
+    const { binary, url } = formData
+
+    EditUserNickname.mutate({ fullName: nickname, username: "" })
+    EditUserPassword.mutate({ password })
+
+    if (url !== "" && authUser.image !== url) {
+      EditUserProfileImage.mutate(binary)
+    }
+    navigate("/", { replace: true })
   }
 
   const validateUserInfo = (userInfoType: string, userInfoValue: string) => {
@@ -97,11 +99,11 @@ const UserEditForm = ({ userInfo }: UserEditFormProp) => {
             requiredUserInfo={requiredUserInfo}
             onChange={handleRequiredUserInfo}
             errorMessage={errorMessage}
-            email={userInfo.email}
+            email={authUser.email}
           />
           <ProfileImageUpload
             setFormData={setFormData}
-            initialImage={userInfo.image}
+            initialImage={authUser.image}
           />
         </S.UserEditFormItem>
         <S.ButtonContainer>

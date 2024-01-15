@@ -7,12 +7,10 @@ interface EditPasswordParam {
 const editPassword = async (requestBody: EditPasswordParam) => {
   return await AUTH_API.put("/settings/update-password", requestBody)
     .then((res) => {
-      console.log("res", res)
-      return true
+      return res
     })
     .catch((e) => {
-      console.error(e)
-      return false
+      throw Error(e)
     })
 }
 

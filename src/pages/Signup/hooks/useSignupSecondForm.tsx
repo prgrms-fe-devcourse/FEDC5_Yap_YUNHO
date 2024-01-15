@@ -4,12 +4,14 @@ import { signupUploadPhoto } from "../apis/signupUploadPhoto"
 import { useMutation } from "@tanstack/react-query"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import authToken from "@/stores/authToken"
+import { useNavigate } from "react-router-dom"
 
 const SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY =
   "SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY"
 
 const useSignupSecondForm = () => {
   const { setLogin } = useAuthUserStore()
+  const navigate = useNavigate()
 
   const {
     isShowModal: isShowAlertModal,
@@ -30,9 +32,9 @@ const useSignupSecondForm = () => {
     mutationFn: signupUploadPhoto,
     onSuccess: (user) => {
       const token = authToken.getToken()
-      console.log("Finish Signup Second Form token: ", token)
-      console.log("Finish Signup Second Form user: ", user)
+
       setLogin(user, token)
+      navigate("/", { replace: true })
     },
     onError: () => {
       showAlertModal()

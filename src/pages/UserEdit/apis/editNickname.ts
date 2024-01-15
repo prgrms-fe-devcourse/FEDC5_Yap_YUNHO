@@ -8,12 +8,10 @@ interface EditNicknameParam {
 const editNickname = async (requestBody: EditNicknameParam) => {
   return await AUTH_API.put("/settings/update-user", requestBody)
     .then((res) => {
-      console.log("res", res)
-      return true
+      return res.data
     })
     .catch((e) => {
-      console.error(e)
-      return false
+      throw Error(e)
     })
 }
 

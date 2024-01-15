@@ -28,6 +28,7 @@ const useEditPassword = () => {
     },
     onError: () => {
       showAlertModal()
+      return
     },
   })
 

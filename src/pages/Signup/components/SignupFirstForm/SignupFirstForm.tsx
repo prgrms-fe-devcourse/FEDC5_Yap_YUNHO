@@ -5,21 +5,25 @@ import SignupInputContainer from "../SignupInput/SignupInputContainer"
 import { getNewErrorMessage } from "../../utils/validateInput"
 import { Navigate, useNavigate } from "react-router-dom"
 import useSignupFirstForm from "../../hooks/useSignupFirstForm"
-import useAuthUserStore from "@/stores/useAuthUserStore"
-import authToken from "@/stores/authToken"
 
 interface SignupFirstFormProp {
-  changeSignupFormComponent: () => void
+  handleChangeForm: () => void
+  isLoggedIn: boolean
+  changeAlertMessage: (message: string) => void
+  showModal: () => void
 }
 
 const SignupFirstForm = ({
-  changeSignupFormComponent,
+  handleChangeForm,
+  isLoggedIn,
+  changeAlertMessage,
+  showModal,
 }: SignupFirstFormProp) => {
-  const { AlertModalComponent, SignupFirstForm_API } = useSignupFirstForm({
-    changeSignupFormComponent,
+  const { SignupFirstForm_API } = useSignupFirstForm({
+    handleChangeForm,
+    changeAlertMessage,
+    showModal,
   })
-
-  const { isLoggedIn } = useAuthUserStore()
 
   const [requiredUserInfo, setRequiredUserInfo] = useState({
     email: "",
@@ -87,9 +91,6 @@ const SignupFirstForm = ({
     )
   }
 
-  // console.log("authToken.getToken()", authToken.getToken())
-  console.log("isLoggedIn", isLoggedIn)
-
   if (isLoggedIn) {
     return (
       <Navigate
@@ -101,7 +102,6 @@ const SignupFirstForm = ({
 
   return (
     <>
-      {AlertModalComponent}
       <S.SignupFormLayout>
         <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
         <S.SignupFormContainer onSubmit={handleSignup}>

@@ -1,11 +1,16 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react"
+import React, { ChangeEvent, useRef, useState } from "react"
 import * as S from "./ProfileImageUpload.Styles"
 import standard from "@/assets/standard.jpeg"
 import Input from "@/components/Input/Input"
 import { theme } from "@/styles/theme"
 
+interface FormDataType {
+  binary: FormData
+  url: string
+}
+
 interface ProfileImageUploadProp {
-  setFormData: React.Dispatch<React.SetStateAction<FormData>>
+  setFormData: React.Dispatch<React.SetStateAction<FormDataType>>
   initialImage?: string
 }
 /**
@@ -22,9 +27,9 @@ interface ProfileImageUploadProp {
  */
 const ProfileImageUpload = ({
   setFormData,
-  initialImage = "",
+  initialImage,
 }: ProfileImageUploadProp) => {
-  const [previewUserProfile, setPreviewUserProfile] = useState("")
+  const [previewUserProfile, setPreviewUserProfile] = useState(initialImage)
   const imageRef = useRef<HTMLInputElement>(null)
 
   const openFileSelector = () => {
@@ -52,10 +57,11 @@ const ProfileImageUpload = ({
     formData.append("isCover", "false")
     formData.append("image", imageFile)
 
-    setFormData(formData)
+    setFormData({ binary: formData, url: previewImage })
   }
 
-  const setDefaultImageFile = async () => {
+  const removeImageFile = async () => {
+    setPreviewUserProfile("")
     const response = await fetch(standard)
     const defaultImageFile = await response.blob()
 
@@ -63,39 +69,14 @@ const ProfileImageUpload = ({
     formData.append("isCover", "false")
     formData.append("image", defaultImageFile, "defaultImage")
 
-    setFormData(formData)
-  }
-
-  useEffect(() => {
-    setDefaultImageFile()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // useEffect(() => {
-  //   console.log("before", initialImage)
-  //   // if (!initialImage) {
-  //   console.log("set InitialImage")
-  //   setPreviewUserProfile(initialImage)
-  //   // }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [initialImage])
-
-  const removeImageFile = async () => {
-    setPreviewUserProfile("")
-    setDefaultImageFile()
+    setFormData({ binary: formData, url: "" })
   }
 
   return (
     <S.ProfileImageUploadLayout>
       <S.ProfileImageUploadContainer onClick={openFileSelector}>
         <S.ProfileImage
-          src={
-            initialImage !== ""
-              ? initialImage
-              : previewUserProfile === ""
-                ? standard
-                : previewUserProfile
-          }
+          src={previewUserProfile ? previewUserProfile : standard}
           draggable="false"
         />
       </S.ProfileImageUploadContainer>
