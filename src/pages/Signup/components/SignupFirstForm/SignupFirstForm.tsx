@@ -3,19 +3,23 @@ import * as S from "./SignupFirstForm.Styles"
 import { theme } from "@/styles/theme"
 import SignupInputContainer from "../SignupInput/SignupInputContainer"
 import { getNewErrorMessage } from "../../utils/validateInput"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import useSignupFirstForm from "../../hooks/useSignupFirstForm"
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import authToken from "@/stores/authToken"
 
-interface FirstSignupFormProp {
-  changeSignupFormComponent: (authToken: string) => void
+interface SignupFirstFormProp {
+  changeSignupFormComponent: () => void
 }
 
-const FirstSignupForm = ({
+const SignupFirstForm = ({
   changeSignupFormComponent,
-}: FirstSignupFormProp) => {
+}: SignupFirstFormProp) => {
   const { AlertModalComponent, SignupFirstForm_API } = useSignupFirstForm({
     changeSignupFormComponent,
   })
+
+  const { isLoggedIn } = useAuthUserStore()
 
   const [requiredUserInfo, setRequiredUserInfo] = useState({
     email: "",
@@ -83,6 +87,18 @@ const FirstSignupForm = ({
     )
   }
 
+  // console.log("authToken.getToken()", authToken.getToken())
+  console.log("isLoggedIn", isLoggedIn)
+
+  if (isLoggedIn) {
+    return (
+      <Navigate
+        to="/"
+        replace={true}
+      />
+    )
+  }
+
   return (
     <>
       {AlertModalComponent}
@@ -120,4 +136,4 @@ const FirstSignupForm = ({
   )
 }
 
-export default FirstSignupForm
+export default SignupFirstForm

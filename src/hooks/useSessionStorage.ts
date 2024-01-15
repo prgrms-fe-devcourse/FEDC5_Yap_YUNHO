@@ -1,12 +1,12 @@
 import { useState } from "react"
 
-const useLocalStorage = <T>(
+const useSessionStorage = <T>(
   key: string,
   initialData: T,
 ): [T, (newData: T) => void, () => void] => {
   const [data, setData] = useState<T>(() => {
     try {
-      const res = localStorage.getItem(key)
+      const res = sessionStorage.getItem(key)
 
       if (!res) {
         return initialData
@@ -19,21 +19,21 @@ const useLocalStorage = <T>(
     }
   })
 
-  const setLocalStorage = (newData: T) => {
+  const setSessionStorage = (newData: T) => {
     try {
       const stringifiedData = JSON.stringify(newData)
-      localStorage.setItem(key, stringifiedData)
+      sessionStorage.setItem(key, stringifiedData)
       setData(newData)
     } catch (e) {
       console.error(e)
     }
   }
 
-  const removeLocalStorageItem = () => {
-    localStorage.removeItem(key)
+  const removeSessionStorageItem = () => {
+    sessionStorage.removeItem(key)
   }
 
-  return [data, setLocalStorage, removeLocalStorageItem]
+  return [data, setSessionStorage, removeSessionStorageItem]
 }
 
-export default useLocalStorage
+export default useSessionStorage

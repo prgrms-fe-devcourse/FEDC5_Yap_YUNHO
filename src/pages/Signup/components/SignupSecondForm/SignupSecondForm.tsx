@@ -2,20 +2,16 @@ import { useState, FormEvent } from "react"
 import * as S from "./SignupSecondForm.Styles"
 import { theme } from "@/styles/theme"
 import useSignupSecondForm from "../../hooks/useSignupSecondForm"
-import UserProfileImageUpload from "@/components/UserProfileImageUpload/UserProfileImageUpload"
+import ProfileImageUpload from "@/components/ProfileImageUpload/ProfileImageUpload"
 
-interface SecondSignupFormProp {
-  authToken: string
-}
-
-const SecondSignupForm = ({ authToken }: SecondSignupFormProp) => {
+const SignupSecondForm = () => {
   const [formData, setFormData] = useState<FormData>(new FormData())
   const { AlertModalComponent, SignupSecondForm_API } = useSignupSecondForm()
 
   const updateUserProfile = async (event: FormEvent) => {
     event.preventDefault()
 
-    SignupSecondForm_API.mutate({ authToken, formData })
+    SignupSecondForm_API.mutate({ formData })
   }
 
   return (
@@ -24,7 +20,7 @@ const SecondSignupForm = ({ authToken }: SecondSignupFormProp) => {
       <S.SignupFormLayout>
         <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
         <S.SignupFormContainer onSubmit={updateUserProfile}>
-          <UserProfileImageUpload setFormData={setFormData} />
+          <ProfileImageUpload setFormData={setFormData} />
           <S.ButtonContainer>
             <S.Button
               $width={53}
@@ -40,4 +36,4 @@ const SecondSignupForm = ({ authToken }: SecondSignupFormProp) => {
   )
 }
 
-export default SecondSignupForm
+export default SignupSecondForm

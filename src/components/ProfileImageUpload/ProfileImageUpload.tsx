@@ -1,11 +1,12 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react"
-import * as S from "./UserProfileImageUpload.Styles"
-import emptyImage from "@/assets/emptyimg.png"
+import * as S from "./ProfileImageUpload.Styles"
+import standard from "@/assets/standard.jpeg"
 import Input from "@/components/Input/Input"
 import { theme } from "@/styles/theme"
 
-interface UserProfileImageUploadProp {
+interface ProfileImageUploadProp {
   setFormData: React.Dispatch<React.SetStateAction<FormData>>
+  initialImage?: string
 }
 /**
  *
@@ -19,9 +20,10 @@ interface UserProfileImageUploadProp {
  *
  * const [formData, setFormData] = useState<FormData>(new FormData())
  */
-const UserProfileImageUpload = ({
+const ProfileImageUpload = ({
   setFormData,
-}: UserProfileImageUploadProp) => {
+  initialImage = "",
+}: ProfileImageUploadProp) => {
   const [previewUserProfile, setPreviewUserProfile] = useState("")
   const imageRef = useRef<HTMLInputElement>(null)
 
@@ -54,7 +56,7 @@ const UserProfileImageUpload = ({
   }
 
   const setDefaultImageFile = async () => {
-    const response = await fetch(emptyImage)
+    const response = await fetch(standard)
     const defaultImageFile = await response.blob()
 
     const formData = new FormData()
@@ -69,19 +71,34 @@ const UserProfileImageUpload = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // useEffect(() => {
+  //   console.log("before", initialImage)
+  //   // if (!initialImage) {
+  //   console.log("set InitialImage")
+  //   setPreviewUserProfile(initialImage)
+  //   // }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [initialImage])
+
   const removeImageFile = async () => {
     setPreviewUserProfile("")
     setDefaultImageFile()
   }
 
   return (
-    <S.UserProfileImageUploadLayout>
-      <S.UserProfileImageUploadContainer onClick={openFileSelector}>
-        <S.UserProfileImage
-          src={previewUserProfile === "" ? emptyImage : previewUserProfile}
+    <S.ProfileImageUploadLayout>
+      <S.ProfileImageUploadContainer onClick={openFileSelector}>
+        <S.ProfileImage
+          src={
+            initialImage !== ""
+              ? initialImage
+              : previewUserProfile === ""
+                ? standard
+                : previewUserProfile
+          }
           draggable="false"
         />
-      </S.UserProfileImageUploadContainer>
+      </S.ProfileImageUploadContainer>
       <Input
         key={Date.now()}
         type="file"
@@ -96,8 +113,8 @@ const UserProfileImageUpload = ({
       >
         프로필 이미지 제거
       </S.Button>
-    </S.UserProfileImageUploadLayout>
+    </S.ProfileImageUploadLayout>
   )
 }
 
-export default UserProfileImageUpload
+export default ProfileImageUpload

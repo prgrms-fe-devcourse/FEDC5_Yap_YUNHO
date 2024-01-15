@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const InputLayout = styled.div`
-  width: 53%;
+  width: 26.5rem;
   position: relative;
 `
 
@@ -37,5 +37,9 @@ export const InputField = styled.input`
   &:focus {
     transition: all 0.1s ease-in-out;
     outline: 0.4rem solid ${({ theme }) => theme.colors.point};
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: ${({ theme }) => theme.opacity.normal};
   }
 `

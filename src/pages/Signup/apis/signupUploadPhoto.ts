@@ -1,22 +1,16 @@
 import { AUTH_API } from "@/apis/Api"
 
 interface SignupUploadPhotoParam {
-  authToken: string
   formData: FormData
 }
 
 export const signupUploadPhoto = async ({
-  authToken,
   formData,
 }: SignupUploadPhotoParam) => {
-  return await AUTH_API.post("/users/upload-photo", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Authorization: `bearer ${authToken}`,
-    },
-  })
+  return await AUTH_API.post("/users/upload-photo", formData)
     .then((res) => {
-      return { user: res.data, authToken: authToken }
+      console.log("upload-photo : ", res.data)
+      return res.data
     })
     .catch((error) => {
       throw Error(error)
