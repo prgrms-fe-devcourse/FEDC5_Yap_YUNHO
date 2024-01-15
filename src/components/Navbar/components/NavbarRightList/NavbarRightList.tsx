@@ -3,7 +3,6 @@ import {
   NavbarToggleButton,
 } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
-import profile from "@/assets/profile.png"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
 import MenuIcon from "@mui/icons-material/Menu"
@@ -13,11 +12,14 @@ import NavbarToggleMenu from "./NavbarToggleMenu/NavbarToggleMenu"
 import useToggle from "@/hooks/useToggle"
 import useMenuClick from "../../hooks/useNavMenuClick"
 import CloseIcon from "@mui/icons-material/Close"
+import standard from "@/assets/standard.jpeg"
 
 const NavbarRightList = () => {
-  const { isLoggedIn } = useAuthUserStore()
+  const { isLoggedIn, user } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
   const { handleMenuClick, notificationModal } = useMenuClick()
+
+  const proifleImg = user.image || standard
 
   const navigate = useNavigate()
 
@@ -53,7 +55,7 @@ const NavbarRightList = () => {
           }}
         >
           <S.NavbarProfile
-            src={profile}
+            src={proifleImg}
             alt="프로필"
           />
         </NavbarButton>
