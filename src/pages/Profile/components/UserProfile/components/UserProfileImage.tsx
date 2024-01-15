@@ -1,16 +1,12 @@
 import * as S from "../UserProfile.Styles"
-import { useEffect, useState } from "react"
+import defaultImage from "@/assets/standard.jpeg"
 
 interface UserProfileImageProp {
   image?: string
 }
 
 const UserProfileImage = ({ image }: UserProfileImageProp) => {
-  const [profileImage, setProfileImage] = useState<string | undefined>("")
-
-  useEffect(() => {
-    setProfileImage(image)
-  }, [image])
+  const profileImage = image ? image : defaultImage
 
   return (
     <S.UserProfileImageContainer
