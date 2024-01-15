@@ -4,7 +4,7 @@ import { convertFollowCount } from "@/util/convertFollowCount"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import useFetchFollow from "@/hooks/useFetchFollow"
 import useFetchUnFollow from "@/hooks/useFetchUnFollow"
-
+import standardImage from "@/assets/standard.jpeg"
 interface PostDetailInfoUserProps {
   isMyPost: boolean
   post: Post
@@ -41,10 +41,12 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
     }
   }
 
+  const imageSrc = image ? image : standardImage
+
   return (
     <S.PostDetailUserLayout>
       <S.PostDetailUserContainer>
-        <S.PostDetailUserProfile $src={image} />
+        <S.PostDetailUserProfile $src={imageSrc} />
         <S.PostDetailUserInfo>
           <S.PostDetailUserName>{fullName}</S.PostDetailUserName>
 

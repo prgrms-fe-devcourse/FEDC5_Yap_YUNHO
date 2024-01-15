@@ -10,6 +10,8 @@ const PostCardUserProfile = ({
   onNavigatePostDetail,
   imgUrl,
 }: PostCardUserProfileProps): React.ReactNode => {
+  const imageSrc = imgUrl ? imgUrl : "src/assets/standard.jpeg"
+
   return (
     <S.PostCardUserProfileLayout>
       {hasProfile && (
@@ -19,7 +21,7 @@ const PostCardUserProfile = ({
             userId="none"
           >
             <S.PostCardUserProfileImg
-              src={imgUrl}
+              src={imageSrc}
               alt=""
             />
           </UserInfoPopover>
