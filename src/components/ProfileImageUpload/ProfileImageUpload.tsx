@@ -1,11 +1,17 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react"
-import * as S from "./UserProfileImageUpload.Styles"
-import emptyImage from "@/assets/emptyimg.png"
+import React, { ChangeEvent, useRef, useState } from "react"
+import * as S from "./ProfileImageUpload.Styles"
+import standard from "@/assets/standard.jpeg"
 import Input from "@/components/Input/Input"
 import { theme } from "@/styles/theme"
 
-interface UserProfileImageUploadProp {
-  setFormData: React.Dispatch<React.SetStateAction<FormData>>
+interface FormDataType {
+  binary: FormData
+  url: string
+}
+
+interface ProfileImageUploadProp {
+  setFormData: React.Dispatch<React.SetStateAction<FormDataType>>
+  initialImage?: string
 }
 /**
  *
@@ -19,10 +25,11 @@ interface UserProfileImageUploadProp {
  *
  * const [formData, setFormData] = useState<FormData>(new FormData())
  */
-const UserProfileImageUpload = ({
+const ProfileImageUpload = ({
   setFormData,
-}: UserProfileImageUploadProp) => {
-  const [previewUserProfile, setPreviewUserProfile] = useState("")
+  initialImage,
+}: ProfileImageUploadProp) => {
+  const [previewUserProfile, setPreviewUserProfile] = useState(initialImage)
   const imageRef = useRef<HTMLInputElement>(null)
 
   const openFileSelector = () => {
@@ -50,38 +57,29 @@ const UserProfileImageUpload = ({
     formData.append("isCover", "false")
     formData.append("image", imageFile)
 
-    setFormData(formData)
+    setFormData({ binary: formData, url: previewImage })
   }
 
-  const setDefaultImageFile = async () => {
-    const response = await fetch(emptyImage)
+  const removeImageFile = async () => {
+    setPreviewUserProfile("")
+    const response = await fetch(standard)
     const defaultImageFile = await response.blob()
 
     const formData = new FormData()
     formData.append("isCover", "false")
     formData.append("image", defaultImageFile, "defaultImage")
 
-    setFormData(formData)
-  }
-
-  useEffect(() => {
-    setDefaultImageFile()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const removeImageFile = async () => {
-    setPreviewUserProfile("")
-    setDefaultImageFile()
+    setFormData({ binary: formData, url: "" })
   }
 
   return (
-    <S.UserProfileImageUploadLayout>
-      <S.UserProfileImageUploadContainer onClick={openFileSelector}>
-        <S.UserProfileImage
-          src={previewUserProfile === "" ? emptyImage : previewUserProfile}
+    <S.ProfileImageUploadLayout>
+      <S.ProfileImageUploadContainer onClick={openFileSelector}>
+        <S.ProfileImage
+          src={previewUserProfile ? previewUserProfile : standard}
           draggable="false"
         />
-      </S.UserProfileImageUploadContainer>
+      </S.ProfileImageUploadContainer>
       <Input
         key={Date.now()}
         type="file"
@@ -96,8 +94,8 @@ const UserProfileImageUpload = ({
       >
         프로필 이미지 제거
       </S.Button>
-    </S.UserProfileImageUploadLayout>
+    </S.ProfileImageUploadLayout>
   )
 }
 
-export default UserProfileImageUpload
+export default ProfileImageUpload

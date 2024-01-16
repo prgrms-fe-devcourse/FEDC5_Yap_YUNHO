@@ -1,30 +1,30 @@
-import * as S from "./SignupInputContainer.Styles"
-import SignupInputItem from "./SignupInputItem"
+import * as S from "./UserEditInputContainer.Styles"
 import type { OnChange, RequiredUserInfo } from "../../types"
+import UserEditInputItem from "./UserEditInputItem"
 
-interface SignupInputContainerProp {
+interface UserEditInputContainerProp {
   onChange: OnChange
   requiredUserInfo: RequiredUserInfo
   errorMessage: RequiredUserInfo
+  email: string
 }
 
-const SignupInputContainer = ({
+const UserEditInputContainer = ({
   onChange,
   requiredUserInfo,
   errorMessage,
-}: SignupInputContainerProp) => {
+  email,
+}: UserEditInputContainerProp) => {
   return (
-    <S.SignupInputContainerLayout>
-      <SignupInputItem
+    <S.UserEditInputContainerLayout>
+      <UserEditInputItem
         title="이메일"
         type="text"
         name="email"
-        placeholder="이메일을 입력해주세요."
-        errorMessage={errorMessage.email}
-        onChange={onChange}
-        value={requiredUserInfo.email}
+        value={email}
+        disabled={true}
       />
-      <SignupInputItem
+      <UserEditInputItem
         title="닉네임"
         type="text"
         name="nickname"
@@ -33,7 +33,7 @@ const SignupInputContainer = ({
         onChange={onChange}
         value={requiredUserInfo.nickname}
       />
-      <SignupInputItem
+      <UserEditInputItem
         title="비밀번호"
         type="password"
         name="password"
@@ -42,7 +42,7 @@ const SignupInputContainer = ({
         onChange={onChange}
         value={requiredUserInfo.password}
       />
-      <SignupInputItem
+      <UserEditInputItem
         type="password"
         name="passwordCheck"
         placeholder="설정한 비밀번호와 동일하게 입력해주세요."
@@ -50,8 +50,8 @@ const SignupInputContainer = ({
         onChange={onChange}
         value={requiredUserInfo.passwordCheck}
       />
-    </S.SignupInputContainerLayout>
+    </S.UserEditInputContainerLayout>
   )
 }
 
-export default SignupInputContainer
+export default UserEditInputContainer

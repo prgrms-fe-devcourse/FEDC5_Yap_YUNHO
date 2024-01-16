@@ -18,6 +18,7 @@ interface InputProp {
   value?: string
   onChange?: OnChange
   ref?: RefObject<HTMLInputElement>
+  disabled?: boolean
 }
 
 /**
@@ -39,7 +40,7 @@ interface InputProp {
  */
 const Input = forwardRef(
   (
-    { type, name, value, placeholder, onChange }: InputProp,
+    { type, name, value, placeholder, onChange, disabled }: InputProp,
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const [isVisible, setIsVisible] = useState(false)
@@ -58,6 +59,7 @@ const Input = forwardRef(
               value={value}
               placeholder={placeholder}
               onChange={onChange}
+              disabled={disabled}
             />
           )
         case "password":

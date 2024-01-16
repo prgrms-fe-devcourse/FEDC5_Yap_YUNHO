@@ -1,21 +1,21 @@
 import styled from "styled-components"
 
-export const UserProfileImageUploadLayout = styled.div`
+export const ProfileImageUploadLayout = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50rem;
+  width: 35rem;
   height: 39rem;
-  gap: 2rem;
+  gap: 1rem;
 `
 
-export const UserProfileImageUploadContainer = styled.div`
+export const ProfileImageUploadContainer = styled.div`
   width: 26.5rem;
   height: 26.5rem;
   background-color: ${({ theme }) => theme.colors.sub};
 `
-export const UserProfileImage = styled.img`
+export const ProfileImage = styled.img`
   width: 26.5rem;
   height: 26.5rem;
   border-radius: ${({ theme }) => theme.radius.circle};
@@ -26,7 +26,7 @@ export const Button = styled.button<{
   $width: number
   $color: string
 }>`
-  width: ${({ $width }) => `${$width}%`};
+  width: 26.5rem;
   height: 4rem;
   padding: 1rem 0;
   color: ${({ theme }) => theme.colors.white};
@@ -39,7 +39,7 @@ export const Button = styled.button<{
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   &:hover {
-    opacity: 0.7;
+    opacity: ${({ theme }) => theme.opacity.high};
     transition: opacity 0.3s ease-in-out;
   }
   &:not(:disabled) {

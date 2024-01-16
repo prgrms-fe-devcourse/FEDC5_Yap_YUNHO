@@ -1,53 +1,57 @@
 import * as S from "./Signup.Styles"
 import SignupFirstForm from "./components/SignupFirstForm/SignupFirstForm"
 import SignupSecondForm from "./components/SignupSecondForm/SignupSecondForm"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import useLocalStorage from "@/hooks/useLocalStorage"
-import { useEffect } from "react"
-
-const SIGNUP_TEMPORARY_DATA = "SIGNUP_TEMPORARY_DATA"
+import useModal from "@/components/Modal/hooks/useModal"
+import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 
 export default function Signup() {
   const { isLoggedIn } = useAuthUserStore()
-  const [signupTemporaryData, setSignupTemporaryData, removeLocalStorageItem] =
-    useLocalStorage(SIGNUP_TEMPORARY_DATA, {
-      selectedFormComponent: "First",
-      authToken: "",
-    })
-  const { selectedFormComponent, authToken } = signupTemporaryData
+  const [isFirstForm, setIsFirstForm] = useState(true)
+  const [alertMessage, setAlertMessage] = useState("")
+  const { isShowModal, showModal } = useModal()
+  const navigate = useNavigate()
 
-  const changeSignupFormComponent = (authToken: string): void => {
-    setSignupTemporaryData({
-      selectedFormComponent: "Second",
-      authToken,
-    })
+  const handleChangeForm = () => {
+    setIsFirstForm(false)
   }
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      removeLocalStorageItem()
-    }
-  }, [isLoggedIn, removeLocalStorageItem])
+  const changeAlertMessage = (message: string) => {
+    setAlertMessage(message)
+  }
+
+  const handleCloseModal = () => {
+    navigate("/", { replace: true })
+  }
+
+  if (alertMessage) {
+    return (
+      <AlertModal
+        isShow={isShowModal}
+        alertMessage={alertMessage}
+        onClose={handleCloseModal}
+      />
+    )
+  }
+
+  if (isFirstForm) {
+    return (
+      <S.SignupLayout>
+        <SignupFirstForm
+          showModal={showModal}
+          changeAlertMessage={changeAlertMessage}
+          handleChangeForm={handleChangeForm}
+          isLoggedIn={isLoggedIn}
+        />
+      </S.SignupLayout>
+    )
+  }
 
   return (
-    <>
-      {isLoggedIn ? (
-        <Navigate
-          to="/"
-          replace={true}
-        />
-      ) : (
-        <S.SignupLayout>
-          {selectedFormComponent === "First" ? (
-            <SignupFirstForm
-              changeSignupFormComponent={changeSignupFormComponent}
-            />
-          ) : (
-            <SignupSecondForm authToken={authToken} />
-          )}
-        </S.SignupLayout>
-      )}
-    </>
+    <S.SignupLayout>
+      <SignupSecondForm />
+    </S.SignupLayout>
   )
 }

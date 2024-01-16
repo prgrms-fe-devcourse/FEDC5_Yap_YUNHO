@@ -3,18 +3,26 @@ import * as S from "./SignupFirstForm.Styles"
 import { theme } from "@/styles/theme"
 import SignupInputContainer from "../SignupInput/SignupInputContainer"
 import { getNewErrorMessage } from "../../utils/validateInput"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import useSignupFirstForm from "../../hooks/useSignupFirstForm"
 
-interface FirstSignupFormProp {
-  changeSignupFormComponent: (authToken: string) => void
+interface SignupFirstFormProp {
+  handleChangeForm: () => void
+  isLoggedIn: boolean
+  changeAlertMessage: (message: string) => void
+  showModal: () => void
 }
 
-const FirstSignupForm = ({
-  changeSignupFormComponent,
-}: FirstSignupFormProp) => {
-  const { AlertModalComponent, SignupFirstForm_API } = useSignupFirstForm({
-    changeSignupFormComponent,
+const SignupFirstForm = ({
+  handleChangeForm,
+  isLoggedIn,
+  changeAlertMessage,
+  showModal,
+}: SignupFirstFormProp) => {
+  const { SignupFirstForm_API } = useSignupFirstForm({
+    handleChangeForm,
+    changeAlertMessage,
+    showModal,
   })
 
   const [requiredUserInfo, setRequiredUserInfo] = useState({
@@ -83,9 +91,17 @@ const FirstSignupForm = ({
     )
   }
 
+  if (isLoggedIn) {
+    return (
+      <Navigate
+        to="/"
+        replace={true}
+      />
+    )
+  }
+
   return (
     <>
-      {AlertModalComponent}
       <S.SignupFormLayout>
         <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
         <S.SignupFormContainer onSubmit={handleSignup}>
@@ -120,4 +136,4 @@ const FirstSignupForm = ({
   )
 }
 
-export default FirstSignupForm
+export default SignupFirstForm
