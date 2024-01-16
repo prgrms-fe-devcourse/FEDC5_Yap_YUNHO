@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { QUERY_KEY_GET_GROUP_MESSAGELIST } from "./useMessageGroupList"
-import { QUERY_KEY_GET_MESSAGELIST } from "./useMessageList"
+import { QUERY_KEY_GET_MESSAGE_LIST } from "./useMessageList"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import sendMessageAPI from "../apis/sendMessageAPI"
@@ -27,7 +27,7 @@ const useSendMessage = () => {
     mutationKey: [QUERY_KEY_SEND_MESSAGE],
     mutationFn: sendMessageAPI,
     onSuccess: (response: Message) => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGELIST] })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGE_LIST] })
       if (!othersUserId) {
         return
       }

@@ -7,7 +7,7 @@ import usePostDetailModalStore from "@/components/PostDetail/stores/usePostDetai
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 
 export const QUERY_KEY_GET_MESSAGE_LIST =
-  "GET_MESSAGE_LIST_15128461289461278456127"
+  "GET_MESSAGE_LIST_14712784127845128534127845712"
 
 const useMessageList = (othersUserId: string) => {
   const { user: authUser, isLoggedIn } = useAuthUserStore()
@@ -20,7 +20,7 @@ const useMessageList = (othersUserId: string) => {
     queryKey: [QUERY_KEY_GET_MESSAGE_LIST, othersUserId, authUser._id],
     queryFn: () => getMessageListAPI(othersUserId, authUser._id),
     refetchInterval: isNotShowModal && 1000,
-    enabled: isLoggedIn || isNotShowModal,
+    enabled: isLoggedIn,
     select: (MessageList: Message[]) =>
       MessageList.sort(
         (message, message2) =>
