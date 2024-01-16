@@ -5,14 +5,14 @@ export const NavbarRightListLayout = styled.div`
   align-items: center;
   gap: 2rem;
   user-select: none;
-  z-index: ${({ theme }) =>
-    theme.zIndex.navbarRightList};
+  z-index: ${({ theme }) => theme.zIndex.navbarRightList};
 `
 
 export const NavbarProfile = styled.img`
   width: 6rem;
   height: 6rem;
   border-radius: ${({ theme }) => theme.radius.circle};
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
 `
 
 export const NavbarMenuList = styled.ul<{ $isToggle?: boolean }>`

@@ -12,6 +12,7 @@ export const MessageGroupListLayout = styled.div`
   align-items: center;
   gap: 2rem;
   user-select: none;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.3);
 `
 
 export const MessageGroupListInfo = styled.div`

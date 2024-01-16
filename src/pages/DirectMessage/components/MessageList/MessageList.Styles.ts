@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const MessageListLayout = styled.div`
   width: 60%;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.3);
   height: 100%;
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size20};
