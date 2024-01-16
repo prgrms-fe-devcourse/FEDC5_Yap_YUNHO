@@ -7,13 +7,13 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 export default function UserEdit() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { isLoggedIn, user, myId } = useAuthUserStore()
+  const { isLoggedIn, user } = useAuthUserStore()
 
   if (!user) {
     return
   }
 
-  if (!isLoggedIn || id !== myId) {
+  if (!isLoggedIn || id !== user._id) {
     navigate("/", { replace: true })
   }
 
