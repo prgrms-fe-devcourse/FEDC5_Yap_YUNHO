@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query"
 import getNotificationAPI from "./../apis/getNotificationAPI"
 import { Notification } from "@/types/index"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 export const QUERY_KEY_GET_NOTIFICATION = "GET_NOTIFICATION"
 
 const useGetNotification = () => {
+  const { isLoggedIn } = useAuthUserStore()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_NOTIFICATION],
     queryFn: getNotificationAPI,
-    initialData: [],
+    enabled: isLoggedIn,
     refetchInterval: 1000 * 5,
     gcTime: 1000 * 60 * 5,
     select: (data) => {
