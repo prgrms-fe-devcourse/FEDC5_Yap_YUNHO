@@ -90,8 +90,7 @@ const getPost = async (id: string) => {
       }
       return newLikePost
     })
-    .catch((e) => {
-      console.log("error", e)
+    .catch(() => {
       return null
     })
 }
