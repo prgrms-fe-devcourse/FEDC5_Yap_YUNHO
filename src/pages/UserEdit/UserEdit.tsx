@@ -9,7 +9,7 @@ import { User } from "@/types"
 export default function UserEdit() {
   const { id } = useParams()
   const navigate = useNavigate()
-  // const [userInfo, setUserInfo] = useState<User>(null)
+  const [userInfo, setUserInfo] = useState<User>(null)
   // console.log("userInfo", userInfo)
   const { isLoggedIn, user, myId } = useAuthUserStore() // 이거로 바꿔야함
   // console.log("isLoggedIn", isLoggedIn)
