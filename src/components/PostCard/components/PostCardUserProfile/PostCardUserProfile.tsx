@@ -10,7 +10,7 @@ const PostCardUserProfile = ({
   onNavigatePostDetail,
   author,
 }: PostCardUserProfileProps): React.ReactNode => {
-  const imageSrc = imgUrl ? imgUrl : "src/assets/standard.jpeg"
+  const imageSrc = author.image ? author.image : "src/assets/standard.jpeg"
 
   return (
     <S.PostCardUserProfileLayout>
