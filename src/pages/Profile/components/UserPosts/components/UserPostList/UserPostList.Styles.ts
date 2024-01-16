@@ -20,11 +20,3 @@ export const UserPostListContainer = styled.div`
     grid-template-columns: repeat(3, 30rem);
   }
 `
-
-export const UserPostListItemContainer = styled.div`
-  width: 30rem;
-  aspect-ratio: 1;
-
-  border-radius: ${({ theme }) => theme.radius.size20};
-  background-color: ${({ theme }) => theme.colors.sub};
-`

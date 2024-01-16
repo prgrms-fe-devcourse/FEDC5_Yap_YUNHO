@@ -11,9 +11,9 @@ const UserActions = () => {
   const navigate = useNavigate()
   const { isShowModal, showModal, closeModal } = useModal()
 
-  const { id } = useParams()
+  const { userId } = useParams()
   const { myId, isLoggedIn } = useAuthUserStore()
-  const isMyPage = myId === id
+  const isMyPage = myId === userId
 
   const handleClickButton = (isDMPage?: boolean) => {
     if (!isLoggedIn) {
@@ -22,7 +22,7 @@ const UserActions = () => {
     }
 
     if (isDMPage) {
-      navigate(`/directmessage/${id}`)
+      navigate(`/directmessage/${userId}`)
     }
   }
 
@@ -33,32 +33,34 @@ const UserActions = () => {
     }
   }
 
-  return (
-    <S.UserActionLayout>
-      {isMyPage ? (
+  if (isMyPage) {
+    return (
+      <S.UserActionLayout>
         <UserActionButton
           text="회원 정보 수정"
           $width={11}
           onClick={() => {
-            navigate(`/useredit/${id}`)
+            navigate(`/useredit/${userId}`)
           }}
         />
-      ) : (
-        <>
-          <UserFollowActionButton onClick={handleClickButton} />
-          <UserActionButton
-            text="DM 보내기"
-            $width={9}
-            onClick={() => handleClickButton(true)}
-          />
-          <ConfirmModal
-            isShow={isShowModal}
-            onClose={handleAlertCloseButton}
-            message={NOT_LOGIN_MODAL_MESSAGE}
-            acceptButtonText={"확인"}
-          />
-        </>
-      )}
+      </S.UserActionLayout>
+    )
+  }
+
+  return (
+    <S.UserActionLayout>
+      <UserFollowActionButton onClick={handleClickButton} />
+      <UserActionButton
+        text="DM 보내기"
+        $width={9}
+        onClick={() => handleClickButton(true)}
+      />
+      <ConfirmModal
+        isShow={isShowModal}
+        onClose={handleAlertCloseButton}
+        message={NOT_LOGIN_MODAL_MESSAGE}
+        acceptButtonText={"확인"}
+      />
     </S.UserActionLayout>
   )
 }

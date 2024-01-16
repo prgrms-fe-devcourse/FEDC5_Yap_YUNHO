@@ -16,11 +16,11 @@ const UserProfile = () => {
   const navigate = useNavigate()
   const { isShowModal, showModal, closeModal } = useModal()
 
-  const { id } = useParams()
+  const { userId } = useParams()
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: [USER_PROFILE_QUERY_KEY, id],
-    queryFn: () => AUTH_API.get(`/users/${id}`).then((res) => res.data),
+    queryKey: [USER_PROFILE_QUERY_KEY, userId],
+    queryFn: () => AUTH_API.get(`/users/${userId}`).then((res) => res.data),
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 10,
   })
@@ -41,13 +41,17 @@ const UserProfile = () => {
   return (
     <>
       <S.UserProfileLayout>
-        <UserProfileImage image={data.image} />
-        <UserNickname nickName={data.fullName} />
-        <UserActions />
-        <UserFollowInfo
-          followingCount={data.following.length}
-          followerCount={data.followers.length}
-        />
+        {!isLoading && (
+          <>
+            <UserProfileImage image={data.image} />
+            <UserNickname nickName={data.fullName} />
+            <UserActions />
+            <UserFollowInfo
+              followingCount={data.following.length}
+              followerCount={data.followers.length}
+            />
+          </>
+        )}
       </S.UserProfileLayout>
       <AlertModal
         isShow={isShowModal}
