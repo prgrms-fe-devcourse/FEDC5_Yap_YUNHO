@@ -1,21 +1,54 @@
 import * as S from "./SignupInputContainer.Styles"
 import SignupInputItem from "./SignupInputItem"
+import type { OnChange, RequiredUserInfo } from "../../types"
 
-const SignupInputContainer = () => {
+interface SignupInputContainerProp {
+  onChange: OnChange
+  requiredUserInfo: RequiredUserInfo
+  errorMessage: RequiredUserInfo
+}
+
+const SignupInputContainer = ({
+  onChange,
+  requiredUserInfo,
+  errorMessage,
+}: SignupInputContainerProp) => {
   return (
     <S.SignupInputContainerLayout>
       <SignupInputItem
         title="이메일"
-        errorMessage="사용가능한 이메일입니다."
+        type="text"
+        name="email"
+        placeholder="이메일을 입력해주세요."
+        errorMessage={errorMessage.email}
+        onChange={onChange}
+        value={requiredUserInfo.email}
       />
       <SignupInputItem
-        title="이름"
-        errorMessage="사용 가능한 이름입니다."
+        title="닉네임"
+        type="text"
+        name="nickname"
+        placeholder="닉네임을 입력해주세요."
+        errorMessage={errorMessage.nickname}
+        onChange={onChange}
+        value={requiredUserInfo.nickname}
       />
       <SignupInputItem
         title="비밀번호"
-        errorMessage="비밀번호 생성 규칙에 맞지 않습니다."
-        additionalInput={<input style={{ width: "27rem" }} />}
+        type="password"
+        name="password"
+        errorMessage={errorMessage.password}
+        placeholder="비밀번호를 4자리 이상 입력해주세요."
+        onChange={onChange}
+        value={requiredUserInfo.password}
+      />
+      <SignupInputItem
+        type="password"
+        name="passwordCheck"
+        placeholder="설정한 비밀번호와 동일하게 입력해주세요."
+        errorMessage={errorMessage.passwordCheck}
+        onChange={onChange}
+        value={requiredUserInfo.passwordCheck}
       />
     </S.SignupInputContainerLayout>
   )

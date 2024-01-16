@@ -1,12 +1,20 @@
+import { useState } from "react"
 import * as S from "./UserPosts.Styles"
 import UserPostFilter from "./components/UserPostFilter/UserPostFilter"
-import UserPostList from "./components/UserPostList/UserPostList"
+import UserCreatePostList from "./components/UserPostList/UserCreatePostList"
+import MyLikePostList from "./components/UserPostList/MyLikePostList"
 
 const UserPosts = () => {
+  const [isSelectedLikeFilter, setIsSelectedLikeFilter] = useState(false)
+
   return (
     <S.UserPostsLayout>
-      <UserPostFilter />
-      <UserPostList />
+      <UserPostFilter
+        handlePostList={(filter) => {
+          setIsSelectedLikeFilter(filter)
+        }}
+      />
+      {isSelectedLikeFilter ? <MyLikePostList /> : <UserCreatePostList />}
     </S.UserPostsLayout>
   )
 }

@@ -1,5 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { DirectMessage, Home, Login, Profile, Signup, UserEdit } from "@/pages"
+import {
+  DirectMessage,
+  Home,
+  Login,
+  NotFound404,
+  Profile,
+  Signup,
+  UserEdit,
+} from "@/pages"
 import Navbar from "@/components/Navbar/Navbar"
 
 const YAPRoute = () => {
@@ -12,7 +20,7 @@ const YAPRoute = () => {
           element={<Home />}
         >
           <Route
-            path="/:modalName/:id?"
+            path="/post/:modalName/:id"
             element={<></>}
           />
         </Route>
@@ -30,9 +38,14 @@ const YAPRoute = () => {
           element={<UserEdit />}
         />
         <Route
-          path="/profile/:id?"
+          path="/profile/:userId"
           element={<Profile />}
-        />
+        >
+          <Route
+            path=":modalName/:id"
+            element={<></>}
+          />
+        </Route>
         {/* query string Category 구별 */}
         <Route
           path="/directmessage/:userId?/:modalName?/:id?"
@@ -46,7 +59,7 @@ const YAPRoute = () => {
 
         <Route
           path="*"
-          element={<div></div>}
+          element={<NotFound404 />}
         />
       </Routes>
     </Router>

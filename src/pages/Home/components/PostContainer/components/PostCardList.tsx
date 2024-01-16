@@ -37,7 +37,7 @@ const PostCardList = ({
   }, [modalName, showDetailModal])
 
   const handleNavigatePostDetail: OnNavigatePostDetail = (postId) => {
-    navigate(`/postdetail/${postId}`)
+    navigate(`post/postdetail/${postId}`)
   }
 
   const handleClosePostDetail = useCallback(() => {
@@ -53,7 +53,7 @@ const PostCardList = ({
           onClick={onClickLeftCard}
         >
           <PostCard
-            authUserProfile={postList[0].author.image}
+            author={postList[0].author}
             thumbnail={postList[0].title.thumbnail}
             content={postList[0].title.content}
             mediaUrl={postList[0].title.mediaUrl}
@@ -70,7 +70,7 @@ const PostCardList = ({
           onClick={onClickLeftCard}
         >
           <PostCard
-            authUserProfile={postList[1].author.image}
+            author={postList[1].author}
             thumbnail={postList[1].title.thumbnail}
             content={postList[1].title.content}
             mediaUrl={postList[1].title.mediaUrl}
@@ -85,7 +85,7 @@ const PostCardList = ({
         <S.PostMainCard>
           <PostCard
             isBlock={isShowEditModal || isShowPostDetail}
-            authUserProfile={postList[2].author.image}
+            author={postList[2].author}
             thumbnail={postList[2].title.thumbnail}
             content={postList[2].title.content}
             mediaUrl={postList[2].title.mediaUrl}
@@ -100,7 +100,7 @@ const PostCardList = ({
           onClick={onClickRightCard}
         >
           <PostCard
-            authUserProfile={postList[3].author.image}
+            author={postList[3].author}
             thumbnail={postList[3].title.thumbnail}
             content={postList[3].title.content}
             mediaUrl={postList[3].title.mediaUrl}
@@ -116,7 +116,7 @@ const PostCardList = ({
           onClick={onClickRightCard}
         >
           <PostCard
-            authUserProfile={postList[4].author.image}
+            author={postList[4].author}
             thumbnail={postList[4].title.thumbnail}
             content={postList[4].title.content}
             mediaUrl={postList[4].title.mediaUrl}

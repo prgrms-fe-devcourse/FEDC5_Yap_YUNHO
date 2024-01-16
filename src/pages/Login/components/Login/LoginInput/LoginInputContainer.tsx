@@ -1,16 +1,18 @@
 import * as S from "./LoginInputContainer.Styles"
 import LoginInputItem from "./LoginInputItem"
 
-import type { UpdateUserInfo, AllowedInputType } from "../../../types"
+import type { UpdateUserInfo } from "../../../types"
 interface LoginInputContainerProps {
   updateUserInfo: UpdateUserInfo
-  type: AllowedInputType
+  type: string
+  name: string
   placeholder: string
 }
 
 const LoginInputContainer = ({
   updateUserInfo,
   type,
+  name,
   placeholder,
 }: LoginInputContainerProps) => {
   return (
@@ -18,6 +20,7 @@ const LoginInputContainer = ({
       <LoginInputItem
         updateUserInfo={updateUserInfo}
         type={type}
+        name={name}
         placeholder={placeholder}
       />
     </S.LoginInputContainerLayout>

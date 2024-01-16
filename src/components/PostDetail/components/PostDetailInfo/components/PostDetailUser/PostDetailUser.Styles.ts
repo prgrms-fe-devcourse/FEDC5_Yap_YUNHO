@@ -60,6 +60,7 @@ export const PostDetailFollowButton = styled.button`
 
   background-color: ${({ theme }) => theme.colors.point};
   border-radius: ${({ theme }) => theme.radius.size8};
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 

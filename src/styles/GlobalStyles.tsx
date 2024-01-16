@@ -26,6 +26,8 @@ body{
   line-height: 1;
   font-family: ${({ theme }) => theme.fontFamily.defaultFont};
 
+  font-family: ${({ theme }) => theme.fontFamily.defaultFont};
+
   background-color: ${({ theme }) => theme.colors.main};
 }
 
@@ -48,10 +50,11 @@ button {
 input, textarea {
   border : none;
   outline: none;
-    font-family: "BMJUA", "Noto Sans KR", sans-serif;
+
+  font-family: ${({ theme }) => theme.fontFamily.defaultFont};
   background-color: ${({ theme }) => theme.colors.white};
   &::placeholder {
-    font-family: "BMJUA", "Noto Sans KR", sans-serif;
+    font-family: ${({ theme }) => theme.fontFamily.defaultFont}
   }
 }
 

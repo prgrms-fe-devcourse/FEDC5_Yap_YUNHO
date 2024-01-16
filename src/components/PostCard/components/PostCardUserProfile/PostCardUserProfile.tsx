@@ -2,21 +2,30 @@ import React from "react"
 import * as S from "./PostCardUserProfile.Styles"
 import { PostCardUserProfileProps } from "../../PostCard.Types"
 import ReadMoreIcon from "@mui/icons-material/ReadMore"
+import UserInfoPopover from "@/components/UserInfoPopover/UserInfoPopover"
 
 const PostCardUserProfile = ({
   hasProfile,
   postId,
   onNavigatePostDetail,
-  imgUrl,
+  author,
 }: PostCardUserProfileProps): React.ReactNode => {
+  const imageSrc = author.image ? author.image : "src/assets/standard.jpeg"
+
   return (
     <S.PostCardUserProfileLayout>
       {hasProfile && (
         <S.PostCardUserProfileImgLayout>
-          <S.PostCardUserProfileImg
-            src={imgUrl}
-            alt=""
-          />
+          <UserInfoPopover
+            isPostCard={true}
+            isRight={true}
+            user={author}
+          >
+            <S.PostCardUserProfileImg
+              src={imageSrc}
+              alt=""
+            />
+          </UserInfoPopover>
         </S.PostCardUserProfileImgLayout>
       )}
       {onNavigatePostDetail && (

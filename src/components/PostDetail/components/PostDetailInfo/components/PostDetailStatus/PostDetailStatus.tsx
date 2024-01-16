@@ -1,6 +1,6 @@
 import * as S from "./PostDetailStatus.Styles"
-import { Post, User } from "@/types"
-import { convertFollowCount } from "@/util/convertFollowCount"
+import { Like, Post, User } from "@/types"
+import { getConvertedCount } from "@/util/getConvertedCount"
 import PostDetailEditActions from "./components/PostDetailEditActions"
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt"
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt"
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 import useLikePost from "@/components/PostDetail/hooks/useLikePost"
 import useUnLikePost from "@/components/PostDetail/hooks/useUnLikePost"
+import sendNotification from "@/apis/sendNotification"
 
 interface PostDetailStatusProps {
   post: Post
@@ -58,7 +59,16 @@ const PostDetailStatus = ({
       unLikeMutate(myLikePost._id)
       return
     }
-    likeMutate(post._id)
+    likeMutate(post._id, {
+      onSuccess: (response: Like) => {
+        sendNotification({
+          notificationType: "LIKE",
+          notificationTypeId: response._id,
+          userId: post.author._id,
+          postId: post._id,
+        })
+      },
+    })
   }
 
   const handleConfirm = (isAccept: boolean) => {
@@ -84,7 +94,7 @@ const PostDetailStatus = ({
               <ThumbUpOffAltIcon />
             )}
 
-            {convertFollowCount(likes.length)}
+            {getConvertedCount(likes.length)}
           </S.PostDetailLike>
 
           <S.PostDetailLink

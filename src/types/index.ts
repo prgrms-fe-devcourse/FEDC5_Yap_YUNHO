@@ -127,10 +127,3 @@ export interface PostComment {
   createdAt: string
   updatedAt: string
 }
-
-export interface SendNotificationProps {
-  notificationType: "COMMENT" | "FOLLOW" | "LIKE" | "MESSAGE"
-  notificationTypeId: string
-  userId: string
-  postId: string | null
-}

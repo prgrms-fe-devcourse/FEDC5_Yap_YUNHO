@@ -13,7 +13,7 @@ const PostEditViewer = ({ postData }: PostEditViewerProps) => {
   return (
     <GS.PostModalGlobalViewerLayout>
       <PostCard
-        authUserProfile={user.image}
+        author={user}
         thumbnail={postData.thumbnail}
         content={postData.content}
         mediaUrl={postData.mediaUrl}

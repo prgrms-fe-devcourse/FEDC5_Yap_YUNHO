@@ -8,6 +8,8 @@ import kolocale from "timeago.js/lib/lang/ko"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
+import standardImage from "@/assets/standard.jpeg"
+import UserInfoPopover from "@/components/UserInfoPopover/UserInfoPopover"
 
 interface PostCommentItemProps {
   comment: PostComment
@@ -35,10 +37,17 @@ const PostCommentItem = ({ comment, onDelete }: PostCommentItemProps) => {
 
   const isMyComment = author._id === user._id
   const convertedData = format(createdAt, "ko")
+
+  const imageSrc = author.image ? author.image : standardImage
   return (
     <>
       <S.PostCommentItemLayout>
-        <S.PostCommentItemUserProfile $profile={author.image} />
+        <UserInfoPopover
+          user={author}
+          isRight={true}
+        >
+          <S.PostCommentItemUserProfile $profile={imageSrc} />
+        </UserInfoPopover>
         <S.PostCommentItemContainer>
           <S.PostCommentItemInfo>
             {`${author.fullName}`}

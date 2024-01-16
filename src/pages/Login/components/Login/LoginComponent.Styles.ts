@@ -72,7 +72,7 @@ export const Button = styled.button<{ $color: string }>`
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   &:hover {
-    opacity: 0 ${({ theme }) => theme.opacity.normal};
+    opacity: ${({ theme }) => theme.opacity.normal};
     transition: opacity ${({ theme }) => theme.transition.normal};
   }
 `

@@ -9,6 +9,7 @@ export const UserActionLayout = styled.section`
 
 export const UserActionButton = styled.button<{
   $width?: number
+  $isFollowing?: boolean
 }>`
   user-select: none;
 
@@ -18,7 +19,9 @@ export const UserActionButton = styled.button<{
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 
   border-radius: ${({ theme }) => theme.radius.size8};
-  background-color: ${({ theme }) => theme.colors.point};
+  background-color: ${({ theme, $isFollowing }) =>
+    $isFollowing ? theme.colors.gray : theme.colors.point};
+
   &:hover {
     opacity: ${({ theme }) => theme.opacity.normal};
     transition: ${({ theme }) => theme.transition.normal};
