@@ -6,7 +6,11 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 
 const EDIT_NICKNAME_MUTATION_QUERY_KEY = "EDIT_NICKNAME_MUTATION_QUERY_KEY"
 
-const useEditNickname = () => {
+interface UseEditNickname {
+  setIsEditNicknameSuccess: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const useEditNickname = ({ setIsEditNicknameSuccess }: UseEditNickname) => {
   const {
     isShowModal: isShowAlertModal,
     showModal: showAlertModal,
@@ -26,9 +30,11 @@ const useEditNickname = () => {
     mutationFn: editNickname,
     onSuccess: (user) => {
       updateUser(user)
+      setIsEditNicknameSuccess(true)
     },
     onError: () => {
       showAlertModal()
+      setIsEditNicknameSuccess(false)
       return
     },
   })

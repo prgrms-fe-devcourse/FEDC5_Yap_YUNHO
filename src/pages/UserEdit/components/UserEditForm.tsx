@@ -32,11 +32,18 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
     url: "",
   })
 
+  const [isEditNicknameSuccess, setIsEditNicknameSuccess] = useState(false)
+  const [isEditPasswordSuccess, setIsEditPasswordSuccess] = useState(false)
+  const [isEditUserProfileImageSuccess, setIsEditUserProfileImageSuccess] =
+    useState(false)
+
   const navigate = useNavigate()
 
-  const { EditUserNickname } = useEditNickname()
-  const { EditUserPassword } = useEditPassword()
-  const { EditUserProfileImage } = useEditUserProfileImage()
+  const { EditUserNickname } = useEditNickname({ setIsEditNicknameSuccess })
+  const { EditUserPassword } = useEditPassword({ setIsEditPasswordSuccess })
+  const { EditUserProfileImage } = useEditUserProfileImage({
+    setIsEditUserProfileImageSuccess,
+  })
 
   const handleEdit = () => {
     const { nickname, password } = requiredUserInfo
@@ -49,7 +56,15 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
     if (url !== "" && authUser.image !== url) {
       EditUserProfileImage.mutate(binary)
     }
-    navigate("/", { replace: true })
+
+    if (
+      isEditNicknameSuccess &&
+      isEditPasswordSuccess &&
+      isEditUserProfileImageSuccess
+    ) {
+      // navigate("/", { replace: true })
+      navigate(`/profile/${authUser._id}`, { replace: true })
+    }
   }
 
   const validateUserInfo = (userInfoType: string, userInfoValue: string) => {
@@ -111,7 +126,7 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
             $width={18}
             $color={theme.colors.sub_alt}
             onClick={() => {
-              // navigate("/profile/:id")
+              navigate(`/profile/${authUser._id}`)
             }}
             type="button"
           >

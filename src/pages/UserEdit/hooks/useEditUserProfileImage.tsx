@@ -7,7 +7,15 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 const EDIT_USER_PROFILE_IMAGE_MUTATION_QUERY_KEY =
   "EDIT_USER_PROFILE_IMAGE_MUTATION_QUERY_KEY"
 
-const useEditUserProfileImage = () => {
+interface UseEditUserProfileImage {
+  setIsEditUserProfileImageSuccess: React.Dispatch<
+    React.SetStateAction<boolean>
+  >
+}
+
+const useEditUserProfileImage = ({
+  setIsEditUserProfileImageSuccess,
+}: UseEditUserProfileImage) => {
   const { updateUser } = useAuthUserStore()
   const {
     isShowModal: isShowAlertModal,
@@ -28,9 +36,12 @@ const useEditUserProfileImage = () => {
     mutationFn: editUserProfileImage,
     onSuccess: (user) => {
       updateUser(user)
+      setIsEditUserProfileImageSuccess(true)
     },
     onError: () => {
       showAlertModal()
+      setIsEditUserProfileImageSuccess(false)
+      return
     },
   })
 
