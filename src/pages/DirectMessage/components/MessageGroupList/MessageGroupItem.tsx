@@ -1,4 +1,4 @@
-import * as S from "./MessageList.Styles"
+import * as S from "./MessageGroupList.Styles"
 import { MessageGroupItemProps } from "../../DirectMessage.Types"
 import MessageProfile from "./MessageProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"

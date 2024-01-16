@@ -1,5 +1,5 @@
 import { useState } from "react"
-import * as S from "./MessageList.Styles"
+import * as S from "./MessageGroupList.Styles"
 import { Conversation, User } from "@/types"
 import decideChatUserName from "../../utils/decideChatUserName"
 import useMessageGroupList from "../../hooks/useMessageGroupList"
