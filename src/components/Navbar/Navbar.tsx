@@ -11,8 +11,12 @@ import AlertModal from "../Modal/components/AlertModal/AlertModal"
 
 const Navbar = () => {
   const { isShowModal, showModal, closeModal } = useModal()
-
   const { updateUser, setLogout } = useAuthUserStore()
+  const { pathname } = useLocation()
+
+  const LOGIN_PAGE_PATH_NAME = "/login"
+  const SIGNUP_PAGE_PATH_NAME = "/signup"
+  const USER_EDIT_PAGE_PATH_NAME = "/useredit"
 
   useEffect(() => {
     const hasToken = authToken.getToken()
@@ -28,13 +32,14 @@ const Navbar = () => {
       })
   }, [updateUser, showModal, setLogout])
 
-  const { pathname } = useLocation()
-  const NavbarFlag = checkPathName(pathname)
-  if (!NavbarFlag) {
+  if (
+    pathname === SIGNUP_PAGE_PATH_NAME ||
+    pathname === USER_EDIT_PAGE_PATH_NAME
+  ) {
     return
   }
 
-  const isLoginPage = NavbarFlag === "login"
+  const isLoginPage = pathname === LOGIN_PAGE_PATH_NAME
 
   return (
     <>
@@ -53,15 +58,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-const checkPathName = (path: string) => {
-  if (path.includes("useredit") || path.includes("signup")) {
-    return false
-  }
-
-  if (path.includes("login")) {
-    return "login"
-  }
-
-  return true
-}
