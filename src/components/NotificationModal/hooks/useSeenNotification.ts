@@ -12,9 +12,6 @@ const useSeenNotification = () => {
         queryKey: [QUERY_KEY_GET_NOTIFICATION],
       })
     },
-    onError: () => {
-      console.error()
-    },
   })
 
   return { seenNotification }

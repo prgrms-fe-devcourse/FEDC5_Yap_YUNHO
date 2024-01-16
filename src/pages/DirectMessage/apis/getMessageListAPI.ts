@@ -8,8 +8,7 @@ const getMessageListAPI = async (othersUserId: string, myId: string) => {
 
   const messageList = await AUTH_API.get(`/messages?userId=${othersUserId}`)
     .then((res) => res.data)
-    .catch((e) => {
-      console.error(e, "메시지 리스트 요청 실패")
+    .catch(() => {
       return []
     })
 

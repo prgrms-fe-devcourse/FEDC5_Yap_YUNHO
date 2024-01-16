@@ -30,11 +30,8 @@ const MessageInput = ({ othersUserId }: MessageInputProps) => {
   }
 
   const getMyProfileImg = async () => {
-    const { image } = await AUTH_API.get(`/auth-user`)
-      .then((res) => res.data)
-      .catch((e) => {
-        console.error(e, "이미지 요청 실패")
-      })
+    const { image } = await AUTH_API.get(`/auth-user`).then((res) => res.data)
+
     setMyProfileImg(image)
   }
 

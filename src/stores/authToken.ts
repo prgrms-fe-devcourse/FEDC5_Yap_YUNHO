@@ -28,7 +28,6 @@ class AuthToken {
       this.token = JSON.parse(res)
       return this.token
     } catch (e) {
-      console.error(e)
       return this.token
     }
   }

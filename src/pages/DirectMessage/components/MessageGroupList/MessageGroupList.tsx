@@ -16,13 +16,9 @@ const MessageGroupList = () => {
   const navigate = useNavigate()
 
   const updateSeenMessage = async (others: User) => {
-    try {
-      await AUTH_API.put("/messages/update-seen", {
-        sender: others._id,
-      })
-    } catch (e) {
-      console.error(e, "메시지 읽음 처리 오류")
-    }
+    await AUTH_API.put("/messages/update-seen", {
+      sender: others._id,
+    })
   }
 
   const handleMessageGroupClick = ({

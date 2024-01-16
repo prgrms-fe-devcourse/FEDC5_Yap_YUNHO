@@ -50,9 +50,7 @@ const useMenuClick = () => {
         setLogout()
         navigate("/")
       })
-      .catch((err) => {
-        console.error("로그아웃 오류", err)
-      })
+      .catch(() => {})
   }
 
   return { handleMenuClick, notificationModal, NotificationListData }

@@ -16,9 +16,7 @@ const sendMessageAPI = async (messageSubmission: SendMessageProps) => {
     sender: messageSubmission.receiver,
   })
     .then()
-    .catch((e) => {
-      console.error(e, "메시지 읽음 처리 실패")
-    })
+    .catch(() => {})
 
   return message
 }
