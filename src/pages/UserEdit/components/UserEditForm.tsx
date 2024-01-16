@@ -43,11 +43,11 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
 
     const { binary, url } = formData
 
-    await EditUserNickname.mutateAsync({ fullName: nickname, username: "" })
-    await EditUserPassword.mutateAsync({ password: password })
+    EditUserNickname.mutate({ fullName: nickname, username: "" })
+    EditUserPassword.mutate({ password: password })
 
-    if (url !== "" && authUser.image !== url) {
-      await EditUserProfileImage.mutateAsync(binary)
+    if (authUser.image !== url) {
+      EditUserProfileImage.mutate(binary)
     }
 
     navigate(`/profile/${authUser._id}`, { replace: true })

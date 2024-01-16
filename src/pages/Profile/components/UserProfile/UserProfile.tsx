@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { USER_PAGE_ERROR_MESSAGE } from "@/constants/errorMessage"
 import useModal from "@/components/Modal/hooks/useModal"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 const USER_PROFILE_QUERY_KEY = "USER_PROFILE_QUERY_KEY"
 
@@ -17,6 +18,7 @@ const UserProfile = () => {
   const { isShowModal, showModal, closeModal } = useModal()
 
   const { userId } = useParams()
+  const { user } = useAuthUserStore()
 
   const { data, isLoading, isError } = useQuery({
     queryKey: [USER_PROFILE_QUERY_KEY, userId],
@@ -24,6 +26,8 @@ const UserProfile = () => {
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 10,
   })
+
+  const isMyPage = userId === user._id
 
   const handleCloseErrorModal = () => {
     navigate("/")
@@ -43,8 +47,8 @@ const UserProfile = () => {
       <S.UserProfileLayout>
         {!isLoading && (
           <>
-            <UserProfileImage image={data.image} />
-            <UserNickname nickName={data.fullName} />
+            <UserProfileImage image={isMyPage ? user.image : data.image} />
+            <UserNickname nickName={isMyPage ? user.fullName : data.fullName} />
             <UserActions />
             <UserFollowInfo
               followingCount={data.following.length}

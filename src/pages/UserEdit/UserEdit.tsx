@@ -3,18 +3,22 @@ import UserEditForm from "./components/UserEditForm"
 import { useNavigate, useParams } from "react-router-dom"
 
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { useEffect } from "react"
 
 export default function UserEdit() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { isLoggedIn, user } = useAuthUserStore()
 
+  useEffect(() => {
+    if (!id || !isLoggedIn || id !== user._id) {
+      navigate("/", { replace: true })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   if (!user) {
     return
-  }
-
-  if (!isLoggedIn || id !== user._id) {
-    navigate("/", { replace: true })
   }
 
   return (
