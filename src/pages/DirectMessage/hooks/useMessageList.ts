@@ -6,10 +6,10 @@ import getMessageListAPI from "../apis/getMessageListAPI"
 export const QUERY_KEY_GET_MESSAGELIST = "GET_MESSAGELIST"
 
 const useMessageList = (othersUserId: string) => {
-  const { user: my } = useAuthUserStore()
+  const { user: authUser } = useAuthUserStore()
   const { data } = useQuery<Message[]>({
-    queryKey: [QUERY_KEY_GET_MESSAGELIST, othersUserId, my._id],
-    queryFn: () => getMessageListAPI(othersUserId, my._id),
+    queryKey: [QUERY_KEY_GET_MESSAGELIST, othersUserId, authUser._id],
+    queryFn: () => getMessageListAPI(othersUserId, authUser._id),
     initialData: [],
     refetchInterval: 1000 * 2,
 
