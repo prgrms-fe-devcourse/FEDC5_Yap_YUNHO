@@ -11,7 +11,8 @@ const useMessageList = (othersUserId: string) => {
     queryKey: [QUERY_KEY_GET_MESSAGELIST, othersUserId, my._id],
     queryFn: () => getMessageListAPI(othersUserId, my._id),
     initialData: [],
-    refetchInterval: 2000, // 재 요청
+    refetchInterval: 1000 * 2,
+    gcTime: 1000 * 60 * 5,
 
     select: (MessageList: Message[]) =>
       MessageList.sort(
