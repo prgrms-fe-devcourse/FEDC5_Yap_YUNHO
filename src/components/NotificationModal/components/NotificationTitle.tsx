@@ -11,6 +11,12 @@ const NotificationTitle = ({
 }: NotificationTitleProps) => {
   const { seenNotification } = useSeenNotification()
 
+  const handleSeenNotification = () => {
+    if (NotificationListData.length > 0) {
+      seenNotification.mutate()
+    }
+  }
+
   return (
     <S.NotificationTitleLayout>
       <S.NotificationTitleContainer>
@@ -19,13 +25,7 @@ const NotificationTitle = ({
           {NotificationListData.length}
         </S.NotificationTitleListNumber>
       </S.NotificationTitleContainer>
-      <S.NotificationDeleteButton
-        onClick={() => {
-          if (NotificationListData.length > 0) {
-            seenNotification.mutate()
-          }
-        }}
-      >
+      <S.NotificationDeleteButton onClick={handleSeenNotification}>
         알림 지우기
       </S.NotificationDeleteButton>
     </S.NotificationTitleLayout>

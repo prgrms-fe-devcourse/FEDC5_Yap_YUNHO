@@ -18,7 +18,6 @@ const NotificationItem = ({
     notificationItem,
     pathname,
   )
-  console.log(NOTIFI_NAVIGATION)
 
   return (
     <S.NotificationItemLayout

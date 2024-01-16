@@ -12,7 +12,6 @@ const useMessageList = (othersUserId: string) => {
     queryFn: () => getMessageListAPI(othersUserId, my._id),
     initialData: [],
     refetchInterval: 1000 * 2,
-    gcTime: 1000 * 60 * 5,
 
     select: (MessageList: Message[]) =>
       MessageList.sort(

@@ -7,11 +7,13 @@ import MessageGroupItem from "./MessageGroupItem"
 import { handleMessageGroupClickProps } from "../../DirectMessage.Types"
 import { AUTH_API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { useNavigate } from "react-router-dom"
 
 const MessageGroupList = () => {
   const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
   const { data: MessageGroupList } = useMessageGroupList()
   const { user } = useAuthUserStore()
+  const navigate = useNavigate()
 
   const updateSeenMessage = async (others: User) => {
     try {
@@ -29,7 +31,7 @@ const MessageGroupList = () => {
     sender,
   }: handleMessageGroupClickProps) => {
     const others = decideChatUserName({ myId, receiver, sender })
-
+    navigate(`/directmessage/${others._id}`)
     setSelectedMessageGroupId(others._id)
     updateSeenMessage(others)
   }
