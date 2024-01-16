@@ -17,7 +17,7 @@ import CloseIcon from "@mui/icons-material/Close"
 const NavbarRightList = () => {
   const { isLoggedIn } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
-  const { handleMenuClick } = useMenuClick()
+  const { handleMenuClick, PostEditModal } = useMenuClick()
 
   const navigate = useNavigate()
 
@@ -55,6 +55,7 @@ const NavbarRightList = () => {
           alt="프로필"
         />
       </NavbarButton>
+      {PostEditModal}
     </S.NavbarRightListLayout>
   )
 }

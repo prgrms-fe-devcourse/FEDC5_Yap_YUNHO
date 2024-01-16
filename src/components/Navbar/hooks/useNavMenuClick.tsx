@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router-dom"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import PostEdit from "@/components/PostEdit/PostEdit"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
+import usePostDetailModalStore from "@/components/PostDetail/stores/usePostDetailModalStore"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
   const { setLogout } = useAuthUserStore()
+  const { isShowEditModal, showEditModal } = usePostEditModalStore()
+  const { isShowPostDetail } = usePostDetailModalStore()
 
   const handleMenuClick = (menu: string) => {
     switch (menu) {
@@ -18,7 +23,7 @@ const useMenuClick = () => {
         navigate("/directmessage")
         break
       case "게시물 생성":
-        // 게시물 생성 모달
+        showEditModal()
         break
       case "알림":
         // 알림 창(후순위)
@@ -27,6 +32,10 @@ const useMenuClick = () => {
         break
     }
   }
+
+  const PostEditModal = isShowEditModal && !isShowPostDetail && (
+    <PostEdit postId="newPost" />
+  )
 
   const handleLogout = async () => {
     await API.post("/logout")
@@ -39,7 +48,7 @@ const useMenuClick = () => {
       })
   }
 
-  return { handleMenuClick }
+  return { handleMenuClick, PostEditModal }
 }
 
 export default useMenuClick

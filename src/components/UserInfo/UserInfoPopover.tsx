@@ -9,13 +9,10 @@ interface UserInfoDropDownProps {
 }
 
 const UserInfoPopover = ({
-  userId,
   isPostCard,
   children,
   isLeft,
 }: UserInfoDropDownProps) => {
-  console.log(userId)
-
   const inner = (
     <S.UserInfoBackground>
       <S.UserInfoLayout>

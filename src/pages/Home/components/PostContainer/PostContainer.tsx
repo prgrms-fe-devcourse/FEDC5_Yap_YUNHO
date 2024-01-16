@@ -23,6 +23,7 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
   const { data } = useQuery({
     queryKey: [GET_POST_LIST_QUERY_KEY, selectedCategory.id],
     queryFn: async () => {
+      console.log(selectedCategory.id)
       const { data } = await API.get(`/posts/channel/${selectedCategory.id}`)
       return data
     },
