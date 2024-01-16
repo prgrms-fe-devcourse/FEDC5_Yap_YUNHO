@@ -21,6 +21,7 @@ export const UserActionButton = styled.button<{
   border-radius: ${({ theme }) => theme.radius.size8};
   background-color: ${({ theme, $isFollowing }) =>
     $isFollowing ? theme.colors.gray : theme.colors.point};
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
 
   &:hover {
     opacity: ${({ theme }) => theme.opacity.normal};

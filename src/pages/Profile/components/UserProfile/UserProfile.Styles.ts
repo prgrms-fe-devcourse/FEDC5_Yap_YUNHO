@@ -16,6 +16,7 @@ export const UserProfileImageContainer = styled.img`
   width: 16rem;
   border-radius: ${({ theme }) => theme.radius.circle};
   background-color: ${({ theme }) => theme.colors.sub};
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   margin-bottom: 2rem;
 `
