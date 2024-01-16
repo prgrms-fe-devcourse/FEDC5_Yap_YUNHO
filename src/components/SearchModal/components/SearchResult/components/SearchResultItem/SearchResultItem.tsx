@@ -1,7 +1,7 @@
 import * as S from "./SearchResultItem.Styles"
 import SearchResultItemTitle from "./components/SearchResultItemTitle"
 import { searchResultProps } from "@/components/SearchModal/SearchModal.Types"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalStore"
 import MessageProfile from "@/pages/DirectMessage/components/MessageGroupList/MessageProfile"
 
@@ -15,9 +15,16 @@ const SearchResultItem = ({
 }: searchResultProps) => {
   const navigate = useNavigate()
   const { closeSearchModal } = useSearchModalStore()
+  const { pathname } = useLocation()
+
+  const checkName = pathname === "/" ? "/post" : pathname
 
   const onNavigate = () => {
-    navigate(type === "user" ? `/directmessage/${id}` : `/postdetail/${id}`)
+    navigate(
+      type === "user"
+        ? `/directmessage/${id}`
+        : `${checkName}/postdetail/${id}`,
+    )
     closeSearchModal()
   }
 
