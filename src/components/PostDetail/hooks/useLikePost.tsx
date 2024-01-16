@@ -4,6 +4,7 @@ import useModal from "@/components/Modal/hooks/useModal"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import { AUTH_API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { POST_DETAIL_QUERY_KEY } from "./useGetPost"
 
 const MUTATION_KEY_LIKE_POST_KEY = "IT_IS_LIKE_MUTATION_KEY_546786723746238"
 
@@ -15,8 +16,11 @@ const useLikePost = () => {
   const fetchLikeMutate = useMutation({
     mutationKey: [MUTATION_KEY_LIKE_POST_KEY],
     mutationFn: fetchLikePost,
+
     onSuccess: () => {
-      queryClient.refetchQueries()
+      queryClient.invalidateQueries({
+        queryKey: [POST_DETAIL_QUERY_KEY],
+      })
       AUTH_API.get("/auth-user")
         .then((res) => res.data)
         .then((userData) => updateUser(userData))

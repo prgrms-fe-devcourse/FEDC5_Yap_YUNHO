@@ -36,6 +36,10 @@ export const PostSubCard = styled.div<{ $isLeft: boolean }>`
   z-index: ${({ theme }) => theme.zIndex.postSubCard};
   cursor: pointer;
 
+  transition: ${({ theme }) => theme.transition.normal};
+  &:hover {
+    transform: scale(1.05);
+  }
   @media (max-height: 950px) {
     align-self: flex-start;
   }
@@ -53,6 +57,11 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
 
   z-index: ${({ theme }) => theme.zIndex.postSmallCard};
   cursor: pointer;
+
+  transition: ${({ theme }) => theme.transition.normal};
+  &:hover {
+    transform: scale(1.05);
+  }
 
   @media (max-height: 800px) {
     align-self: flex-start;

@@ -40,30 +40,30 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
     },
   })
 
-  const handleDecreaseRange = () => {
-    if (listRange <= 0) {
-      return
+  const handleDecreaseRange = (count: number) => {
+    if (listRange - count <= 0) {
+      return setListRange(0)
     }
 
-    setListRange((range) => range - 1)
+    setListRange((range) => range - count)
   }
 
-  const handleIncreaseRange = () => {
+  const handleIncreaseRange = (count: number) => {
     if (!data) {
       return
     }
 
-    if (listRange >= data.length - 1) {
-      return
+    if (listRange + count >= data.length - 1) {
+      return setListRange(data.length - 1)
     }
-    setListRange((range) => range + 1)
+    setListRange((range) => range + count)
   }
 
   return (
     <S.PostContainerLayout>
       <S.ArrowIcon
         $isLeft={true}
-        onClick={handleDecreaseRange}
+        onClick={() => handleDecreaseRange(1)}
       >
         <ArrowBackIos className="arrow_icon" />
       </S.ArrowIcon>
@@ -74,7 +74,7 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
       />
       <S.ArrowIcon
         $isLeft={false}
-        onClick={handleIncreaseRange}
+        onClick={() => handleIncreaseRange(1)}
       >
         <ArrowForwardIos className="arrow_icon" />
       </S.ArrowIcon>

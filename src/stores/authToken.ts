@@ -15,7 +15,7 @@ class AuthToken {
       sessionStorage.setItem(this.KEY, stringifiedData)
       this.token = newToken
     } catch (e) {
-      console.error(e)
+      this.token = ""
     }
   }
 

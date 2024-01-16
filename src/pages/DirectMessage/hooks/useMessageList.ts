@@ -3,16 +3,24 @@ import { Message } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import getMessageListAPI from "../apis/getMessageListAPI"
 
-export const QUERY_KEY_GET_MESSAGELIST = "GET_MESSAGELIST"
+import usePostDetailModalStore from "@/components/PostDetail/stores/usePostDetailModalStore"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
+
+export const QUERY_KEY_GET_MESSAGE_LIST =
+  "GET_MESSAGE_LIST_14712784127845128534127845712"
 
 const useMessageList = (othersUserId: string) => {
-  const { user: authUser } = useAuthUserStore()
-  const { data } = useQuery<Message[]>({
-    queryKey: [QUERY_KEY_GET_MESSAGELIST, othersUserId, authUser._id],
-    queryFn: () => getMessageListAPI(othersUserId, authUser._id),
-    initialData: [],
-    refetchInterval: 1000 * 2,
+  const { user: authUser, isLoggedIn } = useAuthUserStore()
+  const { isShowPostDetail } = usePostDetailModalStore()
+  const { isShowEditModal } = usePostEditModalStore()
 
+  const isNotShowModal = !isShowPostDetail && !isShowEditModal
+
+  const { data } = useQuery<Message[]>({
+    queryKey: [QUERY_KEY_GET_MESSAGE_LIST, othersUserId, authUser._id],
+    queryFn: () => getMessageListAPI(othersUserId, authUser._id),
+    refetchInterval: isNotShowModal && 1000,
+    enabled: isLoggedIn,
     select: (MessageList: Message[]) =>
       MessageList.sort(
         (message, message2) =>

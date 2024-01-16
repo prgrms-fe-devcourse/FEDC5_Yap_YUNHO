@@ -9,14 +9,14 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import useModal from "../Modal/hooks/useModal"
 import AlertModal from "../Modal/components/AlertModal/AlertModal"
 
+const LOGIN_PAGE_PATH_NAME = "/login"
+const SIGNUP_PAGE_PATH_NAME = "/signup"
+const USER_EDIT_PAGE_PATH_NAME = "/useredit"
+
 const Navbar = () => {
   const { isShowModal, showModal, closeModal } = useModal()
   const { updateUser, setLogout } = useAuthUserStore()
   const { pathname } = useLocation()
-
-  const LOGIN_PAGE_PATH_NAME = "/login"
-  const SIGNUP_PAGE_PATH_NAME = "/signup"
-  const USER_EDIT_PAGE_PATH_NAME = "/useredit"
 
   useEffect(() => {
     const hasToken = authToken.getToken()

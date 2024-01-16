@@ -1,12 +1,9 @@
 import { AUTH_API } from "@/apis/Api"
 
 const getMessageGroupListAPI = async () => {
-  try {
-    const res = await AUTH_API.get("/messages/conversations")
-    return res.data
-  } catch (error) {
-    return []
-  }
+  return await AUTH_API.get("/messages/conversations")
+    .then((res) => res.data)
+    .catch(() => [])
 }
 
 export default getMessageGroupListAPI

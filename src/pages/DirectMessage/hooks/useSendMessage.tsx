@@ -1,10 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { QUERY_KEY_GET_GROUP_MESSAGELIST } from "./useMessageGroupList"
-import { QUERY_KEY_GET_MESSAGELIST } from "./useMessageList"
+import { QUERY_KEY_GET_GROUP_MESSAGE_LIST } from "./useMessageGroupList"
+import { QUERY_KEY_GET_MESSAGE_LIST } from "./useMessageList"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import sendMessageAPI from "../apis/sendMessageAPI"
 import { useParams } from "react-router-dom"
+import sendNotification from "@/apis/sendNotification"
+import { Message } from "@/types"
 
 export const QUERY_KEY_SEND_MESSAGE = "SEND_MESSAGE"
 
@@ -24,23 +26,21 @@ const useSendMessage = () => {
   const sendMessage = useMutation({
     mutationKey: [QUERY_KEY_SEND_MESSAGE],
     mutationFn: sendMessageAPI,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGELIST] })
+    onSuccess: (response: Message) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGE_LIST] })
       if (!othersUserId) {
         return
       }
 
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
+        queryKey: [QUERY_KEY_GET_GROUP_MESSAGE_LIST],
       })
 
-      // const NotificationSubmission: SendNotificationProps = {
-      //   notificationType: "MESSAGE",
-      //   notificationTypeId: messageId,
-      //   userId: othersUserId,
-      //   postId: null,
-      // }
-      // sendMessageNotificationAPI(NotificationSubmission)
+      sendNotification({
+        notificationType: "MESSAGE",
+        notificationTypeId: response._id,
+        userId: othersUserId,
+      })
     },
     onError: () => {
       showModal()

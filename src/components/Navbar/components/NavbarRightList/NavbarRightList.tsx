@@ -20,11 +20,15 @@ import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 const NavbarRightList = () => {
   const { isLoggedIn, user } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
-  const { handleMenuClick, notificationModal, NotificationListData } =
-    useMenuClick()
+  const {
+    handleMenuClick,
+    notificationModal,
+    NotificationListData,
+    PostEditModal,
+  } = useMenuClick()
   const { isShowModal: isShowConfirm, closeModal: closeConfirm } = useModal()
 
-  const proifleImg = user.image || StandardUserImage
+  const profileImage = user.image || StandardUserImage
 
   const navigate = useNavigate()
 
@@ -70,7 +74,7 @@ const NavbarRightList = () => {
         <NavbarButton onClick={handleNavbarProfileClick}>
           {isLoggedIn && (
             <S.NavbarProfile
-              src={proifleImg}
+              src={profileImage}
               alt="프로필"
             />
           )}
@@ -82,6 +86,7 @@ const NavbarRightList = () => {
         message={POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER.NOT_LOGIN}
       />
       {notificationModal}
+      {PostEditModal}
     </>
   )
 }

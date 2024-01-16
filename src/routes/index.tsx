@@ -20,11 +20,10 @@ const YAPRoute = () => {
           element={<Home />}
         >
           <Route
-            path="/post/:modalName/:id"
+            path="/post/postdetail?/:id"
             element={<></>}
           />
         </Route>
-
         <Route
           path="/signup"
           element={<Signup />}
@@ -46,19 +45,19 @@ const YAPRoute = () => {
             element={<></>}
           />
         </Route>
-        {/* query string Category 구별 */}
+
         <Route
-          path="/directmessage/:userId?/:modalName?/:id?"
+          path="/directmessage/:userId?/postdetail?/:id?"
           element={<DirectMessage />}
         />
-        {/* // Path URL을 통한 Modal 컨트롤이 가능할 때 사용 - 추가 구현 사항  */}
+
         <Route
           path="/search"
           element={<></>}
         />
 
         <Route
-          path="*"
+          path="/*"
           element={<NotFound404 />}
         />
       </Routes>
