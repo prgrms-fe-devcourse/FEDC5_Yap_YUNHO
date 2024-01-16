@@ -24,8 +24,7 @@ const useSendMessage = () => {
   const sendMessage = useMutation({
     mutationKey: [QUERY_KEY_SEND_MESSAGE],
     mutationFn: sendMessageAPI,
-    onSuccess: (data) => {
-      const { _id: messageId } = data
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGELIST] })
       if (!othersUserId) {
         return
