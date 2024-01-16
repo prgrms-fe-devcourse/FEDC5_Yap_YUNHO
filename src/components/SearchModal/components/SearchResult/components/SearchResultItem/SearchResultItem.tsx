@@ -21,9 +21,7 @@ const SearchResultItem = ({
 
   const onNavigate = () => {
     navigate(
-      type === "user"
-        ? `/directmessage/${id}`
-        : `${checkName}/postdetail/${id}`,
+      type === "user" ? `/profile/${id}` : `${checkName}/postdetail/${id}`,
     )
     closeSearchModal()
   }
