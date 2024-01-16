@@ -46,6 +46,7 @@ const zIndex = {
   navbarRightList: 2,
 
   popover: 20,
+  NotFound404: 21,
 }
 
 const scrollBar = css`
