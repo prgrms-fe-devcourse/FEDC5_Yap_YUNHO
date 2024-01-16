@@ -15,7 +15,7 @@ class AuthToken {
       sessionStorage.setItem(this.KEY, stringifiedData)
       this.token = newToken
     } catch (e) {
-      console.error(e)
+      this.token = ""
     }
   }
 
@@ -28,7 +28,6 @@ class AuthToken {
       this.token = JSON.parse(res)
       return this.token
     } catch (e) {
-      console.error(e)
       return this.token
     }
   }
