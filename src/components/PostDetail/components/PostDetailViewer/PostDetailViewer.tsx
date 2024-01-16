@@ -9,7 +9,6 @@ interface PostDetailViewerProps {
 
 const PostDetailViewer = ({ post }: PostDetailViewerProps) => {
   const { isShowEditModal } = usePostEditModalStore()
-  console.log(isShowEditModal)
   const { mediaUrl, content, thumbnail } = post.title
   return (
     <GS.PostModalGlobalViewerLayout>

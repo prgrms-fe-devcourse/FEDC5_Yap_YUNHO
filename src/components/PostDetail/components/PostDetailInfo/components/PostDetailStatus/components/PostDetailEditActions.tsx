@@ -40,8 +40,6 @@ const PostDetailEditActions = ({
     closeConfirm()
   }
 
-  console.log(isShowEditModal)
-
   return (
     <>
       <S.PostDetailEditActions>
