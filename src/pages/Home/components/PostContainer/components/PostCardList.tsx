@@ -11,8 +11,8 @@ import PostDetail from "@/components/PostDetail/PostDetail"
 
 interface PostCardListProps {
   postList: Post[] | null[]
-  onClickLeftCard: () => void
-  onClickRightCard: () => void
+  onClickLeftCard: (count: number) => void
+  onClickRightCard: (count: number) => void
 }
 
 const PostCardList = ({
@@ -50,7 +50,7 @@ const PostCardList = ({
       {postList[0] && (
         <S.PostSmallCard
           $isLeft={true}
-          onClick={onClickLeftCard}
+          onClick={() => onClickLeftCard(2)}
         >
           <PostCard
             author={postList[0].author}
@@ -67,7 +67,7 @@ const PostCardList = ({
       {postList[1] && (
         <S.PostSubCard
           $isLeft={true}
-          onClick={onClickLeftCard}
+          onClick={() => onClickLeftCard(1)}
         >
           <PostCard
             author={postList[1].author}
@@ -97,7 +97,7 @@ const PostCardList = ({
       {postList[3] && (
         <S.PostSubCard
           $isLeft={false}
-          onClick={onClickRightCard}
+          onClick={() => onClickRightCard(1)}
         >
           <PostCard
             author={postList[3].author}
@@ -113,7 +113,7 @@ const PostCardList = ({
       {postList[4] && (
         <S.PostSmallCard
           $isLeft={false}
-          onClick={onClickRightCard}
+          onClick={() => onClickRightCard(2)}
         >
           <PostCard
             author={postList[4].author}

@@ -27,4 +27,10 @@ export const ArrowIcon = styled.button<{ $isLeft: boolean }>`
   .arrow_icon {
     font-size: 6rem;
   }
+
+  transition: ${({ theme }) => theme.transition.normal};
+
+  &:hover {
+    transform: scale(1.4);
+  }
 `

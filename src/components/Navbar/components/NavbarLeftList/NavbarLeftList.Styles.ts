@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import logo from "@/assets/logo.png"
 
 export const NavbarLeftListLayout = styled.div`
@@ -7,16 +7,34 @@ export const NavbarLeftListLayout = styled.div`
   gap: 2rem;
 `
 
+const logoAnimation = keyframes`
+    0% {
+      transform: rotate(25deg);
+    }
+    30% {
+      transform: rotate(-25deg);
+    }
+    50% {
+      transform: rotate(25deg);
+    }
+    70% {
+      transform: rotate(-25deg);
+    }
+    90% {
+      transform: rotate(25deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+`
+
 export const NavbarLogoContainer = styled.button`
   display: flex;
   align-items: center;
   height: 10rem;
   position: relative;
   border-radius: ${({ theme }) => theme.radius.circle};
-  &:hover {
-    transition: all 0.1s linear;
-    transform: scale(1.2);
-  }
+
   // 원
   &::before {
     content: "";
@@ -39,4 +57,9 @@ export const NavbarLogo = styled.div`
   background-image: url(${logo});
   background-size: cover;
   z-index: ${({ theme }) => theme.zIndex.navbarLogo};
+
+  &:hover {
+    animation-name: ${logoAnimation};
+    animation-duration: 0.6s;
+  }
 `
