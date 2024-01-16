@@ -17,7 +17,9 @@ const NotFound404 = () => {
           </S.NotFound404Text>
           <S.NotFound404Image $src={NOT_FOUND_IMAGE_URL} />
           <S.NotFound404ButtonContainer>
-            <S.NotFound404Button onClick={() => navigate("/")}>
+            <S.NotFound404Button
+              onClick={() => navigate("/", { replace: true })}
+            >
               Home
             </S.NotFound404Button>
           </S.NotFound404ButtonContainer>
