@@ -1,11 +1,12 @@
 import * as S from "./PostDetailEditActions.Styles"
 import { Post } from "@/types"
-import { useNavigate } from "react-router-dom"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
 import useDeletePost from "@/components/PostDetail/hooks/useDeletePost"
+import PostEdit from "@/components/PostEdit/PostEdit"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 
 interface PostDetailEditActionsProps {
   onClose: () => void
@@ -22,14 +23,9 @@ const PostDetailEditActions = ({
     closeModal: closeConfirm,
   } = useModal()
   const { isShowModal: isShowComplete, showModal: showComplete } = useModal()
+  const { isShowEditModal, showEditModal } = usePostEditModalStore()
 
   const { deletePostMutate, DeletePostErrorAlertModal } = useDeletePost()
-  const navigate = useNavigate()
-
-  const handleClickEditButton = () => {
-    onClose()
-    navigate(`/postedit/${post._id}`)
-  }
 
   const handleConfirmDeletePost = (response: boolean) => {
     if (!response) {
@@ -47,7 +43,7 @@ const PostDetailEditActions = ({
   return (
     <>
       <S.PostDetailEditActions>
-        <S.PostDetailEditButton onClick={handleClickEditButton}>
+        <S.PostDetailEditButton onClick={showEditModal}>
           {"수정"}
         </S.PostDetailEditButton>
         <S.PostDetailEditButton onClick={showConfirm}>
@@ -68,6 +64,7 @@ const PostDetailEditActions = ({
       />
 
       {DeletePostErrorAlertModal}
+      {isShowEditModal && <PostEdit postId={post._id} />}
     </>
   )
 }

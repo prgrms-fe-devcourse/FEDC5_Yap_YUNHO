@@ -11,6 +11,7 @@ import commentValidation from "./util/commentValidation"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useSendComment from "@/components/PostDetail/hooks/useSendComment"
+import standardImage from "@/assets/standard.jpeg"
 
 interface PostCommentInputProps {
   post: Post
@@ -88,10 +89,11 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
     setWriteComment(value)
   }
 
+  const imageSrc = authUser.image ? authUser.image : standardImage
   return (
     <>
       <S.PostCommentInputLayout>
-        <S.PostCommentAuthUserProfile $authUserImage={authUser.image} />
+        <S.PostCommentAuthUserProfile $authUserImage={imageSrc} />
         <S.PostCommentInputContainer
           onSubmit={handleSubmitComment}
           onClick={(e) => {
