@@ -14,7 +14,6 @@ export const NavbarLogoContainer = styled.button`
   position: relative;
   border-radius: ${({ theme }) => theme.radius.circle};
 
-  // 원
   &::before {
     content: "";
     top: 2rem;
@@ -26,8 +25,6 @@ export const NavbarLogoContainer = styled.button`
     border-radius: ${({ theme }) => theme.radius.circle};
   }
 `
-
-// 로고 이미지
 export const NavbarLogo = styled.div`
   width: 8.5rem;
   height: 8.5rem;

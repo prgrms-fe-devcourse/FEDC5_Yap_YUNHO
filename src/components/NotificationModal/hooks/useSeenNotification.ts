@@ -8,7 +8,6 @@ const useSeenNotification = () => {
     mutationKey: [QUERY_KEY_SEEN_NOTIFICATION],
     mutationFn: seenNotificationAPI,
     onSuccess: () => {
-      // 알림 다시 받아오는 처리
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEY_GET_NOTIFICATION],
       })

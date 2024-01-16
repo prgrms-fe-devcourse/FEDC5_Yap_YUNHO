@@ -17,7 +17,6 @@ const MessageList = () => {
     }
   }
 
-  // 내가 메시지를 보낼때, 상대방에게 메시지를 받을때 스크롤 이동
   useEffect(() => {
     scrollToBottom()
   }, [MessageList])

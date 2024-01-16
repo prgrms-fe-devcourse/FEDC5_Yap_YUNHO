@@ -25,11 +25,9 @@ const useMenuClick = () => {
         navigate("/directmessage")
         break
       case "게시물 생성":
-        // 게시물 생성 모달
         break
       case "알림":
         showNotification()
-        // 알림 창(후순위)
         break
       default:
         break

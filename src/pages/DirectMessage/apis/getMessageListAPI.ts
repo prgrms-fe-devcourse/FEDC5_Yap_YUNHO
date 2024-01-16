@@ -13,7 +13,6 @@ const getMessageListAPI = async (othersUserId: string, myId: string) => {
       return []
     })
 
-  // 내가 나한테 보낸 메시지
   if (othersUserId === myId) {
     return messageList.filter(
       (list: Conversation) => list.receiver?._id === list.sender?._id,

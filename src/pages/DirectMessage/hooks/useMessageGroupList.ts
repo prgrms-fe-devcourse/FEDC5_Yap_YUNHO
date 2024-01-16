@@ -13,11 +13,10 @@ const useMessageGroupList = () => {
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: getMessageGroupListAPI,
     initialData: [],
-    refetchInterval: 2000, // 재 요청
+    refetchInterval: 2000,
 
     select: (GroupMessageList: Conversation[]) =>
       GroupMessageList.map((MessageList) => {
-        // 최근에 보낸 메시지가 내가 보낸거거나 채팅을 하고 있을때 자동으로 읽음 처리
         return {
           ...MessageList,
           seen:
