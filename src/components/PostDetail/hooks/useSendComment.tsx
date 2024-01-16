@@ -1,6 +1,4 @@
 import { AUTH_API } from "@/apis/Api"
-import sendNotification from "@/apis/sendNotification"
-import { PostComment } from "@/types"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 const SEND_MUTATION_QUERY_KEY = "SEND_MUTATION_MUTATION_KEY_9128178621782"
@@ -10,14 +8,7 @@ const useSendComment = () => {
   const sendCommentMutate = useMutation({
     mutationKey: [SEND_MUTATION_QUERY_KEY],
     mutationFn: fetchSendComment,
-    onSuccess: (response: PostComment) => {
-      sendNotification({
-        notificationType: "COMMENT",
-        notificationTypeId: response._id,
-        userId: response.author._id,
-        postId: response.post,
-      })
-
+    onSuccess: () => {
       queryClient.refetchQueries()
     },
   })
