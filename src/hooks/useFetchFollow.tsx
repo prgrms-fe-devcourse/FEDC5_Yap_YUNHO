@@ -2,6 +2,7 @@ import { AUTH_API } from "@/apis/Api"
 import sendNotification from "@/apis/sendNotification"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
+import { POST_DETAIL_QUERY_KEY } from "@/components/PostDetail/hooks/useGetPost"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { Follow } from "@/types"
@@ -26,7 +27,9 @@ const useFetchFollow = () => {
         .then((res) => res.data)
         .then((data) => updateUser(data))
 
-      queryClient.refetchQueries()
+      queryClient.invalidateQueries({
+        queryKey: [POST_DETAIL_QUERY_KEY],
+      })
     },
     onError: () => {
       showModal()

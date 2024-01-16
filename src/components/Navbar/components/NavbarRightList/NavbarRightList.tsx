@@ -28,7 +28,7 @@ const NavbarRightList = () => {
   } = useMenuClick()
   const { isShowModal: isShowConfirm, closeModal: closeConfirm } = useModal()
 
-  const proifleImg = user.image || StandardUserImage
+  const profileImage = user.image || StandardUserImage
 
   const navigate = useNavigate()
 
@@ -74,7 +74,7 @@ const NavbarRightList = () => {
         <NavbarButton onClick={handleNavbarProfileClick}>
           {isLoggedIn && (
             <S.NavbarProfile
-              src={proifleImg}
+              src={profileImage}
               alt="프로필"
             />
           )}

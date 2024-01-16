@@ -1,6 +1,7 @@
 import { AUTH_API } from "@/apis/Api"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
+import { POST_DETAIL_QUERY_KEY } from "@/components/PostDetail/hooks/useGetPost"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -15,7 +16,9 @@ const useFetchUnFollow = () => {
     mutationKey: [FETCH_MUTATION_UN_FOLLOW_KEY],
     mutationFn: fetchUnFollow,
     onSuccess: () => {
-      queryClient.refetchQueries()
+      queryClient.invalidateQueries({
+        queryKey: [POST_DETAIL_QUERY_KEY],
+      })
 
       AUTH_API.get("/auth-user")
         .then((res) => res.data)

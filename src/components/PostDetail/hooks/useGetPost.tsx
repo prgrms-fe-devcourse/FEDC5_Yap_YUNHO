@@ -2,7 +2,7 @@ import { API } from "@/apis/Api"
 import { JSONPost, Post } from "@/types"
 import { useQuery } from "@tanstack/react-query"
 
-const POST_DETAIL_QUERY_KEY = "POST_DETAIL_QUERY_KEY_18264196289164"
+export const POST_DETAIL_QUERY_KEY = "POST_DETAIL_QUERY_KEY_18264196289164"
 
 const useGetPost = ({ postId }: { postId: string | undefined }) => {
   const { data } = useQuery({

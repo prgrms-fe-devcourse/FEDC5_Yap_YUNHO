@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import getNotificationAPI from "./../apis/getNotificationAPI"
+import { AUTH_API } from "@/apis/Api"
 import { Notification } from "@/types/index"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import usePostDetailModalStore from "@/components/PostDetail/stores/usePostDetailModalStore"
@@ -16,7 +16,7 @@ const useGetNotification = () => {
 
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_NOTIFICATION],
-    queryFn: getNotificationAPI,
+    queryFn: fetchNewNotification,
     enabled: isLoggedIn,
     refetchInterval: isNotShowModal && 1000 * 5,
     gcTime: 1000 * 60 * 5,
@@ -33,3 +33,11 @@ const useGetNotification = () => {
 }
 
 export default useGetNotification
+
+const fetchNewNotification = async () => {
+  return await AUTH_API.get("/notifications")
+    .then((res) => res.data)
+    .catch(() => {
+      return []
+    })
+}
