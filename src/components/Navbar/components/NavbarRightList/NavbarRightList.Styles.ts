@@ -5,8 +5,7 @@ export const NavbarRightListLayout = styled.div`
   align-items: center;
   gap: 2rem;
   user-select: none;
-  z-index: ${({ theme }) =>
-    theme.zIndex.navbarRightList};
+  z-index: ${({ theme }) => theme.zIndex.navbarRightList};
 `
 
 export const NavbarProfile = styled.img`

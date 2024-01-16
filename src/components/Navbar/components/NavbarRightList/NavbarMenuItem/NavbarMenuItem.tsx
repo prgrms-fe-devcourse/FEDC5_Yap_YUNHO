@@ -1,20 +1,25 @@
 import Button from "@/components/Button/Button"
 import * as S from "./NavbarMenuItem.Styles"
 import { NavbarMenuProps } from "@/components/Navbar/Navbar.Types"
-const NavbarMenuItem = ({ children, handleMenuClick }: NavbarMenuProps) => {
+import Brightness1Icon from "@mui/icons-material/Brightness1"
+const NavbarMenuItem = ({
+  menu,
+  handleMenuClick,
+  isNotification,
+}: NavbarMenuProps) => {
   return (
     <S.NavbarMenuContainer>
       <Button
         $fontSize={"2rem"}
         onClick={() => {
-          if (!(typeof children === "string")) {
+          if (!menu) {
             return
           }
-
-          handleMenuClick(children)
+          handleMenuClick(menu)
         }}
       >
-        <p>{children}</p>
+        <p>{menu}</p>
+        {isNotification && <Brightness1Icon />}
       </Button>
       <S.NavbarMenuDivider />
     </S.NavbarMenuContainer>

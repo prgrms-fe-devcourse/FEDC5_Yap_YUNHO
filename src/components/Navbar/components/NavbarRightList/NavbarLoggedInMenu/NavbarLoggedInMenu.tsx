@@ -1,7 +1,7 @@
 import { NavbarMenuProps } from "@/components/Navbar/Navbar.Types"
 import { NavbarMenuList } from "./../NavbarRightList.Styles"
 import NavbarMenuItem from "../NavbarMenuItem/NavbarMenuItem"
-import Brightness1Icon from "@mui/icons-material/Brightness1"
+
 const NavbarLoggedInMenu = ({
   handleMenuClick,
   $isToggle,
@@ -9,21 +9,31 @@ const NavbarLoggedInMenu = ({
 }: NavbarMenuProps) => {
   return (
     <NavbarMenuList $isToggle={$isToggle}>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>
-        게시물 생성
-      </NavbarMenuItem>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>DM</NavbarMenuItem>
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="게시물 생성"
+      />
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="로그인"
+      />
       {NotificationListData && NotificationListData.length > 0 ? (
-        <NavbarMenuItem handleMenuClick={handleMenuClick}>
-          알림 <Brightness1Icon />
-        </NavbarMenuItem>
+        <NavbarMenuItem
+          handleMenuClick={handleMenuClick}
+          menu="알림"
+          isNotification={true}
+        />
       ) : (
-        <NavbarMenuItem handleMenuClick={handleMenuClick}>알림</NavbarMenuItem>
+        <NavbarMenuItem
+          handleMenuClick={handleMenuClick}
+          menu="알림"
+        />
       )}
 
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>
-        로그아웃
-      </NavbarMenuItem>
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="로그아웃"
+      />
     </NavbarMenuList>
   )
 }

@@ -19,5 +19,6 @@ export const NavbarMenuContainer = styled.div`
   svg {
     color: ${({ theme }) => theme.colors.point};
     padding-left: 0.5rem;
+    pointer-events: none;
   }
 `
