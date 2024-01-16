@@ -4,9 +4,7 @@ import { QUERY_KEY_GET_MESSAGELIST } from "./useMessageList"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import sendMessageAPI from "../apis/sendMessageAPI"
-import sendMessageNotificationAPI from "../apis/sendMessageNotificationAPI"
 import { useParams } from "react-router-dom"
-import { SendNotificationProps } from "@/types"
 
 export const QUERY_KEY_SEND_MESSAGE = "SEND_MESSAGE"
 
@@ -37,13 +35,13 @@ const useSendMessage = () => {
         queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
       })
 
-      const NotificationSubmission: SendNotificationProps = {
-        notificationType: "MESSAGE",
-        notificationTypeId: messageId,
-        userId: othersUserId,
-        postId: null,
-      }
-      sendMessageNotificationAPI(NotificationSubmission)
+      // const NotificationSubmission: SendNotificationProps = {
+      //   notificationType: "MESSAGE",
+      //   notificationTypeId: messageId,
+      //   userId: othersUserId,
+      //   postId: null,
+      // }
+      // sendMessageNotificationAPI(NotificationSubmission)
     },
     onError: () => {
       showModal()
