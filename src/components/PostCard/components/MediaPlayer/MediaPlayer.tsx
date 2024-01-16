@@ -26,13 +26,13 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
       return
     }
 
-    if (url === "") {
+    if (playUrl === "") {
       onChangeUrl(MEDIA_PLAYER_EMPTY_URL_KEYWORD)
       return
     }
 
-    onChangeUrl(url)
-  }, [isBlock, onChangeUrl, url])
+    onChangeUrl(playUrl)
+  }, [isBlock, onChangeUrl, playUrl])
 
   const handleClickPlayer = useCallback(
     ({ target }: MouseEvent) => {
@@ -71,7 +71,7 @@ const MediaPlayer = ({ isBlock, url }: MediaPlayerProps): React.ReactNode => {
           playing={isBlock ? false : isPlaying}
           muted={isBlock ? true : isMute}
           volume={isBlock ? 0.2 : volume}
-          url={isBlock ? "" : playUrl}
+          url={isBlock ? "" : url}
           progressInterval={10}
           config={{
             youtube: {
