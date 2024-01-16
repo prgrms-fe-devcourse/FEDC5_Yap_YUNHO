@@ -12,13 +12,13 @@ const useEditPassword = () => {
     closeModal: closeAlertModal,
   } = useModal()
 
-  const AlertModalComponent = isShowAlertModal ? (
+  const AlertModalComponent = isShowAlertModal && (
     <AlertModal
       isShow={isShowAlertModal}
       alertMessage="비밀번호 변경을 다시 시도해주세요"
       onClose={closeAlertModal}
     />
-  ) : null
+  )
 
   const EditUserPassword = useMutation({
     mutationKey: [EDIT_PASSWORD_MUTATION_QUERY_KEY],

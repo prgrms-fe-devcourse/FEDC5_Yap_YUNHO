@@ -13,13 +13,13 @@ const useEditNickname = () => {
     closeModal: closeAlertModal,
   } = useModal()
   const { updateUser } = useAuthUserStore()
-  const AlertModalComponent = isShowAlertModal ? (
+  const AlertModalComponent = isShowAlertModal && (
     <AlertModal
       isShow={isShowAlertModal}
       alertMessage="닉네임 변경을 다시 시도해주세요"
       onClose={closeAlertModal}
     />
-  ) : null
+  )
 
   const EditUserNickname = useMutation({
     mutationKey: [EDIT_NICKNAME_MUTATION_QUERY_KEY],

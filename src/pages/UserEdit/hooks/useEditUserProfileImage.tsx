@@ -15,13 +15,13 @@ const useEditUserProfileImage = () => {
     closeModal: closeAlertModal,
   } = useModal()
 
-  const AlertModalComponent = isShowAlertModal ? (
+  const AlertModalComponent = isShowAlertModal && (
     <AlertModal
       isShow={isShowAlertModal}
       alertMessage="프로필 이미지 변경을 다시 시도해주세요"
       onClose={closeAlertModal}
     />
-  ) : null
+  )
 
   const EditUserProfileImage = useMutation({
     mutationKey: [EDIT_USER_PROFILE_IMAGE_MUTATION_QUERY_KEY],

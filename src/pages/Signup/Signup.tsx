@@ -50,10 +50,8 @@ export default function Signup() {
   }
 
   return (
-    <>
-      <S.SignupLayout>
-        <SignupSecondForm />
-      </S.SignupLayout>
-    </>
+    <S.SignupLayout>
+      <SignupSecondForm />
+    </S.SignupLayout>
   )
 }

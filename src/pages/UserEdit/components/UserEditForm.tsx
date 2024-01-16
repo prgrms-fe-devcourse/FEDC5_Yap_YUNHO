@@ -38,16 +38,16 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
 
   const navigate = useNavigate()
 
-  const handleEdit = () => {
+  const handleEdit = async () => {
     const { nickname, password } = requiredUserInfo
 
     const { binary, url } = formData
 
-    EditUserNickname.mutate({ fullName: nickname, username: "" })
-    EditUserPassword.mutate({ password: password })
+    await EditUserNickname.mutateAsync({ fullName: nickname, username: "" })
+    await EditUserPassword.mutateAsync({ password: password })
 
     if (url !== "" && authUser.image !== url) {
-      EditUserProfileImage.mutate(binary)
+      await EditUserProfileImage.mutateAsync(binary)
     }
 
     navigate(`/profile/${authUser._id}`, { replace: true })
