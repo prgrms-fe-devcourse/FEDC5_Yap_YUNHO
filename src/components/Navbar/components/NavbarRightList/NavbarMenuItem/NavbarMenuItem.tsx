@@ -7,6 +7,7 @@ const NavbarMenuItem = ({
   handleMenuClick,
   isNotification,
 }: NavbarMenuProps) => {
+  console.log(menu)
   return (
     <S.NavbarMenuContainer>
       <Button
