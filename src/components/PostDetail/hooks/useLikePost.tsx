@@ -9,18 +9,17 @@ const MUTATION_KEY_LIKE_POST_KEY = "IT_IS_LIKE_MUTATION_KEY_546786723746238"
 
 const useLikePost = () => {
   const { isShowModal, showModal, closeModal } = useModal()
-  const { user, updateUser } = useAuthUserStore()
+  const { updateUser } = useAuthUserStore()
 
   const queryClient = useQueryClient()
   const fetchLikeMutate = useMutation({
     mutationKey: [MUTATION_KEY_LIKE_POST_KEY],
     mutationFn: fetchLikePost,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.refetchQueries()
-      updateUser({
-        ...user,
-        likes: [...user.likes, data],
-      })
+      AUTH_API.get("/auth-user")
+        .then((res) => res.data)
+        .then((userData) => updateUser(userData))
     },
     onError: () => {
       showModal()

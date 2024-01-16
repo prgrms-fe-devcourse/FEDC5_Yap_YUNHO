@@ -11,8 +11,8 @@ interface UserPostFilterProps {
 
 const UserPostFilter = ({ handlePostList }: UserPostFilterProps) => {
   const { userId } = useParams()
-  const { user } = useAuthUserStore()
-  const isMyPage = userId === user._id
+  const { user: authUser } = useAuthUserStore()
+  const isMyPage = userId === authUser._id
 
   const [selectedButton, setSelectedButton] = useState(
     USER_POST_FILTER_LIST.create,

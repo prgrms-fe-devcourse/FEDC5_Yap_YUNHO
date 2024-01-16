@@ -10,26 +10,7 @@ import { useQueries } from "@tanstack/react-query"
 import { useCallback, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-const KEY = "U"
-const getPost = async (id: string) => {
-  return await API.get(`/posts/${id}`)
-    .then((res) => res.data)
-    .then((likePostInfo) => {
-      const { thumbnail } = JSON.parse(likePostInfo.title)
-
-      const newLikePost: UserPostListItemProps = {
-        thumbnail,
-        id: likePostInfo._id,
-        likeCount: likePostInfo.likes.length,
-        commentCount: likePostInfo.comments.length,
-      }
-      return newLikePost
-    })
-    .catch((e) => {
-      console.log("error", e)
-      return null
-    })
-}
+const MY_LIKE_POST_LIST_QUERY_KEY = "MY_LIKE_POST_LIST_QUERY_KEY"
 
 const MyLikePostList = () => {
   const navigate = useNavigate()
@@ -55,7 +36,7 @@ const MyLikePostList = () => {
   }, [modalName, showDetailModal])
 
   const queryList = user.likes.map(({ post }) => ({
-    queryKey: [KEY, post],
+    queryKey: [MY_LIKE_POST_LIST_QUERY_KEY, post],
     queryFn: () => getPost(post),
   }))
 
@@ -79,7 +60,7 @@ const MyLikePostList = () => {
 
           return (
             <UserPostListItem
-              key={"likePost" + id}
+              key={id}
               thumbnail={thumbnail}
               id={id}
               likeCount={likeCount}
@@ -94,3 +75,23 @@ const MyLikePostList = () => {
 }
 
 export default MyLikePostList
+
+const getPost = async (id: string) => {
+  return await API.get(`/posts/${id}`)
+    .then((res) => res.data)
+    .then((likePostInfo) => {
+      const { thumbnail } = JSON.parse(likePostInfo.title)
+
+      const newLikePost: UserPostListItemProps = {
+        thumbnail,
+        id: likePostInfo._id,
+        likeCount: likePostInfo.likes.length,
+        commentCount: likePostInfo.comments.length,
+      }
+      return newLikePost
+    })
+    .catch((e) => {
+      console.log("error", e)
+      return null
+    })
+}

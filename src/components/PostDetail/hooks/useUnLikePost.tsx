@@ -3,26 +3,23 @@ import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { Like } from "@/types"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 const MUTATION_KEY_UN_LIKE_POST_KEY = "IT_IS_UN_LIKE_MUTATION_KEY_5448718927139"
 
 const useUnLikePost = () => {
   const { isShowModal, showModal, closeModal } = useModal()
-  const { user, updateUser } = useAuthUserStore()
+  const { updateUser } = useAuthUserStore()
 
   const queryClient = useQueryClient()
   const fetchUnlikeMutate = useMutation({
     mutationKey: [MUTATION_KEY_UN_LIKE_POST_KEY],
     mutationFn: fetchUnLikePost,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.refetchQueries()
-      const newLikes = user.likes.filter((like: Like) => like._id !== data._id)
-      updateUser({
-        ...user,
-        likes: newLikes,
-      })
+      AUTH_API.get("/auth-user")
+        .then((res) => res.data)
+        .then((userData) => updateUser(userData))
     },
     onError: () => {
       showModal()

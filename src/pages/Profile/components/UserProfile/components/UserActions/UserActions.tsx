@@ -33,9 +33,9 @@ const UserActions = () => {
     }
   }
 
-  return (
-    <S.UserActionLayout>
-      {isMyPage ? (
+  if (isMyPage) {
+    return (
+      <S.UserActionLayout>
         <UserActionButton
           text="회원 정보 수정"
           $width={11}
@@ -43,22 +43,24 @@ const UserActions = () => {
             navigate(`/useredit/${userId}`)
           }}
         />
-      ) : (
-        <>
-          <UserFollowActionButton onClick={handleClickButton} />
-          <UserActionButton
-            text="DM 보내기"
-            $width={9}
-            onClick={() => handleClickButton(true)}
-          />
-          <ConfirmModal
-            isShow={isShowModal}
-            onClose={handleAlertCloseButton}
-            message={NOT_LOGIN_MODAL_MESSAGE}
-            acceptButtonText={"확인"}
-          />
-        </>
-      )}
+      </S.UserActionLayout>
+    )
+  }
+
+  return (
+    <S.UserActionLayout>
+      <UserFollowActionButton onClick={handleClickButton} />
+      <UserActionButton
+        text="DM 보내기"
+        $width={9}
+        onClick={() => handleClickButton(true)}
+      />
+      <ConfirmModal
+        isShow={isShowModal}
+        onClose={handleAlertCloseButton}
+        message={NOT_LOGIN_MODAL_MESSAGE}
+        acceptButtonText={"확인"}
+      />
     </S.UserActionLayout>
   )
 }
