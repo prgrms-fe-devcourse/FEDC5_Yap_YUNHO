@@ -3,10 +3,12 @@ import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import useModal from "@/components/Modal/hooks/useModal"
 import NotificationModal from "@/components/NotificationModal/NotificationModal"
+import useGetNotification from "@/components/NotificationModal/hooks/useGetNotification"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
   const { setLogout } = useAuthUserStore()
+  const { data: NotificationListData } = useGetNotification()
   const {
     isShowModal: isShowNotification,
     showModal: showNotification,
@@ -38,6 +40,7 @@ const useMenuClick = () => {
     <NotificationModal
       isShow={isShowNotification}
       onClose={closeNotification}
+      NotificationListData={NotificationListData}
     />
   )
 
@@ -52,7 +55,7 @@ const useMenuClick = () => {
       })
   }
 
-  return { handleMenuClick, notificationModal }
+  return { handleMenuClick, notificationModal, NotificationListData }
 }
 
 export default useMenuClick

@@ -20,7 +20,8 @@ import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 const NavbarRightList = () => {
   const { isLoggedIn, user } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
-  const { handleMenuClick, notificationModal } = useMenuClick()
+  const { handleMenuClick, notificationModal, NotificationListData } =
+    useMenuClick()
   const {
     isShowModal: isShowConfirm,
     closeModal: closeConfirm,
@@ -45,7 +46,10 @@ const NavbarRightList = () => {
         {/* 메뉴들 */}
 
         {isLoggedIn ? (
-          <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
+          <NavbarLoggedInMenu
+            handleMenuClick={handleMenuClick}
+            NotificationListData={NotificationListData}
+          />
         ) : (
           <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
         )}

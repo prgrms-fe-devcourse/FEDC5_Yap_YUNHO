@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import * as S from "./Notification.Styles"
 import NotificationItem from "./NotificationItem"
 import { Notification } from "@/types/index"
