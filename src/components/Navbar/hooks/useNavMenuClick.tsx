@@ -4,6 +4,8 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import useModal from "@/components/Modal/hooks/useModal"
 import NotificationModal from "@/components/NotificationModal/NotificationModal"
 import useGetNotification from "@/components/NotificationModal/hooks/useGetNotification"
+import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
+import PostEdit from "@/components/PostEdit/PostEdit"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
@@ -14,6 +16,7 @@ const useMenuClick = () => {
     showModal: showNotification,
     closeModal: closeNotification,
   } = useModal()
+  const { isShowEditModal, showEditModal } = usePostEditModalStore()
 
   const handleMenuClick = (menu: string) => {
     switch (menu) {
@@ -27,6 +30,7 @@ const useMenuClick = () => {
         navigate("/directmessage")
         break
       case "게시물 생성":
+        showEditModal()
         break
       case "알림":
         showNotification()
@@ -44,6 +48,8 @@ const useMenuClick = () => {
     />
   )
 
+  const PostEditModal = isShowEditModal && <PostEdit postId="newPost" />
+
   const handleLogout = async () => {
     await API.post("/logout")
       .then(() => {
@@ -53,7 +59,12 @@ const useMenuClick = () => {
       .catch(() => {})
   }
 
-  return { handleMenuClick, notificationModal, NotificationListData }
+  return {
+    handleMenuClick,
+    notificationModal,
+    NotificationListData,
+    PostEditModal,
+  }
 }
 
 export default useMenuClick
