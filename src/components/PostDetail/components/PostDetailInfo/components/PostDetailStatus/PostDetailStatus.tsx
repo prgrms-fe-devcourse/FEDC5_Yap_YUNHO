@@ -61,7 +61,6 @@ const PostDetailStatus = ({
     }
     likeMutate(post._id, {
       onSuccess: (response: Like) => {
-        console.log(response._id)
         sendNotification({
           notificationType: "LIKE",
           notificationTypeId: response._id,
