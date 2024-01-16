@@ -8,9 +8,6 @@ export default function UserEdit() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { isLoggedIn, user, myId } = useAuthUserStore()
-  // console.log("isLoggedIn", isLoggedIn)
-  // console.log("user :", user)
-  // console.log("myId", myId)
 
   if (!user) {
     return

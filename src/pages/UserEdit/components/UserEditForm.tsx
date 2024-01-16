@@ -15,6 +15,10 @@ interface UserEditFormProp {
 }
 
 const UserEditForm = ({ authUser }: UserEditFormProp) => {
+  const { EditUserNickname } = useEditNickname()
+  const { EditUserPassword } = useEditPassword()
+  const { EditUserProfileImage } = useEditUserProfileImage()
+
   const [requiredUserInfo, setRequiredUserInfo] = useState({
     nickname: "",
     password: "",
@@ -32,18 +36,7 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
     url: "",
   })
 
-  const [isEditNicknameSuccess, setIsEditNicknameSuccess] = useState(false)
-  const [isEditPasswordSuccess, setIsEditPasswordSuccess] = useState(false)
-  const [isEditUserProfileImageSuccess, setIsEditUserProfileImageSuccess] =
-    useState(false)
-
   const navigate = useNavigate()
-
-  const { EditUserNickname } = useEditNickname({ setIsEditNicknameSuccess })
-  const { EditUserPassword } = useEditPassword({ setIsEditPasswordSuccess })
-  const { EditUserProfileImage } = useEditUserProfileImage({
-    setIsEditUserProfileImageSuccess,
-  })
 
   const handleEdit = () => {
     const { nickname, password } = requiredUserInfo
@@ -51,20 +44,13 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
     const { binary, url } = formData
 
     EditUserNickname.mutate({ fullName: nickname, username: "" })
-    EditUserPassword.mutate({ password })
+    EditUserPassword.mutate({ password: password })
 
     if (url !== "" && authUser.image !== url) {
       EditUserProfileImage.mutate(binary)
     }
 
-    if (
-      isEditNicknameSuccess &&
-      isEditPasswordSuccess &&
-      isEditUserProfileImageSuccess
-    ) {
-      // navigate("/", { replace: true })
-      navigate(`/profile/${authUser._id}`, { replace: true })
-    }
+    navigate(`/profile/${authUser._id}`, { replace: true })
   }
 
   const validateUserInfo = (userInfoType: string, userInfoValue: string) => {

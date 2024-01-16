@@ -5,11 +5,7 @@ import editPassword from "../apis/editPassword"
 
 const EDIT_PASSWORD_MUTATION_QUERY_KEY = "EDIT_PASSWORD_MUTATION_QUERY_KEY"
 
-interface UseEditPassword {
-  setIsEditPasswordSuccess: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const useEditPassword = ({ setIsEditPasswordSuccess }: UseEditPassword) => {
+const useEditPassword = () => {
   const {
     isShowModal: isShowAlertModal,
     showModal: showAlertModal,
@@ -28,13 +24,10 @@ const useEditPassword = ({ setIsEditPasswordSuccess }: UseEditPassword) => {
     mutationKey: [EDIT_PASSWORD_MUTATION_QUERY_KEY],
     mutationFn: editPassword,
     onSuccess: () => {
-      setIsEditPasswordSuccess(true)
       return true
     },
     onError: () => {
       showAlertModal()
-      setIsEditPasswordSuccess(false)
-      return
     },
   })
 
