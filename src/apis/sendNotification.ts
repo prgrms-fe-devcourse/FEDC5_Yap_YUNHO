@@ -8,9 +8,7 @@ interface SendNotification {
 }
 
 const sendNotification = async (body: SendNotification) => {
-  return await AUTH_API.post("/notifications/create", body).then((res) =>
-    console.log(res),
-  )
+  return await AUTH_API.post("/notifications/create", body)
 }
 
 export default sendNotification
