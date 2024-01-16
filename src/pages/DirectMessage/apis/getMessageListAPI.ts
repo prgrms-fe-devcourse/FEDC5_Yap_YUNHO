@@ -2,7 +2,8 @@ import { AUTH_API } from "@/apis/Api"
 import { Conversation } from "@/types"
 
 const getMessageListAPI = async (othersUserId: string, myId: string) => {
-  if (!othersUserId || othersUserId === "postdetail") {
+  console.log("!11")
+  if (!othersUserId) {
     return []
   }
 

@@ -9,19 +9,17 @@ import PostDetail from "@/components/PostDetail/PostDetail"
 const DirectMessage = () => {
   const { isShowPostDetail, showDetailModal, closeDetailModal } =
     usePostDetailModalStore()
-  const { modalName, userId } = useParams()
+  const { userId, id } = useParams()
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!modalName) {
+    if (!id) {
       return
     }
 
-    if (modalName === "postdetail") {
-      showDetailModal()
-    }
-  }, [modalName, showDetailModal])
+    showDetailModal()
+  }, [id, showDetailModal])
 
   const handleNavigatePostDetail = () => {
     closeDetailModal()
