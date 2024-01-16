@@ -5,7 +5,7 @@ const getNotificationOption = (
   pathname: string,
 ) => {
   const { author, post, comment, message, follow, like } = notificationItem
-  const convertedPathName = pathname === "/" ? "" : pathname
+  const convertedPathName = pathname === "/" ? "/post" : pathname
 
   if (message) {
     return {
