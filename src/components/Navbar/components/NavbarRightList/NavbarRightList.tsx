@@ -12,7 +12,7 @@ import NavbarToggleMenu from "./NavbarToggleMenu/NavbarToggleMenu"
 import useToggle from "@/hooks/useToggle"
 import useMenuClick from "../../hooks/useNavMenuClick"
 import CloseIcon from "@mui/icons-material/Close"
-import standard from "@/assets/standard.jpeg"
+import StandardUserImage from "@/assets/standard.jpeg"
 import useModal from "@/components/Modal/hooks/useModal"
 import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
 import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
@@ -22,13 +22,9 @@ const NavbarRightList = () => {
   const { isToggle, toggleRef, handleToggle } = useToggle()
   const { handleMenuClick, notificationModal, NotificationListData } =
     useMenuClick()
-  const {
-    isShowModal: isShowConfirm,
-    closeModal: closeConfirm,
-    showModal: showConfirm,
-  } = useModal()
+  const { isShowModal: isShowConfirm, closeModal: closeConfirm } = useModal()
 
-  const proifleImg = user.image || standard
+  const proifleImg = user.image || StandardUserImage
 
   const navigate = useNavigate()
 
@@ -39,9 +35,12 @@ const NavbarRightList = () => {
     }
   }
 
+  const handleNavbarProfileClick = () => {
+    navigate(`/profile/${user._id}`)
+  }
+
   return (
     <>
-      {notificationModal}
       <S.NavbarRightListLayout>
         {/* 메뉴들 */}
 
@@ -68,19 +67,13 @@ const NavbarRightList = () => {
         </NavbarToggleButton>
 
         {/* 프로필 버튼*/}
-        <NavbarButton
-          onClick={() => {
-            if (isLoggedIn) {
-              navigate("/profile")
-              return
-            }
-            showConfirm()
-          }}
-        >
-          <S.NavbarProfile
-            src={proifleImg}
-            alt="프로필"
-          />
+        <NavbarButton onClick={handleNavbarProfileClick}>
+          {isLoggedIn && (
+            <S.NavbarProfile
+              src={proifleImg}
+              alt="프로필"
+            />
+          )}
         </NavbarButton>
       </S.NavbarRightListLayout>
       <ConfirmModal
@@ -88,6 +81,7 @@ const NavbarRightList = () => {
         onClose={handleConfirm}
         message={POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER.NOT_LOGIN}
       />
+      {notificationModal}
     </>
   )
 }
