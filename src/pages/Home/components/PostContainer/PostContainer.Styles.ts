@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const PostContainerLayout = styled.div`
   width: 100%;
   flex-grow: 1;
-  margin-bottom: 20rem;
+  padding-bottom: 20rem;
 
   display: flex;
   align-items: center;
