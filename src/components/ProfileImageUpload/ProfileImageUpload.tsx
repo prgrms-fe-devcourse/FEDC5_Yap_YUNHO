@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from "react"
+import React, { ChangeEvent, useEffect, useRef, useState } from "react"
 import * as S from "./ProfileImageUpload.Styles"
 import standard from "@/assets/standard.jpeg"
 import Input from "@/components/Input/Input"
@@ -31,6 +31,10 @@ const ProfileImageUpload = ({
 }: ProfileImageUploadProp) => {
   const [previewUserProfile, setPreviewUserProfile] = useState(initialImage)
   const imageRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    setPreviewUserProfile(initialImage)
+  }, [initialImage])
 
   const openFileSelector = () => {
     if (!imageRef.current) {
