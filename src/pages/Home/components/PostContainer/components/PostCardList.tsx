@@ -23,21 +23,19 @@ const PostCardList = ({
   const { isShowEditModal } = usePostEditModalStore()
   const { isShowPostDetail, showDetailModal, closeDetailModal } =
     usePostDetailModalStore()
-  const { modalName } = useParams()
+  const { id } = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!modalName) {
+    if (!id) {
       return
     }
 
-    if (modalName === "postdetail") {
-      showDetailModal()
-    }
-  }, [modalName, showDetailModal])
+    showDetailModal()
+  }, [id, showDetailModal])
 
   const handleNavigatePostDetail: OnNavigatePostDetail = (postId) => {
-    navigate(`post/postdetail/${postId}`)
+    navigate(`/postdetail/${postId}`)
   }
 
   const handleClosePostDetail = useCallback(() => {
