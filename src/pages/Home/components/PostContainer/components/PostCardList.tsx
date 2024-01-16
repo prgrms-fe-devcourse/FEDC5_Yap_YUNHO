@@ -37,7 +37,7 @@ const PostCardList = ({
   }, [modalName, showDetailModal])
 
   const handleNavigatePostDetail: OnNavigatePostDetail = (postId) => {
-    navigate(`/postdetail/${postId}`)
+    navigate(`post/postdetail/${postId}`)
   }
 
   const handleClosePostDetail = useCallback(() => {
