@@ -8,7 +8,7 @@ export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
 const useMessageGroupList = () => {
   const { user } = useAuthUserStore()
   const myId = user._id
-  const { id: othersUserId } = useParams()
+  const { userId: othersUserId } = useParams()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: getMessageGroupListAPI,

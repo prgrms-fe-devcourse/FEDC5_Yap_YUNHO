@@ -7,7 +7,7 @@ import MessageInput from "./MessageInput/MessageInput"
 import MessageItem from "./MessageItem/MessageItem"
 
 const MessageList = () => {
-  const { id: othersUserId } = useParams()
+  const { userId: othersUserId } = useParams()
   const { data: MessageList } = useMessageList(othersUserId || "")
   const scrollRef = useRef<HTMLDivElement>(null)
 

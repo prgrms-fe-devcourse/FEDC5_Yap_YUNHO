@@ -12,7 +12,7 @@ export const QUERY_KEY_SEND_MESSAGE = "SEND_MESSAGE"
 
 const useSendMessage = () => {
   const queryClient = useQueryClient()
-  const { id: othersUserId } = useParams()
+  const { userId: othersUserId } = useParams()
   const { isShowModal, showModal, closeModal } = useModal()
 
   const AlertModalComponent = isShowModal ? (
