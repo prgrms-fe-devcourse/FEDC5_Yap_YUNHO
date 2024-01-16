@@ -59,8 +59,6 @@ const PostContainer = ({ selectedCategory }: PostContainerProps) => {
     setListRange((range) => range + count)
   }
 
-  console.log(listRange)
-
   return (
     <S.PostContainerLayout>
       <S.ArrowIcon
