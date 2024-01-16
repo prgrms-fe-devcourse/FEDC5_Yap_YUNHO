@@ -38,9 +38,14 @@ const YAPRoute = () => {
           element={<UserEdit />}
         />
         <Route
-          path="/profile/:id"
+          path="/profile/:userId"
           element={<Profile />}
-        />
+        >
+          <Route
+            path=":modalName/:id"
+            element={<></>}
+          />
+        </Route>
         {/* query string Category 구별 */}
         <Route
           path="/directmessage/:id?"

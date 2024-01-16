@@ -14,14 +14,14 @@ interface FollowButtonProps {
 }
 
 const UserFollowActionButton = ({ onClick }: FollowButtonProps) => {
-  const { id } = useParams()
+  const { userId } = useParams()
   const { user, isLoggedIn } = useAuthUserStore()
 
   const { fetchFollowMutate, FollowErrorAlertModal } = useFetchFollow()
   const { fetchUnFollowMutate, UnFollowErrorAlertModal } = useFetchUnFollow()
 
   const followInfo = user.following.find(
-    ({ user }: followInfoProp) => user === id,
+    ({ user }: followInfoProp) => user === userId,
   )
   const followInfoId = followInfo?._id
 
@@ -41,7 +41,7 @@ const UserFollowActionButton = ({ onClick }: FollowButtonProps) => {
       return
     }
 
-    fetchFollowMutate.mutate(id!)
+    fetchFollowMutate.mutate(userId!)
   }
 
   return (
