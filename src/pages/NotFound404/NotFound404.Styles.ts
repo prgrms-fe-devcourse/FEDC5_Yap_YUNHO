@@ -14,6 +14,7 @@ export const NotFound404Layout = styled.section`
 
   background-color: rgba(0, 0, 0, 0.5);
   z-index: ${({ theme }) => theme.zIndex.NotFound404};
+  user-select: none;
 `
 
 export const NoFound404ContainerBackground = styled.div`
