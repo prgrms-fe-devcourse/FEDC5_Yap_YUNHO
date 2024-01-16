@@ -30,8 +30,6 @@ export const NavbarLogoContainer = styled.button`
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
   }
 `
-
-// 로고 이미지
 export const NavbarLogo = styled.div`
   width: 8.5rem;
   height: 8.5rem;

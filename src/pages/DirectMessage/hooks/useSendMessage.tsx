@@ -5,13 +5,12 @@ import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
 import sendMessageAPI from "../apis/sendMessageAPI"
 import { useParams } from "react-router-dom"
-import sendNotification from "@/apis/sendNotification"
 
 export const QUERY_KEY_SEND_MESSAGE = "SEND_MESSAGE"
 
 const useSendMessage = () => {
   const queryClient = useQueryClient()
-  const { id: othersUserId } = useParams()
+  const { userId: othersUserId } = useParams()
   const { isShowModal, showModal, closeModal } = useModal()
 
   const AlertModalComponent = isShowModal ? (
@@ -25,23 +24,23 @@ const useSendMessage = () => {
   const sendMessage = useMutation({
     mutationKey: [QUERY_KEY_SEND_MESSAGE],
     mutationFn: sendMessageAPI,
-    onSuccess: (data) => {
-      const { _id: messageId } = data
-
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
-      })
-
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY_GET_MESSAGELIST] })
       if (!othersUserId) {
         return
       }
 
-      sendNotification({
-        notificationType: "MESSAGE",
-        notificationTypeId: messageId,
-        userId: othersUserId,
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
       })
+
+      // const NotificationSubmission: SendNotificationProps = {
+      //   notificationType: "MESSAGE",
+      //   notificationTypeId: messageId,
+      //   userId: othersUserId,
+      //   postId: null,
+      // }
+      // sendMessageNotificationAPI(NotificationSubmission)
     },
     onError: () => {
       showModal()

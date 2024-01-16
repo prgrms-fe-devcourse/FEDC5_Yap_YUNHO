@@ -9,6 +9,7 @@ export const ButtonLayout = styled.button<{
   border-radius: ${({ theme }) => theme.radius.size20};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
 
+  display: flex;
   background-color: ${({ $color }) => $color};
   font-size: ${({ $fontSize }) => $fontSize};
   color: ${({ $fontColor }) => $fontColor};

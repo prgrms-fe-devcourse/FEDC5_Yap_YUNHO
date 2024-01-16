@@ -1,9 +1,12 @@
-export type MenuType = string
+import { ReactNode } from "react"
 
-export type HandleMenuClickProps = (menu: MenuType) => void
+export type HandleMenuClickProps = (menu: string) => void
 
 export interface NavbarMenuProps {
   handleMenuClick: HandleMenuClickProps
   $isToggle?: boolean
-  children?: MenuType
+  menu?: string
+  children?: ReactNode
+  isNotification?: boolean
+  NotificationListData?: Notification[]
 }

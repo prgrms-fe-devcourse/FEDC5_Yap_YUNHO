@@ -5,24 +5,36 @@ import NavbarMenuItem from "../NavbarMenuItem/NavbarMenuItem"
 const NavbarLoggedInMenu = ({
   handleMenuClick,
   $isToggle,
+  NotificationListData,
 }: NavbarMenuProps) => {
   return (
-    <>
-      <NavbarMenuList $isToggle={$isToggle}>
-        <NavbarMenuItem handleMenuClick={handleMenuClick}>
-          {"게시물 생성"}
-        </NavbarMenuItem>
-        <NavbarMenuItem handleMenuClick={handleMenuClick}>
-          {"DM"}
-        </NavbarMenuItem>
-        <NavbarMenuItem handleMenuClick={handleMenuClick}>
-          {"알림"}
-        </NavbarMenuItem>
-        <NavbarMenuItem handleMenuClick={handleMenuClick}>
-          {"로그아웃"}
-        </NavbarMenuItem>
-      </NavbarMenuList>
-    </>
+    <NavbarMenuList $isToggle={$isToggle}>
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="게시물 생성"
+      />
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="DM"
+      />
+      {NotificationListData && NotificationListData.length > 0 ? (
+        <NavbarMenuItem
+          handleMenuClick={handleMenuClick}
+          menu="알림"
+          isNotification={true}
+        />
+      ) : (
+        <NavbarMenuItem
+          handleMenuClick={handleMenuClick}
+          menu="알림"
+        />
+      )}
+
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="로그아웃"
+      />
+    </NavbarMenuList>
   )
 }
 

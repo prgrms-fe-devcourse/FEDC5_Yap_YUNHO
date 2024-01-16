@@ -1,30 +1,28 @@
-import * as S from "./MessageList.Styles"
+import * as S from "./MessageGroupList.Styles"
 import { MessageGroupItemProps } from "../../DirectMessage.Types"
 import MessageProfile from "./MessageProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import decideChatUserName from "../../utils/decideChatUserName"
 
 const MessageGroupItem = ({
-  receiver,
-  sender,
-  message,
-  createdAt,
-  isOnline,
+  messageGroupItem,
   handleMessageGroupClick,
   selectedMessageGroupId,
-  profileImg,
+  others,
 }: MessageGroupItemProps) => {
-  const { myId } = useAuthUserStore()
+  const { user } = useAuthUserStore()
+  const { receiver, sender, message, createdAt } = messageGroupItem
+  const { isOnline, image: profileImg, _id: othersUserId, fullName } = others
 
   return (
     <S.MessageItemLayout
       onClick={() => {
-        handleMessageGroupClick({ myId, receiver, sender })
+        handleMessageGroupClick({
+          myId: user._id,
+          receiver,
+          sender,
+        })
       }}
-      $isSelect={
-        selectedMessageGroupId ===
-        decideChatUserName({ myId, receiver, sender })._id
-      }
+      $isSelect={selectedMessageGroupId === othersUserId}
     >
       <MessageProfile
         isOnline={isOnline}
@@ -32,9 +30,7 @@ const MessageGroupItem = ({
       />
 
       <S.MessageGroupItemChat>
-        <S.MessageGroupItemUserName>
-          {decideChatUserName({ myId, receiver, sender }).fullName}
-        </S.MessageGroupItemUserName>
+        <S.MessageGroupItemUserName>{fullName}</S.MessageGroupItemUserName>
         <S.MessageGroupItemContent>{message}</S.MessageGroupItemContent>
         <S.MessageGroupItemChatDate>
           {createdAt.slice(0, 10)}

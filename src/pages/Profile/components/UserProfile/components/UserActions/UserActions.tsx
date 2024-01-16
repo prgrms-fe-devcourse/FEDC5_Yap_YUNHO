@@ -12,8 +12,8 @@ const UserActions = () => {
   const { isShowModal, showModal, closeModal } = useModal()
 
   const { userId } = useParams()
-  const { myId, isLoggedIn } = useAuthUserStore()
-  const isMyPage = myId === userId
+  const { user: authUser, isLoggedIn } = useAuthUserStore()
+  const isMyPage = authUser._id === userId
 
   const handleClickButton = (isDMPage?: boolean) => {
     if (!isLoggedIn) {
