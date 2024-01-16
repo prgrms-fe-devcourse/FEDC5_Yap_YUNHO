@@ -14,8 +14,7 @@ export default function UserEdit() {
     if (!id || !isLoggedIn || id !== user._id) {
       navigate("/", { replace: true })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [id, isLoggedIn, navigate, user._id])
 
   if (!user) {
     return

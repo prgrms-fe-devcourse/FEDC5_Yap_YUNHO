@@ -20,7 +20,7 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
   const { EditUserProfileImage } = useEditUserProfileImage()
 
   const [requiredUserInfo, setRequiredUserInfo] = useState({
-    nickname: "",
+    nickname: authUser.fullName,
     password: "",
     passwordCheck: "",
   })
@@ -33,7 +33,7 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
 
   const [formData, setFormData] = useState({
     binary: new FormData(),
-    url: "",
+    url: authUser.image,
   })
 
   const navigate = useNavigate()
