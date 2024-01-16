@@ -10,7 +10,7 @@ import PostEdit from "@/components/PostEdit/PostEdit"
 const useMenuClick = () => {
   const navigate = useNavigate()
   const { setLogout } = useAuthUserStore()
-  const { data: NotificationListData } = useGetNotification()
+  const { NotificationListData } = useGetNotification()
   const {
     isShowModal: isShowNotification,
     showModal: showNotification,

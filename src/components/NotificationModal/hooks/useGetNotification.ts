@@ -18,7 +18,7 @@ const useGetNotification = () => {
     queryKey: [QUERY_KEY_GET_NOTIFICATION],
     queryFn: fetchNewNotification,
     enabled: isLoggedIn,
-    refetchInterval: isNotShowModal && 1000 * 5,
+    refetchInterval: isNotShowModal && 1000 * 10,
     gcTime: 1000 * 60 * 5,
     select: (data) => {
       return data.filter(
@@ -29,7 +29,7 @@ const useGetNotification = () => {
     },
   })
 
-  return { data }
+  return { NotificationListData: data }
 }
 
 export default useGetNotification
