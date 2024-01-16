@@ -20,7 +20,7 @@ const YAPRoute = () => {
           element={<Home />}
         >
           <Route
-            path="/post/:modalName/:id?"
+            path="/post/:modalName/:id"
             element={<></>}
           />
         </Route>
