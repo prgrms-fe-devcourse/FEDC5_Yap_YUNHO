@@ -1,28 +1,24 @@
 import { useState } from "react"
-import * as S from "./MessageList.Styles"
+import * as S from "./MessageGroupList.Styles"
 import { Conversation, User } from "@/types"
-import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
 import useMessageGroupList from "../../hooks/useMessageGroupList"
 import MessageGroupItem from "./MessageGroupItem"
 import { handleMessageGroupClickProps } from "../../DirectMessage.Types"
-import useAuthUserStore from "@/stores/useAuthUserStore"
 import { AUTH_API } from "@/apis/Api"
+import useAuthUserStore from "@/stores/useAuthUserStore"
+import { useNavigate } from "react-router-dom"
 
 const MessageGroupList = () => {
   const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
-  const navigate = useNavigate()
   const { data: MessageGroupList } = useMessageGroupList()
-  const { myId } = useAuthUserStore()
+  const { user } = useAuthUserStore()
+  const navigate = useNavigate()
 
   const updateSeenMessage = async (others: User) => {
-    try {
-      await AUTH_API.put("/messages/update-seen", {
-        sender: others._id,
-      })
-    } catch (e) {
-      console.error(e, "메시지 읽음 처리 오류")
-    }
+    await AUTH_API.put("/messages/update-seen", {
+      sender: others._id,
+    })
   }
 
   const handleMessageGroupClick = ({
@@ -30,7 +26,6 @@ const MessageGroupList = () => {
     receiver,
     sender,
   }: handleMessageGroupClickProps) => {
-    // 상대방의 아이디
     const others = decideChatUserName({ myId, receiver, sender })
     navigate(`/directmessage/${others._id}`)
     setSelectedMessageGroupId(others._id)
@@ -57,21 +52,22 @@ const MessageGroupList = () => {
         </S.MessageGroupListNotSeenNumber>
       </S.MessageGroupListInfo>
       <S.MessageGroupListContainer>
-        {MessageGroupList?.map((user: Conversation) => {
-          const { receiver, sender } = user
-          const others = decideChatUserName({ myId, receiver, sender })
+        {MessageGroupList?.map((messageGroupItem: Conversation) => {
+          const { receiver, sender } = messageGroupItem
+
+          const others = decideChatUserName({
+            myId: user._id,
+            receiver,
+            sender,
+          })
 
           return (
             <MessageGroupItem
-              key={user.createdAt}
-              receiver={user.receiver}
-              message={user.message}
-              sender={user.sender}
-              createdAt={user.createdAt}
-              isOnline={others.isOnline}
+              messageGroupItem={messageGroupItem}
+              others={others}
+              key={messageGroupItem.createdAt}
               selectedMessageGroupId={selectedMessageGroupId}
               handleMessageGroupClick={handleMessageGroupClick}
-              profileImg={others.image}
             />
           )
         })}

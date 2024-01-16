@@ -10,6 +10,7 @@ const useGetPost = ({ postId }: { postId: string | undefined }) => {
     queryFn: async () => {
       return await API.get(`/posts/${postId}`).then((res) => res.data)
     },
+    gcTime: 1000 * 60 * 5,
     select: (fetchPost: JSONPost) => {
       const { content, mediaUrl, thumbnail } = JSON.parse(fetchPost.title)
 

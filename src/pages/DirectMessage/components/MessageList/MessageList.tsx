@@ -7,7 +7,7 @@ import MessageInput from "./MessageInput/MessageInput"
 import MessageItem from "./MessageItem/MessageItem"
 
 const MessageList = () => {
-  const { id: othersUserId } = useParams()
+  const { userId: othersUserId } = useParams()
   const { data: MessageList } = useMessageList(othersUserId || "")
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -17,17 +17,16 @@ const MessageList = () => {
     }
   }
 
-  // 내가 메시지를 보낼때, 상대방에게 메시지를 받을때 스크롤 이동
   useEffect(() => {
     scrollToBottom()
-  }, [MessageList?.length])
+  }, [MessageList])
 
   return (
     <S.MessageListLayout>
-      {othersUserId && (
+      {othersUserId && MessageList && (
         <>
           <S.MessageListContainer ref={scrollRef}>
-            {MessageList?.map((list: Message) => (
+            {MessageList.map((list: Message) => (
               <MessageItem
                 key={list.createdAt}
                 othersUserId={othersUserId}

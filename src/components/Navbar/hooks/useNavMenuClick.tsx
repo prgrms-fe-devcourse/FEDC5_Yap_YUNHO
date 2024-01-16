@@ -1,15 +1,19 @@
 import { useNavigate } from "react-router-dom"
 import { API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import PostEdit from "@/components/PostEdit/PostEdit"
-import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
-import usePostDetailModalStore from "@/components/PostDetail/stores/usePostDetailModalStore"
+import useModal from "@/components/Modal/hooks/useModal"
+import NotificationModal from "@/components/NotificationModal/NotificationModal"
+import useGetNotification from "@/components/NotificationModal/hooks/useGetNotification"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
   const { setLogout } = useAuthUserStore()
-  const { isShowEditModal, showEditModal } = usePostEditModalStore()
-  const { isShowPostDetail } = usePostDetailModalStore()
+  const { data: NotificationListData } = useGetNotification()
+  const {
+    isShowModal: isShowNotification,
+    showModal: showNotification,
+    closeModal: closeNotification,
+  } = useModal()
 
   const handleMenuClick = (menu: string) => {
     switch (menu) {
@@ -23,18 +27,21 @@ const useMenuClick = () => {
         navigate("/directmessage")
         break
       case "게시물 생성":
-        showEditModal()
         break
       case "알림":
-        // 알림 창(후순위)
+        showNotification()
         break
       default:
         break
     }
   }
 
-  const PostEditModal = isShowEditModal && !isShowPostDetail && (
-    <PostEdit postId="newPost" />
+  const notificationModal = (
+    <NotificationModal
+      isShow={isShowNotification}
+      onClose={closeNotification}
+      NotificationListData={NotificationListData}
+    />
   )
 
   const handleLogout = async () => {
@@ -43,12 +50,10 @@ const useMenuClick = () => {
         setLogout()
         navigate("/")
       })
-      .catch((err) => {
-        console.error("로그아웃 오류", err)
-      })
+      .catch(() => {})
   }
 
-  return { handleMenuClick, PostEditModal }
+  return { handleMenuClick, notificationModal, NotificationListData }
 }
 
 export default useMenuClick

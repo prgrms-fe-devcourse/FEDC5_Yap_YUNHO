@@ -6,27 +6,25 @@ import getMessageGroupListAPI from "../apis/getMessageGroupListAPI"
 export const QUERY_KEY_GET_GROUP_MESSAGELIST = "GET_GROUP_MESSAGELIST"
 
 const useMessageGroupList = () => {
-  const { myId } = useAuthUserStore()
-  const { id: othersUserId } = useParams()
+  const { user } = useAuthUserStore()
+  const myId = user._id
+  const { userId: othersUserId } = useParams()
   const { data } = useQuery({
     queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
     queryFn: getMessageGroupListAPI,
     initialData: [],
-    refetchInterval: 1000, // 재 요청
-
+    refetchInterval: 1000 * 2,
+    gcTime: 1000 * 60 * 5,
     select: (GroupMessageList: Conversation[]) =>
       GroupMessageList.map((MessageList) => {
-        // 최근에 보낸 메시지가 내가 보낸거면 채팅을 하고 있거나 읽음 처리
-        if (
-          myId === MessageList.sender._id ||
-          othersUserId === MessageList.sender._id
-        ) {
-          return {
-            ...MessageList,
-            seen: true,
-          }
+        return {
+          ...MessageList,
+          seen:
+            myId === MessageList.sender._id ||
+            othersUserId === MessageList.sender._id
+              ? true
+              : MessageList.seen,
         }
-        return MessageList
       }),
   })
   return { data }

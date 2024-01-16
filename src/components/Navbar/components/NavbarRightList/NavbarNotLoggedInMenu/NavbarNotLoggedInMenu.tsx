@@ -8,7 +8,10 @@ const NavbarNotLoggedInMenu = ({
 }: NavbarMenuProps) => {
   return (
     <NavbarMenuList $isToggle={$isToggle}>
-      <NavbarMenuItem handleMenuClick={handleMenuClick}>로그인</NavbarMenuItem>
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="로그인"
+      />
     </NavbarMenuList>
   )
 }

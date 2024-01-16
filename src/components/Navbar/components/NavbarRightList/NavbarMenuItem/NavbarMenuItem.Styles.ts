@@ -16,4 +16,9 @@ export const NavbarMenuContainer = styled.div`
       transform: scaleX(1);
     }
   }
+  svg {
+    color: ${({ theme }) => theme.colors.point};
+    padding-left: 0.5rem;
+    pointer-events: none;
+  }
 `
