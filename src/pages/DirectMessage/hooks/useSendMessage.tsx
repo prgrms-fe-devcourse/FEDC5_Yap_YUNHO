@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { QUERY_KEY_GET_GROUP_MESSAGELIST } from "./useMessageGroupList"
+import { QUERY_KEY_GET_GROUP_MESSAGE_LIST } from "./useMessageGroupList"
 import { QUERY_KEY_GET_MESSAGE_LIST } from "./useMessageList"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useModal from "@/components/Modal/hooks/useModal"
@@ -33,7 +33,7 @@ const useSendMessage = () => {
       }
 
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY_GET_GROUP_MESSAGELIST],
+        queryKey: [QUERY_KEY_GET_GROUP_MESSAGE_LIST],
       })
 
       sendNotification({
