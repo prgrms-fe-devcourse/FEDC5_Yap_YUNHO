@@ -32,8 +32,6 @@ const PostEditAuthChecker = ({
       showModal()
       return
     }
-    console.log("user", user)
-    console.log("authorId", authorId)
 
     if (authorId !== "newPost" && authorId !== user._id) {
       setAlertMessage(POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER.NO_PERMISSION)
