@@ -18,7 +18,7 @@ export const NotFound404Layout = styled.section`
 
 export const NoFound404ContainerBackground = styled.div`
   width: 50rem;
-  height: 44rem;
+  height: 46rem;
   padding: 2rem;
 
   background-color: ${({ theme }) => theme.colors.sub};
@@ -27,9 +27,73 @@ export const NoFound404ContainerBackground = styled.div`
 `
 export const NoFound404Container = styled.div`
   width: 46rem;
-  height: 40rem;
+  height: 42rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
   border-radius: ${({ theme }) => theme.radius.size12};
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
+`
+
+export const NotFound404Title = styled.h2`
+  width: 44rem;
+  height: 6rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 3.2rem;
+  color: ${({ theme }) => theme.colors.point};
+`
+export const NotFound404Text = styled.p`
+  width: 32rem;
+  height: 6rem;
+
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: ${({ theme }) => theme.fontSizes.large};
+`
+
+export const NotFound404Image = styled.div<{ $src: string }>`
+  width: 20rem;
+  height: 20rem;
+
+  background-image: url(${({ $src }) => $src});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0.4rem solid ${({ theme }) => theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size12};
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
+`
+
+export const NotFound404ButtonContainer = styled.div`
+  width: 44rem;
+  height: 8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const NotFound404Button = styled.button`
+  width: 10rem;
+  height: 4rem;
+
+  background-color: ${({ theme }) => theme.colors.point};
+  border-radius: ${({ theme }) => theme.radius.size12};
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
+
+  font-size: 2.4rem;
+
+  transition: ${({ theme }) => theme.transition.normal};
+  &:hover {
+    opacity: ${({ theme }) => theme.opacity.normal};
+  }
 `
