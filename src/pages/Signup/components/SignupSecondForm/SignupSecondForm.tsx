@@ -2,20 +2,31 @@ import { useState, FormEvent } from "react"
 import * as S from "./SignupSecondForm.Styles"
 import { theme } from "@/styles/theme"
 import useSignupSecondForm from "../../hooks/useSignupSecondForm"
-import UserProfileImageUpload from "@/components/UserProfileImageUpload/UserProfileImageUpload"
+import ProfileImageUpload from "@/components/ProfileImageUpload/ProfileImageUpload"
+import { useNavigate } from "react-router-dom"
 
-interface SecondSignupFormProp {
-  authToken: string
+interface FormDataType {
+  binary: FormData
+  url: string
 }
 
-const SecondSignupForm = ({ authToken }: SecondSignupFormProp) => {
-  const [formData, setFormData] = useState<FormData>(new FormData())
+const SignupSecondForm = () => {
+  const [formData, setFormData] = useState<FormDataType>({
+    binary: new FormData(),
+    url: "",
+  })
   const { AlertModalComponent, SignupSecondForm_API } = useSignupSecondForm()
+  const navigate = useNavigate()
 
-  const updateUserProfile = async (event: FormEvent) => {
+  const updateUserProfile = (event: FormEvent) => {
     event.preventDefault()
+    const { binary, url } = formData
 
-    SignupSecondForm_API.mutate({ authToken, formData })
+    if (url !== "") {
+      SignupSecondForm_API.mutate({ formData: binary })
+      return
+    }
+    navigate("/", { replace: true })
   }
 
   return (
@@ -24,7 +35,7 @@ const SecondSignupForm = ({ authToken }: SecondSignupFormProp) => {
       <S.SignupFormLayout>
         <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
         <S.SignupFormContainer onSubmit={updateUserProfile}>
-          <UserProfileImageUpload setFormData={setFormData} />
+          <ProfileImageUpload setFormData={setFormData} />
           <S.ButtonContainer>
             <S.Button
               $width={53}
@@ -40,4 +51,4 @@ const SecondSignupForm = ({ authToken }: SecondSignupFormProp) => {
   )
 }
 
-export default SecondSignupForm
+export default SignupSecondForm

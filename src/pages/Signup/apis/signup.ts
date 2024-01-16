@@ -12,6 +12,6 @@ export const signup = async (requestBody: RequestBody) => {
       return res.data
     })
     .catch((error) => {
-      throw Error(error)
+      throw Error(error.response.data)
     })
 }
