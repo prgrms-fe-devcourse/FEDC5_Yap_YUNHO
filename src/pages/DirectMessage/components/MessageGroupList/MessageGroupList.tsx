@@ -1,7 +1,6 @@
 import { useState } from "react"
 import * as S from "./MessageList.Styles"
 import { Conversation, User } from "@/types"
-import { useNavigate } from "react-router-dom"
 import decideChatUserName from "../../utils/decideChatUserName"
 import useMessageGroupList from "../../hooks/useMessageGroupList"
 import MessageGroupItem from "./MessageGroupItem"
@@ -10,7 +9,6 @@ import { AUTH_API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 
 const MessageGroupList = () => {
-  const navigate = useNavigate()
   const [selectedMessageGroupId, setSelectedMessageGroupId] = useState("")
   const { data: MessageGroupList } = useMessageGroupList()
   const { user } = useAuthUserStore()
@@ -31,7 +29,7 @@ const MessageGroupList = () => {
     sender,
   }: handleMessageGroupClickProps) => {
     const others = decideChatUserName({ myId, receiver, sender })
-    navigate(`/directmessage/${others._id}`)
+
     setSelectedMessageGroupId(others._id)
     updateSeenMessage(others)
   }

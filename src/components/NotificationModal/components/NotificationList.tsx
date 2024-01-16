@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import * as S from "./Notification.Styles"
 import NotificationItem from "./NotificationItem"
 import { Notification } from "@/types/index"
@@ -13,10 +13,11 @@ const NotificationList = ({
   onClose,
 }: NotificationListDataProps) => {
   const navigate = useNavigate()
-  const { pathname } = useLocation()
   const handleClick = (NOTIFI_NAVIGATION: string) => {
-    navigate(`${pathname}/${NOTIFI_NAVIGATION}`)
-    onClose()
+    if (NOTIFI_NAVIGATION) {
+      navigate(NOTIFI_NAVIGATION)
+      onClose()
+    }
   }
   return (
     <S.NotificationListLayout>

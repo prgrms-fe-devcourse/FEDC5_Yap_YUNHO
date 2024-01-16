@@ -15,7 +15,7 @@ const NavbarLoggedInMenu = ({
       />
       <NavbarMenuItem
         handleMenuClick={handleMenuClick}
-        menu="로그인"
+        menu="DM"
       />
       {NotificationListData && NotificationListData.length > 0 ? (
         <NavbarMenuItem

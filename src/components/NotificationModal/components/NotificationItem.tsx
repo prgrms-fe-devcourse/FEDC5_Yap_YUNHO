@@ -2,6 +2,7 @@ import MessageProfile from "../../../pages/DirectMessage/components/MessageGroup
 import * as S from "./Notification.Styles"
 import { Notification } from "../../../types/index"
 import getNotificationOption from "../utils/getNotificationOption"
+import { useLocation } from "react-router-dom"
 
 interface NotificationItemProps {
   handleClick: (NavigationId: string) => void
@@ -12,9 +13,12 @@ const NotificationItem = ({
   Notification: notificationItem,
 }: NotificationItemProps) => {
   const { createdAt, author } = notificationItem
-
-  const { NOTIFI_LANGUAGE, NOTIFI_NAVIGATION } =
-    getNotificationOption(notificationItem)
+  const { pathname } = useLocation()
+  const { NOTIFI_LANGUAGE, NOTIFI_NAVIGATION } = getNotificationOption(
+    notificationItem,
+    pathname,
+  )
+  console.log(NOTIFI_NAVIGATION)
 
   return (
     <S.NotificationItemLayout

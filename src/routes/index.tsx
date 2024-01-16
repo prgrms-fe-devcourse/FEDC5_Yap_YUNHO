@@ -35,14 +35,9 @@ const YAPRoute = () => {
         />
         {/* query string Category 구별 */}
         <Route
-          path="/directmessage/:userId?"
+          path="/directmessage/:userId?/:modalName?/:id?"
           element={<DirectMessage />}
-        >
-          <Route
-            path=":modalName/:id"
-            element={<></>}
-          />
-        </Route>
+        />
         {/* // Path URL을 통한 Modal 컨트롤이 가능할 때 사용 - 추가 구현 사항  */}
         <Route
           path="/search"
