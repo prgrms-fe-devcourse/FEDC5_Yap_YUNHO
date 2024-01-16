@@ -1,14 +1,20 @@
 import * as S from "./OthersMessage.Styles.ts"
 import { MessageProps } from "./../../../../DirectMessage.Types"
 import MessageProfile from "./../../../MessageGroupList/MessageProfile"
+import UserInfoPopover from "@/components/UserInfoPopover/UserInfoPopover.tsx"
 
 const OthersMessage = ({ messageData }: MessageProps) => {
   return (
     <S.OthersMessageLayout>
-      <MessageProfile
-        profileImg={messageData.sender.image}
-        isOnline={messageData.sender.isOnline}
-      />
+      <UserInfoPopover
+        user={messageData.sender}
+        isRight={true}
+      >
+        <MessageProfile
+          profileImg={messageData.sender.image}
+          isOnline={messageData.sender.isOnline}
+        />
+      </UserInfoPopover>
       <S.OthersMessageItemLayout>
         <S.OthersMessageInfoContainer>
           <S.OthersMessageUserName>

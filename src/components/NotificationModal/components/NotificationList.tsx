@@ -23,6 +23,7 @@ const NotificationList = ({
     <S.NotificationListLayout>
       {NotificationListData.map((item) => (
         <NotificationItem
+          onClose={onClose}
           handleClick={handleClick}
           Notification={item}
           key={item._id}
