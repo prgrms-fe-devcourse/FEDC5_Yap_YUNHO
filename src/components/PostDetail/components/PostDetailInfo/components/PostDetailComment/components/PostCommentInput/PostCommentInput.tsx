@@ -4,13 +4,14 @@ import * as S from "./PostCommentInput.Styles"
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward"
 import useModal from "@/components/Modal/hooks/useModal"
 import { POST_DETAIL_MODAL_MESSAGE } from "@/constants/modalMessage"
-import { Post } from "@/types"
+import { Post, PostComment } from "@/types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import { useNavigate } from "react-router-dom"
 import commentValidation from "./util/commentValidation"
 import { POST_DETAIL_ERROR_MESSAGE } from "@/constants/errorMessage"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import useSendComment from "@/components/PostDetail/hooks/useSendComment"
+import sendNotification from "@/apis/sendNotification"
 
 interface PostCommentInputProps {
   post: Post
@@ -69,8 +70,15 @@ const PostCommentInput = ({ post }: PostCommentInputProps) => {
         postId: post._id,
       },
       {
-        onSuccess: () => {
+        onSuccess: (response: PostComment) => {
           setWriteComment("")
+
+          sendNotification({
+            notificationType: "COMMENT",
+            notificationTypeId: response._id,
+            userId: post.author._id,
+            postId: post._id,
+          })
         },
         onError: () => {
           setAlertMessage(POST_DETAIL_ERROR_MESSAGE.COMMENT_SUBMIT.ERROR)

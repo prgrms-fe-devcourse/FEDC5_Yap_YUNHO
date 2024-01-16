@@ -12,7 +12,7 @@ export const UserInfoBackground = styled.div<{
 
 export const UserInfoLayout = styled.div`
   width: 24rem;
-  height: 17rem;
+  height: 18rem;
   padding: 1rem;
 
   display: flex;
