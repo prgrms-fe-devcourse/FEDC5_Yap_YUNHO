@@ -18,7 +18,7 @@ export const PostMainCard = styled.div`
 
   z-index: ${({ theme }) => theme.zIndex.postMainCard};
 
-  @media (max-height: 900px) {
+  @media (max-height: 1100px) {
     align-self: flex-start;
   }
 `
@@ -36,7 +36,7 @@ export const PostSubCard = styled.div<{ $isLeft: boolean }>`
   z-index: ${({ theme }) => theme.zIndex.postSubCard};
   cursor: pointer;
 
-  @media (max-height: 750px) {
+  @media (max-height: 950px) {
     align-self: flex-start;
   }
 `
@@ -54,7 +54,7 @@ export const PostSmallCard = styled.div<{ $isLeft: boolean }>`
   z-index: ${({ theme }) => theme.zIndex.postSmallCard};
   cursor: pointer;
 
-  @media (max-height: 600px) {
+  @media (max-height: 800px) {
     align-self: flex-start;
   }
 `

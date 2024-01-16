@@ -4,7 +4,7 @@ export const UserInfoBackground = styled.div<{
   $isPostCard?: boolean
 }>`
   width: 26rem;
-  height: 18rem;
+  height: 19rem;
   padding: 1rem;
 
   user-select: none;
@@ -12,8 +12,14 @@ export const UserInfoBackground = styled.div<{
 
 export const UserInfoLayout = styled.div`
   width: 24rem;
-  height: 16rem;
+  height: 18rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   background-color: ${({ theme }) => theme.colors.sub_alt};
-  border: 1px solid red;
+  border-radius: ${({ theme }) => theme.radius.size8};
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
 `

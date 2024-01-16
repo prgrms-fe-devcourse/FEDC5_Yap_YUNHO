@@ -1,3 +1,5 @@
+import { User } from "@/types"
+
 export type OnNavigatePostDetail = (postId: string) => void
 
 export interface PostCardProps {
@@ -6,14 +8,14 @@ export interface PostCardProps {
   mediaUrl: string
   postId: string
   isBlock?: boolean
-  authUserProfile?: string
+  author: User
   hasProfile?: boolean
   textPercent?: "60%" | "80%" | "100%"
   onNavigatePostDetail?: OnNavigatePostDetail
 }
 
 export interface PostCardUserProfileProps {
-  imgUrl: string
+  author: User
   postId: string
   hasProfile?: boolean
   onNavigatePostDetail?: OnNavigatePostDetail

@@ -12,14 +12,14 @@ const PostCard = ({
   postId,
   isBlock = false,
   hasProfile = true,
-  authUserProfile = "",
+  author,
   textPercent = "100%",
   onNavigatePostDetail,
 }: PostCardProps): React.ReactNode => {
   return (
     <S.PostCardLayout>
       <PostCardUserProfile
-        imgUrl={authUserProfile}
+        author={author}
         hasProfile={hasProfile}
         onNavigatePostDetail={onNavigatePostDetail}
         postId={postId}

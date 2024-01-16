@@ -44,7 +44,7 @@ const fetchUnFollow = (id: string) => {
   const response = AUTH_API.delete("/follow/delete", {
     data: { id },
   })
-    .then((res) => res)
+    .then((res) => res.data)
     .catch((e) => {
       throw Error(e)
     })
