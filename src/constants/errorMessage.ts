@@ -46,3 +46,6 @@ export const POST_DETAIL_ERROR_MESSAGE = {
     COMMENT: "올바른 댓글을 작성해주세요!",
   },
 }
+
+export const USER_PAGE_ERROR_MESSAGE =
+  "오류가 발생했습니다.\n 다시 시도 해주세요"

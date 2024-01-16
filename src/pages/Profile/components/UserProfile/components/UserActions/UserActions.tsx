@@ -1,12 +1,37 @@
 import * as S from "./UserActions.Styles"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import UserActionButton from "./UserActionButton"
+import UserFollowActionButton from "./UserFollowActionButton"
+import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
+import { NOT_LOGIN_MODAL_MESSAGE } from "@/constants/modalMessage"
+import useModal from "@/components/Modal/hooks/useModal"
 
 const UserActions = () => {
+  const navigate = useNavigate()
+  const { isShowModal, showModal, closeModal } = useModal()
+
   const { id } = useParams()
-  const { user } = useAuthUserStore()
-  const isMyPage = user._id === id
+  const { myId, isLoggedIn } = useAuthUserStore()
+  const isMyPage = myId === id
+
+  const handleClickButton = (isDMPage?: boolean) => {
+    if (!isLoggedIn) {
+      showModal()
+      return
+    }
+
+    if (isDMPage) {
+      navigate(`/directmessage/${id}`)
+    }
+  }
+
+  const handleAlertCloseButton = (isAccepted: boolean) => {
+    closeModal()
+    if (isAccepted) {
+      navigate("/login")
+    }
+  }
 
   return (
     <S.UserActionLayout>
@@ -14,19 +39,23 @@ const UserActions = () => {
         <UserActionButton
           text="회원 정보 수정"
           $width={11}
-          onClick={() => {}}
+          onClick={() => {
+            navigate(`/useredit/${id}`)
+          }}
         />
       ) : (
         <>
-          <UserActionButton
-            text="팔로우"
-            $width={9}
-            onClick={() => {}}
-          />
+          <UserFollowActionButton onClick={handleClickButton} />
           <UserActionButton
             text="DM 보내기"
             $width={9}
-            onClick={() => {}}
+            onClick={() => handleClickButton(true)}
+          />
+          <ConfirmModal
+            isShow={isShowModal}
+            onClose={handleAlertCloseButton}
+            message={NOT_LOGIN_MODAL_MESSAGE}
+            acceptButtonText={"확인"}
           />
         </>
       )}

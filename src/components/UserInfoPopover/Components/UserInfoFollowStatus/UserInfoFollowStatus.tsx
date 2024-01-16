@@ -1,6 +1,6 @@
 import { User } from "@/types"
 import * as S from "./UserInfoFollowStatus.Styles"
-import { convertFollowCount } from "@/util/convertFollowCount"
+import { getConvertedCount } from "@/util/getConvertedCount"
 
 interface UserInfoFollowStatusProps {
   user: User
@@ -9,8 +9,8 @@ interface UserInfoFollowStatusProps {
 const UserInfoFollowStatus = ({ user }: UserInfoFollowStatusProps) => {
   const { followers, following } = user
 
-  const convertedFollowingCount = convertFollowCount(following.length)
-  const convertedFollowerCount = convertFollowCount(followers.length)
+  const convertedFollowingCount = getConvertedCount(following.length)
+  const convertedFollowerCount = getConvertedCount(followers.length)
   return (
     <S.UserInfoFollowStatusLayout>
       <S.UserInfoFollowStatus>{`팔로잉 ${convertedFollowingCount} 명`}</S.UserInfoFollowStatus>

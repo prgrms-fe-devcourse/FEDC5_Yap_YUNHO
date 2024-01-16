@@ -1,6 +1,6 @@
 import { Post } from "@/types"
 import * as S from "./PostDetailUser.Styles"
-import { convertFollowCount } from "@/util/convertFollowCount"
+import { getConvertedCount } from "@/util/getConvertedCount"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import useFetchFollow from "@/hooks/useFetchFollow"
 import useFetchUnFollow from "@/hooks/useFetchUnFollow"
@@ -17,7 +17,7 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
 
   const { author } = post
   const { image, fullName, followers } = author
-  const followerCount = convertFollowCount(followers.length)
+  const followerCount = getConvertedCount(followers.length)
 
   const hasFollowingData = user.following.find(
     (following) => following.user === author._id,

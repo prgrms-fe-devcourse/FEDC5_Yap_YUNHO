@@ -11,7 +11,7 @@ export const UserProfileLayout = styled.section`
   padding: 4rem 0;
   border-bottom: 0.1rem solid;
 `
-export const UserProfileImageContainer = styled.div`
+export const UserProfileImageContainer = styled.img`
   height: 16rem;
   width: 16rem;
   border-radius: ${({ theme }) => theme.radius.circle};

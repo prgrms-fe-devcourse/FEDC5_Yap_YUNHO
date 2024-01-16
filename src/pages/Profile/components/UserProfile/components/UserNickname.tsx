@@ -1,7 +1,11 @@
 import * as S from "../UserProfile.Styles"
 
-const UserNickname = () => {
-  return <S.UserNickNameContainer>UserNickname</S.UserNickNameContainer>
+interface UserNicknameProps {
+  nickName?: string
+}
+
+const UserNickname = ({ nickName }: UserNicknameProps) => {
+  return <S.UserNickNameContainer>{nickName}</S.UserNickNameContainer>
 }
 
 export default UserNickname

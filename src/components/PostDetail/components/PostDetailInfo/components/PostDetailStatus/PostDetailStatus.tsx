@@ -1,6 +1,6 @@
 import * as S from "./PostDetailStatus.Styles"
 import { Like, Post, User } from "@/types"
-import { convertFollowCount } from "@/util/convertFollowCount"
+import { getConvertedCount } from "@/util/getConvertedCount"
 import PostDetailEditActions from "./components/PostDetailEditActions"
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt"
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt"
@@ -94,7 +94,7 @@ const PostDetailStatus = ({
               <ThumbUpOffAltIcon />
             )}
 
-            {convertFollowCount(likes.length)}
+            {getConvertedCount(likes.length)}
           </S.PostDetailLike>
 
           <S.PostDetailLink
