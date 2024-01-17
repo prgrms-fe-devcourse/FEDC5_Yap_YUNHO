@@ -1,45 +1,36 @@
 import { SEARCH_RESULT_COUNT } from "../../SearchModal.Constants"
 import {
-  searchResultProp,
-  searchResult,
-  typeProp,
+  SearchQueryResult,
+  SearchResultProp,
+  TypeProp,
 } from "../../SearchModal.Types"
 import useSearchResult from "../../hooks/useSearchResult"
 import * as S from "./SearchResult.Styles"
 import SearchResultItem from "./components/SearchResultItem/SearchResultItem"
 import * as SS from "./components/SearchResultList.Styles"
 
-const SearchResult = ({ keyword, selectedFilter }: searchResultProp) => {
+const SearchResult = ({ keyword, selectedFilter }: SearchResultProp) => {
   const results = useSearchResult({ keyword, selectedFilter })
 
-  if (keyword === "") {
+  if (!keyword) {
     return
   }
 
   const users = results
-    ?.filter(({ type }: typeProp) => type === "user")
-    .map(({ type, id, title, isOnline, image }: searchResult) => (
+    ?.filter(({ type }: TypeProp) => type === "user")
+    .map((userInfo: SearchQueryResult) => (
       <SearchResultItem
-        key={id}
-        id={id}
-        type={type}
-        image={image}
-        title={title}
-        isOnline={isOnline}
-        keyword={keyword}
+        key={userInfo.id}
+        resultInfo={userInfo}
       />
     ))
 
   const posts = results
-    ?.filter(({ type }: typeProp) => type === "post")
-    .map(({ type, id, title, image }: searchResult) => (
+    ?.filter(({ type }: TypeProp) => type === "post")
+    .map((postInfo: SearchQueryResult) => (
       <SearchResultItem
-        key={id}
-        id={id}
-        type={type}
-        image={image}
-        title={title}
-        keyword={keyword}
+        key={postInfo.id}
+        resultInfo={postInfo}
       />
     ))
 
@@ -51,7 +42,7 @@ const SearchResult = ({ keyword, selectedFilter }: searchResultProp) => {
           users.slice(0, SEARCH_RESULT_COUNT)
         ) : (
           <S.SearchNoResultConatiner>
-            {"검색 결과가 없습니다"}
+            {keyword && "검색 결과가 없습니다"}
           </S.SearchNoResultConatiner>
         )}
       </SS.SearchResultListLayout>

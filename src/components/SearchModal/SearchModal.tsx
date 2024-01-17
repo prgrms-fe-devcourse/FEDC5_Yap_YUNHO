@@ -1,14 +1,14 @@
 import { useState } from "react"
 import * as S from "./SearchModal.Styles"
 import SearchInput from "./components/SearchInput/SearchInput"
-import SearchResult from "./components/SearchResult/SearchResult"
 import Modal from "../Modal/Modal"
 import useSearchModalStore from "./stores/useSearchModalStore"
-import { searchFilter } from "./SearchModal.Types"
+import { SearchFilter } from "./SearchModal.Types"
+import SearchResult from "./components/SearchResult/SearchResult"
 
 const SearchModal = () => {
   const [keyword, setKeyword] = useState("")
-  const [searchFilter, setSearchFilter] = useState<searchFilter>("all")
+  const [searchFilter, setSearchFilter] = useState<SearchFilter>("all")
   const { isShowSearchModal, closeSearchModal } = useSearchModalStore()
 
   const handleCloseModal = () => {
@@ -25,7 +25,7 @@ const SearchModal = () => {
       <S.SearchLayout>
         <SearchInput
           handleKeyword={(keyword: string) => setKeyword(keyword)}
-          onSelectFilter={(filter: searchFilter) => setSearchFilter(filter)}
+          onSelectFilter={(filter: SearchFilter) => setSearchFilter(filter)}
         />
         <SearchResult
           keyword={keyword}

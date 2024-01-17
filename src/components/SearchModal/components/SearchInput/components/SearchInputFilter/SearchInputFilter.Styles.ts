@@ -32,7 +32,7 @@ export const SelectTextContainer = styled.div`
   }
 `
 
-export const OptionConatiner = styled.div<{ $isVisible: boolean }>`
+export const OptionContainer = styled.div<{ $isVisible: boolean }>`
   width: 8.8rem;
 
   background-color: ${({ theme }) => theme.colors.white};

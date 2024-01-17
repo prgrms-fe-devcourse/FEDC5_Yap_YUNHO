@@ -1,42 +1,35 @@
-import {
-  onSelectFilterProp,
-  searchFilter,
-} from "@/components/SearchModal/SearchModal.Types"
+import { OnSelectFilterProp } from "@/components/SearchModal/SearchModal.Types"
 import * as S from "./SearchInputFilter.Styles"
 import React, { useState } from "react"
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material"
 import useToggle from "@/hooks/useToggle"
 
-const SearchInputFilter = ({ onSelectFilter }: onSelectFilterProp) => {
+const SearchInputFilter = ({ onSelectFilter }: OnSelectFilterProp) => {
   const [filter, setFilter] = useState("전체")
   const { isToggle, toggleRef, handleToggle } = useToggle()
 
-  const handleClickText = () => {
-    console.log("kkk")
-    handleToggle()
-  }
-
-  const handleClickOption = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    const { value, textContent } = e.target as HTMLButtonElement
+  const handleClickOption = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { value, textContent } = e.currentTarget
     if (!textContent || !value) {
       return
     }
     setFilter(textContent)
-    onSelectFilter(value as searchFilter)
+
+    if (value === "all" || value === "posts" || value === "users") {
+      onSelectFilter(value)
+    }
   }
 
   return (
     <S.SelectContainer>
       <S.SelectTextContainer
         ref={toggleRef}
-        onClick={handleClickText}
+        onClick={handleToggle}
       >
         {filter}
         {isToggle ? <ArrowDropUp /> : <ArrowDropDown />}
       </S.SelectTextContainer>
-      <S.OptionConatiner $isVisible={isToggle}>
+      <S.OptionContainer $isVisible={isToggle}>
         <S.OptionButton
           value="all"
           onClick={handleClickOption}
@@ -55,7 +48,7 @@ const SearchInputFilter = ({ onSelectFilter }: onSelectFilterProp) => {
         >
           포스트
         </S.OptionButton>
-      </S.OptionConatiner>
+      </S.OptionContainer>
     </S.SelectContainer>
   )
 }
