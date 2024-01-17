@@ -4,6 +4,7 @@ import PostDetailUser from "./components/PostDetailUser/PostDetailUser"
 import PostDetailStatus from "./components/PostDetailStatus/PostDetailStatus"
 import PostDetailComment from "./components/PostDetailComment/PostDetailComment"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { Navigate, useNavigate } from "react-router-dom"
 
 interface PostDetailInfoProps {
   onClose: () => void
@@ -12,6 +13,7 @@ interface PostDetailInfoProps {
 
 const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
   const { user, isLoggedIn } = useAuthUserStore()
+  const navigate = useNavigate()
   const isMyPost = user._id === post.author._id
 
   return (
@@ -19,6 +21,7 @@ const PostDetailInfo = ({ onClose, post }: PostDetailInfoProps) => {
       <PostDetailUser
         post={post}
         isMyPost={isMyPost}
+        onClick={() => navigate(`/profile/${post.author._id}`)}
       />
       <S.PostDetailInfoBoundary />
       <PostDetailStatus

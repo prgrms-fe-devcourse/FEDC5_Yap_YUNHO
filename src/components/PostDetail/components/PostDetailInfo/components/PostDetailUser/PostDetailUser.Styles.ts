@@ -28,6 +28,10 @@ export const PostDetailUserProfile = styled.div<{ $src: string }>`
   background-color: ${({ theme }) => theme.colors.sub_alt};
   background-image: url(${({ $src }) => $src});
   background-size: cover;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const PostDetailUserInfo = styled.div`
@@ -47,6 +51,10 @@ const textStyle = css`
 export const PostDetailUserName = styled.h6`
   ${textStyle}
   font-size: ${({ theme }) => theme.fontSizes.large};
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const PostDetailUserFollower = styled.p`

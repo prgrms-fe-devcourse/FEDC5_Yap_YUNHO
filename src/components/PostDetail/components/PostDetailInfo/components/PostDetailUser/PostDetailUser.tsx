@@ -8,9 +8,14 @@ import standardImage from "@/assets/standard.jpeg"
 interface PostDetailInfoUserProps {
   isMyPost: boolean
   post: Post
+  onClick?: () => void
 }
 
-const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
+const PostDetailUser = ({
+  post,
+  isMyPost,
+  onClick,
+}: PostDetailInfoUserProps) => {
   const { user, isLoggedIn } = useAuthUserStore()
   const { fetchFollowMutate, FollowErrorAlertModal } = useFetchFollow()
   const { fetchUnFollowMutate, UnFollowErrorAlertModal } = useFetchUnFollow()
@@ -46,9 +51,14 @@ const PostDetailUser = ({ post, isMyPost }: PostDetailInfoUserProps) => {
   return (
     <S.PostDetailUserLayout>
       <S.PostDetailUserContainer>
-        <S.PostDetailUserProfile $src={imageSrc} />
+        <S.PostDetailUserProfile
+          onClick={onClick}
+          $src={imageSrc}
+        />
         <S.PostDetailUserInfo>
-          <S.PostDetailUserName>{fullName}</S.PostDetailUserName>
+          <S.PostDetailUserName onClick={onClick}>
+            {fullName}
+          </S.PostDetailUserName>
 
           <S.PostDetailUserFollower>
             {`팔로워 ${followerCount}`}
