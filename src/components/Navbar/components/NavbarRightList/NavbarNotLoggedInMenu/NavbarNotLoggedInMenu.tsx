@@ -1,5 +1,5 @@
 import NavbarMenuItem from "../NavbarMenuItem/NavbarMenuItem"
-import { NavbarMenuList } from "./../NavbarRightList.Styles"
+import * as GS from "../NavbarRightList.Styles"
 import { NavbarMenuProps } from "@/components/Navbar/Navbar.Types"
 
 const NavbarNotLoggedInMenu = ({
@@ -7,12 +7,12 @@ const NavbarNotLoggedInMenu = ({
   $isToggle = false,
 }: NavbarMenuProps) => {
   return (
-    <NavbarMenuList $isToggle={$isToggle}>
+    <GS.NavbarMenuList $isToggle={$isToggle}>
       <NavbarMenuItem
         handleMenuClick={handleMenuClick}
         menu="로그인"
       />
-    </NavbarMenuList>
+    </GS.NavbarMenuList>
   )
 }
 

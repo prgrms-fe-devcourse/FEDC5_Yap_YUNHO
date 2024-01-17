@@ -1,7 +1,4 @@
-import {
-  NavbarButton,
-  NavbarToggleButton,
-} from "@/components/Navbar/Navbar.Styles"
+import * as GS from "../../Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
@@ -19,9 +16,9 @@ const NavbarRightList = () => {
   const { isToggle, toggleRef, handleToggle } = useToggle()
   const {
     handleMenuClick,
-    notificationModal,
     NotificationListData,
     PostEditModal,
+    notificationModal,
   } = useMenuClick()
 
   const profileImage = user.image || StandardUserImage
@@ -47,7 +44,7 @@ const NavbarRightList = () => {
         )}
 
         {/* 햄버거 토글 버튼*/}
-        <NavbarToggleButton
+        <GS.NavbarToggleButton
           onClick={handleToggle}
           ref={toggleRef}
         >
@@ -57,19 +54,18 @@ const NavbarRightList = () => {
             $isToggle={isToggle}
             handleMenuClick={handleMenuClick}
           />
-        </NavbarToggleButton>
+        </GS.NavbarToggleButton>
 
         {/* 프로필 버튼*/}
-        <NavbarButton onClick={handleNavbarProfileClick}>
+        <GS.NavbarButton onClick={handleNavbarProfileClick}>
           {isLoggedIn && (
             <S.NavbarProfile
               src={profileImage}
               alt="프로필"
             />
           )}
-        </NavbarButton>
+        </GS.NavbarButton>
       </S.NavbarRightListLayout>
-
       {notificationModal}
       {PostEditModal}
     </>

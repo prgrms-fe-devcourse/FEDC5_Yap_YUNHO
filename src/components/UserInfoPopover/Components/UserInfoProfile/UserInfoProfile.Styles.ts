@@ -36,6 +36,6 @@ export const UserInfoNickNameText = styled.h6`
   font-size: ${({ theme }) => theme.fontSizes.large};
   color: ${({ theme }) => theme.colors.white};
 
-  overflow-x: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
 `

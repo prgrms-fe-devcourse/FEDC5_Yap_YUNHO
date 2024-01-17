@@ -2,6 +2,7 @@ import * as S from "./MessageGroupList.Styles"
 import { MessageGroupItemProps } from "../../DirectMessage.Types"
 import MessageProfile from "./MessageProfile"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import MessageGroupItemRightInfo from "./MessageGroupRightInfo"
 
 const MessageGroupItem = ({
   messageGroupItem,
@@ -24,18 +25,21 @@ const MessageGroupItem = ({
       }}
       $isSelect={selectedMessageGroupId === othersUserId}
     >
-      <MessageProfile
-        isOnline={isOnline}
-        profileImg={profileImg}
-      />
+      <S.MessageGroupItemLeftInfo>
+        <MessageProfile
+          isOnline={isOnline}
+          profileImg={profileImg}
+        />
 
-      <S.MessageGroupItemChat>
-        <S.MessageGroupItemUserName>{fullName}</S.MessageGroupItemUserName>
-        <S.MessageGroupItemContent>{message}</S.MessageGroupItemContent>
-        <S.MessageGroupItemChatDate>
-          {createdAt.slice(0, 10)}
-        </S.MessageGroupItemChatDate>
-      </S.MessageGroupItemChat>
+        <S.MessageGroupTextInfo>
+          <S.MessageGroupItemUserName>{fullName}</S.MessageGroupItemUserName>
+          <S.MessageGroupItemContent>{message}</S.MessageGroupItemContent>
+          <S.MessageGroupItemChatDate>
+            {createdAt.slice(0, 10)}
+          </S.MessageGroupItemChatDate>
+        </S.MessageGroupTextInfo>
+      </S.MessageGroupItemLeftInfo>
+      <MessageGroupItemRightInfo messageGroupItem={messageGroupItem} />
     </S.MessageItemLayout>
   )
 }

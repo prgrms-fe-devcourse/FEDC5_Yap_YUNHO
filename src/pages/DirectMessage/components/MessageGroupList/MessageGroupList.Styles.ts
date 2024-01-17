@@ -55,8 +55,8 @@ export const MessageGroupListContainer = styled.div`
 export const MessageItemLayout = styled.button<{ $isSelect: boolean }>`
   display: flex;
   gap: 1rem;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   &:hover {
     opacity: ${({ theme }) => theme.opacity.normal};
   }
@@ -84,11 +84,18 @@ export const SeenIndicator = styled.img`
   right: 0;
 `
 
-export const MessageGroupItemChat = styled.div`
+export const MessageGroupItemLeftInfo = styled.div`
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+`
+
+export const MessageGroupTextInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: flex-start;
   align-items: flex-start;
+  gap: 1rem;
 `
 
 export const MessageGroupItemUserName = styled.span`
@@ -109,4 +116,17 @@ export const MessageGroupItemContent = styled.span`
 export const MessageGroupItemChatDate = styled.span`
   color: ${({ theme }) => theme.colors.gray};
   font-size: ${({ theme }) => theme.fontSizes.medium};
+`
+
+export const MessageGroupItemInfo = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+export const MessageGroupItemNotSeenCount = styled.div`
+  font-size: 2rem;
+  color: orange;
+  svg {
+    font-size: 2rem;
+  }
 `
