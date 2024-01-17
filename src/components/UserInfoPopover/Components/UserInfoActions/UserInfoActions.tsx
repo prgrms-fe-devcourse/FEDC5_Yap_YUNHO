@@ -54,7 +54,7 @@ const UserInfoActions = ({ author }: UserInfoActionsProps) => {
             <S.UserInfoButtons
               onClick={() => navigate(`/directmessage/${author._id}`)}
             >
-              DM
+              {"DM"}
             </S.UserInfoButtons>
 
             {isLoggedIn &&

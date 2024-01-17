@@ -33,13 +33,13 @@ const UserPostFilter = ({ handlePostList }: UserPostFilterProps) => {
       <UserPostFilterButton
         $isSelected={selectedButton === USER_POST_FILTER_LIST.create}
         onClick={() => handlePostFilterButton(false)}
-        title="생성한 게시글"
+        title="작성한 게시물"
       />
       {isMyPage && (
         <UserPostFilterButton
           $isSelected={selectedButton === USER_POST_FILTER_LIST.like}
           onClick={() => handlePostFilterButton(true)}
-          title="좋아요한 게시글"
+          title="좋아요한 게시물"
         />
       )}
     </S.UserPostFilterLayout>

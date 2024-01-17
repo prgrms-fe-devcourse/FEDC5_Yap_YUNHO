@@ -1,7 +1,4 @@
-import {
-  NavbarButton,
-  NavbarToggleButton,
-} from "@/components/Navbar/Navbar.Styles"
+import * as GS from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
@@ -46,8 +43,6 @@ const NavbarRightList = () => {
   return (
     <>
       <S.NavbarRightListLayout>
-        {/* 메뉴들 */}
-
         {isLoggedIn ? (
           <NavbarLoggedInMenu
             handleMenuClick={handleMenuClick}
@@ -57,8 +52,7 @@ const NavbarRightList = () => {
           <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
         )}
 
-        {/* 햄버거 토글 버튼*/}
-        <NavbarToggleButton
+        <GS.NavbarToggleButton
           onClick={handleToggle}
           ref={toggleRef}
         >
@@ -68,17 +62,16 @@ const NavbarRightList = () => {
             $isToggle={isToggle}
             handleMenuClick={handleMenuClick}
           />
-        </NavbarToggleButton>
+        </GS.NavbarToggleButton>
 
-        {/* 프로필 버튼*/}
-        <NavbarButton onClick={handleNavbarProfileClick}>
+        <GS.NavbarButton onClick={handleNavbarProfileClick}>
           {isLoggedIn && (
             <S.NavbarProfile
               src={profileImage}
               alt="프로필"
             />
           )}
-        </NavbarButton>
+        </GS.NavbarButton>
       </S.NavbarRightListLayout>
       <ConfirmModal
         isShow={isShowConfirm}

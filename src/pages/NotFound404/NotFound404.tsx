@@ -12,7 +12,7 @@ const NotFound404 = () => {
           <S.NotFound404Title>{"404 Not Found!!"}</S.NotFound404Title>
           <S.NotFound404Text>
             {
-              "이런, 페이지가 길을 잃었어요! 아마도 GPS가 제대로 작동하지 않는 걸까요? 🧭"
+              "이런, 페이지가 길을 잃었어요! GPS가 제대로 작동하지 않은 것 같아요! 🧭"
             }
           </S.NotFound404Text>
           <S.NotFound404Image $src={NOT_FOUND_IMAGE_URL} />
@@ -20,7 +20,7 @@ const NotFound404 = () => {
             <S.NotFound404Button
               onClick={() => navigate("/", { replace: true })}
             >
-              Home
+              {"홈으로"}
             </S.NotFound404Button>
           </S.NotFound404ButtonContainer>
         </S.NoFound404Container>

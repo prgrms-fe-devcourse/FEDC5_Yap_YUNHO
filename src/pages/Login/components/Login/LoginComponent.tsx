@@ -24,7 +24,7 @@ const LoginComponent = () => {
     <>
       {AlertModalComponent}
       <S.LoginComponentLayout>
-        <S.LoginComponentTitle>로그인</S.LoginComponentTitle>
+        <S.LoginComponentTitle>{"로그인"}</S.LoginComponentTitle>
         <S.LoginForm onSubmit={handleLogin}>
           <LoginInputContainer
             updateUserInfo={updateUserInfo}
@@ -43,14 +43,14 @@ const LoginComponent = () => {
               type="submit"
               $color={theme.colors.point}
             >
-              로그인
+              {"로그인"}
             </S.Button>
             <S.Button
               type="button"
               $color={theme.colors.sub_alt}
               onClick={() => navigate("/signup")}
             >
-              회원가입
+              {"회원가입"}
             </S.Button>
           </S.ButtonContainer>
         </S.LoginForm>

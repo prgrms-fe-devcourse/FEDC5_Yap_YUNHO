@@ -33,7 +33,7 @@ const SignupSecondForm = () => {
     <>
       {AlertModalComponent}
       <S.SignupFormLayout>
-        <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
+        <S.SignupFormTitle>{"프로필 이미지를 등록해주세요"}</S.SignupFormTitle>
         <S.SignupFormContainer onSubmit={updateUserProfile}>
           <ProfileImageUpload
             setFormData={setFormData}
@@ -45,7 +45,7 @@ const SignupSecondForm = () => {
               $color={theme.colors.point}
               type="submit"
             >
-              완료
+              {"완료"}
             </S.Button>
           </S.ButtonContainer>
         </S.SignupFormContainer>

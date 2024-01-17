@@ -103,7 +103,7 @@ const SignupFirstForm = ({
   return (
     <>
       <S.SignupFormLayout>
-        <S.SignupFormTitle> 필수 회원정보를 입력해주세요 </S.SignupFormTitle>
+        <S.SignupFormTitle>{"필수 회원정보를 입력해주세요"}</S.SignupFormTitle>
         <S.SignupFormContainer onSubmit={handleSignup}>
           <SignupInputContainer
             requiredUserInfo={requiredUserInfo}
@@ -119,7 +119,7 @@ const SignupFirstForm = ({
               }}
               type="button"
             >
-              취소
+              {"취소"}
             </S.Button>
             <S.Button
               $width={35}
@@ -127,7 +127,7 @@ const SignupFirstForm = ({
               disabled={handleDisabled()}
               type="submit"
             >
-              가입완료
+              {"가입 완료"}
             </S.Button>
           </S.ButtonContainer>
         </S.SignupFormContainer>

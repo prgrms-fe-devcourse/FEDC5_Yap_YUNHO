@@ -18,7 +18,6 @@ export const NavbarButton = styled.button`
   }
 `
 
-// 버튼 태그로 만들면 버튼안의 버튼이라서 오류남...
 export const NavbarToggleButton = styled.div`
   cursor: pointer;
   @media screen and (min-width: 1024px) {
