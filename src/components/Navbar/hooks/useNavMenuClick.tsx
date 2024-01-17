@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom"
-import { API } from "@/apis/Api"
-import useAuthUserStore from "@/stores/useAuthUserStore"
 import useModal from "@/components/Modal/hooks/useModal"
 import NotificationModal from "@/components/NotificationModal/NotificationModal"
 import useGetNotification from "@/components/NotificationModal/hooks/useGetNotification"
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 import PostEdit from "@/components/PostEdit/PostEdit"
+import useLogout from "@/hooks/useLogout"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
-  const { setLogout } = useAuthUserStore()
   const { NotificationListData } = useGetNotification()
   const {
     isShowModal: isShowNotification,
@@ -18,7 +16,7 @@ const useMenuClick = () => {
   } = useModal()
 
   const { isShowEditModal, showEditModal } = usePostEditModalStore()
-  const { logoutMutate } = use
+  const { logoutMutate } = useLogout()
 
   const handleMenuClick = (menu: string) => {
     switch (menu) {
@@ -26,7 +24,7 @@ const useMenuClick = () => {
         navigate("/login")
         break
       case "로그아웃":
-        handleLogout()
+        logoutMutate.mutate()
         break
       case "DM":
         navigate("/directmessage")
