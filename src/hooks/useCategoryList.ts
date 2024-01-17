@@ -5,12 +5,6 @@ import { useQuery } from "@tanstack/react-query"
 
 const QUERY_KEY_CATEGORY_LIST = "IT_IS_CATEGORY_LIST_QUERY_KEY_723445213"
 
-export const INITIAL_CATEGORY = {
-  name: "집중",
-  id: "659425a2dcb0c5304e3cd5d2",
-  description: "중요한 일에 집중해야 하는 시간이신가요? 이 음악들은 어떤가요?",
-}
-
 const useCategoryList = (): Category[] => {
   const { data } = useQuery({
     queryKey: [QUERY_KEY_CATEGORY_LIST],
