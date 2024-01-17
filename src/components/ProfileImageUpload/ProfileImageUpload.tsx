@@ -96,7 +96,7 @@ const ProfileImageUpload = ({
         type="button"
         onClick={removeImageFile}
       >
-        프로필 이미지 제거
+        {"프로필 이미지 제거"}
       </S.Button>
     </S.ProfileImageUploadLayout>
   )

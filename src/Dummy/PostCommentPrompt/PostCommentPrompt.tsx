@@ -10,8 +10,6 @@ interface PostCommentPromptProps {
   onClickButton: (editedComment: string) => void
 }
 
-// 폐기... 아까워서 Dummy에 저장
-
 const PostCommentPrompt = ({
   isShow,
   initialComment,

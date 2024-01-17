@@ -68,7 +68,6 @@ const PostEditUrl = ({ urlPath, onEdit }: PostEditUrlProps) => {
         isShow={isShowConfirm}
         onClose={handleRemoveUrl}
         message={POST_EDIT_MODAL_MESSAGE.CONFIRM.URL}
-        acceptButtonText={"확인"}
       />
     </>
   )

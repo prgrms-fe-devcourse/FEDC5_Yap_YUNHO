@@ -14,7 +14,7 @@ const ConfirmModal = ({
   isShow,
   message,
   onClose,
-  acceptButtonText = "수락",
+  acceptButtonText = "확인",
   cancelButtonText = "취소",
 }: ConfirmModalProps) => {
   const handleClickAccept = () => {

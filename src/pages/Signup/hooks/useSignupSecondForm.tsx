@@ -3,7 +3,6 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 import { signupUploadPhoto } from "../apis/signupUploadPhoto"
 import { useMutation } from "@tanstack/react-query"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-import authToken from "@/stores/authToken"
 import { useNavigate } from "react-router-dom"
 import { SIGNUP_ERROR_MESSAGE } from "@/constants/errorMessage"
 
@@ -11,7 +10,7 @@ const SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY =
   "SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY"
 
 const useSignupSecondForm = () => {
-  const { setLogin } = useAuthUserStore()
+  const { updateUser } = useAuthUserStore()
   const navigate = useNavigate()
 
   const {
@@ -20,7 +19,7 @@ const useSignupSecondForm = () => {
     closeModal: closeAlertModal,
   } = useModal()
 
-  const AlertModalComponent = isShowAlertModal ? (
+  const AlertModalComponent = isShowAlertModal && (
     <AlertModal
       isShow={isShowAlertModal}
       alertMessage={
@@ -28,15 +27,13 @@ const useSignupSecondForm = () => {
       }
       onClose={closeAlertModal}
     />
-  ) : null
+  )
 
   const SignupSecondForm_API = useMutation({
     mutationKey: [SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY],
     mutationFn: signupUploadPhoto,
     onSuccess: (user) => {
-      const token = authToken.getToken()
-
-      setLogin(user, token)
+      updateUser(user)
       navigate("/", { replace: true })
     },
     onError: () => {

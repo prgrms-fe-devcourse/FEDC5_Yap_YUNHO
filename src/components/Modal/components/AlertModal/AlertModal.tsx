@@ -26,7 +26,7 @@ const AlertModal = ({ isShow, onClose, alertMessage }: AlertModalProps) => {
       <S.AlertModalLayout>
         <S.AlertModalMessage>{alertMessage}</S.AlertModalMessage>
         <GS.ModalBottomActions>
-          <GS.ModalButton onClick={handleCloseModal}>닫기</GS.ModalButton>
+          <GS.ModalButton onClick={handleCloseModal}>{"닫기"}</GS.ModalButton>
         </GS.ModalBottomActions>
       </S.AlertModalLayout>
     </CustomModal>

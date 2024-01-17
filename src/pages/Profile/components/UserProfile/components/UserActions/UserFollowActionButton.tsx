@@ -51,7 +51,7 @@ const UserFollowActionButton = ({ onClick }: FollowButtonProps) => {
         onClick={handleFollowButton}
         $isFollowing={!!followInfoId}
       >
-        {followInfoId ? "언팔로우" : "팔로우"}
+        {followInfoId ? "언 팔로우" : "팔로우"}
       </S.UserActionButton>
       {isLoggedIn && (
         <>

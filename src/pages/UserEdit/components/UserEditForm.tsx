@@ -91,9 +91,7 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
 
   return (
     <S.UserEditFormLayout>
-      <S.UserEditFormTitle>
-        닉네임과 프로필 정보를 입력해주세요
-      </S.UserEditFormTitle>
+      <S.UserEditFormTitle>{"프로필 정보를 입력해주세요"}</S.UserEditFormTitle>
       <S.UserEditFormContainer onSubmit={handleEdit}>
         <S.UserEditFormItem>
           <UserEditInputContainer
@@ -116,7 +114,7 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
             }}
             type="button"
           >
-            취소
+            {"취소"}
           </S.Button>
           <S.Button
             $width={35}
@@ -124,7 +122,7 @@ const UserEditForm = ({ authUser }: UserEditFormProp) => {
             type="submit"
             disabled={handleDisabled()}
           >
-            변경완료
+            {"변경 완료"}
           </S.Button>
         </S.ButtonContainer>
       </S.UserEditFormContainer>
