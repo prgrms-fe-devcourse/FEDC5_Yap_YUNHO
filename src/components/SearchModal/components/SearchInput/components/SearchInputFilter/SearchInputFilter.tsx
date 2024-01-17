@@ -9,13 +9,11 @@ import useToggle from "@/hooks/useToggle"
 
 const SearchInputFilter = ({ onSelectFilter }: onSelectFilterProp) => {
   const [filter, setFilter] = useState("전체")
-  // const [isVisibleDropdown, setIVisibleDropdown] = useState(false)
   const { isToggle, toggleRef, handleToggle } = useToggle()
 
   const handleClickText = () => {
     console.log("kkk")
     handleToggle()
-    // setIVisibleDropdown(!isVisibleDropdown)
   }
 
   const handleClickOption = (
@@ -27,7 +25,6 @@ const SearchInputFilter = ({ onSelectFilter }: onSelectFilterProp) => {
     }
     setFilter(textContent)
     onSelectFilter(value as searchFilter)
-    // setIVisibleDropdown(false)
   }
 
   return (
