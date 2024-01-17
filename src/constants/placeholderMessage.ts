@@ -4,7 +4,7 @@ export const POST_EDIT_PLACEHOLDER_MESSAGE = {
   URL_PROMPT: "URL을 입력해주세요 ✏️",
 }
 
-export const DM_MESSAGE = {
+export const DM_PLACEHOLDER_MESSAGE = {
   SEND_MESSAGE_INPUT: "메시지를 입력해주세요",
 }
 

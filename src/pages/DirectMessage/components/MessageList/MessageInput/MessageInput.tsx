@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import useSendMessage from "../../../hooks/useSendMessage"
 import SendIcon from "@mui/icons-material/Send"
 import { AUTH_API } from "@/apis/Api"
-import { DM_MESSAGE } from "@/constants/placeholderMessage"
+import { DM_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 
 interface MessageInputProps {
   othersUserId: string
@@ -47,7 +47,7 @@ const MessageInput = ({ othersUserId }: MessageInputProps) => {
         <S.MessageInputForm onSubmit={handleSubmit}>
           <MessageProfile profileImg={myProfileImg} />
           <S.MessageInputItem
-            placeholder={DM_MESSAGE.SEND_MESSAGE_INPUT}
+            placeholder={DM_PLACEHOLDER_MESSAGE.SEND_MESSAGE_INPUT}
             onChange={handleInputChange}
             value={sendingMessage}
           />
