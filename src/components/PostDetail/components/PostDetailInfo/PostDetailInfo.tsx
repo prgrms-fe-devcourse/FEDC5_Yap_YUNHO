@@ -4,7 +4,7 @@ import PostDetailUser from "./components/PostDetailUser/PostDetailUser"
 import PostDetailStatus from "./components/PostDetailStatus/PostDetailStatus"
 import PostDetailComment from "./components/PostDetailComment/PostDetailComment"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 interface PostDetailInfoProps {
   onClose: () => void
