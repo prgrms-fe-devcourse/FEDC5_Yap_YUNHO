@@ -46,7 +46,7 @@ const Navbar = () => {
       <AlertModal
         isShow={isShowModal}
         onClose={closeModal}
-        alertMessage="에러 메시지임"
+        alertMessage="사용자 인증에 실패했습니다"
       />
 
       <S.NavbarLayout>

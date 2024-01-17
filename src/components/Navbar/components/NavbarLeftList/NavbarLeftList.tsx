@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { NavbarButton } from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarLeftList.Styles"
+import * as GS from "../../Navbar.Styles"
 import SearchIcon from "@mui/icons-material/Search"
 import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalStore"
 import SearchModal from "@/components/SearchModal/SearchModal"
@@ -15,9 +15,9 @@ const NavbarLeftList = () => {
         <S.NavbarLogoContainer onClick={() => navigate("/")}>
           <S.NavbarLogo />
         </S.NavbarLogoContainer>
-        <NavbarButton onClick={showSearchModal}>
+        <GS.NavbarButton onClick={showSearchModal}>
           <SearchIcon />
-        </NavbarButton>
+        </GS.NavbarButton>
       </S.NavbarLeftListLayout>
       <SearchModal />
     </>

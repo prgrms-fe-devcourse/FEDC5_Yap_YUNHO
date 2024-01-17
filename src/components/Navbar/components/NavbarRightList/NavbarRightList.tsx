@@ -1,7 +1,4 @@
-import {
-  NavbarButton,
-  NavbarToggleButton,
-} from "@/components/Navbar/Navbar.Styles"
+import * as GS from "../../Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
 import NavbarNotLoggedInMenu from "./NavbarNotLoggedInMenu/NavbarNotLoggedInMenu"
@@ -13,31 +10,20 @@ import useToggle from "@/hooks/useToggle"
 import useMenuClick from "../../hooks/useNavMenuClick"
 import CloseIcon from "@mui/icons-material/Close"
 import StandardUserImage from "@/assets/standard.jpeg"
-import useModal from "@/components/Modal/hooks/useModal"
-import ConfirmModal from "@/components/Modal/components/ConfirmModal/ConfirmModal"
-import { POST_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const NavbarRightList = () => {
   const { isLoggedIn, user } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
   const {
     handleMenuClick,
-    notificationModal,
     NotificationListData,
     PostEditModal,
+    notificationModal,
   } = useMenuClick()
-  const { isShowModal: isShowConfirm, closeModal: closeConfirm } = useModal()
 
   const profileImage = user.image || StandardUserImage
 
   const navigate = useNavigate()
-
-  const handleConfirm = (isAccept: boolean) => {
-    closeConfirm()
-    if (isAccept) {
-      navigate("/login")
-    }
-  }
 
   const handleNavbarProfileClick = () => {
     navigate(`/profile/${user._id}`)
@@ -58,7 +44,7 @@ const NavbarRightList = () => {
         )}
 
         {/* 햄버거 토글 버튼*/}
-        <NavbarToggleButton
+        <GS.NavbarToggleButton
           onClick={handleToggle}
           ref={toggleRef}
         >
@@ -68,23 +54,18 @@ const NavbarRightList = () => {
             $isToggle={isToggle}
             handleMenuClick={handleMenuClick}
           />
-        </NavbarToggleButton>
+        </GS.NavbarToggleButton>
 
         {/* 프로필 버튼*/}
-        <NavbarButton onClick={handleNavbarProfileClick}>
+        <GS.NavbarButton onClick={handleNavbarProfileClick}>
           {isLoggedIn && (
             <S.NavbarProfile
               src={profileImage}
               alt="프로필"
             />
           )}
-        </NavbarButton>
+        </GS.NavbarButton>
       </S.NavbarRightListLayout>
-      <ConfirmModal
-        isShow={isShowConfirm}
-        onClose={handleConfirm}
-        message={POST_EDIT_ERROR_MESSAGE.AUTH_CHECKER.NOT_LOGIN}
-      />
       {notificationModal}
       {PostEditModal}
     </>
