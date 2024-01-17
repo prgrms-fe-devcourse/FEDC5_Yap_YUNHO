@@ -8,10 +8,10 @@
 
 ## 팀원
 
-| 이재영 | 신종욱 | 안정은  | 최훈오 |
-| :----: | :----: | :-----: | :----: |
-| ![jae] | ![sin] | ![jung] | ![hun] |
-|  팀장  |  팀원  |  팀원   |  팀원  |
+|   이재영   |   신종욱   |   안정은   |   최훈오   |
+| :--------: | :--------: | :--------: | :--------: |
+| ![profile] | ![profile] | ![profile] | ![profile] |
+|    팀장    |    팀원    |    팀원    |    팀원    |
 
 ## 프로젝트 소개
 
@@ -80,7 +80,4 @@
 [zustand]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1705464972/Stack%20Logo/Small%20Logo/zustand-Logo_c3u5jr.png
 [tanstack]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1705465888/Stack%20Logo/Small%20Logo/React-Query-Logo_j6b4pd.png
 [styled]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1705466046/Stack%20Logo/Small%20Logo/styled-components-Logo_cxzwt0.png
-[jae]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1705466640/Yap%20Assets/member/%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%BC_qvujm9.png
-[hun]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1705466483/Yap%20Assets/member/%E1%84%92%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A9_erf9fj.png
-[jung]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1705466636/Yap%20Assets/member/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B3%E1%86%AB_bhgswy.jpg
-[sin]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1703846109/default-User-Profile_yftcy6.jpg
+[profile]: https://res.cloudinary.com/dalxgxu2o/image/upload/v1703846109/default-User-Profile_yftcy6.jpg
