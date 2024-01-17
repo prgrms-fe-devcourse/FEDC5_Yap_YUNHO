@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import editNickname from "../apis/editNickname"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { USER_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const EDIT_NICKNAME_MUTATION_QUERY_KEY = "EDIT_NICKNAME_MUTATION_QUERY_KEY"
 

@@ -3,6 +3,7 @@ import { signup } from "../apis/signup"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import standard from "@/assets/standard.jpeg"
 import { AUTH_API } from "@/apis/Api"
+import { SIGNUP_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const SIGNUP_FIRST_FORM_MUTATION_QUERY_KEY =
   "SIGNUP_FIRST_FORM_MUTATION_QUERY_KEY"
@@ -45,11 +46,16 @@ const useSignupFirstForm = ({
         e.message === "The email address is already being used."
 
       if (USED_EMAIL_ERROR) {
-        changeAlertMessage("이미 가입된 이메일입니다.")
+        changeAlertMessage(
+          SIGNUP_ERROR_MESSAGE.FIRST_SIGNUP_REQUEST_ERROR.USED_EMAIL,
+        )
         showModal()
         return
       }
-      changeAlertMessage("일반 오류")
+
+      changeAlertMessage(
+        SIGNUP_ERROR_MESSAGE.FIRST_SIGNUP_REQUEST_ERROR.API_ERROR,
+      )
       showModal()
       return
     },

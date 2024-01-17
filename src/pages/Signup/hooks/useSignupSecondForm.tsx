@@ -4,6 +4,7 @@ import { signupUploadPhoto } from "../apis/signupUploadPhoto"
 import { useMutation } from "@tanstack/react-query"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
 import { useNavigate } from "react-router-dom"
+import { SIGNUP_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY =
   "SIGNUP_SECOND_FORM_MUTATION_QUERY_KEY"
@@ -21,7 +22,9 @@ const useSignupSecondForm = () => {
   const AlertModalComponent = isShowAlertModal && (
     <AlertModal
       isShow={isShowAlertModal}
-      alertMessage="프로필 이미지 등록 실패"
+      alertMessage={
+        SIGNUP_ERROR_MESSAGE.SECOND_SIGNUP_REQUEST_ERROR.PROFILE_IMAGE
+      }
       onClose={closeAlertModal}
     />
   )

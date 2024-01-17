@@ -5,21 +5,25 @@ import Brightness1Icon from "@mui/icons-material/Brightness1"
 const NavbarMenuItem = ({
   menu,
   handleMenuClick,
-  isNotification,
+  NotificationListData,
 }: NavbarMenuProps) => {
+  const handleMenuItemClick = () => {
+    if (!menu) {
+      return
+    }
+    handleMenuClick(menu)
+  }
+
   return (
     <S.NavbarMenuContainer>
       <Button
         $fontSize={"2rem"}
-        onClick={() => {
-          if (!menu) {
-            return
-          }
-          handleMenuClick(menu)
-        }}
+        onClick={handleMenuItemClick}
       >
         <p>{menu}</p>
-        {isNotification && <Brightness1Icon />}
+        {NotificationListData && NotificationListData.length > 0 && (
+          <Brightness1Icon />
+        )}
       </Button>
       <S.NavbarMenuDivider />
     </S.NavbarMenuContainer>

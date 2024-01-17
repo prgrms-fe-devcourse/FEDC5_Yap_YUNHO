@@ -17,18 +17,11 @@ const NavbarLoggedInMenu = ({
         handleMenuClick={handleMenuClick}
         menu="DM"
       />
-      {NotificationListData && NotificationListData.length > 0 ? (
-        <NavbarMenuItem
-          handleMenuClick={handleMenuClick}
-          menu="알림"
-          isNotification={true}
-        />
-      ) : (
-        <NavbarMenuItem
-          handleMenuClick={handleMenuClick}
-          menu="알림"
-        />
-      )}
+      <NavbarMenuItem
+        handleMenuClick={handleMenuClick}
+        menu="알림"
+        NotificationListData={NotificationListData}
+      />
 
       <NavbarMenuItem
         handleMenuClick={handleMenuClick}

@@ -7,6 +7,5 @@ export interface NavbarMenuProps {
   $isToggle?: boolean
   menu?: string
   children?: ReactNode
-  isNotification?: boolean
   NotificationListData?: Notification[]
 }

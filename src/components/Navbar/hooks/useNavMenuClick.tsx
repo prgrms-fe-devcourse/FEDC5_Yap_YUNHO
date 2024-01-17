@@ -16,7 +16,17 @@ const useMenuClick = () => {
     showModal: showNotification,
     closeModal: closeNotification,
   } = useModal()
+
   const { isShowEditModal, showEditModal } = usePostEditModalStore()
+
+  const handleLogout = async () => {
+    await API.post("/logout")
+      .then(() => {
+        setLogout()
+        navigate("/")
+      })
+      .catch(() => {})
+  }
 
   const handleMenuClick = (menu: string) => {
     switch (menu) {
@@ -47,17 +57,7 @@ const useMenuClick = () => {
       NotificationListData={NotificationListData}
     />
   )
-
   const PostEditModal = isShowEditModal && <PostEdit postId="newPost" />
-
-  const handleLogout = async () => {
-    await API.post("/logout")
-      .then(() => {
-        setLogout()
-        navigate("/")
-      })
-      .catch(() => {})
-  }
 
   return {
     handleMenuClick,
