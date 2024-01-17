@@ -8,10 +8,10 @@
 
 ## 팀원
 
-|   이재영   |   신종욱   |   안정은   |   최훈오   |
-| :--------: | :--------: | :--------: | :--------: |
-| ![profile] | ![profile] | ![profile] | ![profile] |
-|    팀장    |    팀원    |    팀원    |    팀원    |
+|                                          Frontend                                           |                                                                   Frontend                                                                   |                                          Frontend                                          |                                         Frontend                                          |
+| :-----------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/u/127748428?v=4" width=400px alt="이재영"/> | <img src="https://avatars.githubusercontent.com/u/106851561?s=400&u=af9b2659fd334cb37e0291d09bde00db171ddc9d&v=4" width=400px alt="최훈오"/> | <img src="https://avatars.githubusercontent.com/u/66900221?v=4" width=400px alt="신종욱"/> | <img src="https://avatars.githubusercontent.com/u/68155263?v=4" width=400px alt="안정은"> |
+|                        [이재영](https://github.com/tributetothemoon)                        |                                                     [최훈오](https://github.com/xrabcde)                                                     |                            [신종욱](https://github.com/sakjung)                            |                          [안정은](https://github.com/dusdn1702)                           |
 
 ## 프로젝트 소개
 
