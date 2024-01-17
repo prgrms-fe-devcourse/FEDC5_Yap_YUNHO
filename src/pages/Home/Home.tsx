@@ -5,12 +5,13 @@ import {
   Category,
   OnSelectCategory,
 } from "./components/CategoryBar/CategoryBar.Types"
-import { INITIAL_CATEGORY } from "@/hooks/useCategoryList"
 import PostContainer from "./components/PostContainer/PostContainer"
+import getRandomCategory from "./util/getRandomCategory"
 
 const Home = () => {
+  getRandomCategory()
   const [selectedCategory, setSelectedCategory] =
-    useState<Category>(INITIAL_CATEGORY)
+    useState<Category>(getRandomCategory())
 
   const onSelectedCategory: OnSelectCategory = (newCategory) => {
     setSelectedCategory(newCategory)
