@@ -1,3 +1,4 @@
+import { USER_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 import {
   ValidateUserInfo,
   RequiredUserInfo as ErrorMessageType,
@@ -9,33 +10,34 @@ import {
  * */
 const NICKNAME_REGEX = /^[a-zA-Z0-9]{4,10}$/
 
-const NICKNAME_MIN_LENGTH = 4
-const NICKNAME_MAX_LENGTH = 10
-const PASSWORD_MIN_LENGTH = 4
-const PASSWORD_MAX_LENGTH = 10
+export const NICKNAME_MIN_LENGTH = 4
+export const NICKNAME_MAX_LENGTH = 10
+export const PASSWORD_MIN_LENGTH = 4
+export const PASSWORD_MAX_LENGTH = 10
 
 const VALIDATE_INPUT_LIST = {
   validateNickName(nickname: string) {
     if (!NICKNAME_REGEX.test(nickname)) {
-      return `길이는 ${NICKNAME_MIN_LENGTH}에서 ${NICKNAME_MAX_LENGTH}이며, 영문 대소문자와 숫자만 입력해주세요.`
+      return USER_EDIT_ERROR_MESSAGE.VALIDATE.NICKNAME
     }
     return ""
   },
   validatePassword(password: string) {
     if (password.trim().length === 0) {
-      return "빈 공백은 입력하면 안됩니다. 비밀번호를 입력해주세요."
+      return USER_EDIT_ERROR_MESSAGE.VALIDATE.PASSWORD.EMPTY_PASSWORD
     }
     if (password.length < PASSWORD_MIN_LENGTH) {
-      return `비밀번호는 최소 ${PASSWORD_MIN_LENGTH}자 이상이어야 합니다.`
+      return USER_EDIT_ERROR_MESSAGE.VALIDATE.PASSWORD.MIN_PASSWORD_LENGTH
     }
+
     if (password.length > PASSWORD_MAX_LENGTH) {
-      return `비밀번호는 최대 ${PASSWORD_MAX_LENGTH}자 이하이어야 합니다.`
+      return USER_EDIT_ERROR_MESSAGE.VALIDATE.PASSWORD.MAX_PASSWORD_LENGTH
     }
     return ""
   },
   validatePasswordCheck(password: string, passwordCheck: string) {
     if (password !== passwordCheck) {
-      return "비밀번호가 일치하지 않습니다."
+      return USER_EDIT_ERROR_MESSAGE.VALIDATE.PASSWORD.CHECK_SAME_PASSWORD
     }
     return ""
   },

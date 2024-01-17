@@ -3,6 +3,7 @@ import useModal from "@/components/Modal/hooks/useModal"
 import { useMutation } from "@tanstack/react-query"
 import editUserProfileImage from "../apis/editUserProfileImage"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { USER_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const EDIT_USER_PROFILE_IMAGE_MUTATION_QUERY_KEY =
   "EDIT_USER_PROFILE_IMAGE_MUTATION_QUERY_KEY"
@@ -18,7 +19,7 @@ const useEditUserProfileImage = () => {
   const AlertModalComponent = isShowAlertModal && (
     <AlertModal
       isShow={isShowAlertModal}
-      alertMessage="프로필 이미지 변경을 다시 시도해주세요"
+      alertMessage={USER_EDIT_ERROR_MESSAGE.PROFILE_IMAGE_REQUEST_FAIL}
       onClose={closeAlertModal}
     />
   )

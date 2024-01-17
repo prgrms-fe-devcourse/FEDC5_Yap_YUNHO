@@ -1,5 +1,18 @@
+import {
+  PASSWORD_MAX_LENGTH,
+  PASSWORD_MIN_LENGTH,
+} from "@/pages/Login/constants/passwordValidation"
+import {
+  NICKNAME_MAX_LENGTH,
+  NICKNAME_MIN_LENGTH,
+} from "@/pages/Signup/utils/validateInput"
+
 export const API_ERROR_MESSAGE = {
   CHECK_IS_OBJECT: "is not Object. ❌",
+}
+
+export const NAVBAR_ERROR_MESSAGE = {
+  REDIRECT_AUTH_USER: "에러 메시지임",
 }
 
 export const POST_EDIT_ERROR_MESSAGE = {
@@ -47,5 +60,54 @@ export const POST_DETAIL_ERROR_MESSAGE = {
   },
 }
 
-export const USER_PAGE_ERROR_MESSAGE =
-  "오류가 발생했습니다.\n 다시 시도 해주세요"
+export const PROFILE_PAGE_ERROR_MESSAGE = {
+  GET_OTHER_USER: "오류가 발생했습니다.\n 다시 시도 해주세요",
+}
+
+export const DM_ERROR = {
+  SEND_MESSAGE: "메시지를 보내는데 실패했습니다",
+}
+
+export const LOGIN_PAGE_ERROR_MESSAGE = {
+  EMAIL_ERROR_MESSAGE: "유효한 이메일을 입력해주세요.",
+  PASSWORD_ERROR_MESSAGE: `비밀번호는 최소 ${PASSWORD_MIN_LENGTH}자 이상이어야 합니다.`,
+  LOGIN_REQUEST_ERROR: "잘못된 이메일이거나 잘못된 비밀번호의 조합입니다.",
+}
+
+export const SIGNUP_ERROR_MESSAGE = {
+  VALIDATE: {
+    EMAIL_ERROR: "유효한 이메일을 입력해주세요.",
+    NICK_NAME: `길이는 ${NICKNAME_MIN_LENGTH}에서 ${NICKNAME_MAX_LENGTH}이며, 영문 대소문자와 숫자만 입력해주세요.`,
+    PASSWORD: {
+      EMPTY_PASSWORD: "빈 공백은 입력하면 안됩니다. 비밀번호를 입력해주세요.",
+      MIN_PASSWORD_LENGTH: `비밀번호는 최소 ${PASSWORD_MIN_LENGTH}자 이상이어야 합니다.`,
+      MAX_PASSWORD_LENGTH: `비밀번호는 최대 ${PASSWORD_MAX_LENGTH}자 이하이어야 합니다.`,
+      CHECK_SAME_PASSWORD: "비밀번호가 일치하지 않습니다.",
+    },
+  },
+
+  FIRST_SIGNUP_REQUEST_ERROR: {
+    USED_EMAIL: "이미 가입된 이메일입니다.",
+    API_ERROR: "일반 오류",
+  },
+
+  SECOND_SIGNUP_REQUEST_ERROR: {
+    PROFILE_IMAGE: "프로필 이미지 등록 실패",
+  },
+}
+
+export const USER_EDIT_ERROR_MESSAGE = {
+  VALIDATE: {
+    NICKNAME: `길이는 ${NICKNAME_MIN_LENGTH}에서 ${NICKNAME_MAX_LENGTH}이며, 영문 대소문자와 숫자만 입력해주세요.`,
+    PASSWORD: {
+      EMPTY_PASSWORD: "빈 공백은 입력하면 안됩니다. 비밀번호를 입력해주세요.",
+      MIN_PASSWORD_LENGTH: `비밀번호는 최소 ${PASSWORD_MIN_LENGTH}자 이상이어야 합니다.`,
+      MAX_PASSWORD_LENGTH: `비밀번호는 최대 ${PASSWORD_MAX_LENGTH}자 이하이어야 합니다.`,
+      CHECK_SAME_PASSWORD: "비밀번호가 일치하지 않습니다.",
+    },
+  },
+
+  NICKNAME_REQUEST_FAIL: "닉네임 변경을 다시 시도해주세요",
+  PASSWORD_REQUEST_FAIL: "비밀번호 변경에 실패했습니다.",
+  PROFILE_IMAGE_REQUEST_FAIL: "프로필 이미지 변경을 다시 시도해주세요",
+}
