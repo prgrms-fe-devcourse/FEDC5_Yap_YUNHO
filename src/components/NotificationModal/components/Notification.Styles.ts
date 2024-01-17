@@ -24,6 +24,7 @@ export const NotificationTitleLayout = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
 `
 
 export const NotificationTitleContainer = styled.div`
@@ -34,6 +35,7 @@ export const NotificationTitleContainer = styled.div`
 
 export const NotificationTitleList = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+  user-select: none;
 `
 
 export const NotificationTitleListNumber = styled.span`
@@ -61,11 +63,13 @@ export const NotificationListLayout = styled.div`
 `
 
 // 아이템
-export const NotificationItemLayout = styled.button`
+export const NotificationItemLayout = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
+
+  cursor: pointer;
 `
 
 export const NotificationItemContainer = styled.div`

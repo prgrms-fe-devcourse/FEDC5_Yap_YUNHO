@@ -1,6 +1,7 @@
 import * as S from "./UserEditInputContainer.Styles"
 import type { OnChange, RequiredUserInfo } from "../../types"
 import UserEditInputItem from "./UserEditInputItem"
+import { SIGNUP_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 
 interface UserEditInputContainerProp {
   onChange: OnChange
@@ -28,7 +29,7 @@ const UserEditInputContainer = ({
         title="닉네임"
         type="text"
         name="nickname"
-        placeholder="닉네임을 입력해주세요."
+        placeholder={SIGNUP_PLACEHOLDER_MESSAGE.NICKNAME}
         errorMessage={errorMessage.nickname}
         onChange={onChange}
         value={requiredUserInfo.nickname}
@@ -38,14 +39,14 @@ const UserEditInputContainer = ({
         type="password"
         name="password"
         errorMessage={errorMessage.password}
-        placeholder="비밀번호를 4자리 이상 입력해주세요."
+        placeholder={SIGNUP_PLACEHOLDER_MESSAGE.PASSWORD}
         onChange={onChange}
         value={requiredUserInfo.password}
       />
       <UserEditInputItem
         type="password"
         name="passwordCheck"
-        placeholder="설정한 비밀번호와 동일하게 입력해주세요."
+        placeholder={SIGNUP_PLACEHOLDER_MESSAGE.CHECK_SAME_PASSWORD}
         errorMessage={errorMessage.passwordCheck}
         onChange={onChange}
         value={requiredUserInfo.passwordCheck}

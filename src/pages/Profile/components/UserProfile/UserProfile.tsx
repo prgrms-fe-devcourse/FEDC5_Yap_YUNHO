@@ -7,7 +7,7 @@ import { AUTH_API } from "@/apis/Api"
 import { useNavigate, useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
-import { USER_PAGE_ERROR_MESSAGE } from "@/constants/errorMessage"
+import { PROFILE_PAGE_ERROR_MESSAGE } from "@/constants/errorMessage"
 import useModal from "@/components/Modal/hooks/useModal"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 
@@ -59,7 +59,7 @@ const UserProfile = () => {
       </S.UserProfileLayout>
       <AlertModal
         isShow={isShowModal}
-        alertMessage={USER_PAGE_ERROR_MESSAGE}
+        alertMessage={PROFILE_PAGE_ERROR_MESSAGE.GET_OTHER_USER}
         onClose={handleCloseErrorModal}
       />
     </>

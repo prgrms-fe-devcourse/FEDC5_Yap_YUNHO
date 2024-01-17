@@ -35,7 +35,10 @@ const SignupSecondForm = () => {
       <S.SignupFormLayout>
         <S.SignupFormTitle> 추가 회원정보를 입력해주세요 </S.SignupFormTitle>
         <S.SignupFormContainer onSubmit={updateUserProfile}>
-          <ProfileImageUpload setFormData={setFormData} />
+          <ProfileImageUpload
+            setFormData={setFormData}
+            initialImage=""
+          />
           <S.ButtonContainer>
             <S.Button
               $width={53}

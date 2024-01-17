@@ -8,6 +8,7 @@ import { AUTH_API } from "@/apis/Api"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 import useModal from "../Modal/hooks/useModal"
 import AlertModal from "../Modal/components/AlertModal/AlertModal"
+import { NAVBAR_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const LOGIN_PAGE_PATH_NAME = "/login"
 const SIGNUP_PAGE_PATH_NAME = "/signup"
@@ -46,7 +47,7 @@ const Navbar = () => {
       <AlertModal
         isShow={isShowModal}
         onClose={closeModal}
-        alertMessage="사용자 인증에 실패했습니다"
+        alertMessage={NAVBAR_ERROR_MESSAGE.REDIRECT_AUTH_USER}
       />
 
       <S.NavbarLayout>

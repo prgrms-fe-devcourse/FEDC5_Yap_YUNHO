@@ -1,9 +1,7 @@
-// 수를 천 단위까지 끊고 단위를 붙여주는 함수(0~9999만)
 export const getConvertedCount = (count: number): string => {
   if (count >= 10000) {
-    const integer = count.toString().slice(0, -4) //정수(만 단위)
-    const decimal = count.toString().slice(integer.length, integer.length + 1) //소수(천 단위)
-
+    const integer = count.toString().slice(0, -4)
+    const decimal = count.toString().slice(integer.length, integer.length + 1)
     if (decimal === "0") {
       return `${integer}만`
     } else {

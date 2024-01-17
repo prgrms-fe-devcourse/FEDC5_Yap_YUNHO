@@ -1,6 +1,6 @@
 export interface User {
   coverImage: string
-  image: string // 프로필 이미지
+  image: string
   role: string
   emailVerified: boolean
   banned: boolean
@@ -64,8 +64,8 @@ export interface PostContent {
 
 export interface Like {
   _id: string
-  user: string // 사용자 id
-  post: string // 포스트 id
+  user: string
+  post: string
   createdAt: string
   updatedAt: string
 }
@@ -75,10 +75,10 @@ export interface Notification {
   _id: string
   author: User
   user: User
-  post?: string // 포스트 id
-  follow?: string // 사용자 id
+  post?: string
+  follow?: string
   comment?: string
-  message?: string // 메시지 id
+  message?: string
   createdAt: string
   updatedAt: string
   like: Like
@@ -86,8 +86,8 @@ export interface Notification {
 
 export interface Follow {
   _id: string
-  user: string // 사용자 id
-  follower: string // 사용자 id
+  user: string
+  follower: string
   createdAt: string
   updatedAt: string
 }

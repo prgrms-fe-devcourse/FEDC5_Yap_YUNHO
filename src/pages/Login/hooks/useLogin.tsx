@@ -5,6 +5,7 @@ import useAuthUserStore from "@/stores/useAuthUserStore"
 
 import useModal from "@/components/Modal/hooks/useModal"
 import AlertModal from "@/components/Modal/components/AlertModal/AlertModal"
+import { LOGIN_PAGE_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const LOGIN_MUTATION_QUERY_KEY = "LOGIN_MUTATION_QUERY_KEY"
 
@@ -23,7 +24,7 @@ const useLogin = () => {
   const AlertModalComponent = isShowModal ? (
     <AlertModal
       isShow={isShowModal}
-      alertMessage="잘못된 이메일이거나 잘못된 비밀번호의 조합입니다."
+      alertMessage={LOGIN_PAGE_ERROR_MESSAGE.LOGIN_REQUEST_ERROR}
       onClose={closeModal}
     />
   ) : null
