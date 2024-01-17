@@ -5,7 +5,10 @@ import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalS
 import MessageProfile from "@/pages/DirectMessage/components/MessageGroupList/MessageProfile"
 import { SearchResultType } from "@/components/SearchModal/SearchModal.Types"
 
-const SearchResultItem = ({ resultInfo }: SearchResultType) => {
+const SearchResultItem = ({
+  resultInfo,
+  onClickResultItem,
+}: SearchResultType) => {
   const navigate = useNavigate()
   const { closeSearchModal } = useSearchModalStore()
   const { pathname } = useLocation()
@@ -17,6 +20,7 @@ const SearchResultItem = ({ resultInfo }: SearchResultType) => {
     navigate(
       type === "user" ? `/profile/${id}` : `${checkName}/postdetail/${id}`,
     )
+    onClickResultItem()
     closeSearchModal()
   }
 
