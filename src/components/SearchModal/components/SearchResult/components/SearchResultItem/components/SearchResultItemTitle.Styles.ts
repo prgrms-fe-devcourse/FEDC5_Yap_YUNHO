@@ -3,11 +3,10 @@ import styled from "styled-components"
 export const SearchResultItemTitleContainer = styled.div`
   display: flex;
 
+  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
+
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-
-  font-size: ${({ theme }) => theme.fontSizes.semiLarge};
 
   padding-bottom: 0.5rem;
 `

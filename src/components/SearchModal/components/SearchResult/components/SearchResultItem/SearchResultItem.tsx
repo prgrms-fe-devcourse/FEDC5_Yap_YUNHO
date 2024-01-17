@@ -1,9 +1,9 @@
 import * as S from "./SearchResultItem.Styles"
 import SearchResultItemTitle from "./components/SearchResultItemTitle"
-import { searchResultProps } from "@/components/SearchModal/SearchModal.Types"
 import { useLocation, useNavigate } from "react-router-dom"
 import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalStore"
 import MessageProfile from "@/pages/DirectMessage/components/MessageGroupList/MessageProfile"
+import { searchResult } from "@/components/SearchModal/SearchModal.Types"
 
 const SearchResultItem = ({
   id,
@@ -12,7 +12,7 @@ const SearchResultItem = ({
   isOnline = false,
   type,
   keyword,
-}: searchResultProps) => {
+}: searchResult) => {
   const navigate = useNavigate()
   const { closeSearchModal } = useSearchModalStore()
   const { pathname } = useLocation()
