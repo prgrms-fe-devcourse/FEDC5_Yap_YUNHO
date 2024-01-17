@@ -8,8 +8,8 @@ interface SendMessageProps {
 const sendMessageAPI = async (messageSubmission: SendMessageProps) => {
   const message = await AUTH_API.post("messages/create", messageSubmission)
     .then((res) => res.data)
-    .catch(() => {
-      throw new Error("메시지 보내기 요청 실패")
+    .catch((e) => {
+      throw new Error(e)
     })
 
   await AUTH_API.put("/messages/update-seen", {

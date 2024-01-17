@@ -56,8 +56,8 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       return
     }
 
-    if (!checkCategoryValidation(postData.category)) {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION.CATEGORY)
+    if (!checkUrlValidation(postData.mediaUrl)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION.MEDIA_RUL)
       showAlert()
       return
     }
@@ -68,8 +68,8 @@ const PostEditEditor = ({ onEdit, onClose, postData }: PostEditEditorProps) => {
       return
     }
 
-    if (!checkUrlValidation(postData.mediaUrl)) {
-      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION.MEDIA_RUL)
+    if (!checkCategoryValidation(postData.category)) {
+      setAlertMessage(POST_EDIT_ERROR_MESSAGE.SUBMIT_VALIDATION.CATEGORY)
       showAlert()
       return
     }

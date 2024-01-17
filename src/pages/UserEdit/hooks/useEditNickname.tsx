@@ -3,6 +3,7 @@ import useModal from "@/components/Modal/hooks/useModal"
 import { useMutation } from "@tanstack/react-query"
 import editNickname from "../apis/editNickname"
 import useAuthUserStore from "@/stores/useAuthUserStore"
+import { USER_EDIT_ERROR_MESSAGE } from "@/constants/errorMessage"
 
 const EDIT_NICKNAME_MUTATION_QUERY_KEY = "EDIT_NICKNAME_MUTATION_QUERY_KEY"
 
@@ -16,7 +17,7 @@ const useEditNickname = () => {
   const AlertModalComponent = isShowAlertModal && (
     <AlertModal
       isShow={isShowAlertModal}
-      alertMessage="닉네임 변경을 다시 시도해주세요"
+      alertMessage={USER_EDIT_ERROR_MESSAGE.NICKNAME_REQUEST_FAIL}
       onClose={closeAlertModal}
     />
   )

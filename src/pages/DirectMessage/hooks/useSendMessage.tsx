@@ -7,6 +7,7 @@ import sendMessageAPI from "../apis/sendMessageAPI"
 import { useParams } from "react-router-dom"
 import sendNotification from "@/apis/sendNotification"
 import { Message } from "@/types"
+import { DM_ERROR } from "@/constants/errorMessage"
 
 export const QUERY_KEY_SEND_MESSAGE = "SEND_MESSAGE"
 
@@ -18,7 +19,7 @@ const useSendMessage = () => {
   const AlertModalComponent = isShowModal ? (
     <AlertModal
       isShow={isShowModal}
-      alertMessage="메시지를 보내는데 실패했습니다"
+      alertMessage={DM_ERROR.SEND_MESSAGE}
       onClose={closeModal}
     />
   ) : null

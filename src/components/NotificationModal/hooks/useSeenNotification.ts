@@ -3,6 +3,7 @@ import { AUTH_API } from "@/apis/Api"
 
 import { QUERY_KEY_GET_NOTIFICATION } from "./useGetNotification"
 const QUERY_KEY_SEEN_NOTIFICATION = "SEEN_NOTIFICATION"
+
 const useSeenNotification = () => {
   const queryClient = useQueryClient()
   const seenNotification = useMutation({
@@ -23,7 +24,7 @@ export default useSeenNotification
 const seenNotificationAPI = async () => {
   await AUTH_API.put("/notifications/seen")
     .then()
-    .catch(() => {
-      throw new Error("알림 목록 받아 오기 실패")
+    .catch((e) => {
+      throw new Error(e)
     })
 }
