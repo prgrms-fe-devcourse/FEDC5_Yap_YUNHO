@@ -5,13 +5,18 @@ export const SearchResultLayout = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: ${({ theme }) => theme.colors.white};
-  border: 0.1rem solid;
   border-radius: ${({ theme }) => theme.radius.size4};
-
   margin-top: 1rem;
   padding: 1rem;
 
   gap: 3rem;
 `
-export const SearchResultItemTypeContainer = styled.div``
+
+export const SearchNoResultConatiner = styled.div`
+  width: 100%;
+  height: 100%;
+
+  font-size: 1.5rem;
+
+  color: ${({ theme }) => theme.colors.white};
+`

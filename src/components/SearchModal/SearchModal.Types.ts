@@ -1,11 +1,18 @@
-export interface keywordProp {
+export type SearchFilter = "all" | "users" | "posts"
+
+export interface SearchResultProp {
   keyword: string
+  selectedFilter: SearchFilter
 }
 
-export interface typeProp {
+export interface TypeProp {
   type: string
 }
-export interface searchResultProps {
+export interface SearchResultType {
+  resultInfo: SearchQueryResult
+}
+
+export interface SearchQueryResult {
   type: "user" | "post"
   id: string
   title: string
@@ -14,6 +21,20 @@ export interface searchResultProps {
   keyword: string
 }
 
-export type showResultProp = {
+export type SearchInputProps = {
   handleKeyword: (keyword: string) => void
+  onSelectFilter: (filter: SearchFilter) => void
+}
+
+export type SearchInputBarProp = {
+  handleKeyword: (keyword: string) => void
+}
+
+export type OnSelectFilterProp = {
+  onSelectFilter: (filter: SearchFilter) => void
+}
+
+export type SearchProp = {
+  showResults: (keyword: string) => void
+  onSelectFilter: (filter: SearchFilter) => void
 }

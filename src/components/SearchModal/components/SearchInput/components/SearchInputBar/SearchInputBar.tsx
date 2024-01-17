@@ -5,9 +5,9 @@ import {
   SEARCH_INPUT_BAR_CHANGE_TIMER_DELAY,
 } from "@/components/SearchModal/SearchModal.Constants"
 import { useState } from "react"
-import { showResultProp } from "@/components/SearchModal/SearchModal.Types"
+import { SearchInputBarProp } from "@/components/SearchModal/SearchModal.Types"
 
-const SearchInputBar = ({ handleKeyword }: showResultProp) => {
+const SearchInputBar = ({ handleKeyword }: SearchInputBarProp) => {
   const [isFocusOnBar, setIsFocusOnBar] = useState(false)
 
   let timer: number | null | undefined = null

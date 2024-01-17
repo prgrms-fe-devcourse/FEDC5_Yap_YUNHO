@@ -1,12 +1,12 @@
-import { showResultProp } from "../../SearchModal.Types"
+import { SearchInputProps } from "../../SearchModal.Types"
 import * as S from "./SearchInput.Styles"
 import SearchInputBar from "./components/SearchInputBar/SearchInputBar"
 import SearchInputFilter from "./components/SearchInputFilter/SearchInputFilter"
 
-const SearchInput = ({ handleKeyword }: showResultProp) => {
+const SearchInput = ({ handleKeyword, onSelectFilter }: SearchInputProps) => {
   return (
     <S.SearchInputLayout>
-      <SearchInputFilter />
+      <SearchInputFilter onSelectFilter={onSelectFilter} />
       <SearchInputBar handleKeyword={handleKeyword} />
     </S.SearchInputLayout>
   )

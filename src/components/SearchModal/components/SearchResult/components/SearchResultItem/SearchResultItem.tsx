@@ -1,23 +1,17 @@
 import * as S from "./SearchResultItem.Styles"
 import SearchResultItemTitle from "./components/SearchResultItemTitle"
-import { searchResultProps } from "@/components/SearchModal/SearchModal.Types"
 import { useLocation, useNavigate } from "react-router-dom"
 import useSearchModalStore from "@/components/SearchModal/stores/useSearchModalStore"
 import MessageProfile from "@/pages/DirectMessage/components/MessageGroupList/MessageProfile"
+import { SearchResultType } from "@/components/SearchModal/SearchModal.Types"
 
-const SearchResultItem = ({
-  id,
-  image,
-  title,
-  isOnline = false,
-  type,
-  keyword,
-}: searchResultProps) => {
+const SearchResultItem = ({ resultInfo }: SearchResultType) => {
   const navigate = useNavigate()
   const { closeSearchModal } = useSearchModalStore()
   const { pathname } = useLocation()
 
   const checkName = pathname === "/" ? "/post" : pathname
+  const { type, id, title, image, isOnline, keyword } = resultInfo
 
   const onNavigate = () => {
     navigate(

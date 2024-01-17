@@ -60,7 +60,7 @@ const MyLikePostList = () => {
 
           return (
             <UserPostListItem
-              key={id}
+              key={"MyLikePost+" + id}
               thumbnail={thumbnail}
               id={id}
               likeCount={likeCount}

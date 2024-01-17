@@ -5,8 +5,9 @@ export const SearchResultItemContainer = styled.div`
   align-items: center;
 
   height: 6em;
-
   gap: 1rem;
+
+  color: ${({ theme }) => theme.colors.white};
 
   &:hover {
     cursor: pointer;
@@ -20,5 +21,4 @@ export const SearchResultItemImage = styled.img`
   object-fit: contain;
 
   margin-left: 0.5rem;
-  padding-bottom: 0.5rem;
 `
