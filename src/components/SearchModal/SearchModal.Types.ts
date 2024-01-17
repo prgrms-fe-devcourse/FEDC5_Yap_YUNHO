@@ -5,11 +5,18 @@ export interface SearchResultProp {
   selectedFilter: SearchFilter
 }
 
+export interface SearchResultProps {
+  keyword: string
+  selectedFilter: SearchFilter
+  onClickResultItem: () => void
+}
+
 export interface TypeProp {
   type: string
 }
 export interface SearchResultType {
   resultInfo: SearchQueryResult
+  onClickResultItem: () => void
 }
 
 export interface SearchQueryResult {

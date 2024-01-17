@@ -30,6 +30,7 @@ const SearchModal = () => {
         <SearchResult
           keyword={keyword}
           selectedFilter={searchFilter}
+          onClickResultItem={() => setKeyword("")}
         />
       </S.SearchLayout>
     </Modal>

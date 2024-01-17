@@ -1,7 +1,7 @@
 import { SEARCH_RESULT_COUNT } from "../../SearchModal.Constants"
 import {
   SearchQueryResult,
-  SearchResultProp,
+  SearchResultProps,
   TypeProp,
 } from "../../SearchModal.Types"
 import useSearchResult from "../../hooks/useSearchResult"
@@ -9,7 +9,11 @@ import * as S from "./SearchResult.Styles"
 import SearchResultItem from "./components/SearchResultItem/SearchResultItem"
 import * as SS from "./components/SearchResultList.Styles"
 
-const SearchResult = ({ keyword, selectedFilter }: SearchResultProp) => {
+const SearchResult = ({
+  keyword,
+  selectedFilter,
+  onClickResultItem,
+}: SearchResultProps) => {
   const results = useSearchResult({ keyword, selectedFilter })
 
   if (!keyword) {
@@ -22,6 +26,7 @@ const SearchResult = ({ keyword, selectedFilter }: SearchResultProp) => {
       <SearchResultItem
         key={userInfo.id}
         resultInfo={userInfo}
+        onClickResultItem={onClickResultItem}
       />
     ))
 
@@ -31,6 +36,7 @@ const SearchResult = ({ keyword, selectedFilter }: SearchResultProp) => {
       <SearchResultItem
         key={postInfo.id}
         resultInfo={postInfo}
+        onClickResultItem={onClickResultItem}
       />
     ))
 
