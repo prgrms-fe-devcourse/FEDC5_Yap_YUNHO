@@ -68,6 +68,9 @@ export const NotificationItemLayout = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
+  &:hover {
+    opacity: 0.5;
+  }
 
   cursor: pointer;
 `
@@ -76,6 +79,7 @@ export const NotificationItemContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
+  width: 100%;
 `
 
 export const NotificationItemInfo = styled.div`
@@ -83,6 +87,7 @@ export const NotificationItemInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  width: 100%;
 `
 
 export const NotificationItemUserName = styled.span`
