@@ -34,7 +34,7 @@ const MessageList = () => {
               />
             ))}
           </S.MessageListContainer>
-          <MessageInput othersUserId={othersUserId} />
+          <MessageInput />
         </>
       )}
     </S.MessageListLayout>

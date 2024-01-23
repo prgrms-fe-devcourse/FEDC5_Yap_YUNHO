@@ -9,22 +9,26 @@ export const MessageInputLayout = styled.div`
 
 export const MessageInputForm = styled.form`
   width: 90%;
-  height: 6rem;
+  height: 100%;
+  max-height: 10rem;
   border-radius: ${({ theme }) => theme.radius.size12};
   background: ${({ theme }) => theme.colors.gray};
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 1rem 1.5rem;
 `
 
-export const MessageInputItem = styled.input`
+export const MessageInputItem = styled.textarea`
   width: 90%;
-  height: 5rem;
   border-radius: ${({ theme }) => theme.radius.size12};
   background: ${({ theme }) => theme.colors.gray};
   display: flex;
   justify-content: space-between;
   padding-left: 1.5rem;
+  overflow: hidden;
+  resize: none;
+  box-sizing: border-box;
 `
 
 export const MessageSendButton = styled.button`
