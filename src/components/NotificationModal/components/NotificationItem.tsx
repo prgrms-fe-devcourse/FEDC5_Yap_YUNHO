@@ -3,6 +3,8 @@ import * as S from "./Notification.Styles"
 import { Notification } from "../../../types/index"
 import getNotificationOption from "../utils/getNotificationOption"
 import { useLocation, useNavigate } from "react-router-dom"
+import { format, register } from "timeago.js"
+import kolocale from "timeago.js/lib/lang/ko"
 
 interface NotificationItemProps {
   handleClick: (NavigationId: string) => void
@@ -21,6 +23,8 @@ const NotificationItem = ({
     notificationItem,
     pathname,
   )
+  register("ko", kolocale)
+  const convertedData = format(createdAt, "ko")
 
   const handleClickProfileImage = () => {
     onClose()
@@ -46,9 +50,7 @@ const NotificationItem = ({
           <S.NotificationItemContent>
             {author.fullName}님이 {NOTIFI_LANGUAGE}
           </S.NotificationItemContent>
-          <S.NotificationItemDate>
-            {createdAt.slice(0, 10)}
-          </S.NotificationItemDate>
+          <S.NotificationItemDate>{convertedData}</S.NotificationItemDate>
         </S.NotificationItemInfo>
       </S.NotificationItemContainer>
     </S.NotificationItemLayout>

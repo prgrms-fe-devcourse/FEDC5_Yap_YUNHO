@@ -23,7 +23,6 @@ const useMessageGroupList = () => {
     queryFn: getMessageGroupListAPI,
     refetchInterval: isNotShowModal && 1000 * 2,
     gcTime: 1000 * 60 * 5,
-
     select: (GroupMessageList: Conversation[]) =>
       GroupMessageList.map((MessageList) => {
         return {
