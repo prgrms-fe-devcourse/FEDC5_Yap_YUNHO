@@ -10,6 +10,7 @@ export const MessageListLayout = styled.div`
   flex-direction: column;
   gap: 3rem;
   padding: 3rem 1.5rem;
+  justify-content: space-between;
 `
 
 export const MessageListContainer = styled.div`

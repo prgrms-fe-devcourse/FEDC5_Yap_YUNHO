@@ -31,10 +31,9 @@ const MessageInput = ({
   }
 
   useEffect(() => {
-    if (!scrollRef.current) {
-      return
+    if (scrollRef.current) {
+      setMessageListHeight(scrollRef.current.clientHeight)
     }
-    setMessageListHeight(scrollRef.current.clientHeight)
   }, [textRef.current?.clientHeight, scrollRef, setMessageListHeight])
 
   useEffect(() => {

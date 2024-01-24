@@ -21,7 +21,7 @@ const MessageList = () => {
 
   useEffect(() => {
     scrollToBottom()
-  }, [MessageList, messageListHeight])
+  }, [MessageList?.length, messageListHeight])
 
   return (
     <S.MessageListLayout>
