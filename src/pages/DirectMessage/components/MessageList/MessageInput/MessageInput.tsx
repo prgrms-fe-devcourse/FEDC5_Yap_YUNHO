@@ -6,7 +6,15 @@ import { AUTH_API } from "@/apis/Api"
 import { DM_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 import useTextArea from "@/pages/DirectMessage/hooks/useTextArea"
 
-const MessageInput = () => {
+interface MessageInputProps {
+  scrollRef: React.RefObject<HTMLDivElement>
+  setMessageListHeight: (messageListHeight: number) => void
+}
+
+const MessageInput = ({
+  scrollRef,
+  setMessageListHeight,
+}: MessageInputProps) => {
   const [myProfileImg, setMyProfileImg] = useState("")
   const {
     textValue,
@@ -21,6 +29,13 @@ const MessageInput = () => {
     const { image } = await AUTH_API.get(`/auth-user`).then((res) => res.data)
     setMyProfileImg(image)
   }
+
+  useEffect(() => {
+    if (!scrollRef.current) {
+      return
+    }
+    setMessageListHeight(scrollRef.current.clientHeight)
+  }, [textRef.current?.clientHeight, scrollRef, setMessageListHeight])
 
   useEffect(() => {
     getMyProfileImg()
