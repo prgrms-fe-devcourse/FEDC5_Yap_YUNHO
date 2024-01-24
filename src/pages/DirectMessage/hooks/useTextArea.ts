@@ -1,12 +1,16 @@
 import { useRef, useState } from "react"
 import useSendMessage from "./useSendMessage"
 import { useParams } from "react-router-dom"
+import { MessageInputProps } from "../components/MessageList/MessageInput/MessageInput"
 
 type EventType =
   | React.KeyboardEvent<HTMLTextAreaElement>
   | React.FormEvent<HTMLFormElement>
 
-const useTextArea = () => {
+const useTextArea = ({
+  scrollRef,
+  setMessageListHeight,
+}: MessageInputProps) => {
   const [textValue, setTextValue] = useState("")
   const { AlertModalComponent, sendMessage } = useSendMessage()
   const { userId: othersUserId } = useParams()
@@ -26,6 +30,9 @@ const useTextArea = () => {
 
     textRef.current.style.height =
       scrollHeight + borderTop + borderBottom + "px"
+    if (scrollRef.current) {
+      setMessageListHeight(scrollRef.current.clientHeight)
+    }
   }
 
   const handleInputChange = (
@@ -55,7 +62,11 @@ const useTextArea = () => {
 
     setTextValue("")
     sendMessage.mutate(messageSubmission)
-    resize()
+
+    // 제출 후 원레 높이로 재조정
+    if (textRef.current) {
+      textRef.current.style.height = "18px"
+    }
   }
 
   const handleEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
