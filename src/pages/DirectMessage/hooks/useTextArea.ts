@@ -59,13 +59,10 @@ const useTextArea = () => {
   }
 
   const handleEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    // 조합중일 경우 이벤트 막음
     if (e.nativeEvent.isComposing) {
       return
     }
-    if (!othersUserId) {
-      return
-    }
-    // 조합중일 경우 이벤트 막음
 
     if (e.key === "Enter" && !e.shiftKey) {
       handleSubmit(e)

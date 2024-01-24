@@ -9,7 +9,6 @@ export const MessageInputLayout = styled.div`
 
 export const MessageInputForm = styled.form`
   width: 90%;
-  height: 100%;
   max-height: 10rem;
   border-radius: ${({ theme }) => theme.radius.size12};
   background: ${({ theme }) => theme.colors.gray};
@@ -24,10 +23,11 @@ export const MessageInputItem = styled.textarea`
   border-radius: ${({ theme }) => theme.radius.size12};
   background: ${({ theme }) => theme.colors.gray};
   padding-left: 1.5rem;
-  overflow: hidden;
+  overflow-y: auto;
   box-sizing: border-box;
   max-height: 10rem;
   ${({ theme }) => theme.scrollBar};
+  resize: none;
 `
 
 export const MessageSendButton = styled.button`

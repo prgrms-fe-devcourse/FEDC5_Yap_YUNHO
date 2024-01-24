@@ -15,7 +15,6 @@ export const MessageListLayout = styled.div`
 export const MessageListContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
   overflow-y: auto;
-  height: 90%;
   width: 100%;
   display: flex;
   flex-direction: column;
