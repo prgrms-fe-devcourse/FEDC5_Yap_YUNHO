@@ -8,8 +8,14 @@ import useTextArea from "@/pages/DirectMessage/hooks/useTextArea"
 
 const MessageInput = () => {
   const [myProfileImg, setMyProfileImg] = useState("")
-  const { textValue, handleInputChange, handleSubmit, AlertModalComponent } =
-    useTextArea()
+  const {
+    textValue,
+    handleInputChange,
+    handleSubmit,
+    textRef,
+    AlertModalComponent,
+    handleEnter,
+  } = useTextArea()
 
   const getMyProfileImg = async () => {
     const { image } = await AUTH_API.get(`/auth-user`).then((res) => res.data)
@@ -27,8 +33,10 @@ const MessageInput = () => {
         <S.MessageInputForm onSubmit={handleSubmit}>
           <MessageProfile profileImg={myProfileImg} />
           <S.MessageInputItem
+            ref={textRef}
             placeholder={DM_PLACEHOLDER_MESSAGE.SEND_MESSAGE_INPUT}
             onChange={handleInputChange}
+            onKeyDown={handleEnter}
             value={textValue}
           />
           <S.MessageSendButton>

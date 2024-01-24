@@ -15,6 +15,7 @@ export const MyMessageLayout = styled.div`
 export const MyMessageContent = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.medium};
   color: ${({ theme }) => theme.colors.black};
+  white-space: pre-wrap;
 `
 
 export const MyMessageReadIndicator = styled.span`

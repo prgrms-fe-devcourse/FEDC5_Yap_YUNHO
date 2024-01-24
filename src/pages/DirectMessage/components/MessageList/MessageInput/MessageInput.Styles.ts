@@ -23,12 +23,11 @@ export const MessageInputItem = styled.textarea`
   width: 90%;
   border-radius: ${({ theme }) => theme.radius.size12};
   background: ${({ theme }) => theme.colors.gray};
-  display: flex;
-  justify-content: space-between;
   padding-left: 1.5rem;
   overflow: hidden;
-  resize: none;
   box-sizing: border-box;
+  max-height: 10rem;
+  ${({ theme }) => theme.scrollBar};
 `
 
 export const MessageSendButton = styled.button`

@@ -1,24 +1,48 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import useSendMessage from "./useSendMessage"
 import { useParams } from "react-router-dom"
+
+type EventType =
+  | React.KeyboardEvent<HTMLTextAreaElement>
+  | React.FormEvent<HTMLFormElement>
 
 const useTextArea = () => {
   const [textValue, setTextValue] = useState("")
   const { AlertModalComponent, sendMessage } = useSendMessage()
   const { userId: othersUserId } = useParams()
+  const textRef = useRef<HTMLTextAreaElement>(null)
+
+  const resize = () => {
+    if (!textRef.current) {
+      return
+    }
+
+    textRef.current.style.height = "0px"
+
+    const scrollHeight = textRef.current.scrollHeight
+    const style = window.getComputedStyle(textRef.current)
+    const borderTop = parseInt(style.borderTop)
+    const borderBottom = parseInt(style.borderBottom)
+
+    textRef.current.style.height =
+      scrollHeight + borderTop + borderBottom + "px"
+  }
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>,
   ): void => {
     const { value } = e.target
-    if (!value) {
+    const { current } = textRef
+
+    if (!current) {
       return
     }
 
     setTextValue(value)
+    resize()
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: EventType): void => {
     e.preventDefault()
     if (!othersUserId) {
       return
@@ -29,11 +53,33 @@ const useTextArea = () => {
       receiver: othersUserId,
     }
 
-    sendMessage.mutate(messageSubmission)
     setTextValue("")
+    sendMessage.mutate(messageSubmission)
+    resize()
   }
 
-  return { textValue, handleInputChange, handleSubmit, AlertModalComponent }
+  const handleEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.nativeEvent.isComposing) {
+      return
+    }
+    if (!othersUserId) {
+      return
+    }
+    // 조합중일 경우 이벤트 막음
+
+    if (e.key === "Enter" && !e.shiftKey) {
+      handleSubmit(e)
+    }
+  }
+
+  return {
+    textValue,
+    handleInputChange,
+    handleSubmit,
+    AlertModalComponent,
+    textRef,
+    handleEnter,
+  }
 }
 
 export default useTextArea
