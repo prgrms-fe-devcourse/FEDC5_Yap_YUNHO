@@ -22,6 +22,7 @@ export const MessageInputItem = styled.textarea`
   width: 90%;
   border-radius: ${({ theme }) => theme.radius.size12};
   background: ${({ theme }) => theme.colors.gray};
+  padding-top: 1.5rem;
   padding-left: 1.5rem;
   overflow-y: auto;
   box-sizing: border-box;

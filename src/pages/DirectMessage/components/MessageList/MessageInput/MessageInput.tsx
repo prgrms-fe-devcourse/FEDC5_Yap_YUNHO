@@ -1,10 +1,9 @@
 import * as S from "./MessageInput.Styles"
 import MessageProfile from "../../MessageGroupList/MessageProfile"
-import { useEffect, useState } from "react"
 import SendIcon from "@mui/icons-material/Send"
-import { AUTH_API } from "@/apis/Api"
 import { DM_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 import useTextArea from "@/pages/DirectMessage/hooks/useTextArea"
+import useGetMyProfileImg from "@/pages/DirectMessage/hooks/useGetMyProfileImg"
 
 export interface MessageInputProps {
   scrollRef: React.RefObject<HTMLDivElement>
@@ -15,7 +14,6 @@ const MessageInput = ({
   scrollRef,
   setMessageListHeight,
 }: MessageInputProps) => {
-  const [myProfileImg, setMyProfileImg] = useState("")
   const {
     textValue,
     handleInputChange,
@@ -25,14 +23,7 @@ const MessageInput = ({
     handleEnter,
   } = useTextArea({ scrollRef, setMessageListHeight })
 
-  const getMyProfileImg = async () => {
-    const { image } = await AUTH_API.get(`/auth-user`).then((res) => res.data)
-    setMyProfileImg(image)
-  }
-
-  useEffect(() => {
-    getMyProfileImg()
-  }, [])
+  const { myProfileImg } = useGetMyProfileImg()
 
   return (
     <>
