@@ -7,7 +7,6 @@ export interface handleMessageGroupClickProps {
 }
 export interface MessageGroupItemProps {
   messageGroupItem: Conversation
-  others: User
   selectedMessageGroupId: string
   handleMessageGroupClick: ({
     myId,

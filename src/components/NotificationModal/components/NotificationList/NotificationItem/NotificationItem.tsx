@@ -1,4 +1,4 @@
-import MessageProfile from "@/pages/DirectMessage/components/MessageGroupList/MessageProfile"
+import MessageProfile from "@/pages/DirectMessage/components/MessageGroupList/MessageGroupUserlist/MessageProfile/MessageProfile"
 import * as S from "./NotificationItem.Styles"
 import { Notification } from "@/types"
 import getNotificationOption from "../../../utils/getNotificationOption"

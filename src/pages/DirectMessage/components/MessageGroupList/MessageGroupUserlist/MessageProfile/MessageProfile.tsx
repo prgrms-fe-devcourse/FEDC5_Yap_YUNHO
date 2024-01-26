@@ -1,5 +1,5 @@
 import standard from "@/assets/standard.jpeg"
-import * as S from "./MessageGroupList.Styles"
+import * as S from "./MessageProfile.Styles"
 import seenindicator from "@/assets/seenindicator.png"
 
 interface MessageProfileProps {

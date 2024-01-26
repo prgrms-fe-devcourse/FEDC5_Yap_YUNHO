@@ -1,21 +1,27 @@
-import * as S from "./MessageGroupList.Styles"
-import { MessageGroupItemProps } from "../../DirectMessage.Types"
-import MessageProfile from "./MessageProfile"
+import * as S from "./MessageGroupItem.Styles"
+import { MessageGroupItemProps } from "@/pages/DirectMessage/DirectMessage.Types"
 import useAuthUserStore from "@/stores/useAuthUserStore"
-import MessageGroupItemRightInfo from "./MessageGroupRightInfo"
+import MessageProfile from "../MessageProfile/MessageProfile"
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh"
+import decideChatUserName from "@/pages/DirectMessage/utils/decideChatUserName"
 
 const MessageGroupItem = ({
-  messageGroupItem,
   handleMessageGroupClick,
+  messageGroupItem,
   selectedMessageGroupId,
-  others,
 }: MessageGroupItemProps) => {
   const { user } = useAuthUserStore()
   const { receiver, sender, message, createdAt } = messageGroupItem
+  const others = decideChatUserName({
+    myId: user._id,
+    receiver,
+    sender,
+  })
+
   const { isOnline, image: profileImg, _id: othersUserId, fullName } = others
 
   return (
-    <S.MessageItemLayout
+    <S.MessageGroupItemLayout
       onClick={() => {
         handleMessageGroupClick({
           myId: user._id,
@@ -31,16 +37,18 @@ const MessageGroupItem = ({
           profileImg={profileImg}
         />
 
-        <S.MessageGroupTextInfo>
+        <S.MessageGroupItemTextInfo>
           <S.MessageGroupItemUserName>{fullName}</S.MessageGroupItemUserName>
           <S.MessageGroupItemContent>{message}</S.MessageGroupItemContent>
           <S.MessageGroupItemChatDate>
             {createdAt.slice(0, 10)}
           </S.MessageGroupItemChatDate>
-        </S.MessageGroupTextInfo>
+        </S.MessageGroupItemTextInfo>
       </S.MessageGroupItemLeftInfo>
-      <MessageGroupItemRightInfo messageGroupItem={messageGroupItem} />
-    </S.MessageItemLayout>
+      <S.MessageGroupItemNotSeenCount>
+        {!messageGroupItem.seen && <PriorityHighIcon />}
+      </S.MessageGroupItemNotSeenCount>
+    </S.MessageGroupItemLayout>
   )
 }
 
