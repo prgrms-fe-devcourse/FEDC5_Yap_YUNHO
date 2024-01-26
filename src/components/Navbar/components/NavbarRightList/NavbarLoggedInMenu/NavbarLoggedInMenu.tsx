@@ -5,7 +5,6 @@ import NavbarMenuItem from "../NavbarMenuItem/NavbarMenuItem"
 const NavbarLoggedInMenu = ({
   handleMenuClick,
   $isToggle,
-  NotificationListData,
 }: NavbarMenuProps) => {
   return (
     <NavbarMenuList $isToggle={$isToggle}>
@@ -20,7 +19,6 @@ const NavbarLoggedInMenu = ({
       <NavbarMenuItem
         handleMenuClick={handleMenuClick}
         menu="알림"
-        NotificationListData={NotificationListData}
       />
 
       <NavbarMenuItem

@@ -1,20 +1,16 @@
 import * as S from "./NotificationModal.Styles"
-import NotificationTitle from "./components/NotificationTitle"
-import NotificationList from "./components/NotificationList"
+import NotificationTitle from "./components/NotificationTitle/NotificationTitle"
+import NotificationList from "./components/NotificationList/NotificationList"
 import CustomModal from "../Modal/components/CustomModal/CustomModal"
-import { Notification } from "@/types"
+import useGetNotification from "@/components/NotificationModal/hooks/useGetNotification"
 
 interface NotificationModalProps {
   isShow: boolean
   onClose: () => void
-  NotificationListData: Notification[]
 }
 
-const NotificationModal = ({
-  isShow,
-  onClose,
-  NotificationListData,
-}: NotificationModalProps) => {
+const NotificationModal = ({ isShow, onClose }: NotificationModalProps) => {
+  const { NotificationListData } = useGetNotification()
   return (
     <CustomModal
       isShow={isShow}

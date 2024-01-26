@@ -17,6 +17,10 @@ export const NavbarMenuContainer = styled.div`
     }
   }
   svg {
+    @media screen and (max-width: 1024px) {
+      color: ${({ theme }) => theme.colors.sub_alt};
+      font-size: 1.8rem;
+    }
     color: ${({ theme }) => theme.colors.point};
     padding-left: 0.5rem;
     pointer-events: none;

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom"
-import * as S from "./Notification.Styles"
-import NotificationItem from "./NotificationItem"
+import * as S from "./NotificationList.Styles"
 import { Notification } from "@/types/index"
+import NotificationItem from "./NotificationItem/NotificationItem"
 
-interface NotificationListDataProps {
+interface NotificationListProps {
   NotificationListData: Notification[]
   onClose: () => void
 }
@@ -11,7 +11,7 @@ interface NotificationListDataProps {
 const NotificationList = ({
   NotificationListData,
   onClose,
-}: NotificationListDataProps) => {
+}: NotificationListProps) => {
   const navigate = useNavigate()
   const handleClick = (NOTIFI_NAVIGATION: string) => {
     if (NOTIFI_NAVIGATION) {
@@ -21,12 +21,12 @@ const NotificationList = ({
   }
   return (
     <S.NotificationListLayout>
-      {NotificationListData.map((item) => (
+      {NotificationListData.map((notification) => (
         <NotificationItem
           onClose={onClose}
           handleClick={handleClick}
-          Notification={item}
-          key={item._id}
+          Notification={notification}
+          key={notification._id}
         />
       ))}
     </S.NotificationListLayout>
