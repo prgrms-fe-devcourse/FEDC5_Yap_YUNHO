@@ -1,6 +1,5 @@
 import * as S from "./MessageGroupUserlist.Styles"
 import { handleMessageGroupClickProps } from "../../../DirectMessage.Types"
-import useAuthUserStore from "@/stores/useAuthUserStore"
 import decideChatUserName from "@/pages/DirectMessage/utils/decideChatUserName"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
