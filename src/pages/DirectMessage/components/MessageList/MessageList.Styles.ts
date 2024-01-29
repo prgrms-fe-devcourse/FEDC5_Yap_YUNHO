@@ -10,12 +10,12 @@ export const MessageListLayout = styled.div`
   flex-direction: column;
   gap: 3rem;
   padding: 3rem 1.5rem;
+  justify-content: space-between;
 `
 
 export const MessageListContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
-  overflow-y: auto;
-  height: 90%;
+  overflow-y: scroll;
   width: 100%;
   display: flex;
   flex-direction: column;

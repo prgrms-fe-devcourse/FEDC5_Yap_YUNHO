@@ -1,4 +1,3 @@
-
 import * as GS from "@/components/Navbar/Navbar.Styles"
 import * as S from "./NavbarRightList.Styles"
 import NavbarLoggedInMenu from "./NavbarLoggedInMenu/NavbarLoggedInMenu"
@@ -15,12 +14,7 @@ import StandardUserImage from "@/assets/standard.jpeg"
 const NavbarRightList = () => {
   const { isLoggedIn, user } = useAuthUserStore()
   const { isToggle, toggleRef, handleToggle } = useToggle()
-  const {
-    handleMenuClick,
-    NotificationListData,
-    PostEditModal,
-    notificationModal,
-  } = useMenuClick()
+  const { handleMenuClick, PostEditModal, notificationModal } = useMenuClick()
 
   const profileImage = user.image || StandardUserImage
 
@@ -34,10 +28,7 @@ const NavbarRightList = () => {
     <>
       <S.NavbarRightListLayout>
         {isLoggedIn ? (
-          <NavbarLoggedInMenu
-            handleMenuClick={handleMenuClick}
-            NotificationListData={NotificationListData}
-          />
+          <NavbarLoggedInMenu handleMenuClick={handleMenuClick} />
         ) : (
           <NavbarNotLoggedInMenu handleMenuClick={handleMenuClick} />
         )}
@@ -53,7 +44,6 @@ const NavbarRightList = () => {
             handleMenuClick={handleMenuClick}
           />
         </GS.NavbarToggleButton>
-
 
         <GS.NavbarButton onClick={handleNavbarProfileClick}>
           {isLoggedIn && (

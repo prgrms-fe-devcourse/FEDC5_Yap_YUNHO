@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom"
 import * as S from "./MessageList.Styles"
 import { Message } from "@/types"
 import useMessageList from "../../hooks/useMessageList"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import MessageInput from "./MessageInput/MessageInput"
 import MessageItem from "./MessageItem/MessageItem"
 
 const MessageList = () => {
+  const [messageListHeight, setMessageListHeight] = useState(0)
+
   const { userId: othersUserId } = useParams()
   const { data: MessageList } = useMessageList(othersUserId || "")
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -19,7 +21,7 @@ const MessageList = () => {
 
   useEffect(() => {
     scrollToBottom()
-  }, [MessageList])
+  }, [MessageList?.length, messageListHeight])
 
   return (
     <S.MessageListLayout>
@@ -34,7 +36,10 @@ const MessageList = () => {
               />
             ))}
           </S.MessageListContainer>
-          <MessageInput othersUserId={othersUserId} />
+          <MessageInput
+            scrollRef={scrollRef}
+            setMessageListHeight={setMessageListHeight}
+          />
         </>
       )}
     </S.MessageListLayout>

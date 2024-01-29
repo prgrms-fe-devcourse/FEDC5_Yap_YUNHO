@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom"
 import useModal from "@/components/Modal/hooks/useModal"
 import NotificationModal from "@/components/NotificationModal/NotificationModal"
-import useGetNotification from "@/components/NotificationModal/hooks/useGetNotification"
+
 import usePostEditModalStore from "@/components/PostEdit/stores/usePostEditModalStore"
 import PostEdit from "@/components/PostEdit/PostEdit"
 import useLogout from "@/hooks/useLogout"
 
 const useMenuClick = () => {
   const navigate = useNavigate()
-  const { NotificationListData } = useGetNotification()
+
   const {
     isShowModal: isShowNotification,
     showModal: showNotification,
@@ -44,7 +44,6 @@ const useMenuClick = () => {
     <NotificationModal
       isShow={isShowNotification}
       onClose={closeNotification}
-      NotificationListData={NotificationListData}
     />
   )
   const PostEditModal = isShowEditModal && <PostEdit postId="newPost" />
@@ -52,7 +51,6 @@ const useMenuClick = () => {
   return {
     handleMenuClick,
     notificationModal,
-    NotificationListData,
     PostEditModal,
   }
 }

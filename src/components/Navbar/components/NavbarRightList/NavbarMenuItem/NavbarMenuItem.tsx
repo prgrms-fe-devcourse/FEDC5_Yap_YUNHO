@@ -2,11 +2,10 @@ import Button from "@/components/Button/Button"
 import * as S from "./NavbarMenuItem.Styles"
 import { NavbarMenuProps } from "@/components/Navbar/Navbar.Types"
 import Brightness1Icon from "@mui/icons-material/Brightness1"
-const NavbarMenuItem = ({
-  menu,
-  handleMenuClick,
-  NotificationListData,
-}: NavbarMenuProps) => {
+import useGetNotification from "@/components/NotificationModal/hooks/useGetNotification"
+
+const NavbarMenuItem = ({ menu, handleMenuClick }: NavbarMenuProps) => {
+  const { NotificationListData } = useGetNotification()
   const handleMenuItemClick = () => {
     if (!menu) {
       return
@@ -21,9 +20,9 @@ const NavbarMenuItem = ({
         onClick={handleMenuItemClick}
       >
         <p>{menu}</p>
-        {NotificationListData && NotificationListData.length > 0 && (
-          <Brightness1Icon />
-        )}
+        {menu === "알림" &&
+          NotificationListData &&
+          NotificationListData.length > 0 && <Brightness1Icon />}
       </Button>
       <S.NavbarMenuDivider />
     </S.NavbarMenuContainer>

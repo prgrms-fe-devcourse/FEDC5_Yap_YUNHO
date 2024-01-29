@@ -1,6 +1,6 @@
-import * as S from "./Notification.Styles"
-import { Notification } from "../../../types/index"
-import useSeenNotification from "../hooks/useSeenNotification"
+import * as S from "./NotificationTitle.Styles"
+import { Notification } from "../../../../types/index"
+import useSeenNotification from "../../hooks/useSeenNotification"
 
 interface NotificationTitleProps {
   NotificationListData: Notification[]

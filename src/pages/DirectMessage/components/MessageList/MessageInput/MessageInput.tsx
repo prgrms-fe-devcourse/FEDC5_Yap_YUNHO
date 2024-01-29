@@ -1,55 +1,42 @@
 import * as S from "./MessageInput.Styles"
-import MessageProfile from "../../MessageGroupList/MessageProfile"
-import { useEffect, useState } from "react"
-import useSendMessage from "../../../hooks/useSendMessage"
+import MessageProfile from "../../MessageGroupList/MessageGroupUserlist/MessageProfile/MessageProfile"
 import SendIcon from "@mui/icons-material/Send"
-import { AUTH_API } from "@/apis/Api"
 import { DM_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
+import useTextArea from "@/pages/DirectMessage/hooks/useTextArea"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
-interface MessageInputProps {
-  othersUserId: string
+export interface MessageInputProps {
+  scrollRef: React.RefObject<HTMLDivElement>
+  setMessageListHeight: (messageListHeight: number) => void
 }
 
-const MessageInput = ({ othersUserId }: MessageInputProps) => {
-  const [sendingMessage, setSendingMessage] = useState("")
-  const { AlertModalComponent, sendMessage } = useSendMessage()
-  const [myProfileImg, setMyProfileImg] = useState("")
+const MessageInput = ({
+  scrollRef,
+  setMessageListHeight,
+}: MessageInputProps) => {
+  const {
+    textValue,
+    handleInputChange,
+    handleSubmit,
+    textRef,
+    AlertModalComponent,
+    handleEnter,
+  } = useTextArea({ scrollRef, setMessageListHeight })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target
-    setSendingMessage(value)
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const messageSubmission = {
-      message: sendingMessage,
-      receiver: othersUserId,
-    }
-    sendMessage.mutate(messageSubmission)
-    setSendingMessage("")
-  }
-
-  const getMyProfileImg = async () => {
-    const { image } = await AUTH_API.get(`/auth-user`).then((res) => res.data)
-
-    setMyProfileImg(image)
-  }
-
-  useEffect(() => {
-    getMyProfileImg()
-  }, [])
+  const { user } = useAuthUserStore()
 
   return (
     <>
       {AlertModalComponent}
       <S.MessageInputLayout>
         <S.MessageInputForm onSubmit={handleSubmit}>
-          <MessageProfile profileImg={myProfileImg} />
+          <MessageProfile profileImg={user.image} />
           <S.MessageInputItem
+            ref={textRef}
             placeholder={DM_PLACEHOLDER_MESSAGE.SEND_MESSAGE_INPUT}
             onChange={handleInputChange}
-            value={sendingMessage}
+            onKeyDown={handleEnter}
+            value={textValue}
           />
           <S.MessageSendButton>
             <SendIcon />
