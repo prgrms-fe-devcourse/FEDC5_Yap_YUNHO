@@ -17,19 +17,19 @@ const useTextArea = ({
   const textRef = useRef<HTMLTextAreaElement>(null)
 
   const resize = () => {
-    if (!textRef.current) {
+    const { current } = textRef
+    if (!current) {
       return
     }
 
-    textRef.current.style.height = "0px"
+    current.style.height = "0px"
 
-    const scrollHeight = textRef.current.scrollHeight
-    const style = window.getComputedStyle(textRef.current)
+    const scrollHeight = current.scrollHeight
+    const style = window.getComputedStyle(current)
     const borderTop = parseInt(style.borderTop)
     const borderBottom = parseInt(style.borderBottom)
 
-    textRef.current.style.height =
-      scrollHeight + borderTop + borderBottom + "px"
+    current.style.height = scrollHeight + borderTop + borderBottom + "px"
     if (scrollRef.current) {
       setMessageListHeight(scrollRef.current.clientHeight)
     }
