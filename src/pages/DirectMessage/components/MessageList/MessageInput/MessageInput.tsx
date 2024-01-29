@@ -4,6 +4,7 @@ import SendIcon from "@mui/icons-material/Send"
 import { DM_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 import useTextArea from "@/pages/DirectMessage/hooks/useTextArea"
 import useGetMyProfileImg from "@/pages/DirectMessage/hooks/useGetMyProfileImg"
+import useAuthUserStore from "@/stores/useAuthUserStore"
 
 export interface MessageInputProps {
   scrollRef: React.RefObject<HTMLDivElement>
@@ -24,6 +25,8 @@ const MessageInput = ({
   } = useTextArea({ scrollRef, setMessageListHeight })
 
   const { myProfileImg } = useGetMyProfileImg()
+  const { user } = useAuthUserStore()
+  console.log(user)
 
   return (
     <>
