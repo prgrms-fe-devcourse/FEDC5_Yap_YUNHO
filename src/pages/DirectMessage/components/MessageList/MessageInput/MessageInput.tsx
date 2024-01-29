@@ -3,7 +3,6 @@ import MessageProfile from "../../MessageGroupList/MessageGroupUserlist/MessageP
 import SendIcon from "@mui/icons-material/Send"
 import { DM_PLACEHOLDER_MESSAGE } from "@/constants/placeholderMessage"
 import useTextArea from "@/pages/DirectMessage/hooks/useTextArea"
-import useGetMyProfileImg from "@/pages/DirectMessage/hooks/useGetMyProfileImg"
 import useAuthUserStore from "@/stores/useAuthUserStore"
 
 export interface MessageInputProps {
@@ -24,16 +23,14 @@ const MessageInput = ({
     handleEnter,
   } = useTextArea({ scrollRef, setMessageListHeight })
 
-  const { myProfileImg } = useGetMyProfileImg()
   const { user } = useAuthUserStore()
-  console.log(user)
 
   return (
     <>
       {AlertModalComponent}
       <S.MessageInputLayout>
         <S.MessageInputForm onSubmit={handleSubmit}>
-          <MessageProfile profileImg={myProfileImg} />
+          <MessageProfile profileImg={user.image} />
           <S.MessageInputItem
             ref={textRef}
             placeholder={DM_PLACEHOLDER_MESSAGE.SEND_MESSAGE_INPUT}
