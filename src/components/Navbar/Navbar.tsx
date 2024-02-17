@@ -2,22 +2,28 @@ import { useLocation } from "react-router-dom"
 import * as S from "./Navbar.Styles"
 import NavbarLeftList from "./components/NavbarLeftList/NavbarLeftList"
 import NavbarRightList from "./components/NavbarRightList/NavbarRightList"
+import { useMemo } from "react"
 
-const LOGIN_PAGE_PATH_NAME = "/login"
-const SIGNUP_PAGE_PATH_NAME = "/signup"
-const USER_EDIT_PAGE_PATH_NAME = "/useredit"
+const PATH_NAME = {
+  LOGIN_PAGE: "/login",
+  SIGNUP_PAGE: "/signup",
+  USER_EDIT_PAGE: "/useredit",
+}
 
 const Navbar = () => {
   const { pathname } = useLocation()
 
+  const isLoginPage = useMemo(
+    () => pathname === PATH_NAME.LOGIN_PAGE,
+    [pathname],
+  )
+
   if (
-    pathname === SIGNUP_PAGE_PATH_NAME ||
-    pathname === USER_EDIT_PAGE_PATH_NAME
+    pathname === PATH_NAME.SIGNUP_PAGE ||
+    pathname === PATH_NAME.USER_EDIT_PAGE
   ) {
     return
   }
-
-  const isLoginPage = pathname === LOGIN_PAGE_PATH_NAME
 
   return (
     <S.NavbarLayout>
