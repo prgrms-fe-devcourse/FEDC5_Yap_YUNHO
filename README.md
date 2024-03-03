@@ -59,15 +59,37 @@
 
 ## 구현 기능
 
-### 기능 1
+  <br>
 
-### 기능 2
-
-### 기능 3
-
-### 기능 4
+### 메인 페이지 및 음악 추천 페이지
 
 <br>
+  <img src="https://res.cloudinary.com/dalxgxu2o/image/upload/v1705463741/Yap%20Assets/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-01-17_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_12.55.29_yd9qk3.png">
+<br>
+
+### 게시물 상세보기
+
+  <br>
+    <img src="https://res.cloudinary.com/dalxgxu2o/image/upload/v1709459678/Yap%20Assets/Post_ngez30.png">
+  <br>
+
+### 게시물 수정
+
+  <br>
+    <img src="https://res.cloudinary.com/dalxgxu2o/image/upload/v1709459828/Yap%20Assets/Post_Edit_enwfea.png">
+  <br>
+
+### DM
+
+  <br>
+    <img src="https://res.cloudinary.com/dalxgxu2o/image/upload/v1709460312/Yap%20Assets/Chatting_hoyrjr.png">
+  <br>
+
+### 회원 정보 페이지
+
+  <br>
+    <img src="https://res.cloudinary.com/dalxgxu2o/image/upload/v1709460435/Yap%20Assets/User_kq7zq9.png">
+  <br>
 
 <!-- Stack Icon Refernces -->
 
